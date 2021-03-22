@@ -10,9 +10,12 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: x11vnc/lyx-desktop
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: LaTeX linter
+        uses: colinaaa/chktex-action@v1.1.2
+      - uses: docker://x11vnc/lyx-desktop
       - name: Build PDF notes
         run: make all
 
@@ -20,8 +23,9 @@ jobs:
     name: Release
     if: github.ref == 'refs/heads/master'
     needs: [build]
-    runs-on: x11vnc/lyx-desktop
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: docker://x11vnc/lyx-desktop
       - name: Build PDF notes
         run: make all
