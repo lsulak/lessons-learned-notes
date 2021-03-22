@@ -1,6 +1,3 @@
-install_lyx:
-    apt-get install lyx fonts-lyx
-
 make_dest_dir:
 	$(info    === Making a directory with the final PDFs if it doesn't exist.)
 	[ -d pdfs ] || mkdir pdfs
