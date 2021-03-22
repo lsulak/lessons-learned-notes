@@ -1,0 +1,606 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Calculus
+\end_layout
+
+\begin_layout Section
+Limits and continuity
+\end_layout
+
+\begin_layout Section
+Differentiation
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Multivariate Calculus
+\series default
+ - the words multi-variable and multivariate are typically used interchangeably.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When you are differentiating some expression that has multiple variables,
+ and you are differentiating the whole expression just by a single variable,
+ then all other variables are considered to be constants (and constants
+ differentiate to 
+\begin_inset Formula $0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+There are different symbols when you differentiate function with one variable
+ (symbol is 
+\begin_inset Formula $d$
+\end_inset
+
+), and function with many variables (this is called partial derivative,
+ and the symbol is 
+\begin_inset Formula $\partial$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Partial differentiation is essentially just taking a multi-dimensional problem
+ and pretending that it's just a standard 1D problem when we consider each
+ variable separately.
+ So partial differentiation as just a simple extension of the single variable
+ method.
+\end_layout
+
+\begin_layout Itemize
+Total derivative of a function is a sum of all possible partial derivatives
+ (over all variables in a given function, so one partial derivation per
+ variable).
+\end_layout
+
+\begin_layout Itemize
+For example, given a function 
+\begin_inset Formula $f(x,y,z)=sin(x)e^{yx^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Then its total derivative is the following (where each variable 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ is some function of parameter 
+\begin_inset Formula $t$
+\end_inset
+
+, but that should be known/given):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\frac{df(x,y,z)}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}+\frac{\partial f}{\partial z}\frac{dz}{dt}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+All partial derivatives:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial f}{\partial x}=cos(x)e^{yz^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial f}{\partial y}=sin(x)e^{yz^{2}}z^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\partial f}{\partial z}=sin(x)e^{yz^{2}}2yz$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The sum rule, power rule, product rule, 
+\series default
+and
+\series bold
+ chain rule.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Partial and total derivative
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dependent and independent variables
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Imagine a function that calculates a speed of vehicle (y-axis) and time
+ (x-axis).
+\end_layout
+
+\begin_layout Itemize
+At some particular time, there is always just 1 speed.
+\end_layout
+
+\begin_layout Itemize
+On the contrary, one particular speed can happen in multiple times.
+\end_layout
+
+\begin_layout Itemize
+So, time is independent variable, and vehicle speed is dependent variable.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The Jacobian
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is simply a row vector where each entry is the partial derivative of
+ a given function 
+\begin_inset Formula $f$
+\end_inset
+
+with respect to each one of its variables.
+\end_layout
+
+\begin_layout Itemize
+Once we have such vector, then we can put some values, calculate resulting
+ vector with such numbers, and we can see the direction from that given
+ point.
+ We can do this with many points and we can then construct the whole space
+ (with 
+\begin_inset Quotes eld
+\end_inset
+
+regions
+\begin_inset Quotes erd
+\end_inset
+
+ - higher / lower, that represents local or global minimums and maximums).
+\end_layout
+
+\begin_layout Itemize
+So Jacobian describes the gradient of a multi-variable system.
+ And if you calculate it for a scalar valued multi-variable function, you
+ get a row vector pointing up the direction of greater slope, with a length
+ proportional to the local steepness.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The Hessian
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In many ways, the Hessian can be thought of as a simple extension of the
+ Jacobian vector.
+\end_layout
+
+\begin_layout Itemize
+For the Jacobian, we collected together all of the first order derivatives
+ of a function into a vector.
+ In the Hessian, we're going to collect all of the second order derivatives
+ together into a matrix.
+\end_layout
+
+\begin_layout Itemize
+It often makes life easier to find the Jacobian first and then differentiate
+ its terms again to find the Hessian.
+ But the Jacobian is vector, the Hessian is a square matrix.
+ And the Hessian matrix is symmetrical across the leading diagonal, if a
+ function is continuous, meaning that it has no sudden changes.
+\end_layout
+
+\begin_layout Itemize
+The power of the Hessian is, firstly, that if its determinant is positive,
+ we know we are dealing with either a maximum or a minimum.
+ Also, we can look on the first term, which is sitting at the top left-hand
+ corner of the Hessian.
+ If the number is also positive, we know we've got a minimum.
+ Whereas, if it's negative, we've got a maximum.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Taylor Series
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given some complicated function on the input, it is possible to build an
+ approximation to it using a series of simpler functions.
+\end_layout
+
+\begin_layout Itemize
+But such approximation is only possible, if we know everything about the
+ function at some point - the functions value, its first derivative, second
+ derivative, third derivative, and so on.
+\end_layout
+
+\begin_layout Itemize
+Then we can use this information to reconstruct the function everywhere
+ else.
+ So, if I know everything about it at one place, I also know everything
+ about it everywhere.
+ However, this is only true for a certain type of function that we call
+ well behaved, which means functions that are continuous and that you can
+ differentiate as many times as you want.
+\end_layout
+
+\begin_layout Itemize
+By the way, 
+\series bold
+Maclaurin series
+\series default
+ is a Taylor series expansion of a function about 0.
+ So in another words, if the Taylor series is centered at zero, then we
+ are talking about Maclauring series.
+\end_layout
+
+\begin_layout Itemize
+Maclaurin series says that if you know everything about a function at the
+ point 
+\begin_inset Formula $x=0$
+\end_inset
+
+, then you can reconstruct everything about it everywhere.
+ The Taylor series simply acknowledges that there is nothing special about
+ the point 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ And so says that if you know everything about the function at any point,
+ then you can reconstruct the function anywhere.
+ So a small change, but an important one.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Newton Method
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also known as 
+\series bold
+Newton-Raphson
+\series default
+ 
+\series bold
+method
+\series default
+, is a way to quickly find a good approximation for the root of a real-valued
+ function 
+\begin_inset Formula $f(x)=0$
+\end_inset
+
+.
+ It uses the idea that a continuous and differentiable function can be approxima
+ted by a straight line tangent to it.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/newton-raphson-method/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is iterative algorithm, and we can find a solution by following this
+ equation (until we get a desired accuracy.):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{i+1}=x_{i}-\frac{f(x_{i})}{f'(x_{i})}\label{eq:newton_raphson}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $δx=-\frac{f(x)}{f\text{'}(x)}$
+\end_inset
+
+ is a step size of this iterative algorithm, and when 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+ is very small, this step can get big.
+ In fact 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+ is exactly 
+\begin_inset Formula $0$
+\end_inset
+
+ at turning points of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ 
+\series bold
+This is where Newton-Raphson behaves the worst since the step size is infinite
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+It's a really powerful way to solve an equation just by evaluating it and
+ its gradient a few times.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gradient Descent
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lagrange Multipliers
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a strategy for finding the local maxima and minima of a function subject
+ to equality constraints.
+ So it can be seen as a technique to find a minimum of a function subject
+ to a constraint, i.e.
+ solutions lying on a particular curve (for example within a circle).
+\end_layout
+
+\begin_layout Itemize
+For example, calculate the minimum of function 
+\begin_inset Formula $f(x,y)=-exp(x-y^{2}+xy)$
+\end_inset
+
+ on the constraint 
+\begin_inset Formula $g(x,y)=cosh(y)+x-2=0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+At first, you should calculate 4 derivatives: 
+\begin_inset Formula $\frac{df}{dx}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{df}{dy}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{dg}{dx}$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{dg}{dy}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Then, calculate roots: 
+\begin_inset Formula $x=\frac{df}{dx}*\lambda\frac{dg}{dx}$
+\end_inset
+
+, 
+\begin_inset Formula $y=\frac{df}{dy}*\lambda\frac{dg}{dy},$
+\end_inset
+
+and 
+\begin_inset Formula $-g(x,y)$
+\end_inset
+
+ for some initial 
+\begin_inset Formula $x,y$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+From resulting values, you should obtain minima or maxima.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Integration
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,728 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Taxes
+\end_layout
+
+\begin_layout Standard
+A few parts of this chapter will be in Slovak language, because I need to
+ consider Slovak norms, portals and tools, and I don't have motivation for
+ translating it to English.
+\end_layout
+
+\begin_layout Itemize
+You need to pay taxes on:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Capital gains (including profits from derivatives and crypto)
+\end_layout
+
+\begin_layout Itemize
+Dividends
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tax residency vs domicile
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You always have to pay taxes to the country where you are a tax resident
+ of, regardless of what broker you use and where it's domiciled.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.expertsforexpats.com/expat-tax/the-difference-between-domicile-and
+-residence/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Contract with broker: 
+\emph on
+W8BEN
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consult your tax adviser or the information at the OECD automatic exchange
+ of information portal for more information on tax residence or the IRS
+ instructions to Form W8-BEN found at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{irs.gov}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Tax liens 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Tax-harvesting
+\emph default
+ TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Wash Sale Rule
+\emph default
+ TODO
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Selling and buying within 30 day period?
+\end_layout
+
+\begin_layout Itemize
+(in US, you have to wait 30 days and then you can buy a particular stock
+ again)
+\end_layout
+
+\end_deeper
+\begin_layout Section
+UK
+\end_layout
+
+\begin_layout Itemize
+Important forms (see also 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.gov.uk/log-in-register-hmrc-online-services?}
+\end_layout
+
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P91 
+\end_layout
+
+\begin_layout Itemize
+P45
+\end_layout
+
+\begin_layout Itemize
+P60
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+UK tax on crypto 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.gov.uk/government/publications/tax-on-cryptoassets/cryptoassets-fo
+r-individuals}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://koinly.io/guides/hmrc-cryptocurrency-tax-guide/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+SK
+\end_layout
+
+\begin_layout Standard
+Pretty good summary: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=Z5p3NRcdGBc}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For 2018, SK, the same for individual physical person as well as S.R.O.
+\end_layout
+
+\begin_layout Itemize
+Zisk je realizovaný vždy pri konkrétnej transakcii (predaji), nie pri „vyberaní“.
+ Ak si však nakúpil za 100, stále držíš a cena je 200, nedošlo k realizácii
+ zisku.
+ Roznako k realizácii zisku dôjde v prípade vyplatenia dividend, rovnako
+ bez ohľadu na to, či ich z účtu vyberieš alebo nie.
+ Zdaňovanie zrealizovaného zisku je potom závislé od Tvojho daňového domicilu.
+ Ak platíš dane na Slovensku, potom zisk z predaja cenných papierov obchodovanýc
+h na regulovaných trhoch (napr.
+ burze) je oslobodený od dane, ak medzi nákupom a predajom ubehol viac ako
+ rok.
+ INak zaplatíš 19% daň a 14% zdravotné poistenie.
+ Pri dividendách je daň 7%, prípadne pri dividendách zo zahraničia je to
+ zrážková daň pri zdroji, minimálne 7%.
+ Zároveň, ak si zrealizoval zisk, ktorý by bol zdaniteľný, môžeš si od neho
+ odpočítať príípadnú stratu z predaje rovnakého typu investícií (napr.
+ akcií).
+\end_layout
+
+\begin_layout Itemize
+Pre získanie čo najvyššej daňovej refundácie je najlepšie ukončiť pracovný
+ pomer vo Veľkej Británii v mesiacoch júl až október.
+ Najnižšia daňová refundácia vám naopak vznikne práve vtedy, ak Veľkú Britániu
+ opustíte v marci alebo apríli.
+\end_layout
+
+\begin_layout Itemize
+Najprv od všetkých zamestnávateľov, u ktorých pracoval, vyžiadal potvrdenia
+ o zdaniteľných príjmoch za celý predchádzajúci kalendárny rok.
+\end_layout
+
+\begin_layout Itemize
+Od 01.01.2017 by malo platiť, že zdravotné odvody sa neplatia, iba daň 7%.
+ Ak je daň zrazená zrážkou v inom štáte vo výške väčšej ako 7% je v daňovom
+ priznaní B uviesť hrubé dividendy a výšku zrazenej dane podľa výpisu od
+ brokera.
+ Týka sa to najmä akcií a ETF na svetových burzách.
+ Čo sa týka slovenských spoločností, z ktorých by ste mohli poberať dividendy,
+ tu sa rozlišuje aj obdobie, kedy bol vytvorený zisk, z ktorého sú uvedené
+ dividendy vyplácané (podľa daňového poradcu môjho zamestnávateľa).
+\end_layout
+
+\begin_layout Itemize
+Z pohľadu daní je najideálnejšie nakupovať bonds prostredníctvom indexových
+ fondov ETF, ako to robí Finax.
+ V takom prípade po roku máte príjmy oslobodené od dane.
+ https://www.finax.eu/sk/blog/kompletny-prehlad-zdanovania-prijmov-z-investicii.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=Ngy5AesOm3Y&list=WL&index=1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Zákon o dani z príjmov v § 2 písm.
+ d) označuje fyzickú osobu za rezidenta Slovenskej republiky, ak má trvalý
+ pobyt na Slovensku, alebo sa na Slovensku zdržiava aspoň 183 dní v príslušnom
+ kalendárnom roku, a to súvisle alebo v niekoľkých obdobiach.
+\end_layout
+
+\begin_layout Itemize
+Prijmy ktore su oslobodene od dane (v 2020 to bolo 500 eur max) nepodliehaju
+ ani zdravotnym odvodom a nie je nutne ich uvadzat do danoveho priznania.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=RfKmG6sqkoo&list=WL&index=2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Danove priznanie je nutne podavat aj z primov za predane akcie drzane viac
+ ako 1 rok, aj ked uz z nich dan neplatime.
+ 
+\end_layout
+
+\begin_layout Itemize
+Automaticky zdanovane dividendy - nie je potrebne podat danove priznanie.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Najviac zmlúv o zamedzení dvojitého zdanenia, ktoré má Slovenská republika
+ uzatvorené, vychádza z modelovej zmluvy OECD.
+ Jednotlivé uzatvorené zmluvy sa však v detailoch môžu navzájom líšiť.
+\end_layout
+
+\begin_layout Itemize
+Shares, funds, bonds, ETF - if it's traded on regulated market (stock exchange/m
+arket) and you'll keep them 1 year or more, then you are paying no taxes
+ and no health insurance (/zdravotne odvody).
+\end_layout
+
+\begin_layout Itemize
+If they are not traded on regulated market or you have them for less than
+ 1 year, then you're paying taxes 19% or 25% (depending on how much money
+ it is ...
+ it if is less than 176.8x of life minimum, then 19%, of it's higher, then
+ 25%) and also health insurance (/zdravotne odvody).
+\end_layout
+
+\begin_layout Itemize
+BTW it's FIFO - if you sell a share, and you have 2 shares of the same stock
+ (one bought more than 1 year ago and one bought recently), then you are
+ not paying taxes on that share, because it's like the oldest one was sold
+ - always from oldest (that's why FIFO).
+\end_layout
+
+\begin_layout Itemize
+Mutual funds 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+domestic (tuzemske) - 19% zrazkova dan (so it already should be after tax,
+ you don't have to pay taxes), and no health insurance (/zdravotne odvody).
+\end_layout
+
+\begin_layout Itemize
+foreign - 19% taxes and no health insurance (/zdravotne odvody).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Coupons from bonds
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+domestic - 19% zrazkova dan (so it already should be after tax, you don't
+ have to pay taxes), and no health insurance (/zdravotne odvody).
+\end_layout
+
+\begin_layout Itemize
+foreign - 19% taxes and no health insurance (/zdravotne odvody).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dividends 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+domestic - 7% and no health insurance.
+\end_layout
+
+\begin_layout Itemize
+foreign - W8BEN - you need to sign it with broker!!! For avoiding taxes
+ on dividends.
+\end_layout
+
+\begin_layout Standard
+V zahranici sa dani a aby sme nedanili 7% na dividendy - zabranenie dvojitemu
+ zdaneniu.
+ But we have to write it down into tax declaration (danove priznanie).
+\end_layout
+
+\begin_layout Standard
+V prípade, že máš u svojho brokera vyplnený americký formulár W-8BEN, bude
+ Ti z dividend z US akcií strhávaných 15% ako daň (bez W-8BEN je to 30%).
+ You have to always mention dividends in your tax document...? Even if you
+ don't have to pay taxes on that?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Crypto - probably as "other income" - 19% 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://cryptowat.ch/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Even if you have to pay taxes on financial instruments (shares, dividends,
+ bonds, etc), you have 
+\begin_inset Quotes eld
+\end_inset
+
+discount
+\begin_inset Quotes erd
+\end_inset
+
+ 500 EUR.
+ So if you have to pay less/equal than 500 EUR, you are not paying anything
+ (TODO - is it mandatory to mention that in tax document?).
+\end_layout
+
+\begin_layout Section
+SK ↔ UK
+\end_layout
+
+\begin_layout Itemize
+Dobry prehlad: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.investujeme.sk/clanky/kde-a-ako-zdanit-zarobok-zo-zahranicia-a-kde
+-zaplatit-odvody/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dohoda o ochrana investicii: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1992/646/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Zmluva o zamedzeni dvojakeho zdanenia v odbore dani z prijmu a ziskov z
+ majetku: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1992/89/}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2018/412/20181229}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Danovy domicil - mam asi rezidenciu aj v UK aj na SK, lebo v UK mam miesto
+ vedenia/aktualne byvanie (bydlisko-obvykly pobyt - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://ec.europa.eu/social/main.jsp?catId=1127&langId=sk&intPageId=4772}
+\end_layout
+
+\end_inset
+
+) (nie kvoli prijmov), a na SK lebo tam mam trvaly pobyt.
+\end_layout
+
+\begin_layout Itemize
+Ak som v oboch, tak mam rezidenciu na SK, lebo vyhrava prioritne trvaly
+ pobyt na SK (staly byt a aj uzsie osobne vztahy - stredisko zivotnych zaujmov
+ - takze je jedno kde sa zdrziavam lebo to je az v prioritach neskor),
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Interactive Brokers
+\end_layout
+
+\begin_layout Itemize
+1st attempt was wrong: Residential Country: UK and Country of Legal Residence:
+ SK
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Residential Country is Permanent Address, so it's SK for me.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://ibkr.info/glossary/1182}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://ndcdyn.interactivebrokers.com/Universal/servlet/Registration_v3.formHel
+p?s=p0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+2nd attempt was correct: Residential Country: SK, not UK 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+"I am not a tax resident of United Kingdom because I am an income tax resident
+ in a country that has a tax treaty with United Kingdom and qualify under
+ the "tie-breaker" rules of that treaty as a non-resident of United Kingdom."
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So my domicile is in SK, but my residency is in UK.
+\end_layout
+
+\end_body
+\end_document

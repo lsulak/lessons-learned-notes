@@ -1,0 +1,907 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Ensemble Training
+\end_layout
+
+\begin_layout Standard
+Ensemble training (which can be understood as one of possible settings of
+\series bold
+ meta-learning
+\series default
+) combines 
+\series bold
+more different models together
+\series default
+ or using 
+\series bold
+many instances of certain model
+\series default
+ (typically multiple weaker models), that are trained independently, and
+ whose predictions are combined in some way to to gain even better performance.
+ 
+\series bold
+The trend is toward larger and larger ensembles.
+ 
+\series default
+There are three typical ways to combine models: with 
+\series bold
+averaging, majority vote, 
+\series default
+or
+\series bold
+ stacking
+\series default
+.
+ 
+\series bold
+Types
+\series default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bumping
+\series default
+ - uses 1 model, chosen from more models trained on same training data.
+ More robust against stacking in local minima, the error of model is calculated
+ on all training data and based on that, the best parameters of model from
+ all created models.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bagging
+\series default
+ - (bootstrap aggregating) -
+\series bold
+ train different models on different subsets of the data.
+
+\series default
+ Random forests use a lot of different decision trees trained using bagging
+ and they work very well.
+ But with NN bagging can be very expensive.
+ Bagging is learning on more models of same type and classification works
+ as 
+\series bold
+voting
+\series default
+ 
+\series bold
+system
+\series default
+, all models are equivalent (no weights).
+ It chooses some subset of data with method 
+\series bold
+bootstrap
+\series default
+, learn a model and then chooses another subset of data for learning and
+ this process is repeated 
+\begin_inset Formula $N$
+\end_inset
+
+ times, so 
+\series bold
+at the end there are 
+\begin_inset Formula $N$
+\end_inset
+
+ learned models.
+
+\series default
+ Prediction - the most occurring class is chosen (for regression, the average
+ value is returned) - result of 
+\begin_inset Quotes eld
+\end_inset
+
+voting
+\begin_inset Quotes erd
+\end_inset
+
+ of learned 
+\begin_inset Formula $N$
+\end_inset
+
+ models.
+ 
+\series bold
+It increases stability and reduces variance/overfitting
+\series default
+ (so greatly reducing variance but slightly increasing bias).
+
+\series bold
+ Good to use when there is lack of data
+\series default
+, 
+\series bold
+and/or our model is unstable
+\series default
+, such as ANN or decision trees.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{However, decision trees are easily interpretable and understandable,
+ and with these techniques, this advantage will be lost)}
+\end_layout
+
+\end_inset
+
+ Not recommended to use on linear or very robust models.
+ If the outputs of classifiers have some probabilities, there is also weighted
+ variant 
+\series bold
+MetaCost
+\series default
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Boosting
+\series default
+ - the most used method - 
+\series bold
+train a sequence of low capacity models.
+ 
+\series default
+Weight the training cases differently for each model in the sequence.
+ Boost up-weight samples that the previous models got wrong and boost down-weigh
+t samples that the previous models got right.
+ An early use of boosting was with NN for MNIST.
+ More models of the same type with 
+\series bold
+weak learners
+\series default
+ (a bit better than random guess = more than 50% successfully classified
+ samples should be good enough).
+ The algorithm creates models which are specialized on training data which
+ were miss-classified with previous model (so it is iterative).
+ 
+\series bold
+As a number of weak models increases, an error of one weak learner will
+ increase, but total error of learners as a group will decrease.
+
+\series default
+ If could be variant with (model trained on all training data) or without
+ weighting (model trained only on subset of training data).  Example is 
+\series bold
+Adaboost
+\series default
+, one of the most common algorithm, in which weights are learned automatically.
+ It is able to over-fit the algorithm, it depends on a complexity of a given
+ models.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stacking
+\series default
+ - these methods combine various models of lower level.
+ Good when the classifier outputs also some confidence level for predicted
+ output, like ANN, Bayes, logistic regression.
+ Training data chosen by cross validation, which is computationally expensive.
+ Models have weights, and final prediction is based on computation of weights
+ multiplicated on prediction of each model.
+ Ideally, sum of all these weights is 1.
+ Stacking consists of building a meta-model that takes the output of base
+ models as input.
+ To train the stacked model, it is recommended to use examples from the
+ training set and tune the hyperparameters of the stacked model using cross-vali
+dation.
+ Obviously, you have to make sure that your stacked model performs better
+ on the validation set than each of the base models you stacked.
+\end_layout
+
+\begin_layout Standard
+Mechanisms that are used to build ensemble of classifiers include using:
+\end_layout
+
+\begin_layout Itemize
+different 
+\series bold
+subsets of training data
+\series default
+ with a
+\series bold
+ single learning method
+\series default
+,
+\end_layout
+
+\begin_layout Itemize
+different 
+\series bold
+training parameters
+\series default
+ with a
+\series bold
+ single training method
+\series default
+ (e.g., using different initial weights for each neural network in an ensemble),
+ or
+\end_layout
+
+\begin_layout Itemize
+different 
+\series bold
+learning methods
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+The reason that combining multiple models can bring better performance is
+ the observation that when several 
+\series bold
+uncorrelated
+\series default
+ strong models agree they are more likely to agree on the correct outcome.
+ The keyword here is 
+\begin_inset Quotes eld
+\end_inset
+
+uncorrelated
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Ideally, base models should be obtained using different features or using
+ algorithms of a different nature - for example, SVMs and Random Forest.
+ Combining different versions of decision tree learning algorithm, or several
+ SVMs with different hyperparameters
+\series bold
+ may not
+\series default
+ result in a significant performance boost.
+\end_layout
+
+\begin_layout Section
+Adaptive Mixtures of Local Experts
+\end_layout
+
+\begin_layout Itemize
+The idea of this model is to train a number of neural nets, each of which
+ specializes in a different part of the data.
+ That is, we assume we have a data set which comes from a number of different
+ regimes, and we train a system in which one neural net will specialize
+ in each regime, and managing neural net will look at the input data, and
+ decide which specialist to give it to.
+\end_layout
+
+\begin_layout Itemize
+This kind of system, doesn't make very efficient use of data, because the
+ data is fractionated over all these different experts.
+ And so with small data sets, it can't be expected to do very well.
+ But as data sets get bigger, this kind of system may well come into its
+ own, because it can make very good use of extremely large data sets.
+\end_layout
+
+\begin_layout Itemize
+In boosting, the weights on the models are not all equal, but after we finish
+ training, each model has the same weight for every test case.
+ We don't make the weights on the individual models depend on which particular
+ case we're dealing with.
+ 
+\series bold
+In mixture of experts, we do
+\series default
+.
+ So the idea is that we can look at the input data for a particular case
+ during both training and testing to help us decide which model we can rely
+ on.
+\end_layout
+
+\begin_layout Itemize
+During training this will allow models to specialize on a subset of the
+ cases.
+ They then will not learn on cases for which they're not picked.
+ So they can ignore stuff they're not good at modeling.
+ This will lead to individual models that are very good at some things and
+ very bad at other things.
+\end_layout
+
+\begin_layout Itemize
+But how do we partition data to different regimes? The answer is clustering
+ the training data into subsets.
+ But we don't want to cluster data based on the similarity of input vectors.
+ We are only interested in similarity of input-output mappings.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IF
+\series default
+ we want to encourage 
+\series bold
+cooperation
+\series default
+ by comparing the 
+\series bold
+average of all predictors with the target
+\series default
+ and train to reduce difference between target and prediction.
+
+\series bold
+ This is not specialization, this is cooperation.
+ However, want to achieve specialization here.
+ We do this by comparing each predictor separately with the target.
+ We also need a 
+\begin_inset Quotes eld
+\end_inset
+
+manager
+\begin_inset Quotes erd
+\end_inset
+
+ to determine the probability of picking each expert.
+\end_layout
+
+\begin_layout Itemize
+Given a test case, some expert might be good at classifying it, but a lot
+ of them might be bad.
+ How do we prevent the bad experts from influencing the classification predictio
+n? The bad experts would be assigned very low probability by the manager
+ and would not contribute much to weighted average.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/mixture_of_experts_architecture.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mixture of Experts model architecture.
+ Here, the cost function (actually, this one is simplified) is the squared
+ difference between the output of each expert in the target, averaged over
+ all the experts.
+ But the weights in that average are determined by the manager.
+ So we have an input.
+ Our different experts will look at that input.
+ They all make their predictions based on that input.
+ In addition we have a manager, a manager might have multiple layers and
+ the last layer for manager is a soft max layer, so the manager outputs
+ as many probabilities as there are experts, And using the outputs of the
+ manger and outputs of the experts, we can then compute the value of that
+ error fraction.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Random Forest
+\end_layout
+
+\begin_layout Itemize
+Random forest is different from the vanilla bagging in just one way.
+ It uses a modified tree learning algorithm that inspects, at each split
+ in the learning process, a random subset of the features.
+ The reason for doing this is to avoid the correlation of the trees: if
+ one or a few features are very strong predictors for the target, these
+ features will be selected to split examples in many trees.
+ This would result in many correlated trees in our “forest.” Correlated predictor
+s cannot help in improving the accuracy of prediction.
+ The main reason behind a better performance of model ensembling is that
+ models that are good will likely agree on the same prediction, while bad
+ models will likely disagree on different ones.
+ Correlation will make bad models more likely to agree, which will hamper
+ the majority vote or the average.
+\end_layout
+
+\begin_layout Itemize
+The most important hyperparameters to tune are the number of trees, and
+ the size of the random subset of the features to consider at each split.
+\end_layout
+
+\begin_layout Itemize
+Random forest is one of the most widely used ensemble learning algorithms.
+ Why is it so effective? The reason is that by using multiple samples of
+ the original dataset, we reduce the variance of the final model.
+ Remember that the low variance means low overfitting.
+ Overfitting happens when our model tries to explain small variations in
+ the dataset because our dataset is just a small sample of the population
+ of all possible examples of the phenomenon we try to model.
+ If we were unlucky with how our training set was sampled, then it could
+ contain some undesirable (but unavoidable) artifacts: noise, outliers and
+ over- or underrepresented examples.
+ By creating multiple random samples with replacement (we randomly pick
+ a sample from a training set, we put this sample into some training subset,
+ but this sample will still stay in the original training set) of our training
+ set, we reduce the effect of these artifacts.
+\end_layout
+
+\begin_layout Section
+Gradient Boosting
+\end_layout
+
+\begin_layout Itemize
+Very effective ensemble learning algorithm, based on the idea of boosting.
+\end_layout
+
+\begin_layout Itemize
+It is very powerful machine learning algorithms.
+ It creates very accurate models, and also it is capable of handling huge
+ dataset with millions of examples and features.
+ It usually outperforms random forest in accuracy, but because of its sequential
+ nature, it can be significantly slower in training.
+\end_layout
+
+\begin_layout Itemize
+Gradient boosting can work for regression as well as for classification.
+\end_layout
+
+\begin_layout Itemize
+To build a strong 
+\series bold
+regressor
+\series default
+,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We will start with a constant model (just as in ID3 algorithm) 
+\begin_inset Formula $f=f_{0}(x)=\frac{1}{N}\sum_{i=1}^{N}y_{i}$
+\end_inset
+
+, and then we modify labels of each example 
+\begin_inset Formula $i=1,...,N$
+\end_inset
+
+ in our training set as follows: 
+\begin_inset Formula $\hat{y_{i}}\leftarrow y_{i}-f(x_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $\hat{y_{i}}$
+\end_inset
+
+ is called residual and it is the new label for example 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Now we will use the modified training set, with residuals instead of original
+ labels, to build a new 
+\series bold
+decision tree model
+\series default
+, 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+.
+ The boosting model is now defined as 
+\begin_inset Formula $f=f_{0}+\alpha f_{1}$
+\end_inset
+
+, where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the learning rate (hyperparameter).
+\end_layout
+
+\begin_layout Itemize
+Then we again, recompute residuals (again with 
+\begin_inset Formula $\hat{y_{i}}\leftarrow y_{i}-f(x_{i})$
+\end_inset
+
+) and replace the labels in the training data once again, train the new
+ decision tree model 
+\begin_inset Formula $f_{2},$
+\end_inset
+
+redefine the boosting model as 
+\begin_inset Formula $f=f_{0}+\alpha f_{1}+\alpha f_{2}$
+\end_inset
+
+and the process continues until the predefined maximum 
+\begin_inset Formula $M$
+\end_inset
+
+ of trees are combined.
+\end_layout
+
+\begin_layout Itemize
+Intuitively, by computing the residuals, we find how well (or poorly) the
+ target of each training example is predicted by the current model 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ We then train another tree to fix the errors of the current model (this
+ is why we use residuals instead of real labels), and add this new tree
+ to the existing model with some weight 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Therefore, each additional tree added to the model partially fixes the
+ errors made by the previous trees until the maximum number 
+\begin_inset Formula $M$
+\end_inset
+
+ (another hyperparameter) of trees are combined.
+\end_layout
+
+\begin_layout Itemize
+By the way, we don't calculate any gradient and it is still called gradient
+ boosting algorithm.
+ Here, instead of getting the gradient directly (and evaluated our direction
+ at each step with some learning rate), we use its proxy in the form of
+ residuals: they show us how the model has to be adjusted so that the error
+ (the residual) is reduced.
+\end_layout
+
+\begin_layout Itemize
+There are three principal hyperparameters to tune: learning rate, the depth
+ of the trees, and the number of trees.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For 
+\series bold
+classification
+\series default
+,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gradient boosting is similar, but the steps are slightly different.
+ Assume we have 
+\begin_inset Formula $M$
+\end_inset
+
+ regression decision trees, considering binary case, then also similar to
+ for example logistic regression, the prediction of the ensemble of decision
+ trees is modeled using the sigmoid function: 
+\begin_inset Formula $P(y=1|x,f)=\frac{1}{1+e^{-f(x)}}$
+\end_inset
+
+ where 
+\begin_inset Formula $f(x)=\sum_{m=1}^{M}f_{m}(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+ is a regression tree.
+ We apply maximum likelihood principle by trying to find such an 
+\begin_inset Formula $f$
+\end_inset
+
+ that maximizes 
+\begin_inset Formula $L_{f}=\sum_{i=1}^{N}ln[P(y_{i}=1|x_{i},f)]$
+\end_inset
+
+ (again, to avoid numerical overflow, we maximize the sum of log-likelihoods
+ rather than the product of likelihoods).
+\end_layout
+
+\begin_layout Itemize
+The algorithm starts with the initial constant model 
+\begin_inset Formula $f=f_{0}=\frac{p}{1-p},$
+\end_inset
+
+where 
+\begin_inset Formula $p=\frac{1}{N}\sum_{i=1}^{N}y_{i}$
+\end_inset
+
+ (it can be shown that such initialization is optimal for the sigmoid function).
+\end_layout
+
+\begin_layout Itemize
+Then at each iteration 
+\begin_inset Formula $m$
+\end_inset
+
+, a new tree 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+is added to the model.
+ To find the best 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+, first the partial derivative 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ of the current model is calculated for each 
+\begin_inset Formula $i=1,...,N$
+\end_inset
+
+: 
+\begin_inset Formula $g_{i}=\frac{dL_{f}}{df}$
+\end_inset
+
+, where 
+\begin_inset Formula $f$
+\end_inset
+
+ is the ensemble classifier model built at the previous iteration 
+\begin_inset Formula $m-1$
+\end_inset
+
+.
+ So to calculate 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, we need to find the derivatives of 
+\begin_inset Formula $ln[P(y_{i}=1+x_{i},f)]=ln[\frac{1}{1+e^{-f(x_{i})}}]$
+\end_inset
+
+.
+ The derivative of this with respect to 
+\begin_inset Formula $f$
+\end_inset
+
+ equals to 
+\begin_inset Formula $\frac{1}{e^{f(x_{i})}+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Then, we transform our training set by replacing the original label 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ with the corresponding partial derivative 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+, and build a new tree 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+ using the transformed training set.
+\end_layout
+
+\begin_layout Itemize
+Then we find the optimal update step 
+\begin_inset Formula $\rho_{m}\leftarrow arg\,max_{p}L_{f+\rho f_{m}}$
+\end_inset
+
+and at the end of iteration 
+\begin_inset Formula $m$
+\end_inset
+
+, we update the ensemble model 
+\begin_inset Formula $f$
+\end_inset
+
+ by adding the new tree 
+\begin_inset Formula $f_{m}:$
+\end_inset
+
+ 
+\begin_inset Formula $f\leftarrow f+\alpha\rho_{m}f_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We iterate until 
+\begin_inset Formula $m=M$
+\end_inset
+
+ and then we stop and return the ensemble model 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Boosting*
+\end_layout
+
+\begin_layout Section
+AdaBoost*
+\end_layout
+
+\begin_layout Section
+Bootstrapped Aggregation (Bagging)*
+\end_layout
+
+\begin_layout Section
+Stacked Generalization (Blending)*
+\end_layout
+
+\begin_layout Section
+Gradient Boosted Regression Trees*
+\end_layout
+
+\begin_layout Section
+XGBoost*
+\end_layout
+
+\begin_layout Itemize
+Introduced in 2014.
+ The beauty of this powerful algorithm lies in its scalability, which drives
+ fast learning through parallel and distributed computing and offers efficient
+ memory usage.
+\end_layout
+
+\begin_layout Itemize
+XGBoost is a popular implementation of Gradient Boosted Trees algorithm,
+ a supervised learning method that is based on function approximation by
+ optimizing specific loss functions as well as applying several regularization
+ techniques..
+\end_layout
+
+\end_body
+\end_document

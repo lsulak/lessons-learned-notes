@@ -1,0 +1,851 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Strategies And Tips
+\end_layout
+
+\begin_layout Itemize
+The process of searching for real estate property:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+There are many types of properties.
+ Focus just on one category when you are beginner:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Single family home 
+\end_layout
+
+\begin_layout Itemize
+Small multi-family properties 
+\end_layout
+
+\begin_layout Itemize
+Large multi-family properties 
+\end_layout
+
+\begin_layout Itemize
+Commercial properties 
+\end_layout
+
+\begin_layout Itemize
+Vacation properties
+\end_layout
+
+\begin_layout Itemize
+Flats - some people recommend to stay away from flats, because of the lease-hold
+ property - so you don't own the land on the property
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Define/search for your market (location) and find as much as possible about
+ the market
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+crime, where the people like to live, streets or parts of the city, population
+ growth, ...
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Figure out your financing
+\end_layout
+
+\begin_layout Enumerate
+Start analyzing deals.
+ Don't forget - real estate is numbers game 
+\end_layout
+
+\begin_layout Enumerate
+Build your real estate team - agents, lenders, property managers, contractors
+\end_layout
+
+\begin_layout Enumerate
+Analyzing specific deals in person in detail
+\end_layout
+
+\begin_layout Enumerate
+Negotiate - your real estate agent can help you with this
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Try to provide multiple options rather than yes or no type of questions.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Due diligence, close and manage 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A good property manager should be able to deal with some tenant difficulties
+ and relationships
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Buy or Rent a property? (
+\begin_inset CommandInset href
+LatexCommand href
+name "ref"
+target "https://www.youtube.com/watch?v=NAoS13Dwzu0&list=WL&index=1"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RV + Population Change (faster growing cities have bigger number) + Historical
+ Prices (adjusted for inflation) + Cost of Construction (can you buy under
+ the cost of construction? If so by how much)
+\end_layout
+
+\begin_layout Itemize
+You scale each of these on scale from 1 to 10.
+\end_layout
+
+\begin_layout Itemize
+TODO RV ratio - monthly rent collected from a property divided by your cost
+ basis (how much money you put out of your pocket into that property) 5%
+ is bad, 1% is good
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+BRRRR strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Buying a property
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+find out ARV (after repair value)
+\end_layout
+
+\begin_layout Itemize
+PP = purchase price, it is simply ARV * 0.7 (repair costs)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Rehab it 
+\series default
+- bringing it to original or a better condition than it already is
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Rent it out 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Refinance it with a bank
+\series default
+ - pulling out money and putting a mortgage or placing debt on that property
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Repeat this process 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Four Square Method
+\emph default
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.youtube.com/watch?v=T_7vhsSBi7c&list=WL&index=2"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is for analyzing properties.
+\end_layout
+
+\begin_layout Enumerate
+Income (per month): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rental income
+\end_layout
+
+\begin_layout Itemize
+Laundry machine
+\end_layout
+
+\begin_layout Itemize
+Shared storage 
+\end_layout
+
+\begin_layout Itemize
+Misc
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Expenses (per month)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tax
+\end_layout
+
+\begin_layout Itemize
+Insurance
+\end_layout
+
+\begin_layout Itemize
+Utilities (electricity, gas, water, garbage)
+\end_layout
+
+\begin_layout Itemize
+Fees (HOA, council tax)
+\end_layout
+
+\begin_layout Itemize
+Vacancy (you need to set aside some money because at some point it's gonna
+ be vacant), ideally 2-5% of the rental income
+\end_layout
+
+\begin_layout Itemize
+Repairs
+\end_layout
+
+\begin_layout Itemize
+Capital expenditures (big things - new roof or so)
+\end_layout
+
+\begin_layout Itemize
+Property management (typically 10% of the rent)
+\end_layout
+
+\begin_layout Itemize
+Mortgage
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Cash Flow (per month)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Total income minus total expenses
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Cash on Cash Return on Investment (what % are you earning?)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculate total investment (sum of the following):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Down payment 
+\end_layout
+
+\begin_layout Itemize
+Closing costs (loan documents etc, can be a couple of thousands or dollars/pound
+s/euros)
+\end_layout
+
+\begin_layout Itemize
+Repair money
+\end_layout
+
+\begin_layout Itemize
+Misc
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Calculate ROI:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $3)*12$
+\end_inset
+
+ (Annual Cash Flow) divided by 
+\begin_inset Formula $4a)$
+\end_inset
+
+ and compare with other deals, stock market, etc
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Rules of thumb 
+\end_layout
+
+\begin_layout Standard
+These are not hard rules by no means! Do the analysis first.
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+The 1% (or 2%) rule
+\end_layout
+
+\begin_layout Itemize
+Monthly rent divided by the value of the property.
+\end_layout
+
+\begin_layout Itemize
+This is a quick view about whether a property will produce a positive cash-flow.
+ Higher is better.
+\end_layout
+
+\begin_layout Itemize
+The best is above 2%.
+ Below 1% won't probably produce a positive cash flow.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+The 50% rule
+\end_layout
+
+\begin_layout Itemize
+How much cash flow to expect.
+ 
+\end_layout
+
+\begin_layout Itemize
+On average and over time, half of the income of the property is spent on
+ operating expenses.
+ Taxes, insurance, utilities, repairs, vacancy, others.
+ But this doesn't include mortgage payments.
+ But some properties will require a tenant to pay for the utilities.
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+The 70% rule
+\end_layout
+
+\begin_layout Itemize
+For those who like to flip houses, this helps to determine how much to pay
+ for a property.
+\end_layout
+
+\begin_layout Itemize
+The most you should pay for the property should be 70% of the actual pair
+ value.
+ Minus repairs.
+\end_layout
+
+\begin_layout Itemize
+So property with value $300k (its selling price) x 70% = $210k, minus $50k
+ for repairs = $160k.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So you shouldn't pay more than $160k.
+\end_layout
+
+\begin_layout Itemize
+30% should include holding costs, closing costs, and some profit an investor
+ wants to make.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+The 5% rule 
+\series default
+(
+\begin_inset CommandInset href
+LatexCommand href
+name "ref"
+target "(https://www.youtube.com/watch?v=Uwl3-jBNEd4&list=WL&index=1)"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+It's about taking into account unrecoverable costs.
+ However, this rule is just an oversimplification.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+1%
+\series default
+ - Property taxes - generally it's 1% of the value of the home
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+1%
+\series default
+ - Maintenance costs - 1% of the property value per year on average
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+3%
+\series default
+ - Cost of capital - this has to be broken down into 2 pieces:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cost of debt - mortgage interest, it can be usually around 3%
+\end_layout
+
+\begin_layout Itemize
+Cost of equity - you put usually 10-20% down and you made a choice to invest
+ in a real estate asset.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Alternatively, you could continue renting and invest the down-payment.
+ So this is an opportunity cost.
+\end_layout
+
+\begin_layout Standard
+Return from real estate from 1900-2017 was 3% (or 1.3% in nominal terms),
+ while stocks returned 6.9% (or 5.2% in nominal terms).
+ So the expected return difference between real estate and stocks is 3.9%.
+ So to keep things simple and to be a bit conservative, let's round that
+ down to 3%.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Take the value of the home that you are considering, multiply by 5%, and
+ divide by 12.
+ If you can rent for less than that, then renting is better.
+\end_layout
+
+\begin_layout Itemize
+It works the other way around too.
+ Multiply your rent by 12 and divide by 5%.
+ So if your rent is $1,000, then paying $1,000 in rent is financially equivalent
+ in terms of unrecoverable costs to owning $240,000 house.
+\end_layout
+
+\begin_layout Section
+Questions to Ask
+\end_layout
+
+\begin_layout Standard
+(
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.youtube.com/watch?v=Ecii_3IYlwc&list=WL&index=1"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection
+To seller
+\end_layout
+
+\begin_layout Itemize
+Why are you selling? Because it's a really lovely house.
+\end_layout
+
+\begin_layout Itemize
+What's your time scale?
+\end_layout
+
+\begin_layout Itemize
+Have you had much interest?
+\end_layout
+
+\begin_layout Itemize
+Is this property just in your name?
+\end_layout
+
+\begin_layout Itemize
+Do you have a copy of tenancy agreement that I could have a look at please?
+ (there must be one, be careful to proceed if there isn't any)
+\end_layout
+
+\begin_layout Itemize
+What are the neighbors like?
+\end_layout
+
+\begin_layout Itemize
+Is there any allocated parking?
+\end_layout
+
+\begin_layout Itemize
+Do you mind if I turn on the taps to check the water pressure?
+\end_layout
+
+\begin_layout Itemize
+If it's a flat - who are the block managing agents? Do you know if they've
+ got a sinking fund? What are the service charges?
+\end_layout
+
+\begin_layout Itemize
+What's the lowest you'd be willing to accept and still be happy?
+\end_layout
+
+\begin_layout Subsection
+To neighbor
+\end_layout
+
+\begin_layout Itemize
+Is it a nice area to live?
+\end_layout
+
+\begin_layout Itemize
+Do you know if there are any problems with the neighbors?
+\end_layout
+
+\begin_layout Itemize
+What's the area like at night?
+\end_layout
+
+\begin_layout Itemize
+Are there any traffic or parking problems around the place?
+\end_layout
+
+\begin_layout Itemize
+So what's the public transport like around here?
+\end_layout
+
+\begin_layout Itemize
+Do you know if there are any new buildings/development works going on?
+\end_layout
+
+\begin_layout Subsection
+To agent
+\end_layout
+
+\begin_layout Itemize
+How long has this place been on the market?
+\end_layout
+
+\begin_layout Itemize
+Why do you think it hasn't sold yet?
+\end_layout
+
+\begin_layout Itemize
+How keen are they to sell?
+\end_layout
+
+\begin_layout Itemize
+How did they come up with the asking price?
+\end_layout
+
+\begin_layout Itemize
+What do you think it's really worth?
+\end_layout
+
+\begin_layout Itemize
+Has anything sold recently that's similar?
+\end_layout
+
+\begin_layout Itemize
+Do you know how many years are left on the lease?
+\end_layout
+
+\begin_layout Itemize
+Is it on with multiple agents or is it just yourself that's marketing this
+ property?
+\end_layout
+
+\begin_layout Itemize
+If I buy it and hand it back to you, what kind of rent do you think I would
+ get?
+\end_layout
+
+\begin_layout Section
+Some Tips
+\end_layout
+
+\begin_layout Itemize
+Some recommendations from Graham Stephan:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Don't fall in love with your investment property!
+\end_layout
+
+\begin_layout Itemize
+Always buy property that has significant upside potential - improvements,
+ and so on.
+\end_layout
+
+\begin_layout Itemize
+Long-term outlook and fixed-term loan.
+ Buy once and hold.
+\end_layout
+
+\begin_layout Itemize
+Cash-flow first!
+\end_layout
+
+\begin_layout Itemize
+Be friendly, but not friends!
+\end_layout
+
+\begin_layout Itemize
+Have cash reserves from 3-6 months, and some reserves for repairs and mortgage.
+ (Graham is using checking account)
+\end_layout
+
+\begin_layout Itemize
+Don't pick a bad tenant!
+\end_layout
+
+\begin_layout Itemize
+Leaks are # 1 things that need fixing ASAP - have a plumber available!
+\end_layout
+
+\begin_layout Itemize
+Stick to the contract! Strict responsibilities on landlord's side and tenant's
+ side.
+ Find and buy good and durable things.
+\end_layout
+
+\begin_layout Itemize
+Anything that can break ...
+ will break! Beautiful shiny expensive glass, door, ...
+ you need to 
+\begin_inset Quotes eld
+\end_inset
+
+baby-proof
+\begin_inset Quotes erd
+\end_inset
+
+ the house.
+\end_layout
+
+\begin_layout Itemize
+Bathroom ceiling fan must be turn on at the same time as lights automatically
+ - otherwise, sooner or later, moisture's gonna build up in the bathroom
+ and that's going to create mold.
+\end_layout
+
+\begin_layout Itemize
+Graham doesn't like condos he prefers single family houses, duplexes, or
+ triplexes, so 2-4 units.
+\end_layout
+
+\begin_layout Itemize
+90% of properties suck and produce no cash-flow.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Don't buy investing property
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Flat <30m2 and with no sinking fund and no management.
+ Also try to avoid high void areas (over supply and under demand).
+\end_layout
+
+\begin_layout Itemize
+In areas with declining population.
+\end_layout
+
+\begin_layout Itemize
+Don't buy property in which you can't add value in it.
+\end_layout
+
+\begin_layout Itemize
+Don't buy property that will not give you any cash flow or low ROI.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

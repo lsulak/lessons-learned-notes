@@ -1,0 +1,407 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "MongoDB Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Couchbase
+\end_layout
+
+\begin_layout Itemize
+Influenced by/created from older Memcache, Membase, and CouchDB
+\end_layout
+
+\begin_layout Itemize
+This project seems to be truly amazing and it could probably fulfill our
+ requirements.
+ However, it is not so popular, its documentation could be better, as well
+ as some Couchbase materials, books, articles, and so on.
+ 
+\end_layout
+
+\begin_layout Itemize
+I think that there are some other distributed databases which would be better
+ to use for us, e.g.
+ Cassandra.
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Itemize
+Couchbase is the evolution of several databases combined in one.
+ Starting with Memcache, forked by Zynga into new open-source product called
+ Membase.
+ Eventually Membase was combined with CouchDB to form Couchbase.
+ Couchbase was re-written several times and it seems to be the future of
+ all these systems.
+\end_layout
+
+\begin_layout Itemize
+written in Erlang and C in 2010.
+\end_layout
+
+\begin_layout Itemize
+multi-model NoSQL document-oriented database system, optimized for interactive
+ applications, which may serve for many concurrent users by creating, storing,
+ retrieving, aggregating, manipulating and presenting data.
+\end_layout
+
+\begin_layout Itemize
+basically database engineered to support the agile development and scalable
+ deployment of enterprise web, mobile, and IoT applications
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://db-engines.com/en/system/Couchbase}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+can be used either as a key-value store or as a document database.
+ Primary database model is document store, as in MongoDB
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://db-engines.com/en/system/Couchbase
+\backslash
+%3BMongoDB}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+memory cache compatible, but with persistence and clustering.
+\end_layout
+
+\begin_layout Itemize
+master-master replication (all nodes are identical), also cross-datacenter
+ replication.
+\end_layout
+
+\begin_layout Itemize
+writes are asynchronous by default but can be controlled.
+\end_layout
+
+\begin_layout Itemize
+user and administrator separation with password-based and LDAP integrated
+ Authentication.
+\end_layout
+
+\begin_layout Itemize
+it uses a query language called the non-first normal form query language
+ (N1QL) for manipulating the JSON data in Couchbase.
+ It has SELECT, INSERT, UPDATE, DELETE, MERGE statements to operate on JSON
+ data.
+\end_layout
+
+\begin_layout Itemize
+designed to be clustered from a single machine to very large scale deployments.
+\end_layout
+
+\begin_layout Itemize
+usage: real-time big data, mobile applications, fraud detection rules, Internet
+ of Everything (high velocity sensor data), customer information, digital
+ communication, highly-concurrent web apps like online gaming, and more.
+ Any application where low-latency data access, high concurrency support,
+ and high availability is a requirement.
+ Couchbase Server is specialized to provide low-latency data management
+ for large-scale interactive web, mobile, and IoT applications.
+\end_layout
+
+\begin_layout Section
+Licensing
+\end_layout
+
+\begin_layout Itemize
+free (open source) - Apache 2 License
+\end_layout
+
+\begin_layout Itemize
+Community and Enterprise Edition
+\end_layout
+
+\begin_layout Section
+Pros
+\end_layout
+
+\begin_layout Itemize
+very fast access of data by key
+\end_layout
+
+\begin_layout Itemize
+low-latency data access, high concurrency support, and high availability
+\end_layout
+
+\begin_layout Itemize
+strong consistency
+\end_layout
+
+\begin_layout Itemize
+integrated cache
+\end_layout
+
+\begin_layout Itemize
+automatic fail-over
+\end_layout
+
+\begin_layout Itemize
+full-stack security (but some details may be missing)
+\end_layout
+
+\begin_layout Itemize
+container and cloud deployments
+\end_layout
+
+\begin_layout Itemize
+built-in full-text search (not for us for now though)
+\end_layout
+
+\begin_layout Section
+Cons
+\end_layout
+
+\begin_layout Itemize
+indexing mechanisms not well developed.
+\end_layout
+
+\begin_layout Itemize
+"At the 2018 Couchbase connect conference, I didn't even hear the phrase
+ 
+\begin_inset Quotes eld
+\end_inset
+
+open source
+\begin_inset Quotes erd
+\end_inset
+
+ mentioned once.
+ If you really dig into the source code that is available, you'll find that
+ pretty much all new features are being developed closed-source in private
+ repositories." (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.trustradius.com/products/couchbase-data-platform/reviews"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+maybe a bit more documentation and online support (like courses, books,
+ and so on).
+\end_layout
+
+\begin_layout Itemize
+data replication/timeouts/management console can be an obstacle.
+\end_layout
+
+\begin_layout Itemize
+better error handling capabilities would be good to have in Couchbase.
+\end_layout
+
+\begin_layout Itemize
+advanced security and auditing can be missing a bit.
+\end_layout
+
+\begin_layout Itemize
+JSON support is not as good as in comparison to other NoSQL database systems.
+\end_layout
+
+\begin_layout Itemize
+advanced queries can be problem as they are less automatically optimized
+ as in comparison to some other NoSQL databases.
+ This requires more attention to indexes.
+ However, it supports joins, in comparison to some other NoSQL databases.
+\end_layout
+
+\begin_layout Section
+Python usage
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/couchbase/couchbase-python-client}
+\end_layout
+
+\end_inset
+
+ - relatively active, but not very popular (~200 stars on GitHub) 
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "What is the difference between CouchDB and Couchbase? "
+target "https://www.quora.com/What-is-the-difference-between-CouchDB-and-Couchbase"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "What is the difference between Membase and Couchbase?"
+target "https://stackoverflow.com/questions/6170909/what-is-the-difference-between-membase-and-couchbase"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

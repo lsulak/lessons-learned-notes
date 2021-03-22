@@ -1,0 +1,4631 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+"Check your context.
+ Only then, proceed"
+\emph default
+, Udi Dahan.
+\end_layout
+
+\begin_layout Itemize
+Refactoring, a good quote: 
+\emph on
+"When we really dive into the reasons why we can't let something go, there
+ are really only two: An attachment to the past, or a fear for the future."
+\end_layout
+
+\begin_layout Itemize
+If we have learned anything over the last couple of decades, it is that
+ programming is a craft more than it is a science.
+ To write clean code, you must first write dirty code and then clean it.
+\end_layout
+
+\begin_layout Itemize
+In most web-based development environments, the architecture can be broken
+ down like this:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Local development and unit testing on the developer’s machine
+\end_layout
+
+\begin_layout Itemize
+Development server where manual or automated integration testing is done
+\end_layout
+
+\begin_layout Itemize
+Staging server where the QA team and the users do acceptance testing
+\end_layout
+
+\begin_layout Itemize
+Production server
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Customers don't know exactly what they want and thus don't always tell the
+ truth.
+ They use their terms and their contexts.
+ They leave out significant details.
+ So, how can you possibly deliver a software project to someone who isn't
+ telling you the whole truth about what they want? It’s fairly simple.
+ Just interact with them more.
+ Challenge your customers early, and challenge them often.
+\end_layout
+
+\begin_layout Paragraph
+How to Learn, The 10-step system
+\end_layout
+
+\begin_layout Standard
+For example, learning technology - books are good, if you have a lot of
+ time, but it is unnecessary and very time-demanding, and everything truly
+ important is mixed with tons of little details! So basics of an alternative
+ approach:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+How to get started
+\series default
+: What were the basic things I needed to know to get started using whatever
+ I was learning?
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+The breadth of the subject
+\series default
+: How big was the thing I was learning and what could I do with it? I didn't
+ need to know every detail to start, but if I had a decent overview of what
+ I could do and what was possible, I could always find more details later.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+The basics
+\series default
+: Beyond just getting started, what were the basic use cases and the most
+ common things I’d need to know to use a particular technology? What was
+ the 20% I could learn that would cover 80% of my daily usage?
+\end_layout
+
+\begin_layout Standard
+It turns out that getting those three pieces of knowledge isn't as easy
+ of a task as it might seem.
+ Learning how to get started with a technology can be a challenge, and it’s
+ often difficult to find out what is the 20% you need to know to be 80%
+ effective with a technology.
+ So a solution to address these problem is the following:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Get the big picture 
+\series default
+- determine how big the topic is and what kind of subtopics exist within
+ a few hours of research.
+ To complete this step, do some basic research on the topic you want to
+ learn about.
+ You can probably accomplish most of this research using internet searches.
+ If you happen to have a book on the subject, you might read an introductory
+ chapter to skim through the material.
+ Don’t spend too much time on this step, though.
+ Remember, the goal isn't to actually learn the topic here, but to just
+ get a big picture of what it’s about and how big it is.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Determine scope 
+\series default
+- now that you have at least somewhat of an idea of what your topic is and
+ how big it is, it’s time to narrow down your focus to determine what exactly
+ you want to learn.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Define success 
+\series default
+- without knowing what success looks like, it’s both difficult to aim and
+ to know when you've actually hit the target.
+ Before you try to learn anything, you should have a clear picture in your
+ mind of what success will look like.
+ When you know what your target is, you can more easily work backwards from
+ the goal to determine the steps you need to take to get there.
+ The goal of this step is to come up with a clear and concise statement
+ that will define success for your learning endeavor.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Find resources 
+\series default
+- in this step you want to find as many resources as possible for learning
+ about the topic you've selected.
+ Don’t worry about quality at this point.
+ This is similar to a brainstorming step.
+ Later on you’ll filter your resources and select the best ones, but for
+ now you want to get as many different resources as possible.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Create a learning plan 
+\series default
+- now that you have some resources, you can use those resources to get an
+ idea of what you should learn and in what order you should learn it.
+ For this step, you need to create your own learning path.
+ Think of it as an outline for a book you’d write on the subject.
+ In fact, your learning path will probably be very similar to the table
+ of contents of a book when you’re done.
+ You basically want to end up with a series of modules you individually
+ focus on learning until you reach your final goal.
+ A good way to create your learning plan is to see how others are teaching
+ the subject you want to learn about.
+ When I’m working on this step, I’ll often look at the table of contents
+ of several of the books I've chosen as possible resources from step 4.
+ If five different authors have chosen to break up their content into the
+ same sets of modules and the same ordering, chances are I should make my
+ learning plan follow a similar approach.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Filter resources 
+\series default
+- at this point, you probably have plenty of books, blog posts, and other
+ resources for learning about digital photography, but the problem is that
+ you can’t possibly utilize all of them.
+ Much of the data is redundant and not all of it will fit your learning
+ plan.
+ It’s not practical to try to read 10 books and 50 blog posts on a subject—and
+ even if you did, a large portion of that information would be duplicated.
+ It’s important to narrow down your resources to a smaller list of the best
+ ones to help you achieve your goals.
+ For this step, go through all the resources you've gathered in step 4 and
+ figure out which ones have content that will help you to best cover the
+ content in your learning plan.
+ Also take a look at reviews and try to determine which resources are of
+ the highest quality.
+ I usually will look at the Amazon reviews for the books I’m considering
+ purchasing and narrow it down to the best one or two books that I think
+ will provide me the best bang for my buck.
+ Once you've completed this step, you’re ready to move on to the first module
+ of your learning plan.
+ You’ll repeat steps 7–10 for each learning plan module until you've made
+ it to your destination.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Learning enough to get started 
+\series default
+- there are two common learning mistakes that most people make, myself included.
+ First, there’s the problem of jumping in without knowing enough—acting
+ too soon.
+ Second, there’s the problem of preparing too much before jumping in—acting
+ too late.
+ You want to strike a balance between the two and learn just enough to get
+ started, but not so much that you don’t get to explore on your own—where
+ you end up learning the best.
+ For this step, the goal is to get just enough information about the topic
+ you’re learning about to be able to get started and to play around in the
+ next step.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Play around
+\series default
+ - this step is both fun and scary.
+ It’s fun because you get to do exactly what the step says: play around.
+ But it’s scary because the step is completely unbounded.
+ There are no rules.
+ You can do whatever you want to do for this step.
+ It’s up to you to decide how to best execute this step.
+ For this step, you want to take what you learned from step 7 and actually
+ get started.
+ Don’t worry about outcomes.
+ Just explore.
+ Implement a smaller project if you want.
+ Write down the questions that you have but don’t have answers for.
+ You’ll have the opportunity to look for the answers to those questions
+ in the next step
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Learn enough to do something useful 
+\series default
+- take as much time as you need to thoroughly understand your subject matter
+ by reading and experimenting, watching and doing Remember, though, you
+ still don’t have to completely consume every single resource you gathered.
+ Only read or watch the parts that are relevant to what you’re trying to
+ learn right now.
+ There are no golden stickers given out for reading a book cover to cover.
+ Use the resources to help you teach yourself, driven primarily by the questions
+ you've come up with by playing around.
+ Finally, don’t forget about your success criteria that you defined in step
+ 3.
+ Try to tie what you’re learning back to your ultimate goal.
+ Each module you master should in some way move your forward toward your
+ final destination.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Teach
+\series default
+ - if you want to learn a subject in depth, if you really want to gain understan
+ding about a subject, you have to teach it.
+ There’s no other way.
+ In reality, you only need to be one step ahead of someone to teach them.
+ It’s the only way to know for sure that you've learned something, and it’s
+ a great way to fill in the gaps in your own learning as you try to explain
+ it to others.
+ You can teach what you've learned in many different ways.
+ You could write a blog post or create a YouTube video.
+ You could even talk to your spouse about what you've learned and explain
+ it to them.
+ The important thing is that you actually take some time to take what you've
+ learned out of your own mind and organize it in a way that someone else
+ can understand.
+ When you go through this process, you’ll find that there are many things
+ that you thought you understood that you didn't.
+ You’ll also begin to make connections that you didn't see before and simplify
+ the information in your head as you try to condense it down and regurgitate
+ it.
+ Perhaps a good way that teaching is best approached is from a humble perspectiv
+e, but with an authoritative tone.
+ When you teach, you don’t act like the knowledge you have makes you in
+ some way better or smarter than your student, but you do teach with confidence,
+ firmly believing what you’re saying.
+ No one wants to learn from someone who is unsure of what they’re saying,
+ and they also don’t want to be made to feel stupid when they are being
+ taught.
+\end_layout
+
+\begin_layout Standard
+So to explain it, it all starts with getting a basic understanding of what
+ you’re trying to learn—enough to know what you don’t know.
+ Then take that information and use it to define the scope of what you want
+ to learn, along with what success will look like.
+ Armed with that knowledge, you can find resources—and not just books—to
+ help you learn what you want to know.
+ Finally, you can create your own learning plan to chart the course you’re
+ going to take to learn your subject and filter the materials down to just
+ the best ones that will help you achieve your goal.
+ 
+\series bold
+In the first 6 steps, you’ll focus on doing enough research upfront to make
+ sure that you know exactly what you’re attempting to learn and how you’ll
+ know you’re done.
+ You do them just once.
+ Steps 7 - 10 are repeated for each module you end up creating in your learning
+ plan.
+\end_layout
+
+\begin_layout Subparagraph
+Focus
+\end_layout
+
+\begin_layout Itemize
+All you have to do is to prepare all possible conditions to avoid internal
+ and external interruptions and resist for enough time - maybe 10 minutes.
+\end_layout
+
+\begin_layout Itemize
+It is all about momentum.
+ If you last for some time concentrating, it will be easier and easier.
+ After some time, you will forget about food, sleep, tiredness, and so on.
+ Welcome in the 
+\begin_inset Quotes eld
+\end_inset
+
+zone
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+Productivity and Planning
+\end_layout
+
+\begin_layout Standard
+There exist many techniques for productivity.
+ Some of them are Getting Things Done, Pomodoro Technique, or Don’t break
+ the chain (Seinfeld).
+ The true secret to productivity: small things done repeatedly over a long
+ time period.
+ Routine (but don't be absolutely obsessed with your routine, there are
+ unpredictable things that may happen).
+ The following Kanban-related technique is very interesting (created by
+ John Sonmez):
+\end_layout
+
+\begin_layout Itemize
+You can use software like this: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://kanbanflow.com/}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+You may have columns for each day, and a special column 
+\begin_inset Quotes eld
+\end_inset
+
+next week
+\begin_inset Quotes erd
+\end_inset
+
+ (if you cannot do it in a given week).
+\end_layout
+
+\begin_layout Itemize
+Tasks can be in states such as 
+\begin_inset Quotes eld
+\end_inset
+
+not started
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+in progress
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+done
+\begin_inset Quotes erd
+\end_inset
+
+ (the smaller task the better - something between 30 and 120 minutes for
+ instance).
+\end_layout
+
+\begin_layout Itemize
+You should plan the whole quartal, month, and week.
+ And ideally at their beginnings.
+\end_layout
+
+\begin_layout Itemize
+You may use the Pomodoro Technique throughout the day to focus on a single
+ task at a time and to work through the task list in Kanban board.
+ 
+\series bold
+Pomodoro Technique
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The basic idea is that you plan out the work you’re going to do for a day.
+ Then you set a timer for 25 minutes and work on the first task you've planned.
+ You work only on a single task at a time and give it your complete focus
+ for the full 25 minutes.
+ If you’re interrupted, there are various ways of handling the interruption,
+ but generally you strive to not be interrupted at all.
+ You never want to break focus.
+\end_layout
+
+\begin_layout Itemize
+At the end of the 25 minutes, you set a timer for 5 minutes and take a break.
+ That’s considered one pomodoro.
+ After every four pomodori, you take a longer break, usually 15 minutes.
+\end_layout
+
+\begin_layout Itemize
+Technically, if you finish a task early, you’re supposed to dedicate the
+ remaining time to “overlearning.” That is, you continue to work on the task
+ by making small improvements or rereading material if you’re trying to
+ learn something.
+ Some people tend to ignore this part and move on to the next task immediately.
+\end_layout
+
+\begin_layout Itemize
+Using the Pomodoro Technique, you can start thinking about your week in
+ terms of a finite resource of pomodori.
+\end_layout
+
+\begin_layout Itemize
+Pomodoro technique can teach you a good lesson on prioritization.
+ If you have just a certain amount of work (pomodori units) planned, you
+ are extra careful how to split what you want to achieve to pomodori.
+\end_layout
+
+\begin_layout Itemize
+This technique has also psychological benefit - you can exactly control
+ how much time you dedicate to some task during a day.
+ When you have a goal of 
+\emph on
+x
+\emph default
+ pomodori for the day and you get that goal done - a goal you can actually
+ control - you know you did what you were supposed to do that day and you
+ can give yourself permission to feel good about it - and more importantly
+ - relax.
+ And you can even more enjoy your free time.
+ If you hit your pomodori goal - you are free to do whatever you want that
+ day.
+\end_layout
+
+\begin_layout Itemize
+The Pomodoro Technique also forces you to focus, so when you do a full day’s
+ worth of work using the Pomodoro Technique, it ends up being a lot more
+ work than you might normally be used to.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For being even more efficient, you may use pomodoro timer for a single task:
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://pomodoro-tracker.com/}
+\end_layout
+
+\end_inset
+
+, or use can use a default one in Kanbanflow app mentioned above.
+\end_layout
+
+\begin_layout Itemize
+You can accomplish for example 10 pomodori each day (which should be about
+ 5 hours of hard, focused work).
+ You have to track how many pomodori you done, and you have to set how many
+ you want to achieve.
+\end_layout
+
+\begin_layout Itemize
+Don't forget about breaks and free weeks! Using this technique from long-run
+ can be unbearable for some people.
+ Have vacation and have weeks without this technique - do just what you
+ feel and like to do.
+ Or have day off every once in a while.
+\end_layout
+
+\begin_layout Itemize
+Create quotas! Create a repeatable task, define how many times it should
+ be done, and commit to it! The whole system falls apart if your commitment
+ is weak, so you have to choose attainable and maintainable quotas.
+ Don’t commit yourself to something you know you can’t do; otherwise you’re
+ setting yourself up for failure.
+ Start with small commitments and make them bolder as you become successful
+ at reaching them.
+ For example here are some quotas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I will exercise 5x each week.
+\end_layout
+
+\begin_layout Itemize
+I will do cardio 3x each week.
+\end_layout
+
+\begin_layout Itemize
+I will create one blog post each week.
+\end_layout
+
+\begin_layout Itemize
+I will get 50 pomodori done each week.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Conway's Law
+\end_layout
+
+\begin_layout Itemize
+Any organization that designs a system will produce a design whose structure
+ is a copy of the organization's communication structure.
+\end_layout
+
+\begin_layout Paragraph*
+Jimmy's Law
+\end_layout
+
+\begin_layout Itemize
+A broken, dysfunctional organization driven by meeting unhealthy goals and
+ metrics will produce broken, dysfunctional systems.
+\end_layout
+
+\begin_layout Paragraph*
+LeBlanc's Law
+\end_layout
+
+\begin_layout Itemize
+We've all looked at the mess we've just made and then have chosen to leave
+ it for another day.
+ We've all felt the relief of seeing our messy program work and deciding
+ that a working mess is better than nothing.
+ We've all said we’d go back and clean it up later.
+ Of course, in those days we didn't know LeBlanc’s law: 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Later equals never.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Law of Demeter
+\end_layout
+
+\begin_layout Itemize
+LoD is principle of least knowledge is a design guideline for developing
+ software, particularly object-oriented programs.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://en.wikipedia.org/wiki/Law_of_Demeter}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Objects hide their data and expose operations.
+ This means that an object should not expose its internal structure through
+ accessors because to do so is to expose, rather than to hide, its internal
+ structure.
+\end_layout
+
+\begin_layout Itemize
+The method should not invoke methods on objects that are returned by any
+ of the allowed functions.
+ In other words, talk to friends, not to strangers.
+\end_layout
+
+\begin_layout Itemize
+More formally, the LoD for functions requires that a method 
+\begin_inset Formula $m$
+\end_inset
+
+ of an object 
+\begin_inset Formula $O$
+\end_inset
+
+ may only invoke the methods of the following kinds of objects:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $O$
+\end_inset
+
+ itself
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $m$
+\end_inset
+
+'s parameters
+\end_layout
+
+\begin_layout Itemize
+any objects created or instantiated within 
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $O$
+\end_inset
+
+'s direct component objects
+\end_layout
+
+\begin_layout Itemize
+a global variable, accessible by 
+\begin_inset Formula $O$
+\end_inset
+
+, in the scope of 
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Summar
+\series default
+y
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Each unit should have only limited knowledge about other units: only units
+ "closely" related to the current unit.
+\end_layout
+
+\begin_layout Itemize
+Each unit should only talk to its friends; don't talk to strangers.
+\end_layout
+
+\begin_layout Itemize
+Only talk to your immediate friends.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The advantage of following the LoD is that the resulting software tends
+ to be more maintainable and adaptable.
+\end_layout
+
+\begin_layout Itemize
+Since objects are less dependent on the internal structure of other objects,
+ object containers can be changed without reworking their callers.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Although the LoD increases the adaptiveness of a software system, it may
+ result in having to write many wrapper methods (or using some 
+\emph on
+Facade
+\emph default
+ design pattern) to propagate calls to components; in some cases, this can
+ add noticeable time and space overhead.
+\end_layout
+
+\begin_layout Itemize
+So it depends, but 
+\emph on
+Wrapper
+\emph default
+ / 
+\emph on
+Facade
+\emph default
+ is usually good enough to do.
+ See video 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=FyJhALHmFXU}
+\end_layout
+
+\end_inset
+
+.
+ By using this you are also hiding information (unnecessary details).
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Very important and always true things
+\end_layout
+
+\begin_layout Itemize
+Everything begins and ends with a requirement.
+ Business is the only thing that matters.
+ We don't develop software for ourselves, but for clients to solve actual
+ existing problems.
+\end_layout
+
+\begin_layout Itemize
+Requirements are in constant flux.
+ (The system is never done.)
+\end_layout
+
+\begin_layout Itemize
+Estimates are always wrong.
+\end_layout
+
+\begin_layout Paragraph*
+Abstractions and requirements
+\end_layout
+
+\begin_layout Itemize
+It is better to implement code that does not use a lot of abstraction, and
+ to focus on a problem, when all requirements are specified fully and clearly.
+ Otherwise, abstraction is a good and relatively cheap thing to do.
+\end_layout
+
+\begin_layout Itemize
+Solving a specific problem is easier than general problems.
+ General problem is much more difficult.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Solving a specific problem is easier if you know what specific problem is.
+ 
+\series default
+But in software, we usually don't fully know what a specific problem is.
+ So from economic point of view, the best thing to do is to stay flexible.
+\end_layout
+
+\begin_layout Paragraph*
+Duck Typing
+\end_layout
+
+\begin_layout Itemize
+This is about determining a suitability of an 
+\series bold
+object based on what it does rather than what it is.
+\end_layout
+
+\begin_layout Itemize
+It is like Turing Test.
+ Just an analogy.
+ If it behaves as a human, then the question whether it is actual human
+ of not, does not matter.
+\end_layout
+
+\begin_layout Itemize
+Practically, in dynamically typed languages, you are not specifying types.
+ So we could say that Duck Typing is like polymorphism without any hierarchy.
+ So, according to video 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=oaIxRQSAZXE}
+\end_layout
+
+\end_inset
+
+, it is said, that we should not check types, but we should check the capability
+ of a given object.
+\end_layout
+
+\begin_layout Paragraph*
+Common Anti-patterns (during SW development)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=MTCYhbfSAuA&list=UU4xKdmAXFh4ACyhpiQ_3qBw&inde
+x=57}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Create tons of functions 
+\end_layout
+
+\begin_layout Itemize
+Use one liner as much as possible 
+\end_layout
+
+\begin_layout Itemize
+Use recursion 
+\end_layout
+
+\begin_layout Itemize
+Extensive use of comments 
+\end_layout
+
+\begin_layout Itemize
+Adding code you may need but never will 
+\end_layout
+
+\begin_layout Itemize
+Lots of variables the more the better 
+\end_layout
+
+\begin_layout Itemize
+Start to refactor the code
+\end_layout
+
+\begin_layout Itemize
+Using an interface just to forcing the creation of a method.
+ This is a bad idea.
+ Avoid interfaces that just force action.
+\end_layout
+
+\begin_layout Paragraph*
+Data Clamp
+\end_layout
+
+\begin_layout Itemize
+It is a code smell (that something is maybe wrong, not that definitely is
+ - that is anti-pattern).
+\end_layout
+
+\begin_layout Itemize
+It is when more than 1 piece of data are found together.
+ For example start date and end date.
+ And you find these two in your application together very often.
+ Maybe it is better to create an object from them, or use data range.
+ But this totally depends on your application and data.
+\end_layout
+
+\begin_layout Itemize
+To resolve these, we may have, for instance, less arguments to our functions,
+ which is a good thing.
+\end_layout
+
+\begin_layout Paragraph*
+UML
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ is 'has-a' (composition) ...
+ so it is basically 
+\begin_inset Quotes eld
+\end_inset
+
+using
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rightarrowtriangle$
+\end_inset
+
+ is 'is-a' (inheritance)
+\end_layout
+
+\begin_layout Paragraph*
+Professional Programmer
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+“Do; or do not.
+ There is no trying.”
+\emph default
+ - Yoda
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset Quotes eld
+\end_inset
+
+Turning pro is a mindset.
+ If we are struggling with fear, self-sabotage, procrastination, self-doubt,
+ etc., the problem is, we’re thinking like amateurs.
+ Amateurs don't show up.
+ Amateurs crap out.
+ Amateurs let adversity defeat them.
+ The pro thinks differently.
+ He shows up, he does his work, he keeps on truckin’, no matter what.
+\begin_inset Quotes erd
+\end_inset
+
+,  Steven Pressfield
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+“How you do anything is how you do everything.”
+\emph default
+, T.
+ Harv Eker.
+ If you lower your standards in one area, you’ll inadvertently find them
+ dropping in other areas as well.
+ Once you've crossed the line of compromise, it can be difficult to go back.
+\end_layout
+
+\begin_layout Itemize
+Marketing is a multiplier for talent.
+ The better marketing you have, the more it magnifies your talent.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+“If you help enough people get what they want, you will get what you want.”,
+ 
+\emph default
+Zig Ziglar.
+ This is the primary strategy that you should use in marketing yourself.
+ It will be more effective than any other technique.
+\end_layout
+
+\begin_layout Itemize
+Attitudes, disciplines, and actions.
+ Taking responsibility.
+ When a professional makes a mistake, he cleans up the mess.
+ That feeling is the essence of professionalism.
+ Because, you see, professionalism is all about taking responsibility.
+\end_layout
+
+\begin_layout Itemize
+The first thing you must practice is apologizing.
+ Apologies are necessary, but insufficient.
+ You cannot simply keep making the same errors over and over.
+ As you mature in your profession, your error rate should rapidly decrease
+ towards the asymptote of zero.
+ It won’t ever get to zero, but it is your responsibility to get as close
+ as possible to it.
+\end_layout
+
+\begin_layout Itemize
+Every time QA, or worse a user, finds a problem, you should be surprised,
+ chagrined, and determined to prevent it from happening again.
+\end_layout
+
+\begin_layout Itemize
+Every single line of code that you write should be tested.
+ Period.
+ However, 100% is an asymptote.
+ But isn't some code hard to test? Yes, but only because that code has been
+ designed to be hard to test.
+ The solution to that is to design your code to be easy to test.
+ And the best way to do that is to write your tests first, before you write
+ the code that passes them (TDD).
+\end_layout
+
+\begin_layout Itemize
+The fundamental assumption underlying all software projects is that software
+ is easy to change.
+ If you violate this assumption by creating inflexible structures, then
+ you undercut the economic model that the entire industry is based on.
+\end_layout
+
+\begin_layout Itemize
+Why do most developers fear to make continuous changes to their code? They
+ are afraid they’ll break it! Why are they afraid they’ll break it? Because
+ they don’t have tests.
+ It all comes back to the tests.
+ If you have an automated suite of tests that covers virtually 100% of the
+ code, and if that suite of tests can be executed quickly on a whim, then
+ you simply will not be afraid to change the code.
+\end_layout
+
+\begin_layout Itemize
+Professionals spend time caring for their profession.
+ You should plan on working 60 hours per week.
+ The first 40 are for your employer.
+ These 40 hours should be spent on your employer’s problems, not on your
+ problems.
+ The remaining 20 are for you.
+ During this remaining 20 hours you should be reading, practicing, learning,
+ and otherwise enhancing your career.
+ 
+\end_layout
+
+\begin_layout Itemize
+Perhaps you think this is a recipe for burnout.
+ On the contrary, it is a recipe to avoid burnout.
+ Presumably you became a software developer because you are passionate about
+ software and your desire to be a professional is motivated by that passion.
+ During that 20 hours you should be doing those things that reinforce that
+ passion.
+ Those 20 hours should be fun!
+\end_layout
+
+\begin_layout Itemize
+Here is a minimal list of the things that every software professional should
+ be conversant with: Design patterns.
+ You ought to be able to describe all 24 patterns in the GOF book and have
+ a working knowledge of many of the patterns in the POSA books.
+ 
+\end_layout
+
+\begin_layout Itemize
+Design principles.
+ You should know the SOLID principles and have a good understanding of the
+ component principles.
+ 
+\end_layout
+
+\begin_layout Itemize
+Methods.
+ You should understand XP, Scrum, Lean, Kanban, Waterfall, Structured Analysis,
+ and Structured Design.
+ 
+\end_layout
+
+\begin_layout Itemize
+Disciplines.
+ You should practice TDD, Object-Oriented design, Structured Programming,
+ Continuous Integration, and Pair Programming.
+ 
+\end_layout
+
+\begin_layout Itemize
+Artifacts: You should know how to use: UML, DFDs, Structure Charts, Petri
+ Nets, State Transition Diagrams and Tables, flow charts, and decision tables.
+\end_layout
+
+\begin_layout Itemize
+Hackerrank - small problems / challenges every day 10 minutes for example.
+\end_layout
+
+\begin_layout Itemize
+Know your domain.
+ It is the responsibility of every software professional to understand the
+ domain of the solutions they are programming.
+ When starting a project in a new domain, read a book or two on the topic.
+ Interview your customer and users about the foundation and basics of the
+ domain.
+ Spend some time with the experts, and try to understand their principles
+ and values.
+ It is the worst kind of unprofessional behavior to simply code from a spec
+ without understanding why that spec makes sense to the business.
+ 
+\end_layout
+
+\begin_layout Itemize
+Your employer’s problems are your problems.
+ You need to understand what those problems are and work toward the best
+ solutions.
+ As you develop a system you need to put yourself in your employer’s shoes
+ and make sure that the features you are developing are really going to
+ address your employer’s needs.
+\end_layout
+
+\begin_layout Itemize
+Professionals speak truth to power.
+ Professionals have the courage to say no to their managers.
+\end_layout
+
+\begin_layout Itemize
+When your manager tells you that the login page has to be ready by tomorrow,
+ he is pursuing and defending one of his objectives.
+ He’s doing his job.
+ If you know full well that getting the login page done by tomorrow is impossibl
+e, then you are not doing your job if you say “OK, I’ll try.” The only way
+ to do your job, at that point, is to say “No, that’s impossible.” The best
+ possible outcome is the goal that you and your manager share.
+ The trick is to find that goal, and that usually takes negotiation.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+fact
+\begin_inset Quotes erd
+\end_inset
+
+ that it will take longer is much more important then 
+\begin_inset Quotes eld
+\end_inset
+
+why
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Providing too much detail can be an invitation for micro-management.
+\end_layout
+
+\begin_layout Itemize
+The most important time to say no is when the stakes are highest.
+ The higher the stakes, the more valuable no becomes.
+\end_layout
+
+\begin_layout Itemize
+By promising to try you are committing to succeed.
+ This puts the burden on you.
+ If your “trying” does not lead to the desired outcome, you will have failed.
+\end_layout
+
+\begin_layout Itemize
+Professionals are often heroes, but not because they try to be.
+ Professionals become heroes when they get a job done well, on time, and
+ on budget.
+ By trying to become the man of the hour, the savior of the day, such acting
+ is not like a professional.
+ The temptation to be a hero and “solve the problem” is huge.
+ What we all have to realize is that saying yes to dropping our professional
+ disciplines is not the way to solve problems.
+ Dropping those disciplines is the way you create problems.
+\end_layout
+
+\begin_layout Itemize
+Programming is so hard, in fact, that it is beyond the capability of one
+ person to do it well.
+ No matter how skilled you are, you will certainly benefit from another
+ programmer’s thoughts and ideas.
+\end_layout
+
+\begin_layout Itemize
+It is a matter of professional ethics for senior programmers to spend time
+ taking younger programmers under their wing and mentoring them.
+\end_layout
+
+\begin_layout Itemize
+The fact that some programmers do wait for builds is tragic and indicative
+ of carelessness.
+ In today’s world build times should be measured in seconds, not minutes,
+ and certainly not hours.
+\end_layout
+
+\begin_layout Itemize
+In one way or another, all professionals practice.
+ They do this because they care about doing the best job they possibly can.
+ What’s more, they practice on their own time because they realize that
+ it is their responsibility (and not their employer’s) to keep their skills
+ sharp.
+ Practicing is what you do when you aren't getting paid.
+ You do it so that you will be paid, and paid well.
+\end_layout
+
+\begin_layout Itemize
+Despite the fact that your company may have a separate QA group to test
+ the software, it should be the goal of the development group that QA find
+ nothing wrong.
+\end_layout
+
+\begin_layout Itemize
+When professionals make commitments, they provide hard numbers, and then
+ they make those numbers.
+ However, in most cases professionals do not make such commitments.
+ Rather, they provide probabilistic estimates that describe the expected
+ completion time and the likely variance.
+\end_layout
+
+\begin_layout Itemize
+Professionals realize that “quick and dirty” is an oxymoron.
+ Dirty always means slow.
+\end_layout
+
+\begin_layout Itemize
+Choose disciplines that you feel comfortable following in a crisis.
+ Then follow them all the time.
+ Following these disciplines is the best way to avoid getting into a crisis.
+ If you follow the discipline of Test-Driven Development in non-crisis times
+ but abandon it during a crisis, then you don’t really trust that TDD is
+ helpful.
+ If you keep your code clean during normal times but make messes in a crisis,
+ then you don’t really believe that messes slow you down.
+\end_layout
+
+\begin_layout Itemize
+Communicate, and avoid surprises.
+ Nothing makes people more angry and less rational than surprises.
+ Surprises multiply the pressure by ten.
+\end_layout
+
+\begin_layout Itemize
+Most managers want good code, even when they are obsessing about the schedule.
+ They may defend the schedule and requirements with passion; but that’s
+ their job.
+ 
+\series bold
+It’s your job to defend the code with equal passion.
+
+\series default
+ So it is unprofessional for programmers to bend to the will of managers
+ who don’t understand the risks of making messes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Flow Zone
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a hyper-productive state, highly focused, tunnel-vision state of
+ consciousness that programmers can get into while they write code.
+ In this state they feel productive.
+ In this state they feel infallible.
+ And so they desire to attain that state, and often measure their self-worth
+ by how much time they can spend there.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+However, Robert C.
+ Martin recommends to avoid the zone.
+
+\bar default
+ According to him, the problem is that you lose some of the big picture
+ while you are in the Zone, so you will likely make decisions that you will
+ later have to go back and reverse.
+ Code written in the Zone may come out faster, but you’ll be going back
+ to visit it more.
+\end_layout
+
+\begin_layout Itemize
+Also for him, he realized that he simply don’t code well while listening
+ to music.
+ The music does not help him focus.
+ He suspects, that what’s really happening is that the music is helping
+ programmers to enter the Zone.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Interruptions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pairing can be very helpful as a way to deal with interruptions.
+ Your pair partner can hold the context of the problem at hand, while you
+ deal with a whatever interrupted you.
+ When you return to your pair partner, he quickly helps you reconstruct
+ the mental context you had before the interruption.
+\end_layout
+
+\begin_layout Itemize
+TDD is another big help.
+ If you have a failing test, that test holds the context of where you are.
+ You can return to it after an interruption and continue to make that failing
+ test pass.
+\end_layout
+
+\begin_layout Itemize
+Of course, there will be interruptions that distract you and cause you to
+ lose time.
+ When they happen, remember that next time you may be the one who needs
+ to interrupt someone else.
+ So the professional attitude is a polite willingness to be helpful.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Writer's Block
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sometimes the code just doesn't come.
+ I've had this happen to me and I've seen it happen to others.
+ You sit at your workstation and nothing happens.
+\end_layout
+
+\begin_layout Itemize
+Often you will find other work to do.
+ You’ll read email.
+ You’ll read tweets.
+ You’ll look through books, or schedules, or documents.
+ You’ll call meetings.
+ You’ll start up conversations with others.
+ You’ll do anything so that you don’t have to face that workstation and
+ watch as the code refuses to appear.
+\end_layout
+
+\begin_layout Itemize
+The causes of this can be various.
+ For example, not getting enough sleep - this is perhaps one of the biggest
+ obstacles.
+ Others are worry, fear, or depression.
+\end_layout
+
+\begin_layout Itemize
+Possible solution: Find a pair partner.
+ There is a physiological change that takes place when you work with someone.
+ 
+\end_layout
+
+\begin_layout Itemize
+Creative output depends on creative input.
+ Read science fiction for example.
+ Or astronomy, physics, chemistry, or mathematics.
+ While being actively stimulated by challenging and creative ideas, results
+ in an almost irresistible pressure to create something myself.
+ Not all forms of creative input work for me.
+ Watching TV does not usually help me to create.
+\end_layout
+
+\begin_layout Itemize
+Software development is a marathon, not a sprint.
+ A marathon runner takes care of her body both before and during the race.
+ Professional programmers conserve their energy and creativity with the
+ same care.
+\end_layout
+
+\begin_layout Itemize
+Can’t go home till you solve this problem? Oh yes you can, and you probably
+ should! Creativity and intelligence are fleeting states of mind.
+ When you are tired, they go away.
+ If you then pound your non-functioning brain for hour after late-night
+ hour trying to solve a problem, you’ll simply make yourself more tired
+ and reduce the chance that the shower, or the car, will help you solve
+ the problem.
+\end_layout
+
+\begin_layout Itemize
+When you are working on a problem, you sometimes get so close to it that
+ you can’t see all the options.
+ You miss elegant solutions because the creative part of your mind is suppressed
+ by the intensity of your focus.
+ Sometimes the best way to solve a problem is to go home, eat dinner, watch
+ TV, go to bed, and then wake up the next morning and take a shower.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Being Late
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You will be late.
+ No matter how professional you are.
+\end_layout
+
+\begin_layout Itemize
+Regularly measure your progress against your goal, and 
+\bar under
+come up with three fact-based end dates: best case, nominal case, and worst
+ case.
+
+\bar default
+ Be as honest as you can about all three dates.
+ Do not incorporate hope into your estimates! Present all three numbers
+ to your team and stakeholders.
+ Update these numbers daily.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hope
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+Hope is the project killer.
+ Hope destroys schedules and ruins reputations.
+
+\bar default
+ Hope will get you into deep trouble.
+ If the trade show is in ten days, and your nominal estimate is 12, you
+ are not going to make it.
+ Make sure that the team and the stakeholders understand the situation,
+ and don’t let up until there is a fall-back plan.
+ Don’t let anyone else have hope.
+\end_layout
+
+\begin_layout Itemize
+There is no way to rush.
+ You can’t make yourself code faster.
+ You can’t make yourself solve problems faster.
+ If you try, you’ll just slow yourself down and make a mess that slows everyone
+ else down, too.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Overtime
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+Overtime can work, and sometimes it is necessary.
+
+\bar default
+ Sometimes you can make an otherwise impossible date by putting in some
+ ten-hour days, and a Saturday or two.
+ But this is very risky.
+ You are not likely to get 20% more work done by working 20% more hours.
+ What’s more, overtime will certainly fail if it goes on for more than two
+ or three weeks
+\end_layout
+
+\begin_layout Itemize
+You should not agree to work overtime unless (1) you can personally afford
+ it, (2) it is short term, two weeks or less, and (3) your boss has a fall-back
+ plan in case the overtime effort fails.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Meetings
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There are 2 truths about meetings.
+ Often these two truths equally describe the same meeting.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Meetings are necessary.
+\end_layout
+
+\begin_layout Enumerate
+Meetings are huge time wasters.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Professionals actively resist attending meetings that don’t have an immediate
+ and significant benefit.
+ Even if you attend a meeting and it is boring, you should consider leaving.
+ You can simply ask, at an opportune moment, if your presence is still necessary.
+ You can explain that you can’t afford a lot more time, and ask whether
+ there is a way to expedite the discussion or shuffle the agenda.
+ The important thing to realize is that remaining in a meeting that has
+ become a waste of time for you, and to which you can no longer significantly
+ contribute, is unprofessional.
+ You have an obligation to wisely spend your employer’s time and money,
+ so it is not unprofessional to choose an appropriate moment to negotiate
+ your exit.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Estimates
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The problem is that we view estimates in different ways.
+ Business likes to view estimates as commitments.
+ Developers like to view estimates as guesses.
+ The difference is profound.
+\end_layout
+
+\begin_layout Itemize
+Professionals don’t make commitments unless they know they can achieve them.
+ It’s really as simple as that.
+ If you are asked to commit to something that you aren't certain you can
+ do, then you are honor bound to decline.
+ If you are asked to commit to a date that you know you can achieve, but
+ would require long hours, weekends, and skipped family vacations, then
+ the choice is yours; but you’d better be willing to do what it takes.
+ Commitment is about certainty.
+ Other people are going to accept your commitments and make plans based
+ upon them.
+\end_layout
+
+\begin_layout Itemize
+An estimate is a guess.
+ No commitment is implied.
+ No promise is made.
+ Missing an estimate is not in any way dishonorable.
+ The reason we make estimates is because we don’t know how long something
+ will take.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+An estimate is not a number.
+ An estimate is a distribution.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+PERT
+\series default
+ (Program Evaluation and Review Technique)
+\end_layout
+
+\begin_layout Itemize
+It was created in 1957, to support the U.S.
+ Navy’s Polaris submarine project.
+ One of the elements of PERT is the way that estimates are calculated.
+ The scheme provides a very simple, but very effective way to convert estimates
+ into probability distributions suitable for managers.
+\end_layout
+
+\begin_layout Itemize
+When you estimate a task, you provide three numbers.
+ This is called trivariate analysis:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Optimistic Estimate.
+
+\emph default
+ This number is wildly optimistic.
+ You could only get the task done this quickly if absolutely everything
+ went right.
+ Indeed, in order for the math to work this number should have much less
+ than a 1% chance of occurrence.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Nominal Estimate.
+ 
+\emph default
+This is the estimate with the greatest chance of success.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Pessimistic Estimate.
+ 
+\emph default
+Once again this is wildly pessimistic.
+ It should include everything except hurricanes, nuclear war, stray black
+ holes, and other catastrophes.
+ Again, the math only works if this number has much less than a 1% chance
+ of success.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Given these 3 estimates, we can describe the probability distribution as
+ follows: 
+\begin_inset Formula $μ=\frac{O+4N+P}{6}$
+\end_inset
+
+, where 
+\begin_inset Formula $μ$
+\end_inset
+
+ is the expected duration of the task.
+ For most tasks this will be a somewhat pessimistic number because the right-han
+d tail of the distribution is longer than the left-hand tail.
+\end_layout
+
+\begin_layout Itemize
+sigma is the standard deviation: 
+\begin_inset Formula $s=\frac{P-O}{6}$
+\end_inset
+
+, and it is a measure of how uncertain the task is.
+ 
+\end_layout
+
+\begin_layout Itemize
+You often do not have just 1 task, but a sequence of tasks.
+ You simply sum all 
+\begin_inset Formula $μ$
+\end_inset
+
+ and sigmas.
+\end_layout
+
+\begin_layout Itemize
+If you are a programmer of more than a few years’ experience, you've likely
+ seen projects that were estimated optimistically, and that took three to
+ five times longer than hoped.
+ The simple PERT scheme just shown is one reasonable way to help prevent
+ setting optimistic expectations.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Wideband Delphi
+\end_layout
+
+\begin_layout Itemize
+Created in 1970s and it is an estimation technique.
+ There are many variations, but all have the same 
+\bar under
+goal - consensus
+\bar default
+.
+\end_layout
+
+\begin_layout Itemize
+The strategy is simple.
+ A team of people assemble, discuss a task, estimate the task, and iterate
+ the discussion and estimation until they reach agreement.
+\end_layout
+
+\begin_layout Itemize
+There are more approaches - Flying Fingers, Planning Poker, or Affinity
+ Estimation.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Programming Paradigms
+\end_layout
+
+\begin_layout Itemize
+In 1938, Alan Turing laid the foundations of what was to become computer
+ programming.
+\end_layout
+
+\begin_layout Itemize
+By 1945, Turing was writing real programs on real computers in binary language.
+\end_layout
+
+\begin_layout Itemize
+Assembly language came in 1940s, Fortran in 1953, and then a lot of others.
+\end_layout
+
+\begin_layout Itemize
+Each of the paradigms removes capabilities from the programmer.
+ None of them adds new capabilities.
+ Each imposes some kind of extra discipline that is negative in its intent.
+ The paradigms tell us what not to do, more than they tell us what to do.
+ Another way to look at this issue is to recognize that each paradigm takes
+ something away from us.
+\end_layout
+
+\begin_layout Itemize
+We use polymorphism as the mechanism to cross architectural boundaries;
+ we use functional programming to impose discipline on the location of and
+ access to data; and we use structured programming as the algorithmic foundation
+ of our modules.
+ Notice how well those three align with the 3 big concerns of architecture:
+ function, separation of components, and data management.
+\end_layout
+
+\begin_layout Subsection
+Functional Programming
+\end_layout
+
+\begin_layout Itemize
+In many ways, the concepts of functional programming predate programming
+ itself.
+ It started with Alonzo Church, who in 1936 invented l-calculus while pursuing
+ the same mathematical problem that was motivating Alan Turing at the same
+ time.
+ His l-calculus is the foundation of the LISP language, invented in 1958
+ by John McCarthy.
+ Functional programming imposes discipline upon assignment.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Variables
+\series default
+ in functional languages do not vary 
+\series bold
+(all are immutable)
+\series default
+.
+ All race conditions, deadlock conditions, and concurrent update problems
+ are due to mutable variables.
+ You cannot have a race condition or a concurrent update problem if no variable
+ is ever updated.
+ You cannot have deadlocks without mutable locks.
+\end_layout
+
+\begin_layout Itemize
+In other words, all the problems that we face in concurrent applications
+ - all the problems we face in applications that require multiple threads,
+ and multiple processors - cannot happen if there are no mutable variables.
+\end_layout
+
+\begin_layout Itemize
+The question you must be asking yourself, then, is whether immutability
+ is practicable.
+ The answer to that question is affirmative, if you have infinite storage
+ and infinite processor speed.
+ Lacking those infinite resources, the answer is a bit more nuanced.
+ Yes, immutability can be practicable, if certain compromises are made.
+\end_layout
+
+\begin_layout Itemize
+The limits of storage and processing power have been rapidly receding from
+ view.
+ Nowadays it is common for processors to execute billions of instructions
+ per second and to have billions of bytes of RAM.
+ The more memory we have, and the faster our machines are, the less we need
+ mutable state.
+\end_layout
+
+\begin_layout Subsection
+Structured Programming
+\end_layout
+
+\begin_layout Itemize
+Discovered by Edsger Wybe Dijkstra in 1968.
+ Structured programming imposes discipline on direct transfer of control.
+\end_layout
+
+\begin_layout Itemize
+Böhm and Jacopini proved, that all programs can be constructed from just
+ three structures: sequence, selection, and iteration.
+ This discovery was remarkable: The very control structures that made a
+ module provable were the same minimum set of control structures from which
+ all programs can be built.
+ Thus structured programming was born.
+\end_layout
+
+\begin_layout Itemize
+Science is fundamentally different from mathematics, in that scientific
+ theories and laws cannot be proven correct.
+ I cannot prove to you that Newton’s second law of motion, F = ma, or law
+ of gravity, are correct.
+ I can demonstrate these laws to you, and I can make measurements that show
+ them correct to many decimal places, but I cannot prove them in the sense
+ of a mathematical proof.
+ No matter how many experiments I conduct or how much empirical evidence
+ I gather, there is always the chance that some experiment will show that
+ those laws of motion and gravity are incorrect.
+ That is the nature of scientific theories and laws: They are falsifiable
+ but not provable.
+ Science does not work by proving statements true, but rather by proving
+ statements false.
+ Those statements that we cannot prove false, after much effort, we deem
+ to be true enough for our purposes.
+ Ultimately, we can say that mathematics is the discipline of proving provable
+ statements true.
+ Science, in contrast, is the discipline of proving provable statements
+ false.
+\end_layout
+
+\begin_layout Itemize
+Dijkstra once said, “Testing shows the presence, not the absence, of bugs.”
+ In other words, a program can be proven incorrect by a test, but it cannot
+ be proven correct.
+ All that tests can do, after sufficient testing effort, is allow us to
+ deem a program to be correct enough for our purposes.
+ The implications of this fact are stunning.
+ Software development is not a mathematical endeavor, even though it seems
+ to manipulate mathematical constructs.
+ Rather, software is like a science.
+ We show correctness by failing to prove incorrectness, despite our best
+ efforts.
+\end_layout
+
+\begin_layout Itemize
+Structured programming forces us to recursively decompose a program into
+ a set of small provable functions.
+ We can then use tests to try to prove those small provable functions incorrect.
+ If such tests fail to prove incorrectness, then we deem the functions to
+ be correct enough for our purposes.
+\end_layout
+
+\begin_layout Itemize
+It is this ability to create falsifiable units of programming that makes
+ structured programming valuable today.
+ This is the reason that modern languages do not typically support unrestrained
+ goto statements.
+ Moreover, at the architectural level, this is why we still consider functional
+ decomposition to be one of our best practices.
+\end_layout
+
+\begin_layout Itemize
+At every level, from the smallest function to the largest component, software
+ is like a science and, therefore, is driven by falsifiability.
+ Software architects strive to define modules, components, and services
+ that are easily falsifiable (testable).
+ To do so, they employ restrictive disciplines similar to structured programming
+, albeit at a much higher level.
+\end_layout
+
+\begin_layout Itemize
+Structured programming allows modules to be recursively decomposed into
+ provable units, which in turn means that modules can be functionally decomposed.
+ That is, you can take a large-scale problem statement and decompose it
+ into high-level functions.
+ Each of those functions can then be decomposed into lower-level functions,
+ ad infinitum.
+ Moreover, each of those decomposed functions can be represented using the
+ restricted control structures of structured programming.
+\end_layout
+
+\begin_layout Subsection
+Object-Oriented Programming
+\end_layout
+
+\begin_layout Itemize
+Discovered in 1966, by Ole Johan Dahl and Kristen Nygaard.
+ They moved the function call stack frame to the heap and invented OO.
+ Object-oriented programming imposes discipline on indirect transfer of
+ control.
+\end_layout
+
+\begin_layout Itemize
+What is OO? The combination of data and function.
+ A way to model the real world.
+ The nature of OO is 
+\series bold
+encapsulation, inheritance, 
+\series default
+and
+\series bold
+ polymorphism
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+OO is the ability, through the use of polymorphism, to gain absolute control
+ over every source code dependency in the system.
+ It allows the architect to create a plugin architecture, in which modules
+ that contain high-level policies are independent of modules that contain
+ low-level details.
+ The low-level details are relegated to plugin modules that can be deployed
+ and developed independently from the modules that contain high-level policies.
+\end_layout
+
+\begin_layout Itemize
+OO languages provide easy and effective 
+\series bold
+encapsulation
+\series default
+ of data and function.
+ As a result, a line can be drawn around a cohesive set of data and functions.
+ Outside of that line, the data is hidden and only some of the functions
+ are known.
+ We see this concept in action as the private data members and the public
+ member functions of a class.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inheritance
+\series default
+ is simply the re-declaration of a group of variables and functions within
+ an enclosing scope.
+ This is something C programmers were able to do manually long before there
+ was an OO language (it's a simple trick, that is +- used in single inheritance
+ in C++).
+\end_layout
+
+\begin_layout Itemize
+Did we have 
+\series bold
+polymorphic
+\series default
+ 
+\series bold
+behavior
+\series default
+ before OO languages? Of course we did.
+ The bottom line is that polymorphism is an application of pointers to functions.
+ But this is dangerous, you have to remember the conventions (such as initializa
+tion of a pointer and so on).
+ Using an OO language makes polymorphism trivial and eliminates these dangers.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dependency Inversion
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Source code dependency (the inheritance relationship) between module M and
+ the interface I points in the opposite direction compared to the flow of
+ control.
+\end_layout
+
+\begin_layout Itemize
+The fact that OO languages provide safe and convenient polymorphism means
+ that any source code dependency, no matter where it is, can be inverted
+ (thanks to interfaces!).
+\end_layout
+
+\begin_layout Itemize
+With this approach, software architects working in systems written in OO
+ languages have absolute control over the direction of all source code dependenc
+ies in the system.
+ They are not constrained to align those dependencies with the flow of control.
+ No matter which module does the calling and which module is called, the
+ software architect can point the source code dependency in either direction.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+That is power! That is the power that OO provides.
+ That’s what OO is really all about—at least from the architect’s point
+ of view.
+\end_layout
+
+\begin_layout Itemize
+As an example, you can rearrange the source code dependencies of your system
+ so that the database and the user interface (UI) depend on the business
+ rules, rather than the other way around.
+ This means that the UI and the database can be plugins to the business
+ rules.
+ It means that the source code of the business rules never mentions the
+ UI or the database.
+\end_layout
+
+\begin_layout Itemize
+In short, when the source code in a component changes, only that component
+ needs to be redeployed.
+ This is independent deployability.
+ If the modules in your system can be deployed independently, then they
+ can be developed independently by different teams.
+ That’s independent developability.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+So, OO is the ability, through the use of polymorphism, to gain absolute
+ control over every source code dependency in the system.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+See SOLID principles for writing clean OOP code that make it easy for a
+ programmer to develop software that is easy to maintain and extend.
+\end_layout
+
+\begin_layout Section
+Software Development Paradigms and Methodologies
+\end_layout
+
+\begin_layout Itemize
+Software development is the process of conceiving, specifying, designing,
+ programming, documenting, testing, and bug fixing involved in creating
+ and maintaining applications, frameworks, or other software components.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://en.wikipedia.org/wiki/Software_development}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In bug report, there should be at least:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+how to reproduce the bug
+\end_layout
+
+\begin_layout Itemize
+what should have happened
+\end_layout
+
+\begin_layout Itemize
+what actually happened
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Paradigms and models
+\end_layout
+
+\begin_layout Paragraph*
+Waterfall Model
+\end_layout
+
+\begin_layout Itemize
+Before agile, but it is still used in some applications.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Requirements -> Design -> Development -> Testing -> Deployment
+\emph default
+ (and big outcome at the end).
+\end_layout
+
+\begin_layout Itemize
+In Waterfall, the next phase typically cannot be started until the previous
+ one has been completed.
+ The goal is to gather and analyze all the detailed requirements early in
+ the process so that a complete solution can be architect-ed and build with
+ highly predictable results.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://theagileblueprint.wordpress.com/2011/03/02/comparing-waterfall-and-rat
+ional-unified-process/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Waterfall development can work well for complex or mission-critical systems
+ or for and for organizations that require the highest levels of fault tolerance
+ (such as the military or aerospace).
+ However, projects using Waterfall processes take too long, in many cases
+ months or years, to produce results that can be verified by the user and
+ often and lacks the flexibility for today’s environment.
+\end_layout
+
+\begin_layout Paragraph*
+Agile
+\end_layout
+
+\begin_layout Itemize
+Like Waterfall model, but iterative - with cumulative outcomes.
+\end_layout
+
+\begin_layout Itemize
+Agile is all about working collaboratively with people who have different
+ skills and mindsets to achieve a common goal.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.testingexcellence.com/there-is-no-qa-team-in-agile/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Manifesto
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://agilemanifesto.org/}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Individuals and interactions 
+\series default
+over processes and tools.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Working software
+\series default
+ over comprehensive documentation.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Customer collaboration
+\series default
+ over contract negotiation.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Responding to change
+\series default
+ over following a plan.
+\end_layout
+
+\begin_layout Standard
+That is, while there is value in the items on the right (not bold text),
+ we value the items on the left more (bold text).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The most used practices in agile development are Scrum, Kanban, XP, and
+ a lot of others, see the next subsections below.
+\end_layout
+
+\begin_layout Subsection
+Methodologies and Frameworks
+\end_layout
+
+\begin_layout Paragraph*
+DevOps
+\end_layout
+
+\begin_layout Itemize
+It is a set of practices that combines software development (Dev) and informatio
+n-technology operations (Ops) which aims to shorten the systems development
+ life cycle and provide continuous delivery with high software quality.
+\end_layout
+
+\begin_layout Paragraph*
+Lean
+\end_layout
+
+\begin_layout Itemize
+Lean development can be summarized by 7 principles, very close in concept
+ to lean manufacturing principles:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Eliminate waste
+\end_layout
+
+\begin_layout Itemize
+Amplify learning
+\end_layout
+
+\begin_layout Itemize
+Decide as late as possible
+\end_layout
+
+\begin_layout Itemize
+Deliver as fast as possible
+\end_layout
+
+\begin_layout Itemize
+Empower the team
+\end_layout
+
+\begin_layout Itemize
+Build integrity in
+\end_layout
+
+\begin_layout Itemize
+Optimize the whole
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Kanban
+\end_layout
+
+\begin_layout Itemize
+It is a lean method to manage and improve work across human systems.
+\end_layout
+
+\begin_layout Itemize
+Work items are visualized to give participants a view of progress and process,
+ from start to finish—usually via a Kanban board.
+\end_layout
+
+\begin_layout Itemize
+Kanban is commonly used in software development in combination with other
+ methods and frameworks such as Scrum.
+\end_layout
+
+\begin_layout Paragraph*
+Rational Unified Process (RUP)
+\end_layout
+
+\begin_layout Itemize
+It is an iterative software development process framework.
+ It is use-case driven, architecture-centric, and incremental and iterative.
+\end_layout
+
+\begin_layout Itemize
+The RUP has determined a project life-cycle consisting of four phases:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://techterms.com/definition/rup}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Inception phase.
+ 
+\emph default
+The idea for the project is stated.
+ The development team determines if the project is worth pursuing and what
+ resources will be needed.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Elaboration phase.
+ 
+\emph default
+The project's architecture and required resources are further evaluated.
+ Developers consider possible applications of the software and costs associated
+ with the development.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Construction phase.
+
+\emph default
+ The project is developed and completed.
+ The software is designed, written, and tested.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Transition phase
+\emph default
+.
+ The software is released to the public.
+ Final adjustments or updates are made based on feedback from end users.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Iterations occur in each phase.
+ Activities in iterations are focused on one of the four activities: gathering
+ requirements, analyzing, designing, implementing, and testing.
+ Each of these activities place a more or less important role as the project
+ moves from phase to phase.
+\end_layout
+
+\begin_layout Paragraph*
+Scrum
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+One of the goals if to create a self-organizing unit (team) so that the
+ team is able and willing to undertake responsibility for its work.
+\end_layout
+
+\begin_layout Itemize
+Scrum master is not a team assistant.
+ He is not responsible for product delivery or results.
+ He is not leader of a team, does not estimate priorities, does not initiate
+ discussions.
+ Team does not communicate with product owner through scrum master.
+\end_layout
+
+\begin_layout Itemize
+Scrum master supports self-organization of a team.
+ He helps team with obstacles, supports to estimate common goal(s) and being
+ team more effective.
+ He organizes meetings, help a company to fulfill long-term goals and strategies.
+ In case that there is a need for changing a process, he is an initiator
+ of such change.
+ He is constantly educating himself and the others.
+\end_layout
+
+\begin_layout Itemize
+Scrum has a sprint (usually 2 weeks), and during that, there are multiple
+ meetings:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Inbox meeting
+\emph default
+ - meeting about potential US/BUGs from INBOX (or even IDEASBOX), but only
+ urgent/high priorities.
+ No technical discussions.
+ USs should have short descriptions and if everything is clear, after this
+ meeting, they will be put to BACKLOG.
+ Questions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Is everything clear to developer?
+\end_layout
+
+\begin_layout Itemize
+Do a developer knows what to do (not how - that belongs to Backlog meeting)?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Backlog meeting
+\emph default
+ - meeting about prepared US/BUGs from INBOX, status PLANNABLE.
+ Technical discussions about how to do it.
+ Pre-defined tasks of US:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Development
+\end_layout
+
+\begin_layout Itemize
+Discussion
+\end_layout
+
+\begin_layout Itemize
+Testing
+\end_layout
+
+\begin_layout Itemize
+Documentation
+\end_layout
+
+\begin_layout Itemize
+Code+documentation review
+\end_layout
+
+\begin_layout Itemize
+QA testing
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Retrospective meeting
+\emph default
+ - feelings and thoughts about the last sprint.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Daily stand-up
+\emph default
+ - daily status of everyone in team.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/scrum.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Scrum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+
+\series bold
+Extreme Programming
+\series default
+ (XP)
+\end_layout
+
+\begin_layout Itemize
+It is intended to improve software quality and responsiveness to changing
+ customer requirements.
+ XP is a way to improve your development process.
+\end_layout
+
+\begin_layout Itemize
+As a type of agile software development, it advocates frequent "releases"
+ in short development cycles, which is intended to improve productivity
+ and introduce checkpoints at which new customer requirements can be adopted.
+\end_layout
+
+\begin_layout Itemize
+It is a philosophy of software development based on the values of communication,
+ feedback, simplicity, courage, and respect.
+ Good relationships lead to good business.
+ If members of a team don’t’ care about each other and what they are doing,
+ XP won’t work.
+\end_layout
+
+\begin_layout Itemize
+Do your best and then deal with the consequences.
+ That’s extreme – you leave yourself exposed.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+XP is lightweight – you only do what you need to do to create value for
+ the customer.
+\end_layout
+
+\begin_layout Itemize
+XP can work with teams of any size.
+ The practices need to be augmented and altered when many people are involved.
+\end_layout
+
+\begin_layout Itemize
+XP adapts to vague or rapidly changing requirements.
+ XP shines in this area compared to other techniques.
+\end_layout
+
+\begin_layout Itemize
+Other elements of extreme programming include:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+programming in pairs or doing extensive code review,
+\end_layout
+
+\begin_layout Itemize
+unit testing of all code,
+\end_layout
+
+\begin_layout Itemize
+avoiding programming of features until they are actually needed,
+\end_layout
+
+\begin_layout Itemize
+a flat management structure,
+\end_layout
+
+\begin_layout Itemize
+code simplicity and clarity,
+\end_layout
+
+\begin_layout Itemize
+expecting changes in the customer's requirements as time passes and the
+ problem is better understood,
+\end_layout
+
+\begin_layout Itemize
+frequent communication with the customer and among programmers,
+\end_layout
+
+\begin_layout Itemize
+XP always keeps the system in a deployable condition, problems are not allowed
+ to accumulate,
+\end_layout
+
+\begin_layout Itemize
+XP tests from the perspective of programmers writing tests function by function,
+ and feature by feature,
+\end_layout
+
+\begin_layout Itemize
+values are universal - my values at work are exactly the same as my values
+ in the rest of my life,
+\end_layout
+
+\begin_layout Itemize
+incremental design - invest in the design of the system every day.
+ Your design improves as your understanding of the project improves.
+ The most effective time to design is in the light of experience.
+ Refactoring a design becomes less problematic and stressful as you continue
+ to apply it.
+\end_layout
+
+\begin_layout Itemize
+shared code - collective responsibility, plus anyone on the team can improve
+ any part of the system at any time,
+\end_layout
+
+\begin_layout Itemize
+daily deployment is a goal - rapid Deployment is a step in the right direction,
+\end_layout
+
+\begin_layout Itemize
+energized work - overly long work hours lead to reduced efficiency and can
+ even remove value from a project.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The methodology takes its name from the idea that the beneficial elements
+ of traditional software engineering practices are taken to "extreme" levels.
+\end_layout
+
+\begin_layout Itemize
+As an example, code reviews are considered a beneficial practice; taken
+ to the extreme, code can be reviewed continuously, i.e.
+ the practice of pair programming.
+\end_layout
+
+\begin_layout Paragraph
+OKR
+\end_layout
+
+\begin_layout Itemize
+This is especially great for smaller teams.
+\end_layout
+
+\begin_layout Subsection
+Practices
+\end_layout
+
+\begin_layout Paragraph*
+CI, CD
+\end_layout
+
+\begin_layout Itemize
+See the next section.
+\end_layout
+
+\begin_layout Paragraph*
+Pair Programming (PP)
+\end_layout
+
+\begin_layout Itemize
+Two programmers work together at one workstation.
+ One, the driver, writes code while the other, the observer or navigator,
+ reviews each line of code as it is typed in.
+ The two programmers switch roles frequently.
+\end_layout
+
+\begin_layout Paragraph*
+Test-driven Development (TDD)
+\end_layout
+
+\begin_layout Itemize
+See chapter about testing.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Behavior-driven development (BDD)
+\end_layout
+
+\begin_layout Itemize
+It is an Agile software development process that encourages collaboration
+ among developers, QA and non-technical or business participants in a software
+ project.
+ 
+\end_layout
+
+\begin_layout Itemize
+It encourages teams to use conversation and concrete examples to formalize
+ a shared understanding of how the application should behave.
+ 
+\end_layout
+
+\begin_layout Itemize
+It emerged from test-driven development (TDD).
+ Behavior-driven development combines the general techniques and principles
+ of TDD with ideas from domain-driven design and object-oriented analysis
+ and design to provide software development and management teams with shared
+ tools and a shared process to collaborate on software development.
+\end_layout
+
+\begin_layout Itemize
+Behavior-driven development specifies that tests of any unit of software
+ should be specified in terms of the desired behavior of the unit (requirements
+ set by the business).
+\end_layout
+
+\begin_layout Itemize
+It encourages collaboration between developers, QA and non-technical or
+ business participants in a software project.
+\end_layout
+
+\begin_layout Section
+Continuous Integration/Delivery/Deployment
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Continuous Integration
+\series default
+ - merge code ASAP.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Continuous Delivery
+\series default
+ - short release cycles (days).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Continuous Deployment
+\series default
+ - Fast deployment, can be automated.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Why CI/CD?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prevent regressions (covered by tests).
+\end_layout
+
+\begin_layout Itemize
+Find issues ASAP (early, low-cost feedback to devs).
+\end_layout
+
+\begin_layout Itemize
+Save precious time of devs, automate testing and let machines do the jobs.
+\end_layout
+
+\begin_layout Itemize
+Avoiding human mistakes (people may forgot to test something).
+\end_layout
+
+\begin_layout Itemize
+Avoid merging broken code (everything merged must be tested and deployable).
+\end_layout
+
+\begin_layout Itemize
+It forces devs to write tests.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cicd_boxes.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ideal world how CI/CD should work.
+ Many companies are migrating to this model.
+ TTD means test-driven development.
+ Used technologies can be: gitlab, python, docker, kubernetess, coala/pylint,
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+CI/CD differences
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Martin Fowler, who first wrote about Continuous Integration together with
+ Kent Beck, describes CI as follows: 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Continuous Integration is a software development practice where members
+ of a team integrate their work frequently, usually each person integrates
+ at least daily - leading to multiple integrations per day.
+ Each integration is verified by an automated build (including test) to
+ detect integration errors as quickly as possible.
+ Many teams find that this approach leads to significantly reduced integration
+ problems and allows a team to develop cohesive software more rapidly.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+CI stands for continuous integration, whereas CD is often used interchangeably
+ to signify “continuous delivery” and “continuous deployment.” Are they both
+ the same thing? No.
+ Do they have a common goal? Yes.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://blog.codeship.com/whats-the-difference-between-continuous-delivery-vs-
+continuous-deployment/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+CI involves a series of steps that are automatically performed to integrate
+ code from multiple sources, create a build and test.
+ Each time a build or a set of code passes the tests, it’s automatically
+ deployed out to a staging environment where further testing such as load
+ testing and manual exploratory testing is conducted.
+ This process can be repeated for days depending upon the project delivery
+ requirements.
+\end_layout
+
+\begin_layout Itemize
+Continuous delivery helps you build a refined version of the software by
+ continuously implementing fixes and feedback until finally, you decide
+ to push it out to production.
+ In other words, continuous delivery involves human decision-making around
+ what to release to the customers, and when.
+\end_layout
+
+\begin_layout Itemize
+Continuous delivery is a series of practices designed to ensure that code
+ can be rapidly and safely deployed to production by delivering every change
+ to a production-like environment and ensuring business applications and
+ services function as expected through rigorous automated testing.
+ It doesn't mean every change is deployed to production ASAP.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Unit test -> Platform Test -> Deliver to Staging -> Application Acceptance
+ Tests -> Deploy to Production -> Post deploy Tests 
+\end_layout
+
+\begin_layout Itemize
+All previous steps are performed automatically in Continuous Deployment;
+ in Continuous Delivery,
+\emph on
+ Application Acceptance Tests -> Deploy to Production
+\emph default
+ step is done manually.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Continuous deployment - every change goes through an automated pipeline
+ and a working version of the application is automatically pushed to production.
+ It usually involves a production-like staging area with a mandatory time
+ lag in the final release.
+ This lag involves reviewing and manually accepting the changes in the code
+ before releasing it to production.
+ In contrast, continuous deployment does not require a staging area for
+ code changes to be manually reviewed and verified.
+ This is because automated testing is integrated early in the development
+ process and continues throughout all the phases of the release.
+\end_layout
+
+\begin_layout Itemize
+There are some exceptions where the concepts of delivery and deployment
+ aren’=;t as relevant as they are elsewhere; for instance, if you've contributed
+ to a library or created an artifact, you are unlikely to deploy it on a
+ running system.
+ In other words, there is no deployment phase.
+ You simply push your code into a repository for other applications to consume.
+\end_layout
+
+\begin_layout Itemize
+Jenkins and Ansible are popular automation tools for CI/CD in the market.
+ To automate deployments, it is needed to manage:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Application packaging
+\end_layout
+
+\begin_layout Itemize
+Release versioning
+\end_layout
+
+\begin_layout Itemize
+Database updates
+\end_layout
+
+\begin_layout Itemize
+Server configuration management
+\end_layout
+
+\begin_layout Itemize
+Calendaring
+\end_layout
+
+\begin_layout Itemize
+Roll-forward and rollback
+\end_layout
+
+\begin_layout Itemize
+Security access
+\end_layout
+
+\begin_layout Itemize
+Auditing
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Continuous delivery, when rightly coupled with continuous deployment, strengthen
+s the foundation of a DevOps pipeline and is core to agile DevOps initiatives.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Container is a running image.
+ There can be several containers from 1 image.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Possible ideal scenario?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Dev creates a patch.
+\end_layout
+
+\begin_layout Enumerate
+He creates a new MR.
+\end_layout
+
+\begin_layout Enumerate
+Gitlab CI pipeline fires up.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Static code analysis.
+\end_layout
+
+\begin_layout Enumerate
+Unit tests.
+\end_layout
+
+\begin_layout Enumerate
+Integration tests.
+\end_layout
+
+\begin_layout Enumerate
+Docker image is built.
+\end_layout
+
+\begin_layout Enumerate
+System tests with other services.
+\end_layout
+
+\begin_layout Enumerate
+Docker image pushed to internal registry.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+When the previous step is successful, dev/reviewer manually plays with container
+ in dev environment.
+ If everything went well, MR is approved and merged.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Container rebuild/mark container image as RC version (this depends on merging
+ strategy).
+\end_layout
+
+\begin_layout Itemize
+Kubernetes deploy a new RC image to staging environment (triggered by devs
+ or automatically).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Container is monitored in staging environment.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Container or a feature is tested and monitored in staging environment by
+ devs/QEs.
+\end_layout
+
+\begin_layout Itemize
+If bug is found, must be fixed and new image is deployed to stage environment.
+\end_layout
+
+\begin_layout Itemize
+If critical malfunction happen, container can be even automatically reverted
+ to previous version by Kubernetes.
+\end_layout
+
+\begin_layout Itemize
+If image works as expected, it is marked as stable.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+(Docker) Image is ready for production.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Image is labeled by devs as production version.
+\end_layout
+
+\begin_layout Itemize
+Admins get notification from developers/QEs that a particular image is ready
+ to be deployed.
+\end_layout
+
+\begin_layout Itemize
+Admins press a 
+\begin_inset Quotes eld
+\end_inset
+
+magic button
+\begin_inset Quotes erd
+\end_inset
+
+ in docker management system on the top of Kubernetes.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If critical malfunction is detected by monitoring, image is automatically
+ rollbacked to the latest working version.
+\end_layout
+
+\begin_layout Itemize
+Deployed image is monitored by monitoring system, if suspicious activity
+ is happening (or revert is requested from devs), admins can simply revert
+ to older version of image (magic revert button, no supercomplex downgrades
+ of packages).
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+How to enable CI/CD?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+GitLab
+\series default
+ - selfhosted, specified in file 
+\series bold
+.gitlab-ci.yml.
+ 
+\series default
+Test environment is isolated, containers are destroyed after test; a new
+ testing environment is always created.
+ This CI pipeline may contain several stages - from fastest to slowest and
+ more expensive tests (executed if previous stages passed).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+GitHub
+\series default
+ +
+\series bold
+ Travis CI
+\series default
+ - this CI may need an extra AWS instance for more complicated tests.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Jenkins
+\series default
+ - not the best one, many things must be implemented manually.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Phabricator
+\series default
+ - this CI is not that mature as in GitLab case.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CD may require to containerize services first and this requires a big test
+ coverage.
+\end_layout
+
+\begin_layout Itemize
+Build system - for building 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+build artifacts
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (.deb, pypi) - so that the most things are in packages, which will make
+ deployment easier and less error prone.
+ Alternative = 
+\series bold
+containers
+\series default
+, but they are not for everything.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Why containers?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Containers are easy for deployment, they make CD easier.
+\end_layout
+
+\begin_layout Itemize
+Containers are Linux processes with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+constrained resources - cgroups
+\end_layout
+
+\begin_layout Itemize
+isolations - namespaces
+\end_layout
+
+\begin_layout Itemize
+security - Seccomp, Capabilities, SELinux
+\end_layout
+
+\begin_layout Standard
+Steps:
+\end_layout
+
+\begin_layout Enumerate
+build - 
+\emph on
+buildah
+\emph default
+ (run builds in an isolated container, run without root) 
+\end_layout
+
+\begin_layout Enumerate
+run & develop locally - 
+\emph on
+podman
+\end_layout
+
+\begin_layout Enumerate
+store/share - 
+\emph on
+skopeo
+\emph default
+ (run without root, move images between environments, inspect remote images)
+\end_layout
+
+\begin_layout Enumerate
+run in a production cluster - 
+\emph on
+CRI-O
+\emph default
+ (read-only container filesystem, user namespaces - soon in Kubernetes as
+ well, enable fewer capabilities)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Provide isolation against outside influences like:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+incompatible update of packages on OS 
+\end_layout
+
+\begin_layout Itemize
+incompatible versions of packages, incompatible configurations 
+\end_layout
+
+\begin_layout Itemize
+allows to mix various package versions per service 
+\end_layout
+
+\begin_layout Itemize
+gives abstraction on service (no need of knowledge what is happening inside
+ for deployment) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Provide consistency - the same image will be tested and deployed (no last
+ moment surprises during deployment).
+\end_layout
+
+\begin_layout Itemize
+Containers are versioned, if critical issue is found on production, stop
+ container and put back an older one.
+\end_layout
+
+\begin_layout Itemize
+Containers can be updated separately - lowering downtime, asynchronous releases.
+\end_layout
+
+\begin_layout Itemize
+Containers are technology of virtualization.
+\end_layout
+
+\begin_layout Itemize
+Popular technologies are Docker, Kubernetes, OpenShift, ...
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Buildah + Ansible
+\end_layout
+
+\begin_layout Standard
+Combo for building container images (+ansible plugins).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ansible-bender
+\emph default
+ - wraps the functionality around 
+\emph on
+Buildah
+\emph default
+ + 
+\emph on
+ansible_playbook
+\emph default
+.
+ If I want to see logs from previous builds for example.
+ It has configurable layering and caching.
+\end_layout
+
+\begin_layout Itemize
+Perhaps see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{blog.tomecek.net}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Docker
+\end_layout
+
+\begin_layout Itemize
+Docker utilizes Linux containers.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linux containers, commonly referred to as LXC, originated in 2008, and they
+ rely on the Linux kernel 
+\emph on
+cgroups
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{cgroups is a Linux kernel feature that limits, accounts for, and
+ isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a
+ collection of processes.}
+\end_layout
+
+\end_inset
+
+ functionality that originated in Linux kernel version 2.6.24.
+\end_layout
+
+\begin_layout Itemize
+Linux containers themselves are an operating system virtualization method
+ that you can utilize to run multiple isolated Linux systems on a single
+ host.
+ They all utilize the kernel version that is running on the host on which
+ the containers are running.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Docker relies on using the host OS's Linux kernel for the OS it was built
+ on.
+ For this reason, you can have almost any Linux OS as your host operating
+ system and be able to layer other OSes on top of the host.
+ Another benefit of Docker is the size of images when they are born.
+ They do not contain the largest piece: the kernel or the operating system.
+ This makes them incredibly small, compact, and easy to ship.
+\end_layout
+
+\begin_layout Itemize
+Provides isolation of applications and their dependencies from host machine.
+\end_layout
+
+\begin_layout Itemize
+It is not a VM, it shares kernel of host machine, but processes are very
+ isolated from host.
+\end_layout
+
+\begin_layout Itemize
+Images are small, minimal "Linux alpine" docker image has 5MB (the smallest
+ VM image has much more).
+\end_layout
+
+\begin_layout Itemize
+Once docker image is build, the same image will be tested, deployed to staging
+ and then to production.
+ Developers are responsible for proper dependencies installation and image
+ build.
+\end_layout
+
+\begin_layout Itemize
+CI tests in GitLab can be powered by Docker.
+\end_layout
+
+\begin_layout Itemize
+Docker is likely to support Rootless mode in the future.
+\end_layout
+
+\begin_layout Itemize
+When people say “Docker” they typically mean 
+\series bold
+Docker Engine
+\series default
+, the client-server application made up of the Docker daemon, a REST API
+ that specifies interfaces for interacting with the daemon, and a command
+ line interface (CLI) client that talks to the daemon (through the REST
+ API wrapper).
+ Docker Engine accepts docker commands from the CLI, such as 
+\emph on
+docker run <image>.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dockerd
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Docker build, it uses 
+\emph on
+dockerd
+\emph default
+ REST API to transfer build context as a tarball; image is built completely
+ remotely by the engine, parses Dockerfile.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Imagebuilder 
+\emph default
+- parses Dockerfile to determier images) using the Docker commands.
+ The command that we will be looking at is docker search.
+ With the docker search command build steps Source-to-image - uses one of
+ many builder images.
+ Uses docker client library to start builder image using a remote image
+ and to commit the builder container using also remote engine.
+ Library and CLI engine.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Except Docker CLI, there are the following features:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Docker registries
+\series default
+ - there are 3 options to store docker images: Docker Hub, Docker Trusted
+ Registry, and Docker Registry.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Docker Machine
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://docs.docker.com/machine/overview/}}
+\end_layout
+
+\end_inset
+
+ - tool that you can utilize to set up and manage your Docker hosts.
+ You can install and run Docker on Mac or Windows, provision and manage
+ multiple remote Docker hosts, or provision Swarm clusters.
+ If you want an efficient way to provision multiple Docker hosts on a network,
+ in the cloud or even locally, you need Docker Machine.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Docker Compose
+\series default
+ - another tool in the Docker ecosystem that can be used to create multiple
+ containers with a single command.
+ This allows you to spin up application stacks that may include some web
+ servers, a database server, and/or file servers as well.
+ Docker Compose utilizes a docker-compose.yml file to start up and configure
+ all the containers that you have specified.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Docker Swarm 
+\series default
+- it allows you to create and manage clustered Docker servers.
+ Swarm can be used to disperse containers across multiple hosts.
+ It also has the ability to scale containers as well.
+ The installation for Docker Swarm actually launches a container that is
+ used as the Swarm Manager master to communicate to all the nodes in a Swarm
+ cluster.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Docker UCP
+\series default
+ (Universal Control Plane) - is a solution for Docker that enables you to
+ control various aspects of your Docker environment through a web interface.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Podman
+\end_layout
+
+\begin_layout Itemize
+CLI tool for replacing Docker daemon in most use cases.
+\end_layout
+
+\begin_layout Itemize
+Rootless storage under the user home dir.
+ No CLI diff between root and user.
+\end_layout
+
+\begin_layout Itemize
+Each container runs in its own user namespace.
+\end_layout
+
+\begin_layout Itemize
+Podman pods - similar concept to Kubernetes pods.
+ Group of containers that share resources and deploy as a single unit.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Kubernetes 
+\end_layout
+
+\begin_layout Itemize
+Created by Google.
+ Orchestration tool for running docker containers.
+ GitLab supports Kubernetes integration.
+\end_layout
+
+\begin_layout Itemize
+Dynamically load-balance resources, migrates containers to less utilized
+ servers.
+\end_layout
+
+\begin_layout Itemize
+Makes deployment and management of containers easier.
+\end_layout
+
+\begin_layout Itemize
+Configure, which containers should communicate between themselves at 1 place.
+ 
+\end_layout
+
+\begin_layout Itemize
+Deploy everything on 1 place on multiple virtual machines.
+ 
+\end_layout
+
+\begin_layout Itemize
+Scalability - distribute containers over multiple Vms, increase performance,
+ deploy more containers.
+\end_layout
+
+\begin_layout Itemize
+For a breaf vocabulary, there is a nice video
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=1xo-0gCVhTU}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Parts:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Master
+\emph default
+: contains 1+ 
+\emph on
+Replication Controllers
+\emph default
+.
+ They communicate with 
+\emph on
+Pods
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Node
+\emph default
+: 
+\emph on
+Kubelet
+\emph default
+ (it is an instance of a computer, it is application that is running); It
+ runs Pods and communicates with Master.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Pod
+\emph default
+: Runs 1+ containers and exists on a 
+\emph on
+Node
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Service
+\emph default
+: Handles requests and it is usually a load balancer.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Deployment
+\emph default
+: Defines desired state - Kubernetes handles the rest.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+CRI-O - Container Runtime Interface - c
+\emph default
+lient-server Kubernetes runtime for running containers in a cluster.
+ It aims at replacing Docker and it's set to be the default runtime when
+ running OpenShift.
+ It looks heavily tested! For more information, see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://medium.com/cri-o}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Kubeflow -
+\emph default
+ ML + Kubernetes.
+ Kuberflow aggregates all the tools like TF, Pytorch etc.
+ Anywhere you run Kubernetes, you should be able to run Kuberflow.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Kubernetes Operators
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Operator 
+\emph default
+is a controller service that actively manages the full lifecycle of an applicati
+on on Kubernetes.
+ A mature Operator can deploy, upgrade, backup, repair, scale, and reconfigure
+ an application that it manages.
+\end_layout
+
+\begin_layout Itemize
+Automated software managers for Kubernetes clusters - application-specific
+ controllers that extends Kubernetes API to create, configure, manage instances
+ of complex stateful applications.
+\end_layout
+
+\begin_layout Itemize
+Operators are Kubernetes agents that know how to deploy, scale, manage,
+ backup, and even upgrade complex, stateful applications.
+\end_layout
+
+\begin_layout Itemize
+They are good for: databases, file, block and object storage, applications
+ with their own notion of a 
+\begin_inset Quotes eld
+\end_inset
+
+cluster
+\begin_inset Quotes erd
+\end_inset
+
+, apps for distribution on Kubernetes.
+\end_layout
+
+\begin_layout Itemize
+Nice tutorials: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://learn.openshift.com/operatorframework}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There exist a lot of operators in the wild: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/operator-framework/awesome-operators}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kubernetes vulnerabilities are of 3 types:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+Cluster vulnerabilities
+\bar default
+ - misconfiguration, general security primitives (bad network policies,
+ admin role misuse, ...), pod spec files, data dir access and ownership rights.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Workload vulnerabilities
+\bar default
+ - privileged containers/applications, vulnerable application code, missing
+ seccomp profiles, unnecessary syscall capabilities.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Wrong tools for the job
+\bar default
+ - 3rd party products / solutions not made for for containers.
+ Unfortunately you have to rely on vendors.
+\end_layout
+
+\begin_layout Itemize
+See slides on 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://devconfcz2019.sched.com/event/JcoQ/boost-your-security-and-resiliency-
+in-kubernetes}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\series bold
+OpenShift
+\end_layout
+
+\begin_layout Itemize
+Openshift is a family of containerization software developed by Red Hat.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://openshift.io/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It's based on top of Docker containers and the Kubernetes container orchestrator
+ for enterprise application development and deployment.
+\end_layout
+
+\begin_layout Itemize
+Openshift should have certificates.
+ See 
+\emph on
+openshift-acme
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://github.com/tnozicka/openshift-acme}}
+\end_layout
+
+\end_inset
+
+: letting it provision free certificates from Let's Encrypt (Openshift and
+ Kubernetes cluster)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ci-operator
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This automates and simplifies the process of building and testing OpenShift
+ component images.
+\end_layout
+
+\begin_layout Itemize
+Mainly intended to be run inside a 
+\emph on
+Pod
+\emph default
+ in a cluster, triggered by the 
+\emph on
+Prow CI
+\emph default
+ infrastructure, but it is also possible to run it as a CLI tool on a developer
+ laptop.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Serverless + KNative
+\end_layout
+
+\begin_layout Itemize
+Serverless
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It can simplify the process of deploying code into production.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Event -> Function -> Result
+\end_layout
+
+\begin_layout Itemize
+History: AWS Lambda (2014)-> OpenWhisk (Fn project, Serverless Framework)
+ -> Googld Cloud Functions (Azure Functions, Iron Functions, OpenFaaS) ->
+ Oracle Fn (Funktion, Firebase Cloud Functions, Riff) -> Openshift Cloud
+ Functions (KNative, Google loud Functions GA)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+KNative
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It extends Kubernetes to provide a set of middleware components for building
+ modern source-centric, container based apps that can run anywhere - premises,
+ cloud, 3rd party data-center.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://medium.com/@pkerrison/pizza-as-a-service-2-0-5085cd4c365e} and
+\backslash
+
+\backslash
+ 
+\backslash
+url{		https://blog.openshift.com/knative-serving-your-serverless-services/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Concurrency
+\end_layout
+
+\begin_layout Itemize
+Concurrency can sometimes improve performance, but only when there is a
+ lot of wait time that can be shared between multiple threads or multiple
+ processors.
+ Neither situation is trivial.
+\end_layout
+
+\begin_layout Itemize
+The design of a concurrent algorithm can be remarkably different from the
+ design of a single-threaded system.
+ The decoupling of what from when usually has a huge effect on the structure
+ of the system.
+ Also, concurrency often requires a fundamental change in design strategy.
+\end_layout
+
+\begin_layout Itemize
+Concurrency incurs some overhead, both in performance as well as writing
+ additional code.
+ Correct concurrency is complex, even for simple problems.
+\end_layout
+
+\begin_layout Itemize
+Concurrency bugs aren't usually repeatable, so they are often ignored as
+ one-offs instead of the true defects they are.
+\end_layout
+
+\begin_layout Itemize
+Keep your concurrency-related code separate from other code.
+ Attempt to partition data into independent subsets than can be operated
+ on by independent threads, possibly in different processors.
+\end_layout
+
+\begin_layout Itemize
+Get our non-threaded code working first.
+ Do not try to chase down non-threading bugs and threading bugs at the same
+ time.
+ Make sure your code works outside of threads.
+\end_layout
+
+\begin_layout Itemize
+Make your thread-based code especially pluggable and tunable, so that you
+ can run it in various configurations.
+\end_layout
+
+\begin_layout Itemize
+Run with more threads than processors.
+ Things happen when the system switches between tasks.
+ To encourage task swapping, run with more threads than processors or cores.
+ The more frequently your tasks swap, the more likely you’ll encounter code
+ that is missing a critical section or causes deadlock.
+\end_layout
+
+\begin_layout Itemize
+Run your threaded code on all target platforms early and often.
+ Multi-threaded code behaves differently in different environments.
+ You should run your tests in every potential deployment environment.
+\end_layout
+
+\begin_layout Itemize
+Learn how to find regions of code that must be locked and lock them.
+ Do not lock regions of code that do not need to be locked.
+\end_layout
+
+\begin_layout Itemize
+Keep the amount of shared objects and the scope of the sharing as narrow
+ as possible.
+\end_layout
+
+\begin_layout Paragraph*
+Basic definitions
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Process
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A process can be thought of as an instance of a program in execution.
+\end_layout
+
+\begin_layout Itemize
+A process is an independent entity to which system resources (e.g., CPU time
+ and memory) are allocated.
+\end_layout
+
+\begin_layout Itemize
+Each process is executed in a separate address space, and one process cannot
+ access the variables and data structures of another process.
+ If a process wishes to access another process's resources, inter-process
+ communications have to be used.
+ These include pipes, files, sockets, and other forms.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Thread
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A thread exists within a process and shares the process's resources (including
+ its heap space).
+\end_layout
+
+\begin_layout Itemize
+Multiple threads within the same process will share the same heap space.
+ This is very different from processes, which cannot directly access the
+ memory of another process.
+ Each thread still has its own registers and its own stack, but other threads
+ can read and write the heap memory.
+\end_layout
+
+\begin_layout Itemize
+A thread is a particular execution path of a process.
+ When one thread modifies a process resource, the change is immediately
+ visible to sibling threads.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Reentrant lock
+\series default
+ - A lock that can be acquired in one method and released in another.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Semaphore
+\series default
+ - An implementation of the classic synchronization mechanism, a lock with
+ a count.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bound resources
+\series default
+ - Resources of a fixed size or number used in a concurrent environment.
+ Examples include database connections and fixed-size read/write buffers.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Starvation
+\series default
+ - One thread or a group of threads is prohibited from proceeding for an
+ excessively long time or forever.
+ For example, always letting fast-running threads through first could starve
+ out longer running threads if there is no end to the fast-running threads.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livelock
+\series default
+ - Threads in lockstep, each trying to do work but finding another “in the
+ way.” Due to resonance, threads continue trying to make progress but are
+ unable to for an excessively long time - or forever.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deadlock
+\series default
+ - Two or more threads waiting for each other to finish.
+ Each thread has a resource that the other thread requires and neither can
+ finish until it gets the other resource.
+ There are 4 conditions required for deadlock to occur.
+ All 4 of these conditions must hold for deadlock to be possible.
+ Break any one of these conditions and deadlock is not possible:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Mutual Exclusion.
+
+\series default
+ Mutual exclusion occurs when multiple threads need to use the same resources
+ and those resources a) cannot be used by multiple threads at the same time,
+ and b) are limited in number.
+ A common example of such a resource is a database connection, a file open
+ for write, a record lock, or a semaphore.
+ 
+\series bold
+So mutual exclusion means that only 1 process or thread can access a resource
+ at a given time.
+
+\series default
+ (Or, more accurately, there is limited access to a resource.
+ A deadlock could also occur if a resource has limited quantity.)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Breaking Mutual Exclusion:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using resources that allow simultaneous use, for example, AtomicInteger.
+\end_layout
+
+\begin_layout Itemize
+Increasing the number of resources such that it equals or exceeds the number
+ of competing threads.
+\end_layout
+
+\begin_layout Itemize
+Checking that all your resources are free before seizing any.
+\end_layout
+
+\begin_layout Standard
+Unfortunately, most resources are limited in number and don’t allow simultaneous
+ use.
+ And it’s not uncommon for the identity of the second resource to be predicated
+ on the results of operating on the first.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Lock & Wait.
+
+\series default
+ Once a thread acquires a resource, it will not release the resource until
+ it has acquired all of the other resources it requires and has completed
+ its work.
+ So this is a situation where processes that already hold a resource can
+ request additional resources, without relinquishing their current resources.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Breaking Lock & Wait:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Check each resource before you seize it, and release all resources and start
+ over if you run into one that’s busy.
+\end_layout
+
+\begin_layout Standard
+This approach introduces several potential problems:
+\end_layout
+
+\begin_layout Itemize
+Starvation.
+ One thread keeps being unable to acquire the resources it needs (maybe
+ it has a unique combination of resources that seldom all become available).
+ This leads to low CPU utilization.
+ 
+\end_layout
+
+\begin_layout Itemize
+Livelock.
+ Several threads might get into lockstep and all acquire 1 resource and
+ then release 1 resource, over and over again.
+ This is especially likely with simplistic CPU scheduling algorithms (think
+ embedded devices or simplistic hand-written thread balancing algorithms).
+ This leads to high and useless CPU utilization.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+No preemption.
+
+\series default
+ One thread cannot take resources away from another thread.
+ Once a thread holds a resource, the only way for another thread to get
+ it is for the holding thread to release it.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Breaking Preemption:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allow threads to take resources away from other threads.
+ This is usually done through a simple request mechanism.
+\end_layout
+
+\begin_layout Itemize
+When a thread discovers that a resource is busy, it asks the owner to release
+ it.
+ If the owner is also waiting for some other resource, it releases them
+ all and starts over.
+ Managing all those requests can be tricky.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Circular Wait.
+
+\series default
+ Imagine 2 threads, T1 and T2, and 2 resources, R1 and R2.
+ T1 has R1, T2 has R2.
+ T1 also requires R2, and T2 also requires R1.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Breaking Circular Wait:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+This is the most common approach to preventing deadlock.
+
+\series default
+ For most systems it requires no more than a simple convention agreed to
+ by all parties.
+\end_layout
+
+\begin_layout Itemize
+From the previous example, by simply forcing both Thread 1 and Thread 2
+ to 
+\series bold
+allocate resources in the same order makes circular wait impossible.
+\end_layout
+
+\begin_layout Itemize
+More generally, if all threads can agree on a
+\series bold
+ global ordering of resources 
+\series default
+and if they all allocate resources in that order, then deadlock is impossible.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Paragraph*
+Execution models used in concurrent programming
+\end_layout
+
+\begin_layout Standard
+Most concurrent problems you will likely encounter will be some variation
+ of these 3 problems:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Producer-Consumer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One or more producer threads create some work and place it in a buffer or
+ queue.
+ One or more consumer threads acquire that work from the queue and complete
+ it.
+ 
+\end_layout
+
+\begin_layout Itemize
+The queue between the producers and consumers is a bound resource.
+ This means producers must wait for free space in the queue before writing
+ and consumers must wait until there is something in the queue to consume.
+ 
+\end_layout
+
+\begin_layout Itemize
+Coordination between the producers and consumers via the queue involves
+ producers and consumers signaling each other.
+ The producers write to the queue and signal that the queue is no longer
+ empty.
+ Consumers read from the queue and signal that the queue is no longer full.
+ Both potentially wait to be notified when they can continue.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Readers-Writers
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When you have a shared resource that primarily serves as a source of information
+ for readers, but which is occasionally updated by writers, throughput is
+ an issue.
+ 
+\end_layout
+
+\begin_layout Itemize
+Emphasizing throughput can cause starvation and the accumulation of stale
+ information.
+ Allowing updates can impact throughput.
+ Coordinating readers so they do not read something a writer is updating
+ and vice versa is a tough balancing act.
+ Writers tend to block many readers for a long period of time, thus causing
+ throughput issues.
+ 
+\end_layout
+
+\begin_layout Itemize
+The challenge is to balance the needs of both readers and writers to satisfy
+ correct operation, provide reasonable throughput and avoiding starvation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Dining Philosophers
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Imagine a number of philosophers sitting around a circular table.
+ A fork is placed to the left of each philosopher.
+ There is a big bowl of spaghetti in the center of the table.
+ The philosophers spend their time thinking unless they get hungry.
+ Once hungry, they pick up the forks on either side of them and eat.
+ A philosopher cannot eat unless he is holding two forks.
+ If the philosopher to his right or left is already using one of the forks
+ he needs, he must wait until that philosopher finishes eating and puts
+ the forks back down.
+ Once a philosopher eats, he puts both his forks back down on the table
+ and waits until he is hungry again.
+\end_layout
+
+\begin_layout Itemize
+Replace philosophers with threads and forks with resources and this problem
+ is similar to many enterprise applications in which processes compete for
+ resources.
+ Unless carefully designed, systems that compete in this way can experience
+ deadlock, livelock, throughput, and efficiency degradation.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

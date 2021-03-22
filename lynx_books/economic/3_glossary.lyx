@@ -1,0 +1,1526 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Glossary
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QE, Money printing 
+\emph default
+(
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.youtube.com/watch?v=n96av-jk0Q4&list=PLdIZc_RaumFCcZ2Xe55r0kPRac-XGwlQf"
+literal "false"
+
+\end_inset
+
+) TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Consumer Price Index (CPI)
+\emph default
+ - TODO, CPI alternative (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://chapwoodindex.com/"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The Consumer Confidence Index
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is the result of a monthly survey of 5,000 U.S.
+ households by the Conference Board that measures how optimistic or pessimistic
+ consumers are about the economy's current and future performance.
+ When the index is high, consumers are expected to increase their spending
+ on goods and services.
+ 
+\end_layout
+
+\begin_layout Itemize
+When it is low, a decrease in spending is expected.
+ Since consumer spending accounts for about two-thirds of gross domestic
+ product, consumer confidence is an important indicator of where the economy
+ might be headed.
+\end_layout
+
+\begin_layout Itemize
+The Consumer Confidence Index, or CCI, has a benchmark value of 100.
+ Analysts can view CCI data by consumer age, income and census region.
+\end_layout
+
+\begin_layout Itemize
+Economy = CCI + GDP
+\end_layout
+
+\begin_layout Itemize
+Economists consider the CCI a lagging indicator, meaning that it changes
+ after, not before, the economy changes.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+The Federal discount rate 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is the amount of interest a central bank charges private banks for short-term
+ loans.
+\end_layout
+
+\begin_layout Itemize
+This is a rate charged by the Fed when lending funds to members to deal
+ with short-term shortages of liquidity on a collateralized basis.
+\end_layout
+
+\begin_layout Itemize
+Discount rate is higher than the Fed Funds target rate.
+\end_layout
+
+\begin_layout Itemize
+Both primary and secondary credit are for very short terms.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Federal Funds rate
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Interest on Excess Reserves Rate, I.O.E.R, TODO
+\end_layout
+
+\begin_layout Itemize
+It is a rate at which banks lend/borrow among themselves on an unsecured
+ basis.
+\end_layout
+
+\begin_layout Itemize
+This is money still held at the Fed to maintain reserve requirements.
+\end_layout
+
+\begin_layout Itemize
+FOMC sets a range for this rate but the actual rate is calculated from data.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Tariff
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tax on services or goods that are imported.
+ 
+\end_layout
+
+\begin_layout Itemize
+The purpose of it is to protect that product or service that is domestically
+ produced.
+\end_layout
+
+\begin_layout Itemize
+The protection is done by government - higher taxes on imports.
+\end_layout
+
+\begin_layout Itemize
+For example, if a different country is importing their goods to our country,
+ with similar product, but cheaper price, our company that a given product
+ is manufacturing would need to fire some workers, or so...
+\end_layout
+
+\begin_layout Itemize
+The tariff goes to the government.
+ If governments of both countries would increase tariff against each other,
+ that would be a trade war.
+ No one would benefit from that perhaps.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Taxes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Income tax - deducts an amount based on someone's salary
+\end_layout
+
+\begin_layout Itemize
+Sales taxes - levied on items at the point of purchase and including flat-rate
+ excise on items like fuel
+\end_layout
+
+\begin_layout Itemize
+Capital gain taxes - on profits from the sale of an investment that has
+ increased in value
+\end_layout
+
+\begin_layout Itemize
+Business or corporation taxes - on companies` profits
+\end_layout
+
+\begin_layout Itemize
+Inheritance taxes - on the estate of someone who dies
+\end_layout
+
+\begin_layout Itemize
+Property taxes - on home transactions
+\end_layout
+
+\begin_layout Itemize
+Import and export tariffs - customs duty
+\end_layout
+
+\begin_layout Itemize
+Environmental taxes - on emissions
+\end_layout
+
+\begin_layout Itemize
+Wealth taxes - based on the value of one's assets
+\end_layout
+
+\begin_layout Standard
+Today, typically there is a progressive income tax systems - people receive
+ a tax-free allowance.
+ Then they pay a certain percentage on another part of their salary up to
+ a certain level, then an even higher proportion on the next tranche, and
+ so on.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Interest rates
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They are the primary yardstick for measuring how much return lenders will
+ get.
+ However, the stated interest rate on a loan, sometimes called the nominal
+ rate, doesn't tell the whole story.
+\end_layout
+
+\begin_layout Itemize
+Because of inflation, the purchasing power of every dollar lent out to an
+ individual or a business tends to decrease over time.
+ Lenders take this into account by calculating what's known as the real
+ interest rate (nominal interest rate minus inflation).
+\end_layout
+
+\begin_layout Itemize
+Interest rates are affected by a couple of things:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demand/supply of money in the economy 
+\end_layout
+
+\begin_layout Itemize
+International forces 
+\end_layout
+
+\begin_layout Itemize
+Actions of the federal government
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Stagflation
+\emph default
+ (or recession-inflation) - is a situation in which the inflation rate is
+ high, the economic growth rate slows, and unemployment remains steadily
+ high.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Velocity of Money
+\emph default
+ - GDP divided by Money Zero Maturity (M2M).
+ It can be seen as a rate of return.
+ In 1980s, the velocity of money was 3.5, so every dollar created 3.5 dollars
+ in GDP.
+ It's highly correlated with 10-year treasury rate.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Gross Domestic Product (GDP)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Total monetary or market value of all the finished goods and services produced
+ within a country's borders in a specific time period.
+ As a broad measure of overall domestic production, it functions as a comprehens
+ive scorecard of the country’s economic health.
+\end_layout
+
+\begin_layout Itemize
+The key yardstick of a country's economic performance.
+\end_layout
+
+\begin_layout Itemize
+A country's GDP is quite simply the measure of its entire income.
+ It is the most widely recognized measure of a country's economic strength
+ and performance.
+\end_layout
+
+\begin_layout Itemize
+What does GDP include? Total income of the country and its total spending.
+ GDP measures both goods and services, including invisible items (such as
+ housing services - the amount people pay to live in their homes, whether
+ they rent or buy)
+\end_layout
+
+\begin_layout Itemize
+What is not included? Illegal goods.
+ Also, GDP measures the value of anything produced within a certain country.
+ It a US company owns a factory in Mexico, that factory's output contributes
+ to Mexico's GDP.
+ 
+\end_layout
+
+\begin_layout Itemize
+Also, there is Gross National Product (GNP) which is quite similar to GDP.
+ It measures the economic output of a country's citizens, whether they are
+ based at home or abroad.
+ So it for example includes income earned by US citizens at home and abroad,
+ but excludes what citizens and companies from other countries earn in the
+ US.
+\end_layout
+
+\begin_layout Itemize
+If a GDP shrinks in 2 successive quarters, then the economy is technically
+ in recession.
+ The worst recessions of all are generally called depressions.
+ There is no broadly accepted definition for a expression, although many
+ economists stipulate that an economy must shrink by 10% from peak to trough.
+ 
+\end_layout
+
+\begin_layout Itemize
+It can be calculated monthly, quarterly, or annually.
+ There are 2 approaches:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Income approach - sum everyone's earnings, or 
+\end_layout
+
+\begin_layout Enumerate
+Expenditure method - add up all spending.
+ 
+\end_layout
+
+\begin_layout Standard
+The second method is more popular and can be calculated as: GDP = C + I
+ + G + (X-M)
+\end_layout
+
+\begin_layout Standard
+where C - consumption (consumer's spending, and this can be 2/3 of all GDP),
+ 
+\end_layout
+
+\begin_layout Standard
+I is investments (business spending), 
+\end_layout
+
+\begin_layout Standard
+G is government spending,
+\end_layout
+
+\begin_layout Standard
+X is export, and 
+\end_layout
+
+\begin_layout Standard
+M is import
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Micro and Macro
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Micro for business, macro for countries
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Microeconomics
+\emph default
+ - study how households and businesses make their decisions and interact
+ with markets.
+ It is more heavily based on statistics, with its practitioners often creating
+ complex computer models to demonstrate how supply and demand will react
+ to a particular change.
+\end_layout
+
+\begin_layout Itemize
+Macroeconomics - study how economies as a whole function.
+ A macroeconomist is more interested in questions about why a country's
+ growth rate is so strong but inflation low.
+\end_layout
+
+\begin_layout Itemize
+Those 2 are interrelated, but what makes them different subjects is that
+ micro focuses on one market in isolation whereas macro looks at all markets
+ collectively.
+\end_layout
+
+\begin_layout Itemize
+Positive economics is the empirical study of what is happening in the world.
+ For example, why some countries are getting richer, why certain families
+ are getting poorer, and what is likely to happen to them in the future.
+\end_layout
+
+\begin_layout Itemize
+Normative economics, engages with what is happening in the world and attempts
+ to sketch out how the economy could be improved.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Inflation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Keep prices rising slowly.
+\end_layout
+
+\begin_layout Itemize
+It is expressed on an annual basis usually.
+\end_layout
+
+\begin_layout Itemize
+There exist different measures of inflation: CPI (the most common measure),
+ RPI, PPI, Gross domestic product deflator, or others 
+\end_layout
+
+\begin_layout Itemize
+When an economy is growing fast, employees receive generous pay increases,
+ meaning they will spend more on goods and services.
+ Prices will tend to rise in response to this increase in demand, whether
+ it be for houses or haircuts.
+ Likewise, if the economy slows, demand will follow suit and prices will
+ come down, or will at least rise at a slower rate.
+ 
+\end_layout
+
+\begin_layout Itemize
+The price of goods is affected not just by demand but by the amount of money
+ people have at their disposal.
+ If the money supply grows (either because more money is printed or because
+ banks are lending out more), there will be more money chasing the same
+ volume of goods, which will push the price up.
+ The debate over how precisely to influence this process was one of the
+ major intellectual battles of the 20th century, between monetarists and
+ Keynesians.
+\end_layout
+
+\begin_layout Itemize
+The question is, whether prices always have to rise - can't they just stay
+ still? Inflation theoretically is not necessary for economies to function,
+ politicians have tended particularly in the past century or so, to encourage
+ a little bit of inflation in their economies, for number of reasons.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Inflation encourages people to spend rather than save, because it slowly
+ erodes the value of the money in one's pocket.
+ Certain degree of this forward momentum is essential in modern capitalist
+ economies, since in the long run it encourages companies to invest in new
+ technologies.
+ Also, inflation erodes debt, so indebted governments have in the past all
+ too often allowed it to bubble even higher, effectively reducing the amount
+ of money they owe.
+ Similarly, inflation levels are usually analogous to interest rates, and
+ people are accustomed to positive rather than negative interest rates.
+ Finally, people are inherently used to rising wages.
+ It's human nature - people strive to improve themselves, and often find
+ it difficult to stomach a pay freeze each year, even if prices in the shops
+ are more or less static.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Deflation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Falling prices can cripple can economy.
+\end_layout
+
+\begin_layout Itemize
+Prices of goods and services are falling, usually on a year-to-year basis.
+ During heavy deflation, such as The Great Depression, banks collapsed under
+ the weight of their debts, house prices fell, companies shut down and millions
+ of people lost their jobs.
+ As people realize that things will be cheaper in a few months, they gather
+ cash instead of spending it.
+ It is also a disaster for companies, that sell goods and services for lower
+ prices but still facing the same wage costs.
+ Companies have to fire more workers.
+\end_layout
+
+\begin_layout Itemize
+Many of those symptoms are very similar to those experienced in a period
+ of high inflation.
+\end_layout
+
+\begin_layout Itemize
+Deflation inflates the cost of debt and other commitments.
+\end_layout
+
+\begin_layout Itemize
+The economic explanation for deflation is that the amount of money in the
+ system falls or the supply of goods and services increases.
+ So, whereas inflation involves too much money chasing too few goods, the
+ opposite is true in deflation.
+\end_layout
+
+\begin_layout Itemize
+Typically, the main tool central banks use to control inflation is interest
+ rates.
+ However, they cannot reduce these below zero, so when prices fall there
+ is little more they can do except resort to more unconventional tools.
+ Central banks start injecting more cash into the economy - for instance,
+ by directly buying assets such as bonds or shares, or by increasing the
+ amount of cash commercial banks have in their vaults - all those are collective
+ly known as quantitative easing.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Quantitative easing
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Methods central banks employ when interest rates no longer work.
+ It attempts to influence the quantity rather than the price of money in
+ the economy.
+ So this is kind of "printing money & buying financial assets", and it can
+ go into asset prices, so it isn't that effective for stimulating the real
+ economy, so the money doesn't go to individuals and businesses, but into
+ wealthy individuals who held a high number of assets.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Currency markets
+\emph default
+ - also known as 
+\emph on
+Forex
+\emph default
+ (short for foreign exchange) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is where investors buy and sell currencies.
+\end_layout
+
+\begin_layout Itemize
+Every year trillions of dollars` (or euros` or pounds`) worth of currency
+ is bought and sold by investors.
+\end_layout
+
+\begin_layout Itemize
+There are many reasons why a currency rises and falls, but two in particular
+ affects its behavior.
+ First, a currency tends to rise and fall in tandem with perceptions of
+ the economic health of the country with which it's associated.
+ Second, currency investors tend to chase the currency with the highest
+ yield.
+ If a country has high interest rates it means the government bonds and
+ other investment opportunities it issues will offer a greater return than
+ in a country with very low interest rates.
+ Investors from around the world buy them up, and as a result of this extra
+ demand for the country's investments, the value of the currency increases.
+\end_layout
+
+\begin_layout Itemize
+Floating or pegged? Since 1970s almost every country in the Western world
+ has had a floating currency, the value of which ebbs and flows against
+ other currencies as determined by the markets.
+ But there are some exceptions, with some countries fixing their currencies
+ against either another currency or a group of them.
+ China - whose government carefully controls the value of the renminbi against
+ the dollar by buying dollar-denominated assets as necessary.
+ Other nations occasionally intervene by doing the same if they believe
+ their currency is over- or undervalued.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Bond markets
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bonds are the basis of government financing.
+\end_layout
+
+\begin_layout Itemize
+The international bond markets where companies and governments raise money
+ are far less renowned and understood than their equity counterpart - the
+ stock market - yet they are in many respects far more important and influential.
+ By determining whether a country can cheaply raise cash or not, the bond
+ markets have helped determine the course of wars, revolutions and political
+ struggles, and have had far-reaching implications in almost every corner
+ of life for centuries.
+ Even in times of peace, the ability of a government to raise money is of
+ massive importance to a country's citizens - the higher the interest rates
+ it has to pay, the higher are the borrowing costs all the way across the
+ economy.
+\end_layout
+
+\begin_layout Itemize
+Sovereign bonds - these are issued by a national government.
+\end_layout
+
+\begin_layout Itemize
+Bonds are regarded as among the safest investment available.
+ Credit-ratings agencies, such as Standard & Poor's or Moody's and Fitch,
+ exist to rate government and corporate bonds based on the likelihood of
+ default.
+ These ratings range from AAA, the best quality, to C.
+ Typically, bonds rated at BAA or above are regarded as 
+\begin_inset Quotes eld
+\end_inset
+
+investment grade
+\begin_inset Quotes erd
+\end_inset
+
+ and those below are called 
+\begin_inset Quotes eld
+\end_inset
+
+junk bonds
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Junk bonds` interest rates are usually far higher.
+\end_layout
+
+\begin_layout Itemize
+Since governments throughout the worlds typically have to borrow in order
+ to keep their budgets balanced, they are regularly issuing new bonds.
+ In the US, the most common types of government bonds are known are Treasury
+ bills, Treasury notes, and Treasury bonds.
+ In the UK, they are known are gilt-edged securities, or gilts.
+\end_layout
+
+\begin_layout Itemize
+Bonds originated in medieval Italy, where the city states, often at war
+ with one another, would force their wealthier citizens to lend them certain
+ amounts in exchange for regular interest payments.
+ Modern investors are not forced to buy bonds, in the UK and US the bulk
+ of government debt is owned by the citizens, largely through their pension
+ funds.
+ Pension funds are obliged to put a major chunk of their cash into government
+ debt, since it is regarded as the least risky investment available.
+ 
+\end_layout
+
+\begin_layout Itemize
+The yield curve - it simply measures the interest rates on a variety of
+ different government bonds over time.
+ Occasionally the yield curve becomes inverted, meaning that interest rates
+ on bonds which expire soonest are higher than those expiring in future
+ years.
+ This is fairly reliable sign that the economy is heading for recession,
+ since it implies interests rates and inflation will fall in the coming
+ years - two phenomena usually associated with an economic slump.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Banks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They connect borrowers with lenders.
+ They give money from savers (savings, say 1%) to spenders (loans, say 3%,
+ so the bank keeps 2%).
+\end_layout
+
+\begin_layout Itemize
+Mark Twain - 
+\emph on
+"A banker is a fellow who lends you his umbrella when the sun is shining
+ and wants it back the minute it begins to rain."
+\end_layout
+
+\begin_layout Itemize
+How they make money?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+They make a profit by charging more interest on the money they lend out
+ than the money they have as deposits.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Second banks offer customers other financial advice and services, often
+ for a fee.
+ For example, insurance or investment advice.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Key to modern finance is a system called fractional reserve banking.
+ Central banks typically control the amount of reserves banks are obliged
+ to hold - in the US, for example, the reserve requirement is usually 10%
+ - bank with 100$ deposit can lend out $90 worth of it.
+ This makes economic sense.
+ It is far more efficient for banks to use the money deposited with them,
+ maximizing its opportunity cost, rather than to leave it lying idle.
+ However, there are important side-effects for the wider economy.
+ By lending out this extra cash, banks will be adding to the money supply,
+ and will push up inflation.
+\end_layout
+
+\begin_layout Itemize
+Bank runs - if a large number of depositors may attempt to withdraw their
+ money.
+\end_layout
+
+\begin_layout Itemize
+Governments set up deposit insurance schemes, in the US, it is called Federal
+ Deposit Insurance Corporation (FDIC), and in the UK the Financial Services
+ Compensation Scheme (FSCS) - both protect deposits at banks to a certain
+ amount (as of 2008, $250k and £50k respectively) This was a necessary to
+ do, because if a bank collapsed, the savers faced losing all their money
+ - as it was during the Great Depression.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Central Banks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Steer economies away from booms and busts.
+\end_layout
+
+\begin_layout Itemize
+The big four: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Federal Reserve (US) 
+\end_layout
+
+\begin_layout Itemize
+The European Central Bank (Europe)
+\end_layout
+
+\begin_layout Itemize
+Bank of Japan 
+\end_layout
+
+\begin_layout Itemize
+Bank of England
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The main function of a central bank is to drive the economy by setting interest
+ rates.
+ But it is not an easy task, because most of the statistics upon which central
+ banks base their decisions are, by definition, out of date by the time
+ they are published.
+ For example inflation figures refer to the previous month.
+ It takes time for the actual effects of certain changes in the economy
+ to manifest themselves statistically.
+ Central banks are concerned with keeping inflation under control.
+\end_layout
+
+\begin_layout Itemize
+Lower interest rates generally mean a faster-growing economy and potentially
+ higher inflation as a consequences, since savings is less lucrative, and
+ borrowing and spending are more attractive options.
+ The situation is reversed with higher rates.
+\end_layout
+
+\begin_layout Itemize
+In general, most central banks set a base rate (In the US, this is called
+ Fed Funds Rate, and in the UK, Bank Rate) on which other private banks
+ base their own interest rates.
+ In order to set this rate, policymakers in central banks have various levers
+ to pull.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+First, they announce that they are changing their rate, and private banks
+ usually follow and change their own mortgage, lending and savings rates
+ accordingly.
+\end_layout
+
+\begin_layout Itemize
+Second,they use open-market operations, which means buying and selling governmen
+t bonds in order to influence the interest rates accordingly.
+\end_layout
+
+\begin_layout Itemize
+Third, they capitalize on the fact that all commercial banks are obliged
+ to store a slice of their own funds in the central bank's vaults (known
+ as reserves).
+ Central banks can change the rate of interest they pay out on these reserves,
+ or can order banks to hold more or less reserves, influencing how much
+ they want to lend out to their customers, which in turn influences the
+ interest rates.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Almost every country with its own currency and a government able to impose
+ taxes has a central bank.
+ Most central banks operate independently of politics, though their leading
+ executives are usually appointed by politicians.
+ The banks tend to make an interest-rate decision every month or couple
+ of months, and have hundreds of employees permanently at work monitoring
+ actual rates of borrowing in the market to ensure it's actually working.
+\end_layout
+
+\begin_layout Itemize
+ALSO! Inflation isn't the only thing affected by interest rates.
+ Higher interest rates often strengthen a country's currency as investors
+ from around the world channel their funds into buying it.
+ The downside of this is that a stronger currency makes a country's exports
+ more expensive for overseas customers.
+\end_layout
+
+\begin_layout Itemize
+And also, the role of central banks is not just to control interest rates
+ but also, more broadly, to ensure that the underlying financial system
+ of an economy is in good health.
+ As such, they also act as a lender of last resort in times of economic
+ turbulence.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Financial Markets 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Any place, where buyers and sellers can trade financial assets.
+\end_layout
+
+\begin_layout Itemize
+The primary role of them is to bring together lenders (savers or investors)
+ and borrowers (individuals, firms, government).
+ It is done by intermediaries, such as commercial banks, investment banks,
+ pension funds, hedge funds, mutual funds, etc.
+\end_layout
+
+\begin_layout Itemize
+Types:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Money Market
+\emph default
+ - bonds, inter-bank lending, IOU <= 1 year
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Capital Markets 
+\emph default
+- primary and secondary, bonds (debt) and shares (equity), IOU > 1 year
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Currency Markets
+\emph default
+ - spot and futures
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Money markets 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+London Interbank Offered Rate (Libor) - is administered by the British Bankers
+ Association sits at the hub of one of the key sectors of the world economy
+ - money markets.
+ It is here that companies borrow and lend money in the short term.
+ These markets are the central nervous system of the world's financial system,
+ and when they fail, it can send the entire economy into shock.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In normal times, Libor simply reflects the rate at which banks are willing
+ to lend to each other in the short term.
+ This lending - often referred to as inter-bank lending - is unsecured -
+ it is rather like an overdraft or credit card as opposed to a mortgage,
+ and is essential for banks to function.
+\end_layout
+
+\begin_layout Itemize
+Libor is a far better indication of the real cost of borrowing in the broader
+ economy.
+ The Libor rate is only an indicative rate, showing what banks would in
+ theory be willing to charge each other.
+\end_layout
+
+\begin_layout Itemize
+Over time, banks have become increasingly sophisticated in how they create
+ the securities (investment instruments such as bonds, options, shares,
+ etc).
+ Not only have they bundled mortgages together into packages.
+ They have also sliced and diced them into instruments known as collateralized
+ debt obligations (CDOs), and even more complex versions such as CDOs2 and
+ CDOs3.
+\end_layout
+
+\begin_layout Itemize
+SOFR - secured, LIBOR - insecure (not backed by any collateral), so SOFR
+ is almost always going to be lower than LIBOR.
+ TODO SOFR
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Money Market Fund 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bank's fund consisting of CDs, Commercial Papers, U.S.
+ Treasuries, Repurchase Agreements, MBS, Bankers` Acceptance, etc.
+ Investors would buy shares in such fund and would receive interest paid
+ in form of further shares (like DRIP).
+ 
+\end_layout
+
+\begin_layout Itemize
+It's very similar to savings account, it's supposed to be super-safe and
+ it should have higher interest rate.
+ The important thing is that money market fund can invest almost in anything
+ (in comparison to savings account) - Shadow Banking - the term for the
+ collection of non-bank financial intermediaries that provide services similar
+ to traditional commercial banks but outside normal banking regulations.
+\end_layout
+
+\begin_layout Itemize
+Tons of money was invested into these funds.
+ 
+\end_layout
+
+\begin_layout Itemize
+Commercial paper market - place for really big safe companies to raise short-ter
+m (couple of days/months) debt.
+ It goes to money market funds.
+ So people are basically buying this debt.
+ Commercial paper is only issued by firms with high-quality debt ratings.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+This big companies then can bu government bonds and then if they run out
+ of cash and need some more money quickly, they can enter so called Repurchase
+ Agreement (Repo).
+ It is an agreement where these big companies decide to sell some of these
+ government bonds to big money market fund on the promise that the company
+ will buy back these bonds in short period of time for slightly higher price.
+ Usually just a few days.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+People trust MMF like they trust savings account.
+ So money market funds invest in mortgages, but also provides a lot of money
+ to large companies through the commercial paper and 
+\begin_inset Quotes eld
+\end_inset
+
+Repo
+\begin_inset Quotes erd
+\end_inset
+
+ markets.
+\end_layout
+
+\begin_layout Itemize
+In Financial crisis in 2008, hundreds of billions of dollars were invested
+ in MMF, and a lot of money in MMFs was invested in MBSs, and the rest was
+ in financing the ongoing operations in some of the largest companies.
+ But a lot of MBSs were worthless.
+ Banks sold MBSs to The reserve primary fund, and this led to investors
+ to rush and pull the money out of the reserve primary fund, and within
+ 2 days, over $40B had been withdrawn from the fund.
+ This was not an isolated incident, this was happening across the market.
+ So people were withdrawing money like crazy and eventually the MMFs had
+ to sell all of the assets - meaning that they were dumping these assets
+ into the market, contributing to the selling pressure and making the situation
+ worse.
+ And all of these big companies relying on the MMFs to provide short-term
+ funding suddenly had nowhere left to turn.
+ They couldn't pay their employees, suppliers, but also they couldn't roll
+ over their outstanding debt.
+ In this way, the global financial crisis touched so many industries.
+ The only way to start regain the trust in MMFs was to impose new regulations
+ so that they wouldn't invest in these risky assets.
+ But this would destroy the point of these MMFs in the first place.
+ These days, MMFs in the U.S.
+ are separated into two types - Treasury funds (only invest in government
+ debt) and Prime funds (still invest in wild range of products, such as
+ repurchase agreements, commercial papers, CDs).
+\end_layout
+
+\begin_layout Itemize
+Note - a lot of money is now (2020) in Bond ETFs, instead of MMFs.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Government deficits
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Government will borrow more and more money each year.
+ Big institutions such as International Monetary Fund (IMF) or Organization
+ for Economic Cooperation and Development (OECD) warn the US and UK about
+ the parlous state of their finances.
+ Governments are addicted to debt.
+\end_layout
+
+\begin_layout Itemize
+US administration recorded a budget deficit in lots of years - it has received
+ less in tax revenues than it has spent, and has had to borrow to make up
+ the difference.
+ US Federal Budget for 2008 (but this breakdown is similar in most Western
+ economies):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+21% on Social Security (payments to elderly mostly)
+\end_layout
+
+\begin_layout Itemize
+21% on National defense (salaries and equipment - aircraft, guns, etc)
+\end_layout
+
+\begin_layout Itemize
+13% on Income security (payments to poor families)
+\end_layout
+
+\begin_layout Itemize
+12% on Medicare
+\end_layout
+
+\begin_layout Itemize
+10% on Health
+\end_layout
+
+\begin_layout Itemize
+9% Net interest (payments on the debt the government has taken out in previous
+ years)
+\end_layout
+
+\begin_layout Itemize
+3% on Education, training, employment, and social services
+\end_layout
+
+\begin_layout Itemize
+3% on Transportation
+\end_layout
+
+\begin_layout Itemize
+3% on Veterans benefits and services 
+\end_layout
+
+\begin_layout Itemize
+5% on Others 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Higher borrowing tends to weaken that country's currency.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Inequality 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The wealth gap will destabilize nations.
+\end_layout
+
+\begin_layout Itemize
+(Milton Friedman) 
+\emph on
+"A society that puts equality before freedom will get neither.
+ A society that puts freedom before equality will get a high degree of both."
+\end_layout
+
+\begin_layout Itemize
+Gini coefficient - the wealth gaps calculation which uses the income between
+ the top earners and those at the bottom of the pile.
+\end_layout
+
+\begin_layout Itemize
+Studies show that in countries and areas where income inequality is small,
+ people are most likely to trust each other, which makes sense, given that
+ people there will generally have less reason to envy others.
+ Violent and fatal crimes are also far less frequent.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+US Treasury vs Federal Reserve (
+\begin_inset CommandInset href
+LatexCommand href
+name "ref"
+target "https://political-economy.com/treasury-vs-federal-reserve/"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The U.S.
+ Treasury mints the coins, it is a department of the U.S.
+ government.
+ It collects revenue, oversees the debt based on laws and the budget.
+ It does not create the budget and debt, but the President and Congress
+ do this.
+\end_layout
+
+\begin_layout Itemize
+Federal Reserve Bank controls the currency and influences the purchasing
+ power in the economy through the use of the interest rate policy tools.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The goal of the Federal Reserve is to “to promote effectively the goals
+ of maximum employment, stable prices, and moderate long-term interest rates".
+ This state goal of managing the free market opened the door to questionable
+ new role money in the economy.
+ No longer was it to be a medium of exchange but a policy tool to paradoxically
+ engineer capitalism.
+ The Fed is a semi-autonomous organization.
+ The Fed is the central bank for all USA banks and a lender of last resort.
+ The Fed expands and contracts the money supply using the more broadly defined
+ as M2 or even M3 definitions of money.
+ 
+\end_layout
+
+\begin_layout Itemize
+The central bank can, in a roundabout way, create money out of thin air.
+ This can and does cause inflation.
+ It exacerbates the business cycle and causes pain and suffering in the
+ economy.
+\end_layout
+
+\begin_layout Itemize
+The Federal Reserve bank has power.
+ It controls the interest rates.
+ If you control interest rates, then you control the world.
+ In one day, you could push interest rates to 50% or 0%.
+ This means it has much power.
+ Of course, it would not do that, but it does not matter.
+ An incorrect choice of interest rate policy, which is almost always the
+ case, affects the world on and large-scale internationally and on a small-scale.
+\end_layout
+
+\begin_layout Itemize
+It could be argued that the Federal Reserve caused WWII.
+ I am not joking.
+ An over-expansion of credit in the 1920s created the great depression,
+ which leads to the rise of opportunist dictators.
+ How was the Federal Reserve not responsible?
+\end_layout
+
+\begin_layout Itemize
+The Fed was created in 1913 to provide liquidity to prevent financial panics,
+ such as in 1907, which could turn into a real sector crisis.
+ However, since the economy is complex and can not be micromanaged by turning
+ dials and nob, this is why the Fed consistently gets it wrong.
+ For example, the great depression, the Internet Stock bubble, the housing
+ bubble, to mention a few.
+ From 1836-1913 the USA had no central bank and prospered, including the
+ American “Gilded Age” and free bank era.
+\end_layout
+
+\begin_layout Itemize
+When people say the Federal Reserve "prints money," they mean it's adding
+ credit to its member banks' deposits (
+\begin_inset CommandInset href
+LatexCommand href
+name "video"
+target "https://www.youtube.com/watch?v=7aQUKNIPUIs&list=WL&index=1"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+A Federal monopoly of money (either the Treasury or the Federal Reserve)
+ gives Washington a blank check to electronically expand the money supply,
+ which is basically printing money.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The Federal Reserve (the Fed) System 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Is spread all around the USA, in 12 branches, plus the board, which is in
+ Washington, D.C.
+\end_layout
+
+\begin_layout Itemize
+Independent government authority that manages the macroeconomic objectives
+ (growth, employment, inflation, consumption) of a country or group of countries
+ by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conducting monetary policy
+\end_layout
+
+\begin_layout Itemize
+Regulating the bank sector
+\end_layout
+
+\begin_layout Itemize
+Acting as 
+\begin_inset Quotes eld
+\end_inset
+
+lender of last resort
+\begin_inset Quotes erd
+\end_inset
+
+ to the banks
+\end_layout
+
+\begin_layout Itemize
+Coordinating and cooperating with other Central Banks
+\end_layout
+
+\begin_layout Itemize
+Providing research and economic indicators
+\end_layout
+
+\begin_layout Itemize
+Managing the country's reserves
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Sovereign Wealth Funds (SWF)
+\emph default
+ is a state-owned investment fund or entity that is commonly established
+ from foreign currency reserves.
+ SWFs were created to satisfy investments in non-traditional assets:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hedge Funds
+\end_layout
+
+\begin_layout Itemize
+Private Equities
+\end_layout
+
+\begin_layout Itemize
+Infrastructure
+\end_layout
+
+\begin_layout Itemize
+Direct Investments
+\end_layout
+
+\begin_layout Standard
+Central Banks are 100% government owned.
+ They have regulatory and monetary policy responsibilities.
+ SWFs are also 100% government owned, but they do not have regulatory and
+ monetary policy responsibilities.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Federal Open Market Committee (FOMC)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+12 voting members - 7 members of the Board of Governors of the Federal Reserve
+ System, The President of the Federal Reserve Board of New York, and 4 of
+ the remaining 11 are Reserve Bank presidents
+\end_layout
+
+\begin_layout Itemize
+Meets 8 times in a year
+\end_layout
+
+\begin_layout Itemize
+Decides the Committee's target for the Fed Funds rate
+\end_layout
+
+\begin_layout Itemize
+Voting method: majority rules
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Passage of Time / Lindy Effect TODO
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,2399 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Statistics and Probability
+\end_layout
+
+\begin_layout Section
+General
+\end_layout
+
+\begin_layout Itemize
+A probability is a number that represents the likelihood of an uncertain
+ event (and is between 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+, inclusive).
+\end_layout
+
+\begin_layout Itemize
+In statistics “
+\series bold
+population
+\series default
+” refers to the total set of observations that can be made.
+ For example, if we want to calculate average height of humans present on
+ the earth, “population” will be the “total number of people actually present
+ on the Earth”.
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+sample
+\series default
+, on the other hand, is a set of data collected/selected from a pre-defined
+ procedure.
+ For our example above, it will be a small group of people selected randomly
+ from some parts of the Earth.
+\end_layout
+
+\begin_layout Itemize
+When “population” is infinitely large it is improbable to validate any hypothesi
+s by calculating the mean value or test parameters on the entire population.
+ In such cases, a population is assumed to be of some type of a 
+\series bold
+distribution
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Types of matrix / vector multiplication
+\series default
+ are below.
+ We got basically:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+matrix multiplication (dot / inner product)
+\end_layout
+
+\begin_layout Itemize
+outer product
+\end_layout
+
+\begin_layout Itemize
+element-wise multiplication
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../machine_learning/fig/types_of_matrix_multiplication.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Types of vector and matrix multiplication by examples.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Variance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is used to characterize the variability or spread of data points in a
+ dataset.
+\end_layout
+
+\begin_layout Itemize
+It is a statistic that is used to measure deviation in a probability distributio
+n.
+ Deviation is the tendency of outcomes to differ from the expected value.
+\end_layout
+
+\begin_layout Itemize
+So we can describe the concentration of data points around the mean value
+ (=expected value) with variance.
+\end_layout
+
+\begin_layout Itemize
+If we would multiply each sample in a dataset by 2, its variance would be
+ 4 times bigger.
+ If we would just increment each value, variance would be the same.
+\end_layout
+
+\begin_layout Itemize
+Variance can be calculated as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+σ^{2}=Var[X]=E[(X\text{−}μ)^{2}]=\sum_{x}\text{​}(x-μ)^{2}p(x)\label{eq:variance}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $X$
+\end_inset
+
+ is a numerical discrete random variable with distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ and expected value 
+\begin_inset Formula $\mu=E(X)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Note that from the definition, the variance is always non-negative, and
+ if the variance is equal to zero, then the random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ takes a single constant value, which is its expected value 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Standard deviation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The standard deviation of a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+, denoted
+\begin_inset Formula $\sigma$
+\end_inset
+
+, is the square root of the variance:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+σ(X)=\sqrt{Var[X]}\text{​}\label{eq:std_dev}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Covariance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The covariance generalizes the concept of variance to multiple random variables.
+\end_layout
+
+\begin_layout Itemize
+Instead of measuring the fluctuation of a single random variable, the covariance
+ measures the fluctuation of two variables with each other.
+\end_layout
+
+\begin_layout Itemize
+For example, imagine linear decreasing function (a simple line).
+ So if the 
+\begin_inset Formula $x$
+\end_inset
+
+ value of a data point increases, then on average, the 
+\begin_inset Formula $y$
+\end_inset
+
+ value decreases.
+ So that 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are negatively correlated.
+ This correlation can be captured by 
+\bar under
+extending the notion of the variance to what is called the covariance of
+ the data.
+\end_layout
+
+\begin_layout Itemize
+We can construct 
+\series bold
+covariance matrix
+\series default
+, in which variances are on the diagonal and cross-covariances on the off-diagon
+al.
+\end_layout
+
+\begin_layout Itemize
+We can calculate covariance of random variables 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ as follows:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/covariance}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Cov(X,Y)=E[(X-E[X])(Y-E[Y])]\label{eq:covariance}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When dealing with a large number of random variables 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ it makes sense to consider a 
+\series bold
+covariance matrix
+\series default
+ whose 
+\begin_inset Formula $m,n$
+\end_inset
+
+-th entry is 
+\begin_inset Formula $Cov(X_{m},X_{n})$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $Cov(X,Y)=Cov(Y,X)$
+\end_inset
+
+, the covariance matrix is always symmetric.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Expected value
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/expected-value/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is the theoretical mean value of a numerical experiment over many repetitions
+ of the experiment.
+\end_layout
+
+\begin_layout Itemize
+So it is a measure of central tendency; a value for which the results will
+ tend to.
+\end_layout
+
+\begin_layout Itemize
+When a probability distribution is normal, a plurality of the outcomes will
+ be close to the expected value.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Expected value of discrete random variable
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a 
+\bar under
+discrete random variable
+\bar default
+.
+ Then the expected value of 
+\begin_inset Formula $X$
+\end_inset
+
+, denoted as 
+\begin_inset Formula $E[X]$
+\end_inset
+
+ or 
+\begin_inset Formula $\mu$
+\end_inset
+
+, is:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E[X]=\mu=\sum_{x}xP(X=x)\label{eq:expected_value_discrete}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An example: A stack of cards contains one card labeled with 1, two cards
+ labeled with 2, three cards labeled with 3, and four cards labeled with
+ 4.
+ If the stack is shuffled and a card is drawn, what is the expected value
+ of the card drawn?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Solution: So, there are 
+\begin_inset Formula $1+2+3+4=10$
+\end_inset
+
+ cards.
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be our random variable that represents the value of the card drawn:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=1)=\frac{1}{10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=2)=\frac{2}{10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=3)=\frac{3}{10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(X=4)=\frac{4}{10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And this gives us expected value 
+\begin_inset Formula $E[X]=1*\frac{1}{10}+2*\frac{2}{10}+3*\frac{3}{10}+4*\frac{4}{10}=\frac{30}{10}=3$
+\end_inset
+
+.
+ So the expected value of the card drawn is 3.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Expected value of continuous random variable
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a 
+\bar under
+continuous random variable
+\bar default
+ and 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ be a probability density function.
+ Then the expected value of 
+\begin_inset Formula $X$
+\end_inset
+
+, denoted as 
+\begin_inset Formula $E[X]$
+\end_inset
+
+ or 
+\begin_inset Formula $\mu$
+\end_inset
+
+, is:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E[X]=\int_{x}xf(x)dx\label{eq:expected_value_continuous}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An example: Given the probability density function 
+\begin_inset Formula $f(x)=3x^{2}$
+\end_inset
+
+ defined on the interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, what is 
+\begin_inset Formula $E[X]$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+By the definition above, 
+\begin_inset Formula $E[X]=\int_{0}^{1}x3x^{2}dx=\int_{0}^{1}3x^{3}dx=\left[\frac{3}{4}x^{4}\right]_{0}^{1}=\frac{3}{4}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Section
+Central Limit Theorem
+\end_layout
+
+\begin_layout Itemize
+CLT states that given a sufficiently large sample size from a population
+ with a finite level of variance, the mean of all samples from the same
+ population will be approximately equal to the mean of the population.
+\end_layout
+
+\begin_layout Itemize
+No matter what the shape of the original (parent) distribution, the sampling
+ distribution of the mean approaches a normal distribution.
+ A normal distribution is approached very quickly as 
+\begin_inset Formula $n$
+\end_inset
+
+ increases, and note that 
+\begin_inset Formula $n$
+\end_inset
+
+ is the
+\series bold
+ sample size for each mean
+\series default
+ and not the number of samples.
+ In a sampling distribution of the mean the number of samples is assumed
+ to be infinite.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../machine_learning/fig/central_limit_theorem.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Central Limit Theorem explanation via example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So the probability distribution of the average of 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\bar under
+independent, identically distributed
+\bar default
+ (iid) random variables converges to the normal distribution for large 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/normal-distribution/}}
+\end_layout
+
+\end_inset
+
+ In fact, 
+\begin_inset Formula $n=30$
+\end_inset
+
+ is typically enough to observe convergence.
+\end_layout
+
+\begin_layout Itemize
+The somewhat surprising strength of the theorem is that (under certain natural
+ conditions) there is essentially no assumption on the probability distribution
+ of the variables themselves; the theorem remains true no matter what the
+ individual probability distributions are.
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Confidence Interval
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Confidence-Interval"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In statistics, a confidence interval (CI) is a type of interval estimate,
+ computed from the statistics of the observed data, that might contain the
+ true value of an unknown population parameter.
+ The interval has an associated confidence level, that quantifies the level
+ of confidence that the deterministic parameter is captured by the interval.
+\end_layout
+
+\begin_layout Itemize
+Confidence level is the probability that the value of a parameter falls
+ within a specified range of values.
+\end_layout
+
+\begin_layout Itemize
+More strictly speaking, the confidence level represents the frequency (i.e.
+ the proportion) of possible confidence intervals that contain the true
+ value of the unknown population parameter.
+\end_layout
+
+\begin_layout Itemize
+In other words, if confidence intervals are constructed using a given confidence
+ level from an infinite number of independent sample statistics, the proportion
+ of those intervals that contain the true value of the parameter will be
+ equal to the confidence level.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/a-very-friendly-introduction-to-confidence-int
+ervals-9add126e714}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Law of Large Numbers
+\end_layout
+
+\begin_layout Itemize
+In probability theory, the law of large numbers (LLN) is a theorem that
+ describes the result of performing the same experiment a large number of
+ times.
+ According to the law, the average of the results obtained from a large
+ number of trials should be close to the expected value, and will tend to
+ become closer as more trials are performed.
+\end_layout
+
+\begin_layout Itemize
+The LLN is important because it guarantees stable long-term results for
+ the averages of some random events.
+\end_layout
+
+\begin_layout Section
+Statistical Significance
+\end_layout
+
+\begin_layout Itemize
+An observed event is considered to be statistically significant when it
+ is highly unlikely that the event happened by random chance.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/statistical-significance/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+More specifically, an observed event is statistically significant when its
+ 
+\emph on
+p-value
+\emph default
+ falls below a certain threshold, called the level of significance.
+ Passing this threshold and achieving statistical significance often marks
+ a decision or conclusion to be drawn from the results of a study.
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+p-value 
+\series default
+is the probability that an event will happen that is as extreme as or more
+ extreme than an observed event.
+ This probability also comes with the assumption that extreme events occur
+ with the same relative frequency as they do under normal circumstances.
+ Put more simply, a p-value can be considered to be a measurement of how
+ unusual an observed event is.
+ The lower the p-value, the more unusual the event is.
+ So p-values come from running experiments and comparing the results to
+ what one would expect under normal circumstances.
+\end_layout
+
+\begin_layout Itemize
+A challenge in interpreting data with statistics is that a result can always
+ be attributed to random chance, even a result with an extremely low p-value.
+ Applying a
+\series bold
+ level of significance 
+\series default
+is a way to set a standard for when to stop attributing results to chance.
+\end_layout
+
+\begin_layout Itemize
+A level of significance, denoted by 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, is a numerical threshold that is compared to a p-value.
+ When the p-value of an observed event passes below the level of significance,
+ the observed event is considered to be statistically significant.
+ Statistical significance often leads to a decision being made or a conclusion
+ being drawn from the results of an experiment.
+ The most commonly chosen level of significance is 
+\begin_inset Formula $\alpha=0.05$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A smaller level of significance:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+will ensure a more conservative interpretation of the results
+\end_layout
+
+\begin_layout Itemize
+is chosen when an incorrect conclusion can be harmful
+\end_layout
+
+\begin_layout Itemize
+often requires much more collection of data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+p-values and statistical significance are used in hypothesis tests.
+ 
+\series default
+There are a multitude of different types of hypothesis tests, each with
+ a different way to compute the p-value.
+\end_layout
+
+\begin_layout Section
+Statistical Tests
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A
+\series default
+ 
+\series bold
+null hypothesis
+\series default
+, proposes that no significant difference exists in a set of given observations.
+ You got null and alternative hypothesis (negation of null hypothesis).
+ For rejecting a null hypothesis, a test statistic is calculated.
+ This test-statistic is then compared with a critical value and if it is
+ found to be greater than the critical value the hypothesis is rejected.
+ To be more precise, the null hypothesis is rejected if the test statistic
+ falls in the critical region.
+ The critical values are the boundaries of the critical region.
+ If the test is one-sided (like a χ2 test or a one-sided t-test) then there
+ will be just one critical value, but in other cases (like a two-sided t-test)
+ there will be two.
+\end_layout
+
+\begin_layout Itemize
+A critical value is a point (or points) on the scale of the test statistic
+ beyond which we reject the null hypothesis, and, is derived from the level
+ of significance α of the test.
+ Critical value can tell us, what is the probability of two sample means
+ belonging to the same distribution.
+ Higher, the critical value means lower the probability of two samples belonging
+ to same distribution.
+ The general critical value for a two-tailed test is 1.96, which is based
+ on the fact that 95% of the area of a normal distribution is within 1.96
+ standard deviations of the mean.
+\end_layout
+
+\begin_layout Itemize
+Critical values can be used to do hypothesis testing in following way:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculate test statistic
+\end_layout
+
+\begin_layout Enumerate
+Calculate critical values based on significance level alpha
+\end_layout
+
+\begin_layout Enumerate
+Compare test statistic with critical values.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If the test statistic is lower than the critical value, accept the hypothesis
+ or else reject the hypothesis.
+\end_layout
+
+\begin_layout Itemize
+The determination of 
+\series bold
+distribution type
+\series default
+ (e.g Poisson, discrete, binomial) is necessary to determine the critical
+ value and test to be chosen to validate any hypothesis.
+\end_layout
+
+\begin_layout Itemize
+As we know critical value is a point beyond which we reject the null hypothesis.
+ 
+\series bold
+P-value
+\series default
+ on the other hand is defined as the probability to the right of respective
+ statistic (Z, T or chi).
+\end_layout
+
+\begin_layout Itemize
+In 
+\series bold
+z-test
+\series default
+, the sample is assumed to be normally distributed.
+ A z-score is calculated with population parameters such as “population
+ mean” and “population standard deviation” and is used to validate a hypothesis
+ that the sample drawn belongs to the same population.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+z=\frac{x-\mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $x$
+\end_inset
+
+ is sample mean and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is population mean.
+ 
+\begin_inset Formula $\frac{\sigma}{\sqrt{n}}$
+\end_inset
+
+ is population standard deviation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+t-test 
+\series default
+is used to compare the mean of two given samples.
+ Like a z-test, a t-test also assumes a normal distribution of the sample.
+ A t-test is used when the population parameters (mean and standard deviation)
+ are not known.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\frac{x_{1}-x_{2}}{\frac{\sigma}{\sqrt{n}_{1}}+\frac{\sigma}{\sqrt{n}_{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{1},$
+\end_inset
+
+
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ are mean and size of sample 1 and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ are mean and size of sample 2.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+ANOVA, 
+\series default
+also known as analysis of variance, is used to compare multiple (three or
+ more) samples with a single test.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Chi-square test
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is used to compare categorical variables.
+\end_layout
+
+\begin_layout Itemize
+This refers to a class of statistical tests in which the sampling distribution
+ is a chi-square distribution.
+ Usually, the chi-squared test is used to test for independence between
+ two data sets.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/chi-squared-test}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The chi-squared statistic is defined by:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+χ^{2}=\sum_{i=1}^{n}​\frac{(O_{i}-E_{i}​)^{2}}{E_{i}}\text{​}\label{eq:chi_squared_test}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $O_{i}$
+\end_inset
+
+ is the number of observations of type 
+\begin_inset Formula $i$
+\end_inset
+
+, and 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ is the expected number of observations of type 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Because of this approximation, a number of conditions need to hold in order
+ for the test to be valid.
+ Should they hold, the chi-squared test proceeds as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculate the chi-squared statistic 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+, defined above.
+\end_layout
+
+\begin_layout Enumerate
+Determine the number of degrees of freedom 
+\begin_inset Formula $df$
+\end_inset
+
+ of the statistic.
+ This depends on the particular expected distribution, but is usually 
+\begin_inset Formula $n-1$
+\end_inset
+
+ (where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of categories).
+\end_layout
+
+\begin_layout Enumerate
+Select a confidence level, usually either 95% or 99%.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Confidence-Interval"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for more information.
+\end_layout
+
+\begin_layout Enumerate
+Determine the critical value of the 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-distribution with 
+\begin_inset Formula $df$
+\end_inset
+
+ degrees of freedom and the confidence level chosen above.
+ Essentially, this is defined as the value 
+\begin_inset Formula $x$
+\end_inset
+
+ at which the portion of the chi-squared distribution below 
+\begin_inset Formula $x$
+\end_inset
+
+ is at least the desired confidence level.
+\end_layout
+
+\begin_layout Enumerate
+Compare the chi-squared statistic to the critical value.
+ If it is below the critical value, the null hypothesis is not rejected.
+ If it is above the critical value, the null hypothesis is rejected, and
+ the expected distribution is probably wrong.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Intuitively, the test relies on the fact that if the expected distribution
+ is indeed correct, the difference between the observed and expected distributio
+ns should approximate a multivariate normal distribution, which is approximated
+ by a chi-squared distribution by the central limit theorem.
+ If the chi-squared statistic is larger than the critical value, then it
+ is unlikely to have occurred under this assumption, and thus the assumption
+ is likely to be false.
+\end_layout
+
+\begin_layout Itemize
+An example: Suppose that after 96 rolls of a die, the die has shown 24x
+ 1s, 15x 2s, 14x 3s, 16x 4s, 14x 5s, and 13x 6s.
+ Is the die unfair? This can be tabulated in the following table:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O_{i}-E_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{(O_{i}-E_{i})^{2}}{E_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+96/6=16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0625
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5625
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so the chi-squared statistic is 
+\begin_inset Formula $4+0.0625+0.25+0+0.25+0.5625=5.1254$
+\end_inset
+
+.
+ The number of degrees of freedom is 
+\begin_inset Formula $df=6-1=5$
+\end_inset
+
+, and the chi-squared distribution with 5 degrees of freedom and 95% confidence
+ level has critical value 
+\begin_inset Formula $11.07$
+\end_inset
+
+.
+ Since the chi-squared statistic is less than the critical value, this observati
+on does not provide enough information to reject the null hypothesis of
+ fairness.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Density Estimation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Density-Estimation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It can be said, that this belongs to unsupervised learning.
+ Density estimation is a problem of modeling the
+\series bold
+ probability density function
+\series default
+ (pdf) of unknown probability distribution from which the dataset has been
+ drawn.
+\end_layout
+
+\begin_layout Itemize
+It can be used for many applications, for example for 
+\series bold
+intrusion detection
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+We can use 
+\series bold
+parametric
+\series default
+ (for example a multivariate normal distribution - MVN), or 
+\series bold
+nonparametric model 
+\series default
+(for example a kernel regression).
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\{x_{i}\}_{i=1}^{N}$
+\end_inset
+
+ be a one-dimensional dataset (a multi-dimensional case is similar), whose
+ examples were drawn from a distribution with an unknown pdf 
+\begin_inset Formula $f$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{i}\in\mathbb{R}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i=1,...,N$
+\end_inset
+
+.
+ We are interested in modeling the shape of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now consider using a kernel model of 
+\begin_inset Formula $f$
+\end_inset
+
+, denotes as 
+\begin_inset Formula $\hat{f}_{b}$
+\end_inset
+
+, which is given by:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{f}_{b}(x)=\frac{1}{Nb}\sum_{i=1}^{N}k(\frac{x-x_{i}}{b})\label{eq:kernel_model_density_estimation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $b$
+\end_inset
+
+ is a hyperparameter that controls the trade-off between bias and variance
+ of our model and 
+\begin_inset Formula $k$
+\end_inset
+
+ is a kernel function.
+ This can be, for example a Gaussian kernel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+k(z)=\frac{1}{\sqrt{2\pi}}exp(\frac{-z^{2}}{2})\label{eq:gaussian_kernel-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We look for such a value of 
+\begin_inset Formula $b$
+\end_inset
+
+ that minimizes the difference between the real shape of 
+\begin_inset Formula $f$
+\end_inset
+
+ and the shape of our model 
+\begin_inset Formula $\hat{f}_{b}$
+\end_inset
+
+.
+ A reasonable choice of measure of this difference is called the 
+\series bold
+mean integrated squared error (MISE)
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+MISE(b)=E(\int_{\mathbb{R}}(\hat{f}_{b}(x)-f(x))^{2}dx)\label{eq:MISE}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+intuitively, it is the square difference between the real pdf 
+\begin_inset Formula $f$
+\end_inset
+
+ and our model of it 
+\begin_inset Formula $\hat{f}_{b}$
+\end_inset
+
+.
+ The integral 
+\begin_inset Formula $\int_{\mathbb{R}}$
+\end_inset
+
+ replaces the summation 
+\begin_inset Formula $\sum_{i=1}^{N}$
+\end_inset
+
+that is implemented in mean squared error, while the expectation operator
+ 
+\begin_inset Formula $E$
+\end_inset
+
+ replaces the average 
+\begin_inset Formula $\frac{1}{N}$
+\end_inset
+
+.
+ Because our loss 
+\begin_inset Formula $(\hat{f}_{b}(x)-f(x))^{2}$
+\end_inset
+
+ is a function with a continuous domain, we have to replace the summation
+ with the integral.
+ The expectation operator 
+\begin_inset Formula $E$
+\end_inset
+
+ means that we want 
+\begin_inset Formula $b$
+\end_inset
+
+ to be optimal for all possible realizations of our training set 
+\begin_inset Formula $\{x_{i}\}_{i=1}^{N}$
+\end_inset
+
+.
+ That is important, because 
+\begin_inset Formula $\hat{f}_{b}$
+\end_inset
+
+ is defined on a finite sample of some probability distribution, while the
+ real pdf 
+\begin_inset Formula $f$
+\end_inset
+
+ is defined on an infinite domain 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now we can rewrite the right-hand side term in equation.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MISE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $E[\int_{\mathbb{R}}\hat{f}_{b}(x)^{2}dx]-2E[\int_{\mathbb{R}}\hat{f}_{b}(x)f(x)dx]+E[\int_{\mathbb{R}}f(x)^{2}dx]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where:
+\end_layout
+
+\begin_layout Itemize
+the first term: the unbiased estimator is given by 
+\begin_inset Formula $\int_{\mathbb{R}}\hat{f}_{b}(x)^{2}dx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+the second term: the unbiased estimator can be approximated by cross-validation
+ 
+\begin_inset Formula $-\frac{2}{N}\sum_{i=1}^{N}\hat{f}_{b}^{(i)}(x_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $\hat{f}_{b}^{(i)}$
+\end_inset
+
+ is a kernel model of 
+\begin_inset Formula $f$
+\end_inset
+
+ computed on our training set with the example 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ excluded.
+ The term 
+\begin_inset Formula $\sum_{i=1}^{N}\hat{f}_{b}^{(i)}(x_{i})$
+\end_inset
+
+ is known in statistics as the 
+\bar under
+leave one out estimate
+\bar default
+, a form of cross-validation in which each fold consists just of one example.
+ It can be shown, that the leave one out estimate is a n unbiased estimator
+ of 
+\begin_inset Formula $E(a)$
+\end_inset
+
+ where 
+\begin_inset Formula $a=\int_{\mathbb{R}}\hat{f}_{b}(x)f(x)dx$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ is expected value of the function 
+\begin_inset Formula $\hat{f}_{b}$
+\end_inset
+
+, because 
+\begin_inset Formula $f$
+\end_inset
+
+ is a pdf.
+\end_layout
+
+\begin_layout Itemize
+the third term is independent of 
+\begin_inset Formula $b$
+\end_inset
+
+ and thus can be ignored.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now, to find the optimal value for 
+\begin_inset Formula $b$
+\end_inset
+
+, we minimize the cost defined as 
+\begin_inset Formula $\int_{\mathbb{R}}\hat{f}_{b}(x)^{2}dx-\frac{2}{N}\sum_{i=1}^{N}\hat{f}_{b}^{(i)}(x_{i})$
+\end_inset
+
+ and we can find this value of 
+\begin_inset Formula $b$
+\end_inset
+
+ using grid search.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/density_estimation_kernel.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Kernel density estimation: (a) good fit; (b) overfitting; (c) underfitting;
+ (d) the curve of grid search for the best value for b.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Frequentist Probability
+\end_layout
+
+\begin_layout Itemize
+Historically, basic frequency probability theory dominated statistical analysis.
+\end_layout
+
+\begin_layout Itemize
+It is an interpretation of probability; it defines an event's probability
+ as the limit of its relative frequency in many trials.
+ This interpretation supports the statistical needs of experimental scientists;
+ probabilities can be found (in principle) by a repeatable objective process
+ (and are thus ideally devoid of opinion).
+\end_layout
+
+\begin_layout Itemize
+Frequentist probability has been misapplied in the past.
+ Let's have a look on one example, called 
+\emph on
+Monty Hall problem
+\emph default
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://brilliant.org/wiki/bayesian-theory-in-science-and-math/?subtopic=prob
+ability-2&chapter=conditional-probability}
+\backslash
+
+\backslash
+
+\backslash
+url{https://brilliant.org/wiki/monty-hall-problem/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Monty Hall problem is a famous, seemingly paradoxical problem in conditional
+ probability and reasoning using Bayes's theorem.
+\end_layout
+
+\begin_layout Itemize
+Monty Hall is the host of a game show and gives a contestant the chance
+ to choose 1 of 3 doors without knowing what is behind them.
+ The catch is that one of the doors has a prize like a car, and the other
+ two have goats.
+\end_layout
+
+\begin_layout Itemize
+After the contestant picks a door, Monty then opens one of the doors that
+ the contestant did not pick and reveals that this door has a goat behind
+ it (Monty always knows where the goat is, and opens always door with a
+ goat).
+ Before the final reveal, Monty gives the contestant the chance to switch
+ their choice of door.
+\end_layout
+
+\begin_layout Itemize
+The frequency-probability-guided approach to looking at this choice is to
+ think that because there are now only 2 doors left and 1 of them has a
+ car and the other a goat, the chance of picking right is 50-50 and it doesn't
+ matter if a contestant changes their door.
+\end_layout
+
+\begin_layout Itemize
+This, however, is incorrect, and Bayesian thinking helps to illustrate why.
+\end_layout
+
+\begin_layout Itemize
+A Bayesian probabilist will realize that Monty opening one door is 
+\bar under
+additional evidence
+\bar default
+ provided to the contestant (and this is important!).
+ The Bayesian would realize that the contestant's initial guess had a 
+\begin_inset Formula $1/3$
+\end_inset
+
+ chance of being right, and a 
+\begin_inset Formula $2/3$
+\end_inset
+
+ chance of being wrong.
+ Now that Monty has 
+\bar under
+deliberately
+\bar default
+ (and not randomly!) eliminated 1 wrong door and the 
+\begin_inset Formula $2/3$
+\end_inset
+
+ chance assigns itself to the unchosen and unopened door, staying with their
+ door still has a 
+\begin_inset Formula $1/3$
+\end_inset
+
+ chance of being right, but switching has a 
+\begin_inset Formula $2/3$
+\end_inset
+
+ chance of being right.
+\end_layout
+
+\begin_layout Itemize
+The Monty Hall problem isn't the only place where educated people become
+ confused.
+ Physicians and scientists have mistakenly used frequency probabilities
+ when they should use Bayes' theorem (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bayes_theorem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to report results and analyze clinical tests.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bayes' Theorem and Conditional Probability
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bayes_theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bayes' theorem is a formula that describes how to update the probabilities
+ of hypotheses when given evidence.
+\end_layout
+
+\begin_layout Itemize
+Given a hypothesis 
+\begin_inset Formula $H$
+\end_inset
+
+ and evidence 
+\begin_inset Formula $E$
+\end_inset
+
+, Bayes' theorem states that the relationship between the probability of
+ the hypothesis before getting the evidence 
+\begin_inset Formula $P(H)$
+\end_inset
+
+ and the probability of the hypothesis after getting the evidence 
+\begin_inset Formula $P(H|E)$
+\end_inset
+
+ is:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(H|E)=\frac{P(E|H)\text{​}P(H)}{P(E)}\label{eq:bayes_theorem_hyp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This relates the probability of the hypothesis before getting the evidence
+ 
+\begin_inset Formula $P(H)$
+\end_inset
+
+, to the probability of the hypothesis after getting the evidence, 
+\begin_inset Formula $P(H∣E)$
+\end_inset
+
+.
+ For this reason, 
+\begin_inset Formula $P(H)$
+\end_inset
+
+ is called the prior probability, while 
+\begin_inset Formula $P(H∣E)$
+\end_inset
+
+ is called the posterior probability.
+ The factor that relates to 
+\begin_inset Formula $\frac{P(E\mid H)}{P(E)}$
+\end_inset
+
+ is called the likelihood ratio.
+ Using these terms, Bayes' theorem can be rephrased as 
+\emph on
+"the posterior probability equals the prior probability times the likelihood
+ ratio".
+\end_layout
+
+\begin_layout Paragraph
+Deriving Bayes' Theorem
+\end_layout
+
+\begin_layout Itemize
+Bayes' theorem centers on relating different conditional probabilities.
+ A conditional probability is an expression of how probable one event is
+ given that some other event occurred (a fixed value).
+\end_layout
+
+\begin_layout Itemize
+For a joint probability distribution over events 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+, 
+\begin_inset Formula $P(A\cap B)$
+\end_inset
+
+, the conditional probability of 
+\begin_inset Formula $A$
+\end_inset
+
+ given 
+\begin_inset Formula $B$
+\end_inset
+
+ is defined as:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(A|B)=\frac{P(A\cap B)}{P(B)}\text{​}\label{eq:joint_probability}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For example, a joint probability is 
+\emph on
+"the probability that your left and right socks are both black"
+\emph default
+, whereas a conditional probability is 
+\emph on
+"the probability that your left sock is black if you know that your right
+ sock is black",
+\emph default
+ since adding information alters probability.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $P(A\cap B)$
+\end_inset
+
+ is the probability of both 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ occurring, which is the same as the probability of 
+\begin_inset Formula $A$
+\end_inset
+
+ occurring times the probability that 
+\begin_inset Formula $B$
+\end_inset
+
+ occurs given that 
+\begin_inset Formula $A$
+\end_inset
+
+ occurred: 
+\begin_inset Formula $P(B|A)*P(A)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using the same reasoning, 
+\begin_inset Formula $P(A\cap B)$
+\end_inset
+
+ is also the probability that 
+\begin_inset Formula $B$
+\end_inset
+
+ occurs times the probability that 
+\begin_inset Formula $A$
+\end_inset
+
+ occurs given that 
+\begin_inset Formula $B$
+\end_inset
+
+ occurs: 
+\begin_inset Formula $P(A|B)*P(B)$
+\end_inset
+
+.
+ The fact that these two expressions are equal leads to Bayes' Theorem.
+\end_layout
+
+\begin_layout Itemize
+This result for dependent events and for Bayes’ theorem are both valid when
+ the events are independent.
+ In these instances, 
+\begin_inset Formula $P(A∣B)=P(A)$
+\end_inset
+
+ and 
+\begin_inset Formula $P(B∣A)=P(B)$
+\end_inset
+
+, so the expressions simplify.
+\end_layout
+
+\end_body
+\end_document

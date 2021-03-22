@@ -1,0 +1,1390 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Support Vector Machines
+\end_layout
+
+\begin_layout Itemize
+Supervised learning technique, for binary classification problems.
+\end_layout
+
+\begin_layout Itemize
+Linear classifier, but we can use 
+\begin_inset Quotes eld
+\end_inset
+
+kernel trick
+\begin_inset Quotes erd
+\end_inset
+
+ - map our data to higher-dimensional space and then they can be more easily
+ separated.
+ The most real-world problems involve non-separable data for which no hyperplane
+ exists that successfully separates the positive from negative instances
+ in the training set.
+ One solution to the inseparability problem is to map the data onto a higher-
+ dimensional space and define a separating hyperplane there.
+ This higher-dimensional space is called the transformed feature space,
+ as opposed to the input space occupied by the training instances.
+ With an appropriately chosen transformed feature space of sufficient dimensiona
+lity, any consistent training set can be made separable.
+ A linear separation in transformed feature space corresponds to a non-linear
+ separation in the original input space.
+\end_layout
+
+\begin_layout Itemize
+SVMs are basically just a clever reincarnation of Perceptrons, with Kernel
+ trick.
+ They expand the input to a very large layer of non-linear non-adaptive
+ features.
+ They only have one layer of adaptive weights (from the features to decision
+ units).
+ They have very efficient way of fitting the weights that control overfitting.
+ They have a clever solution of simultaneously doing feature selection and
+ finding weights on the remaining features.
+\end_layout
+
+\begin_layout Itemize
+SVM requires labels to be 
+\begin_inset Formula $+1$
+\end_inset
+
+ and 
+\begin_inset Formula $-1$
+\end_inset
+
+ (TBD: is that true??).
+\end_layout
+
+\begin_layout Itemize
+Distance between hyperplanes is given by 
+\begin_inset Formula $\frac{2}{||w||}$
+\end_inset
+
+ where 
+\begin_inset Formula $||w||$
+\end_inset
+
+ is Euclidean norm of 
+\begin_inset Formula $w$
+\end_inset
+
+, given by 
+\begin_inset Formula $\sqrt{\sum_{j=1}^{D}(w_{j})^{2}}$
+\end_inset
+
+, where 
+\begin_inset Formula $D$
+\end_inset
+
+ is dimension of 
+\begin_inset Formula $w$
+\end_inset
+
+, i.e.
+ number of dimensions in feature vector, and 
+\begin_inset Formula $wx-b=0$
+\end_inset
+
+ is the decision boundary.
+\end_layout
+
+\begin_layout Itemize
+Something like logistic regression, but a little change in hypothesis.
+ 
+\series bold
+Actually, LR is something like SVM with linear kernel.
+ It depends on the implementation, some can perform slightly better, but
+ very similar.
+ They are different only in the missing sign operator in SVM.
+ And the hyperplane in the SVM plays the role of the decision boundary -
+ it's used to separate 2 groups of examples from one another, such it has
+ to be as far from each group as possible.
+ On the other hand, in linear regression, the hyperplane
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Actually, this decision boundary terminology depends on a number
+ of dimensions of the input features.
+ If a sample from a training dataset has just 1 feature, we are talking
+ about a line, if 2 features, then it is a plane, and if 3 or more features,
+ then it is a hyperplane.}
+\end_layout
+
+\end_inset
+
+ is chosen to all training examples as possible.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Linear-Regression"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for more details.
+ Tips what to use
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+# features > # training samples = (10,000 vs 10-1,000), use logistic regression
+ or SVM without kernel.
+ Because we have so many features and we don't have much data, linear function
+ will probably do fine.
+ We do not have enough data to fit very complicated non-linear function.
+\end_layout
+
+\begin_layout Itemize
+# features < # training samples
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+# features is relatively small (up to 1,000) and # training samples is not
+ extremely high (up to 10,000) = use SVM with (Gaussian) kernel.
+ 
+\end_layout
+
+\begin_layout Itemize
+# features is relatively small (up to 1,000) and # training samples is high
+ (like 50,000 or 1 million or more) = maybe add more features and then logistic
+ regression or SVM without kernel.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Note: ANN works with all three situations well, but can be slower to learn.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We can understand SVM from Logistic regression.
+ The following figures capture what is needed to change in Logistic regression
+ so that we have SVM.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/from_lr_to_svm.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+This figure plots cost function of logistic regression (and its modified
+ version to get intuition about SVM) for 1 sample from dataset.
+ In SVM, if we plot its cost function, instead of logistic regression curves
+ (blue ones) we want to have slightly different (pink ones).
+ 
+\begin_inset Formula $cost_{0}(z)$
+\end_inset
+
+ just describes a situation if 
+\begin_inset Formula $y=0$
+\end_inset
+
+ (so 
+\begin_inset Formula $z$
+\end_inset
+
+ is much bigger than 0 - if you want to see this, plot sigmoid function
+ - much bigger than 0 means almost 1 on sigmoid), analogically for 
+\begin_inset Formula $cost_{1}(z)$
+\end_inset
+
+.
+ The new cost function for SVM will be flat for some values (on the left
+ plot see from -1 to 3, and then straight line from the point of where 
+\begin_inset Formula $z=-1$
+\end_inset
+
+.
+ And analogically for the right plot.
+ This gives SVM some computational advantage, for an easier optimization
+ problem that would be easier to solve.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_minimization_problems.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+These equations show, that we can mathematically transform the first cost
+ function to the second cost function.
+ The first one is ust a classic cost function, used for example in logistic
+ regression (plus regularization).
+ Just a detail, there is no minus sign on the beginning - its because it
+ is inside of cost function (just multiplied by 
+\begin_inset Formula $-1$
+\end_inset
+
+, no big magic it's the same as in logistic regression in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Logistic-Regression"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ So, we can multiply the whole equation by 
+\begin_inset Formula $m$
+\end_inset
+
+ and divide by regularization parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, and we got 
+\begin_inset Formula $C$
+\end_inset
+
+ - so this is the first step from logistic regression to SVM.
+ These 2 optimization problems will give the same value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (=same value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ gives the optimal solution for both problems) if 
+\begin_inset Formula $C=\frac{1}{\lambda}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The choice of hyper-parameter C
+\series default
+ (
+\begin_inset Formula $\frac{1}{\lambda}$
+\end_inset
+
+) - usually chosen as the best result on cross-validation data (and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ hyper-parameter in Gaussian kernel function is also chosen usually with
+ CV): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+very large C (low 
+\begin_inset Formula $\lambda)$
+\end_inset
+
+ = lower bias, high variance - overfitting.
+ Not good for outliers as well.
+ SVM will try to find the largest margin by completely ignoring misclassificatio
+n.
+\end_layout
+
+\begin_layout Itemize
+small C (big 
+\begin_inset Formula $\lambda$
+\end_inset
+
+) = the opposite, higher bias, lower variance - underfitting.
+ Making classification errors is more costly, so SVM tries to make fewer
+ mistakes by sacrificing the margin size.
+ Larger margin is better for generalization.
+\end_layout
+
+\begin_layout Standard
+Note: 
+\series bold
+A linearly separable dataset can usually be separated by many different
+ lines.
+
+\series default
+ Varying the parameter 
+\begin_inset Formula $C$
+\end_inset
+
+ will cause the SVM's decision boundary to vary among these possibilities.
+ For example, for a very large value of C , it might learn larger values
+ of 
+\begin_inset Formula $θ$
+\end_inset
+
+ in order to increase the margin on certain examples.
+\end_layout
+
+\begin_layout Standard
+So, 
+\begin_inset Formula $C$
+\end_inset
+
+ regulates the trade-off between classifying the training data well and
+ classifying future examples well (generalization).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Penalty hyperparameter 
+\series default
+can be also used, for misclassification of training example of specific
+ classes.
+\end_layout
+
+\begin_layout Itemize
+SVM is sometimes called as Large margin classifier, because SVM separates
+ classes as most as possible by a margin, see the following figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_decision_boundary.png
+	scale 28
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of decision boundary of SVM classifier for 2 classes which are
+ linearly separable.
+ It will chose black line, instead of green or purple, which also separate
+ the classes - but the black one is with the biggest margin (from both sides).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Why? For a brief mathematical intuition, let's consider vector inner product
+ (length of vector and so on) on the following figure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/vector_inner_product.png
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vector inner product explanation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And now, transform this into SVM.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_dec_boundary.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+SVM decision boundary explained.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Further, an illustration in the following 2 examples.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_dec_boundary_example.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of SVM decision boundary.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_decision_quiz.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Another example of SVM decision boundary.
+ Correct answer is that 
+\begin_inset Formula $||\theta||=1/2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The algorithm uses so called landmarks, what are some points around which
+ the learning is concentrated.
+\end_layout
+
+\begin_layout Itemize
+It uses trick, which can deal with infinite number of features.
+ SVMs are well suited to deal with learning tasks where the number of features
+ is large with respect to the number of training instances.
+ The model complexity of an SVM is unaffected by the number of features
+ encountered in the training data (the number of support vectors selected
+ by the SVM learning algorithm is usually small).
+\end_layout
+
+\begin_layout Itemize
+To extend SVM to cases in which the data is not linearly separable, we have
+ to introduce the 
+\series bold
+hinge loss function
+\series default
+: 
+\begin_inset Formula $max(0,1-y_{i}(wx_{i}-b))$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $wx_{i}$
+\end_inset
+
+lies on the correct side of the decision boundary, the hinge loss function
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ For data on the wrong side of the decision boundary, the function's value
+ is proportional to the distance from the decision boundary.
+ So then we wish to minimize the following cost function: 
+\begin_inset Formula $C||w||^{2}+\frac{1}{N}\sum_{i=1}^{N}max(0,1-y_{i}(wx_{i}-b))$
+\end_inset
+
+, where the hyperparameter 
+\begin_inset Formula $C$
+\end_inset
+
+ determines the trade-off between increasing the size of the decision boundary
+ and ensuring that each 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+lies on the correct side of the decision boundary.
+ Minimizing 
+\begin_inset Formula $||w||$
+\end_inset
+
+ is equivalent to minimizing 
+\begin_inset Formula $\frac{1}{2}||w||^{2}$
+\end_inset
+
+and the latter term makes it possible to perform quadratic programming optimizat
+ion later on.
+ SVMs that optimize hinge loss are called 
+\series bold
+soft-margin SVMs
+\series default
+, and original formulation is referred to as 
+\series bold
+hard-margin SVM
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Kernels
+\end_layout
+
+\begin_layout Standard
+A trick used in SVM (and other models as well) to make the model to be a
+ non-linear classifier.
+ SVM can be adapted to work with datasets that cannot be separated by a
+ hyperplane in its original space.
+ If we manage to transform the original space into a space of higher dimensional
+ity, we could hope that the examples will become linearly separable in this
+ transformed space.
+ 
+\series bold
+Kernel trick - using a function (kernel) to implicitly transform (map) the
+ original space into a higher dimensional space during the cost function
+ optimization.
+ 
+\series default
+However, we don't know a priori which mapping will work for our data.
+ This is why kernel functions (also known as kernels) are useful, because
+ they do not perform this transformation explicitly.
+\end_layout
+
+\begin_layout Itemize
+As an example, let's consider a hypothesis to be:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{\theta}(x)=\begin{cases}
+1 & if\:\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{1}x_{2}+\theta_{4}x_{1}^{2}...\geq0\\
+0 & otherwise
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So basically this is what we got already for 
+\series bold
+polynomial regression
+\series default
+ (see the beginning of Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Linear-Models"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Polynomial-Regression"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Such higher order polynomial is a one way to come up with more features.
+ But it has some disadvantages like it is computationally expensive.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+There is another way how to create new features
+\series default
+.
+ Let's have now a new notation: 
+\begin_inset Formula $\theta_{0}+\theta_{1}f_{1}+\theta_{2}f_{2}+\theta_{3}f_{3}+...$
+\end_inset
+
+ , where 
+\begin_inset Formula $f_{1}=x_{1},$
+\end_inset
+
+
+\begin_inset Formula $f_{2}=x_{2},$
+\end_inset
+
+
+\begin_inset Formula $f_{3}=x_{1}x_{2}$
+\end_inset
+
+, ...
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ can be calculated as for example for given 
+\begin_inset Formula $x$
+\end_inset
+
+: 
+\begin_inset Formula $f_{1}=similarity(x,l^{(1)})$
+\end_inset
+
+, where 
+\begin_inset Formula $l^{(i)}$
+\end_inset
+
+is so called landmark.
+ A new feature 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+then depends on proximity to landmarks.
+ This 
+\begin_inset Formula $similarity$
+\end_inset
+
+
+\series bold
+ (=kernel function, in this case Gaussian kernel)
+\series default
+ can be calculated as follows (for a given 
+\begin_inset Formula $i$
+\end_inset
+
+, which is from 1 to number of examples in dataset):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f_{i}=exp(-\frac{||x-l^{(i)}||^{2}}{2\sigma^{2}})=exp(-\frac{\sum_{j=1}^{n}(x_{j}-l_{j}^{(i)})}{2\sigma^{2}})\label{eq:gaussian_kernel}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Explanation
+\end_layout
+
+\begin_layout Itemize
+The dividend (numerator) is just squared (to have non negative numbers)
+ Euclidean distance between point x and a landmark.
+ This can be also written as 
+\begin_inset Formula $k=(x,l^{(i)})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x$
+\end_inset
+
+ is close to one of the landmarks - the dividend is close to 
+\begin_inset Formula $0$
+\end_inset
+
+, so the whole fraction is close to 
+\begin_inset Formula $0$
+\end_inset
+
+, so the result is 
+\begin_inset Formula $1$
+\end_inset
+
+ (like yes, they are similar).
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x$
+\end_inset
+
+is far away from one of the landmarks - the dividend is some big number
+ (even squared), so the result is close to 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Each landmark defines a new feature.
+\end_layout
+
+\begin_layout Itemize
+Parameter sigma determines the slope of similarity function, see on the
+ following plot.
+ Higher sigma means higher bias (features 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ vary more smoothly), lower variance.
+ Lower sigma means lower bias, higher variance (features 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ vary less smoothly).
+\end_layout
+
+\begin_layout Itemize
+So, if you are overfitting, it would be good to decrease 
+\begin_inset Formula $C$
+\end_inset
+
+ and increase 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/sigma_param_in_svm_kernel.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of different values for 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ parameter.
+ Landmark point is on the top of graph, and we can see how the different
+ sigma values influence a similarity growth of landmark with respect to
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Prediction
+\end_layout
+
+\begin_layout Itemize
+Is done by using landmarks, sigma parameter, theta parameters, and similarity
+ function, which displays the following figure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/svm_prediction.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of prediction using gaussian kernel and 3 landmarks.
+ More far away a given point is from some landmark, the more likely it will
+ be classified as 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ If a given point is nearby to some landmark, it is classified as 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Landmarks
+\end_layout
+
+\begin_layout Itemize
+We put 1 landmark for each training sample.
+ So each landmark is on the same position as a given training sample.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\series bold
+Choice
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+kernel
+\series default
+ (similarity function) 
+\end_layout
+
+\begin_layout Standard
+Kernel function has to satisfy condition called 
+\begin_inset Quotes eld
+\end_inset
+
+Mercer's Theorem
+\begin_inset Quotes erd
+\end_inset
+
+ to make SVM runs correctly and don't diverge.
+ Not all similarity functions make valid kernels.
+ By the way, Andrew Ng said that he uses mostly the first 4 types of kernels
+ (the other types are very rarely used).
+ BTW, why we do not apply kernel trick to some other algorithms like logistic
+ regression? You can, and then you would have new features, but we don't
+ do it because computational trick we do in SVM with kernels do not generalize
+ well to other algorithms.
+ SVM and kernels tend to go well together.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Linear kernel
+\series default
+ (=no kernel) - when we have a lot of features and too little data.
+ Using non-linear kernel would probably cause overfitting.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+predict 
+\begin_inset Formula $y=1$
+\end_inset
+
+ if 
+\begin_inset Formula $\theta^{T}x\geq0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gaussian kernel
+\series default
+ (also known as RBF kernel - radial basis function kernel - where the usage
+ of parameter 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ which needs to be chosen) - in this one it is recommended to use feature
+ scaling in the first step, so that all features have the same 
+\begin_inset Quotes eld
+\end_inset
+
+weight
+\begin_inset Quotes erd
+\end_inset
+
+ and some are not being ignored because are smaller, and some other are
+ bigger and are more dominant.
+ The similarity measure used by the Gaussian kernel expects that the data
+ lie in approximately the same range.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{i}=exp(-\frac{||x-l^{(i)}||^{2}}{2\sigma^{2}}),\:where\;l^{(i)}=x^{(i)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+is large, we have higher bias, lower variance classifier.
+ Analogically if it is small.
+ This parameter determines bias-variance trade-off.
+ Term 
+\begin_inset Formula $||x-l^{(i)}||^{2}$
+\end_inset
+
+ is called Euclidean distance between two feature vectors, and is given
+ by the following equation: 
+\begin_inset Formula $d(x,y)=\sqrt{\sum_{j=1}^{D}(x^{(j)}-y^{(j)})^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It can be shown, that the feature space of this kernel has an infinite number
+ of dimensions.
+ By varying the hyperparameter 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, we can choose between getting a smooth or curvy decision boundary in the
+ original space.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Polynomial kernel 
+\series default
+- it has 2 parameters.
+ What parameter to add, and a degree of the polynomial.
+ This kernel is not used that much and performs usually worse than Gaussian
+ kernel.
+ If the degree is 
+\begin_inset Formula $2$
+\end_inset
+
+, we are talking about quadratic kernel.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k(x,l)=(x^{T}l+constanttoadd)^{degree}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+String kernel
+\series default
+ - sometimes used if the input data are text strings.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Chi-square kernel
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Histogram kernel
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Intersection kernel 
+\end_layout
+
+\end_body
+\end_document

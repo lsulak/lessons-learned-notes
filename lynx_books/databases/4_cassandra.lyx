@@ -1,0 +1,782 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "MongoDB Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Cassandra
+\end_layout
+
+\begin_layout Itemize
+If you are brave enough, give a shot to Scylla (but first, define your requireme
+nts and see its change-list, documentation, road map, etc).
+ Otherwise use Cassandra, but be prepared that initial study and configuration
+ can be a bit of a longer process.
+ Scylla doesn't require a great initial effort.
+\end_layout
+
+\begin_layout Itemize
+It has many disadvantages and pitfalls, see a section below.
+ 
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Itemize
+distributed NoSQL storage.
+\end_layout
+
+\begin_layout Itemize
+column-oriented key-value data model (makes it easy to manage both structured
+ and unstructured data).
+\end_layout
+
+\begin_layout Itemize
+designed to handle large amount of data across many servers.
+\end_layout
+
+\begin_layout Itemize
+there is no master as every node can service any request.
+\end_layout
+
+\begin_layout Itemize
+written in Java, initially at Facebook in 2008.
+\end_layout
+
+\begin_layout Itemize
+access rights for users can be defined per object.
+\end_layout
+
+\begin_layout Itemize
+CQL (Cassandra Query Language) - simple interface for accessing Cassandra
+ (relatively similar to SQL).
+\end_layout
+
+\begin_layout Itemize
+different database design; in RDBMS we think about data modeling first,
+ and after that we create queries; here, we think first about most common
+ queries, and after that, data is being modeled around those queries.
+\end_layout
+
+\begin_layout Itemize
+CAP theorem: high availability and partition tolerance, but not high consistency.
+\end_layout
+
+\begin_layout Itemize
+usage: where one of your requirements is to have a very heavy write system
+ and you want to have a quite responsive reporting system on top of that
+ stored data.
+ When you need to store data so huge that it doesn't fit on server, but
+ still want a friendly familiar interface to it.
+\end_layout
+
+\begin_layout Section
+Licensing
+\end_layout
+
+\begin_layout Itemize
+free (open source) - Apache 2 License
+\end_layout
+
+\begin_layout Section
+Pros
+\end_layout
+
+\begin_layout Itemize
+fault-tolerant - data is automatically replicated to multiple nodes for
+ fault-tolerance.
+ Replication across multiple data centers is supported.
+ Failed nodes can be replaced with no downtime.
+\end_layout
+
+\begin_layout Itemize
+scalable - designed to have read and write throughput both increase linearly
+ as new machines are added, with the aim of no downtime or interruption
+ to applications.
+\end_layout
+
+\begin_layout Itemize
+performance - Cassandra consistently outperforms popular NoSQL alternatives
+ in benchmarks and real applications, primarily because of fundamental architect
+ural choices
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Apache Cassandra Leads All Others In Latest NoSQL Benchmark - 
+\backslash
+url{https://www.datastax.com/apache-cassandra-leads-nosql-benchmark}}
+\end_layout
+
+\end_inset
+
+.
+ However things are not so simple - Cassandra has many different asynchronous
+ jobs and background tasks that are not scheduled by the user, the performance
+ can be unpredictable.
+ This means that you may see performance impacts that may not be related
+ to a query, or volume of queries.
+ This can make troubleshooting performance issues rather difficult
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{What are the pros and cons of using the Cassandra database? - 
+\backslash
+url{https://www.quora.com/What-are-the-pros-and-cons-of-using-the-Cassandra-databa
+se}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+durable - Cassandra is suitable for applications that can't afford to lose
+ data, even when an entire data center goes down.
+\end_layout
+
+\begin_layout Itemize
+write speed!! - incredible write volume it can handle.
+ It is able to handle such a large volume of writes by first writing to
+ an in-memory data structure, then to an append-only log.
+ These data-structures are then "flushed" to a more permanent and read-optimized
+ file at a later time.
+ The logs are simply used for recovery of the in-memory data when an outage
+ occurs.
+\end_layout
+
+\begin_layout Itemize
+powerful built-in caching
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{A deep dive into NoSQL: A complete list of NoSQL databases - 
+\backslash
+url{http://bigdata-madesimple.com/a-deep-dive-into-nosql-a-complete-list-of-nosql
+-databases/}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+no single point of failure.
+\end_layout
+
+\begin_layout Itemize
+optimized for SSDs.
+\end_layout
+
+\begin_layout Itemize
+data can have expiration (set on INSERT).
+\end_layout
+
+\begin_layout Section
+Cons
+\end_layout
+
+\begin_layout Itemize
+when you are not dealing with massive amounts of data, then you should probably
+ look for some alternative.
+\end_layout
+
+\begin_layout Itemize
+eventual consistency model, which is challenging (Facebook moved from Cassandra
+ to HBase due to this).
+\end_layout
+
+\begin_layout Itemize
+querying options for retrieving data are limited (see its 
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "http://cassandra.apache.org/doc/4.0/cql/"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+sorting of data is a design decision; it can be done through one of predefined
+ ways; data can be retrieved back in same order; that’s all - there is no
+ things like ORDER BY or GROUP BY.
+\end_layout
+
+\begin_layout Itemize
+no aggregations: newer versions of Cassandra will have limited support for
+ aggregations with a single partition.
+ Because Cassandra is a key-value store, doing things like SUM, MIN, MAX,
+ AVG, and other aggregations are incredibly resource intensive if even possible
+ to accomplish.
+\end_layout
+
+\begin_layout Itemize
+no support for JOINS.
+\end_layout
+
+\begin_layout Itemize
+"NoSQL requires thinking differently, and can be challenging for people
+ with strong relational database backgrounds to understand.
+ The CQL language helps with this, but it pays to understand how the engine
+ works under the hood.
+ That said, the benefits outweigh the challenge of the learning curve!"
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.trustradius.com/reviews/cassandra-2015-10-16-15-53-59"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+time to setup4.
+ Its successor, Scylla, is more auto-tuned.
+\end_layout
+
+\begin_layout Itemize
+some additional features lack in open source version.
+ They are only provided in enterprise version - for example security and
+ some advanced tools
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.trustradius.com/reviews/cassandra-2015-10-16-11-50-18}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cassandra is JVM based NoSQL, hence garbage collector tuning is a key aspect
+ - maybe it will not work in the most optimal way right from the beginning,
+ out of the box.
+\end_layout
+
+\begin_layout Itemize
+not for newbies.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://stackoverflow.com/questions/47148035/datastax-cassandra-seems-expensive-is-there-a-best-practice-configuration-to-us"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://tobert.github.io/pages/als-cassandra-21-tuning-guide.html"
+literal "false"
+
+\end_inset
+
+ for the start.
+\end_layout
+
+\begin_layout Itemize
+cannot utilize multi-core as efficiently as Scylla.
+\end_layout
+
+\begin_layout Itemize
+quickly adding a new operation - "If the data model was relational, then
+ we would prepare a SQL query, create an index (if needed), and push a patch
+ into production.
+ Cassandra is not that simple.
+ If the query cannot be executed in general or cannot be executed efficiently
+ due to the settled architecture, then we will be required to create a brand
+ new Cassandra table, set up primary and clustering keys to fulfill the
+ query specificity, and copy needed data from the existing tables." (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://dzone.com/articles/apache-cassandra-or-apache-ignitethoughts-on-a-sim"
+literal "false"
+
+\end_inset
+
+, see Drawbacks)
+\end_layout
+
+\begin_layout Section
+Comparison to other systems
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparison-to-other"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hulu Chooses Cassandra Over HBase and Riak
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.datacenterknowledge.com/archives/2014/07/31/hulu-cassandra-vs-hbas
+e-vs-riak}}
+\end_layout
+
+\end_inset
+
+ - they needed to scale their application with user growth and they needed
+ to scale the writes.
+ Their cluster consists of 32 nodes split between 2 data centers.
+ Cassandra is better in replication in comparison to Riak and HBase.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Riak is not so easy to use as Cassandra and its performance is worse than
+ Cassandra's.
+ More information about technical differences are 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://docs.basho.com/riak/1.3.1/references/appendices/comparisons/Riak-Compared-to-Cassandra/"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://basho.com/posts/business/riak-vs-cassandra-an-updated-brief-comparison/"
+literal "false"
+
+\end_inset
+
+.
+ However, Riak has a support of Map/Reduce out of the box.
+ 
+\end_layout
+
+\begin_layout Itemize
+HBase take a lot of work to set it up.
+ There is also a single point of failure.
+ There are some concerns with how HBase handles failures.
+ 
+\end_layout
+
+\begin_layout Itemize
+MongoDB has write lock issue on database level and not so good insertion
+ performance.
+ Cassandra scales linearly with massive write and its more optimized
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Why Cassandra is an Excellent Choice for Real Time Analytics Workload
+ - 
+\backslash
+url{http://blogs.shephertz.com/2015/04/22/why-cassandra-excellent-choice-for-realt
+ime-analytics-workload/}}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A Comparison with CockroachDB was done 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://news.ycombinator.com/item?id=15857225"
+literal "false"
+
+\end_inset
+
+.
+ It seems that CockroachDB is more 'safe' option, and probably much slower
+ (at least in the first version
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://github.com/cockroachdb/cockroach/issues/17777
+\backslash
+#issuecomment-323889188}}
+\end_layout
+
+\end_inset
+
+).
+ However, it is still under development and the community is focused on
+ speed as well (source 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://jaxenter.com/cockroachdb-2-0-is-here-143103.html"
+literal "false"
+
+\end_inset
+
+), however for a single cluster it may be not very optimal.
+\end_layout
+
+\begin_layout Section
+Python usage
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/datastax/python-driver}
+\end_layout
+
+\end_inset
+
+ - it's under development and quite popular
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Apache Cassandra"
+target "https://en.wikipedia.org/wiki/Apache_Cassandra"
+literal "false"
+
+\end_inset
+
+, from Wikipedia 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Apache Cassandra "
+target "http://cassandra.apache.org/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "When NOT to use Cassandra? "
+target "https://stackoverflow.com/questions/2634955/when-not-to-use-cassandra"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Distributed Databases "
+target "http://neurocline.github.io/dev/2015/09/17/distributed-databases.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Visual Guide to NoSQL Systems "
+target "http://blog.nahurst.com/visual-guide-to-nosql-systems"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "What are the best self-hosted NoSQL distributed databases?"
+target "https://www.slant.co/topics/3230/~best-self-hosted-nosql-distributed-databases"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Smart data for helping in investment choice - Part II: Store data — Cassandra "
+target "https://medium.com/@zaidi.houd/smart-data-for-helping-in-investment-choice-part-ii-store-data-cassandra-d179fcc8ee7"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.gridgain.com/resources/blog/apache-cassandra-or-apache-ignite-thou
+ghts-simplified-architecture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://stackoverflow.com/questions/43975775/cassandra-write-lock}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Cassandra System Properties "
+target "https://db-engines.com/en/system/Cassandra"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "ScyllaDB Takes on Cassandra to Boost Efficiency, Reduce Latency "
+target "https://thenewstack.io/scylladb-takes-cassandra-boost-efficiency-reduce-latency/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Scale it to Billions - What They Don’t Tell you in the Cassandra README "
+target "https://www.threatstack.com/blog/scaling-cassandra-lessons-learned"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

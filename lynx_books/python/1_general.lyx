@@ -1,0 +1,948 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Section
+Virtual Environments for Python
+\end_layout
+
+\begin_layout Standard
+Good sources - 
+\begin_inset CommandInset href
+LatexCommand href
+name "SO"
+target "https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "Python docs"
+target "https://python-docs.readthedocs.io/en/latest/dev/virtualenvs.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+pipenv
+\end_layout
+
+\begin_layout Itemize
+From an author of popular 
+\emph on
+requests 
+\emph default
+library.
+ It is the newest (from this list) virtual environment for Python.
+\end_layout
+
+\begin_layout Itemize
+It aims to combine 
+\emph on
+Pipfile
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Pipfile is used to track which dependencies your project needs
+ in case you need to re-install them, such as when you share your project
+ with others.
+ It is meant to replace requirements.txt.
+ Syntax is in TOML.}
+\end_layout
+
+\end_inset
+
+, 
+\emph on
+pip
+\emph default
+ and 
+\emph on
+virtualenv
+\emph default
+ into one command on the command-line.
+ It also introduces 
+\emph on
+Pipfile.lock
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{This file enables deterministic builds by specifying the exact
+ requirements for reproducing an environment.
+ It contains exact versions for packages and hashes to support more secure
+ verification, which pip itself now supports as well.
+ It's worth noting again that you should never change this file by hand.
+ It is meant to be generated with pipenv lock - more particular, from Pipfile
+ file.}
+\end_layout
+
+\end_inset
+
+
+\emph on
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+virtualenv
+\emph default
+ directory typically gets placed in 
+\emph on
+~/.local/share/virtualenvs/XXX
+\emph default
+, with 
+\emph on
+XXX
+\emph default
+ being a hash of the path of the project directory.
+ 
+\series bold
+This is different from virtualenv, where the directory is typically in the
+ current working directory.
+ 
+\series default
+Actually, hashes are used as a security feature for validating packages
+ (there could be malicious ones).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deterministic build!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For example, if you install 
+\emph on
+Flask
+\emph default
+ (specific or the most recent version, it does not matter now), However,
+ 
+\emph on
+Flask
+\emph default
+ itself doesn't specify exact versions for its dependencies.
+ For example, it allows any version of 
+\emph on
+Werkzeug
+\emph default
+>=0.14.
+ However, unfortunately, you could get the latest, buggy version of 
+\emph on
+Werkzeug
+\emph default
+.
+ Again, the product breaks in production.
+ Given the same input (the 
+\emph on
+requirements.txt
+\emph default
+ file), 
+\emph on
+pip
+\emph default
+ doesn't always produce the same environment.
+ At the moment, you can't easily replicate the exact environment you have
+ on your development machine in production.
+\end_layout
+
+\begin_layout Itemize
+The typical solution to this problem is to use
+\emph on
+ pip freeze
+\emph default
+.
+ This command allows you to get exact versions for all 3rd party libraries
+ currently installed, including the sub-dependencies pip installed automatically.
+ So you can freeze everything in development to ensure that you have the
+ same environment in production.
+\end_layout
+
+\begin_layout Itemize
+This “solution,” unfortunately, leads to a whole new set of problems.
+\end_layout
+
+\begin_layout Itemize
+Now that you’ve specified the exact versions of every 3rd-party package,
+ you are responsible for keeping these versions up to date, even though
+ they’re sub-dependencies of 
+\emph on
+Flask
+\emph default
+.
+ What if there’s a security hole discovered in 
+\emph on
+Werkzeug
+\emph default
+==0.14.1 that the package maintainers immediately patched in 
+\emph on
+Werkzeug
+\emph default
+==0.14.2? You really need to update to 
+\emph on
+Werkzeug
+\emph default
+==0.14.2 to avoid any security issues arising from the earlier, unpatched
+ version of 
+\emph on
+Werkzeug
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+All such problems are solved using 
+\emph on
+Pipenv
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Few good commands (see 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://github.com/pypa/pipenv"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://realpython.com/pipenv-guide/"
+literal "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+installation: 
+\emph on
+pip install --user pipenv
+\end_layout
+
+\begin_layout Itemize
+run Python script in a pipenv environment without launching a shell: 
+\emph on
+pipenv run python script.py
+\end_layout
+
+\begin_layout Itemize
+activate pipenv environment: 
+\emph on
+pipenv shell
+\end_layout
+
+\begin_layout Itemize
+install a library (if not existing, it also creates 
+\emph on
+Pipfile
+\emph default
+ and 
+\emph on
+Pipfile.lock 
+\emph default
+files and update 
+\emph on
+Pipfile
+\emph default
+): 
+\emph on
+pipenv install numpy
+\end_layout
+
+\begin_layout Itemize
+push your local dev env to production once it is ready: 
+\emph on
+pipenv lock
+\end_layout
+
+\begin_layout Itemize
+to see dependency graph: 
+\emph on
+pipenv graph
+\end_layout
+
+\begin_layout Itemize
+check for security vulnerabilities (
+\emph on
+PEP 508
+\emph default
+) in your environment: 
+\emph on
+pipenv check
+\end_layout
+
+\begin_layout Itemize
+uninstalling a package: 
+\emph on
+pipenv uninstall numpy
+\end_layout
+
+\begin_layout Itemize
+uninstalling all packages: 
+\emph on
+pipenv uninstall --all
+\end_layout
+
+\begin_layout Itemize
+find where your virtual environment is: 
+\emph on
+pipenv -- venv
+\end_layout
+
+\begin_layout Itemize
+find where your project home is: 
+\emph on
+pipenv --where
+\end_layout
+
+\begin_layout Itemize
+output Python interpreter information: 
+\emph on
+pipenv --py
+\end_layout
+
+\begin_layout Itemize
+remove project virtualenv: 
+\emph on
+pipenv --rm
+\end_layout
+
+\begin_layout Itemize
+uninstalling all packages from virtualenv: 
+\emph on
+pipenv uninstall --all
+\end_layout
+
+\begin_layout Itemize
+installing the dev-packages (e.g.
+ 
+\emph on
+sphinx
+\emph default
+) for our builds: 
+\emph on
+pipenv install sphinx --dev
+\end_layout
+
+\begin_layout Itemize
+installing the whole dev environment: 
+\emph on
+pipenv install --dev
+\end_layout
+
+\begin_layout Itemize
+generation of a 
+\emph on
+requirements.txt
+\emph default
+ file from 
+\emph on
+Pipenv
+\emph default
+ by using the lock option: 
+\emph on
+pipenv lock --requirements > requirements.txt
+\end_layout
+
+\begin_layout Itemize
+find out what’s changed upstream: 
+\emph on
+pipenv update --outdated
+\emph default
+ and then 
+\emph on
+pipenv update
+\end_layout
+
+\begin_layout Itemize
+install from 
+\emph on
+requirements.txt
+\emph default
+: 
+\emph on
+pipenv install -r path/to/requirements.txt
+\end_layout
+
+\begin_layout Itemize
+during installation, there are few flags:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+--system
+\emph default
+ (using system 
+\emph on
+pip
+\emph default
+, instead of one in 
+\emph on
+virtualenv
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+--ignore-pipfile
+\emph default
+ (ignore 
+\emph on
+Pipfile
+\emph default
+, install from 
+\emph on
+Pipfile.lock
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+--skip-lock 
+\emph default
+(ignore 
+\emph on
+Pipfile.lock
+\emph default
+, install from 
+\emph on
+Pipfile
+\emph default
+; also do not write out a
+\emph on
+ Pipfile.lock
+\emph default
+ reflecting changes to the 
+\emph on
+Pipfile
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+install packages exactly as specified in 
+\emph on
+Pipfile.lock: pipenv sync
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+this is very similar to 
+\emph on
+pipenv install
+\emph default
+ 
+\emph on
+--ignore-pipfile
+\emph default
+, but 
+\emph on
+sync
+\emph default
+ will never attempt to re-lock your dependencies as it is considered an
+ atomic operation.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Command 
+\emph on
+pipenv lock 
+\emph default
+will create/update your
+\series bold
+ 
+\emph on
+Pipfile.lock
+\emph default
+, which you’ll never need to (and are never meant to) edit manually.
+
+\series default
+ You should always use the generated file.
+ Actually, 
+\emph on
+Pipenv
+\emph default
+ automatically regenerated the 
+\emph on
+Pipfile.lock 
+\emph default
+each time the 
+\emph on
+Pipfile
+\emph default
+ is modified.
+ Your fixed environment is being automatically maintained!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now, once you get your code and Pipfile.lock in your production environment,
+ you should install the last successful environment recorded: 
+\emph on
+pipenv install --ignore-pipfile
+\emph default
+.
+ This tells 
+\emph on
+Pipenv
+\emph default
+ to ignore the 
+\emph on
+Pipfile
+\emph default
+ for installation and use what’s in the 
+\emph on
+Pipfile.lock
+\emph default
+.
+ Given this 
+\emph on
+Pipfile.lock
+\emph default
+, 
+\emph on
+Pipenv
+\emph default
+ will create the exact same environment you had when you ran pipenv lock,
+ sub-dependencies and all.
+\end_layout
+
+\begin_layout Itemize
+The lock file enables deterministic builds by taking a snapshot of all the
+ versions of packages in an environment (similar to the result of a pip
+ freeze).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+You can effectively forget about 
+\emph on
+pip
+\emph default
+ since 
+\emph on
+pipenv
+\emph default
+ essentially acts as a replacement.
+ 
+\end_layout
+
+\begin_layout Itemize
+You can force the creation of a Python 2 or 3 environment with the arguments
+ 
+\emph on
+--two
+\emph default
+ and 
+\emph on
+--three
+\emph default
+ respectively.
+ Otherwise, 
+\emph on
+pipenv
+\emph default
+ will use whatever default 
+\emph on
+virtualenv
+\emph default
+ finds.
+ If you require a more specific version of Python, you can provide a 
+\emph on
+--python X 
+\emph default
+argument with the version 
+\emph on
+X
+\emph default
+ you require (for example: 
+\emph on
+--python 3.6
+\emph default
+).
+\end_layout
+
+\begin_layout Description
+virtualenv
+\end_layout
+
+\begin_layout Itemize
+Very popular tool, creates an isolated Python environments for Python libraries.
+ It works on lower level than 
+\emph on
+pipenv
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+It creates a folder (in a project directory) which contains all the necessary
+ executables to use the packages that a Python project would need.
+ 
+\series bold
+Ideally = each project should have a separate environment! 
+\end_layout
+
+\begin_layout Itemize
+You can also use the Python interpreter of your choice.
+\end_layout
+
+\begin_layout Itemize
+It installs a bunch of files in a directory (e.g.
+ 
+\emph on
+env/
+\emph default
+) and modifies 
+\emph on
+PATH
+\emph default
+ environment variable to prefix it with a custom 
+\emph on
+bin 
+\emph default
+directory (e.g.
+ 
+\emph on
+env/bin
+\emph default
+).
+ An exact copy of the 
+\emph on
+python 
+\emph default
+or 
+\emph on
+python3
+\emph default
+ binary is placed in this directory, but Python is programmed to look for
+ libraries relative to its path first, in the environment directory.
+\end_layout
+
+\begin_layout Itemize
+Not a part of Python's standard library, but it is officially blessed by
+ PyPa (Python Packaging Authority).
+ 
+\end_layout
+
+\begin_layout Itemize
+Once activated, it is possible to install packages in the virtual environment
+ using pip.
+\end_layout
+
+\begin_layout Description
+pyenv 
+\end_layout
+
+\begin_layout Itemize
+This is used to isolate Python versions.
+ 
+\end_layout
+
+\begin_layout Itemize
+Once activated, it prefixes the 
+\emph on
+PATH
+\emph default
+ environment variable with 
+\emph on
+~/.pyenv/shims
+\emph default
+, where there are special files matching the Python commands (python, pip).
+ These are not copies of the Python-shipped commands; they are special scripts
+ that decide on the fly which version of Python to run based on the 
+\emph on
+PYENV_VERSION
+\emph default
+ environment variable, or the 
+\emph on
+.python-version
+\emph default
+ file, or the 
+\emph on
+~/.pyenv/version
+\emph default
+ file.
+ 
+\end_layout
+
+\begin_layout Description
+virtualenvwrapper
+\end_layout
+
+\begin_layout Itemize
+This is a set of extensions to virtualenv.
+\end_layout
+
+\begin_layout Itemize
+It gives you commands like 
+\emph on
+mkvirtualenv
+\emph default
+, 
+\emph on
+lssitepackages
+\emph default
+, and especially 
+\emph on
+workon
+\emph default
+ for switching between different virtualenv directories.
+ This tool is especially useful if you want multiple virtualenv directories.
+\end_layout
+
+\begin_layout Description
+pyenv-virtualenv
+\end_layout
+
+\begin_layout Itemize
+This is a plugin for 
+\emph on
+pyenv
+\emph default
+ by the same author as 
+\emph on
+pyenv
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+It allows you to use 
+\emph on
+pyenv 
+\emph default
+and 
+\emph on
+virtualenv 
+\emph default
+at the same time conveniently.
+ 
+\end_layout
+
+\begin_layout Description
+pyenv-virtualenvwrapper 
+\end_layout
+
+\begin_layout Itemize
+This is also a plugin for 
+\emph on
+pyenv
+\emph default
+ by the same author as 
+\emph on
+pyenv
+\emph default
+, to conveniently integrate 
+\emph on
+virtualenvwrapper
+\emph default
+ into 
+\emph on
+pyenv
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+pyvenv 
+\end_layout
+
+\begin_layout Itemize
+Just a script shipped with Python 3 but deprecated in Python 3.6 as it had
+ problems (not to mention the confusing name).
+ 
+\end_layout
+
+\begin_layout Description
+venv 
+\end_layout
+
+\begin_layout Itemize
+A package shipped with Python 3.
+\end_layout
+
+\begin_layout Itemize
+It serves a similar purpose to virtualenv, and works in a very similar way,
+ but it doesn't need to copy Python binaries around (except on Windows).
+\end_layout
+
+\begin_layout Itemize
+Python community seems to be happy with 
+\emph on
+virtualenv.
+ venv
+\emph default
+ is not so broadly used and known.
+\end_layout
+
+\end_body
+\end_document

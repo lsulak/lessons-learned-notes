@@ -1,0 +1,577 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Pension
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The 4% Rule for Retirement (FIRE)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This rule suggests that if you spend 4% of your assets in your initial year
+ of retirement and then adjust for inflation each year going forward, you
+ will be unlikely run out of your money.
+ If you want to spend 40k per year, you would need 1M to adhere this 4%
+ rule.
+ 
+\end_layout
+
+\begin_layout Itemize
+This rule is alternatively described as the requirement to have 25 years
+ worth of spending in your portfolio to afford retirement.
+\end_layout
+
+\begin_layout Itemize
+However, if you're planning to retire early, it may not be the best rule
+ to follow.
+ Especially if your retirement period is longer than 30 years.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+US
+\end_layout
+
+\begin_layout Standard
+This is JFYI, I'm not a US citizen, but it's good to know about these.
+\end_layout
+
+\begin_layout Itemize
+CD account 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A certificate of deposit in US, but otherwise known as Time deposit.
+\end_layout
+
+\begin_layout Itemize
+This is basically a locked-in account.
+ It means that you have some money in it, but if you pull it our, you will
+ lose all interest you have been making on that.
+\end_layout
+
+\begin_layout Itemize
+It is a type of savings account and it is an interest-bearing bank deposit
+ with a specified period of maturity.
+ But here, however, unlike a classic savings account, the client arranges
+ it for a predetermined period of time and interest.
+ A client must not withdraw or deposit money for the agreed period.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+401k 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Retirement plan, paid by your employer and also employee (50:50).
+ For example, when I put 20$ into retirement plan (before taxes!) from my
+ salary, my employer will match that and will put also 20$ (or maybe even
+ more).
+\end_layout
+
+\begin_layout Itemize
+A 401(k) is an employer sponsored retirement plan that is eligible to employees
+ where they can make salary reduction contributions on a pre/post-tax basis.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Individual Retirement Account (IRA)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Account you can set up via a broker such as Fidelity or Charles Schwab.
+\end_layout
+
+\begin_layout Itemize
+You will put your money to such account and you can invest it into for example
+ bonds or stocks.
+\end_layout
+
+\begin_layout Itemize
+There are 3 types of IRA: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Traditional IRA
+\emph default
+ - money has not been taxed, but it will be taxed when you will put it out
+ for your retirement time .
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Roth IRA 
+\emph default
+- in this IRA, the money has been already taxed when you put them into that
+ account, and when you want to pull them, you don't have to tax it any more.
+ And you are never forced to take your money out.
+ In comparison to traditional IRA, in Roth IRA, there are some limits in
+ how much money you can put there.
+ To Traditional IRA, you can contribute whatever much you like.
+ Maybe Roth IRA is better, you never know if taxes won't be higher in the
+ future.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Rollover IRA 
+\emph default
+- you have for example 401k with an employer, you will leave that employer,
+ and if you will keep your money there you won't pay any taxes.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+UK
+\end_layout
+
+\begin_layout Standard
+See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.moneysavingexpert.com/savings/discount-pensions/}
+\end_layout
+
+\end_inset
+
+ and for advisers: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{unbiased.co.uk}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Work place pension
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This one is set up by your employer.
+ You typically pay certain percentage of your salary, and your employer
+ will contribute to it.
+ Some part of your wage (top line, gross number) goes into pension every
+ month (pre-tax money), plus a lot of employers can make a contributions
+ to it.
+\end_layout
+
+\begin_layout Itemize
+There are two types of workplace pensions: trust-based and contract-based
+ pensions.
+\end_layout
+
+\begin_layout Itemize
+Portals examples: Aviva
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+State pension
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can get access to it at the age of 66.
+ Everybody gets this as long as you make enough qualified national insurance
+ payments.
+ You are qualified after 10-35 years of contributions.
+ What you get is based on your national insurance record.
+ Qualified year - earn over £183 a week, which means you'll pay national
+ insurance.
+ Or you are self-employed and choose to make a national insurance contribution.
+ 
+\end_layout
+
+\begin_layout Itemize
+You can usually top up the past 6 years.
+ 
+\end_layout
+
+\begin_layout Itemize
+Example (2020): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+£175.20 % 35 (both of these are constants) * number_of_qualifying_years
+\end_layout
+
+\begin_layout Itemize
+10 qualified years: £175.2 % 35 * 20 = ~ £100 (this is your state pension
+ per week)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.gov.uk/check-state-pension}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.yourpension.gov.uk/pension-calculator/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.2020financial.co.uk/state-pension-calculator/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Personal/Private pension
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can get access to it at the age of 55.
+ SIPP.
+ You have to set it up.
+ This is especially good if you are self-employed.
+ £40k is a limit per year (you can put in more, but you will be taxed on
+ what you put in on top of that).
+ You can get great tax benefits here.
+ And government can pay 25% or more of your contributions, depending on
+ your tax status.
+\end_layout
+
+\begin_layout Itemize
+Then, from the age of 57 (from 2028), you'll be able to take out typically
+ 25% of your pension pot, tax free, with the rest - a subject to normal
+ income tax.
+ 
+\end_layout
+
+\begin_layout Itemize
+You may also decide to buy an annuity.
+ Annuity - financial product that you exchange your pot to which you saved
+ over your lifetime, that thing guarantees you an income for the rest of
+ your life.
+ PensionBee, Moneyfarm, Nutmeg
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Individual Special Account (ISA)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Cash ISA
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Investment ISA
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Great thing of Investment ISA is they aren't taxed when you withdraw money
+ - unlike your pension.
+ You are allowed 20k deposited over however many ISAs you like.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Lifetime ISA
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can only put 4k a year in there, but the government will top up 25%
+ on top.
+ You can apply only if you are in the age of 18-39.
+ And you must be an UK resident.
+\end_layout
+
+\begin_layout Itemize
+It's for your first (UK?) home (must be under 450k), or your retirement
+ in the age of 60.
+\end_layout
+
+\begin_layout Itemize
+If your goal is retirement, and you are in high-tax brackets, then private
+ pension is a better choice.
+ Some Lisa will get you also interest of 1-2% annually, on top of the government
+ bonus.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+My Aviva
+\end_layout
+
+\begin_layout Itemize
+Buying, selling or switching the funds: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{aviva.co.uk/ppfm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Investment options: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{aviva.co.uk/investment-options}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Max (by law, 2020) I can pay into this plan each year is is 100% of my earnings
+ or £3,600.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's say my salary is £50k yearly.
+ 
+\end_layout
+
+\begin_layout Itemize
+My payments are based in 2% of my current pensionable earnings (50k) and
+ my employer's payments are based on 6% of my current pensionable earnings.
+ 
+\end_layout
+
+\begin_layout Itemize
+So it's my payment £83.33 (£66.66 +basic rate income tax relief at 20%, which
+ is £16.67), plus employer's payment £250, which is £333.33 in total each
+ month.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If I leave the UK, I have to inform the authorities within 30 days or the
+ end of a current tax year - whichever is later.
+\end_layout
+
+\begin_layout Itemize
+Charges - around 0.5% pa (Annual Fund Charge, Additional Yearly Charge, and
+ Fund Manager Expense Charge).
+ 
+\end_layout
+
+\end_body
+\end_document

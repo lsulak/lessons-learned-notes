@@ -1,0 +1,1007 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "MongoDB Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+MongoDB
+\end_layout
+
+\begin_layout Itemize
+These days, we got plenty of other options, which are more optimal and modern.
+ MongoDB has tons of advantages and perhaps it would be a good option from
+ the beginning for our Scrapy-based crawler for instance, but it has a lot
+ of disadvantages.
+\end_layout
+
+\begin_layout Itemize
+It is extremely suitable for fast prototyping, but not so good for final
+ production and fully horizontal scaling as some other database systems.
+\end_layout
+
+\begin_layout Itemize
+Its performance is quite good, but today's e.g.
+ Cassandra, Scylla, or Cockroach DB are much better.
+\end_layout
+
+\begin_layout Itemize
+There are some things limited in open-source version, e.g.
+ security, and we would maybe need Enterprise version (using Kerberos).
+\end_layout
+
+\begin_layout Itemize
+Also, it is extremely insecure by default.
+ I would recommend to have MongoDB only as the third or fourth alternative,
+ after Cassandra, Scylla, or Cockroach DB.
+ But it depends on a specific use-case.
+\end_layout
+
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Itemize
+JSON document storage (actually it stores data in BSON representation -
+ binary JSON
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://docs.mongodb.com/v3.0/reference/bson-types/}}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+distributed database at its core, so high availability, horizontal scaling,
+ and geographic distribution are built in and easy to use
+\end_layout
+
+\begin_layout Itemize
+very popular, written in C++
+\end_layout
+
+\begin_layout Itemize
+master/slave replication
+\end_layout
+
+\begin_layout Itemize
+performance over features
+\end_layout
+
+\begin_layout Itemize
+powerful aggregation
+\end_layout
+
+\begin_layout Itemize
+integrated text search
+\end_layout
+
+\begin_layout Itemize
+access rights for users and roles
+\end_layout
+
+\begin_layout Itemize
+CAP theorem: depending on the need of the application, MongoDB provides
+ options to either maximize Consistency or Availability.
+ So, its not possible to label MongoDB as either an AP or CP system.
+ However, it is mostly CP and it achieves pretty good availability.
+\end_layout
+
+\begin_layout Itemize
+usage - dynamic queries, indexes and not map/reduce functions.
+ Good performance on a big DB which is changing very often.
+ Good for rapid prototyping & development when you don't have structure
+ in your data.
+ Can be bad for production.
+\end_layout
+
+\begin_layout Itemize
+"New projects shouldn't start on MongoDB, and old projects should be thinking
+ about migrating off of it." (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://brandur.org/cloud-databases#mongodb"
+literal "false"
+
+\end_inset
+
+) However, the same person wrote: "The only databases on the list that I've
+ seen running in production are MongoDB and Postgres..." well, naturally, every
+ system has some problems.
+\end_layout
+
+\begin_layout Itemize
+TL;DR - best used for high write loads, unstable schema, high availability
+ in unstable environment and a lot of data
+\end_layout
+
+\begin_layout Section
+Licensing
+\end_layout
+
+\begin_layout Itemize
+database servers and tools: free (open source) - GNU AGPL v3.0, or commercial
+ license from MongoDB, Inc
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.mongodb.com/community/licensing}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+drivers: free (open source) - Apache 2 License
+\end_layout
+
+\begin_layout Section
+Pros
+\end_layout
+
+\begin_layout Itemize
+rich query language support
+\end_layout
+
+\begin_layout Itemize
+very fast for reading as well as writing =high performance (but MongoDB
+ is slower in comparison to Cassandra for instance)
+\end_layout
+
+\begin_layout Itemize
+native replication
+\end_layout
+
+\begin_layout Itemize
+flexible data model - this can be also disadvantage, but it depends on a
+ use-case
+\end_layout
+
+\begin_layout Itemize
+new versions - improved locking, even transactions
+\end_layout
+
+\begin_layout Itemize
+it is not fully ACID, but with a correct settings, it can achieve durability3.
+ And atomicity only on a single document level4.
+\end_layout
+
+\begin_layout Section
+Cons
+\end_layout
+
+\begin_layout Itemize
+good from the beginning, but not for production stage with a tons of data
+ (especially dynamic)
+\end_layout
+
+\begin_layout Itemize
+locking (can be heavy with a lot of writes), but these days it is much better,
+ see this
+\end_layout
+
+\begin_layout Itemize
+space efficiency could be better
+\end_layout
+
+\begin_layout Itemize
+retrieving sorted data - impractical when the number of records gets large
+\end_layout
+
+\begin_layout Itemize
+no control over where data is placed, so frequently accessed data may be
+ spread over a large area.
+ Once the frequently accessed data is not in memory any more, MongoDB becomes
+ IO bound and lock contention becomes an issue
+\end_layout
+
+\begin_layout Itemize
+you will update a few collections and there is a server failure.
+ Only some of data will be updated = inconsistent state
+\end_layout
+
+\begin_layout Itemize
+it is better to detect and explicitly crash errors than hide them silently.
+ Mongo hides problems (writing to non-existing collection; is the data type
+ I expect here?).
+ Unfortunately this is MongoDB philosophy (it is NoSQL after all)
+\end_layout
+
+\begin_layout Itemize
+max document size is 16 MB and nesting level is 100
+\end_layout
+
+\begin_layout Itemize
+you can index only field not more than 1024 bytes, and in 1 collection you
+ can have 64 indexes
+\end_layout
+
+\begin_layout Itemize
+you can not automatically rollback more than 300 MB of data.
+ If you have more than this, manual intervention is needed
+\end_layout
+
+\begin_layout Itemize
+security can be a bit limited in the terms of read and write authorization
+ - you cannot control access permissions of a specific collection or document
+\end_layout
+
+\begin_layout Itemize
+horizontal scaling (via sharding) - possible, but "It uses lots of connections
+ to do so and it requires managing lots of special nodes.
+ I have seen clusters in the dozens of machines, but it's not what I would
+ describe as 
+\begin_inset Quotes eld
+\end_inset
+
+easy
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If you plan to shard your data, you need to shard early as some things
+ that are feasible on a single server are not feasible on a sharded collection."
+ (see Quora link in references)
+\end_layout
+
+\begin_layout Itemize
+reads may miss matching documents that are updated during the course of
+ the read operation
+\end_layout
+
+\begin_layout Itemize
+bad configuration can have significant (security) impacts
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://krebsonsecurity.com/2017/01/extortionists-wipe-thousands-of-databases
+-victims-who-pay-up-get-stiffed/}}
+\end_layout
+
+\end_inset
+
+ - Mongo seems to be insecure by default
+\end_layout
+
+\begin_layout Itemize
+Kerberos authentication available in Enterprise edition only
+\end_layout
+
+\begin_layout Section
+Python usage
+\end_layout
+
+\begin_layout Standard
+Note: txmongo is maybe a worth to try, maybe it is better than pymongo for
+ some use-cases.
+ Txmongo is not blocking / synchronous and should be easier to use with
+ Twisted (used for example in Scrapy).
+\end_layout
+
+\begin_layout Standard
+MongoDB and its usage in Python are both quite popular.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/mongodb/mongo-python-driver}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/twisted/txmongo}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/gamechanger/mongothon}
+\end_layout
+
+\end_inset
+
+ - unfortunately only for Python 2.7, but it is based on Mongoose (node.js)
+ which verifies MongoDB schemas, which can be very beneficial.
+ If we choose to use MongoDB somewhere in the future, something like this
+ can be a very good thing to prevent silent errors.
+\end_layout
+
+\begin_layout Section
+Basics
+\end_layout
+
+\begin_layout Itemize
+Creation of a new user:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+use db_name 
+\end_layout
+
+\begin_layout Plain Layout
+db.createUser( 
+\end_layout
+
+\begin_layout Plain Layout
+{ 
+\end_layout
+
+\begin_layout Plain Layout
+user: "user", pwd: "pass", roles: [ { role:"readWrite", db:"dbAdmin" },
+ ] 
+\end_layout
+
+\begin_layout Plain Layout
+} 
+\end_layout
+
+\begin_layout Plain Layout
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Printing a DB collection:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+mongo web_threats_db --eval 'printjson(db.some_collection.find().toArray())'
+ > out.json
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Removing collection:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+db.some_collection.drop()
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Deleting a current DB:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+db.dropDatabase()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Indexes
+\end_layout
+
+\begin_layout Itemize
+Creating a new index, for example on 
+\begin_inset Quotes eld
+\end_inset
+
+url
+\begin_inset Quotes erd
+\end_inset
+
+ on ascending order:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+db.some_collection.createIndex({url: 1})
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Index deletion: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+db.some_collection.dropIndex({url: 1})
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Deletion of all indexes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+ db.some_collection.dropIndexes() 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Seeing current indexes: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+db.some_collection.getIndexes()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Others
+\end_layout
+
+\begin_layout Subsection
+DB path (location) change
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ sudo service mongod stop 
+\end_layout
+
+\begin_layout Description
+$ sudo mv mongodb /new/disk/mongodb/ 
+\end_layout
+
+\begin_layout Description
+$ sudo ln -s /new/disk/mongodb/ /var/lib/mongodb 
+\end_layout
+
+\begin_layout Description
+$ sudo chown mongodb:mongodb /new/disk/mongodb/ 
+\end_layout
+
+\begin_layout Description
+$ sudo service mongod start
+\end_layout
+
+\begin_layout Plain Layout
+# test if mongodb user can access new location: 
+\end_layout
+
+\begin_layout Description
+$ sudo -u mongodb -s cd /new/disk/mongodb/ 
+\end_layout
+
+\begin_layout Plain Layout
+# resolve other permissions issues if necessary 
+\end_layout
+
+\begin_layout Description
+$ sudo usermod -a -G <newdisk_grp> mongodb
+\end_layout
+
+\begin_layout Description
+$ sudo ln -s /new/disk/mongodb/ /var/lib/mongodb
+\end_layout
+
+\begin_layout Plain Layout
+# in case of fire, if the path is wrong:
+\end_layout
+
+\begin_layout Description
+$ sudo mongod --dbpath=/home/mongo 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The long road to Mongo's durability "
+target "https://brandur.org/fragments/mongo-durability"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Pros and cons of MongoDB? "
+target "https://stackoverflow.com/questions/5244437/pros-and-cons-of-mongodb"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Why you should never, ever, ever use MongoDB"
+target "https://www.reddit.com/r/programming/comments/3dvzsl/why_you_should_never_ever_ever_use_mongodb/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Why MongoDB Is a Bad Choice for Storing Our Scraped Data"
+target "https://blog.scrapinghub.com/2013/05/13/mongo-bad-for-scraped-data"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Learn About Lock Percentage: Concurrency in MongoDB"
+target "https://www.mongodb.com/blog/post/learn-about-lock-percentage-concurrency-in"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Visual Guide to NoSQL Systems"
+target "http://blog.nahurst.com/visual-guide-to-nosql-systems"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "What are the limitations of a MongoDB? from Quora and MongoDB Limits and Thresholds"
+target "https://www.quora.com/What-are-the-limitations-of-a-MongoDB"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Comparison between different NoSQL technologies"
+target "https://saipraveenblog.wordpress.com/2016/12/31/nosql/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "MongoDB System Properties"
+target "https://db-engines.com/en/system/MongoDB"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "A Comparison of Advanced, Modern Cloud Databases"
+target "https://brandur.org/cloud-databases"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Why We Moved From NoSQL MongoDB to PostgreSQL"
+target "https://dzone.com/articles/why-we-moved-from-nosql-mongodb-to-postgresql"
+literal "false"
+
+\end_inset
+
+ - a good article showing some pitfalls of MongoDB
+\end_layout
+
+\end_body
+\end_document

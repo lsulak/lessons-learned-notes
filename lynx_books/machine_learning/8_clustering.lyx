@@ -1,0 +1,1525 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Clustering 
+\end_layout
+
+\begin_layout Itemize
+Clustering is a problem of learning to assign a label to examples by leveraging
+ an unlabeled dataset.
+ So, because of this, deciding on whether the learned model is optimal is
+ much more complicated than in supervised learning.
+\end_layout
+
+\begin_layout Itemize
+A set of inputs is to be divided into groups.
+ Unlike in classification, the groups are not known beforehand, making this
+ typically an unsupervised task.
+\end_layout
+
+\begin_layout Itemize
+Applications: market segmentation, social network analysis, organize computer
+ clusters, analysis of astronomical data.
+\end_layout
+
+\begin_layout Itemize
+Clustering can be hierarchical (simple algorithm, repetitive runs produces
+ the same solution, output is dendogram) or non-hierarchical (potentially
+ different solution after each run).
+\end_layout
+
+\begin_layout Itemize
+These methods have ability to process even high-dimensional data.
+\end_layout
+
+\begin_layout Itemize
+A good clustering method creates clusters with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+great similarity of objects inside class (
+\series bold
+high intra-class similarity
+\series default
+), and
+\end_layout
+
+\begin_layout Itemize
+low similarity of objects between classes (
+\series bold
+low inter-class similarity
+\series default
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Most of the algorithms are so-called 
+\series bold
+hard clustering
+\series default
+ (such as 
+\series bold
+k-means 
+\series default
+and 
+\series bold
+DBSCAN
+\series default
+), in which each example can belong to only one cluster.
+ But there exist algorithms that 
+\bar under
+allow each example to be a member of several clusters with different membership
+ score
+\bar default
+, such as
+\series bold
+ Gaussian mixture model
+\series default
+ (GMM) and 
+\series bold
+HDBSCAN
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Methods Based on Division
+\end_layout
+
+\begin_layout Itemize
+These (
+\series bold
+centroid-based
+\series default
+) methods create a 
+\begin_inset Quotes eld
+\end_inset
+
+database
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $N$
+\end_inset
+
+ objects which belong to 
+\begin_inset Formula $k$
+\end_inset
+
+ classes, 
+\begin_inset Formula $k\leq N$
+\end_inset
+
+.
+ Parameter 
+\begin_inset Formula $k$
+\end_inset
+
+ must be specified.
+\end_layout
+
+\begin_layout Itemize
+Each class must have at least 1 object and each object belongs to just 1
+ class.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Representative methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+k-means
+\series default
+ - method based on central point (each class is represented by 1 such point,
+ which is picked randomly).
+ Sensitive to noise, can not find clusters of different size and non-convex
+ shape.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+k-medoids
+\series default
+ - method based on representative object (each class is represented by 1
+ such object, which is the closest to center of a given class).
+ Computationally more expensive than previous method, and is effective if
+ we have less data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CLARANS
+\series default
+ (Clustering Algorithm based on Randomized Search).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pseudo-algorithm:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Pick 
+\begin_inset Formula $k$
+\end_inset
+
+ objects, which will represent each individual clusters.
+ Other samples will be divided to classes according to similarities.
+\end_layout
+
+\begin_layout Enumerate
+Cycle what ends when nothing was moved: new cluster centroids will be estimated
+ and objects will be moved to clusters, based on distanced from a middle
+ of clusters.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+K-Means
+\end_layout
+
+\begin_layout Itemize
+First step is to pseudo-randomly pick a number of clusters 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ For example 
+\begin_inset Formula $k=2$
+\end_inset
+
+, so we randomly pick 2 points (so called 
+\series bold
+cluster centroids
+\series default
+) - so each runtime produces different solution.
+ Two, because I want to divide data into 2 parts.
+ It is not always easy to determine a number of clusters - elbow method,
+ or manually - for example via visualizations.
+ It should be lower than the number of examples in dataset.
+\end_layout
+
+\begin_layout Itemize
+Non-hierarchical clustering algorithm.
+\end_layout
+
+\begin_layout Itemize
+Input to the algorithm: 
+\begin_inset Formula $K$
+\end_inset
+
+ (number of clusters), and training set.
+\end_layout
+
+\begin_layout Itemize
+Iterative algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(random initialization at 0 step - randomly pick 
+\begin_inset Formula $K$
+\end_inset
+
+ training examples.
+ Set 
+\begin_inset Formula $\mu_{1},...,\mu_{K}$
+\end_inset
+
+equal to these 
+\begin_inset Formula $K$
+\end_inset
+
+ examples)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Cluster assignment step
+\series default
+ - assign one of the clusters to all data points.
+ So it goes from all data samples, and all clusters, and chooses a cluster
+ with the smallest distant (this is again, done for each datapoint).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+see Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:kmeans_optimization_objective"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ - minimize 
+\begin_inset Formula $J(...)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $c^{(1)},c^{(2)},...,c^{(n)}$
+\end_inset
+
+and hold 
+\begin_inset Formula $\mu_{1},\mu_{2},...,\mu_{k}$
+\end_inset
+
+fixed.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Move centroid step
+\series default
+ - based on result, clusters are moved to a different location, calculated
+ as means of positions of each individual points in a given cluster.
+ If no movement was done, the algorithm ends.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+see Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:kmeans_optimization_objective"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ - minimize 
+\begin_inset Formula $J(...)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu_{1},\mu_{2},...,\mu_{k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The algorithm can end up in local optima, if the initially picked up cluster
+ centroids are totally wrong.
+ Solution is to run it 50 or 1,000 times, calculate cost function and in
+ the end, pick up just 1 with the best result (or the average result) =
+ but only good if the number of clusters is relatively small (e.g.
+ 2-10).
+ If we have hundreds of clusters, it is not going to make a big difference.
+\end_layout
+
+\begin_layout Itemize
+Less automatic technique for choosing the number of clusters is called 
+\series bold
+elbow method 
+\series default
+and it is depicted on the next figure.
+ Another techniques how to find 
+\begin_inset Formula $k$
+\end_inset
+
+ are 
+\series bold
+average
+\series default
+ 
+\series bold
+silhouette method
+\series default
+,
+\series bold
+ 
+\series default
+or
+\series bold
+ gap statistics 
+\series default
+(this should be quite effective).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/elbow_method_clusters.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of elbow method used for determinign a good value of number of
+ clusters.
+ Right plot: until 3 (
+\begin_inset Quotes eld
+\end_inset
+
+elbow
+\begin_inset Quotes erd
+\end_inset
+
+) it goes very rapidly, but then not so much, there is only a little difference.
+ So maybe 3 clusters is a good idea.
+ However , right plot: it turnes out that elbow method is not used so often
+ because it can end up like this.
+ The best way is to think about usecases / see data and to ask, for what
+ purpose am I running K-means?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Optimization objective (basically cluster assignment step)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(c^{(1)},...,c{}^{(2)},\mu_{1},...,\mu_{K})=\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-\mu_{c}(i)||^{2}\label{eq:kmeans_cost_function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+min_{c^{(1)},...,c{}^{(2)},\mu_{1},...,\mu_{K}}\;J(c^{(1)},...,c{}^{(2)},\mu_{1},...,\mu_{K})\label{eq:kmeans_optimization_objective}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+where:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $c^{(i)}$
+\end_inset
+
+is an index of a cluster to which example 
+\begin_inset Formula $x^{(i)}$
+\end_inset
+
+is currently assigned
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+is cluster centroid 
+\begin_inset Formula $k$
+\end_inset
+
+, and we have 
+\begin_inset Formula $K$
+\end_inset
+
+ clusters
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu_{c}(i)$
+\end_inset
+
+ is cluster centroid to which example 
+\begin_inset Formula $x^{(i)}$
+\end_inset
+
+ has been assigned
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hierarchical Clustering Methods
+\end_layout
+
+\begin_layout Itemize
+System of non-empty subsets, and an intersection between each 2 subsets
+ is either empty set, or one of these 2 subsets.
+ This is different than in non-hierarchical clustering methods, in which
+ different non-empty subsets have empty intersection (=each subset is different).
+\end_layout
+
+\begin_layout Itemize
+No need to know a number of classes in advance.
+\end_layout
+
+\begin_layout Itemize
+Distance between clusters - methods based on averaging, centroid, closest
+ neighbor, the most distant neighbor, or medium-based.
+\end_layout
+
+\begin_layout Itemize
+Less computationally expensive.
+\end_layout
+
+\begin_layout Itemize
+No possibility to 
+\begin_inset Quotes eld
+\end_inset
+
+fix
+\begin_inset Quotes erd
+\end_inset
+
+ wrong decision.
+ If we merge some classes, we will never split them (or vice versa).
+ Solution - combination of hierarchical clustering and some other clustering
+ methods.
+\end_layout
+
+\begin_layout Itemize
+They can be
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Aglomerative 
+\series default
+- (bottom-top approach) from each individual samples (=clusters) with consecutiv
+e merging until there is just 1 cluster.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Division 
+\series default
+- (top-bottom approach) on the very beginning there is just 1 cluster and
+ then at the very end there is as many clusters as samples.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Representative methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Chameleon
+\end_layout
+
+\begin_layout Itemize
+Diana
+\end_layout
+
+\begin_layout Itemize
+Agnes
+\end_layout
+
+\begin_layout Itemize
+BIRCH
+\end_layout
+
+\begin_layout Itemize
+ROCK
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Density-based Clustering Methods
+\end_layout
+
+\begin_layout Itemize
+Clusters are regions with sufficiently high density of objects.
+ A cluster is increased until density of objects in its neighborhood does
+ not exceed below some threshold.
+\end_layout
+
+\begin_layout Itemize
+Clusters may have different shapes, which is advantage.
+ On the other hand, it is needed to define parameter of density.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Representative methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+DBSCAN
+\series default
+ (Density-based Clustering Method Based on Connected Regions with Sufficiently
+ High Density) and 
+\series bold
+HDBSCAN
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+DENCLUE
+\series default
+ (Density-based Clustering)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+DBSCAN
+\end_layout
+
+\begin_layout Itemize
+Instead of guessing how many clusters you need, by using this method you
+ define two hyperparameters: 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+You start by picking an example 
+\begin_inset Formula $x$
+\end_inset
+
+ from your dataset at random and assign it to cluster 1.
+ Then you count how many examples have the distance from 
+\begin_inset Formula $x$
+\end_inset
+
+ that is less or equal to 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ If this quantity is greater or equal to 
+\begin_inset Formula $n$
+\end_inset
+
+, then you put all these 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-neighbors to the same cluster 1.
+\end_layout
+
+\begin_layout Itemize
+Then, you examining each member of cluster 1 and find their respective 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-neighbors.
+ If some member of cluster 1 has 
+\begin_inset Formula $n$
+\end_inset
+
+ or more such neighbors you expand cluster 1 by putting those 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-neighbors to the cluster.
+ You continue with expanding cluster 1 until there are no more examples
+ to put in it.
+\end_layout
+
+\begin_layout Itemize
+Then you pick from the dataset another example not belonging to any cluster
+ and put it to cluster 2.
+ You continue like this until all the examples either belong to some cluster,
+ or are marked as outliers.
+ So, an outlier is an example whose 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-neighborhood contains less than 
+\begin_inset Formula $n$
+\end_inset
+
+ examples.
+\end_layout
+
+\begin_layout Itemize
+The advantage of this method is that it can build clusters that have an
+ arbitrary shape, while centroid-based algorithms create clusters that have
+ a shape of a hypersphere.
+\end_layout
+
+\begin_layout Itemize
+The obvious challenge of DBSCAN is to find out a good values of the two
+ hyperparameters DBSCAN is using.
+\end_layout
+
+\begin_layout Subsection
+HDBSCAN
+\end_layout
+
+\begin_layout Itemize
+This algorithm keep the advantages of DBSCAN, but it removes the need to
+ decide on the value of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ The algorithm is capable of building clusters of varying density.
+\end_layout
+
+\begin_layout Itemize
+Modern implementations of HDBSCAN are much slower than k-means, but for
+ practical tasks, the qualities of HDBSCAN may out-weight its drawbacks.
+ It is recommended to use HDBSCAN on your dataset first.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Grid-based Subspace Clustering Methods
+\end_layout
+
+\begin_layout Itemize
+Space of objects is divided to finite number of cells.
+\end_layout
+
+\begin_layout Itemize
+Short time of processing data, which is not dependent on the number of objects,
+ but on the number of cells.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Representative methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+WaveCluster
+\end_layout
+
+\begin_layout Itemize
+Clique (Clustering in Quest)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Clustering Methods Based on Models
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Clustering-Methods-Based"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimization of match between some mathematical model and dataset.
+\end_layout
+
+\begin_layout Itemize
+These methods find out clusters which maximally corresponds to a given model.
+\end_layout
+
+\begin_layout Itemize
+Data generation is based on probability function.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Representative methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Expectation-Maximization
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $k$
+\end_inset
+
+ number of probabilistic distribution functions, each function represents
+ 1 cluster.
+ This method is able to find out parameters of such distribution functions
+ (so it's vector of parameters).
+ 
+\end_layout
+
+\begin_layout Itemize
+This method is similar to k-means.
+ Initiation - randomly pick 
+\begin_inset Formula $k$
+\end_inset
+
+ objects, which will represents clusters, and then estimate parameters of
+ distribution functions.
+ Two steps: expectation step (determine probabilities of membership objects
+ to each clusters), and maximization step (recalculate vectors of parameters
+ based on probabilities from the previous step).
+\end_layout
+
+\begin_layout Itemize
+Fast convergence, but not always reaches global optima.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+SOM
+\series default
+ (Self-organizing Map, also known as Kohonen Map), described in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Self-Organizing-Map"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+COBWEB
+\series default
+ - it uses classification tree.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Gaussian Mixture Model
+\end_layout
+
+\begin_layout Itemize
+TODO - check GMM this can be considered as clustering method.
+ Maybe name this chapter to unsupervised learning (with sections: density
+ estimation, clustering, dimensionality reduction, outlier detection).
+\end_layout
+
+\begin_layout Itemize
+Computing a GMM is very similar to doing model-based density estimation
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Density-Estimation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ In GMM, instead of having just one multivariate normal distribution (MND),
+ we have a weighted sum of several MNDs:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+fx=\sum_{j=1}^{k}\phi_{j}f_{\mu_{j},\Sigma_{j}}\label{eq:GMM}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f_{\mu_{j},\Sigma_{j}}$
+\end_inset
+
+ is a MND 
+\begin_inset Formula $j$
+\end_inset
+
+, and 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+ is its weight in the sum.
+ The values of parameters 
+\begin_inset Formula $\mu_{j},\Sigma_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ for all 
+\begin_inset Formula $j=1,...,k$
+\end_inset
+
+ are obtained using the 
+\series bold
+expectation maximization algorithm 
+\series default
+(EM) to optimize the 
+\series bold
+maximum likelihood
+\series default
+ criterion.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Again, for simplicity, let's consider one-dimensional data.
+ Also assume that there are two clusters, 
+\begin_inset Formula $k=2$
+\end_inset
+
+.
+ In this case, we have two Gaussian distributions:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $f(x|\mu_{1},\sigma_{1}^{2})=\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}exp-\frac{(x-\mu_{1})^{2}}{2\sigma_{1}^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x|\mu_{2},\sigma_{2}^{2})=\frac{1}{\sqrt{2\pi\sigma_{2}^{2}}}exp-\frac{(x-\mu_{2})^{2}}{2\sigma_{2}^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f(x|\mu_{1},\sigma_{1}^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x|\mu_{2},\sigma_{2}^{2})$
+\end_inset
+
+ are two pdf defining the likelihood of 
+\begin_inset Formula $X=x$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We use expectation maximization algorithm to estimate 
+\begin_inset Formula $\mu_{1},\sigma_{1}^{2},\mu_{2},\sigma_{2}^{2},\phi_{1},\phi_{2}$
+\end_inset
+
+.
+ The last two parameters are useful for the density estimation and less
+ useful for clustering.
+\end_layout
+
+\begin_layout Itemize
+EM works like follows.
+ In the beginning, we guess the initial values for 
+\begin_inset Formula $\mu_{1},\sigma_{1}^{2},\mu_{2},\sigma_{2}^{2}$
+\end_inset
+
+, and set 
+\begin_inset Formula $\phi_{1}=\phi_{2}=0.5$
+\end_inset
+
+ (in general, it is 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+for each 
+\begin_inset Formula $\phi_{j},j\in1,...,k$
+\end_inset
+
+.
+ At each iteration of EM, the following 4 steps are executed iteratively
+ until the values 
+\begin_inset Formula $\mu_{j}$
+\end_inset
+
+and 
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+ don't change much (for example, the change is below some threshold 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For all 
+\begin_inset Formula $i=1,...,N$
+\end_inset
+
+, calculate the likelihood of each 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+using
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $f(x_{i}|\mu_{1},\sigma_{1}^{2})=\frac{1}{\sqrt{2\pi\sigma_{1}^{2}}}exp-\frac{(x_{i}-\mu_{1})^{2}}{2\sigma_{1}^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x_{i}|\mu_{2},\sigma_{2}^{2})=\frac{1}{\sqrt{2\pi\sigma_{2}^{2}}}exp-\frac{(x_{i}-\mu_{2})^{2}}{2\sigma_{2}^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Using Bayes' Rule, for each example 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, calculate the likelihood 
+\begin_inset Formula $b_{i}^{(j)}$
+\end_inset
+
+ that the example belongs to cluster 
+\begin_inset Formula $j\in\{1,2\}$
+\end_inset
+
+ (in other words, the likelihood that the example was drawn from the Gaussian
+ 
+\begin_inset Formula $j$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $b_{i}^{(j)}\leftarrow\frac{f(x_{i}|\mu_{j},\sigma_{j}^{2})\phi_{j}}{f(x_{i}|\mu_{1},\sigma_{1}^{2})\phi_{1}+f(x_{i}|\mu_{2},\sigma_{2}^{2})\phi_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the parameter 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+reflects how likely is that our Gaussian distribution 
+\begin_inset Formula $j$
+\end_inset
+
+ with parameters 
+\begin_inset Formula $\mu_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+may have produced our dataset.
+ That is why in the beginning we set 
+\begin_inset Formula $\phi_{1}=\phi_{2}=0.5$
+\end_inset
+
+: we don't know how each of the two Gaussians are likely, and we reflect
+ our ignorance by setting the likelihood of both to one half.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Compute the new values of 
+\begin_inset Formula $\mu_{j}$
+\end_inset
+
+and 
+\begin_inset Formula $\sigma_{j}^{2},j\in\{1,2\}$
+\end_inset
+
+ as:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\mu_{j}\leftarrow\frac{\sum_{i=1}^{N}b_{i}^{(j)}x_{i}}{\sum_{i=1}^{N}b_{i}^{(j)}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{j}^{2}\leftarrow\frac{\sum_{i=1}^{N}b_{i}^{(j)}(x_{i}-\mu_{j})^{2}}{\sum_{i=1}^{N}b_{i}^{(j)}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Update 
+\begin_inset Formula $\phi_{j},j\in\{1,2\}$
+\end_inset
+
+ as:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\phi_{j}\leftarrow\frac{1}{N}\sum_{i=1}^{N}b_{i}^{(j)}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+EM algorithm is very similar to the k-means - start with random clusters,
+ then iteratively update each cluster's parameters by averaging the data
+ that is assigned to that cluster.
+ The only difference in GMM is that the assignment of an example 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+to the cluster 
+\begin_inset Formula $j$
+\end_inset
+
+ is 
+\series bold
+soft
+\series default
+: 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+belongs to cluster 
+\begin_inset Formula $j$
+\end_inset
+
+with probability 
+\begin_inset Formula $b_{i}^{(j)}$
+\end_inset
+
+.
+ This is why we calculate the new values for 
+\begin_inset Formula $\mu_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+(in step 3) not as average (used in k-means), but as a 
+\bar under
+weighted average
+\bar default
+ with weights 
+\begin_inset Formula $b_{i}^{(j)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Once we have learned the parameters 
+\begin_inset Formula $\mu_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+ for each cluster 
+\begin_inset Formula $j$
+\end_inset
+
+, the membership score of example 
+\begin_inset Formula $x$
+\end_inset
+
+ in cluster 
+\begin_inset Formula $j$
+\end_inset
+
+ is given by 
+\begin_inset Formula $f(x|\mu_{j},\sigma_{j}^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The extension to n-dimensional data (
+\begin_inset Formula $n>1$
+\end_inset
+
+) is straightforward.
+ Instead of the variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+, we now have the covariance matrix 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ that parametrizes the multinomial normal distribution.
+\end_layout
+
+\begin_layout Itemize
+In contrary to k-means where clusters can only be circular, the clusters
+ in GMM have a form of an ellipse that can have an arbitrary elongation
+ and rotation.
+ The values in the covariance matrix control those properties.
+\end_layout
+
+\begin_layout Itemize
+There is no universally recognized method to choose the right 
+\begin_inset Formula $k$
+\end_inset
+
+ in GMM.
+ It is recommended to first split the dataset into training and test set.
+ Then you try different 
+\begin_inset Formula $k$
+\end_inset
+
+ and build a different model 
+\begin_inset Formula $f_{tr}^{k}$
+\end_inset
+
+for each 
+\begin_inset Formula $k$
+\end_inset
+
+ on the training data.
+ You pick the value of 
+\begin_inset Formula $k$
+\end_inset
+
+ that maximizes the likelihood of examples in the test set:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $argmax_{k}\prod_{i=1}^{|N_{test}|}f_{tr}^{k}(x_{i})$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $|N_{test}|$
+\end_inset
+
+ is the size of the test set.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/gmm_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The progress of the Gaussian mixture model estimation using the EM algorithm
+ for two clusters (k = 2).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

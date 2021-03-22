@@ -1,0 +1,576 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "MongoDB Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+HBase
+\end_layout
+
+\begin_layout Itemize
+Hydrabase, Accumulo, Hypertable are also mentioned.
+\end_layout
+
+\begin_layout Itemize
+HBase and its derivatives/relatives are too big for us for now.
+ We are not working with such extremely big amount of data for now - very
+ large tables consisting of billions of rows X billions of columns, many
+ clusters and so on.
+ 
+\end_layout
+
+\begin_layout Itemize
+According to some comparisons, it seems that Cassandra / Scylla / Cockroach
+ DB are probably better alternatives anyway.
+ 
+\end_layout
+
+\begin_layout Section
+Alternatives
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Accumulo
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+runs on top of Hadoop
+\end_layout
+
+\begin_layout Itemize
+written in Java and C++
+\end_layout
+
+\begin_layout Itemize
+suitable for search engines, log data analysis
+\end_layout
+
+\begin_layout Itemize
+use if you want to restrict access on the cell level
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hypertable
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+faster and smaller HBase written in C++
+\end_layout
+
+\begin_layout Itemize
+runs on Hadoop HDFS
+\end_layout
+
+\begin_layout Itemize
+its own SQL-like language - HQL
+\end_layout
+
+\begin_layout Itemize
+suitable for search engines, log data analysis
+\end_layout
+
+\begin_layout Itemize
+"a better HBase"
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hydrabase
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+this is an internal fork of HBase by Facebook to improve availability (it
+ should be increased from 99.99% to 99.999% - no more than 5min of downtime
+ in a year)
+\end_layout
+
+\begin_layout Itemize
+flexibility of deploying HydraBase within a single data center.
+ This provides improved fail-over across hosts as well as racks, compared
+ with HBase
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Overview
+\end_layout
+
+\begin_layout Itemize
+it runs on top of the Hadoop File System
+\end_layout
+
+\begin_layout Itemize
+implementation of Google's Bigtable in Java.
+ Now it is a part of Hadoop project.
+ Facebook also started to use this.
+\end_layout
+
+\begin_layout Itemize
+CAP theorem: consistency and partition tolerance
+\end_layout
+
+\begin_layout Itemize
+first, make sure you have enough data.
+ If you have hundreds of millions or billions of rows, then HBase is a good
+ candidate.
+ If you only have a few thousand/million rows
+\end_layout
+
+\begin_layout Itemize
+even HDFS doesn't do well with anything less than 5 DataNodes (due to things
+ such as HDFS block replication which has a default of 3), plus a NameNode
+\end_layout
+
+\begin_layout Itemize
+Usage: Search engines.
+ Analyzing log data.
+ Any place where scanning huge, two-dimensional join-less tables are a requireme
+nt.
+ "Use Apache HBase when you need random, real-time read/write access to
+ your Big Data" 
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://bigdata-madesimple.com/a-deep-dive-into-nosql-a-complete-list-of-nosql-databases/"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Licensing
+\end_layout
+
+\begin_layout Itemize
+free (open source) - Apache 2 License 
+\end_layout
+
+\begin_layout Section
+Pros
+\end_layout
+
+\begin_layout Itemize
+horizontal scalability
+\end_layout
+
+\begin_layout Itemize
+strong consistency
+\end_layout
+
+\begin_layout Itemize
+high availability via automatic fail-over
+\end_layout
+
+\begin_layout Itemize
+can store large data sets on top of HDFS file storage and will aggregate
+ and analyze billions of rows present in the HBase tables
+\end_layout
+
+\begin_layout Itemize
+fault-tolerant way of storing large quantities of sparse data (small amounts
+ of information caught within a large collection of empty or unimportant
+ data)
+\end_layout
+
+\begin_layout Itemize
+automatic sharding: HBase tables are distributed on the cluster via regions,
+ and regions are automatically split and re-distributed as your data grows
+\end_layout
+
+\begin_layout Itemize
+HDFS support out of the box as its distributed file system
+\end_layout
+
+\begin_layout Section
+Cons
+\end_layout
+
+\begin_layout Itemize
+single point of failure (when only one HMaster is used)
+\end_layout
+
+\begin_layout Itemize
+no transaction support
+\end_layout
+
+\begin_layout Itemize
+indexed and sorted only on key, but RDBMS can be indexed on some arbitrary
+ field
+\end_layout
+
+\begin_layout Itemize
+no built-in authentication or permissions; the whole security part is in
+ a very slow development
+\end_layout
+
+\begin_layout Itemize
+HBase is CPU and memory intensive with large sequential input or output
+ access while as Map Reduce jobs are primarily input or output bound with
+ fixed memory.
+ HBase integrated with Map-reduce jobs will result in unpredictable latencies
+\end_layout
+
+\begin_layout Itemize
+HBase is really tough for querying
+\end_layout
+
+\begin_layout Itemize
+there is actually much more, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://www.guru99.com/hbase-limitations-advantage-problems.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Python usage
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/wbolster/happybase }
+\end_layout
+
+\end_inset
+
+ - for more than half an year not updated, community also not very good
+ (~420 stars) 
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Itemize
+Apache HBase, from WikiPedia
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://en.wikipedia.org/wiki/Apache_HBase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Apache HBase™ Home
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://hbase.apache.org/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+HBase pros and cons
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.packtpub.com/mapt/book/big_data_and_business_intelligence/97817839
+85944/1/ch01lvl1sec16/hbase-pros-and-cons}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+HydraBase – The evolution of HBase@Facebook
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://code.fb.com/core-data/hydrabase-the-evolution-of-hbase-facebook/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Distributed Databases
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://neurocline.github.io/dev/2015/09/17/distributed-databases.html}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Visual Guide to NoSQL Systems
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://blog.nahurst.com/visual-guide-to-nosql-systems}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://github.com/apache/hbase}
+\end_layout
+
+\end_inset
+
+ - the project is being actively downloaded.
+ It has ~2300 stars on GitHub.
+\end_layout
+
+\begin_layout Itemize
+What is the difference between HBase and Hydrabase?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.quora.com/What-is-the-difference-between-HBase-and-Hydrabase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

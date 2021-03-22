@@ -1,0 +1,704 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Alternative Investments
+\end_layout
+
+\begin_layout Standard
+Se briefly mentioned alternative investments in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Investing-Strategies"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Buffett on investment alternatives
+\end_layout
+
+\begin_layout Standard
+Wall Street tends to embrace ideas based on revenue-generating power, rather
+ than on financial sense, a tendency that often perverts good ideas to bad
+ ones.
+\end_layout
+
+\begin_layout Standard
+About financial crisis of 2008 - contemporary financial engineering has
+ produced an explosion of complex instruments known as derivatives, because
+ their fluctuating value is derived from movements in a contractually designated
+ benchmark.
+ Proponents believe that these devices are useful to manage risk - and Berkshire
+ from time to time takes modest positions in derivatives contracts that
+ Buffett judges as mispriced.
+ But while proponents also believe that derivatives tend to reduce overall
+ systemic risk, Buffett presciently observed that they may have the opposite
+ effect.
+ They are hard to value, valuations can change rapidly and they create linkages
+ and inter-dependencies among financial institutions.
+ Buffett cautioned that the combination of these factors could mean that,
+ should a single event cause challenges in one sector, that could spread
+ rapidly to others with a domino effect bringing devastating systemic consequenc
+es.
+ Such was the case with the crisis of 2008.
+\end_layout
+
+\begin_layout Itemize
+Junk Bonds
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Investing in junk bonds and investing in stocks are alike in certain ways
+ - both activities require us to make a price-value calculation and also
+ to scan hundreds of securities to find the very few that have attractive
+ reward/risk ratios.
+ But there are important differences between the two disciplines as well.
+ 
+\end_layout
+
+\begin_layout Itemize
+In stocks, we expect every commitment to work out well because we concentrate
+ on conservatively financed businesses with strong competitive strengths,
+ run by able and honest people.
+ If we buy into these companies at sensible prices, losses should be rare.
+\end_layout
+
+\begin_layout Itemize
+Purchasing junk bonds, we are dealing with enterprises that are far more
+ marginal.
+ These businesses are usually overloaded with debt and often operate in
+ industries characterized by low returns on capital.
+ Additionally, the quality of management is sometimes questionable.
+ Management may even have interests that are directly counter to those of
+ debt-holders.
+ Therefore, Buffett expects that they will have occasional large losses
+ in junk issues.
+\end_layout
+
+\begin_layout Itemize
+Berkshire has bought, in the past, a few below-investment-grade bonds with
+ success, though these were all old-fashioned "fallen angels" - bonds that
+ were initially of investment grade but that were downgraded when the issuers
+ fell on bad times.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Zero-Coupon Bonds
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Most bonds, of course, require regular payments of interest, usually semi-annual
+ly.
+ A zero-coupon bond, conversely, requires no current interest payments;
+ instead, the investor receives his yield by purchasing the security at
+ a significant discount from maturity value.
+ The effective interest rate is determined by the original issue price,
+ the maturity value, and the amount of time between issuance and maturity.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Preferred Stock
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Preference shares, more commonly referred to as preferred stock, are shares
+ of a company's stock with dividends that are paid out to shareholders before
+ common stock dividends are issued.
+ If the company enters bankruptcy, preferred stockholders are entitled to
+ be paid from company assets before common stockholders.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Derivatives
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Munger and Buffett view derivatives as time bombs, both for the parties
+ that deal in them and the economic system.
+ Essentially, these instruments call for money to change hands at some future
+ date, with the amount to be determined by one or more reference items,
+ such as interest rates, stock prices or currency values.
+ Derivatives contracts are of varying duration (running sometimes to 20
+ or more years) and their value is often tied to several variables.
+ 
+\end_layout
+
+\begin_layout Itemize
+The range of derivatives contracts is limited only by the imagination of
+ man (or sometimes, so it seems, madmen).
+\end_layout
+
+\begin_layout Itemize
+But closing down a derivatives business is easier said than done.
+ In fact, the reinsurance and derivatives business are similar: like Hell,
+ both are easy to enter and almost impossible to exit.
+ In either industry, once you write a contract - which may require a large
+ payment decades later - you are usually stuck with it.
+ True, there are methods by which the risk can be laid off with others.
+ But most strategies of that kind leave you with residual liability.
+\end_layout
+
+\begin_layout Itemize
+Another commonality of reinsurance and derivatives is that both generate
+ reported earnings that are often wildly overstated.
+ That's true because today's earnings are in a significant way based on
+ estimates whose inaccuracy may not be exposed for many years.
+\end_layout
+
+\begin_layout Itemize
+As a general rule, contracts involving multiple reference items and distant
+ settlement dates increase the opportunities for counter-parties to use
+ fanciful assumptions.
+ Of course, both internal and outside auditors review the numbers, but that's
+ no easy job.
+ Earnings can be manipulated so that they are in favor of either the trader
+ who was eyeing a multi-million dollar bonus or the CEO who wanted to report
+ impressive "earnings" (or both).
+ The bonuses were paid, and the CEO profited from his options.
+ Only much later did shareholders learn that the reported earnings were
+ a sham.
+\end_layout
+
+\begin_layout Itemize
+Another problem about derivatives is that they can exacerbate trouble that
+ a corporation has run into for completely unrelated reasons.
+ This pile-on effect occurs because many derivatives contracts require that
+ a company suffering a credit downgrade immediately supply collateral to
+ counter-parties.
+ Imagine, then, that a company is downgraded because of general adversity
+ and that its derivatives instantly kick in with their requirement, imposing
+ an unexpected and enormous demand for cash collateral on the company.
+ The need to meet this demand can then throw the company into a liquidity
+ crisis that may, in some cases, trigger still more downgrades.
+ It all becomes a spiral that can lead to a corporate meltdown.
+\end_layout
+
+\begin_layout Itemize
+Derivatives also create a daisy-chain risk that is akin to the risk run
+ by insurers or reinsurers that lay off much of their business with others.
+ In both cases, huge receivables from many counter-parties tend to build
+ up over time.
+ A participant may see himself as prudent, believing his large credit exposures
+ to be diversified and therefore not dangerous.
+ Under certain circumstances, though, an exogenous event that causes the
+ receivable from Company A to go bad will also affect those from Companies
+ B through Z.
+ History teaches us that a crisis often causes problems to correlate in
+ a manner undreamed of in more tranquil times.
+\end_layout
+
+\begin_layout Itemize
+In banking, the recognition of a "linkage" problem was one of the reasons
+ for the formation of the Federal Reserve System.
+ Before the Fed was established, the failure of weak banks would sometimes
+ put sudden and unanticipated liquidity demands on previously strong banks,
+ causing them to fail in turn.
+ The Fed now insulates the strong from the troubles of the weak.
+ But there is no central bank assigned to the job of preventing the dominoes
+ toppling in insurance or derivatives.
+ In these industries, firms that are fundamentally solid can become troubled
+ simply because of the travails of other firms further down the chain.
+\end_layout
+
+\begin_layout Itemize
+Many people argue that derivatives reduce systemic problems, in that participant
+s who can't bear certain risk are able to transfer them to stronger hands.
+ These people believe that derivatives act to stabilize the economy, facilitate
+ trade, and eliminate bumps for individual participants.
+ And, on a micro level, what they say is often true.
+ Indeed, at Berkshire, Buffett sometimes engage in large-scale derivatives
+ transaction in order to facilitate certain investment strategies.
+ 
+\end_layout
+
+\begin_layout Itemize
+However, Munger and Buffett believe that the macro picture is dangerous
+ and getting more so.
+ Large amounts of risk, particularly credit risk, have become concentrated
+ in the hands of relatively few derivatives dealers, who in addition trade
+ extensively with one other.
+ The troubles of one could quickly infect the others.
+ On top of that, these dealers are owed huge amounts by non-dealer counter-parti
+es.
+ Some of these counter-parties are linked in ways that could cause them
+ to contemporaneously run into a problem because of a single event.
+ Linkage, when it suddenly surfaces, can trigger serious systemic problems.
+\end_layout
+
+\begin_layout Itemize
+Even experienced investors and analysts encounter major problems in analyzing
+ the financial condition of firms that are heavily involved with derivative
+ contracts.
+ When Munger and Buffett finish reading the long footnotes detailing the
+ derivatives activities of major banks, the only thing they understand is
+ that they don't understand how much risk the institution is running.
+ Central banks and governments have so far found no effective way to control,
+ or even monitor, the risks posed by these contracts.
+ In Buffett and Munger's view, derivatives are financial weapons of mass
+ destruction, carrying dangers that, while now latent, are potentially lethal.
+\end_layout
+
+\begin_layout Itemize
+Long contracts, or alternatively those with multiple variables, are the
+ most difficult to mark to market (the standard procedure used in accounting
+ for derivatives) and provide the most opportunity for "imagination" when
+ traders are estimating their value.
+\end_layout
+
+\begin_layout Itemize
+Berkshire occasionally enters into various types of derivatives contracts.
+ That may seem odd given the systemic problems that could result from the
+ enormous growth in the use of derivatives.
+ However, derivatives, just like stocks and bonds, are sometimes wildly
+ mispriced.
+ For many years, accordingly, Berkshire has selectively written derivative
+ contracts - few in number but sometimes for large dollar amounts.
+ Buffett personally manages them.
+\end_layout
+
+\begin_layout Itemize
+Buffett: "I know of no reporting mechanism that would come close to describing
+ and measuring the risks in a huge and complex portfolio of derivatives.
+ Auditors can't audit these contracts, and regulators can't regulate them.
+ When I read the pages of disclosure in 10-Ks of companies that are entangled
+ with these instruments, all I end up knowing is that I don't know what
+ is going on in their portfolios (and then I reach for some aspirin)."
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Foreign Currencies and Equities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Berkshire holds many billions of cash-equivalents (2003) denominated in
+ dollars.
+ Buffett feels more comfortable owning foreign-exchange contracts that are
+ at least a partial offset to that position.
+ He is a bit worried about USA's trade deficit, but he'll continue to be
+ flooded with dollars.
+\end_layout
+
+\begin_layout Itemize
+"Large and persisting current account deficits produce an entirely different
+ result.
+ As time passes, and as claims against us grow, we own less and less of
+ what we produce.
+ In effect, the rest of the world enjoys an ever-growing royalty on American
+ output.
+ Here, we are like a family that consistently overspends its income.
+ As time passes, the family finds that it is working more and more for the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+finance company
+\begin_inset Quotes erd
+\end_inset
+
+ and less for itself.
+ In 2004, other countries and their citizens now own a net of about $3 trillion
+ of the U.S.
+ A decade ago their net ownership was negligible."
+\end_layout
+
+\begin_layout Itemize
+Buffett is very concerned about the US trade problems.
+ He thinks that the probability that the dollar will weaken over time continues
+ to be high.
+ The U.S.
+ is transferring ownership of its sales or IOUs to the rest of the world.
+ Like a very wealthy but self-indulgent family, we peeled off a bit of what
+ we owned in order to consume more than we produced.
+ "Buffett thinks that Americans will live better 10 or 20 years from now
+ than they do today (2006).
+ Per-capita wealth will increase.
+ But our citizens will also be forced every year to ship a significant portion
+ of their current production abroad merely to service the cost of our huge
+ debtor position.
+ It won't be pleasant to work part of each day to pay for the over-consumption
+ of your ancestors.
+ I believe that at some point in the future U.S.
+ workers and voters will find this annual 
+\begin_inset Quotes eld
+\end_inset
+
+tribute
+\begin_inset Quotes erd
+\end_inset
+
+ so onerous that there will be a severe political backlash.
+ How that will play our in markets is impossible to predict - but to expect
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+soft landing
+\begin_inset Quotes erd
+\end_inset
+
+ seems like wishful thinking."
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Crypto
+\end_layout
+
+\begin_layout Paragraph
+Cryptocurrency Stable Coins
+\end_layout
+
+\begin_layout Itemize
+Fiat-Collateralized (secure to crashes, not decentralized)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tether (USDT) - 1:1 backed by USD.
+ backed by Bitfinex, centrally controlled, most major exchanges
+\end_layout
+
+\begin_layout Itemize
+TrueUSD - 1:1 backed by USD.
+ backed by Bitfinex, not decentralized, most major exchanges
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Crypto-Collateralized based (not secure to crashes - it's super volatile,
+ decentralized)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MakerDao (MKR) - uses ETH to stabilize prices, 1:1.5 collateralized USD value,
+ decentralized, most smaller exchanges
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Non-Collateralized (not secure to crashes, decentralized)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Basis (formerly BaseCoin) - Pegged to USD +2 other tokens, works like fed
+ reserve, only theoretical so far, not decentralized, no exchanges yet
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Gold
+\end_layout
+
+\begin_layout Standard
+There are many options on how to invest in gold:
+\end_layout
+
+\begin_layout Itemize
+Physical gold
+\end_layout
+
+\begin_layout Itemize
+Physical gold ETFs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Physical gold ETFs can be a bad idea...it depends if you are focused on price
+ (ETF) vs value (gold).
+\end_layout
+
+\begin_layout Itemize
+Gold ETFs can be backed by banks, you can never see "your" physical gold,
+ price can be reflected in ETF popularity, ...
+ they store gold in vaults and charge you a expense rate about 0.4% usually.
+\end_layout
+
+\begin_layout Itemize
+Examples: GLD, IAU, SGOL
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gold miners
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gold miners can be a tenbagger! or hundredbagger! very volatile, silver
+ miners are much much bigger speculation, but it can be worth to have a
+ look on them as well.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.ii.co.uk/analysis-commentary/mining-stocks-tips-2020-ii510189}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Every gold miner is different; you are looking for low risk and high potential
+ reward, especially if gold prices change as a hedge against new monetary
+ policies.
+ You can get more value (risk+reward) than a gold ETF offers.
+ And miners actually produce something, plus they can be much more leveraged.
+ In the gold mining industry, the management is the biggest risk.
+\end_layout
+
+\begin_layout Itemize
+Examples: Barrick, Franco Nevada, Novagold Goldcorp (GG), Newcrest Mining,
+ Kirkland Lake Gold (KL), WA Gold Royalty, AngloGold Ashanti, Newmont, EGO,
+ Gold Fields, NYSE: SBGL
+\end_layout
+
+\begin_layout Itemize
+An example, cost to mine - $1200, gold price $1250, profit = $50.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+If gold price $2500, profit (before taxes and royalties etc) = $1300, which
+ is profit up 26x! Stock up 10-20x!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Check cash flows, reserves and potential production, leverage/costs, and
+ react to special situations.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gold stock analysis - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=tjvdpzTc0cU&list=WL&index=1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gold miners have a big margin expansion and thus also volatility.
+ Because if the mining costs would remain the same, and the price of gold
+ is 1000 USD/ounce vs 2000 USD/ounce, then the margin would explode.
+ The same is true in the opposite direction, when gold is cheaper.
+ For example, mining costs = $1000 and the gold price is $1200, then the
+ margin is $200.
+ If the price of gold is $2000, then with the same mining costs, the margin
+ would be $600, which is a three times more than it was previously - and
+ the price of gold haven't even doubled.
+\end_layout
+
+\begin_layout Itemize
+Key factors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Life of mine - for how long can keep up the current production?
+\end_layout
+
+\begin_layout Itemize
+Mining costs and margin - the higher the mining costs the higher will be
+ the stock volatility
+\end_layout
+
+\begin_layout Itemize
+Jurisdiction - mining is a global business and every country has its own
+ rules where rules often change
+\end_layout
+
+\begin_layout Itemize
+Growth perspectives - with higher gold prices, many projects suddenly become
+ valuable
+\end_layout
+
+\begin_layout Itemize
+Cash flows - operating cash flows, capex and free cash flows - what can
+ it deliver to shareholders?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Before investing in gold or a gold mining stock, it is important to check
+ where the gold price is from a risk and reward perspective, where are the
+ miner's margins in relation to gold and how could changes in the market
+ affect gold prices and gold stock prices.
+ This approach gives you the answer when considering how can gold and gold
+ stocks fit your portfolio.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gold miners ETFs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Examples: VANECK
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,3341 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Investing Strategies
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Investing-Strategies"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are many ways how to invest your money.
+ Ideally, we want to maximize return on the money we earned with as small
+ risk as possible.
+ So here, by 
+\begin_inset Quotes eld
+\end_inset
+
+investing
+\begin_inset Quotes erd
+\end_inset
+
+ we mean not just long-term investing in stocks, but also investing into
+ alternative asset classes or even short-term trading.
+ We tried to provide a list of possible investing strategies and categorize
+ various styles in the following part of this section.
+ Note: investors and traders used to combine different styles as part of
+ their overall strategy, keep that in mind - you don't need to be just long-term
+ investor - important thing is to have long-term strategy and to consistently
+ apply it given your own life situation, goals, and most importantly, your
+ personality.
+\end_layout
+
+\begin_layout Paragraph
+Investing based on the type of gain we are trying to achieve
+\end_layout
+
+\begin_layout Itemize
+Cash Flow
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You are hoping to have consistent and predictive income from your asset.
+ The goal here is to build wealth steadily over time, and ideally you would
+ buy more asserts by reinvesting the gains.
+\end_layout
+
+\begin_layout Itemize
+You can buy more houses or buy stocks (reinvest and buy more from their
+ dividends: DRIP - Dividend Reinvestment Program).
+\end_layout
+
+\begin_layout Itemize
+This is good if you want to be financially independent, or for your retirement.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Capital Gains
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Buying for $1 and selling for $2 for example.
+ So typical buy low sell high.
+ Or buy high sell higher as some people do.
+ But typically you want to buy things that are undervalued (given the past,
+ or even or distant future) and sell for higher price.
+ The difference is capital gain.
+\end_layout
+
+\begin_layout Itemize
+One of the cons here is that it can lead to speculations and if you are
+ wrong, you can lose lot of money.
+\end_layout
+
+\begin_layout Itemize
+Capital gain - difference between the price you bought and sold of a stock.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Investing based on the holding period of assets
+\end_layout
+
+\begin_layout Itemize
+Long-term investor.
+ An investor that buys a stock and holds it for minimum 1 year (but usually
+ at least 3-5 years or more).
+\end_layout
+
+\begin_layout Itemize
+Short-term investor.
+ An investor that buys a stock and holds it for weeks or months.
+ This is very different than day trading, they are not trying to get in
+ and out as quickly as possible.
+ Those people thinks about a company - maybe it will go up or down in the
+ next week for example.
+ They are trying to capitalize on a various events.
+ But they don't really care about the company in long term, about its long
+ term vision.
+ Just short term.
+ This is also called Short-term Trading or Swing Trading.
+\end_layout
+
+\begin_layout Itemize
+Day trader.
+ Those people might trade with the same stock even multiple times each day
+ or even hour.
+ They look at technical live data and try to judge a stock.
+ Maybe just with a little profit, again and again.
+ Those people don't care about underlying business, who CEO is, long term
+ vision about the company.
+ They are just trying to get in and out of a stock as quickly as possible.
+\end_layout
+
+\begin_layout Itemize
+Short seller.
+ An investor that believes a stock is going down in relatively near future.
+\end_layout
+
+\begin_layout Paragraph
+Investing based on size of companies
+\end_layout
+
+\begin_layout Itemize
+Large cap investor.
+ Investor looking and investing into huge corporations over 50 billion market
+ cap.
+\end_layout
+
+\begin_layout Itemize
+Mid cap investor.
+ Investor looking and investing into big companies between 20-50 billion
+ market cap.
+\end_layout
+
+\begin_layout Itemize
+Small cap investor.
+ Investor looking and investing into companies between 500 million and 10
+ billion market cap.
+ 
+\end_layout
+
+\begin_layout Itemize
+Micro cap investor.
+ investor looking and investing into smaller companies under 250 million
+ market cap.
+\end_layout
+
+\begin_layout Paragraph
+Investing based on type of assets (this isn't an exhaustive list by any
+ means)
+\end_layout
+
+\begin_layout Itemize
+Traditional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+stocks
+\end_layout
+
+\begin_layout Itemize
+bonds
+\end_layout
+
+\begin_layout Itemize
+cash 
+\begin_inset Quotes eld
+\end_inset
+
+equivalents
+\begin_inset Quotes erd
+\end_inset
+
+ - done by financial institutions such as savings account, GIC, Money Market
+ Instruments, and others
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Alternative investments: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+real estate - commercial or residential buildings, or REITs, or Mortgate-backed
+ securities
+\end_layout
+
+\begin_layout Itemize
+commodities - minerals, metals, agriculture products
+\end_layout
+
+\begin_layout Itemize
+rum or whiskey
+\end_layout
+
+\begin_layout Itemize
+old cars
+\end_layout
+
+\begin_layout Itemize
+crypto
+\end_layout
+
+\begin_layout Itemize
+private equity or venture capital
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Various Ideas And Helpful Strategies
+\end_layout
+
+\begin_layout Itemize
+It's good to have 3 things in portfolio - insurance, investment, and speculation.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Kelly Criterion 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It was used by Pabrai, Munger, and Buffett.
+\end_layout
+
+\begin_layout Itemize
+Probability of winning - (1 - probability of winning) / winnings as a percent.
+\end_layout
+
+\begin_layout Itemize
+For example, let's imagine that you have 50% of losing and 50% of winning
+ - like flipping a coin.
+ You have totally 1$ and you can win $1.5 and lost $1.
+ So the question is how much money you can afford to put?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+K = 0.5 - (1 - 0.5) / 1.5 = 0.167 or 17% of your available balance.
+\end_layout
+
+\begin_layout Itemize
+So in this game, it would be wise for your first bet to wager 17 cents.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+I think that it only works for certain criteria, such as if you have win
+ bigger than a loss.
+ You should bet approximately what the formula calculates, not more, not
+ less - to have maximum returns.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An idea how to find potential penny stocks: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Market Cap between 0.2 - 1B$ 
+\end_layout
+
+\begin_layout Itemize
+Debt to asset up to 44% 
+\end_layout
+
+\begin_layout Itemize
+ROA - between 1-27% 
+\end_layout
+
+\begin_layout Itemize
+ROE - between 1-34% 
+\end_layout
+
+\begin_layout Itemize
+Consistent Sales Growth, Consistent Operating Margin Trend, and Lower Debt
+ Leverage 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The Fearsome Foursome 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For tracking performance of individual investments.
+ Just write down 4 numbers - price of stock you bought and sold: 3 months
+ before buy, buy price, sell price, and 3 months after sell
+\end_layout
+
+\begin_layout Itemize
+With this system, you're looking to improve your buy and sell points.
+ For most growth investors, the price 3 months before the buy should be
+ lower than the buy price.
+ For value investors, the price three months before the buy should be higher
+ than the buy price.
+ Value investors expect to buy when stocks go on sale.
+ With selling, everybody wants the same thing here - to sell at the top
+ just before the stock dives to lower prices.
+ Growth and value investors can agree on this point.
+\end_layout
+
+\begin_layout Itemize
+Look over several fearsome foursomes for different stocks you've owned.
+ Watch for trends.
+ If you're consistently buying or selling too soon or too late, make note
+ of that tendency.
+ In many cases, your fearsome foursome numbers will tell entirely different
+ stories for different stocks.
+ If so, there is little you can do because all the evidence is contradictory.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O'Shaughnessy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Best value measures
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Look for stocks with low P/S ratios.
+ O'Shaughnessy found P/S more reliable than P/E.
+\end_layout
+
+\begin_layout Itemize
+High EBIDTA/EV.
+ EBIDTA is a number you get when you add money lost to interest, taxes,
+ depreciation, and amortization back to net income.
+ Those four expense categories can be misleading when trying to compare
+ companies, because finance and accounting methods vary widely from place
+ to place.
+ Thus, EBIDTA strips out those vagaries to look at raw profitability.
+ EV is more accurate than market capitalization because somebody buying
+ the whole company would need to pay its enterprise value, not its market
+ cap.
+ They would bank its cash but become responsible for its debt.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Best growth measures
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Relative Price Strength.
+ In the short term, Newton's first law of motion seems to apply to large
+ stocks as well as physical objects: prices in motion tend to stay in motion.
+ The winners keep winning and the losers keep loosing.
+ O'Shaughnessy concluded that "relative strength is among the only pure
+ growth factors that actually beats the market consistently, and by a wide
+ margin." He believes the reason is that it "conveys different information
+ about the prospects of a stock and is a much better indicator than factors
+ such as earnings growth rates.
+ Many look at the disappointing results of buying stocks with the highest
+ earnings gains and wonder why they differ from the best price performers.
+ First, price momentum is the market putting its money where its mouth is.
+ Second, the common belief that stocks with strong relative strength also
+ have the highest P/E ratios or earnings growth is incorrect.
+ When you look at the top performers over time, you find that they are rarely
+ the highest valued in terms of P/E or P/S." The only time when price momentum
+ did not work were bubble market tops and bear market bottoms.
+ 
+\end_layout
+
+\begin_layout Itemize
+So, except for moments of extreme optimism and initial recoveries from extreme
+ pessimism, buy stocks with the best 6-month relative price strength.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Combining the measurements
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Value factors - O'Shaughnessy calls Value Factor Two (the first didn't work
+ out)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P/B, P/Cash-flow, P/E, P/S, EBITDA/EV, Shareholder yield (dividend yield
+ + share buybacks in %).
+\end_layout
+
+\begin_layout Itemize
+Put a score on stocks in the following way - if a stock has a P/E that is
+ the lowest 1% of the universe, it receives a rank of 100.
+ If a stock has a P/E ratio in the highest 1% for the universe, it receives
+ a rank of 1.
+ For shareholder yield and EBITDA/EV, stocks in the 1% of the universe with
+ the highest values are ranked 100 and ones within the lowest 1% are ranked
+ 1.
+ 
+\end_layout
+
+\begin_layout Itemize
+Once all the factors are ranked, we add up all their rankings and assign
+ the stocks to decides based upon their overall cumulative ranking.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Adding growth component to stocks found in Value Factor Two (O'Shaughnessy
+ called this strategy that combines value and growth as Trending Value,
+ because he tries to find the best value stocks that are also trending up
+ sharply in price):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Get only the best stocks and apply 6-month relative price strength.
+ Do not buy relative strength winners in moments of extreme optimism though.
+ Relative strength losers perform well only during initial recoveries from
+ extreme pessimism at bear market bottoms.
+\end_layout
+
+\begin_layout Itemize
+Stick to this strategy over many years - we are our own worst enemies when
+ it comes to letting a strategy work over the entire market cycle.
+ It's important to stick with the strategy through complete market cycles,
+ even though it'll underperform in some years.
+ Also, they can be a very unfamiliar companies and you can have some doubts.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Section
+Long-Term Investing
+\end_layout
+
+\begin_layout Itemize
+(Philip Fisher) In occasional cases it may take as much as five years for
+ investments to demonstrate their real merit.
+ Usually it does not take that long.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) However a stock come to your attention, the discovery is not
+ a buy signal.
+ What you've got so far is simply a lead to a story that has to be developed.
+ You have to treat the initial information as if it were an anonymous and
+ intriguing tip.
+ This will keep you from buying a stock just because you've seen something
+ you (or someone else) like.
+ Developing the story is really not difficult: at most it will take a couple
+ of hours.
+ 
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) You don't have to make money on every stock you pick.
+ In Lynch experience, 6/10 winners in a portfolio can produce a satisfying
+ results.
+ All you need is a few big winners and the pluses will overwhelm the minuses
+ from the stocks that don't work out as expected.
+ You only have to find 1 big winner out of 11.
+ The more right you are about any one stock, the more wrong you can be on
+ all the others and still triumph as an investor.
+\end_layout
+
+\begin_layout Itemize
+We wrote quite a lot about strategies of famous long-term investors, see
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Philosophies-Of-Famous"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/ray_dalio_all_weather_portfolio.jpg
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ray Dalio's All Weather Portfolio (link to the original article 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.listenmoneymatters.com/all-weather-golden-butterfly/"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Algorithmic
+\begin_inset Quotes erd
+\end_inset
+
+ approach to investing (The first 6 steps can take 1-2 hours)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Is company public?
+\end_layout
+
+\begin_layout Enumerate
+See the business - website, products, news, or even shortly check the annual
+ report - all just briefly.
+ Who is the founder, is it a strong brand? 
+\end_layout
+
+\begin_layout Enumerate
+Strong balance sheet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Check cash vs debt.
+\end_layout
+
+\begin_layout Itemize
+Warren Buffett invest only to the companies with market cap over 1 billion
+ dollars.
+ But a retail investor doesn't have to!
+\end_layout
+
+\begin_layout Itemize
+So he invest to well-established companies generally speaking.
+ And he also looks for dividends.
+ If a company doesn't pay dividends, he is not very interested in it.
+ Dividends can be a 
+\begin_inset Quotes eld
+\end_inset
+
+protection
+\begin_inset Quotes erd
+\end_inset
+
+ against stocks that go down.
+ And also, he buys shares of fair good company rather then undervalued poor
+ company.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Income statement 
+\end_layout
+
+\begin_layout Enumerate
+Revenues growing 10% or more (or at least expectations are 10% or more).
+ See the last 3 years.
+ Is it upward trajectory?
+\end_layout
+
+\begin_layout Enumerate
+P/E ratio (under 17)
+\end_layout
+
+\begin_layout Enumerate
+Dig deeper - annual reports and beyond, for example:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Read risk factors in 10k.
+ It's super important.
+ It's like a golden thing for investors.
+ What are, and how real are those risks?
+\end_layout
+
+\begin_layout Enumerate
+Read the latest 10q (quartal report).
+ See if the things are matching up with 10k, if there is no surprise.
+\end_layout
+
+\begin_layout Enumerate
+Check Google News about a given company.
+ Good publicity? New product? No losses?
+\end_layout
+
+\begin_layout Enumerate
+You must have an investment thesis!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Stock Screening 
+\emph default
+idea
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Revenue growth: Consistently growing over time.
+ Ideally also gross profit and operating income increasing.
+ Also net income must be increasing.
+ Operating margin must be positive (a company must be keeping at least some
+ money from the revenues).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Earnings (EBITDA) growth
+\end_layout
+
+\begin_layout Enumerate
+Strong Free Cash Flow: Free cash flow must grow over time
+\end_layout
+
+\begin_layout Enumerate
+Solid Balance Sheet - less than 3x Debt/EBITDA DEBT to EQUITY ratio under
+ 0.5
+\end_layout
+
+\begin_layout Enumerate
+Well Priced (EV/EBITDA)
+\end_layout
+
+\begin_layout Enumerate
+Moat in numbers - quick screening - consistent growth of at least 10% in
+ revenues, FCF, EPS, and equity (check equity growth calculator, it's shareholde
+r's equity from balance sheet)
+\end_layout
+
+\begin_layout Enumerate
+Management quality in numbers - quick screen can be ROIC, above 15% or more
+ (or at least 10% !)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+S.W.O.T analysis 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It stands for: Strengths, Weaknesses, Opportunities, Threats
+\end_layout
+
+\begin_layout Itemize
+It's good to do SWOT analysis each year - if you are employer or employee,
+ if you have your own business, doesn't matter.
+ Can be beneficial.
+ It is a good way of analyzing a decision.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Core-Satellite Investing 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Investing the majority of your money (66-75%) in broad funds that give you
+ exposure to the three asset classes (stocks, bonds, real estate).
+ Then invest the rest of your money in 7-12 individual stocks you really
+ like for the long-term.
+ 
+\end_layout
+
+\begin_layout Itemize
+For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+60-75% in 3-5 funds that cover asset classes - stocks, bonds and real estate:
+ 25% dividend aristocrats ETF (NOBL), 25% vanguard growth ETF (MGK), 10%
+ vanguard bond ETF (BLV), and 15% vanguard real estate ETF (VNQ)
+\end_layout
+
+\begin_layout Itemize
+remaining funds in 8-10 individual stocks for additional returns
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Diversification
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can be diversified:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+across asset classes 
+\end_layout
+
+\begin_layout Itemize
+within asset classes 
+\end_layout
+
+\begin_layout Itemize
+across markets and countries 
+\end_layout
+
+\begin_layout Itemize
+across time
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Disadvantage is that if you have more than 10 companies (for example), then
+ you cannot be properly confident about your investments.
+ But, diversification is a hedge against uncertainty.
+ Confidence doesn't guarantee results.
+\end_layout
+
+\begin_layout Itemize
+Some people use a certain stock only once.
+ They are not recycling it.
+\end_layout
+
+\begin_layout Itemize
+If you invest in for example 20-30 or even more stocks, then many companies
+ are probably overvalued.
+ Or companies that you don't believe in so much.
+ It's not easy to find out so many great stocks that are all fairy valued
+ or undervalued.
+\end_layout
+
+\begin_layout Itemize
+If you are new in stocks, then you should invest maybe in 5-10 stocks, if
+ you are older then maybe 15 stocks.
+ But ideally something between 5-15 stocks in any time in your life.
+\end_layout
+
+\begin_layout Itemize
+Some people claim, that if you are young and want to take a risk and know
+ what you are doing, then you can invest only in a few companies and you
+ can properly (=faster) build wealth (instead of preserving it - big diversifica
+tion, maybe after the age of 40).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Dollar Cost Averaging 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Good technique also during bear market!
+\end_layout
+
+\begin_layout Itemize
+Consider the difference between 
+\emph on
+Lump Sum Investing
+\emph default
+ vs Dollar Cost Averaging.
+ The first one outperforms Dollar Cost Averaging 2/3 of time.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Smart Beta
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In recent years, "smart beta" (also known as Strategic Beta, new Beta, advanced
+ Beta, or Beta plus) ETFs have become a hot product.
+ Smart beta managers create their own indexes - not, in fact, indexes in
+ the traditional sense, but active strategies claiming to be indexes.
+ They focus on weighting portfolios by so-called factors (some criteria)
+ - stocks with similar forces driving their returns.
+ Rather than weighting portfolio holdings by their market capitalization,
+ they may focus on a single factor (value, momentum, size, ...) or may use
+ a combination of factors such as corporate revenues, cash flows, profits,
+ and dividends.
+ As a concept, smart beta is not a terrible idea, nor is it a world-changing
+ one.
+ Smart beta ETF managers rely on computers to parse heavily mined past data
+ on stocks that will enable fund managers to identify factors that can be
+ easily packaged as ETFs, The goal is to create great profits for the manager
+ by gathering the assets of investors seeking a performance edge.
+\end_layout
+
+\begin_layout Itemize
+William Sharpe, professor of finance at Stanford University and Nobel laureate
+ in economist: "Smart beta is stupid...It is quite remarkable that people think
+ that somehow a scheme that weights stocks differently than capitalization
+ can dominate a capitalization-weighted index...New paradigms come and go.
+ Betting against the market (and spending a considerable amount of money
+ to do so) is indeed likely to be a hazardous undertaking." 
+\end_layout
+
+\begin_layout Itemize
+They are funds that looks like they are tracking indexes, but for index
+ 
+\begin_inset Quotes eld
+\end_inset
+
+construction
+\begin_inset Quotes erd
+\end_inset
+
+ they are choosing less traditional and more sophisticated rules.
+ As a result, companies in the fond can change more often.
+ It is something between index and active investing.
+\end_layout
+
+\begin_layout Itemize
+The goal is to achieve better returns than traditional indexes that are
+ constructed only by market cap.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Factor investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+More here: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.pwlcapital.com/wp-content/uploads/2019/03/PWL-WP-Felix-Factor-Inve
+sting-with-ETFs_08-2019-Final.pdf}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Smart Beta TODO - it should have similar concept.
+\end_layout
+
+\begin_layout Itemize
+It is a strategy that involves targeting specific drivers of return across
+ asset classes.
+\end_layout
+
+\begin_layout Itemize
+Investing in factors can help improve portfolio outcomes, reduce volatility
+ and enhance diversification.
+\end_layout
+
+\begin_layout Itemize
+Factors are quantitative characteristics shared across a set of securities.
+ Those characteristics can be used to structure your investment portfolio
+ to outperform the market without the need to rely on stock picking or market
+ timing.
+\end_layout
+
+\begin_layout Itemize
+If active fund managers are able to beat the market, which was previously
+ assumed to be due to their skill, can in many cases be explained by factor
+ exposure.
+ So it could be good to have a look on factor index fund (TODO) instead
+ of actively managed fund.
+ In research paper by Eugene Fama et al, authors observe that over time,
+ small stock outperformed large stocks, and value stocks outperformed growth
+ stocks.
+ The explanation for the return differences in stocks with these characteristics
+ (factors), small stocks and value stocks, are riskier.
+\end_layout
+
+\begin_layout Itemize
+You can track a couple of factors in your portfolio, but according to research
+ papers, there are even hundreds of them.
+ But many of these factors turn out to be a re-packaging of the original
+ factors.
+ When you want to know if a given factor is worth to consider, it must be:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+persistent 
+\end_layout
+
+\begin_layout Itemize
+pervasive 
+\end_layout
+
+\begin_layout Itemize
+robust to alternative specifications 
+\end_layout
+
+\begin_layout Itemize
+investable 
+\end_layout
+
+\begin_layout Itemize
+sensible
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+But now it looks like for individual DIY investors, it looks like it's better
+ to focusing on simplicity rather than pursuing factors.
+\end_layout
+
+\begin_layout Itemize
+Factors are on the cutting edge of financial market research, but they are
+ also being used to market products that may be detrimental to investors.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ben Felix:
+\emph on
+ "I am not a fan of "factor" ETFs.
+ It has become a term that allows an ETF to 10x its fees without adding
+ much value."
+\end_layout
+
+\begin_layout Itemize
+The five factor model (TODO) is able to explain over 90% of the difference
+ in returns between any two diversified portfolios.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Moat 
+\emph default
+(of a company)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Very important for long-term investing.
+\end_layout
+
+\begin_layout Itemize
+A company's competitive advantage.
+ 
+\end_layout
+
+\begin_layout Itemize
+There are many types of moats, for example: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+threat of entry 
+\end_layout
+
+\begin_layout Itemize
+threat of substitution - by different product from different industry for
+ example
+\end_layout
+
+\begin_layout Itemize
+intensity of rivalry 
+\end_layout
+
+\begin_layout Itemize
+bargaining power of suppliers/consumers
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Would you expect the required rate of return for a U.S.
+ investor in U.S.
+ common stocks to be the same as the required rate of return on Japanese
+ common stocks? What factors would determine the required rate of return
+ for stocks in these countries? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The required rate of return on an investment is primarily determined by
+ three major factors: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+economy’s real risk-free rate 
+\end_layout
+
+\begin_layout Enumerate
+expected rate of inflation 
+\end_layout
+
+\begin_layout Enumerate
+risk premium.
+\end_layout
+
+\begin_layout Standard
+While this basic framework will apply no matter what country you choose
+ to invest in, there will be significant differences in these factors among
+ different countries over time.
+ Among the specific reasons why an investor may have different required
+ returns for U.S.
+ and Japanese stocks are:
+\end_layout
+
+\begin_layout Itemize
+The real risk-free rate: For all countries, this rate should be an approximation
+ of the economy’s real growth rate.
+ However, the real growth rate among countries might be significantly different
+ due to differences in the growth rate of the labor force, growth rate in
+ the average number of hours worked, and differences in the growth rate
+ of labor productivity.
+ 
+\end_layout
+
+\begin_layout Itemize
+The expected rate of inflation: Again, there are differences between the
+ U.S.
+ and Japanese inflation rate that are bound to imply a difference between
+ the required return between the two countries.
+\end_layout
+
+\begin_layout Itemize
+The risk premium: The risk premium is derived from business risk, financial
+ risk, liquidity risk, exchange rate risk, and country risk.
+ Each of these components is influenced by differences in general economic
+ variability, political conditions, trade relations, and operating leverage
+ employed within the countries.
+ It is necessary to evaluate these differences in risk factors and assign
+ a unique risk premium for each country.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+(Philip Fisher) Fisher on bargain hunting (value investing) vs growth -
+ in the case of even the genuine bargain, the degree by which it is undervalued
+ is usually somewhat limited.
+ The time it takes to get adjusted to its true value is frequently considerable.
+ So far as Fisher has been able to observe, this means that over a time
+ sufficient to give a fair comparison - say 5 years - the most skilled statistic
+al bargain hunter ends up with a profit which is but a small part of the
+ profit attained by those using reasonable intelligence in appraising the
+ business characteristics of superbly managed growth companies.
+ The reason why the growth stocks do so much better is that they seem to
+ show gains in value in the hundreds of % each decade.
+ In contrast, it is an unusual bargain that is as much as 50% undervalued.
+ The cumulative effect of this simple arithmetic should be obvious.
+\end_layout
+
+\begin_layout Itemize
+(Philip Fisher) The growth stocks, over a five- or ten-year span, have proven
+ spectacularly better than high dividend yielding stocks so far as their
+ increase in capital value is concerned.
+ he growth stocks had not only shown (in some research papers) a marked
+ superiority in the field of capital appreciation, but given a reasonable
+ time, they had grown to a point where they showed superiority in the matter
+ of dividend return as well.
+\end_layout
+
+\begin_layout Itemize
+(Philip Fisher) The hearth of successful investing is knowing how to find
+ the minority of stocks that in the years ahead will have spectacular growth
+ in their per-share earnings.
+ If the right stocks arr bought and held long enough, they will always produce
+ some profit.
+ However, to produce close to the maximum profit, the kind of spectacular
+ profit, some consideration must be given to timing.
+ However, conventional studies of the near-term economic prospect do not
+ provide the right method or approach to the proper timing of buying.
+ In contrast to guessing which way general business or the stock market
+ may go, an investor should be able to judge with only a small probability
+ of error what the company into which he wants to buy is going to do in
+ relation to business in general.
+ All types of common stock investors might well keep one basic thought in
+ mind - the current phase of the business cycle is but one of at least five
+ powerful forces.
+ All of these forces, either by influencing mass psychology or by direct
+ economic operation, can have an extremely powerful influence on the general
+ level of stock prices.
+ The other four influences are the trend of interest rates, the over-all
+ government attitude toward investment and private enterprise, the long-range
+ trend to more and more inflation, and - possibly most powerful of all -
+ new inventions and techniques as they affect old industries.
+ These forces are seldom all pulling stock prices in the same direction
+ at the same time.
+ Nor is any one of them necessarily going to be of vastly greater importance
+ than any other for long periods of time.
+ So complex and diverse are these influences that the safest course to follow
+ will be the one that at first glance appears to be the most risky.
+ This is to take investment action when matters you know about a specific
+ company appear to warrant such action.
+ Be undeterred by fears or hopes based on conjectures, or conclusions based
+ on surmises.
+\end_layout
+
+\begin_layout Itemize
+Investor vs Speculator (Graham)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The most realistic distinction between the investor and the speculator is
+ found in their attitude toward stock-market movements.
+ The speculator's primary interest lies in anticipating and profiting from
+ market fluctuations.
+ The investor's primary interest lies in acquiring and holding suitable
+ securities at suitable prices.
+ Market movements are important to him in a practical sense, because they
+ alternately create low price levels at which he would be wise to buy and
+ high price levels at which he certainly should refrain from buying and
+ probably would be wise to sell.
+\end_layout
+
+\begin_layout Itemize
+It is far from certain that the typical investor should regularly hold off
+ buying until low market levels appear, because this may involve a long
+ wait, the loss of considerable dividend income, and the possible missing
+ of investment opportunities.
+ On the whole it may be better for the investor to do his stock buying whenever
+ he has money to put in stocks, except when the general market level is
+ higher than can be justified by well-established standards of value.
+ If he wants to be shrews he can look for the ever present bargain opportunities
+ in individual securities.
+\end_layout
+
+\begin_layout Itemize
+Intelligent investor should never buy a stock because it has gone up or
+ sell one because it has gone down.
+ He would not be far wrong if this motto read more simply:
+\emph on
+ "Never buy a stock immediately after a substantial rise or sell one immediately
+ after a substantial drop."
+\end_layout
+
+\begin_layout Itemize
+Intelligent investor might take an advantage of the cyclical swings of the
+ general market - buying when a stock is historically low or neutral and
+ beginning to sell as soon as the market passes into historically high levels.
+\end_layout
+
+\begin_layout Itemize
+Price fluctuations have only one significant meaning for the true investor.
+ They provide him with an opportunity to buy wisely when prices fall sharply
+ and sell wisely when they advance a great deal.
+ At other times he will do better if he forgets about the stock market and
+ pays attention to his dividend returns and to the operating results of
+ his companies.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The biggest companies are not the best companies to invest in.
+ It is equally true that small-sized companies are not suited to the needs
+ of the average investor, although there may be remarkable opportunities
+ in individual concerns in this field.
+\end_layout
+
+\begin_layout Itemize
+(Jason Kelly) Growth and value investing are not mutually exclusive.
+ Many growth investors use some measure of value to time their purchase
+ of growth stocks.
+ Most value investors use some measure of growth potential to evaluate a
+ troubled company's changes of recovery.
+ Growth investors tend to get in when things are heating up ad bail out
+ at the first sign of slowing growth.
+ Value investors tend to be very careful about where their money goes and
+ let it ride out fluctuations once they decide where to invest.
+ Most of us end up combining the styles in our personal portfolios, but
+ with a tendency one way or the other.
+\end_layout
+
+\begin_layout Itemize
+Charlie Michaels's investing style is Phil Fisher/Peter Lynch growth stock
+ investor combined with a deep appreciation for buying Warren Buffett quality
+ companies with strong business franchises.
+ He believe the best investment are in quality growth companies that can
+ defend their sales momentum and defend their profitability armed with competiti
+ve advantages and strong management.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) Lynch never bought a future nor an option in his entire investing
+ career!! It's hard enough to make money in regular stocks without getting
+ distracted by these side bets, which he's told are nearly impossible to
+ win unless you're a professional trader.
+ Very nasty thing about options is that they are expensive.
+ They may not see expensive, until you realize that you have to buy 4-5
+ sets of them to cover stock for a year.
+ Options are a zero-sum game, don't forget.
+ Options don't finance anything, you are not contributing something to the
+ growth of the country.
+ That's what stocks are for.
+ There's a lot of talk these days about the use of futures and options as
+ portfolio insurance to protect your investments in stocks.
+ But you have to buy a new contracts regularly once old ones expires, and
+ it's expensive.
+ You can waste 5-10% of your entire investment stake every year to protect
+ yourself from a 5-10% decline.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) Shorting a stock.
+ During all the time you borrow the shares, the rightful owner gets all
+ the dividends and other benefits, so you are out of money there.
+ The scary part about shorting stock is that even if you're convinced that
+ the company's in lousy shape, other investors might not realize it and
+ might even send the stock price higher.
+ And if you don't have an extra money to put into your account to hold your
+ position, you may be forced to liquidate at a huge loss.
+ Also, if you've shorted something that's going up, you began to realize
+ that there's nothing to stop it from going to infinity, because there's
+ no ceiling on a stock price.
+ Infinity is where a shorted stock always appears to be heading.
+ Among all the folk tales of successful short sellers are the horror stories
+ of shorters who watched helplessly as their favorite lousy stocks soared
+ higher and higher, against all reason and logic, forcing them into the
+ poorhouse.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Investing can't be reduced to an algorithm and turned over
+ to a computer.
+ Even the best investors don't get it right every time.
+ The reasons are simple.
+ No rule always works.
+ The environment isn't controllable, and circumstances rarely repeat exactly.
+ Psychology plays a major role in markets, and because it's highly variable,
+ cause-and-effect relationships aren't reliable.
+ An investment approach may work for a while, but eventually the actions
+ it calls for will change the environment, meaning a new approach is needed.
+ And if others emulate an approach, that will blunt its effectiveness.
+ Investing, like economics, is more art than science.
+ And that means it can get a little messy.
+ Investment approach must be intuitive and adaptive rather than fixed and
+ mechanistic.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Value vs Growth investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To Howard it seems that the choice isn't really between value and growth,
+ but between value today and value tomorrow.
+ Growth investing represents a bet on company performance that may or may
+ not materialize in the future, while value investing is based primarily
+ on analysis of a company's current worth.
+\end_layout
+
+\begin_layout Itemize
+One of Buffet's major contributions has been to extend the idea of value
+ beyond the simply "cheap".
+ Buffett looks for "good" businesses that are available at an attractive
+ price.
+ The concept of growth is incorporated into the calculation of value.
+\end_layout
+
+\begin_layout Itemize
+There is no bright line distinction between value and growth.
+ Both require us to deal with the future.
+ But growth investing is about the future, whereas value investing emphasizes
+ current-day considerations but can't escape dealing with the future.
+ In general, the upside for being right about growth is more dramatic, and
+ the upside potential for being right about value is more consistent.
+ Howards's approach is value.
+\end_layout
+
+\begin_layout Itemize
+It's hard to consistently do the right thing as an investor.
+ But it's impossible to consistently do the right thing at the right time.
+ If you've settled on the value approach to investing and come up with an
+ intrinsic value for a security or asset (take into account margin of safety),
+ the next important thing is to hold it firmly.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Aswath Damodaran) Value vs Growth Investing from a financial balance sheet
+ perspective
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In value investing, your focus on finding bargains and misvalued companies
+ is in assets in place (expected value of investment already made), where
+ you believe that you have the data to estimate value more precisely and
+ markets can get the pricing of assets in place wrong.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Value is a function of cash flows, growth, and risk, and any intrinsic valuation
+ model that does not explicitly forecast cash flows or adjust for risk is
+ lacking core elements.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is undeniable that value investing has an accounting focus, with earnings
+ and book value playing a central role in investing strategies.
+ There is good reason to trust those numbers less now than in decade past,
+ for a few reasons:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One is that companies have become much more aggressive in playing accounting
+ games, using pro-forma income statements to skew the numbers in their favor.
+\end_layout
+
+\begin_layout Itemize
+The second is that as the center of gravity in the economy has shifted away
+ from manufacturing companies to technology and service companies, accounting
+ has struggled to keep up.
+ In fact, it is clear that the accounting treatment of R&D has resulted
+ in the understatement of book values of technology and pharmaceutical companies.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+In growth investing, your focus on finding bargains and misvalued companies
+ is in growth assets (expected value added by future investment), where
+ you believe that while you will face more uncertainty and imprecision in
+ estimating value, that same uncertainty will lead markets to price growth
+ assets wrong.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Howard Marks) There are two sources of errors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+analytical/intellectual 
+\series default
+- we collect too little information or incorrect information.
+ Or perhaps we apply the wrong analytical processes or omit ones we should
+ have performed.
+ "Failure of imagination" can belong into this category as well - either
+ being unable to conceive of the full range of possible outcomes or not
+ fully understanding the consequences of the more extreme occurrences.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+psychological/emotional
+\series default
+ - greed and fear, willingness to suspend disbelief and skepticism, ego
+ and envy, the drive to pursue high returns through risk bearing and the
+ tendency to overrate one's foreknowledge.
+ Also failure to recognize market cycles and manias and move in the opposite
+ direction.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Howard Marks) Most of the time the future is like the past, so extrapolation
+ doesn't do any harm.
+ But at the important turning points, when the future stops being like the
+ past, extrapolation fails and large amounts of money are either lost or
+ not made.
+ Relying to excess on the fact that something "should happen" can kill you
+ when it doesn't.
+ Even if you properly understand the underlying probability distribution,
+ you can't count on things happening as they're supposed to.
+ And the success of your investment actions shouldn't be highly dependent
+ on normal outcomes prevailing; instead, you must allow for outliers.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) According to theory, the formula for explaining portfolio
+ performance (y) is as follows: 
+\begin_inset Formula $y=alfa+beta*x$
+\end_inset
+
+, where x is return of the market.
+ The alpha/beta model is an excellent way to assess portfolios, portfolio
+ managers, investment strategies and asset allocation schemes.
+ It's really an organized way to think about how much of the return comes
+ from what the environment provides and how much from the manager's value
+ added.
+ For us to conclude that investors truly add value, we have to see how they
+ perform in environments to which their style isn't particularly well suited.
+ (!) Without this, returns may be the result of little more than market
+ movement and beta.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Buying: There are 3 times to buy an asset that has been declining
+ - on the way down, at the bottom, or on the way up.
+ The best is to buy it on the way down, because we know the exact bottom
+ only in retrospect.
+ And buying on the way up can be too late.
+ At Oaktree, when they think something is cheap, they buy.
+ They are not trying to attain perfection or ascertain when the bottom has
+ been reached.
+ If it gets cheaper, they buy more.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Most trends - both bullish and bearish - eventually become
+ overdone, profiting those who recognize them early but penalizing the last
+ to join.
+ 
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Many investors assume the world runs on orderly processes
+ that can be mastered and predicted.
+ They ignore the randomness of things and the probability distribution that
+ underlies future developments.
+ Thus, they opt to base their actions on the one scenario they predict will
+ unfold.
+ This works sometimes, but not consistently enough to produce long-term
+ success.
+ In both economic forecasting and investment management, it's worth noting
+ that there's usually someone who gets it exactly right...but it's rarely the
+ same person twice.
+ The most successful investors get things "about right" most of the time,
+ and that's much better than the rest.
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Return expectations must be reasonable.
+ Anything else will get you into trouble, usually through the acceptance
+ of greater risk than is perceived.
+ Every investment effort should begin with a statement of what you're trying
+ to accomplish.
+ According to Howard Marks, most of the time, it's reasonable to aspire
+ to returns in single digits or perhaps low double digits.
+ High teens are something very special, and anything more should be viewed
+ as the province of experienced pros (and only the best of those).
+ The same is true of particularly consistent results.
+ Expecting too much in these regards is likely to lead to disappointment
+ or loss.
+ Higher returns are "unnatural" and their achievement requires some combination
+ of the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+an extremely depressed environment in which to buy (hopefully to be followed
+ by a good environment in which to sell)
+\end_layout
+
+\begin_layout Itemize
+extraordinary investment skill
+\end_layout
+
+\begin_layout Itemize
+extensive risk bearing
+\end_layout
+
+\begin_layout Itemize
+heavy leverage
+\end_layout
+
+\begin_layout Itemize
+good luck 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="10page%">
+<column alignment="left" valignment="middle" width="28page%">
+<column alignment="left" valignment="middle" width="28page%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Aggressive investor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Defensive Investor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2text%" bottomspace="2text%" interlinespace="2text%">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Without skill
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gains a lot when the market goes up, and loses a lot when the market goes
+ down
+\end_layout
+
+\end_inset
+</cell>
+<cell mroffset="5line%" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+doesn't lose much when the market goes down but doesn't gain much when the
+ market goes up
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2text%" bottomspace="2text%" interlinespace="2text%">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+With skill
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gains a lot when the market goes up, but doesn't lose to the same degree
+ when the market goes down
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+doesn't lose much when the market goes down, but captures a fair bit of
+ the gain when the market goes up
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+On different types of investors, by Howard Marks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A few random reasons why to sell a stock
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Stock becomes overvalued (so it goes up a lot) So when you buy a stock,
+ you can have a thought in your head "when it goes up by this threshold
+ by certain time, I should probably sell it".
+ Especially if it goes up by short amount of time (couple of months for
+ example).
+ Forward P/E ratio went too high can be one of an indicators.
+\end_layout
+
+\begin_layout Enumerate
+If fundamentals of the business change in a negative way.
+\end_layout
+
+\begin_layout Enumerate
+If you have a better stocks to put money in.
+\end_layout
+
+\begin_layout Enumerate
+Major new competitive threat is about to come online (especially in tech
+ sector)
+\end_layout
+
+\begin_layout Enumerate
+If you feel a recession or stock market crash is close (maybe, you have
+ to be 99% sure)
+\end_layout
+
+\begin_layout Enumerate
+If management tone changes
+\end_layout
+
+\begin_layout Enumerate
+If a lot of executives of a company are selling (also, if executives are
+ buying heavy, maybe that can be a sign that you should buy)
+\end_layout
+
+\begin_layout Enumerate
+If a company is taking losses and may face bankruptcy
+\end_layout
+
+\begin_layout Enumerate
+If the growth of a company slows way down
+\end_layout
+
+\begin_layout Enumerate
+If a company is in an industry that is under major political pressure.
+\end_layout
+
+\begin_layout Enumerate
+Poor relative strength of a stock (in comparison to S&P500 or other index).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Maybe during crazy bull market - change in P/E > 40.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Signs of doomed stock: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+negative cash flow
+\end_layout
+
+\begin_layout Itemize
+debt to equity ratio is too high
+\end_layout
+
+\begin_layout Itemize
+interest coverage ratio (it reveals if a company has difficulty to pay its
+ debt) is below 1
+\end_layout
+
+\begin_layout Itemize
+decline in share prices for longer time
+\end_layout
+
+\begin_layout Itemize
+heavy selling by insiders
+\end_layout
+
+\begin_layout Itemize
+resignations of key executives
+\end_layout
+
+\begin_layout Itemize
+SEC investigations
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Watch out for company's red flags: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+massive debt 
+\end_layout
+
+\begin_layout Itemize
+don't earn profits 
+\end_layout
+
+\begin_layout Itemize
+under investigation 
+\end_layout
+
+\begin_layout Itemize
+dividend cuts/inconsistencies in the past 
+\end_layout
+
+\begin_layout Itemize
+stock price going down
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Income Investing
+\end_layout
+
+\begin_layout Itemize
+This is mostly investing for dividends - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.simplysafedividends.com/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+10-11-12 System
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+These are dividend stocks, that in 10 years, will gain 11 % annual yield
+ from there on, and 12% annualized gain.
+\end_layout
+
+\begin_layout Itemize
+You can find them by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dividend yield - current situation, you should target stocks 4.7% or higher,
+ 
+\end_layout
+
+\begin_layout Itemize
+dividend growth rate - at least 10%, 
+\end_layout
+
+\begin_layout Itemize
+payout ratio - under 75%.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Chowder rule 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is meant to be used as a tool to help investors target dividend stocks
+ with good potential for future growth.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is based on the dividend growth rate and the safety margin.
+\end_layout
+
+\begin_layout Itemize
+TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Important things when looking for a stock for its dividends:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Net income trend.
+ Company got more money, it will pay more and more dividends.
+ You want consistency to pay more and more over time.
+\end_layout
+
+\begin_layout Enumerate
+Payout ratio.
+ How much of that net income is a company actually paying in the form of
+ dividends.
+ Ideally under 50% payout ratio (Jeremy from Financial Education from YT).
+ If this number is too high, a company can cut down dividends in the future.
+ Or it probably won't raise them in the future so much.
+ Why? Lower payout ratio means that a company is savings a lot more money,
+ or use that money for share buybacks, buying other companies, or just store
+ that money "on the balance sheet" for rainy days.
+ Because maybe a company could
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Calculation: DPS / EPS = payout_ratio
+\end_layout
+
+\begin_layout Standard
+DPS (dividend per share, like OUT from company) and EPS (earnings per share,
+ like IN to company)
+\end_layout
+
+\begin_layout Standard
+EPS = Net income / number_of_shares
+\end_layout
+
+\begin_layout Standard
+Example: One share costs $10, dividend is annually $0.5 per share (DPS),
+ outstanding common shares for a company: 10M, and net income is also $10M.
+ This means that EPS = $1 and Payout ratio is 50%.
+\end_layout
+
+\begin_layout Standard
+Rapid increase in a payout ratio can mean that the company earnings probably
+ went down (probably fast and significantly) and they could cut dividends.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Debt.
+ If a company has a lot of debt, how they are gonna pay dividends? Debt
+ first.
+ If a company is going to bad times, it can even completely cut off their
+ dividends.
+ Or they will lower it down.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When a stock goes up a lot, dividend yield goes down a lot.
+ Companies use to increase their dividends, but sometimes they are not able
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+catch-up
+\begin_inset Quotes erd
+\end_inset
+
+ with their stock growth.
+ So sometimes it's not good time to buy a stock because of this.
+ Because that might signify, that a given company might not be at great
+ value at that moment.
+ If a dividend yield is unusually low, that might mean that a company is
+ over-purchased.
+ Also, if a dividend yield is unusually high, that might mean that a company
+ went through some struggle, a lot of people decided to sell its shares,
+ and a yield went up.
+ Maybe there is something systematically wrong with the company.
+\end_layout
+
+\begin_layout Itemize
+It's good if a dividend yield is above its 5-10 years average! Also, see
+ dividend history of a given stock, and payout ratio.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+5/10 ratio
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Important metric, if your companies are raising dividends, and you want
+ to measure their performance over time in the past.
+ You can calculate it as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+5 year dividend growth rate (average) divided by 10 year dividend growth
+ rate (average)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+You are looking at least for bigger number than 1.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Value Investing
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) 
+\begin_inset Quotes eld
+\end_inset
+
+Value investing is one of key disciplines in the world of investing.
+ It consists of quantifying what something is worth intrinsically, based
+ primarily on its fundamental, cash flow-generating capabilities, and buying
+ it if its price represents a meaningful discount from that value.
+ Cash flows are estimated as far into the future as possible and discounted
+ back to their present value using a discount rate made up of the prevailing
+ risk-free rate (usually the yield on U.S.
+ Treasuries) plus a premium to compensate for their uncertain nature.
+ There are a lot of common valuation metrics, like the ratio of price to
+ sales, or to earnings, but they are largely subsumed by the discounted
+ cash flow, or DCF, method.
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset CommandInset href
+LatexCommand href
+name "ref"
+target "https://www.oaktreecapital.com/docs/default-source/memos/something-of-value.pdf?sfvrsn=b0d46166_8"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Essential underlying principles of value investing are these:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the understanding of securities as stakes in actual businesses,
+\end_layout
+
+\begin_layout Itemize
+the focus on true worth as opposed to price,
+\end_layout
+
+\begin_layout Itemize
+the use of fundamentals to calculate intrinsic value,
+\end_layout
+
+\begin_layout Itemize
+the recognition that attractive investments come when there is a wide divergence
+ between the price at which something is offered in the market and the actual
+ fundamental worth you've determined, and 
+\end_layout
+
+\begin_layout Itemize
+the emotional discipline to act when such an opportunity is present and
+ not otherwise.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Buying undervalued companies.
+\end_layout
+
+\begin_layout Itemize
+Many value investors care about dividends.
+ Actually, many of them won't even invest into a stock unless it's paying
+ a dividends.
+\end_layout
+
+\begin_layout Itemize
+Value investors are usually older and "more safer" investors - they want
+ to preserve wealth.
+\end_layout
+
+\begin_layout Itemize
+(Jason Kelly) Value investors look for stocks on the cheap.
+ They compare stock prices with different measures of a company's business,
+ such as its earnings, assets, cash flow, and sales volume.
+ The idea is that if you don't pay too much what you get, there's less change
+ of losing money.
+ Value stocks have low P/E ratios and low price-to-book ratios.
+ They are companies that have been overlooked on their journey to success,
+ have fallen on hard times after more successful years, or are in a slump
+ for any number of reasons.
+ Hopefully they're on a comeback and the value investor purchases shares
+ at the bottom of an uphill climb.
+ Here's where value and growth are tied together.
+ In both cases, investors want to buy companies with a bright future.
+ The difference is that growth investors usually buy those companies when
+ they're already steamrolling ahead to that bright future, while value investors
+ usually buy those companies when they're still getting ready to start or
+ are recovering from a tumble.
+ Value investors pay particular attention to dividends.
+ A company that pays dividends contributes to an investor's profit even
+ if the stock price does not rise.
+ That's comforting.
+ 
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) In a nutshell, value investors aim to come up with a security's
+ current intrinsic value and buy when the price is lower.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The emphasis in value investing is on tangible factors like hard assets
+ and cash flows.
+ Intangibles like talent, popular fashions and long-term growth potential
+ are given less weight.
+ 
+\end_layout
+
+\begin_layout Itemize
+The quest in value investing is for cheapness.
+ 
+\end_layout
+
+\begin_layout Itemize
+Value investors typically look at financial metrics such as earnings, dividends,
+ cash flow, hard assets, enterprise value and emphasize buying cheap on
+ these bases.
+ The primary goal of value investors, then, is to quantify the company's
+ current value and buy its securities when they can do so cheaply.
+\end_layout
+
+\begin_layout Itemize
+So value investors buy stocks (even those whose intrinsic value may show
+ little growth in the future) out of conviction that the current value is
+ high relative to the current price.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Howard Marks) A good place to start to find under-priced assets is:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+little known and not fully understood
+\end_layout
+
+\begin_layout Itemize
+fundamentally questionable on the surface
+\end_layout
+
+\begin_layout Itemize
+controversial, unseemly or scary
+\end_layout
+
+\begin_layout Itemize
+deemed inappropriate for "respectable" portfolios
+\end_layout
+
+\begin_layout Itemize
+unappreciated, unpopular and unlover
+\end_layout
+
+\begin_layout Itemize
+trailing a record of poor returns
+\end_layout
+
+\begin_layout Itemize
+recently the subject of disinvestment, not accumulation
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aswath Damodaran's view on Value Investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The simplistic definition (used by services to classify investors into growth
+ and value investors): anyone who invest in low PE ratios is a value investor.
+\end_layout
+
+\begin_layout Itemize
+Too broad definition: value investors are ones who are interested in buying
+ stocks for less that what they are worth.
+ But you could potentially classify all active investors as value investors
+ on this basis.
+ This definition is not very clever - Peter Lynch also cared about the value,
+ but also about the growth.
+ It's not that only value investors care about the value and others don't.
+\end_layout
+
+\begin_layout Itemize
+Damodaran's definition: Value investors want to buy companies that trade
+ at less than the value of assets in place (existing investments, generate
+ cashflows today, includes long lived [fixed], and short-lived [working
+ capital] assets.).
+ So they don't want to gamble with investing in growth assets.
+ It's not because they don't believe that growth exists, but they believe
+ that if there is growth, it should be an icing on the cake.
+\end_layout
+
+\begin_layout Itemize
+Furthermore, he classify value investors into 3 groups (which aren't mutually
+ exclusive):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Passive Screeners - following Ben Graham tradition, you screen for stocks
+ that have characteristics that you believe identify undervalued stocks.
+ You are hoping to find market mistakes through the screens.
+ It can be based on PE ratios, PB ratios, accounting numbers, trading volume,
+ etc.
+ The idea is to find mispriced stocks that trades well below what the value
+ of assets in place is.
+ Once you buy a stock, you can stuck with those shares until the price adjust
+ back to its value.
+ Ben Graham's screens:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PE has to be less than the inverse of the yield on AAA corporate bonds.
+\end_layout
+
+\begin_layout Itemize
+PE has to be less than 40% of the average PE over the last 5 years.
+\end_layout
+
+\begin_layout Itemize
+Dividend yield > 2/3 of the AAA corporate bond yield.
+\end_layout
+
+\begin_layout Itemize
+Price < 2/3 of Book value
+\end_layout
+
+\begin_layout Itemize
+Price < 2/3 of Net current assets
+\end_layout
+
+\begin_layout Itemize
+Debt-equity ratio (book value) has to be less than 1
+\end_layout
+
+\begin_layout Itemize
+Current assets > Twice current liabilities
+\end_layout
+
+\begin_layout Itemize
+Debt < Twice Net current assets
+\end_layout
+
+\begin_layout Itemize
+Historical Growth in EPS (over the last 10 years) > 7%
+\end_layout
+
+\begin_layout Itemize
+No more than 2 years of negative earnings of the previous 10 years
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Contrarian Investors - those investors are investing in companies that others
+ given up on - either because they have done badly in the past or because
+ their future prospects look bleak.
+ You are implicitly assuming that markets overreact.
+\end_layout
+
+\begin_layout Itemize
+Activist Value Investors - They invest in poorly managed and poorly run
+ firms, and they are trying to change the way these companies run.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Growth Investing
+\end_layout
+
+\begin_layout Itemize
+Buying companies with higher than average growth.
+\end_layout
+
+\begin_layout Itemize
+Growth investors are looking for companies with revenue of 15% or more.
+ These are fast growing companies.
+ 
+\end_layout
+
+\begin_layout Itemize
+And gross margin is also a very important attribute here.
+\end_layout
+
+\begin_layout Itemize
+Balance sheets doesn't matter to them.
+ They doesn't care about how much debt a company has for example.
+\end_layout
+
+\begin_layout Itemize
+They don't care about dividends and share buybacks.
+ They want they money invested back into the company to grow the company
+ more organically.
+\end_layout
+
+\begin_layout Itemize
+Here, usually younger and "more aggressive" investors are (20s or 30s) -
+ they want to build wealth.
+\end_layout
+
+\begin_layout Itemize
+Growth companies can go 50% down a year.
+\end_layout
+
+\begin_layout Itemize
+(Jason Kelly) You won't find many bargains among growth stocks.
+ But if they keep growing it's worth it.
+ Growth investors are searching for hot hands, not great bargains.
+ They'll pay more for good companies.
+ As a result, many growth investors don't even look at a stock's price in
+ relation to its earnings or its book value because they know a lot of growth
+ stocks are expensive and they don't care.
+ They just look at a stock's potential and go for it, hoping that current
+ successes continue and get even better.
+ Most growth investors set minimum criteria for investing in a company,
+ perhaps it should be growing at least 20% a year and pushing new highs
+ in stock price.
+ Because a growth stock depends on its earnings and the acceleration of
+ those earnings, the expectations of analysts and investors are high.
+ That creates a risky situation.
+ If a growth company fails to deliver the earnings that everybody expects,
+ all hell breaks loose.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) The growth of a company is measured against the growth of
+ the economy at large.
+ Slow-growing companies grow very slowly - more or less in line with the
+ nation's GNP, which lately (1990s) has averaged about 3% per year.
+ Fasts-growing companies grow very fast, sometimes as much as 20-30% per
+ year or more.
+ That's where you find the most explosive stocks.
+ Growth stocks - slow growers, medium growers (stalwarts), and fast growers
+ - these deserve the most attention.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) To Lynch, what makes a company valuable and why it will be
+ more valuable tomorrow than it is today - to him, it's earnings and assets.
+ Sometimes it takes years for the stock price to catch up to a company's
+ value, and the down periods last so long that investors begin to doubt
+ that will ever happen.
+ But value always wins out - or at least in enough cases that it's worthwhile
+ to believe it.
+\end_layout
+
+\begin_layout Itemize
+(Peter Lynch) There are three phases to a growth company's life:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Start-up phase, during which it moves into new markets
+\end_layout
+
+\begin_layout Enumerate
+Rapid expansion phase, during which it moves into new markets
+\end_layout
+
+\begin_layout Enumerate
+Mature phase, also known as the saturation phase, when it begins to prepare
+ for the fact that there's no easy way to continue to expand.
+\end_layout
+
+\begin_layout Standard
+Each of these phases may last several years.
+ The first one is the riskiest for the investor, because the success of
+ the enterprise isn't yet established.
+ The second phase is the safest, and also where the most money is made,
+ because the company is growing simply by duplicating its successful formula.
+ The third phase is the most problematic, because the company runs into
+ its limitations.
+ Other ways must be found to increase earnings.
+ As you should periodically recheck the company, to find our whether the
+ company seems to be moving from one phase into another.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Howard Marks) These investors try to find securities whose value will increase
+ rapidly in the future.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This type of investing lies somewhere between the dull plodding of value
+ investing and the adrenaline charge of momentum investing.
+ Its goal is to identify companies with bright futures.
+ 
+\end_layout
+
+\begin_layout Itemize
+That means by definition that there's less emphasis on the company's current
+ attributes and more on its potential.
+\end_layout
+
+\begin_layout Itemize
+So growth investors buy stocks (even those whose current value is low relative
+ to their current price) because they believe the value will grow fast enough
+ in the future to produce substantial appreciation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aswath Damodaran's view on Growth Investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The conventional definition: an investor who buys high price earnings ratio
+ stocks or high price to book ratio stocks
+\end_layout
+
+\begin_layout Itemize
+The generic definition: An investor who buys growth companies where the
+ value of growth potential is being underestimated.
+ In other words, both value and growth investors want to buy undervalued
+ stocks.
+ The difference is mostly in where they think they can find bargains - value
+ investor in existing assets, and growth investor - expected value will
+ be created by future investments.
+ So you are looking for companies in which market cannot see their true
+ potential just yet.
+\end_layout
+
+\begin_layout Itemize
+You can use PEG ratio for screening, or earnings growth over time.
+ But low PEG stocks tend to be risky.
+\end_layout
+
+\begin_layout Itemize
+Or PE ratios that are less than their expected growth rates.
+ It's intuitive and simple, but not necessarily a good strategy - just a
+ potential idea.
+ Maybe even dangerous one.
+ You are likely to find a lot of undervalued stocks when interest rates
+ are high.
+ Even when they are low, you are likely to find very risky stocks coming
+ through this screens as undervalued.
+ 
+\end_layout
+
+\begin_layout Itemize
+The value of growth
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To generate growth, firms have to reinvest money (in capital expenditures,
+ R&D, acquisitions and working capital).
+ That reinvestment reduces cash flows.
+\end_layout
+
+\begin_layout Itemize
+The effect of growth then becomes a net effect, which weights off the benefits
+ of having higher earnings in the future (from the growth) against lower
+ cash flows today.
+\end_layout
+
+\begin_layout Itemize
+The value of growth can be written as a function of "excess returns" the
+ firm earns on its new investments, with excess returns being the difference
+ between the return on the investment (ROE/ROIC) and the cost of the financing
+ (cost of equity).
+ For some balance sheets, companies, accountants don't capture what companies
+ invest very well.
+ For example in some technology companies, where capital expenditures often
+ don't show up as capital expenditures.
+ They show up in income statement (R&D expenses is a classic example).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Trading And Short-Term Investing
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moving Averages 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Moving averages are a technical indicators that tell us the average price
+ of a stock over a period of time.
+ 
+\end_layout
+
+\begin_layout Itemize
+They can be either Simple Moving Averages or Exponential Moving Averages.
+ 
+\end_layout
+
+\begin_layout Itemize
+An Exponential Moving Average weighs recent price action heavier than older
+ price action.
+ This means the moving average will move faster in response to recent moves.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Momentum Investing TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Relative Strength Index (RSI) -
+\emph default
+ a momentum indicator, it goes from 0-100.
+ It's not relative strength.
+ TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Supports and resistance 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Price action 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+MACD 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Oscillators 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Divergentions 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moving Average 
+\emph default
+TODO
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Volume Weighted Average Price (VWAP) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a trading benchmark used by traders that gives the average price a
+ security has traded at throughout the day, base on both volume and price.
+ It is important because it provides traders with insight into both the
+ trend and value of a security.
+\end_layout
+
+\begin_layout Itemize
+One of the best indicator for trading! According to the book How to Day
+ Trade For a Living (By Andrew Aziz) alternatively, you can use support/resistan
+ce strategies, not don't over-complicate it.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Short seller
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Someone in stock market who believe that stock prices are going down (sometime).
+ 
+\end_layout
+
+\begin_layout Itemize
+So it is an opposite of a traditional investor that wants that prices to
+ go up.
+\end_layout
+
+\begin_layout Itemize
+Jeremy from Financial Education (YT) claims that short selling is dumb.
+ Instead, if you think that a stock is going down, you can buy put options:
+ less capital needed, limited downside, and unlimited upside.
+ Short selling can be good in trading, but not in investing.
+\end_layout
+
+\begin_layout Itemize
+Imagine that you want 100 shares at a company that you believe its stocks
+ are going down in near future.
+ Each share costs $100, which is $10k.
+ He will borrow these shares with a margin account.
+ So you are going to short 100 shares of that company.
+ Now, in the future, if the share price of this company will drop to $50,
+ you already own these 100 shares.
+ So your profit is $5k, because you borrowed these shares for $10k, and
+ you fulfill your obligation of paying back the money to broker, but since
+ you own it now at $50 per share.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=VgX_R5mmxxQ}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So to short a stock.
+ You’re getting the 100 shares from the broker.
+ Then you sell them at market value (10k).
+ You wait a little.
+ The stock moves.
+ Then you buy the 100 shares to fulfill your promise to the broker of 100
+ shares.
+ And you keep/lose the difference.
+\end_layout
+
+\begin_layout Itemize
+It's dangerous because you can lose much more than 100% of your money.
+ You can lose basically unlimited amount of money.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The consistently winning trader (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=MGglyvc8d58&list=WL&index=1}
+\end_layout
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In trading the number of times that you are right is known as the hit rate.
+ 
+\end_layout
+
+\begin_layout Itemize
+In trading the payoff is known as the risk to reward ratio.
+ 
+\end_layout
+
+\begin_layout Itemize
+The money that you make is a function of both hit rate and risk to reward
+ ratio.
+ (and don't forget also about commissions and spreads)
+\end_layout
+
+\begin_layout Itemize
+Most traders only think about hit rate.
+ The Internet is full of high rate systems because most traders will only
+ purchase such a method.
+ Most of these systems in fact lost more when they are wrong than they make
+ when they are right.
+ 
+\end_layout
+
+\begin_layout Itemize
+Every trade has 2 decisions associated with it: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Long or short 
+\end_layout
+
+\begin_layout Itemize
+How much do I bet - what percentage of my money do I risk on any one trade?
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Paragraph
+Option trading strategies
+\end_layout
+
+\begin_layout Standard
+Strategies - covered calls, collars, or protective short puts complement
+ long-term stock investment.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Naked call
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unlimited downside and limited upside.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Covered call writing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You physically own shares and you sell call options against them to enhance
+ their income.
+ There are even ETFs that inherently do that.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Protective put options 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Collar 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When you wish to protect gains in long stock position.
+ Willing to sell your stock higher.
+\end_layout
+
+\begin_layout Itemize
+You have to own 100 shares with a gain, sell 1 OTM call and simultaneously
+ buy 1 OTM put, same expiry.
+ Limited upside, limited downside.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Straddles, strangles, strips, and straps 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Straddles and strangles are both options strategies that allow an investor
+ to benefit from significant moves in a stock's price, whether the stock
+ moves up or down.
+ Both approaches consist of buying an equal number of call and put options
+ with the same expiration date.
+ The difference is that the strangle has two different strike prices, while
+ the straddle has a common strike price.
+ 
+\end_layout
+
+\begin_layout Itemize
+Buy straddle - buy ATM call, buy ATM put - bet on volatility.
+\end_layout
+
+\begin_layout Itemize
+Sell straddle - sell ATM call, sell ATM put - bet that stock won't be volatile.
+\end_layout
+
+\begin_layout Itemize
+Long Straddle - bet on a volatility - when you think the stock will move
+ outside of a trading range in either direction.
+ Buy 1 ATM Call and 1 ATM Put, same strikes and expiration.
+ Limited risk, unlimited upside.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Chooser options 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Spreads
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Bull Call Spread Hypothesis 
+\emph default
+- you think that your stock will outperform in the future vs the market;
+ when you see an upside positive catalyst for a company.
+ Buy 1 call and sell 1 call of the same expiry and higher strike.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Butterfly Spread
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A neutral options strategy with both limited risk and limited profit potential.
+\end_layout
+
+\begin_layout Itemize
+It involves 4 options with the same expiration date, but with the 3 different
+ strike prices.
+ All are either puts or all are calls.
+ For example, you will buy one call option at lower strike price, sell 2
+ call options at higher strike price, and buy one call option at even higher
+ strike price.
+\end_layout
+
+\begin_layout Itemize
+It can be used if an investor thinks that a stock price won't raise or fall
+ significantly before the expiration date.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Stocks To Watch Worksheet
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Company basics
+\end_layout
+
+\begin_layout Itemize
+Company name and symbol.
+\end_layout
+
+\begin_layout Itemize
+Current stock price and 52-week high/low.
+\end_layout
+
+\begin_layout Itemize
+Market Cap
+\end_layout
+
+\begin_layout Itemize
+Daily Dollar Volume - how much money trades in the stock on a given day;
+ this determines liquidity.
+ This measure is of most interest to small cap investors.
+ They look for low daily volume, because that means that mutual funds will
+ stay away until the volume starts increasing.
+ When it does, funds might buy in and drive the volume and price even higher.
+ Large cap investors don't pay much attention to daily volume because it
+ is always big.
+\end_layout
+
+\begin_layout Itemize
+Sales.
+ When sales and earnings grow quickly, share price tends to follow.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Company health 
+\end_layout
+
+\begin_layout Itemize
+New Profit Margin - High net profit margin is one of Warren Buffet's requirement
+s for investing in a company.
+ Effectiveness of its operation.
+ How much of its earnings does a company keep? Follow the trend from 5 years
+ ago and projected figures for current year and the next one.
+ Any company in your sheet should have a net profit margin in the top 20%
+ of its industry.
+ These are leaders.
+ But typical profit margin can change from industry to industry.
+ Airlines generally have negative profit margins.
+ Most commodity retailers such as supermarkets, auto parts stores, cheap
+ clothing stores, and consumer electronics stores have net profit margins
+ below 5%.
+ Bigger is always better.
+ Especially if it grows each year.
+\end_layout
+
+\begin_layout Itemize
+Cash and Total Debt - ideally lots of cash and little or no debt.
+ Later we'll use ratios to make sure the levels of cash and debt are acceptable.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Stock health
+\end_layout
+
+\begin_layout Itemize
+Sales per Share - Try to capture the trend over the past 5 years.
+ For growth companies, list only those that have increased sales per share
+ in each of the past 5 years and are projected to increase them again current
+ year and next.
+ And ideally, it is very good also for value companies.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cash Flow per Share - You want this positive and big.
+ Capture the trend over the past 5 years.
+ And projections for the next year.
+ Especially for growth companies, this number must be increasing over the
+ past 5 years - in each year.
+ And its projections too.
+ For value companies, it is optional but ideal.
+\end_layout
+
+\begin_layout Itemize
+Earnings per Share - Growth investors insist on an increasing EPS.
+ Check the trend over the past 5 years and 1 year predictions.
+ With growth companies, it is required to be increasing, and with value
+ stocks, a super discount is often accompanied by a dip in earnings.
+ Occasionally, however, something else hammers a stock's price and earnings
+ remain constant or increase.
+ In that case, you're really getting a bargain.
+ With value stocks, use your own judgment to decide on an up or down arrow
+ based on whether the current number is an overall increase from 5 years
+ ago, whether the increase is large or small, and by the projected earnings
+ per share for this year and next.
+\end_layout
+
+\begin_layout Itemize
+Dividend Yield - a high number is the deciding factor used in the Dow dividend
+ strategies and was proven to work among large companies in James O'Shaughnessy'
+s study of stock market history.
+ It's very important figure to large-company investors.
+ You can track the 5 year trend.
+ Small-company investors ignore dividend yield because small companies don't
+ usually declare dividends and therefore have yields of zero.
+ 
+\end_layout
+
+\begin_layout Itemize
+Return on Equity - It shows what a company has earned with the money people
+ have invested in it.
+ Net income divided by total shareholders' equity and you come up with a
+ percentage.
+ Warren Buffett likes this measurement because if gives a clear picture
+ of what a company does with its profits.
+ If a company gets bigger every year, it will probably earn more money.
+ But investors should ask, does it earn enough additional money to support
+ its larger size? Return on equity answers that.
+ If a company can maintain a high return on equity as it grows, you know
+ that management is directing profits wisely.
+ Some people like to see ROE at least 20% maintained or improved over the
+ years.
+ Occasionally, value investors will accept low or negative ROEs in companies
+ they think are about to make a change for the better.
+ Steady ROE - company continues returning substantial profits to investors.
+\end_layout
+
+\begin_layout Itemize
+Insider Buys/Ownership - you want to own companies that are owned by insiders,
+ because if people who run the place have a material interest in its success,
+ they're more likely to do a better job.
+ You shouldn't pay attention to insider sells.
+ For small cap investors, insider ownership is of particular importance
+ because a lot of small companies are just starting out and management is
+ a crucial factor in their success.
+ Some people like small companies to have at least 20% insider ownership.
+\end_layout
+
+\begin_layout Itemize
+Stock Buyback - it's great to see a company buying its stock back.
+ There will be fewer shares outstanding, which improves supply-demand ratio
+ and should increase the share price eventually.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Past performance
+\end_layout
+
+\begin_layout Itemize
+EPS rank - take EPS for the two most recent quarters and compute their percentag
+e change from the same 2 quarters a year ago.
+ That result is combined and averaged with each company's five-year earnings
+ growth record.
+ The final figures for each company are compared with each other.
+ Investor's Business Daily computes this metric.
+ This measure is most important to growth investors because they look for
+ consistently strong earnings and for the company to exceed expectations.
+ Value investors like earnings, too, but they'll often buy a company with
+ struggling earnings if it means the stock is enough of a bargain.
+ Growth investors should insist on EPS rank of 85 or better.
+\end_layout
+
+\begin_layout Itemize
+Relative Price Strength Rank - This measure looks at the stock's price performan
+ce in the latest 12 months.
+ It simply reports the hard numbers and answers the question, how did this
+ stock perform compared with all others? Investor's Business Daily updates
+ the numbers daily.
+ This metric is the most interested to growth investors.
+ Value investors have no requirement for relative price strength because
+ it would preclude bargain companies.
+\end_layout
+
+\begin_layout Itemize
+Five-Year Sales and Earnings Gain - With small companies, strong sales and
+ earnings are essential.
+ The typical requirement is for them to have grown at least 25% over the
+ past year.
+ And we are looking at 5-year history here.
+ For larger companies, it's good to see at least 10% increase, but for smaller,
+ it can be at least 15% - annual sales and earnings increases.
+ Try to stick with strong sales and earnings even if you're a value investor.
+\end_layout
+
+\begin_layout Itemize
+Five-Year Price Appreciation - Take the high price from five years ago and
+ compare it with the current price.
+ Regardless to your preference on value or growth investing, it's good to
+ know what happened to a stock in the past 5 years.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Projected performance
+\end_layout
+
+\begin_layout Itemize
+Sales and Earnings - try to look for companies that are expected to grow
+ by double digits.
+ Be stricter as company size gets smaller because smaller companies should
+ be growing faster than large ones.
+ Large - at least 10% a year, medium at least 15% and small companies at
+ least 20%.
+ Value Line has this number for example.
+\end_layout
+
+\begin_layout Itemize
+Projected Stock High/Low - Analysts spend their lives trying to be accurate
+ and it never hurts to see what they expect to happen.
+ Both the high and low price projections must be bigger than the current
+ price.
+ Never invest in a stock that's expected to fall in price.
+ Also, make sure the low projection represents a worthwhile gain.
+ Value Line prints this price.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Rankings
+\end_layout
+
+\begin_layout Itemize
+Value Line (Timeliness & Safety) and S&P STARS (Fair value)
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Stock ratios
+\end_layout
+
+\begin_layout Itemize
+Current P/E - Value investors want to pay as little as they can for each
+ dollar of earnings; growth investors don't care very much.
+ But P/E ratio that's fairly priced will equal its growth rate.
+ Growth rate of earnings.
+ The current P/E should be at or below the five/year average P/E.
+ That keeps you from buying in just after the company has broken into higher
+ trading territory.
+\end_layout
+
+\begin_layout Itemize
+Average P/E - relevant for comparing with current P/E
+\end_layout
+
+\begin_layout Itemize
+P/S - investors recognize its superiority over P/E for valuing stocks.
+ P/S is often a more accurate measure of a company's value because sales
+ can't be manipulated as easily as earnings.
+ Also, the measure helps even growth investors identify companies that are
+ selling below their potential.
+ Even growth companies are best purchased cheap.
+ It's fine to stay with a ratio below 2 but this is an ideal, not a requirement.
+ Sometimes companies that are growing quickly show high P/S ratios but their
+ share prices keep rising.
+ History suggests, however, that a low P/S is a good sign.
+\end_layout
+
+\begin_layout Itemize
+P/B - this is the second most common valuation measure following P/E.
+ It tells how much you're paying for the actual assets of the company.
+ But it isn't worth much to some people.
+ They care a lot more about a company's use of its equipment to earn money
+ than about the auction value of that equipment.
+ They want the skill of human beings to turn the output of equipment into
+ profit.
+ That's the point of investing.
+ Growth investors don't care at all about P/B, but value investors like
+ to see it less than 1.
+ Benjamin Graham recommended investing in companies with a P/B less than
+ 0.66.
+\end_layout
+
+\begin_layout Itemize
+Current Ratio - Just divide the current assets by current liabilities.
+ The more assets a company has in relation to its liabilities, the better
+ it's able to handle ugly surprises.
+ Simply because it owns more than it owes - a situation everybody prefers.
+ Try to invest in companies of at least current ratio of 2.
+\end_layout
+
+\begin_layout Itemize
+Price-to-Cash-Flow - Bill Miller called this "the single best predictor
+ of excess return".
+ Healthy businesses generate cash.
+ Low number means high cash flow yield.
+ Some people like to see P/CF of less than 5, but that's just a rough guideline.
+ You can also compare it with 3/5-year average.
+\end_layout
+
+\begin_layout Itemize
+SMA, MACD, and RSI - for checking a potential downside or upside of a stock.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Company's challenges
+\end_layout
+
+\begin_layout Itemize
+Write down those only to company you really like.
+ Not weaknesses.
+ Hopefully, you won't be investing in companies that have excessive internal
+ weaknesses.
+ Your list is supposed to contain the industry-leading, best-of-breed profit
+ machines, and companies with strength enough to recover from temporary
+ setbacks.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Investment thesis
+\end_layout
+
+\begin_layout Standard
+Write down reasons to:
+\end_layout
+
+\begin_layout Itemize
+buy, for example industry leader, growing industry, strong sales growth,
+ decreasing debt, increasing margins, superior technology, new management
+\end_layout
+
+\begin_layout Itemize
+sell, for example reached price target, increased competition, declining
+ industry, weakening sales, increasing debt, decreasing margins, legal trouble
+\end_layout
+
+\end_body
+\end_document

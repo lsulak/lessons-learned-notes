@@ -1,0 +1,509 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Python Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Machine Learning
+\end_layout
+
+\begin_layout Section
+Graphs
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Python, Seaborn
+\series default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+https://jakevdp.github.io/PythonDataScienceHandbook/04.14-visualization-with-seabor
+n.html 
+\end_layout
+
+\begin_layout Itemize
+https://www.datacamp.com/community/tutorials/seaborn-python-tutorial
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+General histogram, KDE
+\series default
+,
+\series bold
+ 
+\series default
+and
+\series bold
+ density graphs
+\series default
+ various representation of histogram-like information 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+joint distributions of variables 
+\end_layout
+
+\begin_layout Itemize
+KDE is a smooth estimate of the distribution using a kernel density estimation.
+ They both can be combined together in one graph.
+\end_layout
+
+\begin_layout Itemize
+RUG - there is marginal distributions of a variable along x and y 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pair plots
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+generalized joint plots with datasets of larger dimensions
+\end_layout
+
+\begin_layout Itemize
+very useful for exploring correlations between multidimensional data = plotting
+ all pairs of values against each other 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Faceted histograms
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+viewing data via histograms of subsets 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Factor plots
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+similar purpose as previous
+\end_layout
+
+\begin_layout Itemize
+viewing the distribution of a parameter within bins
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Joint distributions
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+jointplot - joint distribution and the marginal distributions together (type
+ of graph can be KDE or hexagonally based histogram 
+\end_layout
+
+\begin_layout Itemize
+or we can see joint distribution between different datasets along with the
+ associated marginal distributions
+\end_layout
+
+\begin_layout Itemize
+it can even do some automatic kernel density estimation and regression
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Keras
+\end_layout
+
+\begin_layout Subsection
+Deep neural networks layers 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dense
+\series default
+ - classical neural layer with activation function.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dropout
+\series default
+ - for preventing overfitting (2-3x longer training time).
+ Idea is to take a large model that overfits easily and repeatedly sample
+ & train a smaller sub-models from it.
+ They reduce the capacity of NN.
+ If there are 
+\begin_inset Formula $n$
+\end_inset
+
+ hidden units and 
+\begin_inset Formula $p$
+\end_inset
+
+ is probability of retaining a unit, they after dropout only 
+\begin_inset Formula $p*n$
+\end_inset
+
+ units will be present after Dropout.
+ Value 1 means no Dropout and typically for hidden layers is Dropout .5-.8.
+ (In Keras .2-.5) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If small (in Keras high) p (Dropout value) then it requires bigger n = slower
+ training and there can be underfitting.
+ 
+\end_layout
+
+\begin_layout Itemize
+Larger (in Keras smaller) may not prevent overfitting (not enough dropout).
+ 
+\end_layout
+
+\begin_layout Itemize
+use_bias - input and all intermediate layers.
+ The output one - yes if the activation function is Sigmoid (maybe no if
+ linear).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Summary 
+\series default
+- randomly selected neurons are ignored during training.
+ Other neurons will step in and build a newer independent internal representatio
+ns learned by NN.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Flatten
+\series default
+ - 
+\begin_inset Quotes eld
+\end_inset
+
+flats
+\begin_inset Quotes erd
+\end_inset
+
+ the output.
+ If output from layer is (None, 64, 32, 32) then after Flatten is (None,
+ 65536).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Reshape
+\series default
+ - reshapes the output to certain shape.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Permute
+\series default
+ - useful for connecting RNN and convnets together, permutes dimension of
+ input, according to specified pattern.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RepeatVector
+\series default
+ - repeat input n-times.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lambda
+\series default
+ - wraps expression (or function) to a layer object.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ActivityRegularization
+\series default
+ - applies an update to the cost function based input activity.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Masking
+\series default
+ - mask a sequence by using mask value to skip timesteps (dimension #1 in
+ tensor).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+timesteps - number of steps in backprop for calculating gradient for weight
+ updates during training.
+\end_layout
+
+\begin_layout Itemize
+masking is 
+\series bold
+useful
+\series default
+ if you 
+\series bold
+don't have data for some timesteps
+\series default
+ and 
+\series bold
+we don't want to consider such samples for learning
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pooling layers
+\series default
+ - it reduces the size of the matrix.
+ For example from 4 pixels it chooses 1 (maximum).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Recurrent layers
+\series default
+ - LSTM, GRU, SimpleRNN.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can stack multiple recurrent layers by using model.add LSTM (for example)
+ layer with parameter return_sequences=True.
+ BTW implementation=2 - on LSTM/GRU and it means that its in parallel way
+ (RNN Dropout must be shared across all gates - slightly reduced regularization)
+ and IN, FORGET and OUT layers are merged into 1 matrix.
+ 
+\end_layout
+
+\begin_layout Itemize
+Batch normalization
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://arxiv.org/abs/1502.03167}}
+\end_layout
+
+\end_inset
+
+? Reducing training steps.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Measuring performance & tips
+\end_layout
+
+\begin_layout Itemize
+Accuracy graph in Keras history: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+overfitting
+\series default
+ = if great performance on training data and bad on testing.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+underfitting
+\series default
+ = not very usual, if testing performance is better than training performance
+ (unstable model).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Loss graph in Keras history - if curves start to divide, it's better to
+ stop training prior to that (earlier epoch).
+ 
+\end_layout
+
+\end_body
+\end_document

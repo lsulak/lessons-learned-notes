@@ -1,0 +1,3468 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Market Cycles And The Psychology
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Market-Cycles-And"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stock Market Crashes (see more detailed list 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/List_of_stock_market_crashes_and_bear_markets"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1907: The Panic
+\end_layout
+
+\begin_layout Itemize
+1929: The Great Depression
+\end_layout
+
+\begin_layout Itemize
+1987: Black Monday
+\end_layout
+
+\begin_layout Itemize
+2000: Dot-com Bubble
+\end_layout
+
+\begin_layout Itemize
+2008: The Financial Crises
+\end_layout
+
+\begin_layout Itemize
+2010: The Flash Crash
+\end_layout
+
+\begin_layout Itemize
+2015–16: Chinese stock market turbulence
+\end_layout
+
+\begin_layout Itemize
+2020: COVID-19
+\end_layout
+
+\begin_layout Standard
+(Peter Lynch) The earlier depression in 1930s was caused by an economic
+ slowdown in a country in which 66% of the work force was in manufacturing,
+ 22% was in farming, and there was no social security, unemployment compensation
+, pension plans, welfare and medicare payments, guaranteed student loans,
+ or government-insured bank accounts.
+ Today (as of, early 21.century), manufacturing represents only 27% of the
+ work force, agriculture accounts for a mere 3%, and the service sector,
+ which was 12% in 1930, has grown steadily through recession and boom and
+ now accounts for 70% of the U.S.
+ work force.
+ Unlike the thirties, today a large percentage of people own their own homes;
+ many own them free and clear or have watched their equity grow substantially
+ as property values have soared.
+ Today, the average household has 2 wage earners instead of one, and that
+ provides an economic cushion that didn't exist in 1930s.
+ If we have a depression, it won't be like the last one!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Financial markets go through 5 stages from boom to bust (laid out by economist
+ Hyman Minsky): 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Displacement - something happens to change investors' perceptions about
+ the markets.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Boom - Investors' hopes about the benefits of this displacement seem to
+ pay off.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Euphoria - Excitement takes hold and banks lend ever more money in a bid
+ to increase profit.
+ Everyone - from the steady investor to the taxi driver - dives into the
+ market.
+\end_layout
+
+\begin_layout Enumerate
+Profit-taking - Smart investors suddenly realize the good times cannot go
+ on forever, so start selling off their investments.
+ As they sell, prices start falling for the first time.
+\end_layout
+
+\begin_layout Enumerate
+Panic - With prices now falling, fear spreads.
+ People rush to sell their investments en masse, and prices plunge sharply.
+ Banks stop lending to any but the most creditworthy.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Bear Market
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks are going down.
+ It's called:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Market correction 
+\emph default
+if the market goes down by 10%, which is in average once a year.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bear marke
+\emph default
+t if it's down by 20%.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Stock market crash
+\emph default
+ - when the market goes down by 25% or more in about 3 months for example.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bearish on a stock - someone believe that a stock is going down.
+\end_layout
+
+\begin_layout Itemize
+This happens during bear market:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Fear brings more fear.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Everybody focuses on Macro economics.
+ People care less about how individual companies are doing.
+\end_layout
+
+\begin_layout Enumerate
+If times are bad, people won't cut from some activities, for example cycling,
+ hobbies, and these stocks can be hammered down - it's not probably very
+ worth to investing to them during bear market.
+ Also, companies with lower cash and higher debt can be destroyed.
+\end_layout
+
+\begin_layout Enumerate
+Selling creates more selling.
+\end_layout
+
+\begin_layout Enumerate
+Gold increases its value, lot of people will buy it so that their money
+ will be kept save.
+ But many people don't believe in investing in a gold.
+\end_layout
+
+\begin_layout Enumerate
+P/E ratios means 0 on bear market.
+\end_layout
+
+\begin_layout Enumerate
+Many retail investors leave the stock market and never ever come back.
+ They are frustrated and scared.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Bull Market
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks are going up.
+ 
+\end_layout
+
+\begin_layout Itemize
+Bullish on a stock - someone believe that a stock is going up.
+\end_layout
+
+\begin_layout Itemize
+This happens during bull market: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Short sighted.
+\end_layout
+
+\begin_layout Enumerate
+People ignore balance sheets.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Investment community gets lazier.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Big and small investors begin to Margin out.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+(Warren Buffett) 
+\emph on
+"Occasional outbreaks of those two super-contagious diseases, fear and greed,
+ will forever occur in the investment community.
+ The timing of these epidemics will be unpredictable.
+ And the market aberrations produced by them will be equally unpredictable,
+ both as to duration and degree.
+ Therefore, we never try to anticipate the arrival or departure of either
+ disease.
+ Our goal is more modest: we simply attempt to be fearful when others are
+ greedy and to be greedy only when others are fearful."
+\end_layout
+
+\begin_layout Itemize
+Recession is a perfect time for investing! Most fortunes are made during
+ recessions.
+ Avoid before a crash (just some ideas): travel, retail, auto, RV, furniture,
+ construction.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also short term put options can lead to a lot of money.
+ During a recession, buy the companies that continue to raise their dividends.
+ You cannot 100% predict this, but looking at companies that have kept or
+ raised their dividends during past recessions is a good predictor.
+ Look up "Dividend Aristocrats".
+\end_layout
+
+\begin_layout Itemize
+Buy regularly and systematically! For example each week or month, so that
+ your basis is somewhere 
+\begin_inset Quotes eld
+\end_inset
+
+down
+\begin_inset Quotes erd
+\end_inset
+
+ in average.
+ When the market backs up again, your basis is much lower than the stock
+ prices.
+\end_layout
+
+\begin_layout Itemize
+How to be prepared for a recession? No debt, cash savings with emergency
+ fund, hedges! = cash, gold, or put options for example.
+ But then you have opportunity costs.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/economic_recovery_types.png
+	scale 48
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different types of the economic recovery shapes (source 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.wsj.com/articles/why-the-economic-recovery-will-be-more-of-a-swoosh-than-v-shaped-11589203608"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Indicators
+\end_layout
+
+\begin_layout Itemize
+Average length of Bull Market
+\end_layout
+
+\begin_layout Itemize
+Inverted yield curve 
+\end_layout
+
+\begin_layout Itemize
+Unemployed rate - is an indicator of an economy in the past (not in the
+ present)
+\end_layout
+
+\begin_layout Itemize
+See FRED for indicators: (and this - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=e9tbHZnuLIk}
+\end_layout
+
+\end_inset
+
+ - recession indicators) 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Modeled recession probability (Smoothed U.S.
+ Recession Probabilities) 
+\end_layout
+
+\begin_layout Enumerate
+Annual heavy weight truck sales (Motor Vehicle Retail Sales) 
+\end_layout
+
+\begin_layout Enumerate
+Civilian Unemployment Rate 
+\end_layout
+
+\begin_layout Enumerate
+US Treasury Yield Curve (10-Year Treasury Constant Maturity Rate) - Yield
+ spread - difference between 10 years and 2 years treasury bond yields
+\end_layout
+
+\begin_layout Enumerate
+Effective Federal Funds Rate 
+\end_layout
+
+\begin_layout Enumerate
+Buffett Indicator - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.longtermtrends.net/market-cap-to-gdp/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+anything below 70/80% is cheap zone, above 100% is expensive zone 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.gurufocus.com/stock-market-valuations.php}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is kind of price to sales to the whole stock market.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Shipper PE ratio = cape ratio (everything above 15 is expensive, below is
+ okay/cheap) this earnings measure includes the full market cycle of earnings;
+ the trouble can be that it shows the last 10 years of earnings, but it
+ doesn't include recession any more (in 2020, recession in 2008-9).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://fred.stlouisfed.org/series/DTWEXM}
+\end_layout
+
+\end_inset
+
+ TODO
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://fred.stlouisfed.org/series/DEXUSUK}
+\end_layout
+
+\end_inset
+
+ TODO
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://sdbullion.com/dow-gold-ratio}
+\end_layout
+
+\end_inset
+
+ - maybe check if prices are high or low not in comparison to dollars, but
+ gold!! TODO
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.macrotrends.net/1378/dow-to-gold-ratio-100-year-historical-chart}
+\end_layout
+
+\end_inset
+
+ - check hypothetical historical returns - buying stocks based on dollars/gold,
+ or buying solely gold TODO
+\end_layout
+
+\begin_layout Itemize
+Leading economic index - for market predictions - recessions etc TODO
+\end_layout
+
+\begin_layout Section
+Predictions And Market Timing
+\end_layout
+
+\begin_layout Itemize
+Signal - the truth
+\end_layout
+
+\begin_layout Itemize
+Noise - distraction from the truth
+\end_layout
+
+\begin_layout Itemize
+The goal of the prediction model should be to capture as much signal as
+ possible while keeping a noise at minimum.
+ Unfortunately we tend to identify more patterns among the noise.
+\end_layout
+
+\begin_layout Itemize
+Correlation does not equal causation.
+ This is a very common forecasting problem.
+ For example, there are many economic indicators and variables in play.
+ If you try to predict the stock market using these historical data, you're
+ almost guaranteed to find that some of the variables will almost definitely
+ seem to have strong predictive power.
+ Yet, they may not.
+ You may have just been fooled by randomness.
+ Whenever you make a prediction, be sure that there is a logical explanation
+ for the mathematical relationship.
+ Do not trust data unconditionally.
+ 
+\end_layout
+
+\begin_layout Itemize
+How can we become better at predicting? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Think probabilistically.
+ Reality is not just yes/no situation.
+ It's better to have a spectrum of outcomes with probabilities attached
+ to them.
+\end_layout
+
+\begin_layout Itemize
+Change the forecast with the new evidence.
+\end_layout
+
+\begin_layout Itemize
+Look for consensus.
+ Good predictors are good at weighting multiple sources of information.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Warren Buffett ignores political and economic forecasts, which are an expensive
+ distraction for many investors and businessmen.
+ 
+\emph on
+"Imagine the cost to us, then, if we had let a fear of unknowns cause us
+ to defer or alter the deployment of capital.
+ Indeed, we have usually made our best purchases when apprehensions about
+ some macro event were at a peak.
+ A different set of major shocks is sure to occur in the next 30 years.
+ We will neither try to predict these nor to profit from them.
+ If we can identify businesses similar to those we have purchased in the
+ past, external surprises will have little effect on our long-term results."
+\end_layout
+
+\begin_layout Itemize
+Bayes Theorem 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It's good for predicting something if something else occurred.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+From A.
+ Damodaran:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+The January Effect
+\emph default
+ - stocks on average tend to do much better in January than in any other
+ month of the year
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The Weekend Effect
+\emph default
+ - stocks on average seem to do much worse on Mondays than on any other
+ day of the week
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The Mid-day Swoon
+\emph default
+ - stocks on average tend to do much worse in the middle of the trading
+ day than at the beginning and end of the day
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/historical_monthly_performance_of_dow.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Historical monthly performance of Dow Jones from 1950 to 2012
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/sector_ideas_for_market_cycles.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sector strategy ideas for market cycles, by Joseph Hogue (link to the original
+ YouTube video 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=frOZ3Hbau34"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Howard Marks on forecasts
+\end_layout
+
+\begin_layout Itemize
+Predictions are most useful when they correctly anticipate change.
+ If you predict that something won't change and it doesn't change, that
+ prediction is unlikely to earn you much money.
+ But accurately predicting change can be very profitable.
+ Important thing in forecasting isn't getting it right once.
+ The important thing is getting it right consistently.
+ 
+\end_layout
+
+\begin_layout Itemize
+Most of the time, people predict a future that is a lot like the recent
+ past.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They are not necessarily wrong - most of the time the future largely is
+ a rerun of the recent past.
+\end_layout
+
+\begin_layout Itemize
+On the basis of the previous 2 points, it's possible to conclude that forecasts
+ will prove accurate much of the time: they'll usually extrapolate recent
+ experience and be right.
+ 
+\end_layout
+
+\begin_layout Itemize
+However, the many forecasts that correctly extrapolate past experience are
+ of little value.
+ Just as forecasters usually assume a future that's a lot like the past,
+ so do markets, which usually price in a continuation of recent history.
+ Thus if the future turns out to be like the past, it's unlikely big money
+ will be made, even by those who foresaw correctly that it would.
+\end_layout
+
+\begin_layout Itemize
+Once in a while, however, the future turns out to be very different from
+ the past.
+\end_layout
+
+\begin_layout Itemize
+It's at these times that accurate forecasts would be of great value.
+\end_layout
+
+\begin_layout Itemize
+It's also at these times that forecasts are least likely to be correct.
+\end_layout
+
+\begin_layout Itemize
+Some forecasters may turn out to be correct at these pivotal moments, suggesting
+ that it's possible to correctly forecast key events, but it's unlikely
+ to be the same people consistently.
+\end_layout
+
+\begin_layout Itemize
+The sum of this discussion suggests that, on balance, forecasts are of very
+ little value.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The trouble with inconsistent forecasters - not that they are never right,
+ but that the record isn't positive enough to inspire action on their occasional
+ brainstorms.
+ And also, the problem is that people ignore the possibility of improbable
+ outcomes.
+\end_layout
+
+\begin_layout Itemize
+Investors who feel they know what the future holds will act assertively
+ - making directional bets, concentrating positions, levering holdings and
+ counting on future growth - in other words, doing things that in the absence
+ of foreknowledge would increase risk.
+ On the other hand, those who feel they don't know what the future holds
+ will act quite differently: diversifying, hedging, levering less (or not
+ at all), emphasizing value today over growth tomorrow, staying high in
+ the capital structure, and generally girding for a variety of possible
+ outcomes.
+ The first group of investors did much better in the years leading up to
+ the crash.
+ But the second group was better prepared when the crash unfolded, and they
+ had more capital available (and more-intact psyches) with which to profit
+ from purchases made at its nadir.
+\end_layout
+
+\begin_layout Itemize
+If you know the future, it's silly to play defense.
+ You should behave aggressively and target the greatest winners; there can
+ be no loss to fear.
+ Diversification is unnecessary and maximum leverage can be employed.
+ On the other hand, if you don't know what the future holds, it's foolhardy
+ to act as if you do.
+ Working within the limits of what you know rather than venturing beyond
+ - can give you a great advantage.
+ 
+\end_layout
+
+\begin_layout Itemize
+Howard's opinion on economic forecasts:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Most are just extrapolations.
+ Extrapolations are usually correct but not valuable.
+\end_layout
+
+\begin_layout Itemize
+Unconventional forecasts of significant deviation from trend would be very
+ valuable if they were correct, but usually they aren't.
+ Thus most forecasts of deviation from trend are incorrect and also not
+ valuable.
+\end_layout
+
+\begin_layout Itemize
+A few forecasts of significant deviation turn out to be correct and valuable
+ - leading their authors to be lionized for their acumen - but it's hard
+ to know in advance which will be the few right ones.
+ Since the overall batting average with regard to them is low, unconventional
+ forecasts can't be valuable on balance.
+ There are forecasters who became famous for a single dramatic correct call,
+ but the majority of their forecasts weren't worth following.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Aswath Damodaran on market timing 
+\end_layout
+
+\begin_layout Itemize
+Market timing is higher level decision about asset allocation.
+ Most investors, especially old time value investors almost religiously
+ will tell you that they are not market timers.
+ True is, that we all are market timers.
+ At least at some point in time in investing, we time markets.
+ We do it implicitly sometimes by holding back cash or explicitly by actually
+ time the markets.
+ But market timing is built into every investor's gene.
+ Here is the reason - if you can time the market, a payoff is immense.
+\end_layout
+
+\begin_layout Itemize
+The problem with market timing, except taxes and transaction costs, is the
+ you can be out at the wrong time - in the process of switching from stocks
+ to cash and back, you may miss the best years of the market.
+ In 1975, Bill Sharpe suggested in his article on market timing, that unless
+ you can tell a good year from a bad year 7 times out of 10, you should
+ not try market timing.
+ So you have to be right at least 70-80% of the time to break even from
+ market timing.
+ This was confirmed by Monte Carlo simulations on the Canadian market.
+\end_layout
+
+\begin_layout Itemize
+There are 5 ways how to time the market: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Non-financial indicators, which can range the spectrum from the absurd to
+ the reasonable.
+ stories, news, etc
+\end_layout
+
+\begin_layout Itemize
+Technical indicators, such as (past) price charts, the January indicator,
+ market volatility, trading volume (not just on stocks, but also on options),
+ ...
+\end_layout
+
+\begin_layout Itemize
+Mean reversion indicators (it's usually PE ratios for stocks and interest
+ rates for bonds), where stocks and bonds are viewed as mispriced if they
+ trade outside what is viewed as a normal range.
+\end_layout
+
+\begin_layout Itemize
+Macro economic variables, such as interest rates, inflation and GNP growth
+ and devise investing rules based upon the levels or changes in the macroeconomi
+c variables.
+ Over time, a number of rules of thumb have been devised that relate stock
+ returns to the level of interest rates or the strength of the economy.
+ For instance, we are often told that it is best to buy stocks when GNP
+ growth is strong, treasury bill rates are low, treasury bond rates have
+ dropped.
+ But according to some studies, it's very difficult to really find a general
+ pattern here.
+ There is some evidence of mean reversion, but not strong enough to actually
+ make a lot of money out of it.
+ It's really difficult and not easily predictable to make money from macroeconom
+ic indicators, because there is small correlation between the variable did
+ a given year and what the stock prices will do the following year.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=zNrzqkNkaso&list=PLUkh9m2BorqlDJlnBXUaJaMRNE7U
+Dckn6&index=33}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fundamentals such as earnings, cash flow or growth.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+According to Aswath Damodaran, you can value entire market with DCF or relative
+ valuation.
+\end_layout
+
+\begin_layout Section
+Howard Marks on Market Cycles
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+"I think it's essential to remember that just about everything is cyclical.
+ There's little I'm certain of but these things are true: Cycles always
+ prevail eventually.
+ Nothing goes in one direction forever.
+ Trees don't grow to the sky.
+ Few things go to zero.
+ And there's little that's as dangerous for investor health as insistence
+ on extrapolating today's events into the future." 
+\end_layout
+
+\begin_layout Itemize
+In investing, as in life, there are very few sure things.
+ Values can evaporate, estimates can be wrong, circumstances can change,
+ and "sure things" can fail.
+ 
+\end_layout
+
+\begin_layout Itemize
+However, there are two concepts we can hold to with confidence:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Rule number one: most things will prove to be cyclical.
+\end_layout
+
+\begin_layout Enumerate
+Rule number two: some of the greatest opportunities for gain and loss come
+ when other people forget rule number one.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The main reason for cyclicality in our world is the involvement of humans.
+ And people are emotional and inconsistent, not steady and clinical.
+\end_layout
+
+\begin_layout Itemize
+Cycles will never stop occurring.
+ If there were such a thing as completely efficient market, and if people
+ really made decisions in a calculating and unemotional manner, perhaps
+ cycles (or at least their extremes) would be banished.
+ But that will never be the case.
+\end_layout
+
+\begin_layout Itemize
+Ignoring cycles and extrapolating trends is one of the most dangerous things
+ an investor can do.
+ When things are going well, extrapolation introduces great risk.
+ Whether it's company profitability, capital availability, price gains,
+ or market liquidity, things that inevitably are bound to regress toward
+ the mean are often counted on to improve forever.
+\end_layout
+
+\begin_layout Itemize
+Fear/greed cycle is caused by changing attitudes toward risk.
+ When greed is prevalent, it means investors feel a high level of comfort
+ with risk and the idea of bearing it in the interest of profit.
+ Conversely, widespread fear indicates a high level of aversion to risk.
+ The academics consider investors' attitude toward risk a constant, but
+ certainly it fluctuates greatly.
+\end_layout
+
+\begin_layout Itemize
+Just like the oscillation of cycles, we never know:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+how far the pendulum will swing in its arc
+\end_layout
+
+\begin_layout Itemize
+what might cause the swing to stop and turn back
+\end_layout
+
+\begin_layout Itemize
+when this reversal will occur
+\end_layout
+
+\begin_layout Itemize
+how far it will then swing in the opposite direction 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The swing back from the extreme is usually more rapid - and thus takes much
+ less time - than the swing to the extreme ("The air goes out of the balloon
+ much faster than it went in.")
+\end_layout
+
+\begin_layout Itemize
+Markets will always create opportunities, whether now or later.
+ In markets with few opportunities, it's important to be patient.
+ Value opportunities will eventually present themselves, usually after no
+ more than a year or two.
+\end_layout
+
+\begin_layout Itemize
+For a bullish phase...to hold sway, the environment has to be characterized
+ by greed, optimism, exuberance, confidence, credulity, daring, risk tolerance
+ and aggressiveness.
+ But these traits will not govern a market forever.
+ Eventually they will give way to fear, pessimism, prudence, uncertainty,
+ skepticism, caution, risk aversion and reticence.
+ Busts are the product of booms, and Marks is convinced it's usually more
+ correct to attribute a bust to the excesses of the preceding boom than
+ to the specific event that sets off the correction.
+\end_layout
+
+\begin_layout Itemize
+There a re a few things of which we can be sure, and this is one: Extreme
+ market behavior will reverse.
+ Those who believe that the pendulum will move in one direction forever
+ - or reside at an extreme forever - eventually will lose huge sums.
+ Those who understand the pendulum's behavior can benefit enormously.
+\end_layout
+
+\begin_layout Itemize
+Inefficiencies - mispricings, misperceptions, mistakes that other people
+ make - provide potential opportunities for superior performance.
+ Exploiting them is, in fact, the only road to consistent outperformance.
+ To distinguish yourself from the others, you need to be on the right side
+ of those mistakes.
+\end_layout
+
+\begin_layout Itemize
+The most important and common negative influences: greed, fear, willing
+ suspension of disbelief (tendency to dismiss logic, history and time-honored
+ norms), tendency to conform to the view of the herd rather than resist,
+ envy (tendency of investors to compare themselves to others) and ego.
+\end_layout
+
+\begin_layout Itemize
+There is only one way to describe most investors - trend followers.
+ Superior investors are the exact opposite.
+ Superior investing requires second-level thinking - a way of thinking that's
+ different from that of others, more complex and more insightful.
+ By definition, most of the crowd can't share it.
+\end_layout
+
+\begin_layout Itemize
+On one hand, you never know how far the pendulum will swing, when it will
+ reverse, and how far it will then go in the opposite direction.
+ On the other hand, we can be sure that, once it reaches an extreme position,
+ the market eventually will swing back toward the midpoint (or beyond).
+ Investors who believed that the pendulum would move in one direction forever-or
+, having reached an extreme, would stay there - are inevitably disappointed.
+ On the third hand, however, because of the variability of the many factors
+ that influence markets, no tool - not even contrarianism - can be relied
+ on completely.
+ Contrarianism isn't an approach that will make you money all of the time.
+ Much of the time there aren't great market excesses to bet against.
+ Even when an excess does develop, it's important to remember that "overpriced"
+ is incredibly different from "going down tomorrow".
+ Markets can be over- or underpriced and stay that way-or become more so-for
+ years.
+ It can be extremely painful when the trend is going against you.
+ Finally, it's not enough to bet against the crowd.
+ You must do things not just because they're the opposite of what the crowd
+ is doing, but because you know why the crowd is wrong.
+ Only then will you be able to hold firmly to your views and perhaps buy
+ more as your positions take on the appearance of mistakes and as losses
+ accrue rather than gains.
+\end_layout
+
+\begin_layout Itemize
+You'll do better if you wait for investment to come to you rather than go
+ chasing after them.
+ You tend to get better buys if you select from the list of things sellers
+ are motivated to sell rather than start with a fixed notion as to what
+ you want to own.
+ An opportunist buys things because they're offered at bargain prices.
+ There's nothing special about buying when prices aren't low.
+\end_layout
+
+\begin_layout Itemize
+At any particular point in time, the investment environment is a given,
+ and we have no alternative other than to accept it and invest within it.
+ There isn't always a pendulum or cycle extreme to bet against.
+ Sometimes greed and fear, optimism and pessimism, and credulousness and
+ skepticism are balanced, and thus clear mistakes aren't being made.
+ Rather than obviously overpriced or underpriced, most things may seem roughly
+ fairly priced.
+ In that case, there may not be great bargains to buy or compelling sales
+ to make.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Joel Greenblatt: 
+\emph on
+"This is one of the hardest things to master for professional investors:
+ coming in each day for work and doing nothing."
+\end_layout
+
+\begin_layout Itemize
+It's essential for investment success that we recognize the condition of
+ the market and decide on our actions accordingly.
+ The other possibilities are a) acting without recognizing the market's
+ status, b) acting with indifference to its status and c) believing we can
+ somehow change its status.
+ These are most unwise.
+ It makes perfect sense that we must invest appropriately for the circumstances
+ with which we're presented.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Further about markets:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Their ups and downs are inevitable.
+ 
+\end_layout
+
+\begin_layout Itemize
+They will profoundly influence our performance as investors.
+ 
+\end_layout
+
+\begin_layout Itemize
+They are unpredictable as to extent and, especially, timing.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ignoring cycles, not knowing when to be aggressive and when defensive is
+ so called buy-and hold approach.
+ If we can't know in advance how and when the turns will occur, how can
+ we cope? We may never know where we're going, but we'd better have a good
+ idea where we are.
+ That is, even if we can't predict the timing and extent of cyclical fluctuation
+s, it's essential that we strive to ascertain where we stand in cyclical
+ terms and act accordingly.
+ It's reasonable to try to a) stay alert for occasions when a market has
+ reached an extreme, b) adjust our behavior in response, and c) most important,
+ refuse to fall into line with the herd behavior that renders so many investors
+ dead wrong at tops and bottoms.
+\end_layout
+
+\begin_layout Itemize
+One of the scariest things in the world for the thoughtful investor - too
+ much money chasing too few deals.
+\end_layout
+
+\begin_layout Itemize
+We humans use our ability to recognize and understand patterns to make our
+ decision easier, increase benefits and avoid pain.
+ Importantly, we depend on our knowledge of recurring patterns so we won't
+ have to reconsider every decision from scratch.
+ Economies, companies, and markets operate according to patterns or cycles.
+ These cycles arise from naturally occurring phenomena in everyday business,
+ and to a large extent, from the simple ups and downs of human psychology
+ and behavior.
+ Because human psychology and behavior play such a big part in creating
+ them, these cycles aren't as regular as the cycles of clock and calendar,
+ but they still give rise to better and worse times for certain actions.
+ And they can profoundly affect investors.
+ If we pay attention to cycles, we can come out ahead.
+ If we study past cycles, understand their origin and import, and keep alert
+ for the next one, we don't have to reinvent the wheel in order to understand
+ every investment anew.
+ And we have less of a chance of being blindsided by events.
+ We can master these recurring patterns for our betterment.
+\end_layout
+
+\begin_layout Itemize
+We can most gainfully spend our time in three general areas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+trying to know more than others about what Howard Marks calls "the knowable";
+ the fundamentals of industries, companies and securities,
+\end_layout
+
+\begin_layout Itemize
+being disciplined as to the appropriate price to pay for a participation
+ in those fundamentals, and
+\end_layout
+
+\begin_layout Itemize
+understanding the investment environment we're in and deciding how to strategica
+lly position our portfolios for it.
+\end_layout
+
+\begin_layout Standard
+The first two topics - these constitute the key ingredients in "security
+ analysis" and "value investing": judging regarding what an asset can produce
+ in the future - usually in terms of earnings or cash flow - and what those
+ prospects make the asset worth today.
+ The value investors strive to take advantage of discrepancies between "price"
+ and "value".
+\end_layout
+
+\begin_layout Standard
+In Howard's view, the greatest way to optimize the positioning of a portfolio
+ at a given point in time is through deciding what balance it should strike
+ between aggressiveness and defensiveness.
+ He believes the aggressiveness/defensiveness balance should be adjusted
+ over time in response to changes in the state of the investment environment
+ and where a number of elements stand in their cycles.
+ When we are getting value cheap, we should be aggressive; when we are getting
+ value expensive, we should pull back.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The future should be viewed not as a single fixed outcome that's destined
+ to happen and capable of being predicted, but as a range of possibilities
+ and - hopefully on the basis of insight into their respective likelihoods
+ - as a probability distribution.
+ Probability distributions reflect one's view of tendencies.
+ Investors - or anyone hoping to deal successfully with the future - have
+ to form probability distributions, either explicitly or informally.
+ It it's done well, those probabilities will be helpful in determining one's
+ proper course of action.
+ But it's still essential to bear in mind that even if we know the probabilities
+, that doesn't mean we know what's going to happen.
+ Superior investors - like everyone else - don't know exactly what the future
+ holds, they do have an above-average understanding of future tendencies.
+ Not all predictions should be treated as equally likely to be correct,
+ and thus they shouldn't be relied on equally.
+ Some events can be predicted with substantial confidence, some are uncertain,
+ add some are entirely unpredictable.
+ So people should have a view on the likelihood that their opinion will
+ prove correct as well, so there are these two requirements, not just one.
+\end_layout
+
+\begin_layout Itemize
+Superior investor makes helpful judgments about cycles and where we stand
+ in them.
+ Specifically:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Are we close to the beginning of an upswing, or in the late stages? 
+\end_layout
+
+\begin_layout Itemize
+If a particular cycle has been rising for a while, has it gone so far that
+ we're now in dangerous territory? 
+\end_layout
+
+\begin_layout Itemize
+Does investors' behavior suggest they're being driven by greed or by fear?
+ 
+\end_layout
+
+\begin_layout Itemize
+Do they seem appropriately risk-averse or foolishly risk-tolerant?
+\end_layout
+
+\begin_layout Itemize
+Is the market overheated (and overpriced), or is it frigid (and thus cheap)
+ because of what's been going on cyclically?
+\end_layout
+
+\begin_layout Itemize
+Taken together, does our current position in the cycle imply that we should
+ emphasize defensiveness or aggressiveness? 
+\end_layout
+
+\begin_layout Standard
+Attention to these elements gives the superior investor an edge that allows
+ him to win ore often than he loses.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Most people think of cycles in terms of a series of events.
+ And most people understand that these events regularly follow each other
+ in a usual sequence: upswings are followed by downswings, and then eventually
+ by new upswings.
+ But to have a full understanding of cycles, that's not enough.
+ The events in the life of a cycle shouldn't be viewed merely as each being
+ followed by the next, but - much more importantly - as each *causing* the
+ next.
+ For example: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As the phenomenon swings toward an extreme, this movement gives it energy,
+ which it stores.
+ Eventually its increased weight makes it harder for the swing to continue
+ further from the midpoint, and it reaches a maximum beyond which it can
+ no longer proceed.
+\end_layout
+
+\begin_layout Itemize
+Eventually it stops moving in that direction.
+ And once it does, gravity then pulls it back in the direction of the central
+ tendency or midpoint, with the energy it has amassed powering the swing
+ back.
+\end_layout
+
+\begin_layout Itemize
+And as the phenomenon in question moves from the extreme back toward the
+ midpoint, the swing imparts momentum to it that causes it to overshoot
+ the midpoint and keep moving toward the opposite extreme.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In the worlds investors inhabit, cycles rise and fall, and pendulums swing
+ back and forth.
+ Cycles and pendulum swings come in many forms and relate to a wide variety
+ of phenomena, but the underlying reasons for them - and the patterns they
+ produce - have a lot in common, and they tend to be somewhat consistent
+ over time.
+ As Mark Twain said: "History doesn't repeat itself, but it does rhyme."
+ The details vary - the timing, duration, speed and power of the swings
+ and, very importantly, the reasons for them - and that's likely what's
+ behind Twain's remark regarding history not repeating.
+ But the underlying dynamics are usually similar.
+ In particular, that means the swing back from a high or low almost never
+ halts at the midpoint...regardless of how "right" or "appropriate" the midpoint
+ may be.
+ The continuation of the movement past the midpoint and toward the opposite
+ extreme is highly dependable.
+ For example, markets rarely go from "underpriced" to "faily priced" and
+ stop there.
+ Usually the fundamental improvement and rising optimism that cause markets
+ to recover from depressed levels remain in force, causing them to continue
+ right through "fairly priced" and on to "overpriced".
+ It doesn't have to happen, but usually it does.
+\end_layout
+
+\begin_layout Itemize
+Howard consider the following questions as improper - "what cause f the
+ cycle to begin?" or "are we close to the end of the cycle?", because he
+ think cycles neither begin nor end.
+ Better questions might be: "what caused the current up-leg to begin?" or
+ "how far have we gone since the beginning of the up-cycle?" or "are we
+ close to the end of the down-leg?".
+ Cycles do not have a defined beginning, and he believes they will never
+ end.
+ The cycle oscillates around the midpoint.
+ The midpoint of a cycle is generally thought of as the secular trend, norm,
+ mean, average or "happy medium", and generally as being in some sense as
+ "right and proper".
+ The extremes of the cycle, on the other hand, are thought of as aberrations
+ or excesses to be returned from, and generally they are.
+ While the thing that's cycling tends to spend much of the time above or
+ below it, eventual movement back in the direction of the mean is usually
+ the rule.
+ The movement from either a high or a low extreme back toward the midpoint
+ is often described as "regression toward the mean", a powerful and very
+ reasonable tendency in most walks of life.
+ 
+\end_layout
+
+\begin_layout Itemize
+If the swing toward one extreme goes further, the swing back is likely to
+ be more violent, and more damage is likely to be done.
+ So the potential for havoc increases as the movement away from the midpoint
+ increases - as economies and companies do "too well" and stock prices go
+ "too high".
+ Advances are followed by mere corrections, and bull markets by bear markets.
+ But booms and bubbles are followed by much more harmful busts, crashes
+ and panics.
+\end_layout
+
+\begin_layout Itemize
+A cycle in the economic or investment world consists of a series of events
+ that give rise to their successors.
+\end_layout
+
+\begin_layout Itemize
+Cycles occur in a variety of areas and cyclical developments in one area
+ also influence cycles in others.
+ Thus the economic cycle influences the profit cycle.
+ Corporate announcements determined by the profit cycle influence investor
+ attitudes.
+ Investor attitudes influence markets.
+ And developments in markets influence the cycle in the availability of
+ credit...which influences economies, companies and markets.
+ Cycles don't operate in isolation.
+ The various cycles operate on their own, but they also continuously affect
+ each other.
+\end_layout
+
+\begin_layout Itemize
+There is only one form of intelligent investing, and that's figuring out
+ what something's worth and buying it for that price or less.
+ You can't have intelligent investing in the absence of quantification of
+ value and insistence on an attractive purchase price.
+ Any investment movement that's built around a concept other than the relationsh
+ip between price and value is irrational.
+\end_layout
+
+\begin_layout Itemize
+Not every big rise is a bubble.
+ For Howard, the term "bubble" has special psychological connotations that
+ should be understood and looked out for.
+ "No price too high" is the ultimate ingredient in a bubble, and thus a
+ foolproof sign of a market gone too far.
+ There is no safe way to participate in a bubble, only danger.
+ It should be noted, however, that "overpriced" is far from synonymous with
+ "going down tomorrow".
+\end_layout
+
+\begin_layout Itemize
+The elements that contribute to the market's rise manifest themselves via
+ valuation metrics - P/E ratios on stocks, yields on bonds, capitalization
+ ratios on real estate, and cash flow multiples on buyouts - that are elevated
+ relative to historic norms.
+ All of these things are precursors of low prospective returns.
+ The reverse is true when a market collapse takes asset prices to bargain
+ valuations.
+ These things can be observed and quantified.
+ In addition, our understanding of cycle positioning can be greatly aided
+ by an awareness of how investors are behaving.
+\end_layout
+
+\begin_layout Itemize
+The key to understanding where we stand in the cycle depends on two forms
+ of assessment:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first is totally quantitative: gauging valuations.
+ This is an appropriate starting point, for if valuations aren't out of
+ line with history, the market cycle is unlikely to be highly extended in
+ either direction.
+\end_layout
+
+\begin_layout Itemize
+And the second is essentially qualitative: awareness of what's going on
+ around us, and in particular of investor behavior.
+ Importantly, it's possible to be disciplined even in observing these largely
+ non-quantitative phenomena.
+\end_layout
+
+\begin_layout Standard
+So how things are priced and how are investors around us behaving - assessing
+ these two elements, consistently and in a disciplined manner, can be very
+ helpful.
+ The answers will give us a sense for where we stand in the cycle.
+ But even the best of temperature-taking can't tell us what will happen
+ next ...
+ just the tendencies.
+ From a given point in the cycle, the market is capable of moving in any
+ direction: up, flat, or down.
+ But that doesn't mean all three are equally likely.
+ Where we stand influences the tendencies or probabilities, even if it does
+ not determine future developments with certainty.
+ All other things being equal, when the market is high in its cycle, a downward
+ correction is more likely than continued gains, and vice versa.
+ It doesn't have work out that way, of course, but that's the safer bet.
+ Assessing our cycle position doesn't tell us what will happen next, just
+ what's more and less likely.
+ But that's a lot.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Investors who are capable of both, correctly adjust market exposure at the
+ right time and have the asymmetrical performance that comes from a better-than-
+average ratio of winners to losers, have a better sense for the market's
+ likely tendency and can put together portfolios that are better suited
+ for the market environment that likely lies ahead in terms of the ratio
+ of winners to losers.
+ That's what makes them great...
+ and rare.
+ 
+\end_layout
+
+\begin_layout Itemize
+Sometimes it can take years for the market to prove those investors right,
+ and as one of the most important investment adages says, "Being too far
+ ahead of your time is indistinguishable from being wrong."
+\end_layout
+
+\begin_layout Itemize
+You shouldn't expect to reach profitable conclusions daily, monthly, or
+ even yearly.
+ We can't create great opportunities to time the market through our understandin
+g of cycles.
+ Rather, the market will decide when we'll have them.
+\end_layout
+
+\begin_layout Itemize
+The important lesson is that - especially in an interconnected, informed
+ world - everything that produces unusual profitability will attract incremental
+ capital until it becomes overcrowded and fully institutionalized, at which
+ point its prospective risk-adjusted return will move toward the mean (or
+ worse).
+ And, correspondingly, things that perform poorly for a while eventually
+ will become so cheap - due to their relative depreciation and the lack
+ of investor interest - that they'll be printed to outperform.
+ Cycles like these hold the key to success in investing, not trees that
+ everyone is assuming will grow to the sky.
+\end_layout
+
+\begin_layout Itemize
+Success isn't good for most people.
+ In short, success can change people, and usually not for the better.
+ Success makes people think they're smart.
+ That's fine as far as it goes, but there can also be negative ramifications.
+ Success also tends to make people richer, and that can lead to a reduction
+ in their level of motivation.
+\end_layout
+
+\begin_layout Itemize
+As successes accrue, it's common for people to conclude that they're smart.
+ And after making a lot of money in a strongly rising market, they decide
+ they've got investing mastered.
+ Their faith increases in their own opinions and instinct.
+ Their investing comes to reflect less self-doubt, meaning they think less
+ about the possibility of being wrong and worry less about the risk of loss.
+ This can cause them to no longer insist on the full margin of safety that
+ gave rise to their earlier successes.
+ This is the reason for one of the oldest and most important investing adages:
+ "don't confuse brains with a bull market."
+\end_layout
+
+\begin_layout Itemize
+The plain truth is, there's little of value to be learned from success.
+ People who are successful run the risk of overlooking the fact that they
+ were lucky, or that they had help from others.
+ In investing, success teaches people that making money is easy, and that
+ they don't have to worry about risk - two particularly dangerous lessons.
+\end_layout
+
+\begin_layout Itemize
+One of the principal ways in which success carries the seeds of investment
+ failure is through increased popularity.
+ Investors should be leery of popular assets.
+ Rather, it's unpopularity that is the buyer's friend.
+\end_layout
+
+\begin_layout Itemize
+Not only are good times followed sooner or later by bad times, but - as
+ with so many other examples of cycles - good times often produce bad times.
+ Good times can lead to unwise debt issuance (distressed debt cycle) or
+ to overbuilding (real estate cycle).
+\end_layout
+
+\begin_layout Itemize
+A deep understanding of emotions and the overdoing they lead to is one of
+ key bottom lines of this book.
+ Cyclical deviations from the trend-line are produced largely by overdoing
+ and its eventual correction.
+ This is obviously true in the securities markets, which are nothing but
+ a collection of people making decisions than they hope will prove profitable.
+ But it is no less true of economies and companies; they may seem like independe
+nt, well-oiled machines, but they, too, are nothing but groups of people
+ making decisions, with all that implies.
+\end_layout
+
+\begin_layout Itemize
+The tendency of people to go to excess will never end.
+ And thus, since those excesses eventually have to correct, neither will
+ the occurrence of cycles.
+ Economies and markets have never moved in a straight line in the past,
+ and neither will they do so in the future.
+ And that means investors with the ability to understand cycles will find
+ opportunities for profit.
+\end_layout
+
+\begin_layout Itemize
+Investment success is like the choosing of a lottery winner.
+ Both are determined by one ticket (the outcome) being pulled from a bowlful
+ of tickets (the full range of possible outcomes).
+ In each case, one outcome is chosen from among the many possibilities.
+ Superior investors are people who have a better sense for what tickets
+ are in the bowl, and thus for whether it's worth participating in the lottery.
+ In other words, while superior investors - like everyone else - don't know
+ exactly what the future holds, they do have an above-average understanding
+ of future tendencies.
+\end_layout
+
+\begin_layout Itemize
+The greatest way to optimize the positioning of a portfolio at a given point
+ in time is through deciding what balance it should strike between aggressivenes
+s and defensiveness.
+ And Marks believes the aggressiveness/defensiveness balance should be adjusted
+ over time in response to changes in the state of the investment environment
+ and where a number of elements stand in their cycles.
+ The key word is "calibrate".
+ The amount you have invested, your allocation of capital among the various
+ possibilities, and the riskiness of the things you own all should be calibrated
+ along a continuum that runs from aggressive to defensive.
+ When we're getting value cheap, we should be aggressive; when we're getting
+ value expensive, we should pull back.
+ Calibrating one's portfolio position is what this book is mostly about.
+\end_layout
+
+\begin_layout Itemize
+Howard calls attention to the obvious fact that - rather than the everyday
+ ups and downs of the market - the clear examples provided in this book
+ all concern "once in a lifetime" cyclical extremes (which these days seem
+ to happen about once a decade).
+ You shouldn't expect to reach profitable conclusions daily, monthly or
+ even yearly.
+\end_layout
+
+\begin_layout Itemize
+As Peter Bernstein said, "The future is not ours to know.
+ But it helps to know that being wrong is inevitable and normal, not some
+ terrible tragedy, not some awful failing in reasoning, not even bad luck
+ in most instances.
+ Being wrong comes with the franchise of an activity whose outcome depends
+ on an unknown future ..."
+\end_layout
+
+\begin_layout Itemize
+The tendency of people to go to excess will never end.
+ And thus, since those excesses eventually have to correct, neither will
+ the occurrence of cycles.
+ Economies and markets have never moved in a straight line in the past,
+ and neither will they do so in the future.
+ And that means investors with the ability to understand cycles will find
+ opportunities for profit.
+\end_layout
+
+\begin_layout Itemize
+There are three ingredients for success - aggressiveness, timing, and skill
+ - and if you have enough aggressiveness at the right time, you don't need
+ that much skill.
+ Let's apply a little more thought regarding the formula for investment
+ success.
+ It should be considered in terms of six main components:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Cycle positioning
+\series default
+ - the process of deciding on the risk posture of your portfolio in response
+ to your judgments regarding the principal cycles.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Asset allocation
+\series default
+ - the process of deciding which markets, market niches and specific securities
+ or assets to overweight and underweight.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Aggressiveness
+\series default
+ - the assumption of increased risk: risking more of your capital; holding
+ lower-quality assets; making investments that are more reliant on favorable
+ macro outcomes; and/or employing financial leverage or high-beta (market-sensit
+ive) assets and strategies.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Defensiveness
+\series default
+ - the reduction of risk: investing less capital and holding cash instead;
+ emphasizing safer assets; buying things that can do relatively well even
+ in the absence of prosperity; and/or shunning leverage and beta
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Skill
+\series default
+ - the ability to make these decisions correctly on balance (although certainly
+ not in every case) through a repeatable intellectual process and on the
+ basis of reasonable assumptions regarding the future.
+ Nowadays this has come to be known by its academic name: "alpha".
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Luck
+\series default
+ - what happens on the many occasions when skill and reasonable assumptions
+ prove to be of no avail - that is, when randomness has more effect on events
+ than do rational processes, whether resulting in "lucky breaks" or "tough
+ luck".
+ The luck is the wild-card; it can make good decisioning fail and bad ones
+ succeed, but mostly in the short run.
+ In the long run, it's reasonable to expect skill to win out.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The real estate cycle
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The cycle in real estate has a lot in common with other cycles, such as
+ the one that controls the provision of capital or credit.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Positive events and increased profitability lead to greater enthusiasm and
+ optimism.
+\end_layout
+
+\begin_layout Itemize
+Improved psychology encourages increased activity.
+ That includes doing more of something; doing it on the basis of rosier
+ assumptions; paying higher prices to do it; and/or lowering the standards
+ that have to be met if one is to do it.
+ All of these things tend to entail the assumption of greater risk.
+\end_layout
+
+\begin_layout Itemize
+The combination of positive psychology and the increase in activity causes
+ asset prices to rise, which encourages still more activity, further price
+ increases, and greater risk-bearing.
+\end_layout
+
+\begin_layout Itemize
+Inevitably this virtuous circle takes on the appearance of being unstoppable,
+ and this appearance causes asset prices and the level of activity to go
+ too far to be sustained.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When the news eventually turns less positive and the environment becomes
+ less hospitable, the levels of psychology, activity and risk-bearing prove
+ to have been excessive, and the same goes for asset prices.
+ The resulting price correction causes psychology to become less positive,
+ which causes disinvestment, which puts further downward pressure on prices,
+ and so forth.
+ These are all elements that most financial cycles have in common, and that
+ includes the cycle in real estate.
+ But the real estate cycle incorporates another ingredient that the others
+ generally don't share: the long lead times required for real estate development
+ to take place.
+\end_layout
+
+\begin_layout Itemize
+There can be significant delays.
+ Before a new building can come to market, adding to the supply of space,
+ economic feasibility studies and environmental impact studies have to be
+ performed; a site has to be found and purchased; the building has to be
+ designed; construction must be completed, etc..this process can run for several
+ years, and in the case of a major project it can exceed a decade.
+ But market conditions can change very significantly in the interim.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There have always been ideas, stocks and IPOs that produced great profits.
+ Yet the pressure to participate wasn't as great as it is today, because
+ in the past the winners made millions, not billions, and it took years,
+ not months.
+\end_layout
+
+\begin_layout Itemize
+In bubble territory: the fact that investors are willing to swallow a promise
+ of return without risk is an infallible indicator that skepticism is in
+ short supply, psychology is overheated, and the subject asset is overestimated
+ and thus probably overpriced.
+ Watch out for it, and resist if you can.
+\end_layout
+
+\begin_layout Itemize
+When the market is high in its cycle, they should emphasize limiting the
+ potential for losing money, and when the market is low in its cycle, they
+ should emphasize reducing the risk of missing opportunity.
+ 
+\end_layout
+
+\begin_layout Itemize
+A few more things about the nature of cycles:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cycles are inevitable.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cycles' clout is heightened by the inability of investors to remember the
+ past.
+\end_layout
+
+\begin_layout Itemize
+Cycles are self-correcting, and their reversal is not necessarily dependent
+ on exogenous events (events occurring in other areas).
+ Trends create the reasons for their own reversal.
+ Success carries within itself the seeds of failure, and failure the seeds
+ of success.
+\end_layout
+
+\begin_layout Itemize
+Cycles are often viewed as less symmetrical than they are.
+ Boom/bust is a good illustration of cycle symmetry.
+ Busts follow booms.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An effort to explain life through the recognition of patterns - and thus
+ to come up with winning formulas - is complicated, in large part, because
+ we live in a world that is beset by randomness and in which people don't
+ behave the same from one instance to the next, even when they intend to.
+\end_layout
+
+\begin_layout Itemize
+Economic cycle = business cycle (term mostly used in the past though).
+\end_layout
+
+\begin_layout Itemize
+One of the main determinants of each year's economic output is the number
+ of hours worked.
+ In turn, the most fundamental factor underlying increases in hours worked
+ is population growth.
+ Growth in the population means there are more people working each year
+ to make and sell products (and also more people to buy and consume them,
+ encouraging production).
+ More production equals more GDP.
+ If the population is growing, hours worked tend to grow, and so does GDP.
+ Thus births are one of the main reasons for the usual presumption that
+ economic growth will be positive.
+ On the other hand, if the population is shrinking, positive GDP growth
+ faces a significant headwind.
+ Changes in birth rates generally take place over long periods of time,
+ and when they do, they require years to affect GDP growth.
+ So year-to-year changes in GDP are unlikely to be attributed significantly
+ to changes in the birth rate.
+\end_layout
+
+\begin_layout Itemize
+GDP, in the long run, influences: demographic movements, determinants of
+ inputs (such as unemployment rate or # of hours worked by each person),
+ aspiration (profit motive and desire to live better for producing more),
+ education, technology, automation, and globalization.
+ 
+\end_layout
+
+\begin_layout Itemize
+Summary of economic cycles:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The output of an economy is economy is the product of hours worked and output
+ per hour; thus the long-term growth of an economy is determined primarily
+ by fundamental factors like birth rate and the rate of gain in productivity
+ (but also by other changes in society and environment).
+ These factors usually change relatively little from year to year, and only
+ gradually from decade to decade.
+ Thus the average rate of growth is rather steady over long periods of time.
+ Only in the longest of time frames does the secular growth rate of an economy
+ significantly speed up or slow down.
+ But it does.
+\end_layout
+
+\begin_layout Itemize
+Long-term economic growth is steady for long periods of time but subject
+ to change pursuant to long-term cycles.
+\end_layout
+
+\begin_layout Itemize
+Short-term economic growth follows the long-term trend on average, but it
+ oscillates around that trend line from year to year.
+\end_layout
+
+\begin_layout Itemize
+People try hard to predict annual variation as a source of potential investing
+ profit.
+ And on average they're close to the truth most of the time.
+ But few people do it right consistently; few do it that much better than
+ everyone else; and few correctly predict the major deviations from trend.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Extreme economic cyclicality is considered undesirable.
+ Too much strength can kindle inflation and take the economy so high that
+ a recession becomes inevitable.
+ Too much weakness, on the other hand, can cause companies' profits to fall
+ and can cost people their jobs.
+ Thus it is part of the job of central bankers and Treasury officials to
+ manage cycles.
+ Since cycles produce ups and downs that can be excessive, the tools for
+ dealing with them are counter-cyclical and applied with a cycle of their
+ own - ideally inverse to the economic cycle itself.
+ However, like everything else involving cycles, managing them is far from
+ easy.
+ If it weren't, we wouldn't see the extremes we do.
+\end_layout
+
+\begin_layout Itemize
+Early on, many central banks issued currency.
+ Their primary roles may have been to issue currency and exchange it on
+ request for gold or silver.
+ Today, central banks are primarily concerned with managing economic cycles,
+ with inflation - not to eliminate it, but to control it.
+ 
+\end_layout
+
+\begin_layout Itemize
+The reasons for inflation are somewhat mysterious and unreliable and sporadic.
+ Sometimes a given set of circumstances will give rise to inflation, and
+ at other times the same circumstances will lead to more or less inflation,
+ or to none at all.
+ But in general, inflation is viewed as a result of a strong upward movement
+ of the economic cycle.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When the demand for goods increases relative to the supply, there can be
+ "demand-pull" inflation.
+\end_layout
+
+\begin_layout Itemize
+When inputs to production such as labor and raw materials increase in price,
+ there can be "cost-push" inflation.
+\end_layout
+
+\begin_layout Itemize
+Finally, when the value of an importing country's currency declines relative
+ to that of an exporting country, the cost of the exporter's goods can rise
+ in the importing country.
+\end_layout
+
+\begin_layout Standard
+The cost of goods can escalate for any of these reasons.
+ That's inflation.
+ But sometimes these events can occur without an accompanying acceleration
+ of inflation.
+ And sometimes inflation can increase without these things being present.
+ There is a large psychological component that influences all of this.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Central Banks
+\end_layout
+
+\begin_layout Itemize
+Central banks can try to influence inflation by reducing the money supply,
+ raising interest rates and selling securities.
+ When the private sector purchases securities from the central bank, money
+ is taken out of circulation; this tends to reduce the demand for goods
+ and thus discourages inflation.
+ They can accomplish the goal of keeping inflation under control, but they
+ also restrain the growth of the economy, with effects that can be less
+ than beneficial.
+\end_layout
+
+\begin_layout Itemize
+Most central bankers have two jobs: to limit inflation, which requires restraini
+ng the growth of the economy, and to support employment, which calls for
+ stimulating economic growth.
+ In other words, their dual responsibilities are in opposition to each other,
+ and thus their job requires a delicate balancing act.
+\end_layout
+
+\begin_layout Itemize
+An economic upswing tends to encourage employment but can cause inflation
+ to accelerate.
+ Stagflation or contraction, on the other hand, discourages inflation but
+ can cut into employment.
+ So the job of the central banker is to behave appropriately counter-cyclically:
+ that is, to limit the extend of cycles, slowing the economy in times of
+ prosperity in order to keep inflation under control, and stimulating the
+ economy during slowdowns to support employment.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Government
+\end_layout
+
+\begin_layout Itemize
+Governments have a greater variety of responsibilities than central bankers,
+ only a small portion of which are related to economic matters.
+ They also are charged with stimulating the economy when appropriate, but
+ not directly with controlling inflation.
+\end_layout
+
+\begin_layout Itemize
+Governments' main tools for managing the economic cycle are fiscal, defined
+ as being concerned primarily with taxing and spending.
+ Cutting taxes, increasing government spending, and even distributing stimulus
+ checks, making more money available for spending and investment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The process that determines a company's profits is complex and multivariate.
+ The economic cycle has a profound effect on some companies' sales but less
+ on others.
+ Largely because of differences in operating and financial leverage, a given
+ percentage change in sales has a much greater impact on profits for some
+ companies than for others.
+ Companies' profits are much more volatile than GDP.
+ More GDP means more consumption, and thus stronger demand for goods.
+ That, in turn, means greater volumes sold and higher selling prices, more
+ work and higher wages, and thus still more consumption.
+ All those things together mean increased revenues for businesses.
+ 
+\end_layout
+
+\begin_layout Itemize
+By definition, the collective sales of all businesses are one and the same
+ as GDP, and they reflect the same rate of change.
+ But that doesn't mean all companies follow the same pattern.
+ It depends on a given industry.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sales of industrial raw materials and components are directly responsive
+ to the economic cycle.
+ When business collectively increases its output - that is, when GDP expands
+ - it takes more chemicals, metals, plastic, energy, wire and semiconductors
+ to do so, and vice versa.
+\end_layout
+
+\begin_layout Itemize
+Everyday necessities like food, beverages and medicine aren't highly responsive
+ to the economic cycle.
+ People generally consume them regardless of what's going on in the economy.
+ But demand isn't absolutely constant: people trade down in recessions -
+ buying cheaper food and eating at home rather than in restaurants - and
+ they trade up in times of prosperity.
+ And, sadly, people who are struggling financially may cut down even on
+ their consumption of "necessities" when forced to choose between food,
+ medications and rent payments.
+\end_layout
+
+\begin_layout Itemize
+Purchases of big-ticket "durable goods" - things like cars and homes for
+ individuals and trucks and factory equipment for businesses - are highly
+ responsive to the economic cycle.
+ They are durable so they last a long time, so replacement can be deferred
+ in times of economic weakness.
+ Also, because they cost a lot, they are hard to afford in bad times and
+ easier to afford in good times.
+ And businesses generally need more of them when business is god and less
+ when it isn't.
+ These things make the demand for durables highly responsible to the economic
+ cycle.
+\end_layout
+
+\begin_layout Itemize
+Demand for everyday services generally isn't volatile.
+ If they are necessary and low-priced, demand won't be highly sensitive
+ to changes in the economy.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The economic cycle has a profound effect on some companies' sales but less
+ on others.
+ Largely because of differences in operating and financial leverage, a given
+ percentage change in sales has a much greater impact on profits for some
+ companies than for others.
+\end_layout
+
+\begin_layout Itemize
+The pendulum of investor psychology - pendulum swings are seen:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+between greed and fear,
+\end_layout
+
+\begin_layout Itemize
+between optimism and pessimism,
+\end_layout
+
+\begin_layout Itemize
+between risk tolerance and risk aversion,
+\end_layout
+
+\begin_layout Itemize
+between credence and skepticism,
+\end_layout
+
+\begin_layout Itemize
+between faith in value in the future and insistence of concrete value in
+ the present, and
+\end_layout
+
+\begin_layout Itemize
+between urgency to buy and panic to sell.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The superior investor is mature, rational, analytical, objective, and unemotiona
+l.
+ Thus he performs a thorough analysis of investment fundamentals and the
+ investment environment.
+ He calculates the intrinsic value of each potential investment asset.
+ And he buys when any discount of the price from the current intrinsic value,
+ plus any potential increases in intrinsic value in the future, together
+ suggest that buying at the current price is a good idea.
+ In order to be able to do all the above, the superior investor strikes
+ an appropriate balance between fear (which is shorthand for risk aversion,
+ dislike for loss, and respect for uncertainty and randomness) and greed
+ (a.k.a.
+ aspiration, aggressiveness and acquisitiveness).
+ All people feel emotions, but superior investor keeps those conflicting
+ elements in balance.
+ The presence of the two offsetting forces leads to responsible, wise, and
+ even-keeled behavior.
+ The superior investor resists psychological excesses and thus refuses to
+ participate in extreme swings in psychological extremes.
+ Emotional investors will need a great deal of self-awareness and self-restraint
+ to become good investors.
+\end_layout
+
+\begin_layout Itemize
+Investor psychology rarely gives equal weight to both favorable and unfavorable
+ developments.
+ Likewise, investors' interpretation of events is usually biased by their
+ emotional reaction to whatever is going on at the moment.
+ Few of the people involved actually are objective.
+ Expecting widespread clinical observation during a market mania makes about
+ as much sense as saying "everyone knows the market has gone too far." If
+ many people recognized that it had gone too far, it wouldn't be there.
+\end_layout
+
+\begin_layout Itemize
+Risk is uncertainty with regard to future developments, and the possibility
+ of bad outcomes.
+ And the current state of the environment is key in determining how we should
+ behave with regard to risk at that point.
+ Risk is high when investors feel risk is low.
+ The greatest source of investment risk is the belief that there is no risk.
+ 
+\end_layout
+
+\begin_layout Itemize
+Superior investing doesn't come from buying high-quality assets, but from
+ buying when the deal is good, the price is low, the potential return is
+ substantial, and the risk is limited.
+ These conditions are much more the case when the credit markets are in
+ the less-euphoric, more stringent part of their cycle.
+ The slammed-shut phase of the credit cycle probably does more to make bargains
+ available than any other single factor.
+\end_layout
+
+\begin_layout Section
+Howard Marks On Credit Cycles
+\end_layout
+
+\begin_layout Standard
+Howard believes that the credit cycle is the most volatile of the cycles
+ and has the greater impact.
+ Thus it deserves a great deal of attention.
+\end_layout
+
+\begin_layout Itemize
+The ups and downs of economies are usually blamed for fluctuations in corporate
+ profits, and fluctuations in profits for the rise and fall or securities
+ markets.
+ However, in recessions and recoveries, economic growth usually deviates
+ from its trend-line rate by only a few percentage points.
+ Why, then, do corporate profits increase and decrease so much more? The
+ answer lies in things like financial leverage and operating leverage, which
+ magnify the impact on profits of rising and falling revenues.
+ And if profits fluctuate this way -why is it that the securities markets
+ soar and collapse so dramatically? It's because of fluctuations in psychology
+ and, in particular, to the profound influence of psychology on the availability
+ of capital.
+ In short, whereas economies fluctuate a little and profits a fair bit,
+ the credit window opens wide and then slams shut.
+ Howard believes that the credit cycle is the most volatile of the cycles
+ and has the greatest impact.
+\end_layout
+
+\begin_layout Itemize
+Changes in the availability of capital or credit constitute one of the most
+ fundamental influences on economies, companies, and markets.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Why is credit so important?
+\end_layout
+
+\begin_layout Itemize
+Capital or credit is an essential ingredient in the productive process.
+ Thus the ability of companies (and economies) to grow usually depends on
+ the availability of incremented capital.
+ If the capital markets are closed, it can be hard to finance growth.
+\end_layout
+
+\begin_layout Itemize
+Capital must be available in order for maturing debt to be refinanced.
+ Companies (also governments and consumers) generally don't pay off their
+ debts.
+ Most of the time they merely roll them over.
+ But if a company is unable to issue new debt at the time that its existing
+ debt comes due, it may default and be forced into bankruptcy.
+ Where we stand in the credit cycle - whether credit is readily available
+ or difficult to obtain - is the greatest determinant of whether debt can
+ be refinanced at a given time.
+\end_layout
+
+\begin_layout Itemize
+Many corporate assets are long-term in nature (like buildings, machinery,
+ vehicles and goodwill).
+ Yet corporations often raise the money with which to buy those things by
+ issuing short-term debt.
+ They do this because the cost of borrowing is generally lowest on short
+ maturities.
+ This arrangement - "borrowing short to invest long" - works out well most
+ of the time, when the credit market is open and fully functioning, meaning
+ debt can be rolled over with ease when it comes due.
+ But the mismatch between long-term assets that can't be easily liquidated
+ and shorter-term liabilities can easily bring on a crisis if the credit
+ cycle turns negative so that maturing debt can't be refinanced.
+ This classic mismatch, when combined with stringency in the financing markets,
+ is often the cause of the most spectacular financial meltdowns.
+\end_layout
+
+\begin_layout Itemize
+Financial institutions represent a special, exaggerated case of reliance
+ on the credit markets.
+ Financial institutions are in the business of trading in money, and they
+ need access to financing to keep that business going.
+ They also are often the site of the greatest short/long mismatches and
+ potential meltdowns.
+\end_layout
+
+\begin_layout Itemize
+The credit market gives off signals that have great psychological impact.
+ A closed credit market causes fear to spread, even out of proportion to
+ businesses' negative realities.
+ Difficult conditions can cause the capital market to close...and closed capital
+ markets can have a negative impact on business conditions (as well as on
+ market participants' opinions of businesses).
+ This kind of "vicious circle" is part of most financial crises.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Why credit cycles occur?
+\end_layout
+
+\begin_layout Enumerate
+Expand and contract process
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The economy moves into a period of prosperity.
+\end_layout
+
+\begin_layout Enumerate
+Providers of capital thrive, increasing their capital base.
+\end_layout
+
+\begin_layout Enumerate
+Because bad news is scarce, the risks entailed in lending and investing
+ seem to have shrunk.
+\end_layout
+
+\begin_layout Enumerate
+Risk awareness disappears.
+\end_layout
+
+\begin_layout Enumerate
+Financial institutions move to expand their businesses - that is, to provide
+ more capital.
+\end_layout
+
+\begin_layout Enumerate
+They compete for market share by lowering demanded returns (e.g.
+ cutting interest rates), lowering credit standards, providing more capital
+ for a given transaction, and easing covenants.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+When this point is reached, the up-lev is reversed:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Losses cause lenders to become discouraged and shy away.
+\end_layout
+
+\begin_layout Enumerate
+Risk awareness rises, and along with it, interest rates, credit restrictions
+ and covenant requirements.
+\end_layout
+
+\begin_layout Enumerate
+Less capital is made available - and at the trough of the cycle, only to
+ the most qualified of borrowers.
+\end_layout
+
+\begin_layout Enumerate
+Companies become starved for capital.
+ Borrowers are unable to roll over their debts, leading to defaults and
+ bankruptcies.
+\end_layout
+
+\begin_layout Enumerate
+This process contributes to and reinforces the economic contraction.
+ 
+\end_layout
+
+\begin_layout Standard
+At the extreme the process is ready to be reversed again.
+ Because the competition to make loans or investments is low, high returns
+ can be demanded along with high creditworthiness.
+ Contrarians who commit capital at this point have a shot at high returns,
+ and those tempting potential returns begin to draw in capital.
+ In this way, a recovery begins to be fueled.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+What is the impact of the credit cycle? The Global Financial Crisis (GFC)
+ can provide the best teaching moments (see the next point).
+\end_layout
+
+\begin_layout Itemize
+Prosperity brings expanded lending, which leads to unwise lending, which
+ produces large losses, which makes lenders stop ending, which ends prosperity,
+ and so on.
+ A market is an auction house where the item being offered goes to the person
+ who'll pay the most for it.
+ The financial markets are no different.
+ The opportunity to make an investment or provide a loan goes to the market
+ participant who'll pay the most for that opportunity.
+ The bidding takes the price to higher dollar levels and higher valuation
+ parameters (such as P/E ratios).
+ In the credit market, a high price or high valuation parameters translates
+ directly into a low yield on the debt instrument in question, and the change
+ to provide capital goes to the lender who'll accept the lowest yield.
+\end_layout
+
+\begin_layout Itemize
+From time to time, providers of capital simply turn spigot on or off - as
+ in so many things, to excess.
+ There are times when anyone can get any amount of capital for any purpose,
+ and times when even the most deserving borrowers can't access reasonable
+ amounts for worth-while projects.
+ The behavior of the capital markets is a great indicator of where we stand
+ in terms of psychology and a great contributor to the supply of investment
+ bargains.
+\end_layout
+
+\begin_layout Itemize
+When the cycle rises to an extreme, it invariably can't stay there forever.
+ Sometimes it corrects under its own weight, and sometimes this happens
+ because of events outside the cycle.
+ 
+\end_layout
+
+\begin_layout Itemize
+It's hard to fully understand most phenomena in the investment world unless
+ you've lived through them.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Global Financial Crisis (GFC)
+\end_layout
+
+\begin_layout Itemize
+Sub-prime mortgage borrowers began to default in large numbers.
+ Some of the borrowers, who had received loans without providing their ability
+ to make payments, turned out in fact to be unable.
+ Some loans, secured through fraud, went bad when fictitious borrowers disappear
+ed.
+ Other loans, for the full home purchase price - which had allowed home
+ buyers to gamble on continued home appreciation without risking any money
+ of their own - were abandoned when the market stopped rising.
+\end_layout
+
+\begin_layout Itemize
+Regardless of the reason, the historic basic that allowed sub-prime mortgage
+ backed securities to achieve high leverage and high ratings - insistence
+ that there wouldn't be a nationwide wave of mortgage defaults - failed
+ to hold.
+ As it turned out, lending decisions had been made unwisely, with undue
+ reliance on that history.
+ Importantly, lenders and investors had ignored the chance that such reliance
+ would give rise to lending behavior so careless that it in itself would
+ render the history irrelevant.
+\end_layout
+
+\begin_layout Itemize
+Large numbers of mortgage defaults led to downgradings, covenant breaches
+ and payment defaults on mortgage backed securities.
+\end_layout
+
+\begin_layout Itemize
+The downgradings, breaches, and defaults caused the prices of mortgage backed
+ securities to collapse, and the resultant loss of confidence caused the
+ market liquidity for these instruments to dry up.
+\end_layout
+
+\begin_layout Itemize
+With terrified buyers to the sidelines - and terrified holders increasingly
+ eager to sell (or forced to sell by margin calls) - the result was a dramatic
+ downward spiral in the prices of mortgage backed securities.
+\end_layout
+
+\begin_layout Itemize
+These negative developments collided head-on with new regulations, designed
+ to increase transparency, which required banks' assets to be "marked to
+ market." But with prices in free-fall and liquidity non-existent, it was
+ hard to have faith in any price chosen.
+ When banks marked down their assets to be appropriately conservative, the
+ implied losses shocked investors, contributing to further panic, which
+ caused prices to decline further, and so on.
+\end_layout
+
+\begin_layout Itemize
+In many cases the very viability of banks came into question.
+ Many had to be absorbed by other banks (with support from the government)
+ or bailed out by the government.
+\end_layout
+
+\begin_layout Itemize
+Each bank failure, acquisition or bailout brought losses to investors and
+ further sapped confidence.
+ In addition, the interlocking relationships among banks caused grave concern
+ regarding the remaining ones' ability to rely on amounts due from the others.
+ "Counter party risk" became the newest source of worry.
+\end_layout
+
+\begin_layout Itemize
+Banks reported massive losses.
+ The rising prices quoted for credit default swaps implied increased odds
+ of insolvency.
+ Shareholders dumped bank stocks in response, forcing down their prices.
+ Short sellers sold unremittingly, adding to the downward pressure, rendering
+ their pessimistic predictions self-fulfilling, and further extending the
+ vicious circle.
+\end_layout
+
+\begin_layout Itemize
+Ultimately, Lehman Brothers was denied absorption or bailout, leading to
+ its bankruptcy.
+ That collapse, when added to the many other unsettling events taking place
+ simultaneously, led to nothing short of panic.
+\end_layout
+
+\begin_layout Itemize
+Whereas the markets had reacted adversely to the problems in mortgages in
+ mid-2007 but overlooked the potential for contagion to other areas, in
+ late 2008 everyone threw in the towel on everything.
+ The prices of all assets other than Treasury and gold collapsed.
+\end_layout
+
+\begin_layout Itemize
+Funds that had invested using borrowed capital - "leverage" or "margin"
+ - saw asset values marked down precipitously and received demands from
+ lenders to post additional capital.
+ When they appealed to the banks for more time, the banks generally couldn't
+ or wouldn't grant it.
+ The result was distressed selling of portfolios en masse, which further
+ increased the downward pressure on prices.
+\end_layout
+
+\begin_layout Itemize
+The capital markets slammed shut in this environment, meaning new financing
+ became virtually impossible in all quarters of the financial markets, even
+ those totally unrelated to homes and mortgages.
+\end_layout
+
+\begin_layout Itemize
+Given the sum of the above, all economic units pulled back, refusing to
+ buy, invest or expand.
+ The result was an economic retrenchment that has been labeled "the Great
+ Recession".
+ Taken to its extreme in the last 15 weeks of 2008, the downswing of the
+ credit cycle seemed universal and unstoppable.
+\end_layout
+
+\begin_layout Standard
+By the end of 2008, ingredients for a solid market recovery were in place:
+\end_layout
+
+\begin_layout Itemize
+The over-levered funds that had received margin calls either raised additional
+ capital, sold assets to de-lever as required, of liquidated.
+ Funds and investment managers that received notices from investors desiring
+ to withdraw at year-end either put up "gates" postponing withdrawals or
+ completed the asset sales needed to meet them.
+\end_layout
+
+\begin_layout Itemize
+The prices of debt securities reached a point where they implied yields
+ so high that selling was unpalatable and buying became attractive.
+\end_layout
+
+\begin_layout Itemize
+And, ultimately, market participants demonstrated that when negative psychology
+ is universal and "things can't get any worse", they won't.
+ When all optimism has been driven out, and panicked risk aversion is everywhere
+, it becomes possible to reach a point where prices can't go any lower.
+ And when prices eventually stop going down, people tend to feel relief,
+ and so the potential for a price recovery begins to arise.
+ 
+\end_layout
+
+\begin_layout Standard
+Summary:
+\end_layout
+
+\begin_layout Itemize
+The sub-prime mortgage bubble arose from broad acceptance that phenomena
+ would work that had never before been seen in action.
+ The analysis of investment vehicles should entail a) the application of
+ skepticism and conservative assumptions and b) examination over a long
+ history that includes some trying times.
+ These things were clearly missing.
+\end_layout
+
+\begin_layout Itemize
+In fact, most bubbles, if not all, are characterized by the unquestioning
+ acceptance of things that have never held true in the past; of valuations
+ that are dramatically out of line with historic norms; and/or of investment
+ techniques and tools that haven't been tested.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+A few last thoughts
+\end_layout
+
+\begin_layout Itemize
+The credit cycle is sometimes referred to as the capital market cycle rather
+ than the credit cycle.
+ Howard doesn't find the distinction important.
+ Strictly speaking, "capital" refers to all the money used to finance a
+ business, while "credit" refers to that portion of a company's capital
+ that's made up of debt rather than equity.
+ Howard sticks to "the credit cycle" when he's only talking about debt markets,
+ and "capital market cycle" when he's talking about the general availability
+ of financing.
+ But most importantly, the considerations that apply to one apply equally
+ to the other.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cautious credit market usually stems from, leads to or connotes things like
+ these:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fear of losing money
+\end_layout
+
+\begin_layout Itemize
+heightened risk aversion and skepticism
+\end_layout
+
+\begin_layout Itemize
+unwillingness to lend and invest regardless of merit
+\end_layout
+
+\begin_layout Itemize
+shortages of capital everywhere
+\end_layout
+
+\begin_layout Itemize
+economic contraction and difficulty refinancing debt
+\end_layout
+
+\begin_layout Itemize
+defaults, bankruptcies and restructurings
+\end_layout
+
+\begin_layout Standard
+Taken together, these things are indicative of a great time to invest.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+On the other hand, a generous capital market is usually associated with
+ the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fear of missing out on profitable opportunities
+\end_layout
+
+\begin_layout Itemize
+reduced risk aversion and skepticism (and, accordingly, reduced due diligence)
+\end_layout
+
+\begin_layout Itemize
+too much money chasing too few deals
+\end_layout
+
+\begin_layout Itemize
+willingness to buy securities in increased quantity
+\end_layout
+
+\begin_layout Itemize
+willingness to buy securities of reduced quality
+\end_layout
+
+\begin_layout Itemize
+high asset prices, low prospective returns, high risk and skimpy risk premiums
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The key to dealing with the credit cycle lies in recognizing that it reaches
+ its apex when things have been going well for a while, news has been good,
+ risk aversion is low, and investors are eager.
+ That makes it easy for borrowers to raise money and causes buyers and investors
+ to compete for the opportunity to provide it.
+ The result is cheap financing, low credit standards, weak deals, and the
+ unwise extension of credit.
+ Borrowers hold the cards when the credit window is wide open - not lenders
+ or investors.
+ The implications of all this should be obvious - proceed with caution.
+\end_layout
+
+\begin_layout Itemize
+The exact opposite becomes true at the other extreme of the credit cycle.
+ Its nadir is reached when developments are unpleasant, risk aversion is
+ heightened, and investors are depressed.
+ Under such circumstances, no one wants to provide capital, the credit market
+ freezes up, and proposed offerings go begging.
+ This puts the cards into the hands of providers of capital rather than
+ the borrowers.
+ Because borrowing is difficult and capital is generally unavailable, those
+ who possess it and are willing to part with it can apply rigorous standards,
+ insist on strong loan structures and protective covenants, and demand high
+ prospective returns.
+ It's things like these that provide the margin of safety required for superior
+ investing.
+ When these boxes can be ticked, investors should swing into an aggressive
+ mode.
+\end_layout
+
+\begin_layout Itemize
+Superior investing doesn't come from buying high-quality assets, but from
+ buying when the deal is good, the price is low, the potential return is
+ substantial, and the risk is limited.
+ These conditions are much more the case when the credit markets are in
+ less-euphoric, more-stringent part of their cycle.
+ The slammed-shut phase of the credit cycle probably does more to make bargains
+ available than any other single factor.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+"What the wise man does in the beginning, the fool does in the end." 
+\emph default
+- this tells you 80% of what you have to know about market cycles and their
+ impact.
+ Warren Buffett has said much the same thing:
+\emph on
+ "First the innovator, then the imitator, then the idiot."
+\end_layout
+
+\begin_layout Section
+Psychology And Psychological Biases
+\end_layout
+
+\begin_layout Standard
+Some cognitive biases that cause investment mistakes:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Anchoring bias
+\emph default
+ - tendency to rely too heavily on piece of past information when making
+ decision.
+ Especially when it comes to stock prices.
+ It's hard to avoid, but past prices are irrelevant to future prices.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: The best is to check a stock independently and objectively.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Neglect a probability
+\emph default
+ - ignoring or underestimating probabilities in decision making.
+ What is the most likely scenario for a company for going forward? In reality,
+ there is the whole spectrum of possible future outcomes that could influence
+ possible returns of a company and your investment returns.
+ Some companies that are stable may have a smaller spectrum of possibilities.
+ For example FANG may have a much wider range of potential outcomes.
+ Sometimes people are underestimating a probability of so called Black svan
+ events (TODO).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid:
+\series default
+ Being ignorant of risks doesn't make them go away.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Restraint bias
+\emph default
+ - it's very tempting to continue investing more in what we believe are
+ our best investment opportunities.
+ It can easily get out of hand if you're not conscious of it.
+ On one hand, if you see and investment that you've made do really well,
+ you might be tempted to put more money there, hoping that those gains will
+ continue to raise further.
+ However, there's also a possibility that one of your investment has fallen
+ and thus provides the temptation to add more money to reduce your cost
+ basis further.
+ But it can lead to having a position too large for one's risk appetite
+ within your portfolio.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Before even buying a stock, you have to have an idea of the maximum mount
+ of stock you want of that within your portfolio and be very careful not
+ to exceed that limit.
+ You can have too much of a "good thing".
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Bandwagon effect / groupthink
+\emph default
+ - If a large group of people do or think the same way as us.
+ It can give us a false sense of security when we have many people around
+ us on the same boat.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Having an independent objective thinking and don't always go with the
+ herd.
+ Group thinking are one of the primary reasons why we see many financial
+ speculative bubbles.
+ Such as dot-com bubble in 2010 (TODO) or cryptocurrency mania in 2017.
+\end_layout
+
+\begin_layout Standard
+Robert Frost: "Two roads diverged in a wood, and I - I took the one less
+ traveled by and that has made all the difference." (TODO image?) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Hindsight bias 
+\emph default
+- Looking at the past events and consider them more predictable than they
+ actually were.
+ Such as "oh, I should have buy X" or "I should sell Y".
+ You can see a lot of mainstream articles that show these off.
+ Hindsight bias hurts investors because it prevents them from learning from
+ the past investment mistakes!! In the worst case, it can lead investors
+ thinking that every successful investment they made was because of their
+ keen judgment even if it wasn't.
+ And it can cause investors to chalk up losses simply because of volatility
+ and unpredictable events.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Have a written thesis or investment idea for each investment you consider
+ taking.
+ This would include why you think this investment is of a good value, some
+ risks of the investment, and also expected return.
+ You can have sense of exactly what you were thinking every time you made
+ an investment decision.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Oversimplification
+\emph default
+ - investment is a very complex topic! There are situations that are simply
+ too complex or uncertain to boil down within a few simple arguments.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Focus on investing within your circle of competence.
+ These are companies or industries you know the best.
+ Circle of competence - intersection between: what do you like? where do
+ you earn money? where do you spend money? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Incentive-caused bias 
+\emph default
+- this covers the rewards investment can have on human behavior and how
+ they can often lead to poor long-term decisions.
+ People say - if you want to find the truth, follow the money.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: When investing into businesses, see how management is compensated.
+ Look for compensation plans that are not too heavily skewed towards options
+ and incentivize a management for both achieving long-term results, but
+ also avoiding downside risk.
+ Having the right incentives in place ensure that management is working
+ for you as the owner and shareholder.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Loss aversion/endowment effect 
+\emph default
+- this is for people that prefer avoiding losses over achieving the same
+ amount of gain.
+ This is closely related to endowment effect, which is where someone places
+ a higher value on a good that they own, compared to the same good that
+ they don't know.
+ Both combined can lead to a very strong bias and poor investment decisions,
+ when an investor refuses to sell an investment at a loss in hopes of trying
+ to make that money back.
+ You see this in form of rationalized comments like "it's not a loss until
+ you sell".
+ However, you are also paying a significant opportunity cost.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Keep a limited number of stocks in your portfolio and not to exceed that
+ limit.
+ This limit will force you to invest only in what you believe at that time
+ because these are your best investment options.
+ This will force you to cut your losses with investments that you no longer
+ think are a good investment decisions.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Information bias 
+\emph default
+- tendency to evaluate information even when it's useless when making a
+ decision or understanding an issue.
+ This is particularly prevalent today, when you have access to nearly unlimited
+ amount of information.
+ However, the quality of such information is questionable as well as the
+ relevancy.
+ Much of these came from other people's opinions.
+ This includes also looking at daily stock prices in a sense daily stock
+ price are simply the markets day to day opinion on the stock, and are really
+ not that relevant for making long-term decisions.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: Majority of investors would be perfectly fine only looking at their stocks
+ once a week or even just once a month.
+ Rarely there is an opportunity you would miss by not keeping up to day
+ with a market.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Confirmation bias -
+\emph default
+ when an investor seeks out or emphasizes information that confirms an existing
+ conclusion or belief that we have.
+ This is probably the number one cause of investor mistakes, because investors
+ will get overconfident when they keep seeing information that confirms
+ the beliefs that they already have.
+ This is a particularly difficult bias to fight against, because we naturally
+ seek out information that we want to hear and avoid or reject information
+ that goes against our current beliefs.
+ Unfortunately, media and social networks supports cognitive bias.
+ They promote information you want to hear.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+How to avoid
+\series default
+: you have to seek out information how you could potentially be wrong on
+ an investment decision and not the other way around.
+ Often, listening to people of opposing opinions can provide insight into
+ some risks and considerations you would not have.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/stock_price_phases.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A psychological phases of a company's valuation in time
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Asking for investment advice without specifying the attitude
+ toward risk and return, is like asking a doctor for a good medicine without
+ telling him what ails you.
+ Howard asks clients or friends: Which do you care about more, making money
+ or avoiding losses? The answer is invariably the same - both.
+ The problem is that you can't simultaneously go all out for both profit
+ making and loss avoidance.
+ Each investor has to take a position regarding these two goals, and usually
+ that requires striking a reasonable balance.
+ The best way to put this decision into perspective is by thinking of it
+ in terms of offense versus defense.
+ 
+\end_layout
+
+\begin_layout Itemize
+(Howard Marks) Defensive investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It can be seen as an attempt at higher returns, but more through the avoidance
+ of minuses than through the inclusion of pluses, and more through consistent
+ but perhaps moderate progress than through occasional flashes of brilliance.
+ 
+\end_layout
+
+\begin_layout Itemize
+There are 2 principal elements in investment defense.
+ The first is the exclusion of losers from portfolios.
+ This is best accomplished by conducting extensive due diligence, applying
+ high standards, demanding a low price and generous margin for error and
+ being less willing to bet on continued prosperity, rosy forecasts and developme
+nts that may be uncertain.
+ The second element is the avoidance of poor years and especially, exposure
+ to meltdown in crashes.
+ In addition to the ingredients described previously that help keep individual
+ losing investments from the portfolio, this aspect of investment defense
+ requires thoughtful portfolio diversification, limits on the overall riskiness
+ borne, and a general tilt toward safety.
+ 
+\end_layout
+
+\begin_layout Itemize
+Concentration and leverage are two examples of offense.
+ They'll add to returns when they work but prove harmful when they don't
+ - again, the potential for higher highs and lower lows from aggressive
+ tactics.
+ The critical element in defensive investing is what Warren Buffett calls
+ "margin of safety" or "margin for error" (they are the same thing).
+\end_layout
+
+\begin_layout Itemize
+At Oaktree, they believe that if they avoid the losers, the winners will
+ take care of themselves.
+ In bull markets, they have average or even below-average returns.
+ But in bear market, they don't suffer big losses, so they are over-performing
+ market during its downfall.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Graham) There are 2 types of investors - defensive and aggressive role.
+ There is no room in this philosophy for a middle ground, or a series of
+ gradations, between passive and aggressive status.
+ Many, perhaps most, investors seek to place themselves in such an intermediate
+ category.
+ In Graham's opinion that is a compromise that is more likely to produce
+ disappointment than achievement.
+ As an investor you cannot soundly become "half a businessman".
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Defensive Investor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Preferred stocks should be bought on a bargain basis (when their price is
+ depressed by temporary adversity) or not at all.
+ And Graham argues that corporate bonds should be also avoided.
+ So US Savings bonds and common stocks should be a way to go for a defensive
+ investor.
+\end_layout
+
+\begin_layout Itemize
+Bad things about bonds:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Good bonds carry no protection against inflation.
+ The bondholder suffers the full effect of any loss in purchasing power
+ of the dollars that he lent.
+ 
+\end_layout
+
+\begin_layout Itemize
+Good common stocks provide a better degree of protection against inflation
+ than do high-grade bonds.
+ A number of investment authorities have insisted that common stocks are
+ by no means a perfect hedge against inflation, and they are right.
+ Nevertheless, there is a sound theoretical basis for expecting their dividends
+ and their average market value to be pushed upward by the forces of inflation.
+ Past experience shows that this has in fact occurred and that the careful
+ common-stock buyer has gained somewhat in income and principal value to
+ offset the inroads of inflation.
+\end_layout
+
+\begin_layout Itemize
+A typical bond - when interest rates go down, the call feature forces the
+ investor to lose income, and when the rate goes up, the investor loses
+ principal.
+\end_layout
+
+\begin_layout Itemize
+Historically, long-term returns from bonds are lower than from common stocks.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The selection of common stocks for the portfolio of the defensive investor
+ is a relatively simple matter:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Adequate, but not excessive diversification - 10-30 stocks.
+\end_layout
+
+\begin_layout Enumerate
+Each selected company should be large, prominent, conservatively financed.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Each company should have a long record of continuous dividend payments.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The price paid for each should be reasonable in relation to its average
+ earnings for the last 5 years or longer.
+ Graham recommends a price not to exceed 20 times of such earnings.
+ This would protect the investor against the common error of buying good
+ stocks at high levels of the general market.
+ It would also bar the purchase, even in normal markets, of a number of
+ fine issues which sell at unduly high prices in anticipation of greatly
+ increased future earnings.
+\end_layout
+
+\begin_layout Standard
+Common stock investment, however, as a whole presents a psychological hazard,
+ because stock buyers are subject to human weakness and are prone to talk
+ like investors and to act like speculators.
+ But if an intelligent investor will stick to high0grade stocks bought at
+ reasonable prices - then he can do better than the bond investor.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In a period of wide fluctuations in stock prices, dollar averaging will
+ show better results than the method of purchasing a fixed number of shares
+ each year regardless of price.
+ For most investors, Graham thinks, the real meaning of dollar averaging
+ indicates that they should be wary of putting more money in stocks at higher
+ prices than they did at lower prices - which is a common failing - and
+ that they should never let a lower price level scare them away from buying.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aggressive investor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(Or as Graham call him, the enterprising investor) He should start from
+ the same base as the defensive investor, namely, a division of his funds
+ between UK Savings Bonds and high-grade common stocks bought at reasonable
+ prices.
+\end_layout
+
+\begin_layout Itemize
+The activities characteristic of the enterprising investor may be classified
+ under 4 heads
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Buying in low markets and selling in high markets (formula timing)
+\end_layout
+
+\begin_layout Standard
+A simple application of this idea would be to sell 10% of your holdings
+ when the market advances 10% above a chosen base or central level; then
+ to sell 20% of the remainder when it advances another 10%, and so on.
+ Repurchases would be made after the market had declined to the central
+ level, and on some similar schedule.
+ Following this plan, you would have sold all your stocks if and when the
+ market level reached double the base figure, and you would then have realized
+ a profit of 37% above the base.
+\end_layout
+
+\begin_layout Itemize
+Buying carefully chosen "growth stocks" 
+\end_layout
+
+\begin_layout Standard
+Thus for good results in the growth stock field there is need not only for
+ skillful analysis but for ample diversification as well.
+ The enterprising investor may properly buy growth stocks.
+ He should beware of paying excessively for them, and he might well limit
+ the price by some practical rule.
+ A growth-stock program will not be automatically successful; its outcome
+ depend on the foresight and judgment of the investor or his advisers rather
+ than on any clear-cut methods of analysis.
+\end_layout
+
+\begin_layout Itemize
+Buying bargain issues of various types 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Graham defines a bargain issue as one which, on the basis of facts established
+ by analysis, appears to be worth considerably more than it is selling for.
+ AN issue is not a true "bargain" unless the indicated value is at least
+ 50% more than the price.
+ There are 2 tests by which a bargain common stock is detected: 
+\end_layout
+
+\begin_layout Standard
+Method of appraisal - TODO chapter X.
+ It relies largely on estimating future earnings and then multiplying these
+ by a factor appropriate to the particular issue.
+ 
+\end_layout
+
+\begin_layout Standard
+Value of the business to a private owner.
+ This value also is often determined chiefly by expected future earnings
+ - in which case the result may be identical with the first.
+ But in this second test more attention is likely to be paid to the realizable
+ value of the assets, with particular emphasis on the net current assets
+ or working capital.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Buying into "special situations" 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A particular kind of undervalued security in which the profit is expected
+ to be realized from a definite corporate event rather than from a mere
+ change in the market's attitude is known as a "special situation." Such
+ events include sale of the business, merger, recapitalization, reorganization,
+ and liquidation.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_deeper
+\end_body
+\end_document

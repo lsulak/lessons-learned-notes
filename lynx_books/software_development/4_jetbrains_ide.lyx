@@ -1,0 +1,293 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "PyCharm Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+JetBrains IDE (PyCharm) [SK]
+\end_layout
+
+\begin_layout Section
+Keyboard Shortcuts
+\end_layout
+
+\begin_layout Itemize
+CTRL+N - najdenie a otvorenie nejakej triedy
+\end_layout
+
+\begin_layout Itemize
+CTRL+SPACE - autocomplete
+\end_layout
+
+\begin_layout Itemize
+ALT+SHIFT+7 - find usages
+\end_layout
+
+\begin_layout Itemize
+CTRL+Q - kratka dokumentacia
+\end_layout
+
+\begin_layout Itemize
+CTRL+B alebo CTRL+Klik - navigacia k deklaracii niecoho
+\end_layout
+
+\begin_layout Itemize
+CTRL+F12 - navigacia v aktualne editovanom subore
+\end_layout
+
+\begin_layout Itemize
+CTRL+D - duplikacia bloku
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+I - ukaze rychlu definiciu
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+B - ide do deklaracii typu
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+J - spoji 2 riadky
+\end_layout
+
+\begin_layout Itemize
+CTRL+P - zoznam validnych parametrov v zatvorke v metode
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+BACKSPACE - da kurzor na poslednu zmenu, da sa pouzit viac krat
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+F7 - zvyrazni pouzitie nejakej premennej, pre pohyb medzi nimi
+ F3/Shift+F3
+\end_layout
+
+\begin_layout Itemize
+CTRL+E - zoznam naposledy pouzitych suborov
+\end_layout
+
+\begin_layout Itemize
+ALT+sipky - rychle skakanie cez metody v subore
+\end_layout
+
+\begin_layout Itemize
+CTRL+O - prepisanie metod
+\end_layout
+
+\begin_layout Itemize
+CTRL+ALT+SHIFT+N - otvorenie nejakej konkretnej metody
+\end_layout
+
+\begin_layout Itemize
+ALT+SHIFT+C - prehlad poslednych zmien
+\end_layout
+
+\begin_layout Itemize
+Drzanie tlacitka mysi + ALT - oznacenie stlpcov
+\end_layout
+
+\begin_layout Itemize
+ALT+SHIFT+F10 - Run/Debug dropdown
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+I - popup okno, pozriet obrazok na mieste kde ukazuje mys
+\end_layout
+
+\begin_layout Itemize
+ALT+ENTER - zoznam akcii, pre refaktorizaciu
+\end_layout
+
+\begin_layout Itemize
+CTRL+SLASH - comment/uncomment riadky
+\end_layout
+
+\begin_layout Itemize
+ALT+9 - zoznam zmien atd, z GITu
+\end_layout
+
+\begin_layout Itemize
+CTRL+ALT+T - kod obalit try/exceptom
+\end_layout
+
+\begin_layout Itemize
+ALT+ENTER - rychlo odstranit problem
+\end_layout
+
+\begin_layout Itemize
+CTRL+TAB - skakanie cez vsetky otvorene subory v editore
+\end_layout
+
+\begin_layout Itemize
+CTRL+K- Commit changes
+\end_layout
+
+\begin_layout Itemize
+CTRL+F a CTRL+R - search / replace
+\end_layout
+
+\begin_layout Itemize
+Ctrl+Alt+T - obalenie kodu niecim...
+\end_layout
+
+\begin_layout Itemize
+Ctrl+Enter - Chytre rozdelenie riadku na 2
+\end_layout
+
+\begin_layout Itemize
+Ctrl+U - chod o nadradenu triedu vyssie
+\end_layout
+
+\begin_layout Itemize
+Shift+Shift - najde hocico
+\end_layout
+
+\begin_layout Itemize
+CTRL+SHIFT+K - pushovanie 
+\end_layout
+
+\begin_layout Itemize
+Ctrl+Delete / Ctrl+Backspace - vymazat po koniec / zaciatok slova
+\end_layout
+
+\begin_layout Itemize
+Ctrl+R - replace
+\end_layout
+
+\begin_layout Itemize
+Shift+F10 / F9 - Run / Debug
+\end_layout
+
+\begin_layout Itemize
+Alt+left/right - Prepinanie medzi oknami
+\end_layout
+
+\begin_layout Itemize
+Oznacenie RegExpu, Alt+Enter - do policka zadat string co by sa mal matchnut
+ - vyhodnoti to 
+\end_layout
+
+\end_body
+\end_document

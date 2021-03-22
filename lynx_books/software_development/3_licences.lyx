@@ -1,0 +1,390 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Licences Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Software Licences [SK]
+\end_layout
+
+\begin_layout Section
+General
+\end_layout
+
+\begin_layout Standard
+Pri tejto knihe som pouzival zdroje
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Licencie - 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://choosealicense.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+OpenSource licencie - 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://opensource.org/licenses"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Short versions - 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://tldrlegal.com"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+V US ak licencia nie je specifikovana, uzivatelia nemozu stahovat, modifikovat
+ a ani distribuovat.
+\end_layout
+
+\begin_layout Section
+MIT Licence
+\end_layout
+
+\begin_layout Standard
+Je jednoducha a zhovievava, mozeme robit co chceme pokial tam vlozime povodny
+ copyright a licenciu.
+\end_layout
+
+\begin_layout Itemize
+Povolenia: komercne pouzitie, distribucia, modifikacia, privatne pouzitie,
+ sublicencia.
+\end_layout
+
+\begin_layout Itemize
+Podmienky: include licenciu a copyright.
+\end_layout
+
+\begin_layout Itemize
+Limitacie: zodpovednost.
+\end_layout
+
+\begin_layout Section
+Apache Licence, v2.0
+\end_layout
+
+\begin_layout Standard
+Rovnake ako MIT + uzivatelom sa poskytuje patentove pravo expresne.
+\end_layout
+
+\begin_layout Itemize
+Povolenia: komerne pouzitie, distribucia, modifikacia, pouzitie patentu
+ a pre privatne pouzitie, sublicencia a zaruka.
+ 
+\end_layout
+
+\begin_layout Itemize
+Podmienky: include licenciu, copyright a zmeny stavu.
+ Ak sa nachadza NOTICE subor, tak ho musime tiez vlozit.
+ Mozeme donho pisat (append).
+ 
+\end_layout
+
+\begin_layout Itemize
+Limitacie: pouzitie trademarku (ochrannej znamky - nemusime pouzit meno
+ povodnych autorov pre schvalenie derivovaneho produktu) a zodpovednost.
+\end_layout
+
+\begin_layout Section
+GNU AGPLv3
+\end_layout
+
+\begin_layout Standard
+Affero General Public License.
+\end_layout
+
+\begin_layout Itemize
+Povolenia: komerne pouzitie, distribucia, modifikacia, pouzitie patentu
+ a pre privatne pouzitie.
+ 
+\end_layout
+
+\begin_layout Itemize
+Podmienky: zdrojak musi byt dostupny pri jeho distribuovani, include licenciu
+ a copyright, sietove pouzitie a distribucia, rovnaka licencia (pri modifikacii
+ a naslednom release), zmeny stavu (indikovat zmeny v kode).
+\end_layout
+
+\begin_layout Itemize
+Limitacie: zodpovednost (SW je poskytovany bez zaruky a autor/licence owner
+ nenesie ziadnu zodpovednost za pripadne skody).
+\end_layout
+
+\begin_layout Section
+GNU GPLv3 a LGLPv3 
+\end_layout
+
+\begin_layout Standard
+General a Lesses General Public License.
+ Je to rovnake ako Apache, plus uzivatel, co si SW skopiruje/pouziva musi
+ dodrzovat rovnake podmienky ako su momentalne dane.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rovnake povolenia, podmienky aj obmedzenia.
+ Od predchadzajuceho sa lisi v tom, ze nie je potrebna podmienka sietoveho
+ pouzitia a distribucie.
+\end_layout
+
+\begin_layout Section
+Mozilla Public License 2.0
+\end_layout
+
+\begin_layout Itemize
+Povolenia: Komerne pouzitie, distribucia, modifikacia, pouzitie patentu
+ a pre privatne pouzitie, zaruka, sublicencia (schopnost udelit/rozsirit
+ licenciu k SW).
+\end_layout
+
+\begin_layout Itemize
+Podmienky: include licenciu a copyright, rovnaka licencia, zdrojak musi
+ byt dostupny pri jeho distribuovani.
+\end_layout
+
+\begin_layout Itemize
+Limitacie: pouzitie trademarku (ochrannej znamky) a zodpovednost.
+\end_layout
+
+\begin_layout Section
+The Unlicense
+\end_layout
+
+\begin_layout Standard
+Licencia bez akychkolvek podmienok.
+\end_layout
+
+\begin_layout Itemize
+Povolenia: Komerne pouzitie, distribucia, modifikacia, pouzitie patentu
+ a pre privatne pouzitie.
+ 
+\end_layout
+
+\begin_layout Itemize
+Podmienky: None.
+\end_layout
+
+\begin_layout Itemize
+Limitacie: zodpovednost.
+\end_layout
+
+\begin_layout Section
+Zlib-Libpng License (Zlib) 
+\end_layout
+
+\begin_layout Standard
+Casto pre open source balicky a zlib kniznicu.
+ Velmi kratka a zhovievava.
+ Modifikovanu verziu SW je treba premenovat.
+ 
+\end_layout
+
+\begin_layout Itemize
+Povolenia: Komerne pouzitie, distribucia a modifikacia.
+\end_layout
+
+\begin_layout Itemize
+Podmienky: include copyright, premenovanie (zmenenu verziu je nutne premenovat
+ aby jej nazov nekolidoval s povodnou verziou).
+\end_layout
+
+\begin_layout Itemize
+Limitacie: zodpovednost.
+\end_layout
+
+\begin_layout Section
+BSD 2-Clause License (FreeBSD/Simplified)
+\end_layout
+
+\begin_layout Standard
+Skoro bezlimitna volnost, no je nutne skopirovat BSD copyright.
+\end_layout
+
+\begin_layout Itemize
+Povolenia: Komercne pouzitie, distribucia, modifikacia, zaruka.
+\end_layout
+
+\begin_layout Itemize
+Podmienky: include licenciu a copyright.
+\end_layout
+
+\begin_layout Itemize
+Limitacie: zodpovednost
+\end_layout
+
+\begin_layout Section
+BSD 3-Clause License (Revised) 
+\end_layout
+
+\begin_layout Standard
+Ako predchadzajuca, ale dalsia limitacia - pouzitie trademarku.
+\end_layout
+
+\begin_layout Section
+EULA 
+\end_layout
+
+\begin_layout Standard
+Asi nie konkretna licencia, vacsinou pre krabicovy SW, je to licencna zmluva
+ koncoveho uzivatela.
+ Zobrazuje, ako moze a nemoze byt SW pouzity.
+ Ma tiez nejake obmedzenia, ako napriklad zdielanie SW s niekym inym.
+\end_layout
+
+\end_body
+\end_document
