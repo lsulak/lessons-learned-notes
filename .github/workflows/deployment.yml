@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: LaTeX linter
         uses: colinaaa/chktex-action@v1.1.2
-      - uses: docker://x11vnc/lyx-desktop
+      - uses: docker://aergus/latex
       - name: Build PDF notes
         run: make all
 
@@ -26,6 +26,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: docker://x11vnc/lyx-desktop
+      - uses: docker://aergus/latex
       - name: Build PDF notes
         run: make all
