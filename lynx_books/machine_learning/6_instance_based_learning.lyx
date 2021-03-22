@@ -1,0 +1,655 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Instance-based Learning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+These algorithms are based on similarity of new case 
+\series default
+(new, previously unseen sample) 
+\series bold
+with known
+\series default
+ (already seen) 
+\series bold
+records
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+These methods are simple, but they can approximate complex function with
+ qualitative or quantitative output value.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+These are lazy-learning algorithms, as they do not create any model 
+\series default
+and delay the induction or generalization process until classification is
+ performed.
+ Calculation for prediction of output is performed in a moment when a new
+ sample is given to a model.
+ Therefore, these methods can approximate well relations which are inside
+ space of training data.
+ On the other hand, prediction of data outside of training data can work
+ not so well.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lazy-learning algorithms require less computation time during the training
+ phase than eager-learning algorithms
+\series default
+ (such as decision trees or neural nets) 
+\series bold
+but more computation time during the classification process.
+\end_layout
+
+\begin_layout Itemize
+Decision problem with instances or examples of training data that are deemed
+ important or required to the model.
+ Such methods typically build up a database of example data and compare
+ new data to the database using a
+\series bold
+ similarity measure
+\series default
+ in order to find the best match and make a prediction.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There are normally no parameters to tune, the system is normally hard coded
+ with priors in form of fixed weights or some algorithms like tree search
+ based algorithms.
+ No need to know anything about model.
+ Such system normally does what is known as lazy learning by absorbing the
+ training data instances and using those data instances for inference.
+\end_layout
+
+\begin_layout Itemize
+Incremental character, there is (almost) no generalization, we can add new
+ data and immediately work with them.
+ We can even add a new class.
+ This is also considered as disadvantage.
+\end_layout
+
+\begin_layout Itemize
+Lazy learning.
+\end_layout
+
+\begin_layout Itemize
+Prediction of both qualitative and quantitative values.
+\end_layout
+
+\begin_layout Itemize
+Records are usually saved in k-d trees, so finding out a neighbor may have
+ complexity 
+\begin_inset Formula $log_{2}N$
+\end_inset
+
+, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is a number of saved instances.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cons
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{http://cs.uccs.edu/~jkalita/work/cs586/2013/InstanceBasedLearning.pdf}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They are computationally expensive since they save all training instances
+ = the more data we have (saved, 
+\begin_inset Quotes eld
+\end_inset
+
+training
+\begin_inset Quotes erd
+\end_inset
+
+ data), the slower prediction time the algorithm will have.
+ This is the major disadvantage.
+ 
+\end_layout
+
+\begin_layout Itemize
+These methods are usually sensitive to skewed class, because class with
+ smaller amount of samples can be outvoted.
+\end_layout
+
+\begin_layout Itemize
+These methods are very sensitive to attributes, which are not relevant.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gained knowledge is not understandable and (easily) interpretable by human.
+\end_layout
+
+\begin_layout Itemize
+The performance depends on the choice of the similarity function to compute
+ distance between two instances.
+ 
+\end_layout
+
+\begin_layout Itemize
+There is no simple or natural way to work with nominal valued attributes
+ or missing attributes.
+ 
+\end_layout
+
+\begin_layout Itemize
+They do not tell us much about how the data is structured.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+IBL methods
+\series default
+ - (mostly) supervised iterative algorithms (however, k-NN is basically
+ unsupervised), they describe a way how to save only relevant items.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+IB1
+\series default
+ - saves all training samples.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IB2
+\series default
+ - saves only incorrectly categorized samples.
+ Very sensitive to noise and lower memory requirements.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IB3
+\series default
+ - extended by statistical tests which can detect noise.
+ New samples can be accepted, rejected or monitored.
+ On classification, only the accepted samples are included.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IB4
+\series default
+ - extended by possibility of give some weights to the input attributes.
+ So this method does not suppose that each attribute has same relevance.
+ This is suitable if there is a big amount of attributes.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+k-Nearest Neighbors
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Supervised
+\series default
+ 
+\series bold
+learning algorithm 
+\series default
+for 
+\series bold
+classification
+\series default
+ and 
+\series bold
+regression
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Non-parametric method - it does not make any underlying assumptions about
+ the distribution of data.
+\end_layout
+
+\begin_layout Itemize
+Contrary to other learning algorithms, that allow discarding the training
+ data after the model is built, kNN keeps all training examples in memory.
+ Once a new, previously unseen example comes in, the algorithm finds 
+\begin_inset Formula $k$
+\end_inset
+
+ training examples closest to it and returns the majority label (classification)
+, or the average label (regression).
+\end_layout
+
+\begin_layout Itemize
+The output: classification - class membership, regression - average of the
+ values of its k nearest neighbors.
+\end_layout
+
+\begin_layout Itemize
+Sensitive to the local structure of data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+For continuous variable - Euclidean distance, for discrete - Hamming distance.
+
+\series default
+ Another popular distance function is the 
+\series bold
+negative cosine similarity
+\series default
+ (and there are also other ones, such as Chebychev distance, or Mahalanobis
+ distance):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s(x,y)=\frac{\sum_{j=1}^{D}x^{(j)}y^{(j)}}{\sqrt{\sum_{j=1}^{D}(x^{(j)})^{2}\sqrt{\sum_{j=1}^{D}(y^{(j)})^{2}}}}\label{eq:cosine_similarity-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the angle between two vectors is 
+\begin_inset Formula $0$
+\end_inset
+
+ degrees, then two vectors point to the same direction, and cosine similarity
+ is equal to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ If the vectors are orthogonal, the cosine similarity is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ If the vectors are in opposite directions, then it is 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hard decision or soft score - hard is voting, soft is based on some threshold
+ value.
+\end_layout
+
+\begin_layout Itemize
+Before use, it needs data to be normalized and all irrelevant and redundant
+ attributes to be removed.
+\end_layout
+
+\begin_layout Itemize
+k-NN is a type of instance-based learning, or lazy learning, where the function
+ is only approximated locally and all computation is deferred until classificati
+on.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is not robust to missing values, KNN requires complete records to do
+ their work.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+k-NN needs:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sufficient amount of training data.
+\end_layout
+
+\begin_layout Itemize
+normalization of input values.
+\end_layout
+
+\begin_layout Itemize
+removal of non-relevant or redundant values.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+k-NN (dataset, sample) {
+\end_layout
+
+\begin_layout Enumerate
+Go through each item in my dataset, and calculate Euclidean distance from
+ that data item to my specific sample.
+ Sort samples and select only the first K items.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Classify the sample as the majority class between K samples in the dataset
+ having minimum distance to the sample.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+K-nearest neighbors algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Self-Organizing Map
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Self-Organizing-Map"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Unsupervised learning, for dimensionality reduction.
+ It also belongs to clustering (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Clustering-Methods-Based"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Also known as Self-organizing feature map (SOFM) or Kohonen map.
+\end_layout
+
+\begin_layout Itemize
+It is based on neural network, where each neuron has vector of weights and
+ a position in map.
+\end_layout
+
+\begin_layout Itemize
+Self-organizing maps differ from other artificial neural networks as they
+ apply competitive learning as opposed to error-correction learning (such
+ as backpropagation with gradient descent).
+\end_layout
+
+\begin_layout Itemize
+Good for visualization of n-dimensional space in 2D or 3D.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Learning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Neurons compete between each other, which one will be the closest to test
+ sample from dataset (distance of sample and each vectors of weights).
+\end_layout
+
+\begin_layout Itemize
+Winner (or his closes neighbors) modifies its weights (make a step closer
+ to test sample) by learning rate (which is later lower and lower).
+\end_layout
+
+\begin_layout Itemize
+Neighbor function - determines the surroundings of winner, in which the
+ weights will be modified.
+ It is smaller and smaller with the time.
+\end_layout
+
+\begin_layout Itemize
+The end of learning - the algorithm reached a maximum number of iterations,
+ or the changes in weight vectors are very little.
+\end_layout
+
+\begin_layout Itemize
+The algorithm requires sufficient amount of training data.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Learning Vector Quantization* 
+\end_layout
+
+\begin_layout Section
+Locally Weighted Learning* 
+\end_layout
+
+\end_body
+\end_document

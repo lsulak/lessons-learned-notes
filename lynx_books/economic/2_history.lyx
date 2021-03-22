@@ -1,0 +1,1137 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+History
+\end_layout
+
+\begin_layout Itemize
+10,000bc - First evidence of bartering in parts of Africa
+\end_layout
+
+\begin_layout Itemize
+3,000bc - First evidence of taxation in Ancient Egypt 
+\end_layout
+
+\begin_layout Itemize
+600bc - First evidence of gold and silver coins in Lydia
+\end_layout
+
+\begin_layout Itemize
+350bc - Aristotle declares that property should be private
+\end_layout
+
+\begin_layout Itemize
+800s - China invents first banknotes
+\end_layout
+
+\begin_layout Itemize
+1397 - Medici bank is founded - the world's first recognizable bank
+\end_layout
+
+\begin_layout Itemize
+1600 - British East India Company founded (the first major corporation which
+ had a government-granted monopoly on trade with British territories in
+ Asia - but even before that, the first recognizable company was the Virginia
+ Company, that set up to finance trade with colonists in America)
+\end_layout
+
+\begin_layout Itemize
+1668 - The Riksbank, the world's first central bank, founded in Sweden
+\end_layout
+
+\begin_layout Itemize
+1671 - Stockholm's bank is using the first paper note as a money.
+ They were first in the world.
+ It was backed up by gold, in ratio 1:1
+\end_layout
+
+\begin_layout Itemize
+1693 - British government issues the first modern-style sovereign bond
+\end_layout
+
+\begin_layout Itemize
+1694 - The Bank of England is founded
+\end_layout
+
+\begin_layout Itemize
+1700s - The first industrial revolution - invention of the steam engine
+\end_layout
+
+\begin_layout Itemize
+1743 - Mayer Amschel Bayer - from Jewish family from Frankfurt.
+ He changed his name to Rothchild (ECB has headquarters in Frankfurt)
+\end_layout
+
+\begin_layout Itemize
+1776 - Adam Smith (Scottish father of economics) - The Wealth of Nations
+ (Invisible hand; also, division of labor is summed up) He explained how
+ division of labor works, by describing the process in a pin factory
+\end_layout
+
+\begin_layout Itemize
+1776 - Bank of England changed the ratio of notes to gold to be from 1:1
+ to 2:1
+\end_layout
+
+\begin_layout Itemize
+1776 - USA - beginning of the nation as an independent nation (George Washington
+ unified 13 states) - independent from England
+\end_layout
+
+\begin_layout Itemize
+1792 - The Buttonwood Agreement lays the foundation for the establishment
+ of the New York Stock Exchange
+\end_layout
+
+\begin_layout Itemize
+1798 - Thomas Robert Malthus (taught mathematics at Cambridge) - Essay on
+ the Principle of Population (The Malthusian trap)
+\end_layout
+
+\begin_layout Itemize
+1798 - US president George Washington constructs the earliest American tariffs,
+ on trade with the UK
+\end_layout
+
+\begin_layout Itemize
+1798 - William Pitt the Younger introduces Britain's first income tax
+\end_layout
+
+\begin_layout Itemize
+1801 - London Stock Exchange is founded
+\end_layout
+
+\begin_layout Itemize
+1800s - Industrial Revolution ushers in age of capitalism (and also, the
+ first era of globalization, that ended because of First World War)
+\end_layout
+
+\begin_layout Itemize
+1815 - Nathan Rothschild makes a fortune on the bond market after the Battle
+ of Waterloo
+\end_layout
+
+\begin_layout Itemize
+1816 - Introduction of the Gold standard (an international system in which
+ countries currencies are fixed in relation to gold prices), pegging all
+ money to a set amount of gold (ended in 1914), in ratio 1:3
+\end_layout
+
+\begin_layout Itemize
+1817 - David Ricardo - On the Principles of Political Economy and Taxation
+ (Comparative Advantage)
+\end_layout
+
+\begin_layout Itemize
+1848 - Karl Marx (from middle-class Jewish/Protestant German family) - The
+ Communist Manifesto
+\end_layout
+
+\begin_layout Itemize
+1865 - Abraham Lincoln was murdered (BTW, he didn't want to create central
+ bank)
+\end_layout
+
+\begin_layout Itemize
+1867 - Karl Marx - Das Kapital
+\end_layout
+
+\begin_layout Itemize
+1871 - Carl Menger - Principles of Economics (father of the Austrian School
+ - Individualism and Marginalism)
+\end_layout
+
+\begin_layout Itemize
+1873-96 - The Great Deflation follows the US Civil War
+\end_layout
+
+\begin_layout Itemize
+1880 - Bismarck sets up the first state pension and medical insurance scheme
+\end_layout
+
+\begin_layout Itemize
+1885 - First automobile powered by internal combustion engine is invented
+ by Karl Benz in Germany
+\end_layout
+
+\begin_layout Itemize
+1889 - The International Prototype Kilogram, small cylinder of platinum
+ and iridium made; it's the object against which all scales in the world
+ are calibrated.
+\end_layout
+
+\begin_layout Itemize
+1890 - Alfred Marshall - Principles of Economics (popularizes marginal utility
+ - Marginalism)
+\end_layout
+
+\begin_layout Itemize
+end of 19th and beginning of 20th - second industrial revolution - electric
+ and technical revolution - electricity, steel and other materials, crude
+ oil, petroleum and gasoline
+\end_layout
+
+\begin_layout Itemize
+1907 - The Panic (Stock Market Crash)
+\end_layout
+
+\begin_layout Itemize
+1901-32 - The Gold Standard still employed
+\end_layout
+
+\begin_layout Itemize
+1903 - Wright brothers fly the first powered plane
+\end_layout
+
+\begin_layout Itemize
+1907 - J.P.
+ Morgan - he 
+\begin_inset Quotes eld
+\end_inset
+
+attacked
+\begin_inset Quotes erd
+\end_inset
+
+ banks and was saying that banks are insolvent, and people wanted to withdraw
+ all their money.
+ Chain reaction, thousands of banks were gone under.
+ People lost money, and J.
+ P.
+ Morgan bought a big piece of financial sector in the US.
+ People still didn't like the idea of having central bank.
+\end_layout
+
+\begin_layout Itemize
+1908 - David Lloyd George introduces pensions in the UK
+\end_layout
+
+\begin_layout Itemize
+1913 - Henry Ford and the assembly line - automation of car manufacture
+ (division of labor in practice)
+\end_layout
+
+\begin_layout Itemize
+1914-18 - First World War
+\end_layout
+
+\begin_layout Itemize
+1913 - The US Federal Reserve set up by Woodrow Wilson.
+ The system is comprised of 12 regional reserve member banks, each of which
+ focuses on its particular geographical zone, in coordination with the New
+ York Fed.
+\end_layout
+
+\begin_layout Itemize
+1917 - Russian Revolution puts Lenin in power, leading to the foundation
+ of the Soviet Union
+\end_layout
+
+\begin_layout Itemize
+1920s - Germany suffers hyperinflation after the First World War.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hyperinflation was a result of massive money printing so that Germany can
+ pay a massive war debt payments to France, England, and others.
+ People were extremely discontented and Adolf Hitler used that.
+\end_layout
+
+\begin_layout Itemize
+How the heck Hitler got money to pay for war debt payments and restart the
+ economy to such a prosperity? He got support from America - Dawes Plan
+ and Young Plan (1924-1930).
+ Germany received $2.5B in loans from USA, and send $2B in reparations to
+ Allies, and they send $2.6B back to USA.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1929 - The Wall Street Crash sends stocks plunging and triggers The Great
+ Depression.
+ Black Thursday.
+ It was triggered by Margin loans, overconfident market and public, and
+ the government raised interest rates.
+ Everyone was buying stocks.
+\end_layout
+
+\begin_layout Itemize
+1930 - US and much of he world is trapped in deflation during the Great
+ Depression
+\end_layout
+
+\begin_layout Itemize
+1930s - Sir John Hicks refines the economics of supply and demand
+\end_layout
+
+\begin_layout Itemize
+1933 - Unemployment in the US hits 25% during the Great Depression
+\end_layout
+
+\begin_layout Itemize
+1933 - Franklin Roosevelt - gold was confiscated.
+ You'd have to pay a $10k fine.
+ Citizens had to sell very low ($20.67 exactly, set by the government), and
+ then, afterwards, the gold price was much higher.
+ From $20.67 -> $35.
+\end_layout
+
+\begin_layout Itemize
+1936 - John Maynard Keynes (economist that put his theories into action)
+ argues in The General Theory of Employment, Interest and Money that governments
+ should borrow more in times of recession (direct response to the Great
+ Depression).
+ He argued that governments had a duty to help keep the economy afloat in
+ times of trauma.
+\end_layout
+
+\begin_layout Itemize
+1938 - Germany had to pay loans to the USA (Dawes Plan and Young Plan),
+ but they didn't have enough money.
+ II.
+ World War started in 1939 in Poland.
+ As one of the first thing, German troops confiscated gold from central
+ banks.
+ Then they conquered cities and villages.
+ USA delivered weapons and received a massive amount of gold in return.
+ 
+\end_layout
+
+\begin_layout Itemize
+1940s - Governments worldwide raise taxes to unprecedented highs to pay
+ off war debts and fund the creation of welfare systems
+\end_layout
+
+\begin_layout Itemize
+1942 - Joseph Schumpeter - Capitalism, Socialism and Democracy (popularized
+ the idea of creative destruction, hailed originally from CZ area, but moved
+ to Vienna and then emigrated to the US)
+\end_layout
+
+\begin_layout Itemize
+1944 - Friedrich Haye (successor of Carl Menger; plus, he won the Nobel
+ Prize) - The Road to Serfdom (Individualism, Austrian School)
+\end_layout
+
+\begin_layout Itemize
+1944 - The Bretton Woods Agreement on fixed exchange rates - one year before
+ II.
+ World War ended.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It was in American city Bretton Woods.
+ US dollar is the world reserve currency.
+ All strategic raw materials must be traded in dollars.
+ Note that the USA got the biggest amount of gold.
+ 
+\end_layout
+
+\begin_layout Itemize
+Two institutions were established as a supervision - World Bank and Internationa
+l Monetary Fund.
+ If some state wanted to be a part of it, they had to deposit 25% of gold
+ and 75% of their national currency.
+ Then they could borrow up to 200% of original deposit.
+\end_layout
+
+\begin_layout Itemize
+If governments want their dollars to change for gold, FED will change it.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+1945 - Push for freer trade begins after the Second World War (comparative
+ advantage)
+\end_layout
+
+\begin_layout Itemize
+1945 - United Nations is established 
+\end_layout
+
+\begin_layout Itemize
+1949 - Mao Zedong establishes the People's Republic of China as a communist
+ state
+\end_layout
+
+\begin_layout Itemize
+1950s - Macroeconomics gains popularity along with Keynesianism
+\end_layout
+
+\begin_layout Itemize
+1963 - Kennedy changed the rules - FED should no longer print money, but
+ a government body will.
+ More than $4M were printed.
+ He was murdered in less than 6 months.
+\end_layout
+
+\begin_layout Itemize
+1970s - Keynesianism falls out of favor as Western nations battle against
+ inflation
+\end_layout
+
+\begin_layout Itemize
+1970s - Arthur Laffer develops the idea of the Laffer Curve (Supply-side
+ economics, these ideas were embraced by Thatcher and Reagan later) 
+\end_layout
+
+\begin_layout Itemize
+1970s - The pioneers of behavioral economics - psychologists Amos Tversky
+ and Daniel Kahneman (he was awarded in 2002 the Nobel Prize in Economics),
+ who adapted theories on how the brain processes information and compared
+ hem with economic models.
+\end_layout
+
+\begin_layout Itemize
+1971 - Milton Friedman (from a family of Hungarian immigrants and was born
+ in NYC, he was awarded the Nobel Prize for Economics) and Anna Schwartz
+ - A Monetary History of the United States (set out theories of monetarism)
+\end_layout
+
+\begin_layout Itemize
+1971 - First oil crisis
+\end_layout
+
+\begin_layout Itemize
+1971 - President Nixon decreed that USA won't change US notes for physical
+ gold.
+ This was against The Bretton-Woods agreement.
+ This is called "Nixon Closes Gold Window".
+ Gold price was no longer set by government, but by supply-demand.
+ Gold price boomed.
+\end_layout
+
+\begin_layout Itemize
+1972 - Bhutan starts to develop a Gross National Happiness index (Happynomics)
+\end_layout
+
+\begin_layout Itemize
+1975 - President Ford finally canceled the restriction that US citizens
+ cannot own gold.
+ After 42 years.
+\end_layout
+
+\begin_layout Itemize
+1976 - Kingston Currency System - it's still valid today.
+ This is exactly 200 years since the notes were backed up by gold with ratio
+ 1:1.
+ Fiat is in translation "So let it be written, so let it be done." Some people
+ say that fiat money was the easiest way to convert society into sheep.
+\end_layout
+
+\begin_layout Itemize
+early 1980s - Second oil crisis
+\end_layout
+
+\begin_layout Itemize
+1980s - Taxes are cut in the UK, US, and across the Western World (Supply-side
+ economics)
+\end_layout
+
+\begin_layout Itemize
+1980s - Third industrial revolution - development of the internet and computer
+\end_layout
+
+\begin_layout Itemize
+1985 - Plaza Accord - agreement among G-5 nations - UK, USA, Germany, France,
+ Japan - to manipulate exchange rates by depreciating the U.S.
+ dollar relative to the Japanese yen and the German Deutsche mark
+\end_layout
+
+\begin_layout Itemize
+1987 - Black Monday - the US Stock market drops 22,6%
+\end_layout
+
+\begin_layout Itemize
+1989 - Fall of the Berlin Wall, triggering the spread of capitalism throughout
+ the former communist world
+\end_layout
+
+\begin_layout Itemize
+1989 - World Wide Web is developed by Tim Berners-Lee
+\end_layout
+
+\begin_layout Itemize
+1990s - Behavioral economics gains popularity
+\end_layout
+
+\begin_layout Itemize
+1994 - Estonia introduces flat taxes (in which everyone pays the same rate)
+\end_layout
+
+\begin_layout Itemize
+1998 - The European Central Bank established in preparation for the launch
+ of the euro
+\end_layout
+
+\begin_layout Itemize
+2001 - Doc-com bubble pops
+\end_layout
+
+\begin_layout Itemize
+2002 - Full introduction of the euro
+\end_layout
+
+\begin_layout Itemize
+2006-8 - Property bubbles pop in the US, UK, and much of the Western world,
+ triggering The Financial Crises in 2008
+\end_layout
+
+\begin_layout Itemize
+2008 - Keynesian ideas return as governments across the world borrow and
+ spend in order to fight recession
+\end_layout
+
+\begin_layout Itemize
+2008 - The G7 is replaced with G20
+\end_layout
+
+\begin_layout Itemize
+2009 - Major economies, including the UK and US, experience deflation for
+ the first time since the Second World War
+\end_layout
+
+\begin_layout Itemize
+2010 - The Flash Crash (Stock Market Crash)
+\end_layout
+
+\begin_layout Standard
+TODO - Magna Carta, French Revolution, Boston Tea Party, American Revolutionary
+ War
+\end_layout
+
+\begin_layout Section
+The Growth and The Crash of Economy
+\end_layout
+
+\begin_layout Standard
+(from book How an Economy Grows and Why it Crashes, by Peter Schiff)
+\end_layout
+
+\begin_layout Itemize
+In the past, the United States was known as a nation of savers.
+ (So they under-consumed in order to generate a capital) Throughout much
+ of US history, American citizens typically saved 10% or more of their incomes
+ annually.
+ This discipline not only helped build a huge supply of savings to finance
+ US growing industrial activity, but it also helped families and communities
+ endure unexpected hardships.
+ However, in recent years, economists have severely downgraded savings on
+ the economic value chain.
+ Keynesians view savings as detrimental to growth because the act removes
+ money from circulation and decreases spending (which they assume is the
+ crucial element in creating economic growth).
+ Policy makers, influenced by these ideas, have made rules that reward spenders
+ and penalize savers.
+ As a result, Americans have, for years, spent more than they earned.
+ Spending for its own sake means nothing.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What if you spent $1M, but bought nothing but air? How would this benefit
+ society? It would surely benefit the person who sold you the air.
+ He would get $1M formerly belonging to you.
+ Using our modern methods of economic accounting, such as the measurement
+ of GDP, the transaction would certainly look like genuine activity.
+ It would be counted as $1M worth of growth.
+ But the act of buying air does not improve the economy as a whole.
+ The air was always there.
+ The fact that someone spent money on it does not change a thing.
+ Spending is merely the yardstick that we use to measure production.
+ Since everything that is produced will eventually be consumed, why does
+ spending really matter? Even the stuff that no one really wants will be
+ consumed if the price falls far enough.
+ But nothing can be consumed until it is produced.
+ It's production that adds the value.
+ Savings creates the capital that allows for the expansion of production.
+ As a result, a dollar saved makes more of a positive economic impact that
+ a dollar spent.
+ Just don't try to explain this to an economist or a politician.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+According to Schiff, there is no greater propaganda victory in economics
+ today than the complete vilification of deflation (and the relative acceptance
+ of inflation).
+ As far as economists and politicians are concerned, deflation, which is
+ defined as the overall decline of prices over time, is the economic equivalent
+ of the Bubonic plague.
+ At the slightest whiff of deflation, governments will typically enact policies
+ to push prices back up.
+ But what's wrong with falling prices? Prices in the US fell steadily for
+ almost 150 years - from late 1700s all the way to 1913.
+ During that time, US experienced some of the fastest economic growth in
+ the history of the planed.
+ This was possible because of increased efficiency.
+ When combined with a stable supply of money (as existed in the US until
+ the establishment of the FED), efficiency will push prices down.
+ The vastly increased productivity of the industrial revolution made it
+ possible for working-class people to afford all kinds of goods.
+ Yet despite the obvious benefits of lower prices we still fear deflation.
+ We are told that if prices were to fall, people would stop buying, companies
+ would stop spending, workers would lose their jobs, and we would all return
+ to the economic dark ages.
+ But we all see time and time again how falling prices do not deter particular
+ industries.
+ For example, as a result of efficiency in design and manufacture, millions
+ and millions of people each year spend less and less to experience the
+ marvels of digitization.
+ Modern economists mistakenly assume that spending drives growth, and that
+ when deflation is present, people tend to defer purchases (to allow prices
+ to fall); and when they do spend the diminished price makes less of an
+ economic impact.
+ According to P.
+ Schiff, this is absurd.
+ It's production that counts, not spending.
+ People do not need to be persuaded to spend.
+ Human demand is essentially endless, and if people don't want something
+ there is likely a good reason.
+ Either the product is not good or the consumer simply cannot afford to
+ buy it.
+ Either way, the act of deferring a purchase, or saving instead of spending,
+ is made for rational reasons and tends to benefit the economy as a whole.
+ Despite all, deflation remains economic enemy number one.
+ This is because inflation is every politician's best friend.
+\end_layout
+
+\begin_layout Itemize
+Higher interest rates would discourage borrowing and slow business growth.
+ But the higher rates would also encourage savings.
+ Eventually rates would start to drop.
+ Lower savings rate indicate a preference for more immediate consumption.
+ As a result, long-term capital investment designed to provide goods for
+ future consumption would be discouraged.
+ This cyclical interest rate mechanism-firmly regulated by the desire to
+ maximize the returns on the bank's deposits, the fear of losing capital
+ on risky ventures, and individual time preferences for consumption-produced
+ a rate of interest that would stabilize the market.
+ Deferring consumption to a later date would provide financing for capital
+ projects that would increase future production and raise living standards.
+\end_layout
+
+\begin_layout Itemize
+For almost 100 years, FED (in theory a private bank, but in practice an
+ extension of the Treasury Department) has set the base level for interest
+ rates upon which the entire rate structure rests.
+ By setting its "federal funds" rate higher or lower, the Fed does not dictate
+ the particular rate any bank offers for every loan, but it does move the
+ entire market up or down.
+ Banks will always charge a higher rate to the public than they pay the
+ Fed to borrow money.
+ So when the Fed raises or lowers its rates, businesses and individuals
+ will pay more, or less, to borrow.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Fed was given this authority in order to keep the economy running smoothly
+ in good times and bad.
+ The theory goes that the collective wisdom of Fed economists could help
+ keep the economy on track by determining the optimal interest rate for
+ any particular moment in time.
+ For instance, the Fed tries to boost a struggling economy by lowering interest
+ rates to the point where businesses and consumers would be more inclined
+ to borrow.
+ In very good times, when overconfidence often leads to foolishness, the
+ Fed is supposed to do the opposite and raise rates so that people will
+ think twice about taking out loans.
+ 
+\end_layout
+
+\begin_layout Itemize
+This system has 2 massive flaws:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It assumes that a small group of people at the Fed can make better decisions
+ than millions of people making independent decisions (marketplace) about
+ the proper level of interest rates.
+\end_layout
+
+\begin_layout Itemize
+The Fed's decisions are always determined by political rather than economic
+ considerations.
+ As low rates tend to make the economy appear better on the surface, push
+ down the cost of servicing mortgages and other loans, and help financial
+ firms make money, there are a great many people who want lower rates.
+ Presidents seeking reelection will always bang the drum for lower rates,
+ and they will pressure the Fed to help out.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Low rates encourage borrowing and discourage saving.
+ Not surprisingly, the US has been transformed from a nation of savers to
+ a nation of borrowers.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Trade on a national level is no different than labor specialization on a
+ personal level.
+ Each individual, or country, trades what it has in abundance, or what it
+ does best, for the things that it doesn't have or can't easily make.
+\end_layout
+
+\begin_layout Itemize
+Infrastructure spending can make a huge impact on an economy.
+ But such spending is helpful only if the benefits exceed the costs.
+ If not, the projects waste resources and hinder growth.
+ Many politicians and economists erroneously view infrastructure spending
+ not as a near-term cost that may lead to long-term gain, but as an immediate
+ means to create jobs and boost the economy.
+ This view can lead to costly misallocations of resources and the unseen
+ destruction of jobs in other areas.
+\end_layout
+
+\begin_layout Itemize
+It makes no sense to waste our labor making things that can be produced
+ more efficiently abroad.
+ If we focus on the things that we can make more efficiently than anyone
+ else, then we can trade those products for the things that others produce
+ better.
+ In the end we'll have more stuff.
+ Of course, the problem is that because of our artificially high currency,
+ high taxes, and restrictive wage and labor laws, we just are not competitive
+ in enough product categories.
+ According to Peter Schiff, this has to change.
+\end_layout
+
+\begin_layout Itemize
+US experienced sustained deflation for most of its history.
+ Then in 1913, the Fed was established.
+ The notes it issued, which promised to pay the bearer gold on demand, replaced
+ the private bank notes then in circulation, which offered similar guarantees.
+ But as soon as the Fed came on the scene, prices started rising steadily.
+ The Fed was originally given the mission of establishing an "elastic money
+ supply".
+ The idea would be that the Fed could expand or contract the amount of money
+ in circulation to correspond with economic activity.
+ It was thought that such movements could hold prices steady through good
+ times and bad.
+ Over the past 100 years, the dollar has lost more than 95% of its value.
+ So much for price stability! The truth is that the Fed now exists for the
+ sole purpose of providing the inflation necessary to allow the government
+ to spend more than it collects in taxes.
+ During the Depression, President Roosevelt decided to devalue the dollar
+ against gold.
+ In order to pull this off, the government had to control the entire gold
+ market, and for a time the government made it illegal to own gold coins.
+ Later on the ability to redeem the notes for gold was restricted to just
+ banks, then to just foreign banks, and then finally to no one.
+ We are left with a currency that has no real value and can be expanded
+ at will.
+ This has prevented the government from ever having to make hard choices
+ about spending and taxes, and has set us on a path that will eventually
+ destroy the remaining value of the dollar.
+\end_layout
+
+\begin_layout Itemize
+One of the reasons that economists have been so successful in obscuring
+ the source of inflation is that they have short-circuited the very definition
+ of the word.
+ Nearly everyone believes that rising prices means inflation.
+ So if prices aren't rising there must be no inflation.
+ But, according to P.
+ Schiff, rising prices are merely the results of inflation! The inflation
+ is the expansion of the money supply.
+ Any dictionary printed before 1990 defines inflation purely as an expansion
+ of the money supply.
+ Newer editions have hedged their bets.
+ But if you understand the true definition, you know that it is possible
+ that prices can stay flat, or even fall, while the money supply itself
+ is being inflated.
+ During a recession people wisely stop spending.
+ When they do, demand drops and prices should fall.
+ But sometimes these forces are counterbalanced by an expanding money supply
+ that diminishes the value of currency.
+ When inflation is present in a recession, prices may go up (if the printing
+ is fast enough), stay flat, or fall less than they would have with no inflation.
+ But during a recession prices need to fall in order to re-balance the economy.
+ Recessions should be deflationary.
+ Falling prices will cushion the blow of low employment.
+ Somehow, modern economists see falling prices as never-ending abyss toward
+ demand destruction.
+ They forget that when prices fall far enough, people start spending again.
+ The process allows unneeded inventories to be worked off, and for prices
+ to fall to a level justified by underlying supply and demand.
+ By keeping prices artificially high, inflation prevents this from happening.
+ Governments now reflexively fight recession by creating money.
+ If they go too far, they can produce inflation and recession simultaneously,
+ leading to a condition called "stagflation" which flourished in the 1970s,
+ economists now insist that inflation and unemployment can't co-exist.
+ They argue that when people lose their jobs, demand falls and process follow.
+ They forget the other side of the equation.
+ When fewer people are working, less stuff is produced, reducing supply.
+ When things are scarce, prices rise.
+ Adding more money into the mix could cause prices to soar.
+\end_layout
+
+\begin_layout Itemize
+Most people see relationship between US and China as a mutually beneficial
+ system whereby the US gets cheap products and cheap loans, and China gets
+ manufacturing jobs.
+ But is such an arrangement really a benefit for both parties? The Americans
+ do well: they get stuff without producing it and they get to borrow money
+ without having to save.
+ For their part, the Chinese get to work without consuming what they produce.
+ Where's the benefit there? In order to lend, someone has to save.
+ Fortunately for the US, the global economy allows these relationships to
+ go beyond borders.
+ The trump card for the US thus far has been the status of the US dollar.
+ As the world's official reserve, the dollar is accepted as the exchange
+ currency for any international transaction.
+ This means that everyone, not just the US and its trading partners, needs
+ dollars to conduct trade.
+ So even if no one actually buys things that are made in this country, dollars
+ are always in demand.
+ No other country has this monetary good fortune.
+ Many of these dollars held by foreigners are typically deposited in American
+ banks, where they can be borrowed by Americans.
+ That way they can spend even if we don't save.
+ By holding their currency to a strict peg against the US dollar, the Chinese
+ authorities have essentially required that their citizens hold at least
+ some of their savings in US dollars.
+ Without these savings from China and other nations, everyone in the US
+ including the government would have a much more difficult time borrowing,
+ and they would likely have to pay much higher interest rates for the privilege.
+ High interest rates and scarce credit would be a lethal combination for
+ our debt-fueled economy.
+ As current American leaders come into increasing conflict with China, this
+ lifeline needs to be clearly understood, before it is callously cast adrift.
+ Of course, since this relationship cannot last forever, the sooner it ends
+ the less painful it will be, particularly for Americans.
+ 
+\end_layout
+
+\begin_layout Itemize
+For most of the history, US exported much more than it imported, resulting
+ in trade surpluses.
+ In some years, especially toward the middle of the twentieth century, these
+ surpluses were truly massive.
+ Americans used the excess funds to build more capital at home, and to buy
+ up more capital abroad.
+ In the process they became the richest country on the planet.
+ But in the late 1960s the trade balance started to change, and by 1976
+ the US began running persistent trade deficits.
+ The dollar's reserve status has played a significant role in allowing this
+ deficit to grow unchecked.
+ Without the built-in demand for dollars made possible by the global economic
+ system, no country could long sustain such imbalances.
+ Companies and governments would simply refuse to trade goods for a currency
+ with which it couldn't buy anything.
+ For the first decade of 20.
+ century, which corresponded with the rise of China as an export economy,
+ the US trade deficit averaged around $600 billion per year, topping out
+ at a staggering $763 billion in 2006.
+ That's more than $2,500 for every man, woman, and child in the United States.
+ After the recession of 2008 began, those figures mercifully started to
+ retreat.
+ But US policies soon put an end to that positive reversal.
+ Normally, trade deficits tend to be self-correcting.
+ A country with a trade surplus, in that it sells more abroad than it buys,
+ will create an international demand for its currency.
+ If you want its stuff, you need its currency.
+ As a result, strong trading positions tend to strengthen a country's currency.
+ The opposite is true with countries with weak trading positions.
+ If no one wants your stuff, no one really needs your currency.
+ But when a country's currency rises, its products become more expensive.
+ This gives a competitive opportunity to countries with weak currencies
+ to start selling some of their products into that market.
+ When they sell more, demand for their currencies rises.
+ This currency counterweight should keep runaway trade imbalances in check.
+ But the dollar's reserve status and the decision of the Chinese government
+ to maintain the currency peg, has gummed up the machinery and has allowed
+ the situation to grow dangerously out of kilter.
+\end_layout
+
+\begin_layout Itemize
+Precious metals, particularly gold and silver, have all the qualities that
+ make money valuable and useful: scarcity, desirability, uniformity, durability,
+ and malleability.
+ In contrast, paper money has value only as long as enough people agree
+ to take it in exchange for goods and services.
+ But that makes its value completely subjective.
+ Since it can be produced at will, and has no intrinsic value itself, the
+ paper can become worthless if enough people lose faith in it.
+\end_layout
+
+\begin_layout Itemize
+US is able to consume more than it produces.
+ Current choices are simple:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consume less and use the savings to pay back debt.
+\end_layout
+
+\begin_layout Itemize
+Produce more and sell the extra goods to pay back debt.
+\end_layout
+
+\begin_layout Itemize
+Borrow more to continue current levels of consumption.
+\end_layout
+
+\begin_layout Standard
+The first two choices would involve unpleasant outcomes for Americans.
+ Either they would be working harder, eating less, or both.
+ The third choice deals all the sacrifice to foreigners, so the pain would
+ be shipped abroad.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As a result of a few quarters of positive GDP, economists now tell us that
+ the Great Recession is over.
+ But with unemployment still more than 10%, and underemployment (those who
+ have given up looking or who work only part-time) still more than 17%,
+ many Americans would be surprised to hear the good news.
+ In truth, the Great Recession had begun the painful, but unfinished, work
+ of re-balancing US economy.
+ In 2009, US national savings rate ticked up for the first time in years,
+ and its trade deficit finally began to shrink after its dizzying ascent
+ earlier in the decade.
+ But the Bush and Obama Stimulus programs put a stop to this.
+ The creation of ever greater quantities of debt has given us a reprieve
+ from the process of returning to living standards commensurate with US
+ productivity.
+ Once China and Japan, US creditors, realize that the continual extension
+ of credit to a customer that can't pay is a waste of resources, they will
+ change course.
+ At that point they will refocus their productivity on domestic consumers,
+ who will then fully enjoy the fruits of their labor.
+ With more than 50% of our government debt currently sold to foreign governments
+, who will pick up the slack when they stop buying? With very little domestic
+ savings to tap into, Americans alone won't be able to do it.
+ When that day comes, Americans will have two choices: default or inflation.
+ Both options will violently force American living standards downward through
+ lost purchasing power and higher interest rates.
+ 
+\end_layout
+
+\begin_layout Itemize
+Throughout history, governments have gotten themselves into trouble by spending
+ more than they have.
+ When the gaps become too big, difficult choices arise.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One option is to increase revenue by raising taxes.
+ This path is never popular with citizens, and in a democracy is hard to
+ push through.
+ Even in authoritarian states, tax increases are problematic.
+ Higher rates always discourage productivity and deflate economic vitality.
+ There is a limit to how high taxes can go.
+ Raise them enough, and people stop working.
+ Raise them higher, and they may even start rioting.
+\end_layout
+
+\begin_layout Itemize
+A far better option is to cut government spending.
+ However, this is often more difficult than raising taxes.
+ Those whose benefits are cut are particularly apt to express their hostility
+ both at the polls and on the street.
+ This is especially true when the recipients feel entitled to the benefits.
+ Politicians make lots of promises to secure their elections and voters
+ rarely consider the ability of taxpayers to actually foot the bills.
+\end_layout
+
+\begin_layout Itemize
+To avoid either of these politically unpopular options, some governments
+ choose to default instead.
+ To do this, a country simply tells its creditors that it can't pay the
+ full amount of its debt obligations.
+ If the debt is largely owed to foreigners, the decision is that much easier
+ to maker.
+ Politically speaking, it is better to stiff a foreigner than to raise taxes
+ on, or deny benefits to, a country's own citizens.
+ And default can be embarrassing for political leaders.
+ To avoid this, many opt to simply print money to pay debts, effectively
+ repudiating their obligations by inflating them away.
+ Since inflation is usually the easiest choice to make, it is often the
+ most likely.
+ Creditors get paid, but what they get isn't worth much, because government
+ dilutes its own currency, and if inflation turns into hyperinflation, it's
+ worth nothing.
+ Inflation is simply a means to transfer wealth from anyone who has savings
+ in a particular currency to anyone who has debt in the same currency.
+ With hyperinflation, the value of savings gets completely wiped out and
+ the burden of debt is removed.
+ It has happened many times before: France in the 1970s, Germany in the
+ 1920s, Hungary in the 1940s, Argentina and Brazil in the 1970s and 1980s,
+ and Zimbabwe today.
+ The countries satisfied staggering debt by wiping out the value of their
+ currencies.
+ As a result, their own populations were thrown into abject poverty.
+ If US would lost reserve status, US dollar would be just as vulnerable
+ as those currencies that went down before.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+America gets more of what it doesn't need (spending and restrictive regulations)
+ and less of what does need (savings and free enterprise).
+\end_layout
+
+\begin_layout Itemize
+Just as prices in a free market are set by supply and demand, financial
+ and real estate markets are governed by the opposing tension between greed
+ and fear.
+ But US government has done all that it can to remove fear from the equation.
+ And so beginning in 2008, as market forces moved to deflate the credit
+ and housing bubbles, the government stepped in to re-inflate both.
+ Bailouts and stimulus everywhere.
+ The spending, which the government has borrowed from future generations,
+ has kept Americans from the pain of living within their means.
+ By refusing to allow market forces to rein in excess spending, liquidate
+ bad investments, replenish depleted savings, fund capital investment, and
+ help workers transition from the service sector to the manufacturing sector,
+ the US government has resisted the cure while exacerbating the disease.
+ In the process, US have turned just about all forms of debt into government
+ debt.
+ 
+\end_layout
+
+\end_body
+\end_document

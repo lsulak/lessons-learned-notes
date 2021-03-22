@@ -1,0 +1,873 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Brokers
+\end_layout
+
+\begin_layout Standard
+Good links:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://brokerchooser.com/best-brokers/best-online-brokers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(SK) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.papucovyinvestor.sk/cez-koho-investovat-vyber-brokera/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Protection
+\end_layout
+
+\begin_layout Itemize
+USA.
+ Even if a US brokerage goes out of business, your cash and stocks will
+ be protected up to $500,000, cash is protected up to $250,000 of that half
+ a million.
+ That’s called SIPC insurance, and you don’t ever want to use a brokerage
+ that isn't SIPC insured, nor use banks that are NOT FDIC insured.
+\end_layout
+
+\begin_layout Standard
+At the risk of oversimplification, the introducing broker provides front-end
+ services, such as opening the account and taking your orders.
+ The clearing broker provides back-end services, such as executing your
+ orders and actually holding on to your investment.
+ In other words, the clearing broker has custody of your investment, not
+ the introducing broker.
+ Because SIPC protects the custody of your investment, this clearing arrangement
+ is important.
+ If the introducing broker fails (in this case, IB UK), then SIPC cannot
+ intervene, but your investment should still be in safe custody with the
+ clearing broker (IB LLC).
+ If the SIPC-member clearing broker failed, then SIPC would protect your
+ account.
+\end_layout
+
+\begin_layout Section
+Brokerage Requirements
+\end_layout
+
+\begin_layout Itemize
+Low transaction fees
+\end_layout
+
+\begin_layout Itemize
+Fractional shares
+\end_layout
+
+\begin_layout Itemize
+Maybe even automatic buying
+\end_layout
+
+\begin_layout Itemize
+Lot of companies, ETFs, many sectors, bonds, exchanges, markets
+\end_layout
+
+\begin_layout Itemize
+Ideally long history, support, blogs, training, community
+\end_layout
+
+\begin_layout Itemize
+Some tax summary
+\end_layout
+
+\begin_layout Itemize
+Reputation and protection/security
+\end_layout
+
+\begin_layout Itemize
+Solid customer support
+\end_layout
+
+\begin_layout Itemize
+Research platform and lot of features
+\end_layout
+
+\begin_layout Section
+SK/CZ
+\end_layout
+
+\begin_layout Itemize
+Interactive Brokers 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.investopedia.com/interactive-brokers-review-4587904}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From 1977, they got departments in USA, Canada, Australia, UK, Japan, India,
+ and Hong Kong.
+\end_layout
+
+\begin_layout Itemize
+They offer access to 125 markets in 31 countries, in 22 different currencies.
+\end_layout
+
+\begin_layout Itemize
+You can have Cash or Margin account (you have to deposit $2k or more).
+\end_layout
+
+\begin_layout Itemize
+Account protection - SIPC (Securities Investor Protection Corporation) -
+ couple of millions of USD per account.
+\end_layout
+
+\begin_layout Itemize
+Fees:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+US market: shares/ETFs - 0.005 USD / unit (min 1 USD and max 1% from the
+ trade) + transaction and FINRA fees (0.000132 USD / unit)
+\end_layout
+
+\begin_layout Itemize
+European market: 0.1% from each transaction, but min 4 EUR (usually no max!)...+conv
+ersion EUR -> USD costs 4 EUR
+\end_layout
+
+\begin_layout Itemize
+Activity Fee - 10 USD per month if the account has less than 100k USD.
+ But if you did transactions in a given month that are higher than 10 USD,
+ you aren't paying anything.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Trading platform - WebTrader or TraderWorkstation and also mobile app
+\end_layout
+
+\begin_layout Itemize
+Rebalancing available (between stocks) 
+\end_layout
+
+\begin_layout Itemize
+Good reporting
+\end_layout
+
+\begin_layout Itemize
+Customer support - chat, phone, messages...?
+\end_layout
+
+\begin_layout Itemize
+Very good market prices (smart routing algorithm?) - mostly for traders
+\end_layout
+
+\begin_layout Itemize
+Fractional shares
+\end_layout
+
+\begin_layout Itemize
+Everything about Interactive Brokers centers around Traders Workstation
+ (TWS)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: YES
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+XTB
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Verdict: TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tastyworks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Verdict: TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lynx
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+From 2006, they got departments in Holland, SK, CZ, in total about 9 different
+ parts of Europe
+\end_layout
+
+\begin_layout Itemize
+It's basically IB encapsulated into LYNX package - features, market prices,
+ account protection are all the same
+\end_layout
+
+\begin_layout Itemize
+The difference between IB and Lynx - minimal deposit (2k EUR), fees, and
+ customer support (available in CZ language!)
+\end_layout
+
+\begin_layout Itemize
+Fees:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+US market: shares/ETFs - 0.01 USD / unit (min 5 USD and max 1% from the trade)
+ 
+\end_layout
+
+\begin_layout Itemize
+European market: 0.12% from each transaction, but min 6 EUR (no max?)
+\end_layout
+
+\begin_layout Itemize
+No activity fees, but cash withdrawal is 8 EUR / 10 USD (except the first
+ withdrawal in each month)!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lynx is a broker, which uses for IB for trading, but Lynx has support in
+ CZ/SK, and Lynx is cheaper if you do 2 transactions monthly at max and
+ the value of your portfolio is less than $100k.
+ There is no difference between those two in terms of reliability and quality
+ of services.
+\end_layout
+
+\begin_layout Itemize
+Deposit and withdrawal are not user-friendly
+\end_layout
+
+\begin_layout Itemize
+Not user-friendly desktop platform
+\end_layout
+
+\begin_layout Itemize
+Financial information is not publicly available
+\end_layout
+
+\begin_layout Itemize
+Not listed on stock exchange
+\end_layout
+
+\begin_layout Itemize
+Does not hold a banking license
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+eToro 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks, bonds, ETFs, crypto, Forex, be careful on CFD's
+\end_layout
+
+\begin_layout Itemize
+Terrible reviews - 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.trustpilot.com/review/etoro.co.uk}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+More like social trading platform rather than a broker
+\end_layout
+
+\begin_layout Itemize
+No transaction fees, but probably bigger spread, 10USD/month as inactivity
+ fee, and 5 USD for cash withdrawals
+\end_layout
+
+\begin_layout Itemize
+Account only in USD
+\end_layout
+
+\begin_layout Itemize
+Protection
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+eToro UK clients can expect to be compensated by the maximum amount of £85,000
+ guaranteed by the
+\end_layout
+
+\begin_layout Itemize
+Financial Services Compensation Scheme (FSCS).
+\end_layout
+
+\begin_layout Itemize
+Other investors will have their live trading accounts with eToro (Europe)
+ Limited, which is regulated by the Cypriot watchdog, CySEC.
+ The amount of investment protection coverage at eToro Europe is a maximum
+ of €20,000.
+ This threshold is set by the Cypriot Investors Compensation Fund.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Even in 2020, eToro is still considered a startup.
+ It is not listed on any stock exchange and it also does not provide regular
+ financial statements to the public.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Degiro 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+probably not available for SK people since 23.10.2018? Only available to people
+ for which countries Degiro got a department (CZ for example)
+\end_layout
+
+\begin_layout Itemize
+from 2013, available in 18 EU countries
+\end_layout
+
+\begin_layout Itemize
+One of the biggest EU broker
+\end_layout
+
+\begin_layout Itemize
+Trades in 60 markets in 30 countries, the range of products very similar
+ as IB/Lynx.
+\end_layout
+
+\begin_layout Itemize
+Cash/Margin account, but it's important that your account is associated
+ with certain country, currency, and language.
+\end_layout
+
+\begin_layout Itemize
+Account protection - up to 20k EUR (Holland protection scheme), but all
+ account money is fairly separated
+\end_layout
+
+\begin_layout Itemize
+Reporting - basic report each year for taxes, no sophisticated analysis
+\end_layout
+
+\begin_layout Itemize
+Customer support - phone or emails
+\end_layout
+
+\begin_layout Itemize
+Fees:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+US market: 0.50 USD / transaction + 0.004 USD/share
+\end_layout
+
+\begin_layout Itemize
+European market: shares: 0.058% from each transaction + 4EUR, ETFs: 2 EUR
+ + 0.038% for transaction (but there are 
+\begin_inset Quotes eld
+\end_inset
+
+free
+\begin_inset Quotes erd
+\end_inset
+
+ ETFs)
+\end_layout
+
+\begin_layout Itemize
++ 2.5EUR fee/year for each market you did a trade in or hold a position
+\end_layout
+
+\begin_layout Itemize
++ currency exchange is 0.1%
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Trading212 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quite popular in the UK, not available in Canada and USA.
+\end_layout
+
+\begin_layout Itemize
+They did some weird account/trading suspensions in the past, is it even
+ safe and reliable?
+\end_layout
+
+\begin_layout Itemize
+They are operating under Interactive Brokers, so if I choose IBKR, then
+ - for the sake of diversification - I wouldn't like to use Trading212.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fidelity International 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is an independent company from Fidelity Investments, but both are mostly
+ run by the Johnson family.
+\end_layout
+
+\begin_layout Itemize
+For non-US people, doesn't seems to be that advanced.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Charles Schwab
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No commissions, stocks, ETFs, options, futures, Schwab intelligent portfolios.
+\end_layout
+
+\begin_layout Itemize
+$25k or more needed for being able to open non-US account.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Revolut
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not really developed yet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Section
+UK
+\end_layout
+
+\begin_layout Itemize
+Vanguard (ETFs are free, but stocks are not - 7 dollars per trade for the
+ first 25 trades, then 20 dollars,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+20 dollars fee annually, minimum of investing in their funds is quite big
+ - 1000 or 3000 dollars)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: Maybe
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Freetrade
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quite young and not really developed? (2020)
+\end_layout
+
+\begin_layout Itemize
+[EEA COUNTRIES 2021+] 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Robinhood 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In 2017, it didn't support DRIP, tons of features are not there, just a
+ simple graph...but they finally have fractional shares and DRIP.
+\end_layout
+
+\begin_layout Itemize
+Pros: Tons of them, no commissions for trades nor options! 
+\end_layout
+
+\begin_layout Itemize
+Cons: See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.youtube.com/watch?v=g8GqZfmbVdA}
+\end_layout
+
+\end_inset
+
+.
+ Not so good customer services.
+ They are on market from about 2013, they haven't been through recession
+ yet.
+ Management - they did fast decision (3% on checking/savings accounts) Money
+ to withdrawal or deposit - it takes 4 working days! 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verdict: No
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Abroad (Especially USA)
+\end_layout
+
+\begin_layout Standard
+Mostly for inspiration; plus, these brokers can expand to the Europe in
+ the future.
+ Since some of them seem to be truly excellent, it's good to know about
+ these.
+\end_layout
+
+\begin_layout Itemize
+M1 Finance (USA only)
+\end_layout
+
+\begin_layout Itemize
+E-Trade (USA only)
+\end_layout
+
+\begin_layout Itemize
+Fidelity Investments (USA only!)
+\end_layout
+
+\begin_layout Itemize
+FirstTrade 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Long time on the market, from 1985, commission free model, different retirement
+ accounts, trust accounts, stocks, mutual funds, options, ETFs, bonds, internati
+onal accounts, DRIP, extended hours; but desktop platform is quite outdated)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Webull 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Free stock trading, 5k stocks and ETFs in US, short selling, free extended
+ hours trading, for intermediate investors, but no options, mutual funds,
+ no bonds, no crypto, no retirement accounts, it's not a web-based platform!
+ It's more for traders probably than long term investors)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Robo-advisors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Betterment (EU-alternatives 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://robo-advisors.eu/}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.quora.com/Is-there-a-European-equivalent-of-Betterment-If-not-why-
+is-the-European-market-inhibiting-financial-market-innovation}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+EquityMultiple (Real Estate Platform - bad liquidity, REITs have them better;
+ it's crowd-sourcing, minimum 5k dollars) - there is also RealMogul as an
+ alternative
+\end_layout
+
+\begin_layout Itemize
+Wealthsimple
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Brokers/Platforms For Real Estate
+\end_layout
+
+\begin_layout Itemize
+Fundrise
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Passive long-term real estate investing with 8-12% returns, minimum $500
+ and probably mostly for USA, they are here from about 2016.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

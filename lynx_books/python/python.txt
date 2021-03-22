@@ -1,0 +1,1478 @@
+----
+Standardna implementacia Pythonu - CPython. Program bezi v 2 krokoch: 
+* parsuje a compiluje zdrojovy kod do bytekodu.
+* spusti bytekod s pouzivim stack-based interpretru. Tento interpret ma stav, ktory musi byt udrziavany pokial sa pokial spusta. V tomto momente sa zaroven zapina mechanizmus zvany GIL. V podstate je to mutex, ktory zabranuje aby CPython bol ovplivneny preemptivnym multithreadingom kde 1 thread ma kontrolu nad programom prerusenim dalsieho threadu. Mohlo by to poskodit stav interpretru - v 1 momente moze bezat teda iba 1 vlakno!
+Moze to byt obidene pouzitim concurrent.futures alebo subprocess. Systemove volania nie su uzamknute GILom, bezia paralelne aj vo vlaknach.
+
+Blokujuce IO operacie - thready alebo vstavany modul asyncio.
+
+Dalsie implementacie 
+	- PyPy - aj 5x rychlejsi nez CPython
+	- Jython - do Python 2.7 - kompiluje Pythonovsky kod do Java bytekodu a spusta vo JVM
+	- IronPython - pre .NET framework, vyuziva oboje kniznice (python/.net), ale len do Python 2.7.
+	- PythonNet - je to package, poskytuje integraciu nativne instalovaneho Pythonu s .NET CLR (Common Language Runtime). Je to inverzny pristup k IronPythonu. Podpora do Pythonu 2.7.
+	- Micro Python - velmi aktivny projekt, open HW (na gite), implementacia Pythonu 3.5, rychlost zrovnatelna s Arduinom, on-chip kompilator. Vid BBC micro:bit - male HW zariadenie - Procesor, Compass, Accelerometer, Pins, USB, Battery, Reset, Bluetooth Antenna, LEDs, 
+
+----
+Python nejake idiomy
+- nepouzivat pomocnu premennu pre vymenu 2 premennych - pouzit tuples (foo, bar) = (bar, foo)
+- na unpack hodnot pouzivat tuples. Unpacking je mozne aj s operatorom *:
+a, *middle, c = [1,2,3,4]
+- pouzit ''.join pri vytvarani stringu z listu
+- pouzivat defaultny parameter dict.get() pre nastavenie defaultnych hodnot
+- context managers pre manazovanie zdrojov
+- pouzivat itertools modul (funkcionalne programovanie)!
+- vyhnut sa pouzivaniu kontroly 1 premennej na viac veci v podmienke - radsej porovnat if var in (item1, item2, ...) - docasna collection, napr tuple
+- list comprehensions pre vytvaranie listov z uz existujucich dat
+- v cykloch pre iterovanie - ak potrebujeme indexy, tak je najlepsie pouzit enumerate. Ak potrebujeme iterovat cez nejaky iterator, tak:
+for index, element in enumerate(iter):
+	...
+- odchytavanie viacerych vynimiek naraz, kompatibilne pre Python 2 aj 3: 
+except (ValueError, IndexError) as e:
+	pass
+- Python scope resolution je zalozene na LEGB (local, enclosing, global, built-in)
+- Pozor na to, ako Python binduje premenne (najma list comprehensions) v closures - moze byt na zaklade lazy evaluation! 
+- Nepriradovat jednej premennej hodnotu viac krat. Ked uz, nech nie su rozdielneho typu!
+- vyhnut sa zbytocnemu 'explicitnemu' kodu! Ak sa da nejaka konstrukcia vynechat a vysledok je ten isty, treba tak.
+- kazdy prikaz na 1 riadok! Napriklad velke podmienky nezlucovat pomocou logickych spojok, ale ulozit si ich do premennych a az potom pouzit logicke spojky
+- premenne co sa mnepouziju - '__' lepsie nez '_', lebo ten je typicky pre funkciu gettext() v interaktivnom rezime, tak aby sa to nezamienovalo
+- tvorba listu obsahujuceho rovnaky prvok: [None] * 4
+- pouzitie sets/dicts namiesto listu ak mame viac poloziek, nemame duplikaty a opakovane budeme hladat nejaky prvok
+- kontrola ci je premenna True, None alebo 0 - staci if value, if not value, if value is None
+- moc nepouzivat zalomenie riadku '\' radsej to rozdelit lepsie do riadkov
+- na samotne komentovanie kodu nepouzivat trojite uvodzovky - docstring (dokumentacia) je nieco ine
+- Flat is better than nested - ak moc zanorenych ifov, lepsie je spravit postupne funkcie nez moc 'nested' kod
+- Sparse is better than dense - radsej kod kludne trosku oddelit medzerami nez aby bolo vsetko nakope
+
+
+----
+Zmazanie bytecode suborov: $ export PYTHONDONTWRITEBYTECODE=1
+Jeho tvorba je rychla, mozeme si to dovolit. Tvori sa pri kazdom nacitani suboru.
+
+----
+Production:
+* Freezing - vytvorenie jedneho velkeho spustitelneho suboru, ma o 2-12mb viac, obsahuje tiez interpreter Pythonu:
+	- bbFreeze - nepodporuje Python3, ostatne tu vymenovane ano. Prerekvizity - Python, Setuptools a pywin32 dependency na Windowse 
+	- py2exe - prerekvizita Python 
+	- pyInstaller - jeden z naj, vsetky platformy, prerekvizity ako bbFreeze
+	- cx_Freeze
+	- py2app
+* Packaging - subory deb alebo rpm
+
+----
+Vim: uprava .vimrc
+* pre PEP8:
+set textwidth=79 " lines longer than 79 columns will be broken
+set shiftwidth=4 " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4 " a hard TAB displays as 4 columns
+set expandtab " insert spaces when hitting TABs
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround " round indent to multiple of 'shiftwidth'
+set autoindent " align the new line indent with the previous line
+
+* pripadne sa pozriet na vim-flake8, tak pripadne este doplnit:
+autocmd BufWritePost *.py call Flake8()
+
+* syntaxtic - run Pyflakes pri zapise a ukazanie warningov a chyb v rychom okne:
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+
+* Python-mode: komplexne riesenie pre Vim, ma asynchronnu kontrolu kodu v Pythone (pylint, pyflakes, pep8, mccabe), refaktoring kodu a autokompletion (Rope), folding, podpora Virtualenv, Auto PEP8 error fixes, hladanie cez Pythonovsku dokumentaciu a spustanie kodu.
+
+* SuperTab - maly VIM plugin, code completion s pouzitim TABu alebo inych
+
+----
+C kod pre python (napriklad moduly) - PEP 7 standard pre coding style
+
+----
+Data types
+* mutable - dovoluju modifikaciu na mieste, napr listy, dicts
+
+* immutable - nemaju ziadnu metodu na zmenu ich obsahu, napr cisla, stringy, tuple
+Stringy su immutable, spajanie:
+	- stringy su v liste: najefektivnejsie je ich spajat tak, ze si ulozime do listu jednotlive substringy a potom cez "".join(list). Najlepsie cez list comprehensions. 
+
+	- ked postupne pridavame do stringu, tak potom cez operator +, ale cielova premenna nech je ina nez zdrojove. Pripadne: foo = ''.join([foo, 'asd'])
+
+	- ak pozname dopredu pocet stringov co chceme dat dokopy: 
+	foobar = '{foo}{bar}'.format(foo=foo, bar=bar) 
+
+----
+Automaticke checky zdrojakov, staticka analyza:
+* pyflakes - nepodporuje PEP 8, preto sa pouziva flake8, ktora ano. 
+* hacking - pouziva sa pre nejake dalsie checky (pouzitia except, kompatibilita Python 2/3, importy, ...). Idealne pouzit s flake8.
+* pylint - podporuje PEP 8, pre testovanie 
+
+----
+Dokumentacia:
+reStructuredText - reST - markup language. Sphinx je nastroj co pracuje s tymto formatom - vie ho precitat a spravit z neho dokumentaciu.
+
+Mala by obsahovat:
+	- co projekt riesi
+	- licenciu
+	- par prikladov
+	- instalaciu
+	- kontakt
+	- system na sledovanie chyb
+	- link na zdrojaky
+	- README
+	- (moze byt aj CONTRIBUTING.rst - subor co sa zobrazi pri pull requeste. Checklist veci co sa maju dodrziavat)
+
+----
+Instalovanie, distribucia a sprava balikov:
+* distutils - python std lib. Alternativa - distlib.
+* setuptools
+* pbr - python build reasonable, inspirovane predchadzajucimi.
+	  - automaticke instalovanie zavislosti, dokumentacie (Sphinx)
+	  - generovanie autorov, changelogu a version managementu, based on GIT repo
+* wheel - built-package format
+* pip 
+	- source bin/activate alebo len deactivate - aktivovanie alebo deaktivovanie prostredia, je potreba byt v tom priecinku, v ktorom sa dane virtualne prostredie nachadza
+	- pip list - list nainstalovanych balickov. 
+	- pip3 freeze > requirements.txt - ulozenie vsetkych explicitnych dependencies prostredia do suboru. 
+	Potom opatovne nainstalovanie tohto prostredia - pip3 install -r /cesta/requirements.txt
+
+----
+Virtualne prostredie - na testovanie:
+* virtualenv, nainstaluje setuptools, pip a samotny python. V starsich verziach nez Python 3.4. Od neho staci pyenv
+* venv - sucast python3: python3 -m venv myenv -> potom aktivovat / deaktivovat. No toto prostredie neinstaluje Pip alebo setuptools defaultne. Takze treba rucne v nom.
+
+----
+Optimalizacie 
+	* String Concatenation
+		- namiesto s += substr v cykle -> s = "".join(list)
+		- vyhnut sa str = "a" + var + "b" -> pouzivat str = "a%b" % (var)
+		- bytes - sekvencia 8-bitovych hodnot (UTF-8) a str - Unicode.
+	* optimalizovat iba ked sa to oplati!
+	* funkcionalne funkcie su rychlejsie nez klasicke loopy - su kompilovane do C
+	* vyhnut sa pouzivani funkcii (plati aj pre lambdy) vnutri cyklu
+	* lokalne premenne su rychlejsie nez globalne
+
+----
+Exceptions 
+* idealne vyhodit na danom mieste kde je chyba len vynimku a o uroven vyssie ju spracovat a vypisat chybovu hlasku
+* nevracat None. Proste vyhodit pri chybe vynimku
+
+----
+Nonlocal statement 
+	- pouzitie pri vnorenej funkcii - indikacia, ze sa moze modifikovat dana premenna v jej uzatvorenej scope. Je to komplementarne s 'global', co sa naopak pouziva ked chceme aby premenna isla priamo do scope modulu.
+	- pouzitie iba v jednoduchych funkciach!
+
+----
+Argumenty
+* Operator '*' v argumentoch ako prefix 
+	- posledny parameter, pre lubovolny pocet parametrov
+	- pouzivat ak vieme ze pocet argumentov bude relativne maly. Vzdy sa to konvertuje na tuple a moze spotrebovat vela pamate, nepouzivat s generatormi ako parametrami - budu iterovat az do konca.
+	- dobre pouzivat s keyword-only argumentami
+	- samotny ako parameter pri definicii funkcie - oddelenie pozicnych argumentov a keydowrd argumentov
+	- ** - keyword arguments v Pythone 2 - je to ulozene ako dict
+* pouzivat keyword parametre - najprv pri volani specifikovat pozicne, potom keyword argumenty, teda napr.: func(5, number=20). Je mozne specifikovat aj defaultne hodnoty parametrov. Tie su vyhodnocovane iba raz, pri nacitani modulu!
+
+----
+OOP 
+
+Dedicnost
+* pouzivat 'super(currClass, self).method() - v Python 2 alebo super(__class__, self).method() pripadne super().method() v Python 3' a nie UpperClass.method() -> moze dojst k problemom napriklad pri tzv. diamont inheritance - trieda dedi z 2 tried, ktore maju spolocneho predka. 
+
+* Super definuje MRO (method resolution order) ktore pracuje depth-first, left-to-right - superclassy su inicializovane pred ostatnymi a spolocne superclassy v diamont hierarchii bezia iba raz. Zistenie co bezi v akom poradi - metoda mro() (da sa povedat ze v opacnom poradi nez by sa cakalo).
+
+* vyhybat sa viacnasobnej dedicnosti ak rovnaky efekt moze byt docieleny pouzitim mix-in triedami
+Mix-in je mala trieda co obsahuje dodatocne metody co by mala trieda ponukat. Nevyzaduju konstruktor ani instancne atributy
+
+* privatne atributy s prefixom '__' - nie su pristupne k zdedenej triede. Ak su v triede ParentClass ktora je predkom ChildClass, tak mozeme stale k nim pristupit po instanciovani ChildClass, ako foo._ParentClass__variable, pretoze Python interne funguje tak, ze privatnu premennu __variable prelozi ako _Class__variable. Klasicky pristup z ChildClass je zamedzeny, pretoze sa nemachnu, tak funguje protected v pythone. 
+Pouzivat len v takych pripadoch, kedy napr. moze nastat naming konflikt so subclassmi. Teda ak nadradena a zdedena trieda maju rovnaky nazov atributu, ak su obe privatne a volaju sa rovnako, tak su rozdielne. Inak by tam bola hodnota z nadradenej triedy. 
+
+* protected atributy s prefixom '_'.
+
+* nevytvarat v triede setter a getter metody - pristupovat k atributom normalne. Pripadne ak je treba, tak cez dekorator @property a jeho korespondujuci .setter atribut. Implementacia takych metod nemoze mat velky runtime, na to su obycajne metody. Typicky sa @property pouziva k tomu, aby sa dodala nejaka funkcionalita k existujucim atributom, pristup zvonka triedy sa nemeni. Ak je to pouzivane v triede casto, je cas refaktorovat...
+ 
+* deskriptory: metody __get__ a __set__
+
+* __getattr__ a __setattr__ napriklad pre pristup k atributom, ak chceme vykonat nejaku operaciu, ak atribut neexistuje, teda prvy krat.
+__getattribute__ sa naopak vola vzdy ked sa pristupuje k atributu, aj ked existuje v danej triede.
+Buildin funkcia hasattr vola __getattr__ a __getattribute__ podla vyssie uvedenych pravidiel.
+Moze nastat situacia kedy sa volaju rekurzivne donekonecna, da sa riesit cez super() pre priamy pristup k instancnym atributom.
+
+* metaclass - zdedena od type. Defaultne sa vola metoda __new__(meta, name, bases, class_dict) pre ziskanie obsahu asociovanej triedy. Pouzitie:
+	- zaistenie ze subclassy su well-formed pri ich definovani, predtym nez su skonstruovane objekty ich typov.
+	- automaticky registrovat typy (classy) v programe.
+	- modifikacia triednych atributov predtym nez je trieda volana ale po tom ako je definovana.  
+
+* __repr__ - vola sa pri volani printe instancii objektu - print(obj). Pre vypisanie atributov je mozne pouzit aj print(obj.__dict__)
+
+
+Magicke metody
+* __new__ - prva vec, co sa vola pri inicializacii objektu. Vytvori instanciu a potom preda argumenty do inicializeru, moc sa nepouziva
+
+* __del__ - na konci 'zivotu' objektu, teda pri garbage collectingu, napr pri cleanupe (sockety, subory) - ale opatrne! Nie vzdy sa moze stihnut zavolat, odporuca sa ho takmer nepouzivat
+
+* na porovnanie (samozrejme vsetky s prefixom a suffixom '__' aj vsetky v dalsich kategoriach): eq, ne, lt, gt, le, ge
+
+* unarne operatory: pos, neg, abs, invert, round, floor, ceil, trunc
+
+* normalne aritmeticke operatory: add, sub, mul, floordiv, truediv, mod, divmod, pow, lshift, rshift, and, or, xor
+
+* reflektivne aritmeticke operatory, ktore su ako kategoria vyssie uvedena, akurat maju este prefix r, napr teda __radd__
+
+* augmented assignment: ako vyssie uvedene kategorie, akurat sa pisu s prefixom i, teda napr __iadd__ a implementuju napr sucet zaroven s priradenim (a += b)
+
+* metody pre konverziu typov: int, long, float, complex, oct, hex, index, trunc
+
+* metody co reprezentuju danu triedu, pre implementovanie ako sa vstavane funkcie, ktore vracaju reprezentaciu danej triedy, zachovaju: 
+	- str: teda ak je volana metoda std() na instanciu danej triedy,
+	- repr: rozdiel medzi tym a str je, ze repr je output co je viac machine-readable a str() je pre human-readable,
+	- format: pre spravanie new-style string formatting, napr pre definovanie vlastnych numerickych typov ktorym chceme dat specialne formatovanie 
+	- bytes: pre konstruovanie bytovych poli, podobne sa chova ako str a unicode v Pythone 2.7
+	- hash: vracia int, pre rychle porovnanie klucov v slovnikoch. Pravidlo!: a == b implikuje hash(a) == hash(b)
+	- bool: spravanie ak je bool() volane na instanciu danej triedy
+	- dir: mal by vracat zoznam atributov, napriklad ak pouzivame getattr alebo getattribute sa to moze hodit. Alebo inokedy, ked dynamicky generujeme atributy
+
+* metody pre pristup: getattr, setattr, delattr, getattribute, viz vyssie
+
+* metody pre tvorbu kontainerov: len, getitem (pristup cez index), setitem, delitem, iter, reversed, contains (pri podmienkach, 'in'), missing (ak volame napr d['george'] ale 'george' nie je klucom v dict, vtedy sa bude volat __missing__('george'))
+
+* reflection: pri volani std isinstance() a issubclass(): instancececk a subclasscheck
+
+* callable objects: __call__, moze byt pouzity napriklad ak sa stavy instancii objektov casto potrebuju menit. Volanie instancie moze byt elegantna cesta ako pokazde zmenit stav objektu.
+
+* context managers: enter, exit - definovanie spravania kontext manazerov pri vstupe/konci
+
+* deskriptor objects: triedy pristupne cez getting setting alebo deleting, mozu tiez menit ine objekty. Nie su myslene tak, aby boli implementovane samostatne, skor su umiestnene v inej triede. Su pouzvane napr pri implementovani OO DB alebo tried, kedy su ich atributy (teda ich hodnoty) zavisle na sebe. Metody: get, set, delete
+
+* kopirovanie: 
+	- copy: shallow copy objektu, teda pokial je instancia novou tak su vsetky jej data referencovane, teda objekt samotny je skopirovany, ale data su stale referencovane, teda zmena dat v shallow kopii moze sposobit zmeny v povodnej
+	- deepcopy: skopirovane su aj data objektu. Parameter memodict je cache predchadzajuco skopirovanych objektov, zabranuje nekonecnej rekurzii pri kopirovani ATD.
+
+* pickling 
+	- serializacia ATD. Napriklad ak chceme ulozit objekt a neskor ho znovu obdrzat a pouzivat. Ma nie len vlastny modul (pickle) ale aj vlastny protokol a s nim spojene magicke metody. Serializacia funguje napriklad do suboru, no nie je to perfektne pretoze je lahko mozne ich poskodit. Je to o nieco bezpecnejsie nez pouzitie textovych suborov, ale stale to moze byt moznost pre utocnika a jeho skodlivy kod. Medzi verziami Pythonu je to nekompatibilne, no aj tak to moze byt slusna volba pri cachingu alebo inymi serializacnymi problemami
+	- moze sa pouzit pre lubovolnu triedu ktora dodrzuje pickle protokol, nie len pre vstavane ATD. Pickle protokol ma tieto volitelne metody: 
+		# getintargs - ak chceme volat konstruktor ked je trieda unpicklovana, mozeme tuto metodu definovat. Mala by vratit tuple argumentov, co budu predane do konstruktoru. Je to pre stary styl tried.
+		# getnewargs - Pre novy styl tried, vracia argumenty co sa predaju metode __new__
+		# getstate - namiesto atributu __dict__ v objekte mozeme vratit nieco ine co bude ulozene ked bude objekt picklovany
+		# setstate - stav pouzity v predchadzajucej metode urcuje co sa vrati pri unpicklovani, namiesto defaultneho __dict__ v objekte
+		# reduce - pri definovani 'extension types' (typy implementovane pouzitim Pythonovskeho C API), treba definovat ako ich bude Pyton picklovat. Moze vracat bud string reprezentujuci globalne meno co bude Python hladat a picklovat, alebo tuple, ktore bude obsahuvat 2-5 elementov: callable objekt co je volany pre opatovne vytvorenie objektu, tuple argumentov pre tento objekt, zvysne su uz volitelne - stav predany __setstate_, iterator yielding zoznam prvkov co budu picklovane a iterator yielding slovnik prvkov co budu picklenute.
+		# reduce_ex - existuje pre kombatibilitu. Ak ej definovane, bude volane cez __reduce__ na picklovanie. Samotne reduce moze byt definovane tiez, pre starsie verzie picklovania ktore tuto metodu nepodporuju
+
+
+----
+Paralelizmus a konkurencia: modul subprocess je najlepsi:
+* subprocess.Popen pre vytvorenie noveho procesu, metoda communicate s parametrom timeout pre cakanie na proces po urcity timeout, ak neskonci dovtedy tak raisne vynimku.
+
+* Queue - casto vyhodny ATD, ma blokujuce operacie, buffer sizes a joining, pouzitie napr pri pipelinoch. Pipeliny su dobry sposob ako organizovat sekvencnu pracu ktora bezi konkurencne s pouzitim viacerych Pythonovskych threadov. Ale pozor na aktivne cakanie, memory explosion a stopping workers. Thread spotrebuje kazdy tak 8 MB pamate, casto je vyzadovane zamykanie KS a ich start nieco stoji - overhead moze byt velky a vsetko spomalovat.
+
+* Coroutines 
+	- pre beh viacerych funkcii konkurentne, kludne aj niekolko desiatok tisic - s Threadmi casto nie je mozne pre nedostatok pamate. Moze sa pouzit pre separovanie hlavnej logiky nejakej casti programu od jej interakcii s okolnym prostredim.
+	
+	- su implementovane ako rozsirenie generatorov. Takejto 'generator function' sa posle cez send() nejaka hodnota po kazdom yielde. Funkcia obdrzi tuto hodnotu ako vysledok vyrazu yield. 
+	
+	- ako thready (moze sa to vyuzit namiesto nich), su to nezavisle funkcie ktore mozu konzumovat vstupy zo svojho prostredia a produkovat vystupy. Rozdiel je, ze coroutines sa zastavia na kazdom yielde v generator function a znova spustia po kazdom sende() zvonka.
+
+	- obmedzenie v Python 2 - nie je tam yield from vyraz a nie je podpora pre return statement v Python 2 generatoroch.
+
+----
+Bioinformatika - rosalind.info je tam mnoho algoritmickych uloh, ktore sa riesia v tejto oblasti. Su tam aj vypracovania, je to pre Python.
+
+----
+Unit Testing
+* nose package - spusti kazdy subor s prefixom test_ a kazdu funkciu s prefixom test_ -> napr. nosetests -v (v danom adresari)
+
+* unittest:
+	- package v std lib.
+	- classa co zdedi od unittest.TestCase. Nepouzivat klasicky assert, ale tie co su v tomto baliku (prefix 'assert'). Preskocenie testu - unittest.SkipTest exception, alebo cez dekorator.
+	- pred testami je metoda setUp a po nich tearDown
+	- mock - objekty co simuluju spravanie realnych objektov. Pouzitie napr aj cez with mock.path() pre zavolanie externeho kodu. No je mozne pouzit aj dekorator namiesto toho.
+	- hlavne metody: 
+	assert, assertEqual, assertNotEqual,
+	assertIn, assertNotIn, assertFalse, assertTrue,
+	assertIsInstance, assertRaises, ...
+	- alternativy - py.test no to skor pre jednotlive testy nez skupinu.
+
+* testscenarios - pri testovani roznych scenarov nad podobnou funkciounalitou (napr. rozne DB). Treba danu triedu zdedit od testscenarios.TestWithScenarios (alebo ine) 
+
+* fixtures - kniznica, treba zdedit podobne ako unittest. Je to na podobny ucel ako setUp a tearDown, pred/po kazdom teste. Netreba dedit z unittest pretoze fixtures.TestWithFixtures (napr.) z nich uz dedi.  	
+
+* subunit
+	- modul, poskytuje streaming protokol pre vysledky testov (mozne agregovanie aj z inych jazykov alebo programov, archivacia,...). Vysledok v bin podobe, treba nejaky tool na pozretie, napr. subunit2pyunit, subunit2csv, subunit2gtk a subunit2junitxml.
+	- spustenie napr. python -m subunit.run test_scenario | subunit2pyunit
+	Alebo s parametrom discover je mozne najst automaticky ktore testy spustit, pripadne --list pre ich vypis a nie spustenie.
+
+* testrepository
+	- poskytuje DB obsahujucu vysledky testov. Je mozne spustat testy paralelne
+	- testr init -> touch .testr.conf -> % python -m subunit.run test_scenario | testr load
+
+* coverage - ktore casti kodu neboli testovane, test runner package je dobry nosetest, napr:
+	nosetests --cover-package=ceilometer --with-coverage tests/test_1.py
+Coverage neurcuje to, ze vsetky mozne scenare a podmienky boli otestovane, iba kam sa testy dostali.
+
+* tox - nastroj pre automaticke spustanie testov a instalovanie virtualneho prostredia. Instalovanie atd. pomocou konfiguracneho suboru tox.ini
+
+* detox - ako tox, ale pracuje paralelne medzi jednotlivymi prostrediami
+
+* Gerrit, Zuul, Jenkins - workflow co pouziva OpenStack, kazdy pushnuty commit ide cez code review (Gerrit), testing jobs (Zuul+Jenkins) a code review.
+
+* Travis CI - beh testov po kazdom pushu alebo mergi, alebo pull requeste. 
+
+----
+TDD - Test-Driven Development
+* najprv (unit) testy potom kod tak aby testy postupne passli.
+* Agile Development. Parove programovanie, jeden pise testy druhy kod, mozu sa menit po 1 dni.
+* 
+
+----
+Debugger - pdb:
+* pre jeho start staci importnut pdb a spustit v kode pdb.set_trace()
+* v interaktivnom mode pre inspekciu aktualneho stavu: 
+	bt - print traceback of exec. stack. 
+	up/down - move scope hore/dole vo function call stack aktualnej funkcii.
+* v interaktivnom mode pre debuggovanie program's execution:
+	step - pusta program az po dalsi riadok, potom vrati kontrolu debuggeru. Ak dalsi riadok obsahuje volanie funkcie, debugger sa zastavi vo funkcii v kt. bol volany 
+	next - ako step, ale debugger sa nezastavi vo funkcii v kt. bol volany
+	return - pusta program az po return v aktualnej funkcii, potom sa vrati do debuggeru 
+	continue - pokracuje v spusteni programu az po dalsi breakpoint alebo set_trace
+
+----
+tracemalloc pre memory usage a leaks (Python 3.4+)
+* memory management pouziva reference counting. Ak vsetky referencie do objektu expiruju, referencovany objekt je tiez cleared. CPython ma tiez built-in cycle detektor pre zaustenie, ze self-referencing objekts su tiez napokon garbage collected.
+* vypise ktore objekty dominuju v memory usage a kde sa nachadzaju v zdrojaku, tiez kolko spotrebuju.
+
+----
+Verzie (PEP 440)
+
+* alpha - plno bugov, chybajuce casti
+* beta - moze byt kompletna ale su tam chyby
+* candidate - moze byt poamly releasnuta ako final produkt
+* rc - release candicate - povazovane za novsie nez candidate
+* post release - pre adresovanie mensich chyb v publikacnom procese. Nie bugfix verzie, vtedy sa radsej pouziva inkrementovane minor version number
+* development release - pre-release verzie, prioritnejsie nez alfa, befa, candidate alebo final release.
+
+----
+Importy (PEP 8)
+* poradie - standard, 3rd party, lokalne kniznice
+* zistit co je importnute a z kade - slovnik sys.modules, napr. sys.modules['os']
+* pri importe sa Python spolieha na zoznam ciest - v sys.path - je mozne ho menit ako klasicky list
+* pri importovani - verejne API je ulozene v module v liste __all__ - na zaciatku suboru. Ak tam nie je, tak je mozne importnut vsetko, co je public
+* dynamic import - import v nejakej funkcii, teda za behu a nie pri inicilizovani modulov
+
+----
+Triedy, metody a funkcie
+* wrappers 
+	- functools.update_wrapper pre (manualne) zachovanie atributov metod/funkcii
+	- functools.wraps - lepsie, je to dekorator
+	- inspect.getcallargs - vrati slovanik obsahujuci mena a hodnoty argumentov
+
+* @staticmethod - patria k triede nie instanci
+
+* @classmethod - tiez, pouzivaju sa pre vytvaranie 'factory methods' - metody ktore instanciuju objekty specifickym sposobom.
+
+* @abstractmethod - bud implementacia cez @staticmethod a raise NotImplementedError, alebo cez modul abc ako @abc.abstractmethod. Trieda s abstraktnou metodou nemoze byt instanciovana. Je mozna implementacia abstraktnej metody. Po zdedeni mozeme cez super ziskat k nej pristup.
+
+* mixin - trieda co zdedila z viacerych tried a kombinuje ich casti
+
+* super - vola konstruktor, cize zaroven instanciuje nadradeny objekt 
+
+----
+Funkcionalne programovanie
+* generators
+	- objekt, vracia hodnotu na kazde volanie svojej next() metody az po vynimku StopIteration
+	- yield - pouzitie vo funkcii (vzdy funkcia alebo metoda), Python oznaci danu funkciu ako generator. Pri yielde deje to co pri returne, no interpret ulozi referenciu na zasobnik, ktora bude potom pouzita pri navrate do funkcii ak bude volana najblizsie metoda next(). 
+	- inspect.isgeneratorfunction(f) - pozre ci je funkcia f generator
+	- inspect.getgeneratorstate(gen) - zisti stav generatoru
+	- metoda send() - je nou mozne zasielat generatoru hodnotu cez parameter 
+	- generatory je mozne zapisat aj na 1 riadku, ako list comprehensions ale s '()' - je to to iste ako cez yield
+	- enumerate - vracia cislo a prvok v iteratore, sprava sa ako generator. 2. parameter - cislo, s ktorym sa zacina indexovanie.
+
+* list comprehensions - list, sets, dicts. Pouzivat pre zmenu nie pre vytvaranie listov. Je to trocha rychlejsie a zapis prehladnejsi. No nepouzivaju lazy evaluation, to iba generatory.
+
+* funkcionalne funkcie
+	- map(f, iterable) - aplikuje f na kazdy prvok z iterable a v Pyth3 vrati iterable map objekt (v Pyth2 vrati list) 
+	
+	- filter - ako map, ale prvy arg moze byt aj None. Filtruje prvky podla vysledku co vrati funkcia. Teda ak True, tak vrati tu hodnotu (Pyth2 list, Pyth3 filter object)
+	
+	- enumerate(iterable[, start]) - vrati iterable enumerate objekt, ktory yields sekvenciu tuplov: (index, item) - index co zacina start ak je dany, item z iterable.
+
+	- sorted(iter, key=None, reverse=False) - vrati sortnutu verziu iter, key argument pre specifikovanie funkcie co vrati hodnotu na sortovanie
+
+	- any/all(iter) - vracaju Boolean, zalezi na hodnotach z iter. Pouzivaju sa napr. pri checku, ci nejaka/vsetky hodnoty z iter splnuju nejaku podmienku, napr all/any(map(lambda, list))) 
+
+	- zip(iter1, [,iter2 [...]]) - kombinuje viacero iters do tuples, napr ak chceme skombinovat list klucov a list hodnot do dict. Ak nie su iter rovnako dlhe, radsej pouzit zip_longest z itertools.
+
+	- from first import first - vrati prvy prvok. Mozeme tomu dat aj podmienku v argumente 'key' v podobe funkcie (obdrzi ako argument kazdy item postupne a vracia boolean), napr. lambda
+
+	- tieto funkcie, majuce volitelny parameter 'key', ktory pozaduje funkciu - je mozne dat viac argumentov pomocou modulu functools a funkcii partial. Napr. key=partial(func, a1, a2). Lambda sa zvykne nahradzat prpave funkciou partial.
+
+	- funkcie z itertools, su uzitocne v kombinacii s modulom operator:
+		# chain(*iters) - iteruje cez viac iters bez nutnosti pomocneho listu
+
+		# combinations(iter, r) - generuje vsetky kombinacie dlzky r z danej iter (vracia ich nezoradene)
+	 	
+	 	# compress(data, selectors) - aplikuje bool mask zo selectors na data a vrati iba hodnoty z data ktore koresponduju z elementu zo selektors ako true
+		
+		# count(start, step) - generuje nekonecnu postupnost hodnot, zacina so startom a inkrementuje stepom kazdym volanim
+		
+		# cycle(iter) - opakovane cykli cez hodnoty v iter
+		
+		# dropwhile(predicate, iter) - filtruje elementy z iter, zacina od zaciatku az pokial predikat nie je false 
+		
+		# filterfalse - vrati vsetky polozky iteratoru pri ktorych predikat vracia False, opak k filtru (build-in fce)
+
+		# groupby(iter, keyfunc) - vytvara iterator co zoskupuje prvky na zaklade vysledku vrateneho keyfunc funkcii.
+		
+		# islice - slicne iterator indexom bez kopirovania
+
+		# permutations(iter[, r]) - vrati r-length zoradene permutacie prvku z iter
+		
+		# product(*iterables) - vrati iterable kartezianskeho sucinu iterabli bez vnorenych for cyklov
+		
+		# takenwhile(predicate, iter) - vrati elementy z iter, zacia od zaciatku az pokial predikat nie je false
+
+		# tee - rozdeli iterator na viac paralelnych iteratorov
+
+		# zip_longest - varianta zipu ktora pracuje s lubovole dlhymi iteratormi
+
+----
+AST (Abstract Syntax Tree) 
+	- mozeme ho preskumat cez import ast, a potom ast.dump(ast.parse(somtehing))
+	- dokonca mozeme postavit vlastny AST, skompilovat ho a potom evaluovat a vykona sa kod ako v Pythone.
+	- projekt Hy, ktory ma Lisp syntax, no je mozne inportnut akykolvek pythonovsky modul, vyuziva AST.
+# modul inspect 
+	- mozeme nim ziskat informacie o zijucich objektoch - moduly, triedy, metody, funkcie, tracebacks, generatoroch (jeho stav, atd.), ...
+	- pripadne informacie o zdrojovom kode, ako napriklad docstrings, subor/modul v ktorom bol objekt definovany
+
+----
+Standard Lib
+* atexit - registruje volania funkcii pri skonceni programu
+* argparse
+* bisect - bisection na sortovanie listu. bisect_left - efektivne binarne vyhladavanie na zoradenom liste, vracia index najdenej hodnoty, zlozitost logaritmicka
+* calendar - funkcie pre datumy
+* codecs - enkodovanie a dekodovanie dat
+* collections - datove struktury
+* copy - funkcie pre kopirovanie dat
+* ? copyreg - registruje funkcie zodpovedne pre serializovanie Pythonovskych objektov, co nam dava kontrolu nad spravnim modulu pickle (aby bol spolahlivy) pri serializovani. Je mozne pridavat alebo odoberat atributy, verzie tried a poskytnut stabilne import paths (napr pri premenovani tried).
+* csv
+* datetime
+* decimal - ak je dolezita presnost u desatinnych miest. Defaultne 28 desatinnych miest, ale dokaze viac. Zaokruhlovanie je tiez vymakanejsie, dokaze viac veci nez standardne. Pre racionalne cisla ale radsej pouzit triedu Fraction
+* fnmatch - pre matchovanie Unix-style filename patterny
+* fraction - pre racionalne cisla, ak nechceme ziadny limit co sa tyka presnosti
+* glob - pre matchovanie Unix-style path patterny
+* io - IO streams, obsahuje tiez StringIO (manipulacia so stringami ako so subormi)
+* json. Pouzitie napr pre deserializaciu a serializaciu pri posielani objektov medzi untrusted stranami. Modul pickle to iste ale pre pouzitie medzi stranami ktore su doveryhodne - obsahuje data pre rekonstrukciu objektu. Malicious pickle payload by mohol kompromitovat cast Pythonovskeho programu.  
+* logging - logovat co najviac, pouzivat lazy loading - iba ked je treba, napriklad funkcie pre generovanie spravy dat ako druhy parameter (oddelene od err spravy ',' a nie '%'). Rychlejsia ale jednouhsia moznost - logwood
+* multiprocessing - viac subprocessov (viac CPU), API vypada ako threads
+* operator - zakladne operacie v Pythone
+* os - zakladne OS funkcie
+* random - pseudo-nahodne cisla
+* re
+* select - select(), poll() funkcie, pre vytvaranie event loops
+* shutil - vysoko-urovnove funkcie pre pracu so subormi
+* signal - funkcie pre pracu s POSIX signalmi
+* tempfile - pre vytvaranie tmp dir/files
+* threading
+* unittest
+* urllib - pre parsovanie URL
+* uuid - generovanie UUID (universal unique identifiers)
+* warnings - pre warning spravy, napriklad aj typu ze je nieco deprecated
+
+----
+3rd party libs
+Network applications
+* HTTP - urllib (stdlib), urllib3
+* Distributed sys - ZeroMQ - asynchronna kniznica orientovana na spravy v distrib. alebo konkurent. aplikaciach. Message quele. Pripadne RabbitMQ - open source, implementuje AMQP (advanced message queuing protocol)
+* Webove aplikacie
+	- Django, Flask (microframework, pre mensie aplikacie), Tornado (asynchronny webovy framework, ma vlastnu event loop, nativna podpora websocketov, maju excelentnu performance charakteristiku), Pyramid (modularita a flexibilita, nie moc popularny)
+	
+	- Webove servre - Nginx - pre HTTP, SMTP a dalsie protokoly, zakladna autentizacia, streaming, popularny efektivny jednoduchy.
+	
+	-  WSGI servre - Klasicky server handluje tasky (file serving, request routing, DDOS ochrana, autentizacia,... a WSGI servre sluzia pre Pythonovske aplikacie). Pouzivaju menej resources nez klasicke webove servre: Gunicorn (jeden z naj, pouziva sa v spojeni s nginx - priamo alebo za tymto webovym serverom), Waitress, uWSGI (full stack pre hostingove sluzby, process management a monitoring,..., pouzivat iba ak vieme preco)
+	
+	- Hosting - PaaS (Platform as a Service) - cloud computing infrastruktura. Vyvojari sa mozu sustredit na pisanie aplikacneho kodu namiesto toho aby sa starali o detaily o nasadeni.
+	 # Heroku - podporuje vsetky typy Pythonovskych webovych aplikacii, serverov a frameworkov. Odporucany PaaS.
+	 # Gondor - specializovany pre Django a Pinax. Pre Python 2.7.
+
+	Templates - poradia si s markup jazykmi, ako HTML: Mako, Jinga2, pripadne nie moc pouzivany chameleon
+* HTML Scraping
+	- lxml - pre rychle parsovanie HTML a XML. K tomu sa casto pouziva este Requests, pripadne stlib urllib2 no ten je pomalsi
+* CMD line apps
+	- Clint - modul, je mozne s nim vyvojat command-linove aplikacie. Podporuje featurky ako su CLI farby a zarovnanie, iterator based progress bar, impllicitne handlovanie argumentov
+	- Click - tiez pre vytvaranie command line interface. Politika - co najmenej kodu, velmi dobre konfigurovatelny 
+	- docopt - tvorba CLI jednoducho a intuitivne parsovanim POSIX-style usage instrukcii
+	- Plac - wrapper stdlib argparse, pouziva deklarativny interface. Mieri na nesofistikovanych uzivatelov, programatorov, sys-adminov, vedcov a vsetkych co pisu skripty a zvolia CLI pretoze je to rychle a jednoduche
+	- Cliff - framework pre cmd-line programy, pouziva vstupne body setuptools pre zadanie subcommands, output formatters a inych rozsireni.
+	Hlavny program handluje nejake zakladne argumenty a potom invokuje subcommand pre urobenie prace
+	- horetu - interface argumentov, ale dokaze menit pomocou nich aj parametre metod/funkcii, da sa dat aj do konfiguraku a vsetko lubovolne vnorovat
+* GUI apps
+	- Camelot - nad Pythonom, SQLAlchemy a Qt, inspirovane Djangom
+	- Cocoa - iba OS X
+	- PyGTK - nepouzivat, nepodporuje najnovsie Gtk, radsej PyGi
+	- PyGi (PyGObject) - podporuje GTK3+
+	- Kivy - zalozene na OpenGL, podporuje rozne IO zariadenia
+	- PyObjC - iba na OS X
+	- PySide - cross-platform GUI toolkit Qt
+	- PyQt - binding pre Qt framework, pozor na licencie
+	- PyjamasDesktop (pyjs Desktop) - kod rovnaky pre webove aplikacie moze bezat aj ako standalone desktop aplikacia
+	- Qt
+	- Tk
+	- wxPython - GUI toolkit, robustne, funkcionalne rozsiahle GUI. Jednoducho a rychlo, je to wrapper popularnej kniznici wxWidgets (cross-platform, v C++)
+* Databases
+	- DB-API - Python DB API - definuje standardne rozhranie pre Pythonovske DB pristupove moduly, dokumentovane v PEP249
+	- SQLAlchemy - ORM vrstva, bez nutnosti pouzivat SQL, casto pouzivane
+	- Records - minimalisticka SQL kniznica, pre raw SQL queries do roznych databaz
+	- Django ORM - zalozene na myslienke modelov, teda abstrakcii pre lahsie manipulovanie dat v Pythone. Kazdy model je Pythonovska trieda, atribut modelu reprezentuje DB field a Django dava automaticky vygenerovany DB-access API
+	- peewee - ORM, podobny model layer ako v Django ORM, ma SQL-like metody pre dotazovanie dat.
+	- PonyORM - ORM s rozdielnym pristupom k dotazovaniu - pouziva generator syntax, existuje aj editor (graficke schema) co moze generovat PonyORM entity namiesto programatora, podporuje vsetky verzie Pythonu, SQLite, MySQL, Postgres a Oracle
+	- SQLObject - ORM, podporuje MySQL, Postgres a SQLite, SAP DB, SyBase a MSSQL, podporuje iba Python 2 od verzie 2.6
+* Networking
+	- Twisted - event-driven networking engine, HTTP servery/klienti, aplikacie pouzivajuce SMTP, POP3, IMAH, SSH, IM,...
+	- PyZMQ - Python binding pre ZeroMQ - high performance asynchronous messaging library
+	- gevent - corouting-based kniznica, vysoko urovnove synchronne API na libev event loop
+* Sys administration
+	- Fabric - zamerany na aplikacne urovnove ulohy - memory usage, aktivacia virtualenv, git pull, ... 
+	- Salt - open source infrastructure management nastroj, podporuje remote command execution z nejakeho centralneho bodu do viacerych hostov
+	- Psutil - interface pre rozdielne systemove informacie (CPU, memory, disky, network, pouzivatelia, procesy)
+	- Ansible - nevyzaduje agenta na klientskom zariadeni, konfiguracia, nasadenie, ... v jazyku YAML
+	- Chef - cloudova infrastruktura, jednoduche nasadenie serverov a aplikacii na hociake fyzicke, virtualne alebo cloudove miesto. Chef klient bezi na kazdom serveri, ktory je v danej infrastrukture a robi pravidelne kontroly Chef serveru, ci je system vzdy v konzistentnom stave  
+	- Puppet - automation & cofiguration management SW. Puppet agenti sa instaluju na tie uzly, ktore chceme aby boli monitorovane alebo zmenene. Server znamy ako Puppet Master je zodpovedny pre manazovanie tychto agentov, ktore mu posielaju info ako OS, kernel, IP adresy, atd. Pupper master potom kompiluje 'catalog' s informaciami poskytnutymi z agentov o tom ako ma byt kazdy uzol konfigurovany a posle ich spat agentom. Tie zmeny aplikuju podla katalogu a poslu s5 report Pupper Masterovi.
+	- Blueprint
+	- Buildout - implementuje princip oddelenia konfiguracie od skriptov ktore vykonavaju setting up. Primarne sa pouziva pre download a set up zavislosti v Python eggs formate toho SW, ktory je vyvijany alebo bude nasadeny.
+	- Shinken - moderny, kompatibilny s Nagiosom (configuracnym standartom a pluginami). Monitorovaci framework, dava uzivatelom flexibilnu architekrutu pre ich monitorovaci system navrhnuty pre vacsie prostredia. Je cross-platform
+* Concurrency
+	- Concurrent.futures - stdlib - asynchronne volania, operuje nad 2 hlavnymi triedami - ThreadPoolExecutor a ProcessPoolExecutor. Vytvoria pool workerov do ktorych je mozne pridelit nejaku pracu. Tieto prace budu potom vykonavane v inom vlakne/procese kde bude dalsi worker pristupny
+	- Threading - stdlib - manualnejsia praca s vlaknami. Inicializovat objekt Thread -> metoda start -> join pripadne s timeoutom. Pouzivat v urcitych situaciach so zamkami.
+* Scientific Applications
+	- Numpy - low level kniznica v C pre vysoko urovnove matematicke funkcie
+	- Numba - kompiluje anotovany Python (a numpy) kod do LLVM (Low Level Virtual Machine) cez specialne dekoratory, teda na kod, co moze byt nativne spustany za behu. 
+	- SciPy - pouziva NumPy pre viac matematickych funkcii. Linearna algebra, integraly, diferencne rovnice a spracovanie signalov.
+	- Matplotlib - plotting lib pre tvorbu interaktivnych 2D/3D grafov. API podobne ako to v MATLABe
+	- Pandas -zalozene na Numpy, pre spracovanie dat - pristup, indexovanie, merging a grouping (!)
+	- Rpy2 - Python binding pre R statisticky balicek, je to OO implementacia Rpy bindings
+	- PsychoPy - pre kognitivnych specialistov, Inline mod dovolije grafiku a grafy aby boli zobrazene v terminaly (Qt based version)
+	- Tools: IPython - rozsirena verzia Pythonovskeho interpretru, pre vedcov
+	- Resources - hlavne nejaka sada balikov pre vedecke vypocty, vacsinou su zadarmo a su urcene pre analyzu dat a big data. Hlavne Anaconda (vacsi SW balicek pre Python) a Canopy
+* Image Manipulation
+	- Python Imaging Library (PIL) - novsia verzia, podporujuca aj Python3 - Pillow
+	- OpenSource Computer Vision (OpenCV) - pokrocilejsi nez PIL, implementovany vo viacerych jazykoch a siroko pouzivany
+* Data Serialization
+	- Pickle - native data serialization
+	- Protobuf - od Googlu, pre viacere jazyky
+* XML parsing
+	- untagle - jednoducha kniznica. XML dokument -> Python objekt
+	- xmltodict - praca s XML ako s JSON formatom
+* JSON
+	- json - stdlib - parsuje JSON zo stringov alebo suborov do Python dict alebo listu. Tie samozrejme moze konvertovat do JSON stringov
+	- simplejson - pre starsie verzie Pythonu. Pre vyvojarov co chcu pouzivat novsie featurky v starsom Pythone
+* Cryptography
+	- cryptography - je delena na 2 vrstvy - recipes a hazardous:
+	recipes - poskytuje jednoduche API pre symetricku sifru 
+	hazmat - low-level cryptographic primitives 
+	- PyCrypto - secure hash fukcie a rozne sifrovacie algoritmy
+* Interfacing s C/C++ kniznicami
+	- CFFI (C Foreign Function Interface) - pre interfacovanie s C z CPython alebo PyPy. Podporuje 2 mody: 
+		# ABI kombatibility mode co dovoluje dynamicky nacitat a spustit funkcie zo spustitelnych modulov
+		# API mod, covoluje zbuildig C extension moduly 
+	- ctypes - kniznica pre interfacovanie s C/C++ z CPythonu a poskyutuje plny pristup k nativnemu C rozhraniu na vacsine OS, podporu s DLL za behu. Mozeme tak lahko definovat vlastne komplexne typy ako su struktury alebo unions, mozeme modifikovat padding alebo alignment. S pouzitim modulu struct mozeme ovplivnut ako sa datove typy prekladaju na nieco uzitone s C(++) metodou
+	- SWIG - nie je nutne iba Pythonovska zalezitost, poskytuje generovanie bindingu pre interpretovane jazyky s C/C++ hlaviciek. Jednoduche pouzitie - treba definovat interface file, vratane requisite C/C++ headers.
+	- Boost.Python - dokaze tie iste featury ako SWIG a par dalsich.
+
+* Environment Management 
+	- pyenv, 
+	- virtualenv, virtualenvwrapper (rozsirenia do virtualenv - sprava a manipulacia s viacerymi virtualenv)
+* Package Management - wheel (novy standard distribucie pythonovskeho kodu)
+* Package Repos - PyPI repozitory servre a proxy
+	- warehouse - dalsia generacia PyPy
+	- bandersnatch - PyPI mirroring tool poskytnuty PyPA
+	- devpi - PyPI server a packaging/testing/release tool
+	- localshop - lokalny PyPI server
+* Distribution - pre vytvorenie packaged executables pre distribuciu releasu
+	- PyInstaller - konvertuje Pythonovske programy na stand-alone executables cross-platform
+	- dh-virtualenv - build & distribute a virtualenv ako Debian package
+	- Nuitka - kompiluje skripty moduly a balicky do executable/extension modulu
+	- py2app - freezes Python scripts (Mac OS X), py2exe - to iste ale Windows
+	- pynsist - tool na buildenie windowsovych instalaciek  
+* Build tools - compile SW zo zdrojaku
+	- buildout - system pre tvorbu, asemmblovanie a deploytnutie aplikacii z viacerych casti
+	- BitBake - nastroj na principe make-u pre vstavany linux
+	- PlatformIO - konzolovy tool pre zbuildenie kodu s roznymi platformami
+	- PyBuilder - napisany v cistom Pythone
+	- SCons - SW construction tool
+* Interactive Interpreter - REPL
+	- IPython (Jupyter Notebook), bpython, ptpython
+* Files
+	- imghdr - v stdlib, zisti typ obrazku
+	- mimetypes - tiez v stdlib, mapuje nazvy suborov do MIME typov
+	- path.py - module wrapper pre os.path
+	- pathlib - stdlib od Python 3.4 - cross-platform, OO path lib
+	- python-magic - interface pre libmagic file type identification lib
+	- Unipath - OO pristup pre operaciu so subormi/priecinkami
+	- watchdog - API a shell nastroje pre monitorovanie file system udalosti
+* Date and Time
+	- arrow
+	- delorean
+	- Chronyk - pre parsovanie human-written casov a datumov
+	- dateutil - rozsirenie datetime modulu
+	- moment - inspirovane by Moment.js
+	- PyTime - easy-use, operuje nad datumami casmi so stringami
+	- pytz - definicie casovych pasiem
+	- when.py - user-friendly funkcie pre pomoc s beznymi akciami s casmi a datumami
+* Text Processing
+	- chardet - character encoding detector
+	- difflib - stdlib - pre pocitanie deltas
+	- ftfy - makes unicode text less broken a more consistent automagically
+	- fuzzywuzzy - fuzzy string matching
+	- Levenshtein - rychle pocitanie Levenshteinovych vzdialenosti a podobnosti retazcov
+	- pangu.py - spacing texts pre CJK a alphanum
+	- pyfiglet - implementacia figletu 
+	- shortuuid - generator library pre URL-safe UUIDs
+	- unidecode - ASCII preklad UNICODE textu
+	- uniout - vytlaci readable chars namiesto escapes retazca
+	- xpinyin - preklad cinskej hanzi to pinyinu
+	- slugifu - unicode / ASCII
+	- phonenumbers - pre medzinarodne telefonne cisla. Parsovanie, formatovanie a ukladanie
+	- PLY - implementacia lex a yacc
+	- Pygments - genericky zvyraznovac syntaxe
+	- pyparsing - general purpose framework pre generovania parsrov
+	- sqlparse - non-validating SQL parser
+* Specific Formats Processing
+	- tablib - tabular- CSV JSON YAML XLS
+	- Marmir - Python ATD -> spreadsheets
+	- openpyxl - read/write Excel 2010
+	- pyexcel - mapinulacia s csv, ods, xls, xlsx, xlsm
+	- python-docx - Microsoft Word 2007/8
+	- relatorio - Templating OpenDocument subory
+	- unoconv - konverzia lubovolnych formatov medzi LibreOffice/OpenOffice
+	- XlsxWriter - pre tvorbu .xlsx suborov
+	- xlwings - BSD-licenced library, volanie Pythonu z Excelu a naopak
+	- xlwt / xlrd - write / read data a formatovanie z Excelovskych suborov
+	- PDFMiner - extrahovanie dat z PDF
+	- PyPDF2 - splitting, merging a transforming PDF 
+	- ReportLab - rychla tvorba PDF dokumentov
+	- Mistune - najlepsia kniznica pre parsovanie Markdownov. Alternativa - Python-Markdown
+	- YAML - PyYAML
+	- csvkit - aj pre konverziu do csv
+	- unp - jednoduche unpadkovanie archivov
+* Natural Language Processing
+	- NLTK - veduca kniznica pre pracu s human language data
+	- Pattern - web mining module
+	- Jieba - Cinska segmentacia textu
+	- SnowNLP - Spracovanie Cinskeho textu
+	- spaCy - NLP v Pythone a Cythone (vhodne aj pre priemyselne nasadenie)
+	- TextBlob - konzistentne API pre nejake bezne NLP ulohy
+	- TextGrocery - jednoduchy efektivny klasifikacny nastroj zalozeny na LibLinear a Jieba kniznici
+	- langid.py - stand-alone identifikacny system jazykov
+* Dokumentation - Sphinx, MkDocs, pdoc, Pycco
+* Configuration
+	- config - hierarchickost, autor kniznice logging
+	- ConfigObj - INI parser s validaciou
+	- ConfigParser - stdlib, INI parser
+	- profig - multiple formats s konverziami hodnot
+	- python-decouple - striktne oddelene nastavenia od kodu
+* Cmd-line tools
+	- asciimatics - multiplatformny, full-screen terminal balik pre high-level API pre komplexne animacie a specialne efekty
+	- cement - CLI application framework
+	- click - pre tvorbu CLI 
+	- cliff - CLI s multi-level prikazmi
+	- clint - command-line application tools
+	- colorama - multiplatformny farebny text v terminali
+	- docopt - argument parser
+	- Gooey - zmeni command line programy na plnu GUI aplikaciu s 1 riadkom
+	- python-prompt-toolkit - tvorba powerful interactive command lines
+	- aws-cli - univerzalne CLI pre amazon web services
+	- bashplotlib - zakladne diagramy v terminali
+	- caniusepython3 - zisti, ktore projekty blokuju od portnutia na Python 3
+	- cookiecutter - vytvori projekt z cookiecutters (project templates)
+	- doitlive - live prezentacie v terminali
+	- howdoi - instantne coding answers cez prikazovu riadku
+	- httpie - HTTP klient, uzivatelsko privetiva nahrada cURL
+	- PathPicker - vyberie subory z bashovskeho vystupu
+	- percol - interaktivny grep tool v terminali - zacnem pisat nieco v terminali a ono hned nachadza zhody o co sa moze jednat 
+	- SAWS - amazon web services CLI, vychadza z aws-cli (vyssie) no sustreduje sa na jednoduchost pouzitia a vacsiu produktivitu (aws-cli ma vela prikazov a okolo 2000 subprikazov)
+	- thefuck - opravi predchadzajuci konzolovy prikaz
+	- try - neskutocne jednoduche CLI pre vyskusanie pythonovskych balickov
+	- mycli - terminal client pre MySQL s auto dokoncovanim a zvyraznenim syntaxe 
+	- pgcli - Postgres CLI s auto dokoncovanim a zvyraznenim syntaxe 
+* Downloader
+	- s3cmd, s4cmd - CLI tool pre manazovanie Amazon S3 a CloudFront. s4 - lepsia performance
+	- you-get - Youtube/Youku/Niconico video downloader v Pythone 3
+	- youtube-dl - maly command line program na stahovani videi z youtubu
+* Imagery
+	- pagan - avatar generator pre absolutnych nerdov
+	- pillow - PIL (Python Imaging Library) fork
+	- hmap - image histogram remapping
+	- imgSeek - hlada podobne obrazky cez visualnu podobnost
+	- nude.py - nude detekcia
+	- pyBarcode - vytvara barkody bez pouzitia PILu
+	- pygram - filtre na obrazky podobne tym v instagrame
+	- python-qrcode - QR kod generator
+	- Quads - computer art zalozeny na quadtrees
+	- scikit-image - pre (vedecke) spracovanie obrazkov
+	- thumbor - chytra sluzba co spracuva obrazky, napriklad crop, re-sizing a flipping
+	- wand - Python bindings pre MagickWant, C API pre ImageMagick
+* Optical Character Recognition (OCR)
+	- pyocr - wrapper pre Tesseract a Cuneiform
+	- pytesseract - dalsi wrapper pre Google Tesseract OCR
+* Audio
+	- audiolazy - DSP (digital signal processing)
+	- audioread - audio decoding
+	- beets - music library manager
+	- dejavu - audio fingerprinting and recognition
+	- django-elastic-transcoder - Django+Amazon Elastic Transcoder
+	- eyeD3 - nastroj co pracuje s audio subormi, hlavne MP3 obsahujuc ID3 metadata
+	- id3reader - citanie MP3 metadat
+	- m3u8 - parsovanie m3u8 suborov
+	- mutagen - audio metadata handling
+	- pydub - manipulacia s audiom s jednoduchy vysoko urovnovym rozhranim
+	- pyechonest - klient pre Echo Nest API
+	- talkbox - speech/signal processing
+	- TimeSide - Open web audio processing framework
+	- tinytag - citanie hudobnych metadat z MP3,OGG, FLAC a Wave suborov
+	- mingus - pokrocila hudobna teoria a notacia s MIDI suborom a playbackom
+* Video
+	- moviepy - script-based editovanie filmov s roznymi formatmi vratane animovaneho GIFu
+	- scikit-video - video processing pre SciPy 
+* Geolocation
+	- GeoDjango - framework pre svetove geographicke data (!). Moze byt pripojeny na GeoServer
+	- GeoIP - Pythonske API pre MaxMind GeoIp Legacy Database
+	- geojson - bindings pre GeoJSON
+	- geopy - Geocoding toolbox
+	- pygeoip - pure Python GeoIP API
+	- django-countries - Django app, poskytuje krajnam moznosti pre pouzitie s formami, krajinnamy oblasti pre modely
+* HTTP
+	- requests - HTTP requests for Humans
+	- grequests - requests + gevent pre asynchronne HTTP requesty
+	- httplib2 - HTTP klient
+	- treq - zaobaluje Twisted's HTTP klient ale je to ako requests (podobne API)
+	- urllib3 - HTTP kniznica s thread-safe connection pooling, 
+* Database
+	- pickleDB - key-value ukladanie pre Python
+	- PipelineDB - streaming SQL DB
+	- TinyDB - tiny, document-oriented DB
+	- ZODB - nativna DB pre python, key-value a object graph DB
+* Database Drivers
+	- MySQL - mysql-python, mysqlclient (to site ale podpora Python 3), oursql a PyMySQL
+	- PostreSQL - psycopg2 - najpopularnejsi PostgreSQL adapter v Pythone, queriest - wrapper pre psycopg2 pre interagovanie s PostgresSQL, txpostgres - asyncronny driver zaozeny na Twisted
+	- Ine relacne DB - apsw, dataset (uklada dicts do DB - SQLite, MySQL, PostgreSQL), pymssqp (MS SQL SErver)
+	- NoSQL DB - cassandra-python-driver, HappyBase, Plyvel, Py2neo, pycassa, PyMongo, redis-py, telephus, txRedis
+* ORM
+	- Relacne DB - Django Models, SQLAlchemy, Poowee, PonyORM, python-sql
+	- NosQL DB - django-mongodb-engine, PynamoDB, flywheel, MongoEnginne, hot-redis
+	- Ine - butterdb - pythonovsky ORM pre GOogle Drive Spreadsheet
+* Web Frameworks
+	- Django - najpopularnejsi framework
+	- Flask - mikro framework
+	- Pyramid - mala, rychla, Open-Source webovy framework
+	- Bottle - WSGI micro-frawewo
+	- CherryPy - minimalisticky Python web framework
+	- TurboGears - tiez microframework, moze postavit full stack solution
+	- web.py - jednoduchy a mocny
+	- web2py - full stack web python
+	- Tornado - weboy framework a asynchronna sietova kniznica
+* Serverless Frameworks
+	- apex - AWS Lambda funkcie
+	- Zappa - WSGI aplikacie na AWS lambde a API Gateway
+	- python-lambda - AWS Lambda
+* Permissions
+	- Carteblanche - 
+	- django-guardian - implementacia per objet permissions pre Django 
+	- django-rules - mala ale krasna kniznica pre poskytovanie objekt-level pristupov k Djangu bez pouzivania DB
+* CMS
+	- django-cms - Open source enterprise CMS zalozene na Djangu
+	- djedi-cms - lightweight Django CMS s pluginami a performanciou
+	- FeinCMS - jeden z najviac vyvinutych CMS postavenych na Djangu
+	- Mezzanine - powerful, consistent a flexible CMS
+	- Opps - zalozene na Django CMS pre magaziny, noviny, webstranky a portaly s vysokou prevadzkou
+	- Plone - CMS postaveny na open source app servri Zope
+	- Quokka - flexibiny, rozsiritelny a maly CMS powered by Flask a MongoDB
+	- Wagtail - Django CMS
+	- Widgy - CMS framework zalozeny na Djangu
+* E-commerce
+	- django-oscar - Open source e-commerce framework pre Django
+	- django-shop - shop system zalozeny na Djangu
+	- Cartridge - shopping cart app vyuzivajuca Mezanine
+	- shoop - open-source E-commerce platform postavena na Djangu
+	- alipay - neoficialne Alipay API pre Python
+	- merchant - Django app pre akceptovanie platieb z roznych platobnych procesorov
+	- money - Money class s optional CLDS-backed locale-aware formatovanim a rozsiritelnym currency exchange
+	- python-currencies - zobrazi format penazi a ich currencies
+* RESTful API
+	- Django - django-rest-framework, django-tastypie, django-formapi 
+	- Flask - flask-api, flask-restful, flask-restless, flask-api-utils, eve
+	- Pyramid - cornice
+	- Bez nejakeho konkretneho frameworku:
+		# falcon - high-performance framework pre cloudove APIs a web app backends
+		# hug - Python 3 framework for cleanly exposing APIs cez HTTP a CMD s automatickou validaciou a dokumentaciou
+		# sandman - automated REST APIs pre existujuce DB-driven systemy
+		# restless - framework agnostic REST framework zalozeny na Tastypie
+		# ripozo - pre rychlu tvorbu REST/HATEOAS/Hypermedia APIs
+* Serialization
+	- marshmallow - ORM/ODM/framework-agnostic kniznica pre konverziu komplexnych datovych typov ako napriklad objekty do/z Pythonovskych datovych typov
+* Authentication
+	- OAuth - Authomatic, django-allauth, django-oauth-toolkit, django-oauth2-provider, Flask-OAuthlib, OAuthlib, python-oauth2, python-social-auth, rath, sanction 
+	- Ine - jose, PyJWT, python-jws, python-jwt
+* Template Engine
+	- Jinja2 - moderny a dizajnovo prijemny templating language
+	- Genshi - python templating toolkit pre generovanie web-aware vystupu
+	- Mako - Hyperfast a lightweight templating
+* Queue
+ 	- celery - asynchronna task queje/job queue zalozena na predavani sprav. Ma synchronizacne primitiva (!)
+ 	- huey - malinka multi-threadova task queue
+ 	- mrq - distrib. worker task queue, pouziva Redis & gevent
+ 	- rq - jednoduche job queues
+ 	- simpleq - jendoducha, skalovatelna, Amazon SQS based queue
+* Search (queries na datach)
+	- django-haystack - modularne vyhladavanie
+	- elasticsearch-py - oficialny nizko urovnovy klient pre Elasticsearch
+	- elasticsearch-dsl-py - to iste co predchadzajuci ale vysoko urovnovy
+	- esengine - ElasticSearch ODM (object document mapper)
+	- solrpy - Pythonovsky klient pre solr
+	- Whoosh - rychla kniznica pre vyhladavanie
+* News Feed (pre vytvaranie aktivit uzivatelov)
+	- django-activity-stream - generovanie generic activity streams z akcii na stranke
+	- Stream-Framework - vytvaranie newsfeedov a notifikacnych systemov pouzivanim Cassandry a Redisu
+* Asset Management (manazovanie, kompresia webovych assetov)
+	- django-compressor - kompresia linkovanych a inline JS a CSS do 1 cachovaneho suboru
+	- django-pipeline - asset packating library 
+	- django-storages - kolekcia custom storage backendov
+	- fantastic - zabaluje, optimalizuje a sluzi statickym zavilostiam suborov ako Pythonove balicky
+	- fileconveyor - daemon pre detekciu a synchronizovanie suborov do CDNs, S3 a FTP
+	- flask-assets - pomaha integrovat webove assety do Flask app
+	- jinja-assets-compressor - Jinja ozsirenie pre kompilovanie a kompresiu assetov
+	- webassets - Bundles, optimizes and manages unique cache-busting URLs pre staticke prostriedky
+* Caching
+	- Beaker - kniznica pre cachovanie a tvorbu sessions pre pouzitie s webovymi aplikaciami a stand-alone Python skriptami a aplikaciami
+	- django-cache-machine - automaticke cachovanie a invalidacia pre Django modely
+	- django-cacheops - ORM cache s automatickym event-driven invalidaciou
+	- django-viewlet - renderuje template casti
+	- dogpile.cache - dalsia generacia Beakeru, rovnaki autori
+	- HermesCache - tag-based invalidaciou a dogpile effect prevention
+	- johny-cache - caching pre Django aplikacie
+	- pylibmc - wrapper libmemcached rozhrania
+	- DiskCache - SQLite a file backed cache backend s rychlejsimi lookupami nez memcached a redis 
+* Email
+	- envelopes
+	- flanker - email address a Mime parsing lib 
+	- imbox - IMAP
+	- inbox.py - SMTP
+	- lamson - SMTP app server
+	- Marrow Mailer - high-performance mail delivery framework
+	- modoboa - mail hosting a management platforma co obsahuje jednoduche webove UI
+	- Nylas Sync Engine - RESTful API nad powerful email sync platformou
+	- yagmail - Gmail/SMTP klient
+* Internationalization - Babel, PylCU  
+* URL Manipulation
+	- furl - jednoducha kniznica pre manipulaciu s URL
+	- purl - podobne ako furl, je to ummutable URL trieda s jednoduchym API
+	- pyshorteners - URL shortening lib
+	- short_url - Tiny URL a bit.ly-like URL generovanie
+	- webargs - parsovanie HTTP requestov, vo vstavanou podporou pre popularne webove frameworky ako Flask, Django, Bottle, Tornado a Pyramid
+* HTML Manipulation
+	- BeautifulSoup - vyuziva Pythonovske idiomy pre iterovanie, hladanie a modifikovanie HTML alebo XML
+	- bleach - whitelist-based HTML sanitization a text linkification library
+	- cssutils - CSS kniznica
+	- html5lib - parsovanie a serializovanie HTML dokumentov a fragmentov
+	- lxml - velmi rychla, jednoducha na pouzivanie, handluje HTML a XML
+	- MarkupSafe - implementuje XML/HTML/XHTML Markup safe string pre Python
+	- pyquery - jQuery-like library pre parsovanie HTML
+	- untangle - konverzia XML do Pythonovskych objektov
+	- WeasyPrint - visual rendering engind pre HTML+CSS co vie exportovat do PDF
+	- xmldataset - jednoduche XML parsovanie
+	- xmltodict - pracovanie s XML tak, ze to vyzera ako s JSONom
+* WEB Crawling
+	- Scrapy - rychly vysoko-urovnovy scraping a web crawling framework (! PyCon 2016)
+	- cola - distribuovany crawling framework
+	- Demiurge - PyQuery-based scraping micro-framework
+	- feedparser - Universal feed parser
+	- Grab - site scraping framework
+	- MechanicalSoup - automaticka interakcia s webstrankami
+	- portia - visual scraping pre Scrapy
+	- pyspider - spider system
+	- RoboBrowser - jednoducha kniznica pre browsovanie webu bez standalone weboveho serveru
+* Web Content Extracting
+	- Haul - rozsiritelny crawler obrazkov
+	- html2text - konvertuje HTML do markdown-formatted textu
+	- lassie - web content retrieval
+	- micawber - mala kniznica pre extrahovanie bohateho obsahu z URLs
+	- newspaper - extrakcia news a clankov 
+	- opengraph - parsuje Open Graph Protocol
+	- python-goose - HTML content/article extraktor
+	- python-readability - fast python port of arc90's readability nastroj
+	- sanitize
+	- sumy - automaticka sumarizacia textovych dokumentov a HTML stranok
+	- textract - extrahuje text z hociakeho dokumentu, Wordu, PowerPointu, PDFka,...
+* Forms
+	- Deform - HTML form generator
+	- django-bootstrap3, django-crispy-forms, django-remote-forms 
+	- WTForms - kniznica pre form validation a renderovanie
+* Data Validation
+	- Schematics - validacia datovych struktur
+	- schema - kniznica pre validovanie Pythonovskych datovych struktur
+	- jsonschema - implementacia JSON Schema pre Python
+	- Cerberus - lightweight and extensive data validation lib
+	- colander - validuje a deserializuje data ziskane z XML, JSON a HTML form post
+	- voluptuous - data validation lib
+	- valideer - jednoducha, rozsiritelna a adaptabilna kniznica pre datovu validaciu
+* Anti-spam - django-simple-captcha, django-simple-spam-blocker
+* Tagging - django-taggit 
+* Admin Panels
+	- Ajenti - admin panel pre servery
+	- django-suit - admin-interface pre Django
+	- django-xadmin
+	- flask-admin 
+	- flower - real-time monitor a webovy admin pre Celery
+	- Grappelli - pre Django Admin-Interface
+	- Wooey - Django app, vytvara automaticke webove UI pre Pythonovske skripty
+* Static Site Generator - text+templaty ako vstup, produkuje HTML subory na vystup
+	- Pelican - pouziva Markdown alebo ReST pre obsah a Jinja2 pre temy
+	- Cactus - generuje staticke stranky, pre dizajnerov
+	- Hyde - zalozene na Jinja2 static website generator
+	- Nikola - static website a blog generator
+	- Tinkerer - blogging engine/static website generator zalozeny na Sphinxe
+	- Lektor - jednoduche na pouzitie, static CMS a blog engine
+* Processes - pre spustenie a komunikaciu s OS procesmi
+	- envoy - Python subprocess pre Humans
+	- sarge - wrapper pre subprocesy
+	- sh - full-fledged subprocess nahrada pre Python
+* Concurrency and Parallelism
+	- evenlet - asynchronny framework s WSGI podporou
+	- gevent - coroutine-based Python networking library, pouziva greenlet
+	- Tomorrow - magic decorator syntax pre asynchronny kod
+	- uvloop - velmi rychla implementacia asyncio event loop, na libuv
+* Networking - pre network programming
+	- Twisted - event-driven networking engine
+	- pulsar - event-driven concurrent framework
+	- diesel - Greenlet-based event I/O framework
+	- pyzmq - Python wrapper pre ZeroMQ message lib
+	- txZMQ - Twisted based wrapper pre ZeroMQ message lib
+* WebSocket
+	- AutobahnPython - WebSocket & WAMP pre Python na Twisted a asyncio
+	- Crossbar - open source Unified Application Router (Websocket & WAMP pre Python na Autobahn)
+	- django-socketio - Websockety pre Django 
+	- WebSocket-for-Python - WebSocket klient a server pre Python 2, 3 a PyPy
+* WSGI Servers
+	- gunicorn - ciastocne napisane v C
+	- uWSGI - full stack pre tvorbu hostingovych sluzieb, napisany v C
+	- bjoern - asynchronne, velmi rychle napisane v C
+	- fapws3 - to iste ako bjoern ale funguje iba sietovo
+	- meinheld - asynchronne, ciastocne v C
+	- netius - asynchronne, velmi rychle
+	- paste - multi-threaded, stabilna a poriadne otestovana
+	- rocket - multi-threaded
+	- waitress - multi-threaded, powers Pyramid
+	- Werkzeug - powers Flask a moze byt jednoducho vstavana do akychkolvek projektov
+* RPC Servers
+	- SimpleJSONRPCServer - implementacia JSON-RPC specifikacie
+	- zeroRPC - RPC implementacia zalozena na ZeroMQ a MessagePack
+* Cryptography
+	- cryptography - kryptograficke primitiva
+	- hashids - implementacia hashids v pythone
+	- Paramiko - podpora Python 2 a 3, implementacia SSHv2 protokolu, klient aj server funkcionalita
+	- Passlib - bezpecne ulozisko/hashovanie hesiel, vysoko urovnove
+	- PyCrypto - Python Cryptography toolkit
+	- PyNacl - Python binding do Networking a Cryptography (NaCl) library
+* GUI
+	- curses - vstavany wrapper pre ncurses, pouzis a sa pre vytvaranie terminalovych GUI applikacii
+	- enaml - vytvaranie peknych UI s deklaratickou syntaxou ako QML
+	- kivy - tvoba NUI aplikacii, bezi na vsetkych OS a mobiloch (mozno okrem Windows phone?)
+	- pyglet -multiplatformna kniznica pre windowing a multimedia
+	- PyQt - Python bindings pre QT multi-platformnu app a UI framerowk, podporuje Qt v4 i v5
+	- PySide - to co PyQt, ale podpora len Qt v4
+	- Tkinter - v podstate Pythonovsky standard pre GUI
+	- Toga - Python native, OS native GUI toolkit
+	- urwid - kniznica pre tvorbu terminalovych GUI aplikacii pre silnu podporu pre widgety, eventy, bohate farby atd.
+	- wxPython - wxWidgets C++ kniznica pre Python
+	- PyGObject - bindings pre GLib/GObject/GIO/GTK+ (GTK+3)
+	- Flexx - cisto Pythonovsky toolkit pre tvorbu GUI, pouziva webovu technologiu pre renderovanie
+* Game Devel
+	- Cocos2d - framework pre tvorbu 2D hier alebo inych grafickych/interaktivnych aplikacii, zalozeny na pyglete
+	- Panda3D - 3D vyvoj hier, vyvijany spolocnostou Disney. Napisany v C++, kompletne wrappovany v Pythone
+	- Pygame - viacero Pythonovskych modulov navrhnutych pre pisanie hier
+	- PyOgre - Python bindings pre Ogre 3D render engine, moze byt pouzity pre hry, simulacie, hocico v 3D 
+	- PyOpenGL - Python ctypes bindings pre OpenGL a jeho pribuznych API
+	- PySDL2 - ctypes based wrapper pre SDL2 kniznicu 
+	- RenPy - Visual Novel engine
+* Logging
+	- logbook - logging nahradenie pre Python
+	- Eliot - Logovanie pre komplexne a distribuovane systemy 
+	- Raven - Pythonovsky klient pre Sentry
+	- Sentry - logovanie v realnom case a agregacny server
+* Testing
+	- Testing Frameworks
+	- Test Runners
+	- GUI / Web Testing
+	- Mock
+	- Object Factories
+	- Code Coverage
+	- Fake Data
+	- Error Handler
+* Code Analysis and Linter
+	- code2flow - Python a JS code na DOT flowcharts
+	- pycallgraph - vizualizuje flow (call graph) aplikacii v Pythone
+	- pysonar2 - type interencer a indexter pre Python
+	- coala - nezavisle na jazyku, lahko rozsiritelna applikacia na analyzu kodu. Bud cez konfigurak alebo parametre CLI
+	- Flake8 - course code checker: pep8, pyflakes a co
+	- Pylint - fully customizable source code analyzer
+	- pylama - code audit tool pre Python a JS
+* Debugging
+	- ipdb - IPython-enabled pdb
+	- pudb - full-screen, console-based Python debugger
+	- pyringe - debugger schopny pripojenia sa a injektovania kodu do Pythonovskych procesov
+	- wdb - web debugger, pomocou WebSocketov
+	- winpdb - Pythonovsky debugger s GUI schopny debugovat na dialku, zalozeny na rpdb2
+	- django-debug-toolbar - zobrazi rozne debug informacie pre Django
+	- django-devserver - drop-in nahrada pre Django runserver
+	- flask-debugtoolbar - portnuty django-debug-toolbar pre Flask
+	- line_profiler - line-by-line profiler 
+	- memory_profiler - monitoruje pouzitie pamate Pythonovskeho kodu
+	- profiling - interaktivny Python profiler
+	- pyelftools - parsuje a analyzuje ELF subory a DWARD debugovacie informacie
+	- python-statsd - Pythonovsky klient pre statsd server, rozne statistiky a data, posiela napriklad Grafane. Rychlejsi - fastatsd, popisany nizsie.
+* Science & Data Analysis
+	- astropy - kniznica pre Astronomiu
+	- bcbio-nextgen - toolkit, ponuka best-practise pipelines pre plne automatizovanu analyzu throughput sequencing
+	- bccp - kolekcia uzitocnych veci, tyka sa biologickej analyzy
+	- Biopython - mnozina volne dostupnych nastrojov pre biologicke vypocty
+	- blaze - NumPy a Pandas interface pre BigData
+	- cclib - parsovanie a interpretacia vysledkov z chemickych balickov
+	- NetworkX - vysoko produktivna kniznica pre komplexne siete 
+	- Neupy - beh a testovanie rozlicnych Artificial Neural Network algoritmov
+	- NIPY - kolekcia neuroimaging toolkitov
+	- Numpa - Python JIT kompiler do LLVM zamerany na vedecky Python, od vyvojarov Cythonu a NumPy
+	- NumPy - fundamentalny balik pre vedecke vypocty
+	- Open Babel - chemicky toolbox, navrhnuty pre podporu roznych chemickych dat
+	- Open Mining - BI (Business Intelligence) v Pythone (Pandas web interface)
+	- orange - Data mining, visualization, analysis a machine learning cez visualne programovanie alebo skriptovanie v Pythone 
+	- Pandas - ponuka high-performance, easy to use datove struktury a nastroje pre datovu analyzu (!)
+	- PyDy - Python Dynaimcs, pre asistenciu workflowu v modelovani dynamickych motion zalozenych na NumPy, SciPy, IPython a matplotlib
+	- PyMC - Markov Chain Monte Carlo sampling toolkit
+	- RDKit - Cheminformatics a Machine Learning SW
+	- SciPy - open-source SW pre matematiku, vedu a engineering
+	- statsmodels - statisticke modelovanie a econometrics v Pythone
+	- SymPy - symbolic mathematics
+	- zipline - Pythonic algorithmic trading lib
+* Data Visualization
+	- matplotlib - 2D Plotting lib
+	- bokeh - interactive web plotting
+	- ggplot - rovnake API ako ggplot2 v R
+	- plotly - collaborative web plottingpre Python a matplotlib
+	- pygraphviz - python interface to Graphviz (!)
+	- PyQtGraph - interactive and realtime 2D/3D/Image plotting and science or engineering widgety
+	- SnakeViz - graficky prehliadac pre prehliadanie vystupu z pythonovskeho cProfile modulu
+	- seaborn - statistical data visualization using matplotlib
+	- vincent - Python to Vega translator
+	- VisPy - high-performance scientific visualization based on OpenGL
+* Computer Vision
+	- OpenCV - Open Source COmputer Vision Lib
+	- SimpleCV - Open Source framework pre vytvaranie aplikacii pre pocitacove videnie
+* Machine Learning
+	- Crab - flexibilna, rychla
+	- gensim - topic modelling 
+	- hebel - GPU-akcelerovana deep learning kniznica
+	- NuPIC - Numenta Platform for Intelligent Computing
+	- pattern - Web mining module
+	- PyBrain - machine learning lib
+	- Pylearn2 - machine learning lib based on Theano
+	- python-recsys - lib pre implementovanie Recommender System
+	- scikit-learn - machine learning zalozene na SciPy
+	- pydeep - deep learning
+	- vowpal_porpoise - lightweight wrapper pre Vowpal Wabbit
+	- skflow - zjednodusene rozhranie pre TensorFlow (mimicking scikit-learn)
+* MapReduce
+	- dpark - Python klon Sparku, MapReduce framework
+	- dumbo - modul co dovoluje jednoducho napisat a spustit Hadoop programy
+	- luigi - modul pre tvorbu komplexnych pipelinov zlozenych z batch jobs 
+	- mrjob - run MapReduce jobs na Hadoop alebo Amazon Web Services
+	- PySpark - Spark Python API (btw pouziva Lazy Eval), vid z PyCon2016 https://github.com/szymonm/pyspark-dataproc-workshop
+	Prepojenie s Google Cloudom - zalozenie su uctu, nainstalovanie toolu gcloud a potom nasledne:
+		# autentizacia 'gcloud auth login'
+		# vytvorenie bucketu 'gsutil mb gs://nazov_bucketu'
+		# spustenie clusteru, je mozne aj cez GUIniekde v https://console.cloud.google.com
+		# port forwarding - 'gcloud compute ssh --ssh-flag="-D" --ssh-flag="10000" --ssh-flag="-N" "meno_clusteru-m" '
+		# spustenie prehliadaca, tato cast bude potom prijimat logy. To ma bezat ako server. Na localhoste teda bude sluzba a mozeme pracovat.:
+			'<browser executable path> \
+				"http://meno_clusteru-m:8123" \
+				--proxy-server="socks5://localhost:10000" \
+				--host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" \
+				--user-data-dir=/tmp/'
+	- streamparse - run Python code agains real-time streams of data. Integrates with Apache Storm. Este sa s tym pouziva aj flux. Je to na live data processing, napriklad GPS dat.
+* Functional Programing
+	- CyToolz - Cython implementation of Toolz: high performance functional utilities
+	- fn.py - implementacia 'missing features' funkcionalneho programovania v Pythone
+	- funcy - fancy a prakticke funkcionalne nastroje
+	- Toolz - kolekcia funkcionalnych utilitiek pre iteratorov, funkcie a slovniky
+* 3rd-party APIs
+	- apache-libcloud - 1 Python lib pre vsetky cloudy
+	- boto - Pythonovske rozhranie pre Amazon Web Services
+	- django-wordpress - WOrdPress models a views pre Django
+	- facebook-sdk - Facebook Platform Python SDK
+	- facepy - pre interakciu s Facebookskym Graph API
+	- gmail - interface pre Gmail
+	- google-api-python-client - Google APIs klientska kniznica pre Python
+	- gspread - Google Spreadsheets Python API  
+	- twython - Python wrapper pre Twitter API
+* DevOps tools
+	- Ansible - jednoducha IT automation platforma
+	- SaltStack - system pre automatizaciu a management
+	- OpenStack - open source SW pre tvornu private a public clouds
+	- Docker Compose - rychle, izolovane prostredie pouzivajuce Docker
+	- Cloud-Init - multi-distribution package, co handluje inicializaciu instancie cloudu
+	- cuisine - Chef-like funkcionality pre Fabric
+	- Fabric - jednoduchy nastroj pre vzdialenu exekuciu a nasadenie
+	- Fabtools - nastroje pre napisanie Fabric suborov 
+	- honcho - Python clone of Foreman, pre manazovanie Procfile-based appiek
+	- pexpect - kontrolovanie interaktivnych programov v pseudo-terminale ako GNU expect 
+	- psutil - modul obsahujuci multiplatformny proces a systemove utility
+	- supervisor - process control system pre UNIX 
+* ChatOps tools - Errbot - jednoduchy a najpopularnejsi chatbot pre implementaciu ChatOps
+* Job Scheduler
+	- APScheduler - in-process task scheduler for scheduling functions
+	- django-schedule - calendaring app for Django
+	- doit - task runner and build tool
+	- gunnery - viac ucelovy task execution nastroj pre distribuovane systemy s rozhranim zalozenom na webe
+	- Joblib - sada nastrojov poskytujucich lightweight pipelining v Pythone
+	- Plan - pisanie crontab suborov 
+	- schedule - job scheduling
+	- Spiff - implementovane v cistom Pythone, silny engine pre workflow
+	- TaskFlow - task execution jednoducho, konzistentne a spolahlivo
+* Foreign Function Interface (FFI)
+	- cffi - FFI pre Python volajuci kod v C, obdoba ctypes zo stdlib
+	- PyCUDA - Python wrapper pre Nvidia's CUDA API
+	- SWIG - zjednoduseny wrapper a interface generator
+* High Performance - kniznice, ktore robia python rychlejsim
+	- Cython - staticky kompilator pre Python, pouziva type mixins pre kompilovanie Pythonu do C/C++ modulov, co ma vo vysledku rychlejsi kod
+	- PeachPy - x86-64 assembler vstavany do Pythonu, moze byt pouzity ako inline assembler pre Python alebo stand-alone assembler pre rozne OS
+	- PyPy - implementacia Pythonu v Pythone. Interpreter pouziva black magic pre to aby bol Python naozaj rychly bez toho aby bolo nutne pouzivat dodatocnu informaciu o typoch. Trocha neaktualne, podporuje len Python do  (vratane) 3.3.5
+	- Pyston - implementacia Pythonu s pouzitim LLVM a modernych JIT technik
+	- Stackless Python - zlepsena implementacia Pythonu
+* MS Windows
+	- Python(x,y) - vedecko-orientovana aplikacia zalozena na Qt a Spyder
+	- pythonlibs - neoficialne Windows binarky pre Python extension packages
+	- PythonNet - integracia Pythonu s .NET CLR
+	- PyWin32 - Pythonovske rozsirenie pre Windows
+	- WinPython - portable development enrironment pre Windows 7/8
+* Network Virtualization and SDN (SW defined networking)
+	- Mininet - popularny sietovy emulator a API 
+	- POX - open source platforma pre SDN (ako OpenFlow SDN controllers) zalozenych na Pythone
+	- Pyretic - clen rodiny programovacich jazykov SDN Frenetic, poskytuju abstrakciu nad sietovymi switchami a emulatormi
+	- SDX Platform - DSN zalozeny na IXP implementacii nad technologiami Mininet, POX a Pyretic
+* Hardware
+	- ino - cmd toolkit pre pracu s Arduinom
+	- Pyro - robotics
+	- PyUserInput - modul pre multiplatrofmnu kontrolu mysi a klavesnici
+	- scapy - packet manipulation lib
+	- wifi - cmd tool pre pracu s WiFi na Linuxe
+	- Pingo - uniformne API pre programovanie zariadeni ako su Raspberry Pi, pcDuino, Intel Galileo, ...
+	- Zerynth (predtym Viper) - Python embedded in realtime, pouziva virtualizaciu (VM uploaded first), podpora Pythonu (minimalne) 3.4, pouziva WebSockets, Arduino-like UX, 
+* Compatibility - pre migrovanie z Pythonu 2 na 3: Python-Future, Python-Modernize, Six
+* Algorithms and Design Patterns
+	- algorithms - modul pre algoritmy
+	- python-patterns - kolekcia design patternov v Pythone
+	- sortedcontainers - rychle, pure-Python implementation struktur SortedList, SortedDict a SortedSet
+* Plugins for Editors
+	- Emacs - Elpy
+	- Sublime - SublimeJEDI, Anaconda
+	- Vim - YouCompleteMe, Jedi-vim, Python-mode
+	- Visual Studio - PTVS
+* IDEs - PyCharm, LiClipse, Spyder (open source)
+
+
+
+Webove aplikacie - Django, Pylons, TurboGears, Tornado, Zope, Plone
+Event-driven frameworks - Twisted, Circuits
+
+smiley - pre monitorovanie Pythonovskeho programu a nahravanie si jeho aktivit. Pre analyzu, debugging...
+
+Qdb - remote client server debugger
+
+TA-Lib - pre analyzu trhu, rozne indikatory a statistiky - technicka analyza 'financial market data'.
+
+Spolocnost Quantlane (TODO) - ql-pubsub (asyncio), big-buck-asyncio (jednoduchy player server z PyCon 2016, priklad), fastatsd, aiodebug (debugging asyncio programog), logwood (nahradenie loggingu, jednoduhsie ale ovela rychlejsie - pri obrovskych datach) repoziraty, mozno celkom uzitocne - https://github.com/qntln
+
+Data scientist, repozirare ohladom data processing v Pythone, napriklad https://github.com/kjam/data-wrangling-pycon
+Tipy aj ohladom datovych typov a pod.
++
+Dask - paralelne vypocty, nedoporucuje sa pouzivat na male datove sady, ale na obrovske. Ma spolocne nieco s HDFS (Hadoop filesystem)
+
+----
+Collections
+	* queue - Double-ended Queue - vkladanie/rusenie v konstantnom case, pouzitie ako FITO napriklad. List ma vkladanie/rusenie v linearnom case.
+
+	* Heap queue - modul heapq - pre priority, pouziva sa nad listom. Operacie - heappush, heappop, nsmallest. Logaritmicky cas, obycajny list linearny cas.
+
+	* OrderedDict - dict, ktory zanechava prvky v takom poradi v akom boli vkladane. Bacha - nefunguje ked sa tvori s keyword argumentami (najprv sa zial daju do klasickeho dict)
+	
+	* defaultdict - dovoluje specifikovat defaultne hodnoty pre vsetky kluce. Je to rychlejise nez klasicky dict s dict.setdefault(). Pouzivat! - nemusime kontrolovat ci sa tam prvok s danym klucom vyskytuje. Je mozne rozsirit funkcionalitu - prvy argument callable funkcia - pre jednoduche interfacy namiesto tried. Moze to byt aj trieda s __call__ metodou, potom volat len instanciu objektu. 
+
+	* namedtuple - pristup k prvkom cez atributy a nie indexy, lepsie pre citatelnost a udrzovanie kodu. Avsak - neda sa specifikovat defaultna hodnota argumentu, naviac ak je struktura zlozita tak je urcite lepsie vytvorit pre data triedu. 
+
+	* Counter
+
+----
+contextlib - with statement - pri suboroch. Pomocou dekoratoru @contextmanager sa da spravit lubovolna funkcionalita. Vo vnutri dekorovanej funkcie - yield -v nom sa robi vnutri with, predtym/za tym sa vykonava pred/za telom with-u. yield value - hodnota sa vrati ako 'as value' v casti with.
+
+----
+concurrent.futures 
+	- vie pracovat s threadmi ale aj procesmi, velmi jednoducha zmena (len v importe) - vie manazovat 'pool of workers' (ProcessPoolExecutor), velmi jednoducho. Odporuca sa pouzivat a az ak dojdu moznosti a chceme este vacsi speedup, skusit pouzit priamo modul multiprocessing, ktory obsahuje mnoho dalsich featur a mnoho jeho casti je dost komplexnych.
+
+	- ProcessPoolExecutor - metoda map - vybere kazdy item a aplikuje nan funkciu. To serializuje do binarnych dat s pouzitim modulu pickle. Kopiruje serializovane data z hlavneho procesu inteerpreta do childskemu procesu cez lokalny socket. Potom deserializuje data spat do Pythonovskeho objektu pouzitim modulu pickle (v childskom procese). Potom importne Pythonovsky modul s danou funkciou co sa ma aplikovat a aplikuje ju s ostatnymi child processmi. Vysledok serializuje do bytov, kopiruje ich spat do socketu a deserializuje spat do Pythonovskych objektov v parent procese. Nakoniec mergne vysledky do jedneho listu co sa vrati. Toto moze mat velky overhead, ak speedup nestaci, tak treba skusit dalsie moznosti, napriklad dalsie veci z multiprocessing alebo prepisanie kodu do C.
+
+----
+sched - cron-like spravanie, ale platformovo nezavisle. Pre napr spustanie tasku nejaky specificky cas.
+
+----
+SortedContainers - typy na sorted collections - su rychle! list, dict a set.
+
+----
+array('d', [0] * 1000000)
+array('d', [0]) * 1000000 - rychlejsie niekedy aj 100 nasobne!
+
+----
+Kniznica 'Requests' pre pracu s HTTP :-)
+
+----
+flit - tool na zjednodusenie submittovania Pythonoveho balicka do PyPi. Interaktivne, jednoduche. flit init, ... , flit wheel --upload
+
+----
+colorama - farbicky v terminali, kazdy OS. Dalsie na vytvorenie lepsej obrazovky terminalu: curses, blessings, prompt-toolkit, fabulous
+
+colorlog - namiesto logging, to iste ale farebne
+
+----
+begin - nieco ako argparse, ale jednoduhsie. Dalsia moznost - click.
+Dekorator mainu:
+	@begin.start(auto_convert=True)
+alebo inej funkcie:
+	@begin.subcommand
+
+Ma ale aj dalsie triky v sebe - automaticke handlovanie environment vars, config files, error handling a logging.
+
+----
+GUI
+
+* PyQt, wxPython, tkinter
+
+* pyqtgraph - chart-plotting lib, nieco ako matplotlib. Je vhodna pre real-time a interaktivne vizualizacie. Tiez 3D vizualizacie. Dalsia - VisPy, pre velke datasety s pouzitim GPU vypoctov.
+
+* pywebview - web-technology interface pre desktopove aplikacie. Dalsie zaujimave: cefpython (chrome framework), Eletron (na nom bol postaveny editor Atom) alebo flexx.
+			- casto sa pouziva este dominate, pre generovanie HTML proceduralne.
+
+----
+System Tools
+
+* psutil - pristup k OS a informaciach o procese, pamati, zatazeniu, ...
+
+* watchdog - oznamenia o file system udalostiach, zmeny suborov atd.
+
+* ptpython - interface pre alternativny interpret.
+
+----
+Web APIs
+* Django, Flask
+
+* hug - implementacia vlastnej webovej sluzby
+
+----
+Date & time - pytz - timezones pre python
+* arrow - jednoduche, praucuje so zonami. Dalsie - delorean, pendulum
+* parsedatetime - parsuje text do datumov a casov. Pozna tomorrow, yesterday, 3 days ago, alebo rozne formaty casu... pouzitie napr s speed processingom - watson-word-watcher, recognition. Alternativa - Chronyk.
+
+----
+General-Purpose Libs
+
+* boltons - obsahuje mnoho mensich kniznic z roznych oblasti.
+	- boltons.cacheutils - dovoluje vyuzivanie cache vo vypoctoch, ako dekorator - su rozne druhy, LRI (least recently inserted) a LRU.
+	V stand. kniznici je modul functools co tiez poskytuje dekorator lru_cache (least recently used), co moze byt pouzity pre zrychlenie vypoctov pamatanim si parametrov. Ak su parametre rovnake, nepocita, vrati vysledok co si pamata.
+
+	- boltons.iterutils - pracuju s iterable, napr. vracaju chunky
+
+	- boltons.fileutils - zabezpecenie suborov proti poskodeniu viacnasobnym zapisom atd.
+
+	- boltons.debugutils - interaktivny debugger, zapnutie napr. CTRL+C
+
+	- boltons.strutils - meni stringy - spravi plural, singular, atd.
+
+* Cython 
+	- massive speedup + obidenie GIL pre povolenie multi-CPU v ramci multi-threadingu
+	- konvertuje zdrojovy kod z pythonu do C, vysledok kompiluje do nativnej binarky co je zlinkovana k CPythonu za behu. Dalsi projekt - Numba.
+	- menia sa pri tom aj datove typy premennych, namiesto .py -> .pyx
+	- cythonize -b -i zdrojak.pyx -> produkuje nativnu binarku, spustat napr. python -c "import zdrojak" alebo cython --embed zdrojak.pyx co produkuje C zdrojovy subor. Potom treba kompilovat do executable suboru.
+	- workflow: kodit v pythone, casovo kritickejsie funkcie konvertovat do Cython funkcii a kompilovat do nativnych extensions a tie potom importnut.
+
+----
+Datove struktury
+*	pouzivat get (mozne nastavit defaultnu hodnotu pri chybe) a set - napr pri dict. 
+* sorted list - pouzivat bisect pre vkladanie (na spravnu poziciu) a ziskanie indexu prvku v sortnutom liste.
+* class attributes mozu byt ulozene v trieda.__dict__ a je mozne pridavat za behu po inicializacii dalsie. Ale pozor, takto ukladat atributy moze byt pamatovo narocne. Existuje cesta ako pouzivat objekty inak, triedy mozu definovat __slots__ atribut, co bude obsahovat iba atributy v instancie danej triedy - namiesto dict sa pouziva list. 
+
+----
+Buffer protocol - pouzivanie referencii, namiesto pomaleho  kopirovania pamate
+	- o = memoryview(obj) - o referencuje povodny objekt obj, praca s nim je potom rychlejsia a spotrebuje ovela menej pamate. Slice operator '[1:3]' - pre urcenie ktora cast sa ma brat do uvahu.
+	- tento trik sa pouziva pri socketoch
+
+----
+Profiling - cProfile modul (spomaluje program, rychlejsia, no menej presna a strucnejsia alternativa - statproof)
+* pouzitie: python -m cProfile script.py
+* ukaze pocet funkcnych volani a ich dobu vykonavania, presnejsie nez modul profile
+* je mozne pouzit -o a ulozit vystup, konvertovat ho cez pyprof2calltree a vysledky vizualizovat nastrojom KCacheGrind
+* dis - disassembler Pythonovskeho bytekodu
+* memory_profiler - pozre na pamatovu narocnost programu, napr. python -m memory_profiler script.py . Mozno este nad danou funkciou dat dekorator @profile a vidime spotrebu pamati na kazdom riadku.
+* time.perf_counter() ako benchmark, merat tak 3-5x, z nich geometricky priemer. 
+* jednotlive column: 
+	- ncalls: pocet volani do funkcie
+	- tottime: pocet sekund stravenych spustenim funkcie, okrem casu stravenom ostatnymi funkciami ktore vola
+	- tottime percall: priemerny pocet sekund stravenych vo funckii zakazdym bola volana, okrem casu straveneho ostatnymi funkciami ktore vola, teda tottime / ncalls
+	- cumtime: kumulativny pocet sekund stravenych spustenim funkcie vratane casu stravenom ostatnymi funkciami ktore vola
+	- cumtime percall: cumtime / ncalls 
+
+----
+PyPy - python interpret v pythone samotnom.
+
+----
+Paralelizacia
+	* multithreading modul moze rozdelovat pracu nie len medzi procesory ale aj cez siet, cez multithreading.managers objekty. Tiez poskytuje obojsmernu komunikaciu takze si procesy mozu vymienat data medzi sebou.
+
+	* asynchronna a event-driven architektura - udalost dat do event loop-u a reagovat ked k nej dojde. Neblokujuce.
+	Frameworky - Twisted alebo Tornado. Pripadne zo std lib asyncio
+
+	* SOA - Service-oriented architektura - pouzita v OpenStacku, komponenty pouzivaju HTTP REST pre komnikaciu s externymi klientami (koncovy uzivatelia). 
+	- Kniznice typu RPC - Kombu alebo AMQ protocol (amqp). 
+	- Socket library - ZeroMQ. Moze pracovat cez siet ale aj medzi procesmi lokalne pouzivanim Unixovych socketov.
+
+----
+Jupyter - rychle slajdy/dokumenty aj s kodom, ktory bezi, co je nieco ako webovy interpret.
+
+----
+CERN public data - http://opendata.cern.ch/ pripadne este nejake ine zdroje, pre volnu analyzu
+
+----
+Referencie
+
+Precitane:
+	* Effective Python: 59 Specific Ways to Write Better Python - Brett Slatkin
+	* The Hacker's Guide To Python - Julien Danjou
+	* 20 Python Libraries You Aren't Using (But Should) - Caleb Hattingh
+	* The Hitchhiker’s Guide to Python Best Practices for Development - Kenneth Reitz
+
+	* PEP 8 - http://pep8.org/
+	* PEP 20 - https://www.python.org/dev/peps/pep-0020/
+	* PEP 20 by examples - http://artifex.org/~hblanks/talks/2011/pep20_by_example.pdf
+
+	* Kniznice - https://github.com/vinta/awesome-python
+
+	* Napisane v Pythone - Civilisation IV, BitTorrent, Eve Online, Dropbox, ...
+
+	* New GIL
+	* Understanding GIL
+
+	* Magic methods - http://www.rafekettler.com/magicmethods.pdf
+
+
+Novinky, ponuky prace, Freelancers:
+	* http://importpython.com/newsletter/
+	* https://www.reddit.com/r/python
+	* http://planetpython.org/
+	* http://www.pycoders.com/
+	* http://www.pythonweekly.com/
+	* https://www.python.org/blogs/
+	* https://www.toptal.com/python
+
+
+Specific, maybe later:
+	* Webovy vyvoj (Django/Flask) - https://www.fullstackpython.com/
+
+	* Algoritmizacia v Pythone - http://www.interactivepython.org/courselib/static/pythonds/index.html
+	+ celkovo - https://www.hackerrank.com/
+
+	* Hacking Ciphers
+
+	* Machine Learning v Pythone - Programming Collective Intelligence, Building Smart Web 2.0 Applications Toby Segaran
+
+	* Raspberry Pi Cookbook by Simon Monk
+
+Todo:
+	* High Performance Python
+
+	* https://docs.python.org/3/library/index.html
+	+ The Python Standard Library by Example
+
+	* PyCon 2015 - https://www.superlectures.com/pycon2015/ a PyCon cz 2016 pozriet na prednasky:
+		 MicroPython, Don't use mock. Use flexmock!, API first and forgotten, Feed your code to coala, Because Web API Testing Should Be Easy, Python embedded in your daily life, Running Python in production, C:\keep/calm/and\use\pathlib, If it Moves, Test it Anyway, DOS yourself a.k.a. Load Testing, ChatOps, have you ever heard about it?, Automated Testing Framework, Testing of Web Applications Using Python, Peewee: A Simple Yet Powerful ORM, What is the price of open source?, Do You Want to Retry? Handling Network Failures
+	* Mastering Python
+	* Mastering Object-oriented Python
+	* Mastering Python Design Patterns
+
+	* Pro Python 2nd Edition By J. Burton Browning - Marty Alchin
+	* Writing Idiomatic Python 3 Kindle Edition - Jeff Knupp
+
+
+--------
+Logging
+	## The 10 Commandments of Logging
+
+	http://www.masterzen.fr/2013/01/13/the-10-commandments-of-logging/
+
+	Tu je pohlad od *ops, ktory je uplne iny ako pohlad vyvojarov (a obavam sa, ze lepsi) (PS: nemam na mysli len CYAN vyvojarov, ale vsetkych)
+
+	Dovolim si vypichnut body aj s real life supercore prikladmi, pretoze priklady su bozie a teoria nudna:
+
+	* (2) Thou shalt log at the proper level
+
+	naozaj "ERROR: unexpected encoding at input" nie je vhodny log level, ked aplikacia sa sama zotavi o 2 riadky dalej a prekoduje si to
+
+	potom aj "INFO domain already processed" v cykle kde neprichadzaju ziadne nove data, a ked programator zlyhal v navrhu algoritmu, aby sa domeny vobec opakovane ani nepokusali byt znovu spracovane, ked ma nad cyklom plnu moc, tak je to fakt len na DEBUG level.
+
+
+	* (4) Thou shalt write meaningful logs
+
+	Priklad z dneska: "Checking by [virus.checker - CYAN_Virustotal]: 978 -93752025.075 orestone.ca", kladiem si otazku co su tie cisla, bez znalosti implementacie (ako keby som si to aj pamatal po mesiaci) nemam sancu zistit co znamenaju.
+
+
+	* (6) Thou shalt log with context
+
+	Nie "INFO: Script finished" nie je uzitocny log, hlavne v pripade, ze sa skripty volaju vnorene, potom nastane krasny pripad ako bol v yare, ked pocas jendeho spustenia, tam bolo 10x "script finished". Ked uz tak aspon nazov skriptu by bolo vhodnejsie doplnit.
+
+	Druhy priklad: "I'm alive" hlasky. By som ocakaval, ze servica nieco robi na pozadi a informuje, ze sa nezasekla. Realita: servica nerobi nic, len caka. Nebola by lepsia hlaska "Idle for X seconds. Waiting for new requests."
+
+
+	* (8) Thou shalt not log too much or too little
+
+	Najviac tricky, ale to je udel osudu, vzdy ked som dostal logreporty od zakaznikov, tak zakaznym tam nebolo zalogovane co som potreboval, ale to je taky murphy, nech to logujete akokolvek vzdy bude nieco chybat :D
+
+	Zas na druhu stranu, dnes freenom worker a triplikacia informacie na INFO level o domene, ktora sa spracovava.
+
+
+	* (9) Thou shalt think to the reader
+
+	Hlavne toto, citatelia logov budu aj iny ludia ako samotny autor.
+
+	* admini
+
+	* ostatni programatori
+
+	* novy programator, ktory vobec netusi, kde je a co robi
+
+	* (QA, support)
+
+	* + myslite na bus factor, aby sa nestalo, ze uz nikto nebude vediet co to znamena https://en.wikipedia.org/wiki/Bus_factor
+
+	Priklad: neviem ktory, ale nejaky kategorizacny tool loguje magicku (sestmiestnu?) kombinaciu cislic a pismen, ktora je pre mna osobne sifra zalozena na security by obscurity, pretoze nechapem co sa mi snazia tie hodnoty povedat.
+
+
+	## 9 Logging Best Practices Based on Hands-on Experience
+
+	https://www.loomsystems.com/blog/single-post/2017/01/26/9-logging-best-practices-based-on-hands-on-experience
+
+	Podobne ako to prve
+
+
+	## What should you log in an application and how to avoid having 24×7 support looking at them?
+
+	https://cloudncode.blog/2016/12/30/what-should-you-log-in-an-application-and-how-to-avoid-having-24x7-support-looking-at-them/
+
+	Toto je uz take extra citanie, najpodstatnejsie z toho je zmienka, ze logy by mali byt v UTC, lebo inak je to peklo porovnavat logy medzi lokalitami/miskonfigurovanymi casovymi zonami
+
+
+	## How to Take Logging to the Next Level With Improved .NET Logging Best Practices
+
+	https://stackify.com/csharp-logging-best-practices/
+
+	Toto uz je uplne level pro+ s centralizovanym logovanim

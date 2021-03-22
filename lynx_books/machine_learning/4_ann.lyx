@@ -1,0 +1,5770 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Artificial Neural Networks 
+\end_layout
+
+\begin_layout Itemize
+Models inspired by the structure and function of biological neural networks.
+\end_layout
+
+\begin_layout Itemize
+In each hemisphere of our brain, we have a primary visual cortex 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+, containing 140M of neurons, with tens of billions of connections between
+ them.
+ And there are entire series of visual cortices - 
+\begin_inset Formula $V_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $V_{3}$
+\end_inset
+
+, 
+\begin_inset Formula $V_{4}$
+\end_inset
+
+, and 
+\begin_inset Formula $V_{5}$
+\end_inset
+
+- doing progressively more complex image processing.
+\end_layout
+
+\begin_layout Itemize
+State of the art technique for many modern applications.
+ More will be in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Deep-Learning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ later.
+ Difference between Artificial Neural Networks and Deep Neural Networks?
+ Probably that Deep NN have 2 or more hidden layers.
+\end_layout
+
+\begin_layout Itemize
+These models can handle non-linear problems.
+\end_layout
+
+\begin_layout Itemize
+Neural networks even with just a single hidden layer can be used 
+\series bold
+to approximate any continuous function to any desired precision
+\series default
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{http://neuralnetworksanddeeplearning.com/chap4.html}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is not robust to missing values, ANN requires complete records to do
+ their work.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Neural networks can be feedforward, or recurrent.
+
+\series default
+ In this chapter, we will discuss the first one, feedforward.
+ They don't have any loops in their graph and can be organized in layers.
+ More on this topic please see Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Deep-Learning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Shallow network (1 hidden layer) might need to be very big; possibly much
+ bigger than a deep network to have similar accuracy.
+ This is based on a number of papers proving that shallow networks would
+ in some cases need exponentially many neurons.
+ From a previous research:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stats.stackexchange.com/questions/182734/what-is-the-difference-betwee
+n-a-neural-network-and-a-deep-neural-network-and-w}}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+In this paper we provide empirical evidence that shallow nets are capable
+ of learning the same function as deep nets, and in some cases with the
+ same number of parameters as the deep nets.
+\begin_inset Quotes eld
+\end_inset
+
+ However, this has been never fully proven.
+ Shallow networks do not have the same accuracy and we can only guess why.
+ Some ideas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Maybe a shallow network would need more neurons then the deep one? 
+\end_layout
+
+\begin_layout Itemize
+Maybe a shallow network is more difficult to train with our current algorithms
+ (e.g.
+ it has more nasty local minima, or the convergence rate is slower, or whatever)
+?
+\end_layout
+
+\begin_layout Itemize
+Maybe a shallow architecture does not fit to the kind of problems we are
+ usually trying to solve (e.g.
+ object recognition is a quintessential "deep", hierarchical process)?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It was proven, that neural network with 1 hidden layer which contain in
+ theory unlimited number of neurons, can solve any function with any desired
+ precision (it is approximation, it cannot compute any function exactly)
+ = 
+\series bold
+universality theorem
+\series default
+.
+ We cannot say, that deeper networks are better for every problem (however,
+ this depends on the amount of data, regularization, etc...)! However, more
+ deep nets can catch very complex relations.
+ Also, a given problem is abstracted into more details with deeper network.
+ However, back to universality theorem, not that neural networks just approximat
+e some function, they cannot universally approximate discontinuous functions
+ (that make sharp, sudden jumps).
+ Neural networks compute continuous functions of their input.
+ But in practice this is not usually an important limitation, since even
+ if a function we would really like to compute is discontinuous, it's often
+ the case that a continuous approximation is good enough.
+\end_layout
+
+\begin_layout Itemize
+Universality theorem - tells us, that we can use only 1 hidden layer.
+ So why we are even using deep networks? The reasons are practical.
+ Deep nets have a hierarchical structure, which makes them particularly
+ well adapted to learn the hierarchies of knowledge that seem to be useful
+ in solving real-world problems.
+ Deeper nets do a better job than shallow networks at learning hierarchies
+ of knowledge.
+\end_layout
+
+\begin_layout Itemize
+NN are Turing-complete.
+ Also, it is possible to create an implementation of Turing machine with
+ ANN.
+\end_layout
+
+\begin_layout Itemize
+Neural Networks were designed to simulate neurons in the brain.
+ However, in brain we have 13-15 milliards of neurons, each one can be connected
+ (not directly, there is 20nm gap) with 5k other neurons.
+ Neuron has:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a cell body (Nucleus),
+\end_layout
+
+\begin_layout Itemize
+input wires (Dendrides), and
+\end_layout
+
+\begin_layout Itemize
+output wire (Axon).
+\end_layout
+
+\begin_layout Standard
+Neuron sends signals to other neurons with Axon, and the other neuron accepts
+ incoming message via Dendrides.
+ Neurons communicate with electric signals (spikes).
+ In a neural network with positive inputs, positive weights are most often
+ used to exhibit other neurons and negative weights are most often used
+ to inhibit other neurons.
+ 
+\series bold
+Synapses adapt
+\series default
+, and that is the most important property.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/neuron.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A simple neuron scheme.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+How the brain works:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Each neuron receives inputs from other neurons.
+ A few neurons also connect to receptors (it's a large number of neurons,
+ but only a fraction of the all neurons).
+ Cortical neurons use spikes to communicate.
+\end_layout
+
+\begin_layout Itemize
+The effect of each input line on the neuron is controlled by a synaptic
+ weight.
+ This weight can be positive or negative.
+\end_layout
+
+\begin_layout Itemize
+The synaptic weights adapt so that the whole network learns to perform useful
+ computations.
+\end_layout
+
+\begin_layout Standard
+You have about 
+\begin_inset Formula $10^{11}$
+\end_inset
+
+neurons, each with about 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ weights.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cortex
+\series default
+ is made of general purpose stuff that has the ability to turn into special
+ purpose HW in response to experience.
+ In fact, cortex looks pretty much the same all over.
+ It has rapid parallel computation (once you learned) and flexibility (ability
+ to compute new functions).
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+History
+\end_layout
+
+\begin_layout Itemize
+1943 - Warren McCulloch and Watler Pittse created a simple mathematical
+ model of artificial neural cell.
+ Parameters of this model had mostly bipolar values.
+ They proved, that with simple neural networks, it is possible to perform
+ calculation of any logical and arithmetical function.
+\end_layout
+
+\begin_layout Itemize
+1949 - Donal Hebb - The Organization of Behavior - learning algorithm for
+ synapses of neurons.
+ It took almost 10 years to researchers to find application for this area.
+\end_layout
+
+\begin_layout Itemize
+1957 - Frank Rosenblatt - model from 1943 (McCulloch and Pittse) has been
+ generalized for real numbers.
+ The author defined Perceptron model and learning algorithm for Perceptron.
+ Defined learning algorithm could find weight vector of parameters, based
+ on training data.
+\end_layout
+
+\begin_layout Itemize
+1969 - Monsky and Papert - published a book called 
+\begin_inset Quotes eld
+\end_inset
+
+Perceptrons
+\begin_inset Quotes erd
+\end_inset
+
+ that analyzed what they could do and showed their limitations.
+ Many people thought these limitation applied to all neural network models.
+ These 2 researchers thought (and actually the whole community of researchers
+ regarding this topic) that they proven that Perceptron is not good.
+ However, Perceptron learning algorithm is still being used.
+ For example for tasks with enormous feature vectors that contain many millions
+ of features.
+\end_layout
+
+\begin_layout Itemize
+1986 - David Rumelhartr, Geoffrey Hinton, and Ronald Williams - backpropagation.
+ This algorithm is the most popular even today (2019) for supervised learning
+ of multi-layer Perceptron.
+\end_layout
+
+\begin_layout Itemize
+1988 - Teuvo Kohonen - Self-Organizing Map.
+ Unsupervised method, which is based on competition between parallel neurons.
+ Neurons from themselves change their inner state and behavior.
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Initialization of weights
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Initialization of weights (=thetas) cannot be all zeroes! The best strategy
+ is to use 
+\series bold
+random initialization
+\series default
+ and ideally all the values are different, somewhere close to zero.
+ If there are 
+\series bold
+only
+\series default
+ 
+\series bold
+zeroes
+\series default
+, it would mean that 
+\series bold
+all hidden units are computing the same function of the input
+\series default
+.
+ This is called the problem of 
+\series bold
+symmetric ways
+\series default
+ (weights are being the same).
+ And therefore also deltas are same (see later below).
+ 
+\series bold
+Randomness
+\series default
+ performs 
+\series bold
+symmetry breaking
+\series default
+.
+ If we generate 1 random number and all weights would have this value, then
+ this is again, the problem of symmetric ways (every unit in the network
+ will get the same update after backpropagation).
+\end_layout
+
+\begin_layout Itemize
+It is absolutely fine to initialize the weights for logistic regression
+ to zeros, but in neural network, such approach would not work with gradient
+ descent (actually, it is not only because of number 
+\begin_inset Formula $0$
+\end_inset
+
+, but because when all neurons have the same number, then they will compute
+ the same function).
+ However, to initialize a bias term to zero is fine.
+\end_layout
+
+\begin_layout Itemize
+Initialization with Gaussian distribution: if the weights in hidden layers
+ are initialized using normalized Gaussian, then activations will often
+ be very close to 0 or 1, and learning will proceed very slowly (saturation
+ of hidden neurons problem).
+ This happens when standard deviation is too big.
+ So it is good to normalize it, according to the number of input weights
+ to a given hidden neuron.
+ For example, 
+\begin_inset Formula $1/\sqrt{n_{in}}$
+\end_inset
+
+, where 
+\begin_inset Formula $n_{in}$
+\end_inset
+
+is the number of input weights to a given hidden neuron.
+ Then, 
+\begin_inset Formula $z=\sum_{j}w_{j}x_{j}+b$
+\end_inset
+
+ will be a Gaussian random variable with mean 0 and if for example, 
+\begin_inset Formula $j=500$
+\end_inset
+
+, so there are 
+\begin_inset Formula $500$
+\end_inset
+
+ input neurons, then standard deviation would be 
+\begin_inset Formula $\sqrt{3/2}=1.22$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stats.stackexchange.com/questions/194082/how-to-find-the-variance-in-t
+his-neural-network-related-question}}
+\end_layout
+
+\end_inset
+
+ If we would not do this normalization 
+\begin_inset Formula $1/\sqrt{n_{in}}$
+\end_inset
+
+ , then standard deviation would be 
+\begin_inset Formula $\sqrt{501}=22.4$
+\end_inset
+
+, which is Gaussian distribution not sharply peaked at all, so 
+\begin_inset Formula $z$
+\end_inset
+
+ would be pretty large (probably much bigger than 
+\begin_inset Formula $1$
+\end_inset
+
+ or much lower than 
+\begin_inset Formula $-1$
+\end_inset
+
+), and output of 
+\begin_inset Formula $\sigma(z)$
+\end_inset
+
+ from the hidden neuron would be very close to either 
+\begin_inset Formula $1$
+\end_inset
+
+ or 
+\begin_inset Formula $0$
+\end_inset
+
+ - which would means that it would be saturated.
+\end_layout
+
+\begin_layout Itemize
+One effective strategy for random initialization is to randomly select values
+ for 
+\begin_inset Formula $\theta(l)$
+\end_inset
+
+ uniformly in the range 
+\begin_inset Formula $[-\varepsilon_{init},\varepsilon_{init}]$
+\end_inset
+
+.
+ This range of values ensures that the parameters are kept small and makes
+ the learning more efficient.
+ One effective strategy for choosing 
+\begin_inset Formula $\varepsilon_{init}$
+\end_inset
+
+ is to base it on the 
+\series bold
+number of units in the network
+\series default
+.
+ A good choice is 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varepsilon_{init}=\frac{\sqrt{6}}{\sqrt{L_{in}+L_{out}}},\label{eq:init_eps_weight}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+where 
+\begin_inset Formula $L_{in}=s_{l}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{out}=s_{l+1}$
+\end_inset
+
+are in out the number of units in the layers adjacent to 
+\begin_inset Formula $\theta^{(l)}$
+\end_inset
+
+ so, for first 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (after the input layer), it 
+\begin_inset Formula $L_{in}$
+\end_inset
+
+ is a size of the input layer, and 
+\begin_inset Formula $L_{out}$
+\end_inset
+
+ is a size of a hidden layer which goes right after the input layer.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Once we have 
+\begin_inset Formula $\varepsilon_{init}$
+\end_inset
+
+, then we can calculate a random weight for a given theta in the following
+ way:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+rand(L_{out},1+L_{in})*2*\varepsilon_{init}-\varepsilon_{init}\label{eq:init_weight}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So, different hidden layers have different range of pseudo-random numbers,
+ and there is a good variety if we are using uniform distribution of pseud-rando
+m generator.
+\end_layout
+
+\begin_layout Itemize
+If we would initialize weights randomly with great values (
+\begin_inset Formula $\pm10$
+\end_inset
+
+ or even bigger range), then the cost will start very high.
+ If you would If you train ANN longer you will see better results, but initializ
+ing with overly large random numbers slows down the optimization.
+\end_layout
+
+\begin_layout Itemize
+There are 2 known and effective approaches - you randomly generate real
+ number (in the following formulas it is named as 
+\begin_inset Formula $generated\,num$
+\end_inset
+
+) with Gaussian distribution with 
+\begin_inset Formula $mean=0$
+\end_inset
+
+ and 
+\begin_inset Formula $variance=1$
+\end_inset
+
+ and then multiply this number with another number:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Xavier initialization
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+generated\,num*\sqrt{\frac{1}{layers\,dims[l-1]}}\label{eq:xavier_init}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+He initialization 
+\series default
+(2015) is very similar to Xavier initialization and works well with ANN
+ with ReLU activations:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+generated\,num*\sqrt{\frac{2}{layers\,dims[l-1]}}\label{eq:he_init}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Basics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/aneuron.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a simple artificial neuron.
+ This is basically just like logistic regression, but in slightly different
+ notation.
+ In fact, in Multi-layer Perceptron, the output layer is always like logistic
+ regression.
+ 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ is usually 1 and there is also bias term is sometimes defined as 
+\begin_inset Formula $w_{0}=-\theta$
+\end_inset
+
+, where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a threshold for activation.
+ However, with some math, we can sum over all (including bias) for activation
+ function and threshold will become to be 0.
+ Without bias, we would restrict possible solutions - so bias helps in learning
+ basically.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/aneuron_one_hidden_layer.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of artificial neuron with 1 hidden layer (also called 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+shallow
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ We can see, that on each layer except the output layer, there is one unit
+ called 'bias' (mostly value 1), which is there always implicitly.
+ It is used for an initial shift of function and it is used as a helper
+ constant for possible faster learning.
+ Intermediate or 
+\begin_inset Quotes eld
+\end_inset
+
+hidden
+\begin_inset Quotes erd
+\end_inset
+
+ layer nodes 
+\begin_inset Formula $a_{1}^{(2)}\ldots a_{n}^{(2)}$
+\end_inset
+
+ will be always called 
+\begin_inset Quotes eld
+\end_inset
+
+activation units
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The way the neurons are connected, is called architecture.
+ Each layer basically computes more complex features from a previous layer,
+ so we can get very interesting nonlinear hypotheses.
+ Architecture on this figure is that all input layers are connected with
+ all neurons in hidden layer = they are densily connected.
+ Dense layer = fully connected layer, it is the same thing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/aneuron_simple_calc.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of artificial neuron with 1 hidden layer and the calculation
+ of the output as well as some defined notation.
+ If we would want to do a multiclass classification, there would be more
+ neurons on the output layer (so more different hypotheses, each for 1 class).
+ Computation of the hypothesis on the output layer (from left to right,
+ so from the inputs sequentially) is called 
+\series bold
+Forward propagation 
+\series default
+(or forward pass).
+ There is a 
+\series bold
+basis function
+\series default
+ 
+\begin_inset Formula $g$
+\end_inset
+
+, that is used for computing a combination of all input signals into 1 value.
+ This value is passed into an activation function (also known as 
+\series bold
+transfer function
+\series default
+) and the result determines the final output of a given neuron.
+ Typical basis function is 
+\series bold
+Linear Basis Function
+\series default
+, or 
+\series bold
+LBF
+\series default
+ (there exist more types, for example 
+\series bold
+Radial Basis Function
+\series default
+, or 
+\series bold
+RBF
+\series default
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Cost function
+\end_layout
+
+\begin_layout Standard
+This is similar (although more generalized) than the one for logistic regression.
+ 
+\series bold
+It is non-convex.
+ 
+\series default
+Optimization algorithms can get stuck in local minima.
+ But in practice, this is usually not a huge problem (it usually gets a
+ good local minimum even if is does not get the global optimum) - Andrew
+ Ng.
+ The following formula is 
+\series bold
+cross-entropy
+\series default
+ 
+\series bold
+cost
+\series default
+ with 
+\series bold
+L2 regularization cost
+\series default
+ (another name for 
+\series bold
+L2 regularization 
+\series default
+is 
+\series bold
+Euclidean norm
+\series default
+, or another one is 
+\series bold
+weight decay
+\series default
+ - by the way, this can be the same for quadratic cost - in more simple
+ notation: 
+\begin_inset Formula $C=C_{0}+\frac{\lambda}{2n}\sum_{w}w^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ is the original, unregularized cost function).
+\end_layout
+
+\begin_layout Description
+Definition:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta)=-\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K}[y_{(k)}^{(i)}log(h_{\theta}(x^{(i)}))_{k}+(1-y_{k}^{(i)})log(1-h_{\theta}(x^{(i)})_{k})]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l}+1}(\theta_{j,i}^{(l)})^{2}\label{eq:nn_cost_function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Where
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L = total number of layers in the network.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s_{l}$
+\end_inset
+
+ = number of units (not counting bias unit) in layer 
+\begin_inset Formula $l$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+K = number of output units/classes.
+ 
+\end_layout
+
+\begin_layout Itemize
+The double sum simply adds up the logistic regression costs calculated for
+ each cell in the output layer.
+\end_layout
+
+\begin_layout Itemize
+The triple sum simply adds up the squares of all the individual thetas in
+ the entire network.
+\end_layout
+
+\begin_layout Itemize
+Regularization parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ - regularization can be viewed as a way of compromising between finding
+ small weights and minimizing the original cost function.
+ If this value is small, we prefer to minimize the original cost function,
+ and if it is large, we prefer small weights.
+ Regularization just do that the network prefers to learn small weights
+ (btw, no biases; we are not regularizing biases).
+ Btw, if cost function is unregularized, then the length of the weight vector
+ is likely to grow, all other things being equal.
+ Over time this can lead to the weight vector being very large indeed.
+ This can cause the weight vector to get stuck pointing in more or less
+ the same direction, since changes due to gradient descent only make tiny
+ changes to the direction, when the length is long.
+ So, unregularized cost function probably causes that it is harder for our
+ learning algorithm to properly explore the weight space, and consequently
+ harder to find good minima of the cost function.
+ Unregularized runs of training will occasionally get 
+\begin_inset Quotes eld
+\end_inset
+
+stuck
+\begin_inset Quotes erd
+\end_inset
+
+ - they are caught in local minima of the cost function.
+ So different runs (may) provide quite different results.
+ By contrast, regularized runs (may) provide much more easily replicable
+ results.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $i$
+\end_inset
+
+ in the triple sum does not refer to training example 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cost function is always bigger than zero! All cost functions must be.
+ All individual terms in the sums are negative, since both logarithms are
+ of numbers in range 0 and 1, and there is a minus sign out of the front
+ of the sums.
+\end_layout
+
+\begin_layout Itemize
+If the neuron's actual output is close to desired output for all training
+ inputs, then cross-entropy will be close to zero.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+However, if we consider simple non-multiclass classification (
+\begin_inset Formula $k=1$
+\end_inset
+
+) and discard regularization, the cost is computed with:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+cost(t)=-y^{(t)}log(h_{\theta}(x^{(t)}))+(1-y^{(t)})log(1-h_{\theta}(x^{(t)}))\label{eq:simple_nn_cost_function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Derivatives of the cost function is basically 
+\begin_inset Formula $\delta$
+\end_inset
+
+ values.
+ For example, 
+\begin_inset Formula $\delta_{2}^{(1)}$
+\end_inset
+
+ is the 
+\begin_inset Quotes eld
+\end_inset
+
+error
+\begin_inset Quotes erd
+\end_inset
+
+ for 
+\begin_inset Formula $a_{2}^{1}$
+\end_inset
+
+ (unit 
+\begin_inset Formula $2$
+\end_inset
+
+ in layer 
+\begin_inset Formula $1$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\delta_{j}^{(l)}=\frac{\partial}{\partial z_{j}^{(l)}}cost(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+just to recall, the derivative is the slope of a line tangent to the cost
+ function, so the steeper the slope the more incorrect we are.
+ 
+\end_layout
+
+\begin_layout Itemize
+so, why derivation? Because if we want to search for a minimum of some function,
+ gradient tells us in which direction a given function grows.
+ So when we are going in the opposite direction, a function decreases.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cross-entropy cost function 
+\series default
+vs 
+\series bold
+quadratic cost function.
+ 
+\series default
+For quadratic function, learning can be slow (see derivation of sigmoid
+ activation function using quadratic cost function - neuron saturation
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{If we have sigmoid activation function it is very close to zero
+ or one, its derivative (for example, during backpropagation) is close to
+ zero.
+ This results that a weight in the final layer will learn slowly if the
+ output neuron is either at low or high activation (cca 0 or 1), similar
+ situation is for biases.}
+\end_layout
+
+\end_inset
+
+).
+ Neuron saturation can be solved using softmax function on output neurons,
+ or by using cross-entropy cost function (so now we are talking about 
+\series bold
+saturation of the output neurons
+\series default
+, not hidden neurons - for this, we can use a proper weight initialization
+ algorithm).
+ Cross-entropy has a benefit that, unlike the quadratic cost, it avoids
+ the problem of learning slowing down - compute partial derivative of the
+ cross-entropy with respect to the weights (and let's substitute 
+\begin_inset Formula $a=\sigma(z)$
+\end_inset
+
+ into 
+\begin_inset Formula $C=-\frac{1}{n}\sum_{x}[y.ln(a)+(1-y).ln(1-a)]$
+\end_inset
+
+, and apply the chain rule twice, obtaining:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial C}{\partial w_{j}}=-\frac{1}{n}\sum_{x}(\frac{y}{\sigma(z)}-\frac{1-y}{1-\sigma(z)})\frac{\partial\sigma}{\partial w_{j}}=-\frac{1}{n}\sum_{x}(\frac{y}{\sigma(z)}-\frac{1-y}{1-\sigma(z)})\sigma^{'}(z)x_{j}=\frac{1}{n}\sum_{x}\frac{\sigma^{'}(z)x_{j}}{\sigma(z)(1-\sigma(z))}(\sigma(z)-y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $\sigma^{'}(z)=\sigma(z)(1-\sigma(z))$
+\end_inset
+
+, equation above can be even more simplified to 
+\begin_inset Formula $\frac{\partial C}{\partial w_{j}}=\frac{1}{n}\sum_{x}x_{j}(\sigma(z)-y)$
+\end_inset
+
+.
+ This expression tells us, that the rate at which the weight learns is controlle
+d by 
+\begin_inset Formula $\sigma(z)-y$
+\end_inset
+
+, so by the error in the output.
+ The larger the error, the faster the neuron will learn, what is exactly
+ what we would expect.
+ This avoids slow learning caused by 
+\begin_inset Formula $\sigma^{'}(z)$
+\end_inset
+
+ term in analogous equation for the quadratic cost 
+\begin_inset Formula $C=\frac{(y-a)^{2}}{2}$
+\end_inset
+
+, whose partial derivatives are 
+\begin_inset Formula $\frac{\partial C}{\partial w}=(a-y)\sigma^{'}(z)x=a\sigma^{'}(z)$
+\end_inset
+
+ and the same for bias, 
+\begin_inset Formula $\frac{\partial C}{\partial b}=(a-y)\sigma^{'}(z)=a\sigma^{'}(z)$
+\end_inset
+
+ - there, when a neuron's output is close to 1 (or zero), the curve of sigmoid
+ gets very flat, and so 
+\begin_inset Formula $\sigma^{'}(z)$
+\end_inset
+
+ gets very small = learning is very slow.
+ When using cross-entropy, 
+\begin_inset Formula $\sigma^{'}(z)$
+\end_inset
+
+ term is canceled out.
+ and so we no longer need to worry about being it very small.
+ And cross-entropy was specially chosen to have this property.
+\end_layout
+
+\begin_layout Itemize
+By the way, all the previous can be also calculated for the bias term:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial C}{\partial b}=\frac{1}{n}\sum_{x}(\sigma(z)-y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cross-entropy is almost always a better choice than quadratic cost, provided
+ the output neurons are sigmoid neurons.
+ If there are linear activation functions only, quadratic cost function
+ is appropriate and will not cause the learning slowdown.
+ Why? Because 
+\begin_inset Formula $\frac{\partial C}{\partial w_{jk}^{L}}=\frac{1}{n}\sum_{x}(a_{k}^{L-1}(a_{j}^{L}-y_{j}))$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial C}{\partial b_{j}^{L}}=\frac{1}{n}\sum_{x}(a_{j}^{L}-y_{j})$
+\end_inset
+
+ - it is because of derivatives of linear function.
+ So, choosing cost function depends on activation functions that are used,
+ but mostly cross-entropy is a good choice.
+\end_layout
+
+\begin_layout Itemize
+Learning rate - for both functions, it is not possible to say precisely
+ what it means to use the same learning rate when the cost function is changed.
+ It must be chosen with experimenting to find near-optimal performance given
+ also other hyper-parameter choices (very rough general heuristic for relating
+ the learning rate for cross-entropy and quadratic cost, quadratic cost
+ learns an average of 6x slower and this is the same for learning rate;
+ but don't take too seriously, it can be just as a starting point).
+\end_layout
+
+\begin_layout Itemize
+How was cross-entropy created? As noted earlier, if we have sigmoid activation
+ function and we would derive quadratic cost function: 
+\begin_inset Formula $\frac{\partial C}{\partial w}=(a-y)\sigma^{'}(z)x=a\sigma^{'}(z)$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{\partial C}{\partial b}=(a-y)\sigma^{'}(z)=a\sigma^{'}(z)$
+\end_inset
+
+ (substitution of 
+\begin_inset Formula $x=1$
+\end_inset
+
+ and 
+\begin_inset Formula $y=0$
+\end_inset
+
+) there is a learning slowdown problem - because of neuron saturation.
+ Now we can create a new cost function in which term 
+\begin_inset Formula $\sigma^{'}(z)$
+\end_inset
+
+ would disappear.
+ The easiest example would be 
+\begin_inset Formula $\frac{\partial C}{\partial w_{j}}=x_{j}(a-y)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial C}{\partial b}=a-y$
+\end_inset
+
+.
+ This would mean, the greater the initial error, the faster the neuron learns,
+ and it would eliminate the problem of learning slowdown.
+ In fact, from these equations we can derive cross-entropy.
+ From chain rule, we have 
+\begin_inset Formula $\frac{\partial C}{\partial b}=\frac{\partial C}{\partial a}\sigma^{'}(z)$
+\end_inset
+
+ and using 
+\begin_inset Formula $\sigma^{'}(z)=\sigma(z)(1-\sigma(z))=a(1-a),$
+\end_inset
+
+it becomes 
+\begin_inset Formula $\frac{\partial C}{\partial b}=\frac{\partial C}{\partial a}a(1-a)$
+\end_inset
+
+.
+ Then, comparing to 
+\begin_inset Formula $\frac{\partial C}{\partial b}=a-y$
+\end_inset
+
+, we obtain 
+\begin_inset Formula $\frac{\partial C}{\partial a}=\frac{a-y}{a(1-a)}$
+\end_inset
+
+ and integrating this expression with respect to 
+\begin_inset Formula $a$
+\end_inset
+
+ gives us: 
+\begin_inset Formula $C=-[y\,ln(a)+(1-y)ln(1-a)]+constant$
+\end_inset
+
+ for some constant of integration.
+ This is the contribution to the cost from a single training example, 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ To get full cost function, we must average over training examples: 
+\begin_inset Formula $C=-\frac{1}{n}\sum_{x}[y\,ln(a)+(1-y)ln(1-a)]+constant$
+\end_inset
+
+, where the constant here is the average of the individual constants for
+ each training example.
+\end_layout
+
+\begin_layout Itemize
+Roughly speaking, cross-entropy is a measure of surprise.
+ In particular, a neuron is trying to compute the function 
+\begin_inset Formula $x\rightarrow y=y(x)$
+\end_inset
+
+.
+ But instead it computes the function 
+\begin_inset Formula $x\rightarrow a=a(x)$
+\end_inset
+
+.
+ Suppose we think of 
+\begin_inset Formula $a$
+\end_inset
+
+ as out neuron's estimated probability that 
+\begin_inset Formula $y=1$
+\end_inset
+
+ and 
+\begin_inset Formula $1-a$
+\end_inset
+
+ is estimated probability that the right value for 
+\begin_inset Formula $y$
+\end_inset
+
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Then, cross-entropy measures how 
+\begin_inset Quotes eld
+\end_inset
+
+surprised
+\begin_inset Quotes erd
+\end_inset
+
+ we are, on average, when we learn the true value for 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ We get low surprise if the output is what we expect, and high surprise
+ if the output is unexpected.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A few nested summations have been added to account for multiple output nodes.
+ In the first part of the equation, before the square brackets, we have
+ an additional nested summation that loops through the number of output
+ nodes.
+\end_layout
+
+\begin_layout Itemize
+In the regularization part, after the square brackets, we must account for
+ multiple theta matrices.
+ The number of columns in our current theta matrix is equal to the number
+ of nodes in our current layer (including the bias unit).
+ The number of rows in our current theta matrix is equal to the number of
+ nodes in the next layer (excluding the bias unit).
+ As before with logistic regression, we square every term.
+\end_layout
+
+\begin_layout Itemize
+Regularization can set a weights of a neuron so close to zero, that it is
+ basically zeroing out an impact of a given neuron.
+ So if the regularization is high, a lot of hidden units will have smaller
+ impact and therefore the model itself is basically smaller.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dropout regularization
+\series default
+ 
+\series bold
+technique
+\series default
+: go through each neuron in each hidden layer, and set a probability of
+ eliminating a node in ANN pseudo-randomly to some value.
+ Dropout has similar effect to L2 regularization, but L2 can be more adaptive
+ to the scale of different inputs.
+ With dropout, cost function 
+\begin_inset Formula $J$
+\end_inset
+
+ is not well defined and it is not guaranteed that it is going downhill
+ on every iteration.
+ Cost function 
+\begin_inset Formula $J$
+\end_inset
+
+ is harder to calculate.
+ Gradient checking technique does not work with dropout, because with every
+ iteration, dropout is randomly eliminating different subsets of the hidden
+ units.
+ There isn't an easy way to compute cost function that dropout is doing
+ gradient descent on.
+ Dropout is used during training not for testing - you don't want to flip
+ coins to decide which hidden units to eliminate.
+ And that's because when you are making predictions at the test time, you
+ don't really want your output to be random.
+ And why dropout works? Because we will not rely on any 1 feature, but weights
+ are spread out.
+ There is a parameter 
+\begin_inset Formula $keep\,prop$
+\end_inset
+
+ and can be set to each layer to be different (for example bigger hidden
+ layers have relatively low dropout, for example 0.5 with 7 hidden units,
+ and the last layers which are very small, like 1-2 neurons, 
+\begin_inset Formula $keep\,prop=1.0$
+\end_inset
+
+ and so no dropout is done on these last layers; btw, you can also use dropout
+ for the input layer but it is not being done so often - and if yes, then
+ with very small 
+\begin_inset Formula $keep\,prop$
+\end_inset
+
+).
+ Dropped neurons don't contribute to the training in both the forward and
+ backward propagations of the iteration.
+ When you shut some neurons down, you actually modify your model.
+ The idea behind drop-out is that at each iteration, you train a different
+ model that uses only a subset of your neurons.
+ With dropout, your neurons thus become less sensitive to the activation
+ of one other specific neuron, because that other neuron might be shut down
+ at any time.
+ Steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Create a matrix 
+\begin_inset Formula $D^{[l]}$
+\end_inset
+
+ which has the same shape as 
+\begin_inset Formula $A^{[l]}$
+\end_inset
+
+.
+ Set each entry in 
+\begin_inset Formula $D^{[l]}$
+\end_inset
+
+to be 0 with probability 
+\begin_inset Formula $1-keep\,prop$
+\end_inset
+
+, or 1 with probability 
+\begin_inset Formula $keep\,prop$
+\end_inset
+
+ by thresholding randomly generated values in 
+\begin_inset Formula $D^{[l]}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $A^{[l]}=A^{[l]}*D^{[l]}$
+\end_inset
+
+ (you are shutting down some neurons).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Divide 
+\begin_inset Formula $A^{[l]}$
+\end_inset
+
+ by 
+\begin_inset Formula $keep\,prop$
+\end_inset
+
+ - this technique is called inverted dropout.
+ By doing this you are assuring that the result of the cost will still have
+ the same expected value as without dropout.
+ For example, if 
+\begin_inset Formula $keep\,prop$
+\end_inset
+
+ is 0.5, then we will on average shut down half the nodes, so the output
+ will be scaled by 0.5 since only the remaining half are contributing to
+ the solution.
+ Dividing by 0.5 is equivalent to multiplying by 2.
+ Hence, the output now has the same expected value.
+\end_layout
+
+\begin_layout Standard
+And then backpropagation:
+\end_layout
+
+\begin_layout Enumerate
+You had previously shut down some neurons during forward propagation, by
+ applying a mask 
+\begin_inset Formula $D^{[1]}$
+\end_inset
+
+ to 
+\begin_inset Formula $A^{[1]}$
+\end_inset
+
+.
+ In backpropagation, you will have to shut down the same neurons, by reapplying
+ the same mask 
+\begin_inset Formula $D^{[1]}$
+\end_inset
+
+to 
+\begin_inset Formula $dA^{[1]}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+During forward propagation, you had divided 
+\begin_inset Formula $A^{[1]}$
+\end_inset
+
+ by 
+\begin_inset Formula $keep\,prob$
+\end_inset
+
+.
+ In backpropagation, you'll therefore have to divide 
+\begin_inset Formula $dA^{[1]}$
+\end_inset
+
+ by 
+\begin_inset Formula $keep\,prob$
+\end_inset
+
+ again (the calculus interpretation is that if 
+\begin_inset Formula $A^{[1]}$
+\end_inset
+
+ is scaled by
+\begin_inset Formula $keep\,prob$
+\end_inset
+
+, then its derivative 
+\begin_inset Formula $dA^{[1]}$
+\end_inset
+
+ is also scaled by the same 
+\begin_inset Formula $keep\,prob$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dropout is basically a form of model averaging - extreme bagging.
+ It is an efficient way to average a large number of neural nets.
+ The training sets are very different for the different models, but they're
+ also very small.
+ The sharing of the weights between all the models means that each model
+ is very strongly regularized by the others.
+ And this is a much better regularizer than things like L2 or L1 penalties.
+ Those penalties pull the weights toward zero.
+ By sharing weights with other models, a models gets regularized by something
+ that's going to tend to pull the weight towards the correct value.
+ At test time - we use all of the hidden units, but halve their outgoing
+ weights.
+ This exactly computes geometric mean of the predictions of all 
+\begin_inset Formula $2^{H}$
+\end_inset
+
+ models (if we are sampling from 
+\begin_inset Formula $2^{H}$
+\end_inset
+
+ different architectures where 
+\begin_inset Formula $H$
+\end_inset
+
+ is a number of hidden units, and we are randomly omitting each hidden unit
+ with probability of 
+\begin_inset Formula $0.5$
+\end_inset
+
+).
+
+\series bold
+ Input layer
+\series default
+ - we can use dropout here too, but with a higher probability of keeping
+ an input unit.
+ This trick is already used in 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+denoising autoencoders
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It is also possible to use 
+\series bold
+Early stopping
+\series default
+, but this has some downside.
+ Usually, you want orthogonalization - you want to be able to think about
+ 1 task at a time, not multiple at the same time.
+ For example, Andres NG never uses Early stopping (but Geoffrey Hinton does).
+ Usually we want to separately optimize cost function 
+\begin_inset Formula $J$
+\end_inset
+
+ (gradient descent, momentum, RMS prob, etc) and then solve overfitting
+ (regularization etc), so to work on all task independently - this keeps
+ the exploration of hyperparameters well behaved - don't optimize cost function
+ and regularize at the same time.
+ He is instead uses just L2 regularization, but it is needed to try different
+ values of lambda which is more computationally expensive.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Early stopping means that at the end of each epoch we should compute the
+ classification accuracy on the validation data.
+ When that stops improving, terminate.
+ This makes setting the number of epochs very simple.
+ In particular, it means that we don’t need to worry about explicitly figuring
+ out how the number of epochs depends on the other hyper-parameters.
+ Instead, that’s taken care of automatically.
+ Furthermore, early stopping also automatically prevents us from overfitting.
+ This is, of course, a good thing, although in the early stages of experimentati
+on it can be helpful to turn off early stopping, so you can see any signs
+ of overfitting, and use it to inform your approach to regularization.
+\end_layout
+
+\begin_layout Itemize
+To implement this, we need to say what it means that the classification
+ accuracy has stopped improving.
+ We can watch the last few (for example 10) epochs, and decide to terminate
+ if the performance was not improved.
+ But there can be different strategies.
+ This would ensure, that we won't stop too soon, in response to bad luck
+ in training, but also that we are not waiting around forever for an improvement
+ that never comes.
+\end_layout
+
+\begin_layout Itemize
+However, sometimes networks can plateau near a particular classification
+ accuracy for quite some time, only then they will begin to improve again.
+ That may be too aggressive.
+ Maybe you can try multiple number of last epochs for deciding whether the
+ accuracy was or was not improved - so this number (number of epochs to
+ monitor for early stopping) would be another hyperparameter.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/early_stopping_works.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Early stopping is a way of preventing overfitting.
+ It is much cheaper to start with very small weights and let them grow until
+ the performance on the validation set starts getting worse (it can be difficult
+ to estimate when the performance is getting worse).
+ The capacity of the model will be limited, because the weights have not
+ had time to grow big.
+ When the weight's very small, if the hidden unit's a logistic units, their
+ total inputs will be close to zero, and they'll be in the middle of their
+ linear range.
+ That is, they'll behave very like linear units.
+ What that means is, when the weights are small, the whole network is the
+ same as a linear network that maps the inputs straight to the outputs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Another ways of doing regularization of neural networks is
+\series bold
+ adding noise to the input data
+\series default
+, or to the 
+\series bold
+network weights
+\series default
+, or to the 
+\series bold
+hidden activations
+\series default
+.
+ Actually, adding Gaussian noise (with the mean equals to zero) to the weights
+ of a multi-layer non-linear net is not exactly equivalent to using L2 weight
+ penalty, but it seems that it actually may work even better, especially
+ in RNNs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/nn_regularization.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ANN with regularization using 
+\begin_inset Quotes eld
+\end_inset
+
+Frobenius norm
+\begin_inset Quotes erd
+\end_inset
+
+ (but it is similar to L2 norm).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Forward Propagation and Backpropagation
+\end_layout
+
+\begin_layout Standard
+"Backpropagation" is neural-network terminology for minimizing the cost
+ function, just like what we were doing with gradient descent in logistic
+ and linear regression (actually backpropagation is gradient descending
+ process).
+ That is, we want to minimize our cost function 
+\begin_inset Formula $J$
+\end_inset
+
+ using an optimal set of parameters in theta.
+\end_layout
+
+\begin_layout Standard
+We perform forward and backward pass sample by sample.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/backprop_easy.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A simplified version of Backpropagation algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/backprop1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Backpropagation algorithm (I).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/backprop2.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Backpropagation algorithm (II).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/forward_prop.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of calculating delta values in Backward pass from a values of
+ Forward Propagation for a simple ANN.
+ Delta represents an error of cost function.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gradient_checking.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gradient Checking algorithm for making sure that our implementation of Backpropa
+gation is correct.
+ More information is described in Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Gradient-descend"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gradient_checking"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Another view on Backpropagation
+\end_layout
+
+\begin_layout Standard
+Backpropagation is based around 4 fundamental equations (for any activation
+ function).
+ Together, they give us a way of computing both error 
+\begin_inset Formula $\sigma^{layer}$
+\end_inset
+
+ and the gradient of the cost function.
+ They can be proven by applying chain rule.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+An equation for the error in the output layer
+\series default
+, 
+\begin_inset Formula $\sigma^{L}$
+\end_inset
+
+.
+ The first term on the right, 
+\begin_inset Formula $\frac{\partial C}{\partial a_{j}^{L}}$
+\end_inset
+
+, just measures how fast the cost is changing as s function of the j-th
+ output activation.
+ The second term on right, 
+\begin_inset Formula $\sigma^{'}(z_{j}^{L})$
+\end_inset
+
+, measures how fast the activation function 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is changing at 
+\begin_inset Formula $z_{j}^{L}$
+\end_inset
+
+.
+ Everything is easily computed - 
+\begin_inset Formula $z_{j}^{L}$
+\end_inset
+
+ is calculated anyway (forward pass), and 
+\begin_inset Formula $\sigma^{'}(z_{j}^{L})$
+\end_inset
+
+ is just a small overhead.
+ The exact form of 
+\begin_inset Formula $\frac{\partial C}{\partial a_{j}^{L}}$
+\end_inset
+
+ will of course, depend on the form of cost function.
+ In case of quadratic cost, which is 
+\begin_inset Formula $C=\frac{1}{2}\sum_{j}(y_{j}-a_{j}^{L})^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{\partial C}{\partial a_{j}^{L}}$
+\end_inset
+
+ equals to 
+\begin_inset Formula $a_{j}^{L}-y_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{j}^{L}=\frac{\partial C}{\partial a_{j}^{L}}.*\sigma^{'}(z_{j}^{L})\label{eq:BP1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+An equation for the error 
+\begin_inset Formula $\sigma^{layer}$
+\end_inset
+
+ in terms of the error in the next layer,
+\series default
+ 
+\begin_inset Formula $\sigma^{layer+1}$
+\end_inset
+
+.
+ We can think of this intuitively as moving the error backward through the
+ network, with Hadamard product.
+ Combining 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BP1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BP2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ equations, we can compute the error 
+\begin_inset Formula $\sigma^{l}$
+\end_inset
+
+ for any layer in the network.
+ We start by using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BP1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to compute 
+\begin_inset Formula $\sigma^{L}$
+\end_inset
+
+, then apply Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BP2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to compute 
+\begin_inset Formula $\sigma^{L-1}$
+\end_inset
+
+, then apply Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BP2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ again to compute 
+\begin_inset Formula $\sigma^{L-2},$
+\end_inset
+
+and so on, all the way back through the network.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma^{layer}=((w^{layer+1})^{T}\sigma^{layer+1}).*\sigma^{'}(z^{L})\label{eq:BP2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+An equation for the rate of change of the cost with respect to any bias
+ in the network
+\series default
+.
+ So the error 
+\begin_inset Formula $\sigma_{j}^{layer}$
+\end_inset
+
+ is exactly equal to the rate of change 
+\begin_inset Formula $\partial C\,/\,\partial b_{j}^{layer}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C}{\partial b_{j}^{layer}}=\sigma_{j}^{layer}\label{eq:BP3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+An equation for the rate of change of the cost with respect to any weight
+ in the network.
+ 
+\series default
+Nice consequence of this equation is that when the activation 
+\begin_inset Formula $a_{k}^{layer-1}$
+\end_inset
+
+ is close to 0, the gradient term 
+\begin_inset Formula $\partial C\,/\,\partial w$
+\end_inset
+
+ will also tend to be small.
+ In this case, we will say that the weight learns slowly - it is not changing
+ much during gradient descent.
+ In other words, weights output from low-activation neurons learn slowly.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial C}{\partial w_{jk}^{layer}}=a_{k}^{layer-1}\sigma_{j}^{layer}\label{eq:BP4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Putting it together
+\end_layout
+
+\begin_layout Itemize
+Pick some ANN architecture (connectivity pattern between neurons):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Number of input (dimension of features) and output (number of classes) layers
+ is known.
+\end_layout
+
+\begin_layout Itemize
+Number of hidden layers - reasonable default is to have just 1 hidden layer
+\end_layout
+
+\begin_layout Itemize
+Number of hidden units in a hidden layer - same # of units in all layers
+ (recommended, by Andrew Ng), usually the more the better (but more computationa
+lly expensive).
+ For example (Andrew Ng), 3 or 4 times more than # of features (at least
+ a bit more hidden units than # of features is a useful thing - Andrew Ng).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Training an ANN (forward and then backward pass in a for loop over the training
+ examples is the simplest way):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Randomly 
+\series bold
+initialize weights
+\series default
+.
+ Small values near to zero (but not zeroes).
+\end_layout
+
+\begin_layout Itemize
+Implement 
+\series bold
+forward propagation
+\series default
+ to get value of hypothesis for any training sample.
+\end_layout
+
+\begin_layout Itemize
+Implement 
+\series bold
+cost function
+\series default
+ 
+\begin_inset Formula $J(\theta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Implement 
+\series bold
+backpropagation
+\series default
+ to compute partial derivatives terms 
+\begin_inset Formula $\frac{\partial}{\partial\theta_{jk}^{(l)}}J(\theta)$
+\end_inset
+
+ (partial derivatives of 
+\begin_inset Formula $J(\theta)$
+\end_inset
+
+ with respect of the parameters) = get activations and delta terms for all
+ the layers.
+\end_layout
+
+\begin_layout Itemize
+Implement 
+\series bold
+numerical gradient check
+\series default
+ to compare 
+\begin_inset Formula $\frac{\partial}{\partial\theta_{jk}^{(l)}}J(\theta)$
+\end_inset
+
+ computed using backpropagation and numerical estimate of gradient of 
+\begin_inset Formula $J(\theta)$
+\end_inset
+
+ give similar values (numerical estimates and the vector of deltas must
+ give similar values).
+ Otherwise there is a bug in the implementation.
+ After we can see that backprop is implemented correctly, turn off gradient
+ checking.
+ 
+\end_layout
+
+\begin_layout Itemize
+Use gradient descent or some advanced optimization method (BFGS, L-BFGS,
+ or Conjugate Gradient) with backprop for minimizing 
+\begin_inset Formula $J(\theta)$
+\end_inset
+
+ as a function of parameters 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (learning).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/backpropagation_hinton_derivatives.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Backpropagation explanation through derivatives using chain rule.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Applying gradient descent learning algorithm in a regularized neural network
+ using cost function 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ and L2 regularization can be following: we need to compute partial derivatives
+ 
+\begin_inset Formula $\frac{\partial C}{\partial w}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial C}{\partial b}$
+\end_inset
+
+ for all the weights and biases in the network: 
+\begin_inset Formula $\frac{\partial C}{\partial w}=\frac{\partial C_{0}}{\partial w}+\frac{\lambda}{n}w$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial C}{\partial b}=\frac{\partial C_{0}}{\partial b}$
+\end_inset
+
+ - so we can see that biases are not affected by regularization.
+ It is possible to modify this and regularize also biases, but its basically
+ a convention to regularize just weights (also, having a large bias doesn't
+ make a neuron sensitive to its inputs in the same way as having large weights;
+ also, allowing large biases gives our networks more flexibility in behavior
+ - large biases make it easier for neurons to saturate, which is sometimes
+ desirable).
+ So we just use backpropagation, as usual, and then we will add 
+\begin_inset Formula $\frac{\lambda}{n}w$
+\end_inset
+
+ to the partial derivative of all weight terms.
+ So, learning for weights becomes: 
+\begin_inset Formula $w\rightarrow w-\eta\frac{\partial C_{0}}{\partial w}-\frac{\eta\lambda}{n}w=(1-\frac{\eta\lambda}{n})w-\eta\frac{\partial C_{0}}{\partial w}$
+\end_inset
+
+, and for biases it remains the same: 
+\begin_inset Formula $b\rightarrow b-\eta\frac{\partial C_{0}}{\partial b}$
+\end_inset
+
+, where, of course, 
+\begin_inset Formula $\eta$
+\end_inset
+
+ is the learning rate.
+ So, from weight update formula, we can see, that it is the same as without
+ any regularization, we just rescale weight 
+\begin_inset Formula $w$
+\end_inset
+
+ by a factor 
+\begin_inset Formula $1-\eta\frac{\lambda}{n}$
+\end_inset
+
+.
+ This rescaling is sometimes referred to as weight decay, since it makes
+ the weights smaller.
+ For stochastic gradient descent with mini-batch of size 
+\begin_inset Formula $m$
+\end_inset
+
+, it is almost the same: 
+\begin_inset Formula $w\rightarrow(1-\frac{\eta\lambda}{n})w-\frac{\eta}{m}\sum_{x}\frac{\partial C_{x}}{\partial w}$
+\end_inset
+
+ - so we are averaging over a mini-batch of 
+\begin_inset Formula $m$
+\end_inset
+
+ training examples, the sum is over training example 
+\begin_inset Formula $x$
+\end_inset
+
+ in the mini-batch, and 
+\begin_inset Formula $C_{x}$
+\end_inset
+
+is unregularized cost for each training example.
+ Regarding biases, it follows the same principle: 
+\begin_inset Formula $b\rightarrow b-\frac{\eta}{m}\sum_{x}\frac{\partial C_{x}}{\partial b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Tips:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+small ANN (# of hidden units) is more prone to underfitting, model is too
+ simple.
+ Benefit - computationally cheaper.
+\end_layout
+
+\begin_layout Itemize
+larger ANN (# of hidden units) is more prone to overfitting, model is too
+ complex.
+ Disadvantage - computationally more expensive.
+\end_layout
+
+\begin_layout Itemize
+step by step increasing # of hidden layers.
+ Regularization addresses overfitting.
+ We can plot a learning curve to find out cross validation error with increasing
+ # of hidden layers.
+ Final candidate should be one with the lowest cross validation error.
+\end_layout
+
+\begin_layout Itemize
+An example, CV error is much larger than training error.
+ Increasing the number of hidden units is not likely to help, because it
+ suffers from high variance.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Finite Difference Approximation
+\end_layout
+
+\begin_layout Itemize
+An alternative to backpropagation.
+ This procedure approximates the gradient of the error with the respect
+ to the weights (think of the definition of a derivative).
+ In effect, the procedure states that we approximate the gradient and then
+ take a step of the steepest descent method.
+\end_layout
+
+\begin_layout Itemize
+Although this method works, the 
+\series bold
+backpropagation algorithm finds the exact gradient much more efficiently
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Process:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For each weight parameter 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ , perturb 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ by adding a small (say, 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+) constant 
+\begin_inset Formula $epsilon$
+\end_inset
+
+ and evaluate the error (call this 
+\begin_inset Formula $E_{i}^{\ensuremath{+}}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Now reset 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ back to the original parameter and perturb it again by subtracting the
+ same small constant 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and evaluate the error again (call this 
+\begin_inset Formula $E_{i}^{-}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Repeat this for each weight index 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Upon completing this, we update the weights vector by: 
+\begin_inset Formula $w_{i}\leftarrow w_{i}-η\frac{(E_{i}^{+}-E_{i}^{-})}{2\epsilon}$
+\end_inset
+
+ for some learning rate 
+\begin_inset Formula $η$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Activation functions
+\end_layout
+
+\begin_layout Standard
+(from here
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d9
+1d6}}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/activation_functions.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Various activation functions cheatsheet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Except to 
+\series bold
+regression problem
+\series default
+, where the
+\series bold
+ output layer should use a linear activation function
+\series default
+, so that the predicted output can go from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $\infty$
+\end_inset
+
+, we never use linear activation function.
+ We would compute a linear function of the inputs (no matter how many hidden
+ layers and hidden neurons we use).
+ Anyway, hidden layers in regression problem still not use a linear activation
+ function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sigmoid or Logistic activation function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The main reason why we use sigmoid function is because it exists between
+ (0 to 1).
+ Therefore, it is especially used for models where we have to predict the
+ probability as an output.
+ Since probability of anything exists only between the range of 0 and 1,
+ sigmoid is the right choice.
+\end_layout
+
+\begin_layout Itemize
+Range: 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Derivative of sigmoid activation function is 
+\begin_inset Formula $g(z)'=\text{\ensuremath{\frac{d}{dz}g(z)=\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})}}=g(z)(1-g(z))=a(1-a)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+They can compute any function.
+\end_layout
+
+\begin_layout Itemize
+The logistic sigmoid function can cause a neural network to get stuck at
+ the training time.
+ One of the problems of using sigmoid functions is that in regions (on diagram,
+ where z is bigger than 5, or lower than -5), the slope of the function
+ causes to be gradient nearly 0, and so learning becomes really slow because
+ when you implement gradient descent and gradient is zero the parameters
+ just change very slowly.
+ There is no such problem in ReLU (which is very popular and used now) where
+ the gradient is equal to 1 for the positive input - and the whole gradient
+ descent is working much faster.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The softmax function 
+\series default
+(aka softmax regression) is a more generalized logistic activation function
+ which is used for multi-class classification (if number of classes is 2,
+ then this can be proven):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma(z)=\frac{e^{z}}{\sum_{k=1}^{K}e^{z}}\label{eq:sigmoid}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 1 example in dataset: 
+\begin_inset Formula $K$
+\end_inset
+
+ is a number of classes, 
+\begin_inset Formula $z$
+\end_inset
+
+ (input) is K-dimensional vector of arbitrary real values, and output is
+ also K-dimensional vector of real values where each entry is in range 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+, and all entries add up to 1.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: we may use softmax layer 
+\begin_inset Formula $z^{[l]}$
+\end_inset
+
+ that is doing this calculation.
+ For instance, 
+\begin_inset Formula $z^{[l]}$
+\end_inset
+
+ will have on the input a 4x1 dimensional vector of values 5, 2, -1, 3.
+ Then, we got:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\begin{bmatrix}148.4\\
+7.4\\
+0.4\\
+20.1
+\end{bmatrix}$
+\end_inset
+
+and 
+\begin_inset Formula $sum\,of\,all\,elements=176.3$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $a=\begin{bmatrix}0.842\\
+0.042\\
+0.002\\
+0.114
+\end{bmatrix}$
+\end_inset
+
+and this is cca (rounding errors) summed to a probability 1.0.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The name 
+\begin_inset Quotes eld
+\end_inset
+
+soft max
+\begin_inset Quotes erd
+\end_inset
+
+ is an opposite to 
+\begin_inset Quotes eld
+\end_inset
+
+hard max
+\begin_inset Quotes erd
+\end_inset
+
+ function, whose output would be like this: 
+\begin_inset Formula $\begin{bmatrix}1\\
+0\\
+0\\
+0
+\end{bmatrix}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+This is a way of forcing the outputs of a neural network to sum to 1 (all
+ neurons in the output layer), so they can represent a probability distribution
+ across discrete mutually exclusive alternatives.
+\end_layout
+
+\begin_layout Itemize
+Softmax can be used with log-likelihood cost function, that is 
+\begin_inset Formula $C=-ln(a_{j}^{L})$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/softmax_loss_function.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Loss function computation for softmax, it is still a scalar value (not a
+ vector).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/sigmoid.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sigmoid activation function.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tanh or hyperbolic tangent activation function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Range 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+.
+ It is basically shifted and rescaled version of sigmoid.
+ It is almost always preferred to use rather than sigmoid, e
+\series bold
+xcept the last, output 
+\series default
+layer where we want output to be between 0 and 1 - in that case it is better
+ to use sigmoid function for binary classification problem.
+ It works better than sigmoid for neurons in hidden layers, because the
+ mean of its output is closer to zero, and so it centers the data better
+ for the next layer.
+ This makes the learning process for the next layer easier.
+\end_layout
+
+\begin_layout Itemize
+This activation function tanh is also sigmoidal (s-shaped).
+\end_layout
+
+\begin_layout Itemize
+The advantage is that the negative inputs will be mapped strongly negative
+ and the zero inputs will be mapped near zero in the tanh graph.
+\end_layout
+
+\begin_layout Itemize
+They can compute any function.
+\end_layout
+
+\begin_layout Itemize
+It is basically calculated as 
+\begin_inset Formula $f(x)=\frac{sinh\,x}{cosh\,x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Hyperbolic tangent function is closely related to sigmoid neuron:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}\label{eq:tanh}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and with a little algebra, it can be easily verified that 
+\begin_inset Formula $\sigma(z)=\frac{1+tanh(z/2)}{2}$
+\end_inset
+
+, that is, 
+\begin_inset Formula $\text{tanh}$
+\end_inset
+
+ is just a rescaled version of sigmoid function (with the same shape).
+ So the output from 
+\begin_inset Formula $\text{tanh}$
+\end_inset
+
+ ranges from -1 to 1, not from 0 to 1.
+ And this means that in a network based on 
+\begin_inset Formula $\text{tanh}$
+\end_inset
+
+ neurons, you may need to normalize your outputs (and maybe even inputs,
+ depending on the application) a little differently than in sigmoid networks.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are some empirical evidence that 
+\begin_inset Formula $\text{tanh}$
+\end_inset
+
+ sometimes performs better than sigmoid.
+ Suppose we are using sigmoid neurons, so all activations in our network
+ are positive.
+ Let's consider the weights 
+\begin_inset Formula $w_{jk}^{layer+1}$
+\end_inset
+
+ input to the 
+\begin_inset Formula $j$
+\end_inset
+
+-the neuron in the 
+\begin_inset Formula $layer+1$
+\end_inset
+
+ layer.
+ The rules for backpropagation tell us that the associated gradient will
+ be 
+\begin_inset Formula $a_{k}^{layer}\delta_{j}^{layer+1}$
+\end_inset
+
+.
+ Because the activations are positive, the sign of this gradient will be
+ the same as the sign of 
+\begin_inset Formula $\delta_{j}^{layer+1}$
+\end_inset
+
+.
+ This means, that if 
+\begin_inset Formula $\delta_{j}^{layer+1}$
+\end_inset
+
+ is positive, then all weights 
+\begin_inset Formula $w_{jk}^{layer+1}$
+\end_inset
+
+will decrease during gradient descent, while if 
+\begin_inset Formula $\delta_{j}^{layer+1}$
+\end_inset
+
+ is negative, then the weights will increase.
+ In other words, all weights to the same neuron must either increase together,
+ or decrease together.
+ That is a problem, since some of the weights may need to increase while
+ others need to decrease.
+ That can only happen if some of the input activations have different signs.
+ That suggests replacing the sigmoid by an activation function, such as
+ tanh, which allows both positive and negative activations.
+ Since tanh is symmetric about zero, 
+\begin_inset Formula $tanh(-z)=-tanh(z)$
+\end_inset
+
+, the activations in hidden layers would be equally balanced between positive
+ and negative.
+ That would help ensure that there is no systematic bias for the weight
+ updates to be one way or the other.
+ This argument is just a suggestion, heuristic, not a proof that tanh neurons
+ outperform sigmoid neurons.
+ For many tasks, tanh is found empirically to provide only a small or no
+ improvement in performance over sigmoid neurons.
+\end_layout
+
+\begin_layout Itemize
+However, when derivative of this activation function is close to 
+\begin_inset Formula $0$
+\end_inset
+
+, then the learning process is very slow.
+ ReLU to the rescue!
+\end_layout
+
+\begin_layout Itemize
+Derivative is 
+\begin_inset Formula $g(z)'=\frac{d}{dz}g(z)=1-(tanh(z))^{2}=1-g(z)^{2}=1-a^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/tanh.png
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hyperbolic tangent activation function (Tanh).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+ReLU (Rectified Linear Unit) activation function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The ReLU is the most used activation function in the world right now.
+ Since, it is used in almost all the convolutional neural networks or deep
+ learning.
+\end_layout
+
+\begin_layout Itemize
+Range: 
+\begin_inset Formula $[0,\infty)$
+\end_inset
+
+, defined as
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+relu(z)=max(0,z)\label{eq:relu}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+ReLU has one disadvantage
+\series default
+, all the negative values become zero immediately which decreases the ability
+ of the model to fit or train from the data properly.
+ That means any negative input given to the ReLU activation function turns
+ the value into zero immediately, which in turns affects the resulting graph
+ by not mapping the negative values appropriately.
+ When 
+\begin_inset Formula $z=0$
+\end_inset
+
+, ReLU is not differentiable, but in practice we will almost never encounter
+ the precise zero.
+\end_layout
+
+\begin_layout Itemize
+They can compute any function.
+\end_layout
+
+\begin_layout Itemize
+Derivative is 
+\begin_inset Formula $g(z)'=\begin{cases}
+1 & z>0\\
+0 & z<0\\
+undefined & z=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We don't precisely know when and why ReLU should be preferable.
+ However, tanh and sigmoid neurons both can saturate.
+ By contrast, increasing the weighted input to a ReLU will never cause it
+ to saturate, so there is no corresponding learning slowdown.
+ On the other hand, then the weighted input to ReLU is negative, the gradient
+ vanishes, and so neuron stops learning entirely.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/relu.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sigmoid (on the left) vs ReLU (on the right) activation function.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Leaky ReLU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is an attempt to solve the dying ReLU problem.
+\end_layout
+
+\begin_layout Itemize
+The leak helps to increase the range of the ReLU function.
+ Usually, 
+\begin_inset Formula $a=0.01$
+\end_inset
+
+ or so.
+ When 
+\begin_inset Formula $a\neq0.01$
+\end_inset
+
+ then it is called Randomized ReLU.
+\end_layout
+
+\begin_layout Itemize
+So it can be defined as 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R(z)=max(a*z,z)\label{eq:leaky_relu}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Derivative is 
+\begin_inset Formula $g(z)'=\begin{cases}
+1 & z>0\\
+a & z<0\\
+can\,be\,set\,to\,1 & z=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/leaky_relu.jpeg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ReLU (on the left), vs Leaky ReLU (on the right) activation functions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bayesian approach
+\end_layout
+
+\begin_layout Itemize
+The main idea behind this is that instead of looking for the most likely
+ setting of the parameters of the model, we should consider all possible
+ settings of the parameters and try to figure out for each of those possible
+ settings, how probable it is, given the data we observed.
+ This is extremely computationally expensive.
+ After we've computed the posterior distribution across all possible settings
+ of the parameters, we can then make predictions by letting each different
+ setting of the parameters make its own prediction.
+ And then, averaging all those predictions together, weighting by their
+ posterior probability.
+ This is also very computationally intensive.
+ We can use complicated models even when we don't have much data.
+\end_layout
+
+\begin_layout Itemize
+We're now used to the idea of overfitting, When you fit a complicated model
+ to a small amount of data.
+ But that's basically just a result of not bothering to get the full posterior
+ distribution over the parameters.
+ So, when you don't have much data, you should use a simple model.
+ This is true, IF you assume that fitting a model means finding the single
+ best setting of the parameters.
+ If you find the full posterior distribution, that gets rid of overfitting.
+ If there's very little data, the full posterior distribution will typically
+ give you very vague predictions, because many different settings of the
+ parameters that make very different predictions will have significant posterior
+ probability.
+ As you get more data, the posterior probability will get more and more
+ focused on a few settings of the parameters, and the posterior predictions
+ will get much sharper.
+\end_layout
+
+\begin_layout Itemize
+So, in other words, in full Bayesian learning, we don't try and find a single
+ best setting of the parameters.
+ Instead, we try and find the full posterior distribution over all possible
+ settings.
+\end_layout
+
+\begin_layout Itemize
+The Bayesian framework assumes that we always have a prior distribution
+ for everything.
+ That is, for any event that you might care to mention, I must have some
+ prior probability that such event might happen.
+ The problem might be very vague.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Explanation of using Bayesian approach to fitting models using a simple
+ coin-tossing example is below.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Our data gives us likelihood term.
+ We combine it with our prior and then we get a posterior.
+ Given enough data, even if your prior is wrong, you'll end up with the
+ right hypothesis.
+ But that may take an awful lot of data if you thought that things were
+ very unlikely under your prior.
+\end_layout
+
+\begin_layout Itemize
+Suppose you don't know anything about coins except that they can be tossed
+ and when you toss a coin you get either a head or a tail.
+ And we're also going to assume you know that each time you do that it's
+ an independent decision.
+\end_layout
+
+\begin_layout Itemize
+So our model of a coin is going to have one parameter 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ This parameter 
+\begin_inset Formula $P$
+\end_inset
+
+ determines the probability that the coin will produce a head.
+ What happens now if we see 100 tosses and there are 53 heads.
+ What is a good value for 
+\begin_inset Formula $P$
+\end_inset
+
+? The answer is also called maximum likelihood - pick the value of 
+\begin_inset Formula $P$
+\end_inset
+
+ that makes the observations the most probable.
+\end_layout
+
+\begin_layout Itemize
+Let's compute that (it is a probability of a particular sequence containing
+ 43 heads and 47 tails) by deriving 
+\begin_inset Formula $P(D)=p^{53}(1-p)^{47}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\frac{dP(D)}{dp}=53p^{52}(1-p)^{47}-47p^{53}(1-p)^{46}=(\frac{53}{p}-\frac{47}{1-p})[p^{53}(1-p)^{47}]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If we ask, how does the probability of observing that data depend on 
+\begin_inset Formula $p$
+\end_inset
+
+, we can differentiate with respect to 
+\begin_inset Formula $p$
+\end_inset
+
+, and we get the expression shown above.
+ If we then set that derivative to zero, we discover, that the probability
+ of the data is maximized by setting 
+\begin_inset Formula $P$
+\end_inset
+
+ to be 
+\begin_inset Formula $0.53$
+\end_inset
+
+.
+ So this is maximum likelihood.
+ You can calculate it manually:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(\frac{53}{p}-\frac{47}{1-p})[p^{53}(1-p)^{47}]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If this has to be 
+\begin_inset Formula $0$
+\end_inset
+
+, then either left or right part must be 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Let's try left part.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{53}{p}-\frac{47}{1-p}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{53(1-p)-47p}{p(1-p)}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{53-53p-47p}{p-p^{2}}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{53-100p}{p-p^{2}}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+This is 
+\begin_inset Formula $0$
+\end_inset
+
+ if nominator is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $53-100p=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{53}{100}=p=0.53$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are some problems with picking the parameters that are most likely
+ to generate the data.
+ What if we only tossed the coin once and we got 1 head? It does not really
+ makes sense to say that 
+\begin_inset Formula $p=1$
+\end_inset
+
+ for the next attempt (trial).
+\end_layout
+
+\begin_layout Itemize
+It is even reasonable to give a single answer? If we don't have enough data,
+ we are unsure about 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+What we really do is to refuse to give a single answer.
+ Instead, we are computing probability distributions across all possible
+ answers.
+\end_layout
+
+\begin_layout Itemize
+We will start with a prior distribution over 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ In this case, let's use uniform distribution - any bias is equally likely.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Now multiply the prior probability of each parameter value by the probability
+ of observed 
+\begin_inset Quotes eld
+\end_inset
+
+head
+\begin_inset Quotes erd
+\end_inset
+
+ given that value.
+
+\series default
+ So, for example, if we take the value of 
+\begin_inset Formula $P=1$
+\end_inset
+
+ which says that coins come down heads every time then the probability of
+ observing a head would be 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ There would be no alternative.
+ And if we take the value of 
+\begin_inset Formula $P=0$
+\end_inset
+
+, the probability of observing a head would be 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ And if we take it to 
+\begin_inset Formula $0.5$
+\end_inset
+
+, the probability of observing head is 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+ Now we got unnormalized (area under such curve does not sum to 
+\begin_inset Formula $1$
+\end_inset
+
+, but in probability distribution, the probabilities of all alternative
+ events must sum to 
+\begin_inset Formula $1$
+\end_inset
+
+) posterior probability.
+\end_layout
+
+\begin_layout Itemize
+The last thing is scaling, so that we got obtained area under curve summed
+ to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This is called 
+\series bold
+posterior distribution
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+We can now do this for 
+\begin_inset Quotes eld
+\end_inset
+
+tail
+\begin_inset Quotes erd
+\end_inset
+
+ and then we can also do it for another 98 times.
+ After 53 heads and 47 tails, we get a very sensible posterior distribution
+ that has its peak at 
+\begin_inset Formula $0.53$
+\end_inset
+
+, assuming a uniform prior.
+ Area under the curve sums to 
+\begin_inset Formula $1$
+\end_inset
+
+ and it have its mean equals to 
+\begin_inset Formula $0.53$
+\end_inset
+
+.
+ This is basically Gaussian distribution.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Approximating full Bayesian learning in a neural net - this is possible
+ if NN has only a few parameters.
+ We will put a grid of parameter space and evaluate 
+\begin_inset Formula $P(W|Data)$
+\end_inset
+
+ at each grid-point.
+ This is still expensive, but it does not involve any gradient descent and
+ there are also no local optimum issues.
+ We are not following a path in the space, we are just evaluating a set
+ of points in the space.
+ Once we've decided on the posterior probability to assign to each grid-point,
+ We then use them all to make predictions on the test data.
+ That's also expensive.
+ But when there isn't much data, it'll work much better than maximum likelihood
+ or maximum a posterior.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/full_bayesian_learning_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of full Bayesian learning.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Full Bayesian learning practical for neural networks that have thousands,
+ and perhaps even millions of weights can be possible with 
+\series bold
+Markov Chain Monte Carlo method (MCMC)
+\series default
+.
+ That uses a random number generator to move around the space of weight
+ vectors in a random way, but with a bias towards going downhill in the
+ cost function.
+ If we do this right, we get a beautiful property, which is that we sample
+ weight vectors in proportion to their probability in the posterior distribution.
+ And that means by sampling a lot of weight factors, we can get a good approxima
+tion to the full Bayesian method.
+ The number of grid points is exponential in the number of parameters.
+ So we can't make a grid for more than a few parameters.
+ This is enough data so that most of the parameter vectors are very unlikely.
+ Only a tiny fraction of the group points will make a significant contribution
+ to the predictions.
+ We can just evaluate this tiny fraction.
+ Idea is that it may be good enough to just sample weight vectors according
+ to their posterior probabilities.
+ In standard backpropagation, we keep moving the weights in direction that
+ decreases the cost - so in the direction that increases log likelihood
+ plus the log prior, summed over all training cases.
+ Eventually, the weights settle into a local minimum or get stuck on a plateau,
+ or just move so slowly that we run out of patience.
+ Other approach, for sampling weight vectors, is that we add some Gaussian
+ noise to the weight vector after each update.
+ So the weight vector will never settle down.
+ It keeps wandering around, but it tends to prefer low cost regions of the
+ weight space.
+ We may save the weights after each 10,000 steps for example.
+ Wonderful property of Markov Chain Monte Carlo is, that if we use just
+ the right amount of noise, and if we let the weight vector wander around
+ for long enough before we take a sample, we will get an unbiased sample
+ from the true posterior over weight vectors.
+\end_layout
+
+\begin_layout Itemize
+So, we learned a probability distribution over parameters of the model.
+ Then, at test time, we can use this distribution to get predictions with
+ the highest possible accuracy by sampling a lot of parameters using some
+ sampling procedure (such as MCMC) and average the predictions obtained
+ by using each parameter setting separately.
+ This method makes sure that we use a lot of models and also choose the
+ models in proportion to how much we can trust them.
+\end_layout
+
+\begin_layout Itemize
+Very clever idea from 2012 - 
+\series bold
+full Bayesian learning with mini batches
+\series default
+.
+ Sampling noise (because we are using mini-batches) is the noise that an
+ Markov Chain Monte Carlo method needs! And because of this, it is possible
+ to use full Bayesian learning with lots of parameters!
+\end_layout
+
+\begin_layout Section
+Types of neural networks
+\end_layout
+
+\begin_layout Standard
+ANN can be classified into multiple groups based on their characteristic
+ properties.
+\end_layout
+
+\begin_layout Subsection
+Based on architecture
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fully connected network
+\series default
+.
+ All neurons are interconnected.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/fully_connected_net.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fully connected network example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Fully connected symmetric network
+\series default
+.
+ The same as type above, but weights between 2 neurons are in each direction
+ the same (
+\begin_inset Formula $w_{ij}=w_{ji}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Multi-layer network
+\series default
+.
+ Neurons are divided into individual layers.
+ There are input, output, and hidden layers.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/multi_layer_network.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Multi-layer network example with 1 input, 1 output, and 3 hidden layers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Acyclic network
+\series default
+.
+ The same as multi-layer network, but without any cycles.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Forward network
+\series default
+.
+ Acyclic network, but neurons in a given layer are connected only with neurons
+ from the next layer.
+ This architecture is the most common one.
+ There are no loops, information is always fed forward, never fed back.
+ If we did have loops, we’d end up with situations where the input to the
+ 
+\begin_inset Formula $σ$
+\end_inset
+
+ function depended on the output.
+ That’d be hard to make sense of, and so we don't allow such loops.
+ However, there are other architectures where this is possible.
+ These models are called recurrent neural networks.
+ The idea in these models is to have neurons which fire for some limited
+ duration of time, before becoming quiescent.
+ That firing can stimulate other neurons, which may fire a little while
+ later, also for a limited duration.
+ That causes still more neurons to fire, and so over time we get a cascade
+ of neurons firing.
+ Loops don't cause problems in such a model, since a neuron's output only
+ affects its input at some later time, not instantaneously.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/forward_network.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward network example with 1 input, 1 output, and 3 hidden layers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Based on a way of learning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Correlation learning 
+\series default
+- direct application of Hebb principle.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Competitive learning
+\series default
+ - weights are updated only to a winning neuron.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Adaptation learning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With teacher (supervisor) - training data are tuples - input, and desired
+ output.
+ Weights update is based on the output of neural network and expected output.
+\end_layout
+
+\begin_layout Itemize
+Without teacher (unsupervised) - no outside criterion for estimating the
+ correctness of results.
+ Training data contain only input values.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Based on application
+\end_layout
+
+\begin_layout Standard
+There are lot of applications possible: 
+\series bold
+classification
+\series default
+, 
+\series bold
+clustering
+\series default
+, 
+\series bold
+vector quantization
+\series default
+ (assign an input vector to the closest representative vector), 
+\series bold
+association
+\series default
+, 
+\series bold
+function approximation
+\series default
+, 
+\series bold
+prediction
+\series default
+, 
+\series bold
+identification of system 
+\series default
+(approximation of behavior of some system), and 
+\series bold
+optimization
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Based on a way of computing
+\end_layout
+
+\begin_layout Standard
+If neurons are changing their inner state independently, or their calculation
+ is controlled centrally are divided to
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+synchronous 
+\series default
+- 1 timestep = update of all neurons in the network.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+asynchronous
+\series default
+ - 1 timestep = update of only 1 neuron in the network.
+\end_layout
+
+\begin_layout Subsection
+Basic categories of deep neural networks based on architecture, learning
+ methods, and application
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deep neural networks with unsupervised approach or with generative learning.
+
+\series default
+ For capturing correlations of observed data for pattern analysis or for
+ data synthesis.
+ These networks are trying to find correlations in data based on data itself,
+ without any class labels.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Energy-based deep models
+\series default
+.
+ Typical model in this category is Deep autoencoder.
+ This is a good choice for pre-training of another deep neural network.
+ There are many types of autoencoders, for example another one is called
+ Denoising autoencoder, that removes noise in data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deep Boltzmann machine 
+\series default
+is another type.
+ This is a special case of more general 
+\series bold
+Boltzmann machine
+\series default
+.
+ The variables in each layer are not interconnected.
+ Always the next hidden layer captures more and more complex correlations
+ in data, and therefore they have a potential to learn complex inner data
+ representations.
+
+\series bold
+ Restricted Boltzmann machine
+\series default
+ is when we restrict the number of hidden layers to 1.
+ This last model is useful for initialization of weights in another neural
+ network.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Deep neural networks with supervised approach.
+ 
+\series default
+These networks are trying to capture dependencies of input data and their
+ labels.
+ These networks are sometimes called 
+\series bold
+Discriminative deep networks
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hybrid deep neural networks.
+
+\series default
+ These are using both generative and descriptive elements.
+ Generative element is only a helpful element for final, discriminative
+ model.
+ Here, generative model is used for better optimization of a given problem,
+ for example they are used for initialization of weights of discriminative
+ model.
+\end_layout
+
+\begin_layout Section
+Perceptron
+\end_layout
+
+\begin_layout Itemize
+Perceptron is a single layer neural network and a multi-layer Perceptron
+ is called Neural Networks
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/what-the-hell-is-perceptron-626217814f53}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It is a linear (binary) classifier.
+ Supervised.
+ Developed in the 1950s and 1960s by Frank Rosenblatt, inspired by earlier
+ work of Warren McCulloch and Walter Pitts.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Weights show the strength of the particular node.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A bias value allows to shift the activation function curve up or down.
+ In more biological terms, bias is a measure of how easy it is to get the
+ Perceptron to fire.
+ For a Perceptron with a really big bias, it's extremely easy to output
+ a '1'.
+ If the bias is very negative, then it is very difficult to output '1'.
+\end_layout
+
+\begin_layout Itemize
+Hypothesis:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y(x)=f(\theta^{T}x)\label{eq:perceptron}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is null coefficient of vector 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (vector of weights, 
+\begin_inset Formula $w$
+\end_inset
+
+ in the figure below).
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+ (always), and 
+\begin_inset Formula $x$
+\end_inset
+
+ are input values usually in the interval [-1, 1].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/perceptron.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A scheme of Perceptron.
+ It has several binary inputs and produces a single binary output (0 or
+ 1 and it is determined by whether the weighted sum is less then or greater
+ than some threshold value, which is again a parameter of the neuron, as
+ the weights).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In more precise algebraic terms:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+output=\begin{cases}
+0 & if\,\sum_{j}w_{j}x_{j}\leq threshold\\
+1 & if\,\sum_{j}w_{j}x_{j}>threshold
+\end{cases}\label{eq:perceptron1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which can be simplified (we use dot products instead of sums, and 
+\begin_inset Formula $b=-threshold$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+output=\begin{cases}
+0 & if\,w.x+b\leq0\\
+1 & if\,w.x+b>0
+\end{cases}\label{eq:perceptron2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Activation function is hard limiter (-1 or +1).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/hard_limiter.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hard limiter function.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Iteratively go through all the learning samples, when the sample is classified
+ incorrectly, change the weight vector:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\theta^{τ+1}=\theta^{τ}+x_{n}*t_{n}\label{eq:weight_perceptron}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Learning algorithm in example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Suppose we have a 2-dimensional input 
+\begin_inset Formula $x=(0.5,-0.5)$
+\end_inset
+
+ connected to a neuron with weights 
+\begin_inset Formula $w=(2,-1)$
+\end_inset
+
+ and the bias 
+\begin_inset Formula $b=0.5$
+\end_inset
+
+.
+ Furthermore, suppose the target for 
+\begin_inset Formula $x$
+\end_inset
+
+ is 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+ In this case, we will use a binary threshold neuron for the output so that
+ 
+\begin_inset Formula $y=\begin{cases}
+1 & if\,x^{T}w+b\geq0\\
+0 & otherwise
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The weights and bias be after applying one step of the perceptron learning
+ algorithm will be: 
+\begin_inset Formula $w=(1.5,-0.5)$
+\end_inset
+
+, 
+\begin_inset Formula $b=-0.5$
+\end_inset
+
+.
+ This is because target should be 
+\begin_inset Formula $0$
+\end_inset
+
+, but perceptron outputted 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ So all weights (and bias) will be 
+\series bold
+decreased 
+\series default
+by a given input value.
+ If there is an opposite situation, that target was 
+\begin_inset Formula $0$
+\end_inset
+
+ and it should be 
+\begin_inset Formula $1$
+\end_inset
+
+, then we would 
+\series bold
+increase 
+\series default
+weights (and bias) by input values.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In this example, 
+\begin_inset Formula $b$
+\end_inset
+
+ was 
+\begin_inset Formula $0.5$
+\end_inset
+
+ and there was a value 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $0.5-1=-0.5$
+\end_inset
+
+.
+ Similarly with the first weight, it was equal to 
+\begin_inset Formula $2$
+\end_inset
+
+ and there was 
+\begin_inset Formula $0.5$
+\end_inset
+
+ on its input.
+ So 
+\begin_inset Formula $2-0.5=1.5$
+\end_inset
+
+.
+ Analogically with the second weight, 
+\begin_inset Formula $-1-(-0.5)=-0.5$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So, Perceptron convergence procedure works by ensuring that every time the
+ weights change, they get closer to every 
+\begin_inset Quotes eld
+\end_inset
+
+generously feasible
+\begin_inset Quotes erd
+\end_inset
+
+ set of weights.
+ However, this type of guarantee cannot be extended to more complex networks
+ in which the average of 2 good solutions may be a bad solution.
+ So multi-layer neural networks uses something different than perceptron
+ learning procedure.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+They should never been called multi-layer perceptrons.
+ It is my fault and I am sorry.
+\begin_inset Quotes erd
+\end_inset
+
+, Geoffrey Hinton.
+ Instead of weights get closer to a good set of weights - the actual output
+ values get closer to target values.
+ That is done in MLP and it means, that there can be a different sets of
+ weights that work well, averaging two good sets of weights may give a bad
+ set of weights.
+ See smoothness of sigmoid function.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Multi-layer Perceptron
+\end_layout
+
+\begin_layout Standard
+This is basically a perceptron with at least 1 hidden layer, and the activation
+ function can be different, for example 
+\series bold
+sigmoid
+\series default
+.
+ So it is a very different model than a simple perceptron, and even the
+ learning procedure is different.
+ Some details are described in the beginning of this chapter.
+\end_layout
+
+\begin_layout Itemize
+If we have a small change in some weight (or bias) in the network, it would
+ be good to cause only a small corresponding change in the output from the
+ network.
+ And this property makes learning possible.
+ This is not possible with a simple perceptron, or when a network contains
+ perceptrons.
+ The reason is, that small change in the weights or bias of any single perceptro
+n can sometimes cause the output of that perceptron to completely flip,
+ say from 0 to 1.
+ And this flip may then cause the behavior of the rest of the network to
+ completely change in some very complicated way.
+ That makes it difficult to see how to gradually modify the weights and
+ biases so that the network gets closer to desired behavior.
+ This can be overcomed with using 
+\series bold
+sigmoid neuron
+\series default
+.
+ They are similar to perceptrons, but modified so hat small changes in their
+ weights or bias will cause only a small change in their output.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+BTW, the same weights and biases on all layers all applied to all examples
+ (in a given mini-batch or batch, ...) during the forward pass.
+ This is not what happens in a living organism!
+\end_layout
+
+\begin_layout Section
+Radial Basis Function Network
+\end_layout
+
+\begin_layout Itemize
+This is three-layer feedback network (1 hidden layer), in which each hidden
+ unit implements a radial activation function, and each output unit implements
+ weighted sum of hidden units outputs.
+\end_layout
+
+\begin_layout Itemize
+Training is divided into 2 stages:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+centers and widths of the hidden layer are determined by clustering algorithms
+\end_layout
+
+\begin_layout Itemize
+weights connecting the hidden layer with the output layer are determined
+ by Singular Value Decomposition (SVD) or Least Mean Squared (LMS) algorithms.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The problem of selecting the appropriate number of basis functions (which
+ control the complexity and the generalization ability of RBF networks)
+ remains a critical issue for RBF networks.
+ Too few basis functions - RBF networks cannot fit the training data properly
+ due to limited flexibility.
+ Too many basis functions yield poor generalization abilities, they are
+ too flexible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bayesian Neural Networks
+\end_layout
+
+\begin_layout Itemize
+Conventional ANN aren't well designed to model uncertainty associated with
+ the predictions they make.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://medium.com/@joeDiHare/deep-bayesian-neural-networks-952763a9537?fbcli
+d=IwAR1tTCMUIkg1DNxsEHI8bKFMmESkc5-hD5ixXriNOsUMWZocotnbdiYBYXw}}
+\end_layout
+
+\end_inset
+
+ Conventional ANN has parameters (weights and biases, scalar values) which
+ is trying to optimize via maximum likelihood estimation.
+ On the other hand, Bayesian approach focuses on distributions associated
+ with each parameter, generally referred to as posterior densities, estimated
+ using Bayesian rule.
+\end_layout
+
+\begin_layout Itemize
+Having a distribution instead of a single value is a powerful thing.
+ For one, it becomes possible to sample from a distribution many many times
+ and see how this affect the predictions of the model.
+ If it gives consistent predictions, sampling after sampling, then the net
+ is said to be 
+\begin_inset Quotes eld
+\end_inset
+
+confident
+\begin_inset Quotes erd
+\end_inset
+
+ about its prediction.
+\end_layout
+
+\begin_layout Itemize
+Mostly used for regression, but we can use this network also on classification
+ tasks.
+\end_layout
+
+\begin_layout Itemize
+It is basically a typical ANN, with uncertainties, probabilities, and relationsh
+ips in data.
+ We need to take into account uncertainties of inputs and outputs - this
+ is all different in comparison to traditional ANN, where we don't have
+ to fully understand what a network is doing.
+ 
+\end_layout
+
+\begin_layout Itemize
+In practical terms, uncertainties mentioned earlier are in weights of ANN.
+ So, instead of 1 solution for NN weights we will take into account the
+ whole space of solutions - NN weights will be random variables.
+ For each solution we will define its probability as 
+\begin_inset Formula $P(w|D,H_{i})$
+\end_inset
+
+, which defines with how probability the weights 
+\begin_inset Formula $w$
+\end_inset
+
+ are correct in model 
+\begin_inset Formula $H_{i}$
+\end_inset
+
+(so output 
+\begin_inset Formula $y$
+\end_inset
+
+) given input data 
+\begin_inset Formula $D$
+\end_inset
+
+ (so input 
+\begin_inset Formula $x$
+\end_inset
+
+).
+ It can be calculated as follows, with intergral which requires marginalization
+ over all possible values that parameters (weights 
+\begin_inset Formula $w$
+\end_inset
+
+) can assume in the model, and that become quickly too hard to compute,
+ which is often not doable in practice.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p(w|x,y)=\frac{p(x,y|w).p(w)}{\int p(y|x,w).p(w)\,dw}\label{eq:bayessian_rules_for_bnn}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Because of computational requirements, pseudo-numerical approaches can be
+ chosen instead to the solution to integrals in Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bayessian_rules_for_bnn"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Approximating integrals with 
+\series bold
+Markov chain Monte Carlo
+\series default
+ (MCMC, a class of algorithms for sampling from a probability distribution)
+ - instead of computing exact integrals.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pros & Cons: this method has great results, however, it is the slowest one
+ (it takes a long time to converge).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Using black-box 
+\series bold
+variational inference
+\series default
+ (e.g.
+ using edward).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variational inference is an approach to estimate a density function by choosing
+ a distribution we know (e.g.
+ Gaussian) and progressively changing its parameters until it looks like
+ the one we want to compute, the posterior.
+ Changing parameters no longer requires mad calculus; it's an optimization
+ process, and derivatives are usually easier to estimate than integrals.
+ This “made-up” distribution we are optimizing is called variational distributio
+n.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pros & Cons: Faster than previous approach, but it still might get slow
+ for very deep Bayesian net, and performance isn't always guaranteed to
+ be optimal.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Using 
+\series bold
+Monte Carlo dropout
+\series default
+ (MC dropout).
+ This is Bayesian interpretation of dropout regularization technique.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{In dropout, neurons are randomly turned on or off during training
+ to prevent the network to depend on any specific neuron.}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In MC dropout, it could be used to perform variational inference where the
+ variational distribution is from a Bernoulli distribution (states are 
+\begin_inset Quotes eld
+\end_inset
+
+on
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+off
+\begin_inset Quotes erd
+\end_inset
+
+) and 
+\begin_inset Quotes eld
+\end_inset
+
+MC
+\begin_inset Quotes erd
+\end_inset
+
+ refers to the sampling of the dropout, which happens in a 
+\begin_inset Quotes eld
+\end_inset
+
+Monte Carlo
+\begin_inset Quotes erd
+\end_inset
+
+ style.
+ 
+\end_layout
+
+\begin_layout Itemize
+In practice, turning a conventional network into a Bayesian one via MC dropout
+ can be as simple as using dropout for every layer during training AS WELL
+ AS testing; this is equivalent to sampling from a Bernoulli distribution
+ and provides a measure of model’s certainty (consistency of predictions
+ across sampling)
+\end_layout
+
+\begin_layout Itemize
+Pros & Cons: It is easy to turn an existing deep net into a Bayesian one.
+ it is faster than other techniques, and does not require an inference framework.
+ However, sampling at test time might be too expensive for computationally-deman
+ding (e.g.
+ real-time) applications.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+As Occam's Razor defines, we can compare models between each other, based
+ on evidence.
+ So we will find the most probable model and this model is always the simplest
+ one.
+ 
+\series bold
+The simplest possible model can generalize well and such model has less
+ problems with overfitting.
+ On the other hand, it can generalize too much.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Another advantage of these networks is that we don't need to divide our
+ data to training, validation, and testing set.
+\end_layout
+
+\begin_layout Itemize
+Learning may use Kullback-Leibler divergence.
+ This tells us, how much a given system (or distribution) differs from some
+ other referential one, with the usage of entropy.
+ If this divergence is 0, then both systems are the same.
+ More far away from 0 the divergence is, systems are more different.
+ KL divergence is not symmetrical.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{KL distance between A and B is not the same as between B and A.}
+\end_layout
+
+\end_inset
+
+ We can compute KL divergence as difference between entropies of system
+ A and system B.
+\end_layout
+
+\begin_layout Itemize
+BNN is alternative to ANN, but learning is very different.
+ Learning in ANN starts from 
+\begin_inset Quotes eld
+\end_inset
+
+nothing
+\begin_inset Quotes erd
+\end_inset
+
+ - initial parameters are set to 0, or values close to 0, and a learning
+ algorithm sequentially improves its output so that it matches training
+ data.
+ BNN starts in state, where a network represents all functions BNN is able
+ to describe.
+ Sequentially it restricts this set until there are only ones which sufficiently
+ enough represent training data.
+\end_layout
+
+\begin_layout Itemize
+Regarding speed, BNN is ~2x slower than ANN, but BNN may converge faster.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hopfield Network
+\end_layout
+
+\begin_layout Itemize
+Fully connected recurrent symmetric network, which uses Linear Basis Function
+ and as an activation function it can use logistic sigmoid or hyperbolic
+ tangents, or (if we want to model discrete Hopfield network, then Heaviside
+ Step Function - something step-like).
+\end_layout
+
+\begin_layout Itemize
+Inputs can be binary or bipolar.
+\end_layout
+
+\begin_layout Itemize
+Learning is based on Hebb principle.
+\end_layout
+
+\begin_layout Itemize
+It is recurrent network, connections between neurons are oriented cycles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Evolutionary Algorithms and Artificial Neural Networks
+\end_layout
+
+\begin_layout Itemize
+Evolutionary algorithm are capable of optimization of complex problems.
+ Neural networks needs to set a great amount of parameters.
+ Additionally, there is no exact approach how to choose the best topology.
+\end_layout
+
+\begin_layout Itemize
+Encoding can be divided into 2 groups:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Direct encoding
+\series default
+ - genes represent individual neurons and their connections
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Indirect encoding 
+\series default
+- usually determines, how to create a given network.
+ Indirect encoding can be beneficial for creating more compact genomes,
+ which can generate much bigger networks, or repetitive occurrence of the
+ same subnets or patterns.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are many challenges in such connection of these two:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Competing Convention
+\series default
+ - a situation, when there exist multiple different genomes for a given
+ neural network, but they differ only in permutation of neurons in genome.
+ During crossover (genetic operation), there can be created useless individuals
+ of population.
+ The bigger a network is, the more such permutations exist, and more 
+\begin_inset Quotes eld
+\end_inset
+
+corrupted
+\begin_inset Quotes erd
+\end_inset
+
+ individuals are being created.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Length of genomes is not the same
+\series default
+.
+ Standard genetic algorithms work with the same length of genomes.
+ For this and previous reason (from Competing Convention problem), crossover
+ operation is not being used for neuro-evolutionary algorithms - instead,
+ only mutation is mostly used.
+ However, there are research works, that with proper encoding and usage
+ of more complex crossover operations, it is possible to evolve a neural
+ network.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A few algorithms: 
+\series bold
+GNARL
+\series default
+ (GeNeralized Acquisition of Recurrent Links), or more recent 
+\series bold
+EANT
+\series default
+ (Evolutionary Acquisition of Neural Topologies), 
+\series bold
+CE
+\series default
+ (Cellular Encoding), 
+\series bold
+NEAT
+\series default
+ (NeuroEvolution of Augmenting Topologies).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fuzzy Neural Network 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fuzzy set vs Crisp set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Crisp set i
+\series default
+s a set as a collection of elements — e.g 
+\begin_inset Formula $A={x|x∈R\,and\,x>0}$
+\end_inset
+
+ where a general universe of discourse is established (in our example, set
+ of real numbers) and each distinct point in that universe is either a part
+ of our set or not.
+ Fuzzy sets are also similar to crisp sets but they are more generalized.
+ So crisp sets can be said to be a specific type of fuzzy set.
+ Here in crisp sets however, an element cannot be just a partially part
+ of a set.
+ Let us define the value 0 and 1 as a 
+\series bold
+membership value
+\series default
+ 
+\begin_inset Formula $mA(x)$
+\end_inset
+
+ for crisp sets.
+ It is a 
+\series bold
+binary value
+\series default
+ i.e it can only be 0 or 1 for crisp sets.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fuzzy set
+\series default
+ is similar to crisp set, but the 
+\series bold
+membership value 
+\series default
+is a 
+\series bold
+continuous value 
+\series default
+between [0, 1].
+ We can define a particular value in our universe of discourse as being
+ part of that set with partial participation.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/fuzzy_set_operations.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Definition of all basic fuzzy set operations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+There are many types of fuzzy neural networks which can work very differently:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Neural network based on fuzzy operators
+\series default
+ - Fuzzy Hopfield, FAM (Fuzzy Associative Memory) - these found application
+ in pattern recognition, classification, and signal processing.
+ For example, one of the first was Fuzzy Min-Max Classifier, original idea
+ from 1992.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Regular fuzzy neural network
+\series default
+ works with an idea, that each neuron is basically a fuzzy neuron - which
+ weights, inputs, and outputs are fuzzy sets (and there is also fuzzy arithmetic
+ used).
+ Such network is basically a feedforward network.
+ Learning algorithm is very important part of them.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Neuro-fuzzy system.
+
+\series default
+ Combination of two subsystems - neural networks and fuzzy regulator.
+ Based on their cooperation, these systems can be divided into 3 groups:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+cooperative
+\series default
+, where both systems work independently - neural net learns (from training
+ data) rules for fuzzy system, which is using these rules as a solution
+ to final problem.
+ For learning, there can be Self Organizing Maps, or Fuzzy associative memories.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+concurrent
+\series default
+, where neural net is used for preprocessing data to fuzzy system.
+ But the architecture can be an opposite - first a fuzzy system (for data
+ preprocessing) and then neural network.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+hybrid
+\series default
+, also known as Inferential neural networks.
+ This is one of the most popular approach.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Fuzzy Min-Max Classifier is working with hyperboxes.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://medium.com/@apbetahouse45/understanding-fuzzy-neural-network-with-cod
+e-and-graphs-263d1091d773}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Learning of them is in two phases:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Expansion phase.
+
+\series default
+ The first thing we do is find the most suitable hyperbox for expansion.
+ We take all the hyperboxes belonging to the class Y and calculate their
+ membership values.
+ The hyperbox with the maximum membership value is the most suitable candidate
+ for expansion.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Contraction phase.
+
+\series default
+ This is for avoiding overlapping of hyperboxes.
+ Suppose that from the previous phase we found a suitable hyperbox meeting
+ the expansion criteria and we expanded the box.
+ We need to make sure that this expanded box does not overlap with another
+ hyperbox belonging to a different class.
+ Overlap between hyperboxes of same class is allowed, so we'll only check
+ for overlap between expanded box and hyperboxes of different classes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So we apply the learning algorithm and derive hyperboxes based on the training
+ data (there are 
+\begin_inset Quotes eld
+\end_inset
+
+patterns
+\begin_inset Quotes erd
+\end_inset
+
+ = tuples of 
+\begin_inset Formula $n$
+\end_inset
+
+ points = 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional space on the input and from these patterns, we construct hyperboxes
+).
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,388 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Subsection*
+Permutations
+\end_layout
+
+\begin_layout Itemize
+You cannot repeat items that you already used.
+ Equation:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{n!}{(n-k)!}=n*n-1*n-2*n-3*...*n-k+1\label{eq:permutations}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Combinations
+\end_layout
+
+\begin_layout Itemize
+Order doesn't matter, and you can repeat already used items.
+ Equation:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)=\frac{1}{k!}*\frac{n!}{(n-k)!}=\frac{n!}{k!(n-k)!}\label{eq:combinations}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Proof by Induction
+\end_layout
+
+\begin_layout Itemize
+Induction is a way of proving something to be true.
+ It is closely related to recursion.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Task
+\series default
+: Prove statement 
+\begin_inset Formula $P(k)$
+\end_inset
+
+ is true for all 
+\begin_inset Formula $k>=b$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Base Case
+\series default
+: Prove the statement is true for 
+\begin_inset Formula $P(b)$
+\end_inset
+
+.
+ This is usually just a matter of plugging in numbers.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assumption
+\series default
+: Assume the statement is true for 
+\begin_inset Formula $P(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inductive Step
+\series default
+: Prove that if the statement is true for 
+\begin_inset Formula $P(n)$
+\end_inset
+
+, then it's true for 
+\begin_inset Formula $P(n+l)$
+\end_inset
+
+.
+ This is like dominoes.
+ If the first domino falls, and one domino always knocks over the next one,
+ then all the dominoes must fall.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: Let's use this to prove that there are 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ subsets of an n-element set.
+ Let 
+\begin_inset Formula $s=\{a_{1},a_{2},...,a_{n}\}$
+\end_inset
+
+ be the n-element set.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Base case
+\series default
+: Prove there are 
+\begin_inset Formula $2^{0}$
+\end_inset
+
+ subsets of 
+\begin_inset Formula $\{\}$
+\end_inset
+
+.
+ This is true, since the only subset of 
+\begin_inset Formula $\{\}$
+\end_inset
+
+ is 
+\begin_inset Formula $\{\}$
+\end_inset
+
+ itself.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assume
+\series default
+ that there are 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ subsets of 
+\begin_inset Formula $\{a_{1},a_{2},...,a_{n}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prove 
+\series default
+that there are 
+\begin_inset Formula $2^{n+1}$
+\end_inset
+
+ subsets of 
+\begin_inset Formula $\{a_{1},a_{2},...,a_{n}+a_{n+1}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Consider the subsets of 
+\begin_inset Formula $\{a_{1},a_{2},...,a_{n}+a_{n+1}\}$
+\end_inset
+
+.
+ Exactly half will contain 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ and half will not.
+ The subsets that do not contain 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ are just the subsets of 
+\begin_inset Formula $\{a_{1},a_{2},...,a_{n}\}$
+\end_inset
+
+.
+ We assumed there are 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ of those.
+ Since we have the same number of subsets with 
+\begin_inset Formula $x$
+\end_inset
+
+ as without 
+\begin_inset Formula $x$
+\end_inset
+
+, there are 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ subsets with 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+.
+ Therefore, we have 
+\begin_inset Formula $2^{n}+2^{n}$
+\end_inset
+
+ subsets, which is 
+\begin_inset Formula $2^{n+1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Many recursive algorithms can be proved valid with induction.
+\end_layout
+
+\end_body
+\end_document

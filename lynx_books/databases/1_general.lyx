@@ -1,0 +1,4623 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Standard
+Just a small terminology detail, occurring in literature: 
+\series bold
+\emph on
+tuples 
+\series default
+\emph default
+vs 
+\series bold
+\emph on
+rows
+\series default
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+In some contexts they are equivalent, but in DML context it needs to be
+ distinguished what is what.
+\end_layout
+
+\begin_layout Itemize
+A single 
+\series bold
+\emph on
+row
+\series default
+\emph default
+ might exist on-disk as more than one 
+\series bold
+\emph on
+tuple
+\series default
+\emph default
+ at any time, with only one of them visible to any single transaction.
+\end_layout
+
+\begin_layout Itemize
+The transaction doing an 
+\emph on
+update
+\emph default
+ now sees the new version of the 
+\emph on
+row, 
+\emph default
+the new 
+\emph on
+tuple
+\emph default
+ just inserted on-disk.
+ As long as this transaction has yet to 
+\emph on
+commit,
+\emph default
+ then the rest of the world still sees the previous version of the 
+\emph on
+row
+\emph default
+, which is another 
+\emph on
+tuple 
+\emph default
+on-disk.
+\end_layout
+
+\begin_layout Subsection
+Pivoting
+\end_layout
+
+\begin_layout Itemize
+The requirement is to transpose data from multiple rows into columns of
+ a single row.
+ We can use 
+\emph on
+group by
+\emph default
+ to combine rows, and then 
+\emph on
+filter
+\emph default
+ (or case
+\emph on
+) 
+\emph default
+to pick rows per column.
+\end_layout
+
+\begin_layout Subsection
+OLAP vs OLTP
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+OLTP (on-line transaction processing)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Function: everyday operations.
+\end_layout
+
+\begin_layout Itemize
+Data: current data that are updated continuously.
+\end_layout
+
+\begin_layout Itemize
+Access: read/write access, index/hash on primary key.
+\end_layout
+
+\begin_layout Itemize
+Dozens of loaded records, short and simple transactions.
+\end_layout
+
+\begin_layout Itemize
+Gigabytes of data.
+\end_layout
+
+\begin_layout Itemize
+Transactional databases.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+OLAP (on-line analytic processing)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Function: support for decision making.
+\end_layout
+
+\begin_layout Itemize
+Data: historical, summarized, aggregated, merged, multidimensional.
+\end_layout
+
+\begin_layout Itemize
+Access: Lot of reads.
+\end_layout
+
+\begin_layout Itemize
+Millions of loaded records, complicated queries.
+\end_layout
+
+\begin_layout Itemize
+100GB-TB of data.
+\end_layout
+
+\begin_layout Itemize
+Data warehouses.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Relational Database Management System (RDMS)
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Relational-Database-Management"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A role of RDMS (such as PostreSQL) is to handle 
+\series bold
+concurrent access to live data
+\series default
+, that is manipulated by several applications, or several parts of an applicatio
+n.
+\end_layout
+
+\begin_layout Itemize
+Atomic, Consistent, Isolated, Durable (ACID)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+At the heart of the concurrent access semantics is the concept of a 
+\series bold
+transaction
+\series default
+.
+ A transaction should be 
+\series bold
+atomic
+\series default
+ and 
+\series bold
+isolated
+\series default
+, the latter allowing for online backups of the data.
+\end_layout
+
+\begin_layout Itemize
+ACID is a set of properties of database transactions intended to guarantee
+ validity even in the event of errors, power failures, etc.
+ In the context of databases, a sequence of database operations that satisfies
+ the ACID properties (and these can be perceived as a single logical operation
+ on the data) is called a transaction.
+\end_layout
+
+\begin_layout Itemize
+Additionally, the RDMS is tasked with maintaining a data set that is 
+\series bold
+consistent
+\series default
+ 
+\series bold
+with the business rules
+\series default
+ at all times.
+ That’s why database modeling and normalization tasks are so important,
+ and why for example PostgreSQL supports an advanced 
+\series bold
+set of constraints
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Atomicity.
+ 
+\series default
+Transactions are often composed of multiple statements.
+ Atomicity guarantees that each transaction is treated as a single "unit",
+ which either succeeds completely, or fails completely: if any of the statements
+ constituting a transaction fails to complete, the entire transaction fails
+ and the database is left unchanged.
+ An atomic system must guarantee atomicity in each and every situation,
+ including power failures, errors and crashes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consistency.
+
+\series default
+ It ensures that a transaction can only bring the database from one valid
+ state to another.
+ Any data written to the database must be valid according to all defined
+ rules, including constraints, cascades, triggers, and any combination thereof.
+ This prevents database corruption by an illegal transaction, but does not
+ guarantee that a transaction is correct.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Isolation.
+ 
+\series default
+It ensures that concurrent execution of transactions leaves the database
+ in the same state that would have been obtained if the transactions were
+ executed sequentially.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Durability
+\series default
+.
+ It guarantees that once a transaction has been committed, it will remain
+ committed even in the case of a system failure (e.g., power outage or crash).
+ This usually means that completed transactions (or their effects) are recorded
+ in non-volatile memory.
+ No committed change will be lost.
+ Not even an OS crash is allowed to risk your data.
+ We're left with disk corruption risks, and that’s why being able to carry
+ out online backups is so important.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Data Access API and Service
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given the characteristics listed above, for example PostgreSQL allows one
+ to implement a data access API.
+ In a world of containers and micro- services, PostgreSQL is the data access
+ service, and its API is SQL.
+\end_layout
+
+\begin_layout Itemize
+If it looks a lot heavier than your typical micro-service, remember that
+ PostgreSQL implements a stateful service, on top of which you can build
+ the other parts.
+ Those other parts will be scalable and highly available by design, because
+ solving those problems for stateless services is so much easier.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SQL (see the next section)
+\end_layout
+
+\begin_layout Itemize
+Extensible (JSON, XML, Arrays, Ranges)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The SQL language is statically typed: every query defines a new relation
+ that must be fully understood by the system before executing it.
+ That's why sometimes 
+\bar under
+cast
+\bar default
+ expressions are needed in your queries.
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL's unique approach to implementing SQL was invented in the 80s
+ with the stated goal of enabling extensibility.
+ SQL operators and functions are defined in a catalog and looked up at run-time.
+ 
+\series bold
+Functions and operators in PostgreSQL support polymorphism and almost every
+ part of the system can be extended.
+
+\series default
+ This unique approach has allowed PostgreSQL to be capable of improving
+ SQL; it offers a deep coverage for composite data types and documents processin
+g right within the language, with clean semantics.
+\end_layout
+
+\begin_layout Itemize
+In particular, the extensibility of PostgreSQL allows this 20 years old
+ ecosystem to keep renewing itself.
+ As a data point, this extensibility design makes PostgreSQL one of the
+ best JSON processing platforms you can find.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When designing your SW architecture, think about PostgreSQL not as 
+\bar under
+storage layer
+\bar default
+, but rather as a 
+\bar under
+concurrent data access service
+\bar default
+.
+ This service is capable of handling data processing.
+ How much of the processing you want to implement in the SQL part of your
+ architecture depends on many factors, including team size, skill set, and
+ operational constraints.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The system catalogs
+\series default
+ are the place where a relational database management system stores schema
+ metadata, such as information about tables and columns, and internal bookkeepin
+g information.
+ PostgreSQL's system catalogs are regular tables.
+ You can drop and recreate the tables, add columns, insert and update values,
+ and severely mess up your system that way.
+ Normally, one should not change the system catalogs by hand, there are
+ normally SQL commands to do that.
+ (For example, 
+\emph on
+create database
+\emph default
+ inserts a row into the 
+\emph on
+pg_database
+\emph default
+ catalog — and actually creates the database on disk.)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.postgresql.org/docs/current/catalogs.html}}
+\end_layout
+
+\end_inset
+
+ More details:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stackoverflow.com/questions/7022755/whats-the-difference-between-a-ca
+talog-and-a-schema-in-a-relational-database}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+From the relational point of view: A catalog is the place where (among other
+ things) all of the various schemas (external, conceptual, internal) and
+ all of the corresponding mappings (external/conceptual, conceptual/internal)
+ are kept.
+\end_layout
+
+\begin_layout Itemize
+From the SQL standard point of view: Catalogs are named collections of schemas
+ in an SQL-environment.
+ An SQL-environment contains zero or more catalogs.
+ A catalog contains one or more schemas, but always contains a schema named
+ 
+\emph on
+INFORMATION_SCHEMA
+\emph default
+ that contains the views and domains of the Information Schema.
+\end_layout
+
+\begin_layout Itemize
+From the SQL point of view: 
+\series bold
+A catalog is often synonymous with 
+\emph on
+database
+\emph default
+.
+
+\series default
+ In most SQL DBMS, if you query the 
+\emph on
+information_schema 
+\emph default
+views, you'll find that values in the "table_catalog" column map to the
+ name of a database.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Candidate keys 
+\series default
+are variously referred to as primary keys, secondary keys or alternate keys.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Surrogate key
+\series default
+ is artificially generated key, for example 
+\emph on
+id 
+\emph default
+that is type of 
+\emph on
+serial
+\emph default
+, and it is a substitute for a 
+\emph on
+natural key
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Super-key
+\emph on
+ 
+\series default
+\emph default
+is a combination of attributes that can be uniquely used to identify a database
+ record.
+ A table might have many possible super-keys.
+ Candidate keys are a special subset of super-keys that do not have any
+ extraneous information in them.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Composite key
+\series default
+ is a candidate key that consists of two or more columns that uniquely identify
+ a row.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Compound key
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+According to the Relational Database Dictionary, 
+\series bold
+compound and composite key mean the same thing
+\series default
+.
+ Both composite key and compound key describe a candidate key with more
+ than one attribute.
+\end_layout
+
+\begin_layout Itemize
+According to ER modeling, compound key has a more specific meaning.
+ It means a key whose constituent attributes are references to keys in other
+ entities - i.e.
+ a compound key forms an identifying relationship.
+ It is a composite key for which each attribute that makes up the key is
+ a simple (foreign) key in its own right.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Normalization
+\end_layout
+
+\begin_layout Itemize
+Database normalization is basically a process with some 
+\begin_inset Quotes eld
+\end_inset
+
+rules
+\begin_inset Quotes erd
+\end_inset
+
+ that have been built up and improved upon over the years.
+ The main goal of those design rules is an overall consistency for all the
+ data managed in your schema.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Normalized databases are designed to minimize redundancy, while denormalized
+ databases are designed to optimize read time.
+ 
+\end_layout
+
+\begin_layout Itemize
+Database normalization is the process of organizing the columns (attributes)
+ and tables (relations) of a relational database to 
+\series bold
+reduce data redundancy and improve data integrity
+\series default
+.
+ Normalization is also the process of simplifying the design of a database
+ so that it achieves the optimal structure.
+ It was first proposed by Edgar F.
+ Codd, as an integral part of a relational model.
+\end_layout
+
+\begin_layout Itemize
+Anyone reading your database schema should instantly understand your business
+ model.
+\end_layout
+
+\begin_layout Itemize
+In a traditional normalized database with data like Courses and Teachers,
+ Courses might contain a column called TeacherID, which is a foreign key
+ to Teacher.
+ One benefit of this is that information about the teacher (name, address,
+ etc.) is only stored once in the database.
+ The drawback is that many common queries will require expensive joins.
+ Instead, we can denormalize the database by storing redundant data.
+ For example, if we knew that we would have to repeat this query often,
+ we might store the teacher's name in the Courses table.
+
+\series bold
+ Denormalization is commonly used to create highly scalable systems.
+\end_layout
+
+\begin_layout Itemize
+Cons of denormalization are that updates and inserts are more expensive,
+ these queries are harder to write, more storage is needed, and maybe data
+ can be even inconsistent.
+ But retrieving data is faster since we do fewer joins, and such select
+ queries can be simpler, since we need to look at fewer tables.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+From a concurrency standpoint, a normalized schema helps to avoid concurrent
+ update activity on the same rows from occurring often in production.
+\end_layout
+
+\begin_layout Itemize
+There are the following normal forms, but in practice database models often
+ reach for BCNF or 4NF; going all the way to the DKNF design is only seen
+ in specific cases:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+First Normal Form (1NF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No duplicated rows in the table (SSOT
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Single source of truth: 
+\backslash
+url{Single source of truth}}
+\end_layout
+
+\end_inset
+
+).
+ Proper primary keys allow implementing this - for example, a surrogate
+ PK and then if needed, one or more columns with 
+\emph on
+unique constraint
+\emph default
+ and not 
+\emph on
+null constraint
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Each cell is single-value - no repeating groups or arrays.
+\end_layout
+
+\begin_layout Itemize
+Entries in a column are of the same kind.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Second Normal Form (2NF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Must be in 1NF.
+\end_layout
+
+\begin_layout Itemize
+All non-key attributes are dependent on all of the key.
+ Since a partial dependency occurs when a non-key attribute is dependent
+ on only a part of the composite key.
+ So, every non-key attribute must depend on the whole key, not just part
+ of it.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As an example, imagine that you have columns of table 
+\emph on
+Book: 
+\bar under
+Title
+\bar default
+, 
+\bar under
+Format
+\bar default
+ 
+\emph default
+(these two are part of compound key 
+\emph on
+{Title, Format}
+\emph default
+, 
+\emph on
+Author, Price, Pages, Genre Name
+\emph default
+.
+ Now, 
+\emph on
+Author, Pages, 
+\emph default
+and 
+\emph on
+Genre Name
+\emph default
+ all depends on primary key 
+\emph on
+\bar under
+Title
+\bar default
+, 
+\emph default
+but 
+\emph on
+Price 
+\emph default
+depends on 
+\emph on
+Format.
+ 
+\emph default
+To normalize this, we will make 
+\emph on
+\bar under
+Title
+\bar default
+ 
+\emph default
+a simple primary key, and move 
+\emph on
+Format 
+\emph default
+and 
+\emph on
+Price 
+\emph default
+to another table that will have the following columns: 
+\emph on
+\bar under
+TitleId
+\bar default
+, 
+\bar under
+Format
+\bar default
+, 
+\emph default
+and 
+\emph on
+Price.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Third Normal Form (3NF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Must be in 2NF.
+\end_layout
+
+\begin_layout Itemize
+It does not have any transitive dependencies.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As an example, imagine that you have columns of table 
+\emph on
+Book: 
+\bar under
+Title
+\bar default
+,
+\emph default
+ 
+\emph on
+Author, Author Nationality, Genre ID, Genre Name, 
+\emph default
+and 
+\emph on
+Pages
+\emph default
+.
+ Now, 
+\emph on
+Genre ID
+\emph default
+ and 
+\emph on
+Genre Name 
+\emph default
+are not independent of one another.
+ The dependency of, say, 
+\emph on
+Genre Name 
+\emph default
+on the primary key can be deduced from the dependency of 
+\emph on
+Genre Name 
+\emph default
+on
+\emph on
+ Genre ID
+\emph default
+ and of
+\emph on
+ Genre ID
+\emph default
+ on the primary key.
+ Since there are more titles than genres, that dependency introduces redundant
+ data into the 
+\emph on
+Book
+\emph default
+ table which can be eliminated by abstracting the dependency of 
+\emph on
+Genre Name
+\emph default
+ on 
+\emph on
+Genre ID
+\emph default
+ into its own table.
+ So, in table 
+\emph on
+Book
+\emph default
+, there will be removed 
+\emph on
+Genre Name
+\emph default
+, and new table 
+\emph on
+Book Genres 
+\emph default
+will contain two columns: 
+\emph on
+Genre ID 
+\emph default
+and 
+\emph on
+Genre Name.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Boyce-Codd Normal Form (BCNF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Must be in 3NF.
+\end_layout
+
+\begin_layout Itemize
+Every determinant is a candidate key.
+ In other words, every dependency 
+\begin_inset Formula $X\rightarrow Y$
+\end_inset
+
+ must be a trivial dependency (
+\emph on
+
+\begin_inset Formula $Y$
+\end_inset
+
+ 
+\emph default
+is a subset of 
+\emph on
+
+\begin_inset Formula $X$
+\end_inset
+
+), 
+\emph default
+and 
+\emph on
+
+\begin_inset Formula $X$
+\end_inset
+
+ 
+\emph default
+is a super-key for a given schema
+\emph on
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider a table 
+\emph on
+Book 
+\emph default
+from the previous example.
+ Columns 
+\emph on
+Author 
+\emph default
+and 
+\emph on
+Author Nationality 
+\emph default
+violates BCNF because there is a non-trivial dependency (
+\emph on
+Author Nationality
+\emph default
+ is not a subset of 
+\emph on
+Author
+\emph default
+).
+ We must decompose the table 
+\emph on
+Book
+\emph default
+, and put these to a separate table with foreign key to it in 
+\emph on
+Book.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Fourth Normal Form (4NF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Must be in BCNF.
+\end_layout
+
+\begin_layout Itemize
+No multi-valued dependencies.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Multi-valued dependency is a dependency if all of the following conditions
+ are true for a given relation (table):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For a dependency 
+\begin_inset Formula $A→B$
+\end_inset
+
+, if for a single value of 
+\begin_inset Formula $A$
+\end_inset
+
+, multiple value of 
+\begin_inset Formula $B$
+\end_inset
+
+ exists, then the table 
+\series bold
+may
+\series default
+ have multi-valued dependency.
+\end_layout
+
+\begin_layout Enumerate
+A table should have at least 3 columns for it to have a multi-valued dependency.
+\end_layout
+
+\begin_layout Enumerate
+For a relation 
+\begin_inset Formula $R(A,B,C)$
+\end_inset
+
+, if there is a multi-valued dependency between, 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+, then 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ 
+\series bold
+should be independent of each other.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As an example, imagine that we have table 
+\emph on
+Movie
+\emph default
+ with columns 
+\emph on
+Movie Name, Shooting Location
+\emph default
+, and 
+\emph on
+Genre
+\emph default
+.
+ This is not in 4NF since more than 1 movie can have the same genre, and
+ many shooting locations can have the same movies.
+ To convert this table to 4NF, we must split it into 2tables: 
+\emph on
+Movie shooting
+\emph default
+ and 
+\emph on
+Movie Genre
+\emph default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Fifth Normal Form (5NF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also called Projection-join Normal Form (PJNF).
+ To spot a table not satisfying the 5NF, it is usually necessary to examine
+ the data thoroughly.
+ C.J.
+ Date has argued that only a database in 5NF is truly "normalized".
+\end_layout
+
+\begin_layout Itemize
+Must be in 4NF.
+\end_layout
+
+\begin_layout Itemize
+Every join dependency in the table is a consequence of the candidate keys
+ of the table.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Domain-Key Normal Form (DKNF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Every constraint on the table is a logical consequence of the definition
+ of keys and domains.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As an example, imagine that we have table 
+\emph on
+Book
+\emph default
+ with the following columns: 
+\emph on
+\bar under
+Title
+\emph default
+\bar default
+, 
+\emph on
+Pages, Thickness, 
+\emph default
+and 
+\emph on
+Genre ID
+\emph default
+.
+ Logically, 
+\emph on
+Thickness
+\emph default
+ is determined by number of pages.
+ That means it depends on 
+\emph on
+Pages
+\emph default
+ which is not a key.
+ Let's set an example convention saying a book up to 350 pages is considered
+ "slim" and a book over 350 pages is considered "thick".
+ This convention is technically a constraint but it is neither a domain
+ constraint nor a key constraint; therefore we cannot rely on domain constraints
+ and key constraints to keep the data integrity.
+ In another words - nothing prevents us to put, for example, "thick" for
+ a book with 50 pages and that makes the table violate DKNF.
+ Column 
+\emph on
+Thickness
+\emph default
+ column should be moved to a separate table (and 
+\emph on
+Pages 
+\emph default
+will stay in table 
+\emph on
+Book
+\emph default
+), with columns 
+\emph on
+Min pages 
+\emph default
+and 
+\emph on
+Max pages.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Migrations
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Add a new column
+\series default
+ is the simplest possible migration.
+ Any 
+\emph on
+not null 
+\emph default
+constraint must be applied only 
+\bar under
+after
+\bar default
+ a successful execution of all the migration steps, because even it your
+ data model requires it, insert/update statements would not support this
+ yet because the application does not know the new column.
+ It can be the final step of the zero downtime migrations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Changing a column name
+\series default
+ may be a good idea to do in the following way:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Add a new column (be careful on 
+\emph on
+not null
+\emph default
+ problem, as above),
+\end_layout
+
+\begin_layout Enumerate
+Populate both columns with values.
+ Update data so that data from the older column will be moved to the new
+ one - but proceed this 
+\begin_inset Quotes eld
+\end_inset
+
+copying
+\begin_inset Quotes erd
+\end_inset
+
+ in batches so that your database is not locked (or particular table) for
+ a very long time.
+ 
+\series bold
+In general, avoid locks by using sharding.
+
+\series default
+ In this moment, application will still read data from old column, but writes
+ to both columns.
+\end_layout
+
+\begin_layout Enumerate
+Change application so that it reads from the new column, but still writes
+ to both old and new columns.
+ This step is necessary to guarantee that if something goes wrong with your
+ new version, the current version will still be able to work properly with
+ the old column.
+\end_layout
+
+\begin_layout Enumerate
+After some period of monitoring and automated or manual checking of the
+ values, you can release a new version of your code that finally reads and
+ writes from your new column.
+\end_layout
+
+\begin_layout Enumerate
+Then remove the original column.
+ This step should be done much later since this is a destructive operation
+ in which data are lost.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Change type or format of a column 
+\series default
+is similar to the previous type of migration, so you have to start with
+ adding a new column.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Delete a column 
+\series default
+is destructive operation, but sometimes we need to do it.
+ Never delete a column in your database when you’re releasing a new version.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Instead of deleting the column, you should just stop using the value in
+ your code for read operations.
+ However, write operations should still be writing to the column in case
+ you need it to keep your current version running.
+\end_layout
+
+\begin_layout Enumerate
+Stop writing to the column (optional step).
+ Keep the column with the data there for safety reasons.
+ If you decide to execute this step, make sure to drop any 
+\emph on
+not null 
+\emph default
+constraint or else you will prevent your code from inserting new rows.
+\end_layout
+
+\begin_layout Enumerate
+Delete the column (later).
+ This is the same as described above in 
+\emph on
+Changing a column name 
+\emph default
+section.
+ You should use some tracking system and perform this operation after proper
+ monitoring of your system.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+CRUD and CQRS
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+CRUD
+\series default
+\emph default
+ stands for 
+\emph on
+Create, Read, Update, and Delete.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CRUD architectures are certainly the most common architectures in traditional
+ data manipulation applications.
+\end_layout
+
+\begin_layout Itemize
+In this scenario, we use the same data model for both read and write operations.
+\end_layout
+
+\begin_layout Itemize
+Probably the majority of basic data manipulation operations will be best
+ served using a CRUD architecture.
+ However, when complexity begins to arise in your use cases, you might want
+ to consider something different.
+\end_layout
+
+\begin_layout Itemize
+One of the things missing in a CRUD architecture is intent - when you would
+ like to change some table.
+ We don't know later, whether it was because of a mistake, changed business
+ logic, or so.
+ For this, CQRS might be a better fit.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\emph on
+CQRS
+\series default
+\emph default
+ stands for
+\emph on
+ Command and Query Responsibility Segregation.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a fancy name for an architecture that uses different data models to
+ represent read and write operations.
+\end_layout
+
+\begin_layout Itemize
+We can split the read and write data stores into separate tables, schemas,
+ or even database instances or technologies.
+ The possibility of using data stores in different nodes with different
+ technologies sounds tempting for a microservices architecture.
+\end_layout
+
+\begin_layout Itemize
+Some motivations for using separate data stores for read and write operations
+ are performance and distribution.
+ Your write operations might generate a lot of contention on the data store.
+ Or your read operations may be so intensive that the write operations degrade
+ significantly.
+ You also might need to consolidate the information of your model using
+ information provided by other data stores.
+ This can be time consuming and won’t perform well if you try to update
+ the read model together with your write model.
+ Your read operations could be implemented in a separate service (microservices)
+, so you would need to issue the update request to the read model in a remote
+ data store.
+\end_layout
+
+\begin_layout Itemize
+Whenever we’re issuing the update requests to another component of our system,
+ we are creating an event.
+ It’s not a strict requirement, but when events come to play, that’s the
+ moment we strongly consider adding a
+\series bold
+ message broker
+\series default
+ to your architecture.
+ You could be storing the events in a separate table and keep polling for
+ new records, but for most implementations, a message broker will be the
+ wisest choice because it favors a decoupled architecture.
+\end_layout
+
+\begin_layout Itemize
+When you design your application with CQRS, you’re not tied to having a
+ single read data store in your model.
+ If you have different requirements for different features of your application,
+ you can create more than one read data store, each one with a read model
+ optimized for the specific use case being implemented.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Event sourcing
+\emph default
+ is commonly used together with CQRS.
+ Even though neither one implies the use of the other, they fit well together
+ and complement each other in interesting ways.
+ Traditional CRUD and CQRS architectures store only the current state of
+ the data in the data stores.
+ This approach has some limitation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using a single data store for both operations can limit scalability due
+ to performance problems.
+\end_layout
+
+\begin_layout Itemize
+In a concurrent system with multiple users, you might run into data update
+ conflicts.
+\end_layout
+
+\begin_layout Itemize
+Without an additional auditing mechanism, you have neither the history of
+ updates nor its source.
+\end_layout
+
+\begin_layout Standard
+Event sourcing is just one of the possible solutions when auditing is a
+ requirement for your application.
+ To solve this limitation in event sourcing, we model the state of the data
+ as a sequence of events.
+ Each one of these events is stored in an append-only data store.
+ In this case, the canonical source of information is the sequence of events,
+ not a single entity stored in the data store.
+ Notice that when you combine CQRS and event sourcing you get auditing for
+ free: in any given moment of time, you can replay all operations to check
+ whether some data in the read data store is correct.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection
+Consistency
+\end_layout
+
+\begin_layout Standard
+The way that we deal with updates on different nodes and how we propagate
+ the information between them leads to different consistency models.
+ Different requirements also allow you to have different consistency models
+ between read data stores, even though the write data store might be the
+ same.
+\end_layout
+
+\begin_layout Description
+Eventual
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Consistency
+\end_layout
+
+\begin_layout Itemize
+It guarantees that given an update to a data item in your dataset, eventually,
+ at a point in the future, all access to this data item in any node will
+ return the same value.
+\end_layout
+
+\begin_layout Itemize
+Because each one of the nodes can update its own copy of the data item,
+ if two or more nodes modify the same data item, you will have a conflict.
+ Conflict resolution algorithms are then required to achieve convergence.
+\end_layout
+
+\begin_layout Itemize
+One example of a conflict resolution algorithm is 
+\emph on
+last write wins
+\emph default
+.
+ If we are able to add a synchronized timestamp or counter to all of our
+ updates, the last update always wins the conflict.
+\end_layout
+
+\begin_layout Itemize
+This model tends to be favored for scenarios in which high throughput and
+ availability are more important requirements than immediate consistency.
+ Keep in mind that most real-world business use cases are already eventual
+ consistency.
+ When you read a web page or receive a spreadsheet or report through email,
+ you are already looking at information as it was some seconds, minutes,
+ or even hours ago.
+ Eventually all information converges, but we’re used to this eventuality
+ in our lives.
+ Should not we also be used to it when developing our applications?
+\end_layout
+
+\begin_layout Itemize
+For example, CouchDB and Cassandra are using this consistency model.
+\end_layout
+
+\begin_layout Description
+Strong
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Consistency
+\end_layout
+
+\begin_layout Itemize
+In this model, any update in any node requires that all nodes agree on the
+ new value before making it visible for client reads.
+ It sounds naively simple, but it also introduces the requirement of blocking
+ all the nodes until they converge.
+\end_layout
+
+\begin_layout Itemize
+It resembles to a traditional ACID transaction model.
+\end_layout
+
+\begin_layout Itemize
+For example, PostgreSQL and MySQL are using this consistency model.
+\end_layout
+
+\begin_layout Subsection
+Database Anomalies
+\end_layout
+
+\begin_layout Standard
+Failure to normalize your model may cause database anomalies.
+ When an attempt is made to modify (
+\emph on
+update, insert into, 
+\emph default
+or
+\emph on
+ delete from
+\emph default
+) a relation, the following undesirable side-effects may arise in relations
+ that have not been sufficiently normalized.
+ A database model that implements normal forms avoids those anomalies, and
+ that’s why BCNF or 4NF are recommended.
+ Sometimes though some trade-offs are possible with the normalization process.
+\end_layout
+
+\begin_layout Itemize
+Update anomaly - the same information can be expressed on multiple rows
+ - therefore, updates to a table may result in logical inconsistencies.
+ For example, each record in table 
+\emph on
+Employees’ Skills
+\emph default
+ might contain an 
+\emph on
+Employee ID, Employee Address
+\emph default
+, and 
+\emph on
+Skill
+\emph default
+; thus a change of address for a particular employee may need to be applied
+ to multiple records (one for each skill).
+ If the update is only partially successful - the employee’s address is
+ updated on some records but not others - then the relation is left in an
+ inconsistent state.
+ Specifically, the relation provides conflicting answers to the question
+ of what this particular employee’s address is.
+\end_layout
+
+\begin_layout Itemize
+Insertion anomaly - There are circumstances in which certain facts cannot
+ be recorded at all.
+ For example, each record in table 
+\emph on
+Faculty and Their Courses
+\emph default
+ might contain 
+\emph on
+Faculty ID
+\emph default
+, 
+\emph on
+Faculty Name
+\emph default
+, 
+\emph on
+Faculty Hire Date
+\emph default
+, and 
+\emph on
+Course Code
+\emph default
+.
+ Therefore we can record the details of any faculty member who teaches at
+ least one course, but we cannot record a newly hired faculty member who
+ has not yet been assigned to teach any courses, except by setting the 
+\emph on
+Course Code 
+\emph default
+to 
+\emph on
+null
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Deletion anomaly - Under certain circumstances, deletion of data representing
+ certain facts necessitates deletion of data representing completely different
+ facts.
+ Table 
+\emph on
+Faculty and Their Courses
+\emph default
+ described in the previous example suffers from this type of anomaly, for
+ if a faculty member temporarily ceases to be assigned to any courses, we
+ must delete the last of the records on which that faculty member appears,
+ effectively also deleting the faculty member, unless we set the
+\emph on
+ Course Code 
+\emph default
+to 
+\emph on
+null
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Anti-Patterns
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Anti-Patterns"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Early Attribute Values
+\series default
+ (EAV)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://blog.greglow.com/2018/02/12/sql-design-entity-attribute-value-tables-p
+art-1/}}
+\end_layout
+
+\end_inset
+
+ - is a design that tries to accommodate with a lack of specifications.
+ Instead of storing details of some entity as a standard relation table
+ (via columns), for each attribute of a given entity we use one row:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+create table eav.params
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+entity text not null,
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+parameter text not null,
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+value text not null,
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+primary key(entity, parameter)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+insert into eav.params(entity, parameter, value)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+values ('backend', 'log_level', 'notice'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('backend', 'loglevel', 'info'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('api', 'timeout', '30'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('api', 'timout', '40'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('gold', 'response time', '60'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('gold', 'escalation time', '90'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('platinum', 'response time', '15'),
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+('platinum', 'escalation time', '30');
+\end_layout
+
+\begin_layout Itemize
+The main problems with EAV anti-pattern is, that the 
+\emph on
+value 
+\emph default
+attribute is of type 
+\emph on
+text, so as to be able to host about anything, but some parameters are going
+ to be integer, interval, boolean
+\emph default
+, etc.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+entity 
+\emph default
+and 
+\emph on
+parameter 
+\emph default
+fields are likewise free-text, meaning that any typo will actually create
+ new entries, which might not even be used anywhere in the application.
+\end_layout
+
+\begin_layout Itemize
+When fetching all the parameters of an entity to set up your application’s
+ object, the parameter names are a value in each row rather than the name
+ of the column where to find them, meaning extra work and loops.
+\end_layout
+
+\begin_layout Itemize
+When you need to process parameter in SQL queries, you need to add a join
+ to the 
+\emph on
+params
+\emph default
+ table for each parameter you are interested in.
+\end_layout
+
+\begin_layout Itemize
+Never implement an EAV model, this anti-pattern makes everything more complex
+ than it should for a very small gain at modeling time.
+ If you really need something like this (attribute volatility
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{The situation where the list of attributes changes frequently is
+ termed "attribute volatility" in database parlance.}
+\end_layout
+
+\end_inset
+
+), consider having as solid model as possible and use 
+\emph on
+jsonb
+\emph default
+ columns as extension points.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Multi-Values per Column
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Multi-valued field is in a database schema, and it does not meet criteria
+ for 1NF.
+\end_layout
+
+\begin_layout Itemize
+For example, we have 
+\emph on
+message 
+\emph default
+column that is a type of 
+\emph on
+text
+\emph default
+, and we have CSV data here.
+ We process them with various functions such as 
+\emph on
+regexp_split_to_array()
+\emph default
+ or 
+\emph on
+regexp_split_to_table() 
+\emph default
+and then process
+\emph on
+ 
+\emph default
+the data in relatively sane way
+\emph on
+.
+ 
+\emph default
+The problem with going against 1NF is that it's nearly impossible to maintain
+ the data set as the model offers all the database anomalies above.
+ It is very difficult to search in this data, normalization or some statistics
+ too.
+\end_layout
+
+\begin_layout Itemize
+Given PostgreSQL array support for searching and indexing, it is more efficient
+ at times to manage the list of entries as an array attribute in our main
+ table.
+ This is particularly effective when the application often has to delete
+ entries and all referenced data.
+ In some cases, multiple attributes each containing multiple values are
+ needed.
+ PostgreSQL arrays of composite type instances might then be considered.
+ Cases when that model beats the normalized schema are rare, and managing
+ this complexity isn't free.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+UUIDs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data type 
+\emph on
+serial 
+\emph default
+is built on a 
+\emph on
+sequence
+\emph default
+ with standard behavior for collision.
+ A 
+\emph on
+sequence 
+\emph default
+is non-transactional to allow several concurrent transactions to each get
+ their own number, and each transaction might then 
+\emph on
+commit 
+\emph default
+or fail to commit with a 
+\emph on
+rollback.
+
+\emph default
+ So sequence numbers are delivered in a monotonous way, always incrementally,
+ and will be assigned and used without any ordering known in advance, and
+ with holes in between delivered values.
+ Still, 
+\emph on
+sequences
+\emph default
+ and their usage as a default value for synthetic keys offer a guarantee
+ against collisions.
+\end_layout
+
+\begin_layout Itemize
+UUIDs (128 bits synthetic keys) on the other hand rely on a way to produce
+ random numbers in a 128 bits space that offers a strong theoretical guarantee
+ against collision.
+ You might have to retry producing a number, though very rarely.
+ 
+\series bold
+UUIDs are useful in distributed computing
+\series default
+ where you can’t synchronize every concurrent and distributed transaction
+ against a common centralized sequence, which would then act as a 
+\emph on
+Single Point Of Failure
+\emph default
+, or 
+\emph on
+SPOF
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Phantom Side Effects
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The objective is to execute application tasks with database operations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Anti-pattern 
+\series default
+here is to execute external effects in database triggers, stored procedures
+ and functions.
+\end_layout
+
+\begin_layout Itemize
+For example: 
+\emph on
+insert into something ...
+ and send email to notify developers.
+
+\emph default
+ External effects don't obey rollback - if insertion is rolled back, email
+ will not be removed from recipient's inbox.
+\end_layout
+
+\begin_layout Itemize
+Long-running functions delay query execution.
+\end_layout
+
+\begin_layout Itemize
+External applications may crash, causing unexpected behavior and transaction
+ rollbacks.
+\end_layout
+
+\begin_layout Itemize
+Privilege management problems - all actions are executed as user of database
+ process - no auditing or logging.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Denormalization
+\end_layout
+
+\begin_layout Itemize
+When modeling a database schema for your application or business case, the
+ very first step should always consist of a thorough normalization of the
+ schema.
+ This step takes time, and it’s time well spent as it allows us to understand
+ in depth the system being designed.
+ When reaching 3NF then Boyce-Codd Normal Form, and even 4NF, then the next
+ step is naturally generating content and writing queries.
+ Write queries that implement workflow oriented queries, often named CRUD
+ for create, read, update, delete where the application mainly deals with
+ a single record at a time.
+ Also, write queries that implement a reporting workflow and have a broad
+ view of your system, maybe for weekly marketing analysis, invoicing, user
+ suggestions for up-selling, or other activities that are interesting in
+ your business field.
+\end_layout
+
+\begin_layout Itemize
+Once all of that is done, some difficulties may appear, either because the
+ fully normalized schema is too heavy to deal with at the application level
+ without any benefits, or because having a highly normalized schema involves
+ performances penalties that you've measured and cannot tolerate.
+\end_layout
+
+\begin_layout Itemize
+Fully normalized schemas often have a high number of tables and references
+ in between them.
+ That means lots of foreign key constraints and lots of join operations
+ in all your application queries.
+ That said, PostgreSQL has been coded with the SQL standard and the normalizatio
+n rules in mind and is very good at join operations in general.
+ Also, PostgreSQL implements row-level locking for most of its operations,
+ so the cost of constraints isn't a show stopper in a great many cases.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+If some part of your application's workload makes it difficult to sustain
+ a fully normalized schema, then it might be time to find trade-offs.
+ The process of denormalization consists of relaxing the normalization rules
+ to reach an acceptable trade-off in terms of data quality and data maintenance.
+\end_layout
+
+\begin_layout Itemize
+Only use denormalization techniques when you've made a strong case for needing
+ them - otherwise, premature optimization is a good way to hell! A strong
+ case means you have benchmarked your application code against your real
+ production data or a data set that has the same distribution and is as
+ real as possible, and on a range of different server setups.
+ A strong case also means that you've spent time rewriting SQL queries to
+ have them pass your acceptance tests.
+ A strong case means you know how much time a query is allowed to spend
+ and how much time it’s actually spending - in average, median, and 95 and
+ 99 percentiles.
+\end_layout
+
+\begin_layout Itemize
+When there’s no way to speed-up your application another way, then it is
+ time to denormalize the schema, i.e.
+ make a decision to put your data quality at risk in order to be able to
+ serve your users and business.
+ In short, performance is a feature.
+ 
+\series bold
+More often than not, performance isn't the most important feature for your
+ business.
+ After a certain threshold, poor performance is a killer, and it must be
+ dealt with.
+ That’s when we denormalize a database schema, and not before.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+As it’s impossible to optimize something you didn't measure, first normalize
+ your model, benchmark it, and then see about optimizing and denormalization.
+\end_layout
+
+\begin_layout Itemize
+The main way of denormalization of a given schema consists of breaking the
+ 
+\emph on
+functional dependency 
+\emph default
+rules and 
+\emph on
+repeat
+\emph default
+ data at different places, so that you don't have to fetch it again.
+ When done properly (=the application code has an integrated 
+\emph on
+cache invalidation 
+\emph default
+mechanism, which is automated in many cases, either in bulk or triggered
+ by some events), breaking the 
+\emph on
+functional dependency
+\emph default
+ rule is the same thing as implementing a 
+\emph on
+cache 
+\emph default
+in your database.
+\end_layout
+
+\begin_layout Itemize
+During denormalization, you sometimes may choose to use data types such
+ as array, jsonb, or some other composite types, rather than an external
+ reference table.
+\end_layout
+
+\begin_layout Itemize
+Whatever you do for denormalization, please keep in mind the following rules:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Choose and document a
+\emph on
+ 
+\series bold
+single source of truth
+\emph default
+ for any and all data
+\series default
+ you are managing.
+ Denormalization introduces divergence, so you will have to deal with multiple
+ copies of the same data with differences between the copies.
+ It needs to be clear for everybody involved and every piece of code where
+ the truth is handled.
+\end_layout
+
+\begin_layout Itemize
+Always implement 
+\series bold
+\emph on
+cache invalidation 
+\emph default
+mechanisms.
+ 
+\series default
+In those times when you absolutely need to reset your cache and distribute
+ the known correct version of your data, it should be as simple as running
+ a well-known, documented, tested and maintained procedure.
+\end_layout
+
+\begin_layout Itemize
+Check about 
+\series bold
+concurrency behavior 
+\series default
+in terms of 
+\series bold
+data maintenance
+\series default
+.
+ Implementing denormalization means more complex data maintenance operations,
+ which can be a source of reduced write-scalability for most applications.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The sparse matrix model
+\series default
+ - in cases where your application manages lots of optional attributes per
+ row, most of them never being used, they can be denormalized to a 
+\emph on
+jsonb
+\emph default
+ extra column with those attributes, all managed into a single document.
+ When restricting this extra jsonb attribute to values never referenced
+ anywhere else in the schema, and when the application only needs this extra
+ data as a whole, then 
+\emph on
+jsonb
+\emph default
+ is a very good trade-off for a normalized schema.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Enumerated types
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Multiple values per attribute 
+\series default
+(see Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Anti-Patterns"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Materialized Views 
+\series default
+(see Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Materialized-View"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Some DBMSs implement materialized views as true physical tables.
+ Their structure only differs from tables in the sense that they are used
+ as replication storage for other local or even remote tables using a synchroniz
+ation or snapshotting mechanism.
+ The data synchronization between the master tables (tables that are the
+ source of the information being replicated) and the materialized view can
+ usually be triggered on demand, based on an interval timer by a transaction
+ commit.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Partitioning 
+\series default
+(see Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Partitioning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+In PostgreSQL, there are many extensions that offer another set of interesting
+ trade-offs to implement specific use cases, such as 
+\emph on
+hstore, ltree, intarray, or pg_trgm
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+It’s been mentioned already, and it is worth saying it again.
+ Only denormalize your application’s schema when you know what you’re doing,
+ and when you've double-checked that there’s no other possibility for implementi
+ng your application and business cases with the required level of performance.
+\end_layout
+
+\begin_layout Itemize
+First, query optimization techniques - mainly rewriting until it's obvious
+ for PostgreSQL how to best execute a query - can go a long way.
+ Production examples of query rewrite improving duration from minutes to
+ milliseconds are commonly achieved, in particular against queries written
+ by ORMs or other naive tooling.
+\end_layout
+
+\begin_layout Itemize
+Second, denormalization is an optimization technique meant to leverage trade-off
+s.
+ Allow me to quote Rob Pike again, as he establishes his first rule of programmi
+ng in Notes on Programming in C as the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Rule 1.
+ You can't tell where a program is going to spend its time.
+ Bottlenecks occur in surprising places, so don't try to second guess and
+ put in a speed hack until you've proven that's where the bottleneck is.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This rule works as well for a database model; maybe database model is even
+ more tricky, because we only measure time spent by ran queries.
+\end_layout
+
+\begin_layout Subsection
+Application layers
+\end_layout
+
+\begin_layout Itemize
+Queries, transactions - 
+\series bold
+application
+\end_layout
+
+\begin_layout Itemize
+Drivers, connections, caching - 
+\series bold
+middleware
+\end_layout
+
+\begin_layout Itemize
+Schema, config - 
+\series bold
+database
+\end_layout
+
+\begin_layout Itemize
+File system, kernel -
+\series bold
+ operation system
+\end_layout
+
+\begin_layout Itemize
+Storage, RAM/CPU, network - 
+\series bold
+hardware
+\end_layout
+
+\begin_layout Section
+Data Warehouse
+\end_layout
+
+\begin_layout Itemize
+DWs are central repositories of integrated data from one or more disparate
+ sources.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://en.wikipedia.org/wiki/Data_warehouse}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+They store current and historical data in one single place that are used
+ for creating analytic reports for workers throughout the enterprise.
+\end_layout
+
+\begin_layout Itemize
+The standard way to work with data in a warehouse is using structured query
+ language (SQL).
+\end_layout
+
+\begin_layout Itemize
+The options for running cloud-based data warehouses include: Amazon Redshift,
+ Google BigQuery, or Panoply.
+\end_layout
+
+\begin_layout Itemize
+The reports created from complex queries within a data warehouse are used
+ to make business decisions.
+ Data warehouses are used for online analytical processing (OLAP), which
+ uses complex queries to analyze rather than process transactions.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://panoply.io/data-warehouse-guide/the-difference-between-a-database-and
+-a-data-warehouse/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ETL and ELT are the 2 main approaches used to build a data warehouse system.
+\end_layout
+
+\begin_layout Itemize
+A data warehouse maintains a copy of information from the source transaction
+ systems.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The data mart
+\emph default
+ is a subset of the data warehouse and is usually oriented to a specific
+ business line or team.
+ Whereas data warehouses have an enterprise-wide depth, the information
+ in data marts pertains to a single department.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://en.wikipedia.org/wiki/Data_mart}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Database vs Data Warehouse
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data warehouses and databases are both relational data systems, but were
+ built to serve different purposes.
+ A data warehouse is built to store large quantities of historical data
+ and enable fast, complex queries across all the data, typically using Online
+ Analytical Processing (OLAP).
+ A database was built to store current transactions and enable fast access
+ to specific transactions for ongoing business processes, known as Online
+ Transaction Processing (OLTP).
+\end_layout
+
+\begin_layout Itemize
+OLTP databases can support thousands of concurrent users.
+ Data warehouses only allows a limited number of concurrent connections,
+ because it is used by a small group of analysts and business users.
+\end_layout
+
+\begin_layout Itemize
+A database is optimized to maximize the speed and efficiency with which
+ data is updated (added, modified, or deleted) and enable faster analysis
+ and data access.
+ Databases use Online Transactional Processing (OLTP) to delete, insert,
+ replace, and update large numbers of short online transactions.
+\end_layout
+
+\begin_layout Itemize
+Data warehouses use Online Analytical Processing (OLAP) that is optimized
+ to handle a low number of complex queries on aggregated large historical
+ data sets.
+ Tables are denormalized and transformed to yield summarized data, multidimensio
+nal views, and faster query response times.
+\end_layout
+
+\begin_layout Itemize
+An OLTP database supports thousands of concurrent users.
+ Many users must be able to interact with the database simultaneously without
+ it affecting the system’s performance.
+\end_layout
+
+\begin_layout Itemize
+Data warehouses support a limited number of concurrent users compared to
+ operational systems.
+ The data warehouse is separated from front-end applications and it relies
+ on complex queries, thus necessitating a limit on how many people can use
+ the system simultaneously.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Data Warehouse Schemas
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://panoply.io/data-warehouse-guide/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The star schema and snowflake schema are two ways of organizing data warehouses.
+ Both use dimension tables that describe the information contained within
+ a fact table.
+\end_layout
+
+\begin_layout Itemize
+The star schema takes the information from the fact table and splits it
+ into denormalized dimension tables, to improve query speed.
+ Only one join is needed to link fact tables to each dimension.
+\end_layout
+
+\begin_layout Itemize
+The snowflake schema splits the fact table into normalized dimension tables.
+ This creates more dimension tables with multiple joins and reduces data
+ integrity issues.
+ However, it reduces performance and makes querying more difficult.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+ETL based Data warehousing
+\end_layout
+
+\begin_layout Itemize
+The typical ETL-based data warehouse uses 
+\emph on
+staging
+\emph default
+, 
+\emph on
+data integration
+\emph default
+, and 
+\emph on
+access
+\emph default
+ 
+\emph on
+layers
+\emph default
+ to house its key functions.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The staging layer or staging database stores raw data extracted from each
+ of the disparate source data systems.
+ Data staging areas are often transient in nature, with their contents being
+ erased prior to running an ETL process or immediately following successful
+ completion of an ETL process.
+ Staging areas can be implemented in the form of tables in relational databases,
+ text-based flat files (or XML files) stored in file systems or proprietary
+ formatted binary files stored in file systems.
+\end_layout
+
+\begin_layout Itemize
+The integration layer integrates the disparate data sets by transforming
+ the data from the staging layer often storing this transformed data in
+ an operational data store (ODS) database.
+ The integrated data are then moved to yet another database, often called
+ the data warehouse database, where the data is arranged into hierarchical
+ groups, often called dimensions, and into facts and aggregate facts.
+ The combination of facts and dimensions is sometimes called a 
+\emph on
+star schema
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+The access layer helps users retrieve data.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The main source of the data is cleansed, transformed, cataloged, and made
+ available for use by managers and other business professionals for data
+ mining, online analytical processing, market research and decision support.
+\end_layout
+
+\begin_layout Subsection
+ELT based Data warehousing
+\end_layout
+
+\begin_layout Itemize
+ELT based data warehousing gets rid of a separate ETL tool for data transformati
+on.
+\end_layout
+
+\begin_layout Itemize
+Instead, it maintains a staging area inside the data warehouse itself.
+ In this approach, data gets extracted from heterogeneous source systems
+ and are then directly loaded into the data warehouse, before any transformation
+ occurs.
+\end_layout
+
+\begin_layout Itemize
+All necessary transformations are then handled inside the data warehouse
+ itself.
+ Finally, the manipulated data gets loaded into target tables in the same
+ data warehouse.
+\end_layout
+
+\begin_layout Subsection
+Data Warehouse Design
+\end_layout
+
+\begin_layout Standard
+There are 2 prominent architecture styles practiced today to build a data
+ warehouse: the Inmon architecture and the Kimball architecture.
+ In real life, they can (and usually are) combined together.
+ They both use ETL to load the data warehouse.
+ The key distinction is how the data structures are modeled, loaded, and
+ stored in the data warehouse.
+ This difference in the architecture impacts the initial delivery time of
+ the data warehouse and the ability to accommodate future changes in the
+ ETL design.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{http://tdan.com/data-warehouse-design-inmon-versus-kimball/20300}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The Inmon Approach
+\end_layout
+
+\begin_layout Standard
+Bill Inmon introduced a top-down approach, which sees the data warehouse
+ as the centralized data repository for the entire enterprise (which consolidate
+s data from across the entire enterprise).
+ The key point here is that the entity structure is built in normalized
+ form.
+ Data redundancy is avoided as much as possible.
+ This leads to clear identification of business concepts and avoids data
+ update anomalies.
+ This normalized model makes loading the data less complex, but using this
+ structure for querying is hard as it involves many tables and joins.
+ Inmon proposed a top-down design—the Enterprise Data Warehouse is created
+ first and is seen as the central component of the analytic environment,
+ holding data for the entire organization.
+ Data is then summarized and distributed from the centralized warehouse
+ to one or more dependent data marts.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Advantages
+\end_layout
+
+\begin_layout Itemize
+Data update anomalies are avoided because of very low redundancy.
+ This makes ETL process easier and less prone to failure.
+\end_layout
+
+\begin_layout Itemize
+The business processes can be understood easily, as the logical model represents
+ the detailed business entities.
+\end_layout
+
+\begin_layout Itemize
+Very flexible – as the business requirements change or source data changes,
+ it is easy to update the data warehouse as one thing is in only one place.
+\end_layout
+
+\begin_layout Paragraph
+Disadvantages
+\end_layout
+
+\begin_layout Itemize
+The model and implementation can become complex over time as it involves
+ more tables and joins.
+\end_layout
+
+\begin_layout Itemize
+The initial set-up and delivery will take more time, and management needs
+ to be aware of this.
+ A fairly large team of specialists need to be around to successfully manage
+ the environment.
+\end_layout
+
+\begin_layout Subsubsection
+The Kimball Approach
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ralph Kimball described a data warehouse as several separate, specialized
+ data marts, created for the use of different departments.
+
+\series default
+ Data Mart is a mini-data-warehouse focusing on a specific business subject.
+ ETL software is used to bring data from all the different sources and load
+ into a staging area.
+ From here, data is loaded into a dimensional model.
+ Here the comes the key difference: the model proposed by Kimball for data
+ warehousing - 
+\series bold
+the dimensional model - is not normalized.
+ 
+\series default
+The fundamental concept of dimensional modeling is the 
+\series bold
+star schema
+\series default
+.
+ In the star schema, there is typically a fact table surrounded by many
+ dimensions.
+ The fact table has all the measures that are relevant to the subject area,
+ and it also has the foreign keys from the different dimensions that surround
+ the fact.
+ The dimensions are denormalized completely so that the user can drill up
+ and drill down without joining to another table.
+ Multiple star schemas will be built to satisfy different reporting requirements.
+ Kimball proposed a bottom-up design—an organization creates separate data
+ marts, which cover data used by specific departments—for example a data
+ mart for finance, sales, customer support.
+ Data marts are joined together to form an integrated data warehouse.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{See 
+\backslash
+url{https://panoply.io/data-warehouse-guide/data-mart-vs-data-warehouse/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Advantages
+\end_layout
+
+\begin_layout Itemize
+Quick to set-up and build, and the first phase of the data warehousing project
+ will be delivered quickly.
+\end_layout
+
+\begin_layout Itemize
+The star schema can be easily understood by the business users and is easy
+ to use for reporting.
+ Most BI tools work well with star schema.
+\end_layout
+
+\begin_layout Itemize
+The foot print of the data warehousing environment is small;it occupies
+ less space in the database and it makes the management of the system fairly
+ easier.
+\end_layout
+
+\begin_layout Itemize
+The performance of the star schema model is very good.
+ The database engine will perform a ‘star join’ where a Cartesian product
+ will be created using all of the dimension values and the fact table will
+ be queried finally for the selective rows.
+ This is known to be a very effective database operation.
+\end_layout
+
+\begin_layout Itemize
+A small team of developers and architects is enough to keep the data warehouse
+ performing effectively.
+\end_layout
+
+\begin_layout Itemize
+Works really well for department-wise metrics and KPI tracking, as the data
+ marts are geared towards department-wise or business process-wise reporting.
+\end_layout
+
+\begin_layout Paragraph
+Disadvantages
+\end_layout
+
+\begin_layout Itemize
+The essence of the ‘one source of truth’ is lost, as data is not fully integrate
+d before serving reporting needs.
+\end_layout
+
+\begin_layout Itemize
+Redundant data can cause data update anomalies over time.
+\end_layout
+
+\begin_layout Itemize
+Adding columns to the fact table can cause performance issues.
+ This is because the fact tables are designed to be very deep.
+ If new columns are to be added, the size of the fact table becomes much
+ larger and will not perform well.
+ This makes the dimensional model hard to change as the business requirements
+ change.
+\end_layout
+
+\begin_layout Itemize
+Cannot handle all the enterprise reporting needs because the model is oriented
+ towards business processes rather than the enterprise as a whole.
+\end_layout
+
+\begin_layout Section
+Data Lake
+\end_layout
+
+\begin_layout Itemize
+A data lake is a central storage repository that holds big data from many
+ sources in a raw, granular format.
+ It can store structured, semi-structured, or unstructured data, which means
+ data can be kept in a more flexible format for future use.
+\end_layout
+
+\begin_layout Itemize
+The options for running cloud-based data lakes include: Amazon S3 or Azure
+ Blog Storage.
+\end_layout
+
+\begin_layout Itemize
+Data lakes are usually configured on a cluster of inexpensive and scalable
+ commodity hardware.
+\end_layout
+
+\begin_layout Itemize
+A data lake and a data warehouse are similar in their basic purpose and
+ objective:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.talend.com/resources/what-is-data-lake/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Both are storage repositories that consolidate the various data stores in
+ an organization.
+\end_layout
+
+\begin_layout Itemize
+The objective of both is to create a one-stop data store that will feed
+ into various applications.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+However, data warehouse and data lake are otherwise very different:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data lakes and data warehouses are both widely used for storing big data,
+ but they are not interchangeable terms.
+ A data lake is a vast pool of raw data, the purpose for which is not yet
+ defined.
+ A data warehouse is a repository for highly transformed, structured, filtered
+ data that has already been processed for a specific purpose.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.talend.com/resources/data-lake-vs-data-warehouse/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Data lakes typically require much larger storage capacity than data warehouses.
+\end_layout
+
+\begin_layout Itemize
+The schema of a data warehouse is defined and structured before storage
+ (schema is applied while writing data).
+ A data lake, in contrast, has no predefined schema, which allows it to
+ store data in its native format.
+\end_layout
+
+\begin_layout Itemize
+A data lake is not a direct replacement for a data warehouse; they are supplemen
+tal technologies that serve different use cases with some overlap.
+ Most organizations that have a data lake will also have a data warehouse.
+\end_layout
+
+\begin_layout Itemize
+In data warehouse, considerable amount of time is spent analyzing data sources,
+ understanding business processes and profiling data.
+ The result is a highly structured data model designed for reporting.
+ A large part of this process includes making decisions about what data
+ to include and to not include in the warehouse.
+ Generally, if data isn't used to answer specific questions or in a defined
+ report, it may be excluded from the warehouse.
+\end_layout
+
+\begin_layout Itemize
+In contrast, the data lake retains ALL data.
+ Not just data that is in use today but data that may be used and even data
+ that may never be used just because it MIGHT be used someday.
+ Data is also kept for all time so that we can go back in time to any point
+ to do analysis.
+\end_layout
+
+\begin_layout Itemize
+Data warehouses are different to change, but data lakes bring a lot of flexibili
+ty.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+SQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+SQL stands for Structured Query Language; the term defines a declarative
+ programming language - it's a declarative language where your job as a
+ developer is to describe in detail the result set you are interested in.
+ PostgreSQL’s job is then to find the most efficient way to access only
+ the data needed to compute this result set, and execute the plan it comes
+ up with.
+ As a user, we declare the result we want to obtain in terms of a data processin
+g pipeline that is executed against a known database model and a dataset.
+\end_layout
+
+\begin_layout Itemize
+SQL is composed of several areas, each of them has a specific acronym and
+ sub-language:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DML
+\emph default
+ 
+\emph on
+- data manipulation language
+\emph default
+, which covers 
+\emph on
+insert, update,
+\emph default
+ and 
+\emph on
+delete 
+\emph default
+statements, which are used to input data to the system.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DDL 
+\emph default
+- 
+\emph on
+data definition language
+\emph default
+, which covers 
+\emph on
+create, alter,
+\emph default
+ and 
+\emph on
+drop 
+\emph default
+statements, which are used to define on-disk data structures where to hold
+ the data, and also their constraints and indices - the things we refer
+ to with the terms of SQL objects.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+TCL - transaction control language, 
+\emph default
+which covers 
+\emph on
+begin 
+\emph default
+and 
+\emph on
+commit, rollback, start transaction, set transaction 
+\emph default
+statements and commands.
+ Also less well-known 
+\emph on
+savepoint, release savepoint, 
+\emph default
+and 
+\emph on
+rollback to savepoint
+\emph default
+ commands, and two-phase commit protocol with 
+\emph on
+prepare commit, commit prepared, 
+\emph default
+and 
+\emph on
+rollback prepared
+\emph default
+ commands.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DCL - data control language,
+\emph default
+ which covers 
+\emph on
+grant
+\emph default
+ and 
+\emph on
+revoke
+\emph default
+ statements.
+\end_layout
+
+\begin_layout Itemize
+In PostgreSQL, we have also maintenance commands such as 
+\emph on
+vacuum, analyze, 
+\emph default
+and 
+\emph on
+cluster.
+ And also other commands from PostgreSQL such as prepare
+\emph default
+, 
+\emph on
+execute, explain, listen, notify, lock, set,
+\emph default
+ and some more.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The database model has to be statically declared so that we know the type
+ of every bit of data involved at the time the query is carried out.
+ A query result set defines a relation, of a type determined or inferred
+ when parsing the query.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Practical advice: 
+\series default
+SQL is code, so you need to apply the same rules as when you maintain code
+ written in other languages: indentation, comments, version control, unit
+ testing, etc.
+ Also to be able to debug what happens in production you need to be able
+ to easily spot where the query comes from, be able to replay it, edit it,
+ and update your code with the new fixed version of the query.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Remember
+\series default
+: Every SQL query embeds some 
+\bar under
+business logic
+\bar default
+.
+ It's not about if we should have our business logic in database or not,
+ it is about how much (efficiency and correctness of your code architecture
+ and organization).
+ When your business logic is written mostly in your application, there are
+ several problems related to:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+correctness
+\bar default
+ - when using multiple statements - all different python methods (these
+ calls some SQL queries) can work with a different database snapshot.
+ If something in database is changed, you may end up even with empty result,
+ so any error of this kind would be invisible.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+efficiency
+\bar default
+ - more time required for developer (+code review, tests, bug fixing complexity)
+, network round-trip can be a big bottleneck (latency + bandwidth), memory
+ for application is used more (e.g.
+ caching the results).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When working with SQL, as a developer we relatedly work with a type system
+ and a kind of relational algebra.
+ We write code to retrieve and process the data we are interested into,
+ in the specific way we need.
+\end_layout
+
+\begin_layout Itemize
+RDBMs and SQL are forcing developers to think in terms of data structure,
+ and to declare both the data structure and the data we want to obtain via
+ our queries.
+\end_layout
+
+\begin_layout Itemize
+Some processing happens in the SQL query = in many cases, having SQL do
+ the data-related heavy lifting yields a net gain in performance characteristics
+ too, mostly because 
+\bar under
+round-trip times
+\bar default
+ and 
+\bar under
+latency
+\bar default
+ along with 
+\bar under
+memory and bandwidth
+\bar default
+ 
+\bar under
+resources usage
+\bar default
+ depend directly on the size of the result sets.
+\end_layout
+
+\begin_layout Section
+NoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:NoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL is a
+\series bold
+ solid ACID relational database management system
+\series default
+ and uses the SQL language to process, manage and query the data.
+ Its main purpose is to guarantee a 
+\series bold
+consistent
+\series default
+ 
+\series bold
+view
+\series default
+ of a business as a whole, at all times, while applications are concurrently
+ active in read and write modes of operation.
+ To achieve a 
+\series bold
+strong level of consistency, PostgreSQL
+\series default
+ needs the application designers to also design a solid data model, and
+ at times to think about concurrency issues.
+\end_layout
+
+\begin_layout Itemize
+In recent years, big players in the industry faced a new scale of business,
+ never before seen.
+ Nowadays, a big player may have tens or hundreds of millions of concurrent
+ users.
+ Each user produces new data, and some business models need to react quickly
+ to the newly inserted data and make it available to customers.
+ Solving that scale of an activity introduced new challenges and the necessity
+ to work in a distributed fashion.
+ A single instance would never be able to address hundreds of millions of
+ concurrent users, all actively producing data.
+ In order to be able to address such a scale, 
+\series bold
+new systems (NoSQL systems) have been designed that relax one or several
+ of the ACID guarantees.
+\end_layout
+
+\begin_layout Itemize
+In comparison to traditional RDBMSs, which were not designed to cope with
+ the scalability and agility challenges that face many today's applications,
+ one of the primary goals of NoSQL systems is to 
+\series bold
+support horizontal scalability
+\series default
+.
+ To scale horizontally, you need a strong network partition tolerance, which
+ requires giving up either consistency or availability.
+ In NoSQL systems this is done by relaxing some relational abilities and/or
+ transactional semantics from ACID.
+\end_layout
+
+\begin_layout Itemize
+According to the 
+\series bold
+CAP theorem
+\series default
+ (also named Brewer's theorem), you can only pick only two out of three
+ primary concerns you must balance when choosing a data management system
+ (and in NoSQL, it is mostly about having C or A):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consistency (C) - each client always has the same view of the data.
+ 
+\series bold
+Every read receives the most recent write, or an error.
+\end_layout
+
+\begin_layout Itemize
+Availability (A) - all clients can always read and write.
+ Every request receives a (non-error) response - 
+\series bold
+without the guarantee that it contains the most recent write
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Partition tolerance (P) - the system works well across physical network
+ partitions.
+ So, 
+\series bold
+the system continues to operate 
+\series default
+despite an arbitrary number of messages being dropped / delayed by the network
+ between nodes.
+\end_layout
+
+\begin_layout Standard
+In particular, the CAP theorem implies that in the presence of a network
+ partition, one has to choose between consistency and availability.
+ Note that consistency as defined in the CAP theorem is quite different
+ from the consistency guaranteed in ACID database transactions.
+\end_layout
+
+\begin_layout Standard
+No distributed system is safe from network failures, thus network partitioning
+ generally has to be tolerated.
+ In the presence of a partition, one is then left with two options: consistency
+ or availability.
+ When choosing consistency over availability, the system will return an
+ error or a time-out if particular information cannot be guaranteed to be
+ up to date due to network partitioning.
+ When choosing availability over consistency, the system will always process
+ the query and try to return the most recent available version of the informatio
+n, even if it cannot guarantee it is up to date due to network partitioning.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+In the absence of network failure – that is, when the distributed system
+ is running normally – both availability and consistency can be satisfied.
+ 
+\series default
+CAP is frequently misunderstood as if one has to choose to abandon one of
+ the three guarantees at all times.
+ In fact, the choice is really between consistency and availability only
+ when a network partition or failure happens; at all other times, no trade-off
+ has to be made.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Under NoSQL term, we find solutions with characteristics including:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+no support for transactions
+\end_layout
+
+\begin_layout Itemize
+lacking atomic operations, for which transactions are needed
+\end_layout
+
+\begin_layout Itemize
+lacking isolation, which means no support for online backups
+\end_layout
+
+\begin_layout Itemize
+no query language, instead using an API
+\end_layout
+
+\begin_layout Itemize
+no consistency rules, not even data types
+\end_layout
+
+\begin_layout Itemize
+a reduced set of operations, often only key/value support
+\end_layout
+
+\begin_layout Itemize
+lacking support for join or analytics operations
+\end_layout
+
+\begin_layout Itemize
+lacking support for business constraints
+\end_layout
+
+\begin_layout Itemize
+no support for durability
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+No support for durability Relaxing the very strong guarantees offered by
+ traditional database systems allows some of the NoSQL solution to handle
+ more concurrent activity, often using distributed nodes of computing with
+ a distributed data set: each node only has access to a partial set of the
+ data.
+\end_layout
+
+\begin_layout Itemize
+Some of those systems then added a query language, with similarities to
+ the well-known and established SQL.
+ The NoSQL movement has inspired a NewSQL movement.
+\end_layout
+
+\begin_layout Itemize
+An area where the NoSQL systems have been prominent is in breaking with
+ the normalization rules and the hard step of modeling a database schema.
+ Instead, most NoSQL system will happily manage any data the application
+ sends through.
+ This is called the 
+\emph on
+schemaless
+\emph default
+ approach.
+
+\series bold
+ In truth, there's no such thing as a schemaless design actually.
+ What it means is that the name and type of the document properties, or
+ fields, are hard-coded into the application code
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+The thing with this schemaless design is that documents still have a structure,
+ with fields and data types.
+ It’s just opaque to the database system and maintained in the application's
+ code anyway.
+ Of course, schemaless means that you reach none of the normal forms, which
+ have been designed as a helper to guarantee data quality in the long term.
+\end_layout
+
+\begin_layout Itemize
+A very interesting area in which the NoSQL solutions made progress is in
+ the ability to natively 
+\series bold
+scale-out 
+\series default
+a production setup, without extra efforts.
+ Thanks to their design choice of a reduced set of operations supported
+ - in particular the lack of join operations, and a relaxed consistency
+ requirement set - such as the lack of transaction support and the lack
+ of integrity constraints - the NoSQL systems have been able to be innovative
+ in terms of distributed computing.
+ Native 
+\series bold
+scale out
+\series default
+ is achieved when it’s easy to 
+\series bold
+add computing nodes or servers into a production setup, at run-time, and
+ then improve both the read and write capacity of the whole production setup.
+\end_layout
+
+\begin_layout Itemize
+In order to achieve scalability over many nodes, distributed key-value stores
+ (NoSQL) put aside the rich feature set offered by the traditional relational
+ database management systems (RDBMS), including SQL, joins, foreign keys,
+ and ACID guarantees.
+\end_layout
+
+\begin_layout Subsection
+Benefits 
+\end_layout
+
+\begin_layout Itemize
+(built-in) 
+\series bold
+horizontal scalability 
+\series default
+(and can be geographically distributed) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+in the best scenario, it is working out of box.
+\end_layout
+
+\begin_layout Itemize
+in the worst case, a developer needs to put some effort to make this work.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+automatic sharding
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{See What is Sharding? 
+\backslash
+url{https://searchcloudcomputing.techtarget.com/definition/sharding} or Shard
+ - database architecture, from Wikipedia 
+\backslash
+url{https://en.wikipedia.org/wiki/Shard_(database_architecture)}}
+\end_layout
+
+\end_inset
+
+ is mostly also implemented - spread data across an arbitrary number of
+ servers, without requiring the application to even be aware of the composition
+ of the server pool.
+ Data and queries are automatically balanced across nodes.
+ When a server goes down, it can be quickly and transparently replaced with
+ no application disruption.
+ In reality, you always have to read in documentation, if there is a single
+ point of failure and how a specific NoSQL system is dealing with sharding,
+ because there are differences.
+\end_layout
+
+\begin_layout Itemize
+in comparison to RDBMS, NoSQL provides 
+\series bold
+superior performance.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+integrated caching 
+\series default
+is usually implemented - frequently-used data are stored in system memory
+ as much as possible.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+dynamic schema
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NoSQL systems are especially useful in agile development where there are
+ a frequent changes to schema.
+ Usually, the migration of an entire database and a significant downtime
+ are not required.
+\end_layout
+
+\begin_layout Itemize
+these database systems are always a good choice for fast prototyping.
+\end_layout
+
+\begin_layout Itemize
+however, be careful on your use-case, this can put the whole application
+ into a great danger.
+ Some of NoSQL systems suppress errors ([[MongoDB]]), e.g.
+ if some column does not exist, the system will create it, and so on.
+ You can work with extremely heterogeneous and dynamic database.
+ On the other hand, some newer NoSQL systems take this into account.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+replication
+\series default
+ - some systems support automatic replication natively.
+ More sophisticated NoSQL databases are fully self-healing, offering automated
+ fail-over and recovery, as well as the ability to distribute the database
+ across multiple geographic regions to withstand regional failures and enable
+ data localization.
+\end_layout
+
+\begin_layout Subsection
+Cons
+\end_layout
+
+\begin_layout Itemize
+security in general (e.g.
+ using Kerberos for authentication, access restriction of a given user to
+ a particular table/column, and so on) is less advanced as in comparison
+ to RDBMSs, although this differs across different technologies.
+\end_layout
+
+\begin_layout Itemize
+data consistency - many NoSQL databases don't support ACID and are working
+ with so called 
+\series bold
+eventual consistency
+\series default
+, in which database changes are propagated to all nodes "eventually" (typically
+ within milliseconds) so queries for data might not return updated data
+ immediately or might result in reading data that is not accurate.
+ Such systems have better performance, but data can be sometimes not fully
+ immediately synchronized.
+\end_layout
+
+\begin_layout Itemize
+data losses possible, in some systems.
+ The most popular and modern systems usually doesn't have these problems,
+ but you have to be careful and see various discussions first (for example,
+ MongoDB has/had some issues with reading data which are being updated).
+ 
+\end_layout
+
+\begin_layout Itemize
+some are less mature.
+\end_layout
+
+\begin_layout Itemize
+lack of standardization, steeper learning curve.
+\end_layout
+
+\begin_layout Subsection
+Types of NoSQL databases
+\end_layout
+
+\begin_layout Standard
+This is considered from the data model point of view
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Note that multiple NoSQL types can be suitable to many technical
+ problems.
+ Each type has different categories and subcategories, some of which overlap.
+ However, sometimes the usage of a particular type can bring a performance
+ or an architecture benefit, see 
+\backslash
+url{https://en.wikipedia.org/wiki/NoSQL
+\backslash
+#Performance}.}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Key-value stores
+\series default
+ (e.g.
+ Riak).
+ The simplest type.
+ Every single item in the database is stored as an attribute name together
+ with its value (some systems support that each value has a type).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Wide-column stores 
+\series default
+(e.g.
+ Cassandra).
+ They are optimized for queries over large datasets, and store columns of
+ data together, instead of rows.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Document databases 
+\series default
+(e.g.
+ MongoDB).
+ They pair each key with a complex data structure known as a document.
+ Documents can contain many different key-value pairs, or key-array pairs,
+ or even nested documents.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Graph stores 
+\series default
+(e.g.
+ "ArangoDB
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.arangodb.com/}}
+\end_layout
+
+\end_inset
+
+ or Neo4J
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://neo4j.com/developer/graph-database}}
+\end_layout
+
+\end_inset
+
+).
+ This is more special type of NoSQL databases.
+ It is designed for data whose relations are well represented as a graph
+ consisting of elements interconnected with a finite number of relations
+ between them.
+ Furthermore, these database systems allow simple and fast retrieval of
+ complex hierarchical structures that are difficult to model in relational
+ systems.
+ However, they are not efficient at processing high volumes of transactions
+ or at handling queries that span the entire database.
+ Also, they are usually not so mature, so you have to be sure that they
+ truly fit into your needs.
+\end_layout
+
+\begin_layout Section
+NewSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:NewSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Modern RDBMSs, that have the same performance as NoSQL systems while still
+ maintaining ACID guarantees of a traditional database systems.
+\end_layout
+
+\begin_layout Itemize
+The first research papers and ideas about NoSQL exist from ~2010.
+ Implementation of the first systems was a bit later (for example, [[Cockroach_D
+B|CockroachDB]] was initially released in 2014).
+ Be careful, not all of them are mature even in the present, because they
+ are still under a heavy development.
+\end_layout
+
+\begin_layout Itemize
+Each system differs significantly, but they usually support relational data
+ model as well as SQL as their primary interface (API).
+\end_layout
+
+\begin_layout Itemize
+Applications built on NewSQL database systems typically work well as OLTP
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Or Hybrid transactional/analytical processing (HTAP).}
+\end_layout
+
+\end_inset
+
+, i.e.
+ there are transactions which are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+short-lived.
+\end_layout
+
+\begin_layout Itemize
+manipulate with smaller subset of data using index lookups = no full table
+ scans or large distributed joins.
+\end_layout
+
+\begin_layout Itemize
+repetitive = execution of the same queries with different input.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Many new distributed databases are being developed and are implementing
+ RDBMS functionality like SQL on top of distributed key-value stores (“NewSQL”).
+ While these newer database can use the resources of multiple machines,
+ they are still nowhere near the established relational database systems
+ in terms of SQL support, query performance, concurrency, indexing, foreign
+ keys, transactions, stored procedures, etc.
+ Using such a database leaves you with many complex problems to solve in
+ your application.
+\end_layout
+
+\end_body
+\end_document

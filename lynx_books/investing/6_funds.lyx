@@ -1,0 +1,623 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Funds
+\end_layout
+
+\begin_layout Itemize
+Blackrock and Vanguard have one of the most respected index and mutual funds.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Real Estate Investment Trusts (REITs)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They allow you to own a property without physically own it And you collect
+ a schedule income in a form of dividends.
+\end_layout
+
+\begin_layout Itemize
+They are like mutual funds.
+ A few criteria so that a fund is considered to be REIT: * at least 75%
+ asset value from real estate * at least 75% gross income coming from real
+ estate * at least 90% dividend payout ratio - it's quite interesting it
+ does necessarily mean that it is sustainable, it is a different kind of
+ investment, it is an exclusion to a rule that you should target much lower
+ payout ratios
+\end_layout
+
+\begin_layout Itemize
+they usually distribute money to shareholders each month; 90% because they
+ must redistribute money to shareholders a lot * a few more
+\end_layout
+
+\begin_layout Itemize
+Check dividends, buybacks, capital appreciation, and growth
+\end_layout
+
+\begin_layout Itemize
+Also, interest rates can influence REITs stock prices, debt and risk, 
+\end_layout
+
+\begin_layout Itemize
+Examples: O, STOR, NRZ, WELL, LTC, SPG 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Index Funds
+\end_layout
+
+\begin_layout Standard
+(John C.
+ Bogle) 
+\emph on
+"Actively managed funds come and go, but the index fund goes on forever.
+\end_layout
+
+\begin_layout Itemize
+An index fund is an investment fund within the mutual fund family designed
+ to track and mirror key benchmark indexes like the S&P 500 or the Russell
+ 2000.
+ Comprised of stocks, bonds and other investments, index funds are designed
+ as passive funds that automatically track an underlying index.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Exchange Traded Fund (ETF)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ETF is an index fund designed to facilitate trading in its shares, dressed
+ in the guise of the traditional index fund.
+ TIFs vs ETFs can be the same, but the difference can be that lot of ETFs
+ can be specialized, and offer trading.
+ So TIFs and broad ETFs with long-term investing focus are practically the
+ same.
+\end_layout
+
+\begin_layout Itemize
+A security that simply tracks an index of commodity bonds or a basket of
+ funds or assets.
+ Kind like an index funds.
+ 
+\end_layout
+
+\begin_layout Itemize
+The first U.S.
+ ETF, created in 1993, by Nathan Most, was named "Standard & Poor's Depositary
+ Receipts" (SPDRs).
+ It is one of the largest ETFs.
+\end_layout
+
+\begin_layout Itemize
+But unlike mutual funds, an ETF is traded like a common stock, so it's very
+ liquid, and also lot less expensive, there are less fees involved because
+ it's passively managed.
+\end_layout
+
+\begin_layout Itemize
+Types of ETFs: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Index - designed to track particular index, such has S&P500.
+\end_layout
+
+\begin_layout Itemize
+Commodity - designed to track the price of a commodity, such as gold, oil,
+ or corn.
+\end_layout
+
+\begin_layout Itemize
+Inverse - designed to profit from a decline in the underlying market of
+ index.
+\end_layout
+
+\begin_layout Itemize
+Industry - designed to provide exposure to a particular industry, such as
+ oil, pharmaceuticals, or high tech.
+\end_layout
+
+\begin_layout Itemize
+Actively Managed - designed to outperform an index, unlike most ETFs, which
+ are designed to track an index.
+\end_layout
+
+\begin_layout Itemize
+Foreign Market - designed to track a non-US markets, such as Japan's Nikkel
+ Index.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Examples: Vanguard Growth Fund (VUG), Vanguard High Dividend Yield (VYM),
+ SPDR S&P 500 ETF Trust (SPY), ARK ETF Trust.
+\end_layout
+
+\begin_layout Itemize
+ETF and Mutual Funds ideas: See Fidelity Magellan a Fidelity Contrafund.
+ Also check SPHD - fantastic dividend ETF (about 4% yield) S&P500, they
+ take 75 highest paid dividend stocks, and they 20 most volatile and remove
+ them (so it's about 50 least volatile highest dividend yielding companies
+ in S&P500), and they pay monthly!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+List of interesting ETFs by sectors or market capitalization:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+US Large companies:
+\emph on
+ DDM, DIA, DOG, DXD, SSO, SPY, SH, SDS, BGU, IWB, BGZ
+\end_layout
+
+\begin_layout Itemize
+US Medium companies:
+\emph on
+ MVV, MDY, MYY, MZZ
+\end_layout
+
+\begin_layout Itemize
+US Small companies: 
+\emph on
+TNA, UWM, IWM, RWM, TWM, TZA, SAA, IJR, SBB, SDD
+\end_layout
+
+\begin_layout Itemize
+US Nasdaq:
+\emph on
+ QLD, QQQQ, PSQ, QID
+\end_layout
+
+\begin_layout Itemize
+US Sectors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consumer goods: 
+\emph on
+UGE, UCC
+\end_layout
+
+\begin_layout Itemize
+Financial Services: 
+\emph on
+FAS, IYF, SEF
+\end_layout
+
+\begin_layout Itemize
+Health Care: 
+\emph on
+RXL, IYH
+\end_layout
+
+\begin_layout Itemize
+Materials
+\emph on
+: UYM, XLB
+\end_layout
+
+\begin_layout Itemize
+Energy: 
+\emph on
+ERX, DIG, IEO
+\end_layout
+
+\begin_layout Itemize
+Real Estate: 
+\emph on
+URE, IYR
+\end_layout
+
+\begin_layout Itemize
+Technology: 
+\emph on
+ROM, IYW
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+International:
+\emph on
+ FXI, EFA, EEM, EUM, EEV, EWJ, EWV
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In short, Michael Burry believes that we are now (2020s) in a period of
+ time where index funds and other passive investments are becoming a ‘bubble’.
+ He holds these beliefs for three main reasons:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Passive investing has removed price discovery from the equity markets.
+ Index funds continue to invest (in potentially overvalued stocks) regardless
+ of business fundamentals.
+\end_layout
+
+\begin_layout Enumerate
+The rise of passive indexing has created hidden liquidity risk, especially
+ for small cap stocks.
+ The theater keeps getting more crowded, but the exit door is the same as
+ it always was.
+ If there is a market sell-off and large redemptions (sales) of index funds,
+ there will not be enough buyers for the thinly-traded small cap stocks
+ in the index.
+ This can cause very dramatic price swings.
+\end_layout
+
+\begin_layout Enumerate
+Potentially making it worse will be the impossibility of unwinding the derivativ
+es strategies used to help some of these funds pseudo-match flows and prices
+ each and every day.
+ This is a more nuanced argument that applies to leveraged and inverse ETFs
+ and not as much to standard index funds like SPY, VTI, QQQ, etc.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Here are some of my abbreviated thoughts on each:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+It is true, passive investing doesn't require fundamental analysis and can
+ lead investors to buy stocks when they are expensive (overvalued to fundamental
+s).
+ However, there is not strong evidence alone that index funds are causing
+ the overvaluation.
+ It appears to be a combination of factors which likely also include historicall
+y low interest rates.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Liquidity risk appears a valid concern especially for some small cap funds.
+ This doesn't mean that investors should avoid them, but understand that
+ we are likely to see greater volatility during market crashes/panics than
+ we have seen in the past.
+ Index funds are part of this, but momentum-based algorithmic trading (not
+ directly discussed by Burry) also helps exacerbate short term market volatility.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+The derivative strategies used in leveraged and inverse ETFs are complex
+ and can be susceptible to tail-end risk events like what we saw in February
+ 2018.
+ Most investors would be better served avoiding these products.
+ Regular index funds do not share these risks to the same extent as leveraged
+ and inverse products.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Hedge Funds
+\end_layout
+
+\begin_layout Itemize
+Money that is pulled together by a group of credit investors.
+ That money is managed by general partner (or hedge fund manager - and net
+ worth of these guys is like billions of dollars) whose profit is about
+ 2% no matter what, or even 20% if they hedge fund is doing great.
+\end_layout
+
+\begin_layout Itemize
+How to become a credit investor? Solid financial knowledge and experiences,
+ at least 1M in net worth, or 200k income per year.
+\end_layout
+
+\begin_layout Itemize
+They are more risky than mutual funds (this tries to diversity and split
+ the money across market), because they go 
+\begin_inset Quotes eld
+\end_inset
+
+heavy
+\begin_inset Quotes erd
+\end_inset
+
+ on something particular.
+\end_layout
+
+\begin_layout Itemize
+They are probably very expensive and cannot even sometimes beat S&P500.
+ Maybe index funds are better.
+ 
+\end_layout
+
+\begin_layout Section
+Mutual Funds
+\end_layout
+
+\begin_layout Itemize
+Money that is pulled together by a group of investors (that can be anybody).
+ That money is managed professionally by a few managers and researchers
+ whose goal is to get you a good return of your investment.
+\end_layout
+
+\begin_layout Itemize
+They are basically trying to reflect what S&P 500 or Russel 2000 (for example)
+ are doing.
+ So if S&P is going up by 8%, then the mutual fund is trying to also get
+ 8% return.
+ So they are not necessarily trying to beat it.
+ They are trying to go as good as market is doing.
+\end_layout
+
+\begin_layout Itemize
+When judging a mutual fund try to judge on 5 years period and not just what
+ they did the previous year.
+\end_layout
+
+\begin_layout Itemize
+Mutual funds are good if you don't have time or passion to research and
+ invest in individual companies.
+ Other people will 
+\begin_inset Quotes eld
+\end_inset
+
+do
+\begin_inset Quotes erd
+\end_inset
+
+ this for 
+\begin_inset Quotes eld
+\end_inset
+
+you
+\begin_inset Quotes erd
+\end_inset
+
+ - mutual funds are just a bunch of individual stocks put together.
+\end_layout
+
+\begin_layout Itemize
+Unlike an index fund, a mutual fund is generally actively managed, with
+ fund managers picking investments and profiting off of shareholder fees.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you would choose to have mutual fund(s) in your portfolio, then you should
+ know that on average, they are likely to last only about 9 years, so you
+ would have maybe 30-40 funds (diversification) over your lifetime, each
+ carrying that burden of fees and turnover costs.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+John Bogle on Mutual funds 
+\end_layout
+
+\begin_layout Itemize
+Before you rush out to invest in Magellan or Contrafund because of their
+ truly remarkable long-term records - outpacing the returns of the S&P500
+ by two and a half to three times despite their faltering in later years
+ - think about the next 10 years, or more.
+ Think about the odds that a winning fund will continue to outperform.
+ Think about the fund's present size.
+ Think about the reality that over 25 years the typical fund will replace
+ its management three times.
+ Portfolio managers, on average, are likely to last only about 9 years,
+ and that the funds themselves are opt to have a life expectancy of little
+ longer than a decade.
+ Result - you'll own maybe 30 or 40 funds over your lifetime, each carrying
+ that burden of fees and turnover costs.
+\end_layout
+
+\begin_layout Itemize
+Or, you can invest in a low-fee, minimal-transaction-cost, broad-market
+ index fund, with the certainty that the same non-manager will still closely
+ track its index for the rest of your life.
+ There is really no practicable way that a portfolio of actively managed
+ funds will serve you more effectively and consistently than the index fund.
+ Simplicity, cost efficiency, and staying the course should win the race.
+\end_layout
+
+\begin_layout Itemize
+Reversion to the Mean - in selecting mutual funds - let's have a look at
+ Morningstar, the statistical service most broadly used by investors in
+ evaluating fund returns.
+ They are based on a composite of a fund's record over the previous 3, 5,
+ and 10-periods.
+ According to a 2014 study by the Wall Street Journal, only 14% of five-star
+ funds in 2004 still held that rating a decade later.
+ Approximately 36% of those original five-star funds dropped one star, and
+ the remaining 50% dropped to 3 or fewer stars.
+ Yes, fund performance reverts toward the mean, or below.
+\end_layout
+
+\begin_layout Itemize
+If you disagree and decide to invest in a fund with superior recent performance,
+ you might ask yourself questions like these: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How long will the fund manager, with the same staff and with the same strategy,
+ remain on the job? 
+\end_layout
+
+\begin_layout Itemize
+If the fund's assets grow many times larger, will the same results that
+ were achieved when the fund was small be sustained when it is large? 
+\end_layout
+
+\begin_layout Itemize
+To what extent did high expense ratios and/or high portfolio turnover detract
+ from the fund's performance, or did low expenses and low turnover enhance
+ performance? 
+\end_layout
+
+\begin_layout Itemize
+Will the stock market continue to favor the same kinds of stocks that have
+ been at the heart of the manager's style?
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Tactical Allocation Funds 
+\end_layout
+
+\begin_layout Itemize
+Actively managed funds that change their allocation to different asset classes
+ over time based on what they think is going to do well.
+\end_layout
+
+\begin_layout Itemize
+So in other words, these are funds that specialize in market timing.
+\end_layout
+
+\begin_layout Itemize
+They typically under-perform index funds.
+\end_layout
+
+\end_body
+\end_document

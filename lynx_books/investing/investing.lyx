@@ -1,0 +1,1231 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\usepackage{listings}
+
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myorange}{RGB}{200,100,0}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\scriptsize\ttfamily, % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=leftline,   	           % adds a frame around the code
+  inputencoding=utf8,
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                   % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{myorange},    % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_title "Investing Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Investing Notes
+\end_layout
+
+\begin_layout Subtitle
+Lessons Learned
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../rubber-duckie.png
+	lyxscale 75
+	scale 75
+	rotateOrigin rightTop
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Ladislav Šulák <laco.sulak@gmail.com>
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "1_investing_jargon.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "2_investing_masters.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "3_cycles_and_psychology.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "4_strategies.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "5_valuation.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "6_funds.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "7_alternatives.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "8_taxes.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "9_pension.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "10_brokers.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "11_various_tips_and_misc.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "12_portals_and_tools.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+References
+\end_layout
+
+\begin_layout Standard
+Some of those YouTube channels helped me tremendously, especially during
+ my first year.
+ But books are books, they cannot be replaced by any means.
+ 
+\end_layout
+
+\begin_layout Standard
+Disclaimer: I knew nothing about the topic and had no background, my journey
+ started during Christmas period 2019 and my first investment (Coca Cola)
+ was in April 2020.
+\end_layout
+
+\begin_layout Section
+Books
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Little Book of Common Sense Investing"
+target "https://www.amazon.co.uk/Little-Book-Common-Sense-Investing/dp/0470102101"
+literal "false"
+
+\end_inset
+
+ (John C.
+ Bogle)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Intelligent Investor"
+target "https://www.amazon.co.uk/Intelligent-Investor-Classic-Value-Investing/dp/0060752610/ref=pd_lpo_14_t_2/262-2643157-6453511?_encoding=UTF8&pd_rd_i=0060752610&pd_rd_r=1336038b-a3db-421b-8ea4-2886784d1b24&pd_rd_w=aTLcA&pd_rd_wg=jjY9k&pf_rd_p=da0677f5-a47b-4543-8b54-10be576b8f26&pf_rd_r=9XVB4HGPGHSVRSVAC63E&psc=1&refRID=9XVB4HGPGHSVRSVAC63E"
+literal "false"
+
+\end_inset
+
+ (Benjamin Graham)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "One Up On Wall Street"
+target "https://www.amazon.co.uk/One-Up-Wall-Street-Fireside/dp/0743200403/ref=sr_1_1?dchild=1&keywords=One+Up+On+Wall+Street%3A+How+to+Use+What+You+Already+Know+to+Make+Money+in+the+Market&qid=1612903456&s=books&sr=1-1"
+literal "false"
+
+\end_inset
+
+ (Peter Lynch)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Little Book of Valuation"
+target "https://www.amazon.co.uk/Little-Book-Valuation-Company-Profits/dp/1118004779/ref=sr_1_1?dchild=1&keywords=the+little+book+of+valuation%3A&qid=1612903757&s=books&sr=1-1"
+literal "false"
+
+\end_inset
+
+ (Aswath Damodaran)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Neatest Little Guide to Stock Market Investing"
+target "https://www.amazon.co.uk/Neatest-Little-Guide-Market-Investing/dp/0452298628/ref=sr_1_1?crid=NH02WTOFK2H6&dchild=1&keywords=neatest+little+guide+to+the+stock+market&qid=1612904789&sprefix=neatest+little+guide+to+the+stock+market%2Cstripbooks%2C168&sr=8-1"
+literal "false"
+
+\end_inset
+
+ (Jason Kelly)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Common Stocks and Uncommon Profits and Other Writings"
+target "https://www.amazon.co.uk/Uncommon-Profits-Writings-Investment-Classics/dp/0471445509"
+literal "false"
+
+\end_inset
+
+ (Philip A.
+ Fisher)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Most Important Thing"
+target "https://www.amazon.co.uk/Most-Important-Thing-Thoughtful-Publishing/dp/0231153686/ref=sr_1_1?dchild=1&keywords=the+most+important+thing&qid=1612904723&s=books&sr=1-1"
+literal "false"
+
+\end_inset
+
+ (Howard Marks)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Mastering The Market Cycle: Getting the odds on your side"
+target "https://www.amazon.co.uk/Mastering-Market-Cycle-Getting-odds/dp/1473695686/ref=sr_1_1?dchild=1&keywords=Mastering+the+Market+Cycle%3A+Getting+the+Odds+on+Your+Side&qid=1612904762&s=books&sr=1-1"
+literal "false"
+
+\end_inset
+
+ (Howard Marks)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Essays of Warren Buffett: Lessons for Investors and Managers"
+target "https://www.amazon.co.uk/Essays-Warren-Buffett-Investors-Managers/dp/1118821157/ref=sr_1_2?dchild=1&keywords=The+Essays+of+Warren+Buffett%3A+Lessons+for+Corporate+America&qid=1612905450&sr=8-2"
+literal "false"
+
+\end_inset
+
+ (Lawrence A.
+ Cunningham)
+\end_layout
+
+\begin_layout Section
+YouTube Channels 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Investicniweb"
+target "https://www.youtube.com/channel/UCGJqxx4q0scG6VLfXNbd1Fw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Finax Slovakia"
+target "https://www.youtube.com/channel/UCmIwaSMfVYpBqy3NbSrccZw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Joseph Carlson"
+target "https://www.youtube.com/channel/UCbta0n8i6Rljh0obO7HzG9A/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Joseph Carlson After Hours"
+target "https://www.youtube.com/channel/UCfCT7SSFEWyG4th9ZmaGYqQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Value Investing with Sven Carlin, Ph.D."
+target "https://www.youtube.com/channel/UCrTTBSUr0zhPU56UQljag5A/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Aswath Damodaran"
+target "https://www.youtube.com/channel/UCLvnJL8htRR1T9cbSccaoVw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "George Gammon"
+target "https://www.youtube.com/channel/UCpvyOqtEc86X8w8_Se0t4-w/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Rebel Capitalist"
+target "https://www.youtube.com/channel/UCNjyEXSvYUUCzagFAKmaJ1Q/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Real Vision Finance"
+target "https://www.youtube.com/channel/UCBH5VZE_Y4F3CMcPIzPEB5A/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Peak Prosperity"
+target "https://www.youtube.com/channel/UCD2-QVBQi48RRQTD4Jhxu8w/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Meet Kevin"
+target "https://www.youtube.com/channel/UCUvvj5lwue7PspotMDjk5UA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Graham Stephan"
+target "https://www.youtube.com/channel/UCV6KDgJskWaEckne5aPA0aQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Financial Education"
+target "https://www.youtube.com/channel/UCnMn36GT_H0X-w5_ckLtlgQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Financial Education 2"
+target "https://www.youtube.com/channel/UCCmJVw9xQfYuuAAwZGedKRg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Jeremy Lefebvre - Financial Education 3"
+target "https://www.youtube.com/channel/UC_xMKlHYdRNXLX9XzuOLjsg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Plain Bagel "
+target "https://www.youtube.com/channel/UCFCEuCsyWP0YkP3CZ3Mr01Q/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Ben Felix"
+target "https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Hamish Hodder"
+target "https://www.youtube.com/channel/UCODr9HUJ90xtWD-0Xoz4vPw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "New Money"
+target "https://www.youtube.com/channel/UCvSXMi2LebwJEM1s4bz5IBA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Michael Jay - Value Investing"
+target "https://www.youtube.com/channel/UC7dBqDNlwMfHupqgJvPFZPg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "MamaFurFur"
+target "https://www.youtube.com/channel/UCPvSN7kot8zJUreVzs-0y8A/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Chris Chillingworth"
+target "https://www.youtube.com/channel/UC9MaQC4t459ACrMBdTKu5QA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Investing with Tom"
+target "https://www.youtube.com/channel/UCG9FGwgAx9-RKq1smF1lc8w/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Swedish Investor"
+target "https://www.youtube.com/channel/UCAeAB8ABXGoGMbXuYPmiu2A/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Rozumný investor"
+target "https://www.youtube.com/channel/UCHZBx-13vmV8CVBH1pgbU_w/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Dominik Kovařík - Trading"
+target "https://www.youtube.com/channel/UC_Qqv2Ogs7Awiu-UV2m5x4g/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Martin Babocky"
+target "https://www.youtube.com/channel/UCRuQWDW2J-vNS1V2D_lv97g/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "InvestičnýBlog.sk"
+target "https://www.youtube.com/channel/UCIqgsw9DvbxDLwEU2QDIenA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Podnikajte.sk"
+target "https://www.youtube.com/channel/UCNJhewx9HK4xvB9x4HZG8lQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Vojtěch Rohlena Investing"
+target "https://www.youtube.com/channel/UCSZ1vORrlV6v51hysX0Q1Yg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Investopedia"
+target "https://www.youtube.com/channel/UCvwFhI0mrIWDiZUabRapS5Q/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Cameron Stewart, CFA"
+target "https://www.youtube.com/channel/UCpJRuue8x5Qag2Wz6uAzyjw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "FelixFinance"
+target "https://www.youtube.com/c/FelixFinance/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Andrew Brown"
+target "https://www.youtube.com/channel/UCEXygoW3NOuDGxJ-q7xXR2Q/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Tom Heavey"
+target "https://www.youtube.com/channel/UCk-sCVNUeHa2z5HljBvmwZw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Justin Scott"
+target "https://www.youtube.com/channel/UCO0ntDxHRJnlC2DzpkixLiw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Ted Bauman"
+target "https://www.youtube.com/channel/UCN0d-u-otNRZRxeT_yrBzFA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Ryan Scribner"
+target "https://www.youtube.com/channel/UC3mjMoJuFnjYRBLon_6njbQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Bridgewater Associates"
+target "https://www.youtube.com/channel/UC-hKNOj4P-Y8hR9QEHpZPig/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Corporate Finance Institute"
+target "https://www.youtube.com/channel/UCGtbVv_ACgV7difdVZ92NMw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Informed Few"
+target "https://www.youtube.com/channel/UCuF1-1VWahVIFQVmum_O3Ug/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Interactive Brokers"
+target "https://www.youtube.com/channel/UCbY1hA0wpRcbyjBLxI-dxvQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The tastyworks"
+target "https://www.youtube.com/channel/UCk99MvmvHZutKIkh2u0ImrA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Marko - WhiteBoard Finance "
+target "https://www.youtube.com/channel/UCL_v4tC26PvOFytV1_eEVSg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Andrei Jikh"
+target "https://www.youtube.com/channel/UCGy7SkBjcIAgTiwkXEtPnYg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Mark Moss"
+target "https://www.youtube.com/channel/UC9ZM3N0ybRtp44-WLqsW3iQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "HyperChange"
+target "https://www.youtube.com/channel/UC1LAjODfg7dnSSrrPGGPPMw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Learn to Invest"
+target "https://www.youtube.com/channel/UCSglJMvX-zSgv3PEJIE_inw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Cooper Academy"
+target "https://www.youtube.com/channel/UCmHm0w-JJfC2Ll1Of_WObAQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Investors Archive"
+target "https://www.youtube.com/channel/UCY1o3IDWP-A3k_ausL6EvcA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Ale's World of Stocks"
+target "https://www.youtube.com/channel/UCXhrqxFZbG-k8l7v-XhX3ZQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Positive Investing"
+target "https://www.youtube.com/channel/UCEt7AdiaFCb8JJTfDfwDUjw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Andrew Letendre"
+target "https://www.youtube.com/channel/UC5orJ-FhLBX67tw-f8bAxTQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Phil Town's Rule #1 Investing"
+target "https://www.youtube.com/channel/UCA8P3Rgfjn0IFZL4bmrKbrg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Let's Talk Money! with Joseph Hogue, CFA"
+target "https://www.youtube.com/channel/UCbKdotYtcY9SxoU8CYAXdvg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "The Motley Fool"
+target "https://www.youtube.com/channel/UCpRQuynBX9Qy9tPrcswpPag/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Dividend Investor!"
+target "https://www.youtube.com/channel/UC4Ak7m48aYaepM25u9YVlGw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Oaktree Capital"
+target "https://www.youtube.com/channel/UCfzbRPUn_YvJCl6npbZKXJA/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Jason Greene"
+target "https://www.youtube.com/channel/UCzCEOPtGm1NR_CC68Pk_zQQ/videos"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "projectoption"
+target "https://www.youtube.com/channel/UCYOHtOzMZGwXBLZX1Ltf78g/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Jan Fredrik (ex The Warren Buffett Spreadsheet)"
+target "https://www.youtube.com/channel/UChmTVhNsp5ZWQ3RwpCpEUKQ/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+...
+ and potentially a few more here and there
+\end_layout
+
+\end_body
+\end_document

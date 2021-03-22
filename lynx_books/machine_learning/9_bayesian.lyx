@@ -1,0 +1,1464 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Bayesian Methods
+\end_layout
+
+\begin_layout Itemize
+Bayesian methods are those that explicitly apply Bayes' Theorem for problems
+ such as classification and regression.
+\end_layout
+
+\begin_layout Itemize
+Statistical learning algorithms.
+\end_layout
+
+\begin_layout Description
+Permutations
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+vs
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Combinations
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Permutations
+\series default
+ - order matters.
+ 
+\begin_inset Formula $\frac{n!}{(n-m)!}$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is a number of unique objects, and 
+\begin_inset Formula $m$
+\end_inset
+
+ is a number of unique attributes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Combinations
+\series default
+ - order does not matter.
+ 
+\begin_inset Formula $\frac{n!}{(n-m)!m!}$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is a number of unique objects, and 
+\begin_inset Formula $m$
+\end_inset
+
+ is a number of unique attributes or groups.
+ Shortly, 
+\begin_inset Formula $\left(\begin{array}{c}
+n\\
+m
+\end{array}\right)$
+\end_inset
+
+.
+ This is basically an approach 
+\begin_inset Quotes eld
+\end_inset
+
+without replacement
+\begin_inset Quotes erd
+\end_inset
+
+.
+ How many teams of 5 people can be formed from 10 people? The answer is
+ 
+\begin_inset Formula $\left(\begin{array}{c}
+10\\
+5
+\end{array}\right)=252$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Replacement:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Sampling with replacement
+\series default
+ (
+\series bold
+independent
+\series default
+), e.g.
+ drawing a card and putting it back in the deck.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sampling without replacement,
+\series default
+ e.g.
+ drawing a card from a deck and not putting it back.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+With the options permutation, combination, with replacement, and without
+ replacement, we have most of the probability situations that are likely
+ to arise in a basic probability world.
+\end_layout
+
+\begin_layout Description
+Probabilities
+\end_layout
+
+\begin_layout Itemize
+probability - the degree of belief in the truth or falsity of a statement
+\end_layout
+
+\begin_layout Itemize
+probability distribution - collection of statements that are exclusive and
+ exhaustive
+\end_layout
+
+\begin_layout Itemize
+exclusive - given complete information, no more than one of the statements
+ can be true
+\end_layout
+
+\begin_layout Itemize
+exhaustive - given complete information, at least one of the statements
+ must be true
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A-priori (or prior) probability
+\series default
+: just 
+\begin_inset Quotes eld
+\end_inset
+
+state
+\begin_inset Quotes erd
+\end_inset
+
+ of a thing, without anything else included.
+ Very simple one.
+ It is given at the beginning; vs posterior - given from later analysis.
+\end_layout
+
+\begin_layout Itemize
+This is called 
+\series bold
+Bayesian prior
+\series default
+.
+ It may be worth noting that this probability can be interpreted as a marginal
+ probability, summed over all possible data that you 
+\series bold
+could
+\series default
+ see.
+
+\series bold
+ So, prior probability is an example of a marginal probability.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(apple)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Joint probability
+\series default
+: something AND something (and from this, we can calculate something OR
+ something).
+ 
+\series bold
+In other words, joint probabilities are the probabilities that two separate
+ events from two separate probability distributions are both true.
+ 
+\series default
+If things are related to each other, this is not joint probabilities and
+ we cannot do a multiplication of such probabilities.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(apple,heavy)=P(heavy,apple)$
+\end_inset
+
+ - ordering does not matter
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(x,y)=P(x)*P(y)$
+\end_inset
+
+ ...
+ this means, that joint distribution is equal to product distribution -
+ probabilities are independent
+\end_layout
+
+\begin_layout Itemize
+previous can be re-written as: 
+\begin_inset Formula $P(apple,heavy)=P(apple|heavy)*P(heavy)=P(heavy|apple)*P(apple)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/join_probabilities.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Joint probabilities explanation through Venn diagrams.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/joint_probability2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Joint probabilities explanation through Venn diagrams.
+ In this example, we want to calculate probability of 1 of 2 events (one
+ event or another event) using joing probabilities.
+ The result is 
+\begin_inset Formula $\frac{7}{12}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Conditional probability
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The probability that a statement is true given that some other statement
+ is true with certainty.
+\end_layout
+
+\begin_layout Itemize
+It is calculated as 
+\begin_inset Formula $P(A|B)$
+\end_inset
+
+, where 
+\begin_inset Formula $A$
+\end_inset
+
+ are relevant outcomes, and 
+\begin_inset Formula $B$
+\end_inset
+
+ are total outcomes remaining in universe, when 
+\begin_inset Formula $B$
+\end_inset
+
+ is true (so not the whole universe, just a subset where 
+\begin_inset Formula $B$
+\end_inset
+
+ is true).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(apple|heavy)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For example, if I throw a six-sided dice and it comes up odd, what is the
+ conditional probability that it is a 3? Well that would be three odd rolls,
+ 1, 3, and 5, so the conditional probability would be 1/3.
+\end_layout
+
+\begin_layout Itemize
+Another example, if I throw 3 with certainty? What is the conditional probabilit
+y that my throw is odd? In this case, the probability is 1.
+ It's odd with certainty if it's 3 with certainty.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Product rule 
+\series default
+- calculation of 
+\series bold
+conditional
+\series default
+ probability from 
+\series bold
+joint
+\series default
+ probability and 
+\series bold
+marginal
+\series default
+ probability.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(A|B)=\frac{P(A,B)}{P(B)}$
+\end_inset
+
+ ....
+ joint probability of both 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are true, divided by a marginal probability that 
+\begin_inset Formula $B$
+\end_inset
+
+ is true.
+ BTW, important, if we multiply both sides by 
+\begin_inset Formula $P(B)$
+\end_inset
+
+, then 
+\begin_inset Formula $P(A|B)P(B)=P(A,B)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+There is independence
+\series default
+ 
+\series bold
+in product rule
+\series default
+: knowing, that 
+\begin_inset Formula $B$
+\end_inset
+
+ is true, gives us nothing about probability of 
+\begin_inset Formula $A$
+\end_inset
+
+: 
+\begin_inset Formula $P(A,B)=P(A).P(B)$
+\end_inset
+
+ ...
+ let's divide both sides with 
+\begin_inset Formula $P(B)$
+\end_inset
+
+: 
+\begin_inset Formula $P(A|B)=P(A)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are dependent, so the opposite, then conditional probability of 
+\begin_inset Formula $P(A|B)\neq P(A)$
+\end_inset
+
+.
+ Probability distributions are either dependent, or independent, there is
+ nothing between it.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Marginal probabilities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It often happens in probability problems that 
+\series bold
+we know the joint probabilities
+\series default
+ that 2 things will happen together.
+ What we want to know is = individual probability that only one of those
+ things will happen, regardless of the other event.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sum rule
+\series default
+ - calculation of marginal probabilities.
+ We can add together joint probabilities to get a marginal probability.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $P(A)=P(A,B)+P(A,\lnot B)$
+\end_inset
+
+ ....
+ for binary probability distribution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P(A)=P(A,B_{1})+P(A,B_{2}),...P(A,B_{n})$
+\end_inset
+
+ ...
+ for series of probabilities of 
+\begin_inset Formula $B$
+\end_inset
+
+ - marginal probability of A is calculated as their sum
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/marginal_probabilities.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Marginal probabilities and the sum rule.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/marginal_probabilities2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Marginal probabilities and the sum rule 2.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Binomial
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Theorem
+\end_layout
+
+\begin_layout Itemize
+It's binomial because it's used when there are two possible outcomes - a
+ success or a non-success.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\begin{array}{c}
+n\\
+s
+\end{array}\right)p^{s}(1-p)^{(n-s)}\label{eq:binomial_theorem}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ = number of independent 
+\series bold
+trials 
+\series default
+(with replacement)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+ = number of 
+\series bold
+successes
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p$
+\end_inset
+
+ = probability of 1 success
+\end_layout
+
+\begin_layout Itemize
+which is basically a probability of 
+\begin_inset Formula $s$
+\end_inset
+
+ successes in 
+\begin_inset Formula $n$
+\end_inset
+
+ trials, when probability of 1 success is 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\left(\begin{array}{c}
+n\\
+s
+\end{array}\right)$
+\end_inset
+
+ represents the number of ways in which you can have 
+\begin_inset Formula $s$
+\end_inset
+
+ successes in 
+\begin_inset Formula $n$
+\end_inset
+
+ trials, 
+\begin_inset Formula $(1-p)$
+\end_inset
+
+ represents a probability of failures, and 
+\begin_inset Formula $(n-s)$
+\end_inset
+
+ is a number of failures.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For example, let's say I want to know what is the probability of getting
+ a certain number of heads in a string of coin tosses ()only 2 outcomes
+ possible - heads or tails).
+ Binomial theorem will tell me the answer.
+\end_layout
+
+\begin_layout Description
+Bayes
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+for
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+discrete
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+features:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(a|b)=\frac{P(b|a)\,.\,P(a)}{P(b)}\label{eq:bayessian_theorem}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(probability of some feature in class * probability of class) divided by
+ probability of feature
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a$
+\end_inset
+
+: class (it is omega)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b$
+\end_inset
+
+: feature (or data)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+posterior probability
+\series default
+: 
+\begin_inset Formula $P(a|b)$
+\end_inset
+
+ - 
+\begin_inset Quotes eld
+\end_inset
+
+posterior
+\begin_inset Quotes erd
+\end_inset
+
+ means 
+\begin_inset Quotes eld
+\end_inset
+
+after
+\begin_inset Quotes erd
+\end_inset
+
+ - so this is a probability after a new data are observed
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+likelihood
+\series default
+: 
+\begin_inset Formula $P(b|a)$
+\end_inset
+
+ - likelihood of data given a parameter
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+prior probability
+\series default
+: 
+\begin_inset Formula $P(a)$
+\end_inset
+
+ - before any/new data were observed
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+evidence
+\series default
+: 
+\begin_inset Formula $P(b)$
+\end_inset
+
+, it is same like 
+\begin_inset Formula $SUM_{w}P(a,x)=SUM_{w}P(x|a)\,.\,P(a)$
+\end_inset
+
+ which is also known as marginal probability (of the data)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+See 
+\series bold
+Product rule above
+\series default
+.
+ We have product rule, and from it we can calculate joint probabilities.
+ Since 
+\begin_inset Formula $P(A,B)=P(B,A)$
+\end_inset
+
+, we can apply product rule to right side, resulting in 
+\begin_inset Formula $P(A|B)P(B)=P(B|A)P(A)$
+\end_inset
+
+ and by dividing by 
+\begin_inset Formula $P(B)$
+\end_inset
+
+, we have resulting Bayes Theorem 
+\begin_inset Formula $P(A|B)=\frac{P(B|A)P(A)}{P(B)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One of the most powerful uses of Bayes Theorem (so called 
+\series bold
+Inverse probability problems
+\series default
+) is where 
+\begin_inset Formula $B$
+\end_inset
+
+ are observed data, and 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ is possible process 
+\begin_inset Formula $i$
+\end_inset
+
+ with probability parameter 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+.
+ This parameter is causing or generating data we observe.
+\end_layout
+
+\begin_layout Itemize
+Example of such usage of Bayes Theorem from above - we got 2 urns: 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ (probability of white marble is here 
+\begin_inset Formula $20\%$
+\end_inset
+
+) and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ (probability of white marble is here 
+\begin_inset Formula $10\%$
+\end_inset
+
+).
+ We observe 3 marbles in a row, drawing with replacement.
+ But we don't know which urn we are observing.
+ The probability that we are observing urn1 (here urn1 is a process with
+ parameter(white marble)=0.2, similarly urn2 is also a process).
+ So this problem is about what is a probability of unknown process.
+ So, 
+\begin_inset Formula $P(process\,parameter|observed\,data)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bayes_theorem_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bayes theorem, example application.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bayes_theorem_example2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bayes theorem, cont.
+ with example application with certain numbers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bayes_theorem_example3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bayes theorem, cont.
+ with example application with a solution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The strength of evidence - the rule saying how much to revise our probabilities
+ (change our minds) when we learn a new fact or observe new evidence.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://arbital.com/p/bayes_rule/?l=1zq}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+One of the really powerful things about Bayes Theorem is it allows us an
+ update of our probabilities based on new data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proof:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P(a,b)=P(a|b).P(b)$
+\end_inset
+
+ and 
+\begin_inset Formula $P(b,a)=P(b|a).P(a)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The order of a presence of events in probabilities does not matter.
+ Therefore, we can write: 
+\begin_inset Formula $P(a,b)=P(b,a).$
+\end_inset
+
+ So, the following must be also equal: 
+\begin_inset Formula $P(a|b).P(b)=P(b|a).P(a)$
+\end_inset
+
+.
+ Then the following must be also equal: 
+\begin_inset Formula $P(a|b)=\frac{P(b|a).P(a)}{P(b)}$
+\end_inset
+
+, so 
+\begin_inset Formula $Posterior=\frac{Likehood\,.\,Prior}{Evidence}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An example (can be taken as an interview question) is on figure below.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bayesian_rule_example.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bayesian rule applied to a simple example with weather calculation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Naive Bayes
+\end_layout
+
+\begin_layout Itemize
+The major advantage of the naive Bayes classifier is its short computational
+ time for training.
+\end_layout
+
+\begin_layout Itemize
+Naive Bayes methods train very quickly since they require only a single
+ pass on the data either to count 
+\series bold
+frequencies
+\series default
+ (for 
+\series bold
+discrete variables
+\series default
+) or to compute the 
+\series bold
+normal probability density function
+\series default
+ (for
+\series bold
+ continuous variables
+\series default
+ under normality assumptions).
+\end_layout
+
+\begin_layout Itemize
+It is naturally robust to missing values since these are simply ignored
+ in computing probabilities and hence have no impact on the final decision.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Naive Bayes is a probabilistic classifier that is based on Bayes Rule with
+ the assumption that all the input attributes are independent.
+\end_layout
+
+\begin_layout Itemize
+Different explanation of Bayes Rule and Naive Bayes - conditional probability
+ of observing event 
+\begin_inset Formula $A$
+\end_inset
+
+ given 
+\begin_inset Formula $B$
+\end_inset
+
+, can be computed from conditional probability of observing event 
+\begin_inset Formula $B$
+\end_inset
+
+ given 
+\begin_inset Formula $A$
+\end_inset
+
+, and prior probabilities 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ In classification task, we are interested in computing probability that
+ class 
+\begin_inset Formula $y$
+\end_inset
+
+ of an instance 
+\begin_inset Formula $x=\{x^{1},x^{2},...x^{D}\}$
+\end_inset
+
+ is 
+\begin_inset Formula $c$
+\end_inset
+
+, leading into equation 
+\begin_inset Formula $P(y=c|x)=\frac{P(y=c)P(x|y=c)}{P(x)}=\frac{P(y=c)P(x^{1},x^{2},...,x^{D}|y=c)}{P(x^{1},x^{2},...,x^{D})}$
+\end_inset
+
+.
+ The most difficult is to compute 
+\begin_inset Formula $P(x^{1},x^{2},...,x^{D}|y=c)$
+\end_inset
+
+ as it is difficult to compute conditional joint probability of the features.
+ That is why in Naive Bayes there exists an assumption of the independence,
+ which allows rewriting the equation as: 
+\begin_inset Formula $P(y=c|x)=\frac{P(y=c)\prod_{i=1}^{D}P(x^{i}|y=c)}{P(x^{1},x^{2},...,x^{D})}.$
+\end_inset
+
+ Then, training of models consists of computing the probabilities of each
+ value of all the attributes 
+\begin_inset Formula $x^{i}$
+\end_inset
+
+ being of the given classes 
+\begin_inset Formula $c\in C$
+\end_inset
+
+.
+ During the prediction, the class with the highest probability is returned
+ as the predicted class.
+\end_layout
+
+\begin_layout Section
+Gaussian Naive Bayes*
+\end_layout
+
+\begin_layout Section
+Multinomial Naive Bayes*
+\end_layout
+
+\begin_layout Section
+Averaged One-Dependence Estimators*
+\end_layout
+
+\begin_layout Section
+Bayesian Belief Networks*
+\end_layout
+
+\begin_layout Section
+Bayesian Networks*
+\end_layout
+
+\begin_layout Itemize
+Graphical model for probability relationships among a set of variables (features
+).
+\end_layout
+
+\begin_layout Itemize
+The Bayesian network structure 
+\begin_inset Formula $S$
+\end_inset
+
+ is a directed acyclic graph (DAG) and the nodes in 
+\begin_inset Formula $S$
+\end_inset
+
+ are in one-to-one correspondence with the features 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Learning is a 2 stage process:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+learning of the DAG structure of the network,
+\end_layout
+
+\begin_layout Itemize
+determination of its parameters.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

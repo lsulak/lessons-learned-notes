@@ -1,0 +1,8299 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Deep Learning
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Deep-Learning"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+They are separated from previous category because of a great popularity
+ and massive growth in the field.
+ They are concerned with building much larger and more complex neural networks.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deep neural network is simply a feedforward network with many hidden layers.
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stats.stackexchange.com/questions/182734/what-is-the-difference-betwee
+n-a-neural-network-and-a-deep-neural-network-and-w}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ideally - start with 1 hidden layer and then, with the usage of CV, add
+ more layers / hidden neurons.
+\end_layout
+
+\begin_layout Itemize
+Any function is NN and any NN is a function.
+\end_layout
+
+\begin_layout Itemize
+Very deep NN - local minimums are kinda similar.
+\end_layout
+
+\begin_layout Itemize
+Extraction of features and learning can be done by the algorithm itself.
+ Usually this requires more data and is more computationally expensive,
+ since we did not provide any features.
+ And it usually works better, since we as humans can not know what is the
+ best and what is not for computers, since they have different perspective.
+\end_layout
+
+\begin_layout Itemize
+Consider object recognition/detection problem.
+ Representation of some hidden layers = deeper and deeper layer generates
+ higher-level features.
+ From the beginning, we perhaps do not understand it by our senses, but
+ later on, the outcome perhaps will make sense.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For example, in the first steps, DNN will learn to find edges in an image.
+ In the next layers, DNN will learn that these edges can be combined to
+ something more complicated, and later on DNN will learn something more
+ sophisticated, detection of some complicated things (we may be able to
+ see and even understand them) and so on.
+\end_layout
+
+\begin_layout Itemize
+Actually, first hidden-layers tend to capture universal and interpretable
+ features, like shapes, curves, or interactions that are very often relevant
+ across domains.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Major DL trends, from Nuts and Bolts of DL
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=F1ka6a13S9I&t=421s&index=2&list=WL}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+General DL
+\end_layout
+
+\begin_layout Itemize
+Sequence models - RNN, LSTM, GRU
+\end_layout
+
+\begin_layout Itemize
+Image 2D/3D - CNN
+\end_layout
+
+\begin_layout Itemize
+Other - Reinforcement learning, Unsupervised learning 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There exist typically 2 types / techniques:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Convolutional Neural Networks (CNNs)
+\end_layout
+
+\begin_layout Itemize
+Recurrent Neural Networks (RNNs)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+training a NN:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Choose suitable architecture - how many hidden layers and how many elements.
+ The number of input units - number of features.
+ Number of output units - number of classes.
+ Hidden - either 1 or more (usually the same number as the number of features)
+ and then number of units on each layer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Random weight initialization (thetas) 
+\end_layout
+
+\begin_layout Enumerate
+Implement forward propagation for obtaining hypothesis for each input
+\end_layout
+
+\begin_layout Enumerate
+Implement code for calculating cost function e) implement backpropagation
+ for calculating partial derivations of cost function.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Typically we iterate through all training examples and perform forward a
+ back propagation on every training example.
+ So we are obtaining all activations and deltas for all the layers.
+ 
+\end_layout
+
+\begin_layout Itemize
+Then we can calculate partial derivation of cost function over theta.
+\end_layout
+
+\begin_layout Itemize
+Then we use gradient checking for comparing derivations from the previous
+ step: backprop vs numerical result of gradient of cost function.
+ They should have similar values.
+ Then we can disable gradient checking.
+\end_layout
+
+\begin_layout Itemize
+Then we use gradient descent or other advanced optimization methods (LB
+ of GS, contract gradient) s backpropagation for minimizing of the cost
+ function.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Various layers, for example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dropout - randomly set weight of some neuron to 0.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Vanishing/exploding gradients 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One of the problems of training neural network, especially very deep neural
+ networks, is data vanishing and exploding gradients.
+ What that means is that when you're training a very deep network your derivativ
+es or your slopes can sometimes get either very, very big or very, very
+ small, maybe even exponentially small, and this makes training difficult.
+\end_layout
+
+\begin_layout Itemize
+In RNN, vanishing gradient problems are occurring more often than exploding
+ gradients.
+ Vanishing gradients are more difficult to detect and resolve.
+ In exploding gradients, values will become 
+\series bold
+NaN
+\series default
+, which is a result of a computation overflow) and the network stops working.
+\end_layout
+
+\begin_layout Itemize
+If the weights are bigger than identity matrix, then with a very deep network
+ the activations can explode (exploding gradients).
+ And if weights are just a little bit less than identity matrix, and you
+ have a very deep network, the activations will decrease exponentially (vanishin
+g gradients).
+ 
+\end_layout
+
+\begin_layout Itemize
+A proper random initialization helps to reduce this problem.
+ How to initialize ANN depends on activation functions (for instance, Xavier
+ initialization when the activation function is 
+\begin_inset Formula $tanh$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+For vanishing gradients problem, it is solved by LSTMs and GRUs, and if
+ you're using a deep feedforward network, this is solved by residual connections.
+ 
+\end_layout
+
+\begin_layout Itemize
+Also, for exploding gradients, there is a solution - 
+\series bold
+gradient clipping
+\series default
+ (mostly used in RNN) - it will clip the gradients between two numbers to
+ prevent them from getting too large.
+\end_layout
+
+\begin_layout Itemize
+Also, for learning there are modified algorithms for RNNs to deal with vanishing
+/exploding gradients - Backpropagation Through Time (BPTT), or Hebbian learning.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gradient_clipping.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Visualization of gradient descent with and without gradient clipping, in
+ a case where the network is running into slight "exploding gradient" problems.
+ There are different ways to clip gradients; a simplest one is an element-wise
+ clipping procedure, in which every element of the gradient vector is clipped
+ to lie between some range 
+\begin_inset Formula $[-N,N]$
+\end_inset
+
+.
+ More generally, you will provide some max value (say 10), and if any component
+ of the gradient vector is greater than 10, it would be set to 10; and if
+ any component of the gradient vector is less than -10, it would be set
+ to -10.
+ If it is between -10 and 10, it is left alone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Greedy Layer-Wise Training
+\series default
+ - for training deep neural networks, for initialization of weights with
+ unsupervised method as a pre-training = for example, we can use Autoencoder
+ or Restricted Boltzmann machine.
+ Each hidden layer is trained separately.
+ When a given layer is trained, the output will be the input for the next
+ layer, that is also trained separately.
+ This is only a replacement to random initialization of weights though!
+ But probably, if the data dependencies are not so sophisticated, it is
+ better to use a simple ANN (with more deep network, there is a bigger change
+ to get stuck in local optima - overfitting).
+ But deep network pre-trained with Autoencoder or RBM, vs classical neural
+ net - the first iterations have better performance, but then if the network
+ is more deep, it overfits more easily.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Autoencoder
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Autoencoder"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two-layer neural network, where the length of input is the same as the length
+ of output.
+ Also, the first layer has less neurons than the output layers.
+ It is basically a feed-forward neural network with encoder-decoder architecture.
+ It is trained to reconstruct its input, so the training example is a pair
+ 
+\begin_inset Formula $(x,x)$
+\end_inset
+
+.
+ We want the output 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ of he model 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ to be as similar to the input 
+\begin_inset Formula $x$
+\end_inset
+
+ as possible.
+\end_layout
+
+\begin_layout Itemize
+Cost function is usually MSE (when features can be any number) or the binary
+ cross-entropy (features are binary and units of the last layer of the decoder
+ have the sigmoid activation function).
+\end_layout
+
+\begin_layout Itemize
+The aim is to encode input data and then decode such data again: 
+\begin_inset Formula $\hat{x}=decode(encode(x))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Deep autoencoders are from 1980s, but they simply couldn't be trained well
+ enough for them to do significantly better than PCA.
+ After methods of pre-training deep networks one layer at a time were developed,
+ these methods were applied to pre-training deep autoencoders, and for the
+ first time, researchers got much better representations out of deep autoencoder
+s than we could get from principal components analysis.
+ Because it turned out that it is very difficult to optimize deep autoencoders
+ using backpropagation - small initial weights will cause that backpropagated
+ gradient dies.
+ Now we have much better way to optimize them - using unsupervised layer-by-laye
+r pre-training.
+ The first successful training/using of deep autoencoders was in 2006.
+\end_layout
+
+\begin_layout Itemize
+Autoencoders are also being used for data comprimation.
+\end_layout
+
+\begin_layout Itemize
+Using backpropagation to generalize PCA.
+\end_layout
+
+\begin_layout Itemize
+The objective function of an autoencoder is to reconstruct its input, i.e.,
+ it is trying to learn a function 
+\begin_inset Formula $f$
+\end_inset
+
+, such that 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+ for all points 
+\begin_inset Formula $x$
+\end_inset
+
+ in the dataset.
+ Clearly there is a trivial solution to this.
+ ff can just copy the input to the output, so that 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ However, The network does not learn to do this, because it has constraints,
+ such as bottleneck layers, sparsity and bounded activation functions which
+ make the network incapable of copying the entire input all the way to the
+ output.
+\end_layout
+
+\begin_layout Itemize
+The decoder network may have different number of layers and hidden units
+ as the encoder network as long as it produces output of the same shape
+ as the data, so that we can compare the output to the original data and
+ tell the network where it's making mistakes.
+ Autoencoder is just neural network that is trying to reconstruct its input.
+ There is hardly any restriction on the kind of encoder or decoder to be
+ used.
+\end_layout
+
+\begin_layout Itemize
+Another way of extracting short codes for images is to hash them using standard
+ hash functions (this is called 
+\series bold
+semantic hashing
+\series default
+).
+ These functions are very fast to compute, require no training and transform
+ inputs into fixed length representations.
+ It is more useful to learn an autoencoder to do this, because autoencoders
+ can be used to do semantic hashing, where as standard hash functions do
+ not respect semantics , i.e, two inputs that are close in meaning might
+ be very far in the hashed space.
+ Autoencoders are smooth functions and map nearby points in input space
+ to nearby points in code space.
+ They are also invariant to small fluctuations in the input.
+ In this sense, this hashing is locality-sensitive, whereas general hash
+ functions are not locality-sensitive.
+\end_layout
+
+\begin_layout Itemize
+RBMs and single-hidden layer autoencoders can both be seen as different
+ ways of extracting one layer of hidden variables from the inputs.
+ However, they are different:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RBMs are undirected graphical models, but autoencoders are feed-forward
+ neural nets.
+\end_layout
+
+\begin_layout Itemize
+RBMs define a probability distribution over the hidden variables conditioned
+ on the visible units while autoencoders define a deterministic mapping
+ from inputs to hidden variables.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Autoencoders seem like a very powerful and flexible way of learning hidden
+ representations.
+ You just need to get lots of data and ask the neural network to reconstruct
+ it.
+ Gradients and objective functions can be exactly computed.
+ Any kind of data can be plugged in.
+ However, these models have also limitations.
+ There is no simple way to incorporate uncertainty in the hidden representation
+ 
+\begin_inset Formula $h=f(v)$
+\end_inset
+
+.
+ A probabilistic model might be able to express uncertainty better since
+ it is being made to learn 
+\begin_inset Formula $P(h|v)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Boltzmann machine is basically a strongly regularized Autoencoder.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Denoising autoencoder
+\series default
+ (2008) is a special type of autoencoder add a noise (usually a Gaussian
+ noise) to the input vector by setting many of its components to zero (like
+ dropout, but for inputs rather than for hidden units).
+ Pre-training is very effective if we use stack of denoising autoencoders.
+ It is as good (or even better) than pre-training with RBMs.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+A ladder network
+\series default
+ is a denoising autoencoder with an upgrade.
+ The encoder and the decoder have the same number of layers.
+ The bottleneck layer is used directly to predict the label (using the softmax
+ activation function).
+ The network has several cost functions.
+ In the ladder network, not just the input is corrupted with the noise,
+ but also the output of each encoder layer (during training).
+ When we apply the trained model to the new input x to predict its label,
+ we do not corrupt the input.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Contractive autoencoder 
+\series default
+is another kind of autoencoder (2011) and it is another way to regularize
+ an autoencoder for trying to make the activities of the hidden units as
+ insensitive as possible to the inputs.
+ But they cannot just ignore the inputs because they must reconstruct them.
+ This can be achieved by penalizing the squared gradient of each hidden
+ activity with respect to the inputs.
+ They work well for pre-training.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conclusions about pre-training (Boltzmann Machines + Autoencoders):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There are now many different ways to do layer by layer pre-training that
+ discovers good features.
+ When our data set does not have a huge number of labels, this way of discoverin
+g features before you ever use the labels is very helpful for the subsequent
+ discriminative fine tuning.
+ It discovers the features without using the information in the labels,
+ and then the information in the labels is used for fine tuning the decision
+ boundaries between classes.
+ It's especially useful if we have a lot of unlabeled data so that the pre-train
+ing can be a very good job of discovering interesting features, using a
+ lot of data.
+\end_layout
+
+\begin_layout Itemize
+For very large labeled data sets however, initializing the weights that
+ are going to be used for supervised learning by using unsupervised pre-training
+ is not necessary, even if the nets are deep.
+ Pre-training was the first good way to initialize the weights for deep
+ nets, but now we have lots of other ways.
+ However, even if we have a lot of labels, if we make the nets much larger
+ again, we'll need pre-training again.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/autoencoder_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of autoencoder scheme.
+ The input 6 values are encoded into 3 values (generalization) and then
+ from these 3 values, the network reconstructs the input data 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ The first hidden layer represents the output of comprimation.
+ Decomprimation part works with this first hidden layer resulting in output
+ layer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/autoencoder.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Autoencoder.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Boltzmann Machine
+\end_layout
+
+\begin_layout Itemize
+Also known as stochastic Hopfield networks.
+\end_layout
+
+\begin_layout Itemize
+When we pick a new state 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ for unit 
+\begin_inset Formula $i$
+\end_inset
+
+, we do so in a stochastic way: 
+\begin_inset Formula $p(s_{i}=1)=\frac{1}{1+exp(-\Delta E/T)}$
+\end_inset
+
+, and 
+\begin_inset Formula $p(s_{i}=0)=1-p(s_{i}=1)$
+\end_inset
+
+.
+ Here, 
+\begin_inset Formula $\Delta E$
+\end_inset
+
+ is the energy gap, i.e.
+ the energy when the unit is off, minus the energy when the unit is on.
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ is the temperature.
+ We can run our system with any temperature that we like, but the most commonly
+ used temperatures are 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+When we want to explore the configurations of a Boltzmann Machine, we initialize
+ it in some starting configuration, and then repeatedly choose a unit at
+ random, and pick a new state for it, using the probability formula described
+ above.
+ When a Boltzmann Machine reaches an energy minimum, then if it's cold it
+ will stay there.
+ If it's warm, it might move away from it (warm one can end up anywhere,
+ because it is truly stochastic).
+\end_layout
+
+\begin_layout Itemize
+What the algorithm is trying to do is build a model of a set of input vectors,
+ though it might be better to think of them as output vectors.
+ What we want to do is maximize the product of the probabilities, that the
+ Boltzmann machine assigns to a set of binary vectors in the training set.
+ This is equivalent to maximizing the sum of the log probabilities that
+ the Boltzmann machine assigns to the training vectors.
+\end_layout
+
+\begin_layout Itemize
+So what exactly is being learned in the Boltzmann Machine learning algorithm?
+ 
+\series bold
+Parameters than define a distribution over the visible vectors.
+\end_layout
+
+\begin_layout Section
+Restricted Boltzmann Machines
+\end_layout
+
+\begin_layout Itemize
+More simple model than Deep Boltzmann Machine (DBM) which was designed to
+ be more easier - learning of Deep Boltzmann Machine is computationally
+ very expensive.
+\end_layout
+
+\begin_layout Itemize
+Unsupervised method.
+ Application in classification, dimensionality reduction, topic modeling.
+ They become very popular because classical Boltzmann Machines are computational
+ly very expensive.
+ RBM learn much faster.
+ In RBM, connections between each visible neurons were removed as well as
+ were removed connections between hidden neurons.
+\end_layout
+
+\begin_layout Itemize
+There are no connections between hidden units.
+ This makes it very easy to get the equilibrium distribution of the hidden
+ units if the visible units are given.
+ There are also no connections between visible units.
+ This no connectivity (between hidden units as well as visible units) makes
+ it possible to update all hidden units in parallel given the visible units
+ (and vice-versa).
+ Moreover, only one such update gives the exact value of the expectation
+ that is being computing.
+\end_layout
+
+\begin_layout Itemize
+Probabilistic graphical model that can be represented as stochastic neural
+ network.
+ It is a special case of Boltzmann Machine.
+\end_layout
+
+\begin_layout Itemize
+Neurons consist of 2 layers - 
+\series bold
+visible
+\series default
+ (the first layer) and 
+\series bold
+hidden 
+\series default
+(the second layer) and they form a bipartite non-oriented graph.
+\end_layout
+
+\begin_layout Itemize
+Configuration 
+\begin_inset Formula $(v,h)$
+\end_inset
+
+ of visible and hidden neurons has energy 
+\begin_inset Formula $E(v,h)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Bernouli-Bernouli RBM:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E(v,h)=-\sum_{k=1}^{n}\sum_{j=1}^{m}v_{k}h_{j}w_{kj}-\sum_{j=1}^{m}b_{j}h_{j}-\sum_{i=1}^{n}c_{k}v_{k}\label{eq:restricted_boltzmann_machine_bb}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $h_{j}$
+\end_inset
+
+ are binary values of visible and hidden neuron 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Variable 
+\begin_inset Formula $n$
+\end_inset
+
+ is a number of neurons in hidden layer, 
+\begin_inset Formula $m$
+\end_inset
+
+ is a number of neurons in visible layer.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gaussian-Bernoulli RBM:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E(v,h)=-\sum_{k=1}^{n}\sum_{j=1}^{m}v_{k}h_{j}w_{kj}-\sum_{j=1}^{m}b_{j}h_{j}-\frac{1}{2}\sum_{i=1}^{n}(v_{k}-c_{k})^{2}\label{eq:restricted_boltzmann_machine_bg}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the variables and parameters have the same meaning, except that 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ are real values instead of binary ones.
+ There are Gaussian neurons on visible layer.
+ Visible layer consists of binary stochastic neurons, like in Bernouli-Bernouli
+ RBM.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+For example, if we have the (binary) state of all units (both the visibles,
+ for example 
+\begin_inset Formula $visible\,probability=\frac{1}{1+e^{-(weights*visible\,state)}}$
+\end_inset
+
+, and the hiddens), i.e.
+ if we have a full configuration, we can calculate the energy of that configurat
+ion, or the goodness (which is negative the energy).
+ So, this configuration goodness can be calculated as 
+\begin_inset Formula $\frac{hidden\,state*visible\,state'.^{*}weights}{nr\,samples}$
+\end_inset
+
+.
+ After that, we would like to give to some configurations a higher probability
+ (we want to make some configurations better) by computing gradient of the
+ goodness of a configuration, which is 
+\begin_inset Formula $\frac{hidden\,state*visible\,state'}{nr\,samples}$
+\end_inset
+
+.
+ Then, Contrastive Divergence gradient estimator with 1 full Gibbs update
+ (also known as CD-1).
+ There are multiple variations of CD-1.
+ For example, every time after calculating a conditional probability for
+ a unit, we sample a state for the unit from that conditional probability,
+ and then we forget about the conditional probability.
+ We'll sample a binary state for the visible units conditional on that binary
+ hidden state (this is sometimes called the "reconstruction" for the visible
+ units); and we'll sample a binary state for the hidden units conditional
+ on that binary visible "reconstruction" state.
+ Then we base our gradient estimate on all those sampled binary states.
+ This is not the best strategy, but it is the simplest one.
+ The conditional probability functions will be useful for the Gibbs update.
+ The configuration goodness gradient function will be useful twice, for
+ CD-1:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+on the given data and the hidden state that it gives rise to.
+ That gives us the direction of changing the weights that will make the
+ data have greater goodness, which is what we want to achieve.
+\end_layout
+
+\begin_layout Itemize
+on the "reconstruction" visible state and the hidden state that it gives
+ rise to.
+ That gives us the direction of changing the weights that will make the
+ reconstruction have greater goodness, so we want to go in the opposite
+ direction, because we want to make the reconstruction have less goodness.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This model is able to capture a probability distribution of inputs, which
+ means that it is able to create generative model of input data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contrastive Divergence
+\series default
+ (CD) is algorithm used for training RBM.
+\end_layout
+
+\begin_layout Itemize
+Based on calculated energy of the model, we can calculate probabilities
+ of each pair of hidden and visible neuron.
+ Also partition function, or probability that network will assign to visible
+ vector 
+\begin_inset Formula $v$
+\end_inset
+
+, or a probability that a value of a given neuron will be equal to 1.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rbm_graph.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of Restricted Boltzmann Machine scheme.
+ There are visible and hidden layers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RBM is actually the same thing as an infinitely deep sigmoid belief net
+ with shared weights.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Deep Boltzmann Machines
+\end_layout
+
+\begin_layout Itemize
+Many layers of trained RBM = stacking RBMs.
+ They are built in the following way - hidden layer of a single RBM will
+ be a visible layer of the next RBM.
+ These deep neural networks are pre-trained.
+ Pre-training is done for each layer separately for finding out the most
+ precise model of input data.
+\end_layout
+
+\begin_layout Itemize
+First, train a layer of features that receive inputs directly from pixels
+ (or different, depending on data).
+ Then treat the activations of the trained features as if they were pixels
+ and learn features of features in a second hidden layer (so basically layer
+ 
+\begin_inset Formula $v_{2}=h_{1}$
+\end_inset
+
+).
+ We can repeat this as many times as we like with each new layer of features
+ modeling the correlated activity in the features in the layer below.
+ Resulting model is not Boltzmann Machine, but Deep Belief Net! Because
+ bottom layer of connections are not symmetric! All edges in Boltzmann Machines
+ must be undirected and a DBN has directed edges from the top-level RBM
+ to each subsequent layer below.
+ It is a graphical model that is called Deep Belief Net, where the lower
+ layers are just like sigmoid belief nets, and the top two layers are from
+ a Restricted Boltzmann Machine.
+ So it is a kind of hybrid model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/dmb.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Combination of three RBM into one Deep Boltzmann Machine.
+ However, if you train a stack of restricted Boltzmann machines and you
+ combine them together into a single composite model what you get is a Deep
+ Belief Net not a Deep Boltzmann machine.
+ The trick is that the top and the bottom restrictive bowser machines in
+ the stack have to trained with weights that it twices begin one directions
+ the other.
+ So, the bottom Boltzmann machine, that looks at the visible units is trained
+ with the bottom up weights being twice as big as the top down weights.
+ Apart from that, the weights are symmetrical.
+ That's the opposite of what we had when we trained the first restricted
+ Bolton machine in the stack.
+ After having trained these three restricted Bolton machines, we can then
+ combine them to make a composite model, and the composite model looks like
+ this.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/deep_boltzman_machine.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Combination of two RBM into one Deep Boltzmann Machine for generating a
+ new data.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Belief Networks
+\end_layout
+
+\begin_layout Itemize
+A belief net is a 
+\series bold
+directed acyclic graph
+\series default
+ composed of stochastic variables (idea from 1992).
+ They are also known as Sigmoid Belief Nets (SBNs).
+\end_layout
+
+\begin_layout Itemize
+The first reason why deep belief nets are interesting, is that they are
+ interesting example of generative models: to recognize shapes, first learn
+ to generate images.
+ Not only that it can read digits, it can also write them.
+ A generative model like a DBN (deep belief net) can be used in a way that
+ it is possible to specify the values of some of the feature neurons, and
+ then 
+\begin_inset Quotes eld
+\end_inset
+
+run the network backward
+\begin_inset Quotes erd
+\end_inset
+
+, generating values for the input activations.
+\end_layout
+
+\begin_layout Itemize
+The second reason why they are interesting is that they can do unsupervised
+ and semi-supervised learning.
+ They can learn useful features for understanding other images, even if
+ the training images are unlabeled.
+\end_layout
+
+\begin_layout Itemize
+Key component of deep belief nets are Restricted Boltzmann machines.
+\end_layout
+
+\begin_layout Itemize
+We get to observe some of the variables and we would like to solve 2 problems:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+The inference problem 
+\series default
+- infer the states of the unobserved variables.
+ We can't infer them with certainty, so what we're after is the 
+\series bold
+probability distributions of unobserved variables
+\series default
+.
+ And if unobserved variables are not independent of one another, given the
+ observed variables, there is probability distributions are likely to be
+ big cumbersome things with an exponential number of terms in.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The learning problem
+\series default
+ - adjust the interactions between variables to make the network more likely
+ to generate the training data.
+ So, adjusting the interactions would involve both deciding
+\series bold
+ which node is affected by which other node
+\series default
+, and also deciding on the 
+\series bold
+strength of that effect
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+These are generative models, where the objective function is to model the
+ input data rather than predicting a label.
+\end_layout
+
+\begin_layout Itemize
+The idea of graphical models was to combine discrete graph structures for
+ representing how variables depended on one another.
+\end_layout
+
+\begin_layout Itemize
+There are 
+\series bold
+two types of generative neural network 
+\series default
+composed of stochastic binary neurons:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Energy based -
+\series default
+ we connect binary stochastic neurons using 
+\series bold
+symmetric connections
+\series default
+ to get a 
+\series bold
+Boltzmann Machine
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Causal - 
+\series default
+we connect binary stochastic neurons in a 
+\series bold
+directed acyclic graph
+\series default
+ to get a 
+\series bold
+Sigmoid Belief Net.
+ It was shown in the past research, that these are slightly easier to learn
+ than Boltzmann Machines.
+ Also, it is easy to generate samples with this model.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For learning, there is 
+\series bold
+wake-sleep algorithm 
+\series default
+and it works in two phases: positive and negative phase.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+However, wake-sleep algorithm is a very different kind of learning, mainly
+ because it's for directed graphical models like Sigmoid Belief Nets, rather
+ than for undirected graphical models like Boltzmann machines.
+\end_layout
+
+\begin_layout Itemize
+The ideas behind the wake-sleep algorithm led to a whole new area of machine
+ learning called 
+\series bold
+variational learning
+\series default
+.
+ The idea is that since it's hard to compute the correct posterior distribution,
+ we'll compute some cheap approximation to it.
+ And then, we'll do maximum likelihood learning anyway.
+ That is, we'll apply the learning rule that would be correct, if we'd got
+ a sample from the true posterior, and hope that it works, even though we
+ haven't.
+ Now, you could reasonably expect this to be a disaster, but actually the
+ learning comes to your rescue.
+ So, if you look at what's driving the weights during the learning, when
+ you use an approximate posterior, there are actually two terms driving
+ the weights.
+ One term is driving them to get a better model of the data.
+ That is, to make the Sigmoid Belief Net more likely to generate the observed
+ data in the training center.
+ But there's another term that's added to that, that's actually driving
+ the weights towards sets of weights for which the approximate posterior
+ it's using is a good fit to the real posterior.
+ It does this by manipulating the real posterior to try to make it fit the
+ approximate posterior.
+ It's because of this effect, the variational learning of these models works
+ quite nicely.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/wake_sleep.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Wake sleep algorithm.
+ It turns out that if you start with random weights and you alternate between
+ wake phases and sleep phases it learns a pretty good model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are flaws in this algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The recognition weights are trained to invert the generative model in parts
+ of the space where there is no data and it is wasteful.
+ But it is not a big deal.
+\end_layout
+
+\begin_layout Itemize
+The recognition weights do not follow the gradient of log probability of
+ the data.
+ They only approximately follow the gradient of the variational bound on
+ this probability.
+ And this leads to incorrect mode-averaging.
+ It is more serious issue.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/mode_averaging.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mode averaging.
+ Suppose we run the sleep phase, and we generate data from this model.
+ Most of the time, those top two units would be off because they are very
+ unlikely to turn on under their prior, and, because they are off, the visible
+ unit will be firmly off, because its bias is 
+\begin_inset Formula $-20$
+\end_inset
+
+.
+ Just occassionally, one time in about to the 
+\begin_inset Formula $-10$
+\end_inset
+
+, one of the two top units will turn on and it will be equally often the
+ left one or the right one.
+ When that unit turns on, there's a probability of a half that the visible
+ unit will turn on.
+ So, if you think about the occassions on which the visible unit turns on,
+ half those occassions have the left-hand hidden unit on, the other half
+ of those occassions have the right-hand hidden unit on and almost none
+ of those occassions have neither or both units on.
+ So now think what the learning would do for the recognition weights.
+ Half the time we'll have a 
+\begin_inset Formula $1$
+\end_inset
+
+ on the visible layer, the leftmost unit will be on at the top, so we'll
+ actually learn to predict that that's on with a probability of 
+\begin_inset Formula $0.5$
+\end_inset
+
+, and the same for the right unit.
+ So the recognition units will learn to produce a factorial distribution
+ over the hidden layer, of 
+\begin_inset Formula $(0.5,0.5)$
+\end_inset
+
+ and that factorial distribution puts a quarter of its mass on the configuration
+ 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ and another quarter of its mass on the configuration 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ and both of those are extremely unlikely configurations given that the
+ visible unit was on.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Contrastive wake-sleep is a way of fine-tuning the model to be better at
+ generalization.
+ Backpropagation can be used to fine-tune the model to be better at 
+\series bold
+discrimination
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sequence Models
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sequence-Models"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+They work with sequence data.
+
+\series default
+ For example, speech recognition or, music generation (audio clip on input),
+ sentiment classification (movie reviews), DNA sequence analysis (DNA is
+ represented via the four alphabets A, C, G, and T.
+ So given a DNA sequence you can label which part of this DNA sequence correspon
+ds to a protein), machine translation (output the translation from an input
+ sequence in a some human language in a different language), video activity
+ recognition (it is given a sequence of video frames for recognizing some
+ activity), name entity recognition (given a sentence for identifying people
+ in that sentence).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Supervised learning
+\series default
+.
+ There are a lot of different types of sequence problems.
+ In some, both the input X and the output Y are sequences, and in that case,
+ sometimes X and Y can have different lengths, or sometimes they may have
+ the same length.
+ And in some problems only either X or only Y is a sequence.
+ 
+\end_layout
+
+\begin_layout Itemize
+There can be various representation, according to a given problem.
+ For example for word representation, it is needed to have a vocabulary
+ (some list of words sorted alphabetically, usually 100k or even a few millions
+ of words).
+ Then with such dictionary, we can use 
+\series bold
+one-hot representation
+\series default
+ (vector with all zeroes except 1 number ('1') with position representing
+ a given word in a dictionary) - so if our dictionary has 10k words and
+ word 
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+ is on 200.
+ position in a dictionary, then resulting vector will be all zeroes except
+ 200.
+ position, there will be '1'.
+ And this is called a "one-hot" encoding, because in the converted representatio
+n exactly one element of each column is "hot" (meaning set to 1).
+ If a word is not in a dictionary, new token is created <unknown> for all
+ words outside of dictionary.
+ So to summarize, input is a sentence of various length and 1 item in this
+ input is a one-hot vector.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/one-hot_encoding.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of one-hot encoding with 4 classes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Why not to use a standard networks? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Because inputs (and outputs) can have different length (different sentences
+ have different number of words) and with padding to some MAX value still
+ doesn't seems to be a good representation.
+\end_layout
+
+\begin_layout Itemize
+More serious problem is that such naive ANN doesn't share features learned
+ across different positions of text.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Types
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Memory-less models for sequences
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Autoregressive models
+\series default
+, predict the next term in a sequence from a fixed number of previous terms
+ using 
+\begin_inset Quotes eld
+\end_inset
+
+delay traps
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Feed-forward neural networks
+\series default
+, generalize autoregressive models by using one or more layers of non-linear
+ hidden units.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Beyond memory-less models
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Linear dynamic systems, 
+\series default
+generative models that have a real-valued hidden state that cannot be observed
+ directly.
+ They are stochastic (as well as HMMs, but not RNNs).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hidden Markov Models
+\series default
+, have a discrete one-of-N hidden state.
+ Transitions between states are stochastic and controlled by a transition
+ matrix.
+ The outputs produced by a state are stochastic.
+ We cannot be sure which state produced a given output.
+ So the state is “hidden”.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Recurrent neural networks
+\series default
+, powerful, they combine 2 things: a) distributed hidden state that allows
+ them to store a lot of information about the past efficiently, b) non-linear
+ dynamics that allows them to update their hidden state in complicated ways.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Recurrent Neural Networks
+\end_layout
+
+\begin_layout Itemize
+Work well with sequential or time series data, as detailed with the beginning
+ of this section.
+ They are used to label, classify, or generate sequences.
+\end_layout
+
+\begin_layout Itemize
+RNN is able to simulate deterministic finite automata (so they are able
+ to classify finite strings).
+\end_layout
+
+\begin_layout Itemize
+RNN is not a feed-forward network, because RNN contains loops.
+ So, its graph has at least one cycle.
+ The idea is that each unit 
+\begin_inset Formula $u$
+\end_inset
+
+ of recurrent layer 
+\begin_inset Formula $l$
+\end_inset
+
+ has a real-valued state 
+\begin_inset Formula $h_{l,u}$
+\end_inset
+
+.
+ This state can be seen as the memory of the unit.
+ 
+\series bold
+Each unit
+\series default
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ in each layer 
+\begin_inset Formula $l$
+\end_inset
+
+ receives 
+\series bold
+two inputs
+\series default
+: a vector of states from the 
+\series bold
+previous layer
+\series default
+ 
+\begin_inset Formula $l-1$
+\end_inset
+
+, and the vector of states from
+\series bold
+ this laye
+\series default
+r 
+\begin_inset Formula $l$
+\end_inset
+
+, but 
+\series bold
+from the previous time step
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+One challenge affecting RNNs is that early models turned out to be very
+ difficult to train, harder even than deep feedforward networks.
+ The reason is the unstable gradient problem.
+ Recall that the usual manifestation of this problem is that the gradient
+ gets smaller and smaller as it is propagated back through layers.
+ This makes learning in early layers extremely slow.
+ The problem actually gets worse in RNNs, since gradients aren't just propagated
+ backward through layers, they're propagated backward through time.
+ If the network runs for a long time that can make the gradient extremely
+ unstable and hard to learn from.
+ Fortunately, it's possible to incorporate an idea known as LSTM (idea from
+ 1997) units into RNNs.
+\end_layout
+
+\begin_layout Itemize
+RNN is just a layered net that keeps reusing the same weights, see figure
+ below.
+ So we can think of the recurrent net as a layered feedforward net with
+ shared weights and then train the feed-forward net with weight constraints.
+ So backpropagation through time (training RNN) is in time domain:
+\series bold
+ a) forward pass
+\series default
+, which builds up a stack of activities of all the units at each time step,
+ 
+\series bold
+b)
+\series default
+ 
+\series bold
+backward pass
+\series default
+ peels activities off the stack to compute the error derivatives at each
+ time step, and
+\series bold
+ c) after the backward pass
+\series default
+ we add together the derivatives at all the different times for each weight.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_vs_classical_net.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+RNN and feedforward network equivalence.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Providing input to RNN:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+specify the initial states of 
+\series bold
+all the units
+\series default
+ (so input layer has all inputs there),
+\end_layout
+
+\begin_layout Itemize
+specify the initial states of a
+\series bold
+ subset of the units
+\series default
+ (one or just a few units have input),
+\end_layout
+
+\begin_layout Itemize
+specify the states of 
+\series bold
+the same subset of the units at every time step
+\series default
+ - this is the most natural way to model sequence data.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Providing output target to RNN:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+specify desired final activities of 
+\series bold
+all the units
+\series default
+,
+\end_layout
+
+\begin_layout Itemize
+specify desired activities of
+\series bold
+ all units for the last few steps
+\series default
+,
+\end_layout
+
+\begin_layout Itemize
+specify desired activity of a
+\series bold
+ subset of the units
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+An example
+\series default
+: Suppose we're training an RNN on a sequence of numbers.
+ After it has seen all numbers in the sequence, we want it to tell us the
+ sum of the numbers of the sequence.
+ To provide 
+\series bold
+input
+\series default
+, we should specify the state of one unit (say unit number 1), at every
+ time step.
+ We should specify a
+\series bold
+ target for one unit
+\series default
+ (say unit number 2), 
+\series bold
+only
+\series default
+ 
+\series bold
+at the
+\series default
+ 
+\series bold
+final time step
+\series default
+.
+ There's 1 input value at every time step, namely the next number in the
+ sequence.
+ There 1 output value, and only at the last time step: that's where the
+ model is expected to produce the sum of the numbers in the sequence.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RNN are more biologically realistic.
+ They have very complicated dynamics, and this can make them very difficult
+ to train.
+\end_layout
+
+\begin_layout Itemize
+RNN for modeling sequences - they are a very natural way to model sequence
+ data.
+ They are equivalent to very deep nets with 1 hidden layer per time slice.
+ Except that they use the same weights at every time slice and they get
+ input at every time slice.
+\end_layout
+
+\begin_layout Itemize
+For example, they can generate text by 
+\series bold
+predicting the probability distribution for the next character 
+\series default
+and then 
+\series bold
+sampling
+\series default
+ 
+\series bold
+a
+\series default
+ 
+\series bold
+character from this distribution.
+\end_layout
+
+\begin_layout Itemize
+To run 
+\series bold
+backpropagation on RNN
+\series default
+, we need to define a 
+\series bold
+loss function
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Element-wise loss
+\series default
+ (this is for a single word): for a given word in the training sequence
+ we determine classifier output vs ground truth, with for example logistic
+ regression loss (=cross entropy loss).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sequence-wise loss
+\series default
+ (for all the elements / words in the sequence): sum of element-wise loss
+ functions.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Echo State Network (ESN)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a RNN with sparsely connected (most of the weights are set to zero)
+ hidden layer (typically 1% connectivity).
+ The connectivity and weights of hidden neurons are fixed and randomly assigned.
+ The weights of output neurons can be learned so that the network can (re)produc
+e specific temporal patterns.
+ The main interest of this network is that although its behavior is non-linear,
+ the only weights that are modified during training are for the synapses
+ that connect the hidden neurons to output neurons.
+ Thus, the error function is quadratic with respect to the parameter vector
+ and can be differentiated easily to a linear system.
+\end_layout
+
+\begin_layout Itemize
+These use a clever trick to make it much easier to learn a RNN.
+ However, to get these networks to be good at complicated tasks, you need
+ a very big hidden state - many more hidden units for a given task than
+ a RNN that learns weights.
+\end_layout
+
+\begin_layout Itemize
+Hidden-to-output connections can be learned easily, as opposed to the hidden-to-
+hidden connections which aren't learned at all in an Echo State Network.
+ It is very important to initialize weights sensibly, mostly hidden-to-hidden
+ weights.
+\end_layout
+
+\begin_layout Itemize
+However, they cannot do well on high-dimensional data.
+\end_layout
+
+\begin_layout Itemize
+ESNs don't do backpropagation through time - the hidden-to-hidden connections
+ are not learned.
+ Also, without learning, there is no overfitting possible.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hopfield networks
+\series default
+ - similar to RNN (but without hidden units), there exist symmetrically
+ connected networks.
+ Connections between units are symmetrical (they have the same weight in
+ both directions).
+ These networks are much easier to analyze.
+ They are also more restricted in what they can do, because they obey an
+ energy function.
+ For example, they cannot model cycles.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Boltzmann Machines = stochastic Hopfield networks.
+ 
+\series default
+They are good at modeling binary data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_basic.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+This figure describes a simple (unidirectional) RNN architecture.
+ You are reading an input sentence from left (
+\begin_inset Formula $x^{<1>}$
+\end_inset
+
+) to right (
+\begin_inset Formula $x^{<T_{x}>}$
+\end_inset
+
+), the first word 
+\begin_inset Formula $x^{<1>}$
+\end_inset
+
+ will be feeded it into a neural network layer.
+ So RNN also scans through the data from left to right as well.
+ When it then goes on to read the second word 
+\begin_inset Formula $x^{<2>}$
+\end_inset
+
+ in the sentence, instead of just predicting 
+\begin_inset Formula $y^{<2>}$
+\end_inset
+
+ using only 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $x^{<2>}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ it also gets to input some information from the fist time step.
+ So in particular, the activation value from the first step is passed on
+ to time step two.
+ And for completness, activation value on the very beginning, 
+\begin_inset Formula $a^{<0>},$
+\end_inset
+
+is usually a vector of zeroes (but some researchers initializes this vector
+ randomly).
+ Sometimes, we can encounter a diagram like one on the right side.
+ Sometimes people draw a loop like that, that the layer feeds back to the
+ cell.
+ Sometimes, they draw a shaded box to denote a time delay of one step.
+ However it is much harder to interpret.
+ RNN shares the parameters in each step (red color, they are the same).
+ One disadvantage of this RNN is, that it only uses information which is
+ earlier in the sequence to make a prediction.
+ For that 2 examples, it would be good to know that Teddy is a President,
+ or that it is something about bears on sale, but this model cannot access
+ this information.
+ Looking on the first 3 words, we cannot tell a difference.
+ This problem is addressed to Bidirectional RNN (BRNN).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_forward_pass.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward propagation of RNNs.
+ 
+\begin_inset Formula $g(..)$
+\end_inset
+
+ is an activation function.
+ 
+\begin_inset Formula $w_{ax}$
+\end_inset
+
+ means that this will be multiplied by 
+\begin_inset Formula $x$
+\end_inset
+
+ quantity and it will compute 
+\begin_inset Formula $a$
+\end_inset
+
+ quantity.
+ Activation function for output 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+is usually sigmoid or softmax (depends on a problem).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_forward_pass_simply.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A simplified computationo of forward pass in RNN.
+ rather than carrying around two parameter matrices, 
+\begin_inset Formula $W_{aa}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{ax}$
+\end_inset
+
+, we can compress them into just one parameter matrix 
+\begin_inset Formula $W_{a}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_forward_and_backward_pass.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward and backward pass of a simple (unidirectional) RNN where the length
+ of input and output is the same.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_backward_pass.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Backward pass for the basic RNN-cell.
+ Just like in a fully-connected neural network, the derivative of the cost
+ function 
+\begin_inset Formula $J$
+\end_inset
+
+ backpropagates through the RNN by following the chain-rule from calculas.
+ The chain-rule is also used to calculate 
+\begin_inset Formula $(\frac{∂J}{\text{∂}W_{ax}},\frac{∂J}{\text{∂}W_{aa}},\frac{∂J}{\text{∂}b})$
+\end_inset
+
+ to update the parameters 
+\begin_inset Formula $(W_{ax},W_{aa},b_{a})$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Types of RNN architectures:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Many-to-many
+\series default
+, as been in all the previous figures, where input and output had the same
+ length.
+ This architecture is called many-to-many, because there are many inputs
+ and many outputs.
+ There can be many-to-many with different lengths of input and output.
+ This architecture is widely used for machine translation.
+ In this second case, RNN will first read the input sequence entirely, and
+ only then will generate the output (this is basically an encoder/decoder).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Many-to-one
+\series default
+, where there is just 1 output 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+.
+ This architecture can be used for example for sentiment classification,
+ because there is no need to have output on each word - only 1 output on
+ the whole sentence.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+One-to-one 
+\series default
+architecture is less interesting.
+ It is basically standard NN.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+One-to-many
+\series default
+ architecture can be used for a music generation.
+ There is just 1 input, integer, for example a genre of music you want or
+ the first note of the music you want, and the architecture will output
+ notes.
+ The input would be on the very right side of RNN diagram only, so each
+ step will be computed by using the previous activation (no input except
+ the first one, but sometimes there is one at each step, and this is synthesized
+ output from the previous step as can be seen in the next figure below,
+ so 
+\begin_inset Formula $x^{<t>}=y^{<t-1>}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_architecture_types.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different types of RNN architectures (except Attention RNN architecture,
+ which is a bit different).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attention model
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Another very significant type of RNN architecture (Bahdanau et al, from
+ 2014).
+ It is basically a modification of many-to-many architecture, where there
+ is encoder and decoder as well.
+\end_layout
+
+\begin_layout Itemize
+It is very useful when there is a very long sequence on the input.
+ Bleu score is quite good for shorter sequences for traditional man-to-many
+ RNNs, but as a sequence goes bigger and bigger (30 or more characters),
+ Bleu score decreases.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/attention_motivation.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+In tradicional encoder-decored RNN, the performance decays for longer sentences.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This model has been applied in machine translation as well as to image captionin
+g.
+\end_layout
+
+\begin_layout Itemize
+Attention model uses 
+\series bold
+Bidirectional RNN
+\series default
+ (classical RNN / GRU / LSTM - the last is most often used), with so called
+ 
+\series bold
+attention weights 
+\series default
+which are output of such BRNN and input to another RNN, that finally generates
+ output (for example translation).
+ Attention weights are basically information about how much attention should
+ be given to a particular word from the input (or only a part of an input
+ sentence while it's generating a translation, just like humans might -
+ because humans do not translate in a way that they will remember the whole
+ sentence and then we will start translating; instead, it will break the
+ sentence up into sub-sentences, and translate those party by part and build
+ up the translated sentence).
+ This allows us on every timestep to look only maybe within a local window
+ of the input sentence to pay attention to when generating a specific word
+ (for example, translated to English).
+ This method does not push the ability of the network to encode (memorize)
+ long sequences beyond it's optimum.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Visualization of attention weights
+\series default
+ can be useful.
+ You can find out that attention weights to the corresponding input and
+ output words will tend to be high.
+ Thus, suggesting that generating a specific word to output is usually paying
+ attention to the correct words from the input.
+ All this thanks to learning using backpropagation with an attention model.
+ 
+\end_layout
+
+\begin_layout Itemize
+The network learns where to “pay attention” by learning the values 
+\begin_inset Formula $e^{<t,t\text{′}>}$
+\end_inset
+
+, which are computed using a small neural network: we can't replace 
+\begin_inset Formula $s^{<t-1>}$
+\end_inset
+
+ with 
+\begin_inset Formula $s^{<t>}$
+\end_inset
+
+ as an input to this neural network.
+ This is because 
+\begin_inset Formula $s^{<t>}$
+\end_inset
+
+ depends on 
+\begin_inset Formula $α^{<t,t\text{′}>}$
+\end_inset
+
+ which in turn depends on 
+\begin_inset Formula $e^{<t,t\text{′}>}$
+\end_inset
+
+; so at the time we need to evaluate this network, we haven't computed 
+\begin_inset Formula $s^{<t>}$
+\end_inset
+
+ yet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/attention_model.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An intuition behind Attention model on French to English machine translation
+ problem.
+ Here, bidirectional RNN (or GRU or LSTM - more common) is used.
+ In each time step 
+\begin_inset Formula $i$
+\end_inset
+
+, there are features computed from the forward and from the backward occurrence
+ (
+\begin_inset Formula $\overrightarrow{a}^{<i>}$
+\end_inset
+
+and 
+\begin_inset Formula $\overleftarrow{a}^{<i>}$
+\end_inset
+
+).
+ These 2 will be represented as a tuple 
+\begin_inset Formula $a^{<t>}=(\overrightarrow{a}^{<i>},\overleftarrow{a}^{<i>})$
+\end_inset
+
+.
+ Or 
+\begin_inset Formula $a^{<t'>}$
+\end_inset
+
+for words from Frech sentence.
+ Then, on top of this bidirectional RNN, there is a one-directional RNN
+ with state 
+\begin_inset Formula $s$
+\end_inset
+
+ to generate the translation.
+ The first step will generate 
+\begin_inset Formula $y^{<1>}$
+\end_inset
+
+and this will have as input some context 
+\begin_inset Formula $c^{<1>}$
+\end_inset
+
+and this will depend on attention parameters 
+\begin_inset Formula $\alpha^{<1,1>}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha^{<1,2>},$
+\end_inset
+
+...
+ and these parameters tell us how much attention = how much context would
+ depend on the features we are getting (the activations) from the different
+ time steps.
+ Context is then defined as a sum on the features from the different time
+ steps weighted by attention weights (these weights must satisfy that they
+ are non-negative, and sum to 1) - 
+\begin_inset Formula $\sum_{t'}\alpha^{<1,t'>}=1$
+\end_inset
+
+ and for context, 
+\begin_inset Formula $c^{<1>}=\sum_{t'}\alpha^{<1,t'>}a^{<t'>}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/attention_weights_computation.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Computation of attention weights.
+ After computation of 
+\begin_inset Formula $e^{<t,t'>}$
+\end_inset
+
+(by a small ANN on the left, usually with 1 hidden layer), we are computing
+ basically a softmax.
+ This algorithm runs in quadratic cost which is a disadvantage.
+ However, if an input sequence is not so extremely long, it is acceptable.
+ There are research works on reducing this computational problem.
+ BTW, similar architecture can be applied on other problems as well, for
+ instance image captioning (look at the picture, and pay attention only
+ to parts of the picture at a time while the algorithm  is writing a caption
+ for the picture).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/attn_model.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attention model schema.
+ There are 2 separate LSTMs in this model.
+ The one at the bottom of the picture is a bidirectional LSTM and comes
+ before the attention mechanism, we will call it pre-attention Bi-LSTM.
+ The LSTM at the top of the diagram comes after the attention mechanism,
+ so we will call it the post-attention LSTM.
+ The pre-attention Bi-LSTM goes through 
+\begin_inset Formula $T_{x}$
+\end_inset
+
+ time steps; the post-attention LSTM goes through 
+\begin_inset Formula $T_{y}$
+\end_inset
+
+ time steps.
+ The post-attention LSTM passes 
+\begin_inset Formula $s^{⟨t⟩},c^{⟨t⟩}$
+\end_inset
+
+ from one time step to the next.
+ In 2 figures above, we were using only a basic RNN for the post-activation
+ sequence model, so the state captured by the RNN output activations 
+\begin_inset Formula $s^{⟨t⟩}$
+\end_inset
+
+.
+ But since we are using an LSTM here, the LSTM has both the output activation
+ 
+\begin_inset Formula $s^{⟨t⟩}$
+\end_inset
+
+ and the hidden cell state 
+\begin_inset Formula $c^{⟨t⟩}$
+\end_inset
+
+.
+ We use 
+\begin_inset Formula $a^{⟨t⟩}=[\overrightarrow{a}^{⟨t⟩};\overleftarrow{a}^{⟨t⟩}]$
+\end_inset
+
+ to represent the concatenation of the activations of both the forward-direction
+ and backward-directions of the pre-attention Bi-LSTM.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/attn_mechanism.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+This diagram shows what one "attention" step does to calculate the attention
+ variables 
+\begin_inset Formula $α^{⟨t,t'⟩}$
+\end_inset
+
+, which are used to compute the context variable 
+\begin_inset Formula $context^{⟨t⟩}$
+\end_inset
+
+ for each timestep in the output 
+\begin_inset Formula $(t=1,\ldots,T_{y})$
+\end_inset
+
+.
+ The model uses a 
+\series bold
+RepeatVector
+\series default
+ node to copy 
+\begin_inset Formula $s^{⟨t−1⟩}$
+\end_inset
+
+'s value 
+\begin_inset Formula $T_{x}$
+\end_inset
+
+ times, and then 
+\series bold
+Concatenation
+\series default
+ to concatenate 
+\begin_inset Formula $s^{⟨t−1⟩}$
+\end_inset
+
+ and 
+\begin_inset Formula $a^{⟨t⟩}$
+\end_inset
+
+ to compute 
+\begin_inset Formula $e^{\langle t,t'\rangle}$
+\end_inset
+
+, which is then passed through a softmax to compute 
+\begin_inset Formula $α^{⟨t,t'⟩}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Vanishing gradients
+\series default
+ is one of the problems with a basic RNN algorithm (actually, with deep
+ neural nets in general!).
+ Neurons in second hidden layer learn faster than neurons in the first layer,
+ and so on - neurons in deeper layers learn much faster (the first vs the
+ latest hidden layer can learn 100 times slower).
+ We have here an important observation: in at least some deep neural networks,
+ the gradient tends to get smaller as we move backward through the hidden
+ layers.
+ This means that neurons in the earlier layers learn much more slowly than
+ neurons in later layers.
+ Sometimes, there is exploding gradient problem, where gradient in deep
+ nets gets much larger in earlier layers.
+ So gradient in deep nets is very unstable, and it tends to explode or vanish
+ in earlier layers.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Exploding gradient problem
+\series default
+ - for example, let's choose all the weights to the network to be large,
+ say 
+\begin_inset Formula $w_{1}=w_{2}=w_{3}=w_{4}=100$
+\end_inset
+
+.
+ Second, choose biases so that terms 
+\begin_inset Formula $\sigma^{'}(z_{j})$
+\end_inset
+
+ are not too small.
+ That is pretty easy to do, just ensure that each neuron has 
+\begin_inset Formula $z_{j}=0$
+\end_inset
+
+ (so that 
+\begin_inset Formula $\sigma^{'}(z_{j})=0.25$
+\end_inset
+
+ (we are using sigmoid neurons again - however, in sigmoid nets, there is
+ mostly vanishing gradients problem).
+ So, for instance, 
+\begin_inset Formula $z_{1}=w_{1}a_{0}+b_{1}=0$
+\end_inset
+
+.
+ We can achieve this setting by 
+\begin_inset Formula $b_{1}=-100a_{0}$
+\end_inset
+
+.
+ Using the same idea for other biases, when we do this, we see that all
+ terms 
+\begin_inset Formula $w_{j}\sigma^{'}(z_{j})=100x0.25=25$
+\end_inset
+
+.
+ With these choices we got exploding gradient.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Unstable gradient problem
+\series default
+ - fundamental problem here is not much the vanishing or exploding gradient
+ problem.
+ It's that the gradient in early layers is the product of terms from all
+ the later layers.
+ When there are many layers, that is a really unstable situation.
+ The only way all layers can learn at close to the same speed is if all
+ those products of terms come close to balancing out.
+ By default, this is unlikely to happen simply by chance.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Human language can have very long-term dependencies, where it worked at
+ this much earlier can affect what needs to come much later in the sentence.
+ But it turns out the basics RNN it's not very good at capturing very long-term
+ dependencies - an example of 2 sentences:
+\end_layout
+
+\begin_layout Itemize
+The cat ......
+ was ...
+\end_layout
+
+\begin_layout Itemize
+The cats ......
+ were ...
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It might be difficult to get a neural network to realize that it needs to
+ memorize the just see a singular noun or a plural noun, so that later on
+ in the sequence that can generate either was or were, depending on whether
+ it was singular or plural.
+ And notice that in English, this stuff in the middle could be arbitrarily
+ long.
+ 
+\series bold
+RNN forgets.
+ 
+\series default
+In very deep RNN, the gradient (after forward propagation) would have a
+ very hard time to propagate back to effect computations which were done
+ much earlier.
+\end_layout
+
+\begin_layout Standard
+The basic RNN model has many local influences, meaning that the output 
+\begin_inset Formula $\hat{y}^{<3>}$
+\end_inset
+
+ is mainly influenced by values close to 
+\begin_inset Formula $\hat{y}^{<3>}$
+\end_inset
+
+.
+ In other words, an element is influenced much more by close neighbors in
+ the sequence than it is influenced by distant neighbors.
+ The error cannot backpropagate easily.
+\end_layout
+
+\begin_layout Standard
+Vanishing gradients can be mitigated using Hessian Free Optimization - it
+ uses optimizer that can detect directions with a tiny gradient but even
+ smaller curvature.
+ Or, proper initialization of initial weights.
+ Or this with momentum.
+ Or using LSTM for example...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Language modeling
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is one of the most basic and important tasks in natural language processing.
+ Building a language model can be done with RNN as can be seen in the next
+ figure.
+ Then it can be used for generating a text which is similar to training
+ corpus (see corpus in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basic-Terms"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and this is called 
+\series bold
+sequence generation.
+ 
+\series default
+Sequence model models a chance of any particular sequence of words as follows,
+ and so what we like to do is to sample from this distribution to generate
+ novel sequences of words.
+ Sampling from trained RNN is different than training RNN on some corpus.
+\end_layout
+
+\begin_layout Itemize
+There can be 
+\series bold
+word-level language model
+\series default
+ or 
+\series bold
+character-level language model
+\series default
+, based on your vocabulary.
+ Character-level language model has an advantage that there can't be an
+ unknown token, because we are working with the whole alphabet or all possible
+ symbols (in ideal case).
+ But the main disadvantage is that you end up with much longer sequences.
+ Character-level models are not as good as word language models at capturing
+ long range dependencies between how the earlier parts of the sentence also
+ affect the later part of the sentence.
+ And character-level models are more computationally expensive for training.
+ But in some special cases (for example when you need to deal with unknown
+ words a lot) with this increase of computational power these days, some
+ people are using also character-level language models.
+\end_layout
+
+\begin_layout Itemize
+To summarize, in a language model we try to predict the next step based
+ on the knowledge of all prior steps.
+ At time step 
+\begin_inset Formula $t$
+\end_inset
+
+, RNN is estimating 
+\begin_inset Formula $P(y^{<t>}\mid y^{<1>},y^{<2>},…,y^{<t-1>})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/language_model_conditional.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Machine translation building a 
+\begin_inset Quotes eld
+\end_inset
+
+conditional
+\begin_inset Quotes erd
+\end_inset
+
+ language model.
+ It models, for example, probabilities of English words (translation) which
+ depends (conditions) on some input - French words sentence.
+ Green part is basically encoder network, that figured out some representation
+ for the input sequence.
+ One major difference between this and the earlier language modeling problems
+ is rather than wanting to generate a sentence at random, it is needed to
+ try to find the most likely English sentence, (translation).
+ But the set of all English sentences of a certain length is too large to
+ exhaustively enumerate.
+ Therefore a search algorithm is needed - more precise Beam Search, see
+ the next figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For picking the most likely sentence, there is 
+\series bold
+Beam Search 
+\series default
+algorithm.
+ Greed search is very exhaustive and pick only 1 word and move on, Beam
+ search can consider multiple alternatives.
+ There is a parameter 
+\begin_inset Formula $B$
+\end_inset
+
+ (beam width, for example 3), that determines a number of alternatives.
+ If 
+\series bold
+
+\begin_inset Formula $B=1$
+\end_inset
+
+, 
+\series default
+then this is a greedy search algorithm (but this usually finds much worse
+ output sentence).
+ Bigger 
+\begin_inset Formula $B$
+\end_inset
+
+ means usually better output (you consider a lot of possibilities), but
+ it is more computationally expensive.
+ In comparison to BFS or DFS (Breadth/Depth First Search) algorithms, in
+ Beam search it is not guaranteed that the algorithm will find exact maximum
+ for 
+\begin_inset Formula $arg\,max_{y}P(y|x)$
+\end_inset
+
+.
+ BFS and DFS are exact search algorithms.
+ In production, beam parameter 
+\begin_inset Formula $B$
+\end_inset
+
+ is usually 10 or 100, and in research it can be even 1000 or 3000.
+ This is application and domain dependent.
+ Beam search is an approximate search algorithm, which means that it can
+ sometimes output the wrong result.
+ Usually, during / after error analysis, beam width parameter should be
+ increased if the fraction of beam search errors is larger than RNN errors.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/language_modelling_conditional_beam_search1.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The first step of Beam search algorithm for picking the best and the most
+ likely English translation.
+ On the left, there is a dictionary of 10k words (all lowercase, but it
+ is just a detail).
+ We can see a NN fragment which is used by this step of Beam search algorithm
+ (encoding is green, purple is encoding).
+ This NN is trying to evaluate the probability of the first word (output)
+ given the input sequence (in French for instance).
+ Greedy search would pick the most probable one and move on, but Beam search
+ with 
+\begin_inset Formula $B=3$
+\end_inset
+
+ will pick the best 3 candidates (in this example words 'in', 'jane', 'september
+').
+ So, the input sequence is run through encoding network, and then decoding
+ network has softmax output over all 10k possibilities, then from these
+ the algorithm will keep in memory only the top 3.
+ The algorithm continues on the next figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/language_modelling_conditional_beam_search2.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The second step of Beam search algorithm.
+ The algorithm will for each 3 words consider what should be the second
+ word (for each of these 3 words, 10k possibilities, so together 30k possibiliti
+es and again only the top 3 are saved).
+ There is again another fragment of NN, with encoder and decoder parts.
+ So, the second word on output is computed not just from the whole French
+ input 
+\begin_inset Formula $x$
+\end_inset
+
+, but also from the previously outputted word (this is what NN fragment
+ from the figure is doing).
+ But we are not searching only for just the second word, but for the pair
+ <first word, second word>, that is most probable (actually 3 such pairs!),
+ 
+\begin_inset Formula $P(y^{<1>},y^{<2>}|x)$
+\end_inset
+
+.
+ So the algorithm will remember 3 such pairs, not NN - we are using a fragments
+ = multiple instances.
+ In this example, we found that 'september' from the previous step is not
+ very probable (worse than top 3) with any pair, so this 'path' will be
+ excluded.
+ Because 
+\begin_inset Formula $B=3$
+\end_inset
+
+, in each step we need to instantiate 3 copies of NN (a different choices
+ for the first word).
+ But these 3 copies can be very efficiently used for evaluate all 30k choices
+ for the second word.
+ The algorithm continues on the next figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/language_modelling_conditional_beam_search3.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+One more step of Beam search algorithm.
+ After few more steps, hopefully the algorithm will outputs the correct
+ translation (with <EOS> at the end).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Length normalization
+\series default
+ is a small change to the Beam search algorithm that can help to get much
+ better results.
+ By multiplying a lot of small numbers (close to 0), this will result in
+ very very small number.
+ This can be seen in 
+\begin_inset Formula $P(y^{<1>},...,y^{<T_{y}>}|x)=P(y^{<1>}|x)*P(y^{<2>}|x,y^{<1>})*...*P(y^{<T_{y}>}|x,y^{<1>},...,y^{<T_{y-1}>})$
+\end_inset
+
+.
+ Instead of doing 
+\begin_inset Formula $arg\,max_{y}\prod_{t=1}^{T_{y}}P(y^{<t>}|x,y^{<1>},...,y^{<t-1>})$
+\end_inset
+
+, it is better to use logarithm (equivalent, should give the same result,
+ but more numerically stable for computers = they cannot work precisely
+ with floating point numbers): 
+\begin_inset Formula $arg\,max_{y}\boldsymbol{log\,}[\prod_{t=1}^{T_{y}}loP(y^{<t>}|x,y^{<1>},...,y^{<t-1>})]$
+\end_inset
+
+ that results in 
+\begin_inset Formula $arg\,max_{y}\sum_{t=1}^{T_{y}}\boldsymbol{log}\:P(y^{<t>}|x,y^{<1>},...,y^{<t-1>})$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{Because log(a.b)=log(a)+log(b) and log(z) is strictly monotonically
+ increasing function.}
+\end_layout
+
+\end_inset
+
+ If we are using a lot of words, it means a lot of multiplications with
+ small numbers, so this will end up to have lower probability than outputting
+ a small number of words.
+ So this algorithm will tend to output a short sequences.
+ This also holds true for logarithm modification, because they are negative
+ numbers and more words we add, more negative (smaller) the result is.
+ So the last modification is to normalize the result by a number of outputted
+ words (translation) - multiplication by 
+\begin_inset Formula $\frac{1}{T_{y}}$
+\end_inset
+
+ .
+ Or, more soft version normalizing with 
+\begin_inset Formula $\frac{1}{T_{y}^{\alpha}}$
+\end_inset
+
+, where hyperparameter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ can be 0.7 (if 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, we are normalizing with the number of words, if 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+, then we are not normalizing at all, and in practice we want something
+ in between).
+ This normalization significantly reduces the penalty of outputting long
+ sentences and because of hyperparameter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, this is a kind of soft approach.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Word embeddings
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One of key ideas in NLP, it is a way of representing words, so that the
+ algorithm understands analogy between men and women, or king and queen.
+ With these ideas of word embeddings, it is possible to build a neural network
+ and be successful with relatively small training set on some NLP task.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Word representation can be 
+\series default
+(for example, but there are many many algorithms and modifications):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+A vocabulary 
+\series default
+(dictionary) can be used with
+\series bold
+ one-hot vector
+\series default
+.
+ But there is no context between words with this representation - 
+\begin_inset Quotes eld
+\end_inset
+
+apple
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+ are totally different one-hot vectors, and their inner product results
+ in vector of zeros.
+ Also, this representation treats each word as an independent entity.
+ This does not allow algorithms to establish relationships between words,
+ and it is not easy for algorithms to learn to generalize across words.
+ Any inner product (dot product) between any two words is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Also the distance between any two words is the same for all pairs in the
+ vocabulary.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Featurized representation
+\series default
+ - word embedding, see the next figures.
+ The dimension of word vectors is usually smaller than the size of the vocabular
+y.
+ Most common sizes for word vectors ranges between 50 and 400.
+ We cannot guarantee that the individual components of the embeddings are
+ interpretable.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embedding.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Word embeddings via featurized representation example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/embedding_matrix.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Embedding matrix multiplied on some specific one-hot vector, for example
+ for word 'orange' results in embedding vector containing features for word
+ 'orange' which is 
+\begin_inset Formula $(300,1)$
+\end_inset
+
+ dimensional.
+ E is initialized randomly and using gradient descent, and learn all parameters
+ using this 
+\begin_inset Formula $(300,10\,000)$
+\end_inset
+
+ matrix.
+ However, in practice, it is not efficient to multiply matrix 
+\begin_inset Formula $E$
+\end_inset
+
+ by one-hot vector that is mostly a bunch of zeros.
+ In practise, we use specialized function that lookups for a specific column
+ in matrix 
+\begin_inset Formula $E$
+\end_inset
+
+ rather than do the whole multiplication of one-hot with the whole matrix
+ 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_prediction.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Learning word embeddings (from 2003).
+ By the time, newer and simpler algorithms were developed with similar performan
+ce than very complex ones.
+ Word embeddings are computed from 
+\begin_inset Formula $E$
+\end_inset
+
+ multiplied by one-hot vector for a given word.
+ If we have 10,000 words in our dictionary, and 6 words from our sentence,
+ then we have 6 one-hot vectors as well as 6 word embedding vectors.
+ We put these 6 word embeddings vectors to NN, then to softmax (which has
+ 10,000 outputs),
+\series bold
+ for prediction of the next word in a sentence
+\series default
+.
+ What's actually more commonly done is to have a fixed historical window.
+ So for example, you might decide that you always want to predict the next
+ word given say the previous 4 words, where 4 here is a hyperparameter of
+ the algorithm.
+ Then it is possible to deal with arbitrary long sequences, because we are
+ always working with the fixed input sizes.
+ However, more simpler approach is to use a context of just 
+\series bold
+nearby 1 word 
+\series default
+(instead of 4), this is called
+\series bold
+ Skip-gram
+\series default
+ 
+\series bold
+model
+\series default
+.
+ The idea is that we need just 1 word to determine the context (very simple
+ context though).
+ 
+\series bold
+Skip grams are used for learning embeddings (also the last and the next
+ few words, or the last 1 word), and for building a language model, it is
+ better to use the last few words.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+word2vec
+\series default
+ is one of the most popular algorithm to build word embeddings (Mikolov
+ et al, from 2013).
+ Previously (the last figure) there was so called skip-gram model.
+ It is an algorithm for building word embeddings, to be more particular
+ skip-gram is only one version of word2vec, which works well in practice.
+ We come up to with a few pairs of 
+\series bold
+context -> target
+\series default
+ to create our
+\series bold
+ supervised learning problem
+\series default
+.
+ From a given sentence, we randomly pick a word (put it to context), and
+ the randomly pick a word within some window - which can be before or after
+ the picked context word (and put it to target).
+ Skip-gram model is taking as input one word (like 
+\begin_inset Quotes eld
+\end_inset
+
+orange
+\begin_inset Quotes erd
+\end_inset
+
+) and then trying to predict some words skipping a few words from the left
+ or the right side.
+ To predict what comes little bit before or little bit after the context
+ words.
+ Now, it turns out there are a couple of problems with using this algorithm.
+ And the 
+\series bold
+primary problem is computational speed
+\series default
+.
+ In particular, for the softmax model, every time you want to evaluate this
+ probability, you need to carry out a sum over all 10k words in your vocabulary.
+ And maybe 10k isn't too bad, but if you're using a vocabulary of size 100k
+ or a 1M, it gets really slow to sum up over this denominator every single
+ time.
+ There are few solutions to this, for example using a hierarchical softmax
+ classifier.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{The algorithm builds a binary tree for a vocabulary, and eventually
+ you would go down in tree to classify exactly what word it is, so there
+ is no need to SUM over all 10k words - vocab size, in order to make a single
+ classification; this scales as  instead of linear.
+ Each node has a softmax classifier.
+ In practice, the hierarchical softmax classifier doesn't use a perfectly
+ balanced tree or a perfectly symmetric tree, with equal number of words
+ on the left and right sides of each branch.
+ In practise, the more common words are at the top of the tree, while less
+ common words are deeper.}
+\end_layout
+
+\end_inset
+
+ In the original word2vec paper the authors actually had 2 versions of this
+ Word2Vec model.
+ The skip-gram was one, and the other one is called the 
+\series bold
+CBow
+\series default
+ (
+\series bold
+the continuous backwards model
+\series default
+), which takes the surrounding contexts from middle word, and uses the surroundi
+ng words to try to predict the middle word.
+ In the word2vec algorithm, you estimate 
+\begin_inset Formula $P(t\mid c)$
+\end_inset
+
+, where 
+\begin_inset Formula $t$
+\end_inset
+
+ is the target word and 
+\begin_inset Formula $c$
+\end_inset
+
+ is a context word.
+ 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ are chosen from the training set to be nearby words.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_skip_gram_model.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Skip-gram model for learning word embeddings.
+ The green rectangle is basically a simple neural network.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's have an example.
+ Let our dictionary contain 10k words.
+ In word embedding learning, our goal is to build a model which we can use
+ to convert a one-hot encoding of a word into a word embedding.
+ Consider a sentence: 
+\begin_inset Quotes eld
+\end_inset
+
+I almost finished reading the book on machine learning.
+\begin_inset Quotes erd
+\end_inset
+
+ Now consider the same sentence from which we have removed one word, say
+ 
+\begin_inset Quotes eld
+\end_inset
+
+book
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Our sentence becomes: 
+\begin_inset Quotes eld
+\end_inset
+
+I almost finished reading the .
+ on machine learning.
+\begin_inset Quotes erd
+\end_inset
+
+ Now let's kept only the three words before and after this skipped word:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+finished reading the .
+ on machine learning
+\begin_inset Quotes erd
+\end_inset
+
+ Looking at this 7-word window around the 
+\begin_inset Formula $.$
+\end_inset
+
+ if I ask you to guess what this skipped word stands for, you would probably
+ say: 
+\begin_inset Quotes eld
+\end_inset
+
+book
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+paper
+\begin_inset Quotes erd
+\end_inset
+
+.
+ That is how the context words let you predict the word they surround.
+ It's also how the machine can learn that words “book,” “paper,” and “article”
+ have a similar meaning: because they share similar contexts in multiple
+ texts.
+ It turns out that it works the other way around too: a word can predict
+ the context that surrounds it.
+ The piece “finished reading the · on machine learning” is called a skip-gram
+ with window size 
+\begin_inset Formula $7$
+\end_inset
+
+ (
+\begin_inset Formula $3+1+3$
+\end_inset
+
+).
+ By using the documents available on the web, we can easily create hundreds
+ of millions of skip-grams.
+ Let's denote a skip-gram with windows size 5 (see its schema on figure
+ below) like this: 
+\begin_inset Formula $[x_{-2},x_{-1},x,x_{+1},x_{+2}]$
+\end_inset
+
+, where 
+\begin_inset Formula $x$
+\end_inset
+
+ is a word corresponding to skipped word (.), and for example 
+\begin_inset Formula $x_{+1}$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+on
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Formula $x_{-2}$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+reading
+\begin_inset Quotes erd
+\end_inset
+
+.
+ You can see now why the learning of this kind is called self-supervised:
+ the labeled examples get extracted from the unlabeled data such as text.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/skip_gram_model_schema_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schema of skip-gram model with window size 5 and embedding layer of 300
+ units using dataset that consists of 10k samples.
+ It is a fully-connected network, like multi-layer perceptron.
+ The input word is the one denoted as .
+ in the skip-gram example above.
+ The NN has to learn to predict the context words of the skip-gram given
+ the central word.
+ The activation function used in the output layer is softmax, and the cost
+ function is negative log-likelihood.
+ Because of the large number of parameters in the word2vec models, two technique
+s are used to make the computation more efficient: 
+\series bold
+hierarchical softmax 
+\series default
+(this variant uses a binary tree) and 
+\series bold
+negative
+\series default
+ 
+\series bold
+sampling
+\series default
+ (the idea is only to update a random sample of all outputs per iteration
+ of gradient descent).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Negative sampling 
+\series default
+(Mikolov et al, from 2013).
+ A new learning problem must be defined - given a pair of 2 words, we are
+ going to predict if this is a context-target pair.
+ This algorithm will generate for a given word multiple rows - one word
+ from the sentence (within some window, for instance +-10 words) with target=1,
+ and the other word randomly chosen from a dictionary; the algorithm will
+ put on this row target=0.
+ To summarize, the way we generated this dataset is that the algorithm will
+ pick a context word and then a target word from a given sentence (this
+ is the first row, it is positive example).
+ And then, for 
+\begin_inset Formula $k$
+\end_inset
+
+ times (from original paper, authors recommended for smaller dataset to
+ be between 5 and 20, and for larger dataset they recommended to be between
+ 2 and 5) algorithm will take the same context word and pick random words
+ from a dictionary and label all those as zero.
+ Those will be negative examples.
+ It's okay if just by chance, one of those words we picked at random from
+ the dictionary happens to appear in the window.
+ It is called negative sampling because for each positive example we choose
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ negative examples.
+ Instead of having 10k classes and softmax layer, we use a layer with 10k
+ binary classification nodes (easier training), and in each iteration we
+ are only going to train 
+\begin_inset Formula $k+1$
+\end_inset
+
+ of these nodes.
+ So we will model this as a logistic regression: 
+\begin_inset Formula $P(y=1|c,t)=\sigma(\theta_{t}^{T}e_{c})$
+\end_inset
+
+, where c is context word, 
+\begin_inset Formula $t$
+\end_inset
+
+ is target word, 
+\begin_inset Formula $\theta_{t}^{T}$
+\end_inset
+
+ is parameter for each target word, 
+\begin_inset Formula $e_{c}$
+\end_inset
+
+is parameter (the embedding vector) for each context word.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Positive samples
+\series default
+ can be obtained by the standard skip-gram method, where we sample the input
+ sentence randomly for a context word and then we sample in close proximity
+ (using a window of +-5 words) to the target for another word (which we
+ label as target).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Negative samples 
+\series default
+can be obtained using the same steps, except for the target word we choose
+ a random word from the vocabulary (not related with actual target).
+\end_layout
+
+\begin_layout Itemize
+Then, there is a supervised learning problem.
+ There is a pair context-word on the input previously obtained), and has
+ to predict target label.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_negative_sampling.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Negative sampling in word embeddings.
+\begin_inset Formula $e_{c}$
+\end_inset
+
+is an embedding vector or context word, and 
+\begin_inset Formula $t$
+\end_inset
+
+ means possible target.
+ In this problem, we will find a logistic regression model.
+ We have 
+\begin_inset Formula $k:1$
+\end_inset
+
+ ratio of negative to positive examples.
+ NN for this problem is build in the following way: on the input, there
+ is a word 'orange'.
+ One-hot vector is created with usage of our dictionary.
+ Next, the embedding vector is created from this word, and then we have
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ (size of our dictionary) possible logistic regression models.
+ One such model is a binary classifier corresponding to whether a given
+ context word coresponds to target 'juice' or not, and similarly for all
+ such classifiers.
+ So, word2vec was very computationally expensive, and giant softmax (in
+ this example of 10,000 classes) was replaced by many binary classifiers
+ (in this example 10,000 of them) each of which is quite cheap to compute.
+ And on every iteration, we're only going to train 
+\begin_inset Formula $k+1$
+\end_inset
+
+ of them (in this example 5) - 
+\begin_inset Formula $k$
+\end_inset
+
+ negative examples and 1 positive example.
+ And this is why the computation cost of this algorithm is much lower because
+ we are updating 
+\begin_inset Formula $k+1$
+\end_inset
+
+ let's just say units, (
+\begin_inset Formula $k+1$
+\end_inset
+
+ binary classification problems).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+GloVe word vectors
+\series default
+ (Global vectors for word representation), is another way of computing word
+ embeddings (Pennington et al, from 2014).
+ It is even simpler algorithm than Negative sampling.
+ It is not used so much; only sometimes, because of its simplicity.
+ The authors defined 
+\begin_inset Formula $X_{ij}=X_{ji}$
+\end_inset
+
+ which is a number of times 
+\begin_inset Formula $i$
+\end_inset
+
+ (possible target word) appears in context of 
+\begin_inset Formula $j$
+\end_inset
+
+ (context word).
+ And vice versa also works because it is symmetric relation.
+ This algorithms do not sample word pairs by picking words that appeared
+ in close proximity to each other, as word2vec uses.
+ Instead, counting of these sampled pairs is explicit.
+ It iterates through the training set and counts how many times target word
+ appears in proximity of context word.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_glove.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A model of GloVe algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+One of the most fascinating properties of word embeddings is that they can
+ also help with 
+\series bold
+analogy reasoning
+\series default
+.
+ An interesting property of these word embeddings (vectors) is that we can
+ subtract them, for example 
+\begin_inset Formula $e_{man}-e_{woman}=\begin{array}{c}
+\begin{bmatrix}-2\\
+0\\
+0\\
+0
+\end{bmatrix}\end{array}$
+\end_inset
+
+ if our embeddings has 4 dimensions.
+ And let's say that the first dimension was 
+\begin_inset Formula $gender$
+\end_inset
+
+, so this means that the most difference between 
+\begin_inset Formula $man$
+\end_inset
+
+ and 
+\begin_inset Formula $woman$
+\end_inset
+
+ is 
+\begin_inset Formula $gender$
+\end_inset
+
+.
+ Then we can perform: 
+\begin_inset Formula $e_{man}-e_{woman}\approx e_{king}-e_{w}$
+\end_inset
+
+ and find word 
+\begin_inset Formula $e_{w}$
+\end_inset
+
+ as follows: 
+\begin_inset Formula $argmax_{w}\,sim(e_{w},e_{king}-e_{man}+e_{woman})$
+\end_inset
+
+ and hopefully find word 
+\begin_inset Quotes eld
+\end_inset
+
+queen
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Similarity 
+\series default
+(for instance from the previous example) between 2 word embeddings (vectors),
+ can be calculated as
+\series bold
+ cosine similarity
+\series default
+ (one of the most used one), which is its multiplication (inner product)
+ divided by the Euclidean lengths:
+\series bold
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula 
+\begin{equation}
+sim(u,v)=\frac{u^{T}v}{||u||_{2}||v||_{2}}\label{eq:cosine_similarity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Debiasing word vectors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example for intuition: if we have a vector 
+\begin_inset Formula $g$
+\end_inset
+
+ which roughly represents a gender (as a result of 
+\begin_inset Formula $e_{man}-e_{woman}$
+\end_inset
+
+ for example, or using more of such vectors, like 
+\begin_inset Formula $e_{boy}-e_{girl}$
+\end_inset
+
+, and computation of average from these results).
+ Now, words 
+\begin_inset Quotes eld
+\end_inset
+
+John
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Ronaldo
+\begin_inset Quotes erd
+\end_inset
+
+ will be closer to this vector 
+\begin_inset Formula $g$
+\end_inset
+
+ as negative values, and words 
+\begin_inset Quotes eld
+\end_inset
+
+Marie
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Katy
+\begin_inset Quotes erd
+\end_inset
+
+ will be closer to this vector 
+\begin_inset Formula $g$
+\end_inset
+
+ and will be positive values.
+ Now, similarity between words 
+\begin_inset Quotes eld
+\end_inset
+
+literature
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ vector is a positive number, and similarity between 
+\begin_inset Quotes eld
+\end_inset
+
+engineer
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ are negative values.
+ We don't want that literature is somehow more similar to female gender,
+ and engineer is more similar to male gender.
+ There is a way of neutralizing such bias (in this example, for non-gender
+ specific words).
+\end_layout
+
+\begin_layout Itemize
+If you're using for example a 50-dimensional word embedding, the 50 dimensional
+ space can be split into 2 parts: the 
+\series bold
+bias-direction
+\series default
+ 
+\begin_inset Formula $g$
+\end_inset
+
+ (a vector that represents 
+\begin_inset Quotes eld
+\end_inset
+
+gender
+\begin_inset Quotes erd
+\end_inset
+
+ for instance - as been in the example above), and the remaining 49 dimensions,
+ which we'll call 
+\begin_inset Formula $g_{⊥}$
+\end_inset
+
+.
+ In linear algebra, we say that the 49 dimensional 
+\begin_inset Formula $g_{⊥}$
+\end_inset
+
+ is perpendicular ("othogonal") to 
+\begin_inset Formula $g$
+\end_inset
+
+, meaning it is at 90 degrees to 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ The neutralization step takes a vector such as 
+\begin_inset Formula $e_{receptionist}$
+\end_inset
+
+ and zeros out the component in the direction of 
+\begin_inset Formula $g$
+\end_inset
+
+, giving us 
+\begin_inset Formula $e_{receptionist}^{debiased}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Given an input embedding 
+\begin_inset Formula $e$
+\end_inset
+
+, the following formulas are used to compute 
+\begin_inset Formula $e^{debiased},$
+\end_inset
+
+where 
+\begin_inset Formula $e^{bias\,component}$
+\end_inset
+
+ (there is a L2 / Frobenius form powered by 2 in the denominator) is the
+ projection of 
+\begin_inset Formula $e$
+\end_inset
+
+ onto the direction 
+\begin_inset Formula $g$
+\end_inset
+
+ (so 
+\begin_inset Formula $e$
+\end_inset
+
+ is positively correlated with the bias axis 
+\begin_inset Formula $g$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{bias\,component}=\frac{e.g}{||g||_{2}^{2}}*g\label{eq:bias_component_word_embeddings}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{debiased}=e-e^{bias\,component}\label{eq:debiased_vector_word_embeddings}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Equalization 
+\series default
+is another thing that needs to be done, so that debiasing algorithm can
+ be applied to pairs like 
+\begin_inset Quotes eld
+\end_inset
+
+actress
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+actor
+\begin_inset Quotes erd
+\end_inset
+
+.
+ So, equalization is applied to pairs of words that you might want to have
+ differ only through, for example, the gender property.
+\end_layout
+
+\begin_layout Itemize
+As a concrete example, suppose that "actress" is closer to "babysit" than
+ "actor." By applying neutralizing to "babysit" we can reduce the gender-stereoty
+pe associated with babysitting.
+ But this still does not guarantee that "actor" and "actress" are equidistant
+ from "babysit." The equalization algorithm takes care of this.
+ So the key idea behind equalization is to make sure that a particular pair
+ of words are equidistant from the 49-dimensional 
+\begin_inset Formula $g_{⊥}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_equalization.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An intuition about equalization for debiasing of word embeddings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/word_embeddings_equalization_formulas.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Equalization formulas for debiasing of word embeddings.
+ So as first, mean is computed (1).
+ Then the projections of the mean over the bias axis (2) and then orthogonal
+ axis (3).
+ Then projections of embedding words over the bias axis (4 and 5).
+ After that, adjust the bias part of the last resulting projections (6 and
+ 7) which will be debiased by equalizing resulting adjusted vectors to the
+ sum of their corrected projections (8 and 9).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+There exist a multiple different
+\series bold
+ basic blocks 
+\series default
+(units):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+A simple RNN unit
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_simple_unit.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A simple RNN unit example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gated Recurrent Unit (GRU)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A solution (Cho et al, and Chunk et al, both papers from 2014) to prevent
+ gradient vanishing and it is 
+\series bold
+much better with capturing long range connections
+\series default
+ (as well as LSTM is).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+There is a memory cell 
+\series default
+
+\begin_inset Formula $c^{<t>}=a^{<t>}$
+\end_inset
+
+ (which will help to remember to capture longer-range connections) and a
+ 
+\series bold
+gate unit
+\series default
+ 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ which is a value between 0 and 1 calculated as 
+\begin_inset Formula $\tilde{c}^{<t>}=tanh(w_{c}[c,x^{<t>}]+b_{c})$
+\end_inset
+
+ but with sigmoid (which is mostly very close to 0 or very close to 1 )
+ instead of tanh activation function.
+ 'u' 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ in stands for an update rule.
+ The actual value of 
+\begin_inset Formula $c^{<t>}$
+\end_inset
+
+is influenced by 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+- see for yourself, what is the result when it is 0 or 1 (well, not exactly,
+ just approximately, it is result of sigmoid):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+c^{<t>}=\varGamma_{u}.\tilde{c}^{<t>}+(1-\varGamma_{u}).c^{<t-1>}\label{eq:gru_memory_cell}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+so when 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ is 
+\begin_inset Formula $1$
+\end_inset
+
+, then 
+\begin_inset Formula $c^{<t>}=\tilde{c}^{<t>}$
+\end_inset
+
+which is updating, or when 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+, then 
+\begin_inset Formula $c^{<t>}=c^{<t-1>}$
+\end_inset
+
+so do not update 
+\begin_inset Formula $c^{<t>}$
+\end_inset
+
+, keep remembering the old value.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Value of 
+\begin_inset Formula $c^{<t>}$
+\end_inset
+
+is maintained if the update is not performed, and therefore gradient vanishing
+ problem is not present here.
+ At each time step (layer), we will consider (actually, update gate will
+ determine this) whether to update the memory cell unit value with a new
+ value, or not.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_gru.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A simplified GRU unit in RNN.
+ 
+\begin_inset Formula $c^{<t>}$
+\end_inset
+
+, 
+\begin_inset Formula $\Gamma_{u}$
+\end_inset
+
+, and 
+\begin_inset Formula $\tilde{c}^{<t>}$
+\end_inset
+
+ all have the same dimension.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Full version
+\begin_inset Quotes erd
+\end_inset
+
+ of GRU changes 
+\begin_inset Formula $\tilde{c}^{<t>}$
+\end_inset
+
+ a bit, it is computed as 
+\begin_inset Formula $\tilde{c}^{<t>}=tanh(w_{c}[\Gamma_{r}.c^{<t-1>},x^{<t>}]+b_{c})$
+\end_inset
+
+, where 
+\begin_inset Formula $\Gamma_{r}$
+\end_inset
+
+ is relevance gate (how relevant is 
+\begin_inset Formula $c^{<t-1>}$
+\end_inset
+
+ to computing the next update candidate 
+\begin_inset Formula $\tilde{c}^{<t>}$
+\end_inset
+
+) and is calculated similarly as 
+\begin_inset Formula $\Gamma_{u}$
+\end_inset
+
+: 
+\begin_inset Formula $\Gamma_{r}=sigmoid(w_{r}[c^{<t-1>},x^{<t>}]+b_{r})$
+\end_inset
+
+.
+ Both 
+\begin_inset Formula $c^{<t>}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ are calculated as before.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Long Short-term Memory (LSTM) unit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Slightly more powerful and more general version of GRU (Hochreiter and Schmidhub
+er, from 1997).
+\end_layout
+
+\begin_layout Itemize
+The idea is, you want to make that short term memory lasts for a long time.
+ This is done by creating special modules that are designed to allow information
+ to be gated in, and then information to be gated out 
+\bar under
+when needed
+\bar default
+.
+ And in the intermediate period, the gate is closed, so the stuff that arrives
+ in the intermediate period doesn't interfere with the remembered state.
+\end_layout
+
+\begin_layout Itemize
+A memory cell 
+\begin_inset Formula $c^{<t>}\neq a^{<t>}$
+\end_inset
+
+ and there is no relevance gate 
+\begin_inset Formula $\varGamma_{r}$
+\end_inset
+
+.
+ Also, instead of one update gate 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+, there are 2 gates: update gate 
+\begin_inset Formula $\varGamma_{u}$
+\end_inset
+
+ and forget gate 
+\begin_inset Formula $\varGamma_{f}$
+\end_inset
+
+.
+ There is also output gate 
+\begin_inset Formula $\varGamma_{o}$
+\end_inset
+
+ which is used as follows: 
+\begin_inset Formula $a^{<t>}=\varGamma_{o}.c^{<t>}$
+\end_inset
+
+ (element-wise multiplication).
+ All gate values are computed using 
+\begin_inset Formula $a^{<t-1>}$
+\end_inset
+
+ and 
+\begin_inset Formula $x^{<t>}$
+\end_inset
+
+, but they have different weights and biases.
+ That's all.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Forget gate
+\series default
+ - for the sake of this illustration, lets assume we are reading words in
+ a piece of text, and want use an LSTM to keep track of grammatical structures,
+ such as whether the subject is singular or plural.
+ If the subject changes from a singular word to a plural word, we need to
+ find a way to get rid of our previously stored memory value of the singular/plu
+ral state.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Update gate
+\series default
+ - we forget that the subject being discussed is singular, we need to find
+ a way to update it to reflect that the new subject is now plural.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Updating the cell
+\series default
+ - to update the new subject we need to create a new vector of numbers that
+ we can add to our previous cell state (this is 
+\begin_inset Formula $\tilde{c}^{<t>}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Output gate
+\series default
+ - to decide which outputs we will use.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_lstm.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+LSTM unit with calculation of each part.
+ Math formulas are easier and more understandable than diagrams, but here
+ are both.
+ There exist many variations to LSTM, one of them is so called 
+\series bold
+peephole connection 
+\series default
+as detailed in the figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/lstm_cell.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+LSTM-cell.
+ This tracks and updates a "cell state" or memory variable 
+\begin_inset Formula $c^{⟨t⟩}$
+\end_inset
+
+ at every time-step, which can be different from 
+\begin_inset Formula $a^{⟨t⟩}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+LSTM were historically much earlier, and GRU was probably created as a simplific
+ation to LSTM.
+ Neither of them is superior to the other one - which one to use depends
+ on an application.
+ However, since GRU is simpler, it is easier to build much bigger model
+ with it = so it also runs computationally much faster, but LSTM is more
+ powerful and flexible.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Bidirectional RNNs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+These models let you at a point in time to take an information from both
+ - earlier and later in the sequence.
+\end_layout
+
+\begin_layout Itemize
+This consists of basically 2 activation layers, one is in forward direction
+ and the other one is in backward direction (both are a part of the forward
+ propagation! No gradients are computed here, and weights are not updated
+ when computing activations here - they are called forward 
+\begin_inset Formula $\overrightarrow{a^{<t>}}$
+\end_inset
+
+ and backward 
+\begin_inset Formula $\overleftarrow{a^{<t>}}$
+\end_inset
+
+ activations) - so no feedback or loops are there - BRNN is still 
+\series bold
+acyclic graph
+\series default
+!
+\end_layout
+
+\begin_layout Itemize
+After computing both forward and backward activations, we can output a predictio
+n as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\hat{y}^{<t>}=g(W_{y}[\overrightarrow{a^{<t>}},\overleftarrow{a^{<t>}}]+b_{y})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Activation block can be standard RNN, GRU, or LSTM units.
+\end_layout
+
+\begin_layout Itemize
+A disadvantage of BRNNs is that we need to have the entire sequence available
+ before we can compute a predicted output.
+ So, for example, for (real-time) speech recognition problem, we would need
+ to wait for the person to stop talking before we can process the data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/rnn_brnn.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bidirectional RNN architecture.
+ A simple block can be either a simple RNN block, GRU, or LSTM (this one
+ is often used).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Standard ANNs may have over hundred hidden layers.
+ RNNs use far less layers, even 3 hidden layers is considered as deep.
+ Because of the time dimension, these networks can already get quite big
+ even if you have just a small number of layers.
+ And you don't usually see these stacked up to be like 100 layers.
+ One thing that can be seen sometimes is that recurrent layers are stacked
+ on top of each other.
+ Or, after a few RNN layers, and then a bunch of layers not connected horizontal
+ly.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sequence to Sequence architectures
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sequence-to-sequence learning (seq2seq learning) is a generalization of
+ the sequence labeling problem.
+ Input list of a feature vectors (for example words) can have different
+ length than list of labels (may be also words, for example in machine translati
+on).
+ Many seq2seq learning problems are currently (2019) best solved by neural
+ networks.
+ These architectures all have 2 parts: an encoder an a decoder.
+\end_layout
+
+\begin_layout Itemize
+These models are basically 
+\series bold
+many-to-many RNNs 
+\series default
+where the input and 
+\series bold
+output sequences have different lengths
+\series default
+.
+ Inputs are processed by RNN called 
+\series bold
+encoder
+\series default
+.
+ RNN then offers a vector that represents the input sentence (to encoder
+ which can be RNN or CNN or some other architecture - its role is to read
+ the input and to generate some sort of state that can be seen as a numerical
+ representation of the meaning of the input the machine can work with -
+ usually some vector / matrix of real numbers - this vector / matrix is
+ called 
+\series bold
+embedding
+\series default
+ of the input).
+ After that, a 
+\series bold
+decoder
+\series default
+ 
+\series bold
+network
+\series default
+ follows.
+ This one takes as input the encoding output by the encoder network (so,
+ its input is an embedding), and then can be trained to output the translation
+ one word at a time until eventually it outputs say, the end of sequence
+ or end the sentence token upon which the decoder stops = so decoder is
+ capable of generating a sequence of outputs, starting with some 
+\bar under
+start of sequence
+\bar default
+ input feature vector (usually all zeroes) 
+\begin_inset Formula $x^{(0)}$
+\end_inset
+
+ to produce the first output 
+\begin_inset Formula $y^{(1)}$
+\end_inset
+
+, update its state by combining the embedding and this input 
+\begin_inset Formula $x^{(0)}$
+\end_inset
+
+, and then uses generated output 
+\begin_inset Formula $y^{(1)}$
+\end_inset
+
+ as its next input 
+\begin_inset Formula $x^{(1)}$
+\end_inset
+
+.
+ Dimensionality of 
+\begin_inset Formula $y^{(t)}$
+\end_inset
+
+ can be the same as dimensionality of 
+\begin_inset Formula $x^{(t)}$
+\end_inset
+
+, however it is not strictly necessary.
+\end_layout
+
+\begin_layout Itemize
+Both encoder and decoder are trained simultaneously using the training data.
+ The errors at the decoder output are propagated to the encoder via backpropagat
+ion.
+\end_layout
+
+\begin_layout Itemize
+They are useful for everything from machine translation to speech recognition.
+ Given enough for example pairs of English and French sentences, translation
+ will work decently well.
+ This also works well on image captioning (input image -> output sentence)
+ - CNN (encoder) + RNN (decoder).
+\end_layout
+
+\begin_layout Itemize
+More accurate predictions can be obtained using an architecture with 
+\series bold
+attention
+\series default
+.
+ Attention mechanism is implemented by an additional set of parameters that
+\series bold
+ combine some information from the encoder (
+\series default
+in RNNs, this information is the list of state vectors of the last recurrent
+ layer from all encoder time steps) 
+\series bold
+and the current state of the decoder
+\series default
+ 
+\series bold
+to generate the label.
+
+\series default
+ That allows for even better retention of long-term dependencies than provided
+ by gated units and bidirectional RNN.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Convolutional Neural Networks
+\end_layout
+
+\begin_layout Itemize
+They are normal ANN, with some hierarchical structure, and are very deep
+ usually - even 10 or 20 hidden layers.
+ The layers have fixed structure of connections.
+ Instead of matrices of weights, here are convolutional cores (some floating
+ point numbers, but they are basically still normal weights).
+\end_layout
+
+\begin_layout Itemize
+It can be said, that a CNN is a special kind of FFNN (feed-forward neural
+ network) that significantly reduces the number of parameters in a deep
+ neural network with many units without losing too much in the quality of
+ the model.
+\end_layout
+
+\begin_layout Itemize
+Original idea is from 1970s, but the seminal paper establishing modern subject
+ of convolutional networks was in 1998 (Yann LeCun, Leon Bottou, Yoshua
+ Bengio, and Patrick Hattner.
+\end_layout
+
+\begin_layout Itemize
+They use 3 basic ideas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+local receptive fields
+\series default
+: we make connections in small, localized regions of the input image (because
+ CNNs are mostly used in image classification problems) - instead of a vertical
+ line of neurons, where each input pixel was connected to every hidden neuron
+ as it was done in traditional feed-forward neural networks.
+ So, that region in the input image is called the local receptive field
+ for the hidden neuron - a little window on the input pixels.
+ Each connection learns a weight, and a hidden neuron learns an overall
+ bias as well.
+ We are performing sliding of the local receptive field across the entire
+ input image, for each local receptive field there is a different hidden
+ neuron in the first hidden layer.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+shared weights
+\series default
+: as been said above, each hidden neuron has a bias and 
+\begin_inset Formula $n$
+\end_inset
+
+ weights connected to its local receptive field (if, for example, we are
+ taking 5x5 pixels as our region, then it would mean that 
+\begin_inset Formula $n=25$
+\end_inset
+
+).
+ The same weights and bias are used for each hidden neuron.
+ This means, that all the neurons in the first hidden layer detect exactly
+ the same feature, just at different locations in the input image.
+ Which makes sense.
+ Suppose, that weights and bias are such that the hidden neuron can pick
+ out, say, a vertical edge in a particular local receptive field.
+ This ability is also likely to be useful at other places in the image.
+ So it is useful to apply the same feature detector (feature - in this meaning,
+ it is some kind of input pattern that will cause the neuron to activate)
+ everywhere in the image.
+ CNNs are well adapted to the translation invariance of images.
+ The shared weights and bias are often said to define a 
+\series bold
+kernel 
+\series default
+or 
+\series bold
+filter
+\series default
+ (=feature map).
+ There can be, and mostly are, in one convolutional layer a several different
+ feature maps.
+ So, for example, if we have 3 feature maps, each has 5x5 shared weights
+ and a single shared bias, the result is that the network can detect 3 different
+ kinds of features, with each feature being detectable across the entire
+ image.
+ The advantage of sharing weights and biases is also that it greatly reduces
+ the number of parameters involved in a CNN.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+pooling (layers)
+\series default
+: these are usually used immediately after convolutional layers.
+ They simplify the information in the output from the convolutional layer.
+ As mentioned above, convolutional layer usually involves more than a single
+ feature map.
+ WE apply pooling (for example max-pooling) to each feature map separately.
+ We can think of max-pooling as a way for the network to ask whether a given
+ feature is found anywhere in a region of the image.
+ It then throws away the exact positional information.
+ The intuition is that once a feature has been found, its exact location
+ isn't as important as its rough location relative to other features.
+ This also helps to reduce the number of parameters needed in later layers.
+ L2 pooling is another technique, where we take the square root of the sum
+ of the squares of activations in some region.
+ The details are different, but the intuition is similar to max-pooling
+ - it is also a way of condensing information from the convolutional layer.
+ Choosing which pooling to use is another hyper-parameter of the network.
+ After convolutional and pooling layers (more such ones, as a cascade),
+ there can be eventually for example a fully-connected layer - so from max-poole
+d layer, there is a connection to every one of output neurons.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We can have the output (like what is there) of some image, but also on a
+ particular pixel!
+\end_layout
+
+\begin_layout Itemize
+There are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Convolutional layers
+\series default
+,
+\series bold
+ 
+\series default
+shortly 
+\series bold
+Conv
+\series default
+ (good thing is to use relatively small convolutional cores - M.
+ Hradis).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They are randomly initialized, and ANN will learn them automatically.
+ For decades, CV researchers had hand-crafted filters like this, but their
+ results were not so good as ones from CNNs.
+\end_layout
+
+\begin_layout Itemize
+In fact, using convolutional layers greatly reduces the number of parameters
+ in those layers, making the learning problem much easier.
+ If you use ReLU as the activation function, you can even speed up training
+ (in comparisonm with sigmoid activation functions, the speedup can be 3-5
+ times).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+There are two main advantages of convolutional layers over just using fully
+ connected layers - parameter sharing 
+\series default
+(less parameters to learn - so it also reduces overfitting - a feature detector,
+ such as vertical edge detector, that is useful in 1 part of the image is
+ probably useful in another part of the image; so it allows a feature detector
+ to be used in multiple locations throughout the whole input image/volume)
+ and 
+\series bold
+sparsity of connections 
+\series default
+(in each layer, each output value depends only on a small number of inputs
+ - activations from a previous layer).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dropout applied on these layers
+\series default
+ - it is possible, but in fact there's no need: the convolutional layers
+ have considerable inbuilt resistance to overfitting.
+ The reason is that the shared weights mean that convolutional filters are
+ forced to learn from across the entire image.
+ This makes them less likely to pick up on local idiosyncrasies (=features/pecul
+iarities) in the training data, so
+\series bold
+ there is less need to apply other regularizers
+\series default
+, such as dropout.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pooling layers
+\series default
+, shortly 
+\series bold
+Pool
+\series default
+ (for reducing size of the input and thus 
+\series bold
+speeding up the computation
+\series default
+).
+ Hyperparameters of these layers are: filter size (usually equals to 2 or
+ 3), stride (usually equals to 2), and a type of pooling layer - padding
+ is rarely used.
+ Otherwise, there are no parameters to learn.
+ There are 2 types of pooling layers:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+average - take an average value from a given region of an input.
+\end_layout
+
+\begin_layout Itemize
+max pooling - take a max number from a given region of an input.
+ This kind of pooling layer is used more often than the previous one.
+ However, in a very deep neural network, some people use average pooling
+ layer instead.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Fully connected layers
+\series default
+, shortly 
+\series bold
+FC.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Why traditional ANN are not enough? Because they would work with information
+ which is not sequentially near by.
+ It’s like I have a bunch of separated pixels - it is much harder to say
+ what is on image.
+ Also, if you implement a system for speech recognition, the word ’hello’
+ can be told in the beginning, end, in the middle, it does not matter.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Convolutional kernels
+\series default
+ - dimensions (shape also depends - if I want to detect SPZ in cars, then
+ horizontal shape is a good idea), step (stride), number of kernels, padding
+ or the input space.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/convolution_operation_on_rgb_image.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of convolution operation with 3x3x3 kernel on RGB image.
+ The last dimension is called 
+\series bold
+channel
+\series default
+ and must be the same in an input image and corresponding kernel.
+ The result is then 4x4 dimensional (no channels).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/convolutional_layer_example.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a simple convolution layer with 2 filters.
+
+\series bold
+ We can use multiple filters
+\series default
+ (stacking them), and then we would have 'channels' on the output (for example,
+ if we would like to apply horoizontal and also vertical filters on an input).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/convolutional_layer_nr_lof_parameters.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of parameters number in 1 layer consisting of 10 kernels.
+ A nice thing about this is, that no matter how big the input image is (could
+ be 1,000 x 1,000 or 5,000 x 5,000 pixels), but the number of parameters
+ you have still remains fixed as 280.
+ And you can use these ten filters to detect features, vertical edges, horizonta
+l edges maybe other features anywhere even in a very, very large image is
+ just a very small number of parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Convolutional operation vs
+\series default
+ 
+\series bold
+cross-correlation
+\series default
+: convolution is when we flip (by diagonal) a filter (and this operation
+ is 
+\bar under
+associative
+\bar default
+ then, which can be useful for some signal processing problems), but in
+ deep learning literature, the name 
+\series bold
+convolution 
+\series default
+is used even without any flipping and we do not use cross-correlation (in
+ deep learning we don't care about this operation being associative).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+1x1 Convolutions
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An idea from 2013 sometimes also called as Network in Network.
+ Very influential even it is not so widely used, this idea has been inspirationa
+l also for Inception Network.
+\end_layout
+
+\begin_layout Itemize
+You basically multiply the whole input matrix by a number.
+ The trick is, when more channels are used.
+ Then it is multiplication by 1 number, by on each channel (the same position)
+ and the ReLU (for instance) activation function is used.
+\end_layout
+
+\begin_layout Itemize
+Basically an idea is to have a fully connected neural network that applies
+ to each channel and outputs with a dimension equal to the number of filters.
+\end_layout
+
+\begin_layout Itemize
+If you need to shrink width and height, you can use pooling layer.
+ If you want to reduce number of channels (but also increase, or no change
+ at all), you can use 1x1 convolutions.
+ For example, input is 28x28x192 and you want to have on output 28x28x32.
+ Then if you use 1x1x192 convolution (32 such units and it needs to have
+ the same number of channels as the input), it will make desirable output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_1x1convolution.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1x1 Convolution on a simple 2d image and on an input with 32 channels.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Padding
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A modification that needs to be done to traditional kernel operation.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: if you take 6x6 matrix and kernel of size 3x3, after convolution operation,
+ you get 4x4 matrix as a result.
+ Because the number of positions for a convolutional filter (=kernel) is
+ sort of 4x4 possible positions.
+ (if you take 
+\begin_inset Formula $n\,x\,n$
+\end_inset
+
+ image, and 
+\begin_inset Formula $f\,x\,f$
+\end_inset
+
+ kernel, the output is 
+\begin_inset Formula $n-f+1\,x\,n-f+1$
+\end_inset
+
+ (so called 
+\series bold
+valid convolution
+\series default
+).
+ So every time you apply convolutional operator, an input (image) 
+\series bold
+shrinks
+\series default
+.
+ If you have a very deep net, this is a bad thing because you don't want
+ to shrink your image after each layer, resulting in shrinking an image
+ too much.
+ Padding help to prevent this shrinking.
+ If you pad the whole image by 1 pixel in each of 4 directions (additional
+ border of 1 pixel all around the edges), no shrinking will happen (for
+ this case though).
+ 
+\end_layout
+
+\begin_layout Itemize
+How much padding to stop shrinking? 
+\begin_inset Formula $n+2p-f+1\,x\,n+2p-f+1$
+\end_inset
+
+ (so called 
+\series bold
+same convolution 
+\series default
+= input and output size are the same) where 
+\begin_inset Formula $p$
+\end_inset
+
+ is padding level, in the previous example it was 
+\begin_inset Formula $p=1$
+\end_inset
+
+, so border of 1 pixel.
+ So 
+\begin_inset Formula $p=\frac{f-1}{2}$
+\end_inset
+
+ (from the previous definition) is a way to make same convolution.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ is almost always odd number (1 dimension of filter) - probably because
+ you can have a 
+\begin_inset Quotes eld
+\end_inset
+
+central
+\begin_inset Quotes erd
+\end_inset
+
+ pixel with odd filter, and also this equation of 
+\begin_inset Formula $p$
+\end_inset
+
+ would need some modification.
+\end_layout
+
+\begin_layout Itemize
+You pad usually with zeros.
+\end_layout
+
+\begin_layout Itemize
+Padding is helpful with larger filters, because it allows them to better
+ 
+\begin_inset Quotes eld
+\end_inset
+
+scan
+\begin_inset Quotes erd
+\end_inset
+
+ the boundaries of the image.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Strided convolutions
+\series default
+ - steps for which convolution filter is moving can be higher than 1.
+ For example 
+\begin_inset Formula $stride=2$
+\end_inset
+
+ to move always by 2 steps.
+ But with this, you also 
+\series bold
+shrink
+\series default
+ an input.
+ 
+\begin_inset Formula $floor(\frac{n+2p-f}{S}+1)\,x\,floor(\frac{n+2p-f}{S}+1)$
+\end_inset
+
+ where 
+\begin_inset Formula $S$
+\end_inset
+
+ is 
+\begin_inset Formula $stride$
+\end_inset
+
+ and 
+\begin_inset Formula $floor$
+\end_inset
+
+ is truncation of float number to get an integer.
+\end_layout
+
+\begin_layout Itemize
+Image classification and relative problems:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Further and further it goes (next and next layer), the lower resolution
+ the image has.
+ And this is done mostly by pooling layer (max/mean operations).
+ Max-pooling - from the nearby pixels, take only max value to the output.
+\end_layout
+
+\begin_layout Itemize
+In images it goes from high-res pixels, to fine features (edges, circles,….)
+ to coarse features (noses, eyes, lips, … on faces), then to the fully connected
+ layers that can identify what is in the image
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.quora.com/Is-machine-learning-anything-more-than-an-automated-stat
+istician}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+They are less prune to overfitting, than normal NN.
+ This is because of convolutional cores, which see many input samples.
+\end_layout
+
+\begin_layout Itemize
+They fit good to problems which have some structure, some signal - sound,
+ images for instance (but not only to these families of problems of course).
+ For example, if we would reorder (in consistent way = for every image,
+ the same reorder) some input data, then the classical neural network does
+ not see the difference.
+ But in CNN, the network does not need to 
+\begin_inset Quotes eld
+\end_inset
+
+learn
+\begin_inset Quotes erd
+\end_inset
+
+ / know that the pixels are one after another.
+\end_layout
+
+\begin_layout Itemize
+So there are multiple additional hyperparameters in ConvNet (convolutional
+ neural network): stride, padding, filter size, how many filters to use
+ (in a given layer), ...
+ Usually, a trend is to lower down 
+\begin_inset Quotes eld
+\end_inset
+
+resolution
+\begin_inset Quotes erd
+\end_inset
+
+ of an input image, and increase number of channels.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_example.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of Convolutional Neural Networks.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_example_common_pattern_architecture.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Another example of Convolutional Neural Networks.
+ Here on this figure we can see a common pattern - convolutional layer,
+ followed by pooling layer (max pooling usually), and this is repeated untill
+ a few fully connected layers, and then the last layer, usually with softmax
+ activation function.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_example_common_pattern_architecture_dimensions.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A dimensions of each layer in CNN from the previous figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+YOLO
+\series default
+ (You Only Look Once, Redmon et all, from 2015) - a solution to convolutional
+ implementation of sliding window (for locating accurately bounding boxes
+ from an input image).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bounding_box.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Definition of a bounding box.
+ However, if you expand 
+\begin_inset Formula $c$
+\end_inset
+
+ into an 80-dimensional vector (if there are 80 classes), each bounding
+ box is then represented by 85 numbers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Usage for 
+\series bold
+object detection.
+ One of the most promising algorithm so far.
+ 
+\series default
+There is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+intersection over union
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (IoU) function for evaluation of object detection algorithm.
+ This function is used for evaluating bounding boxes - if there is ground
+ truth, and then predicted bounding box - how good is the predicted one?
+ If it is slightly moved for example.
+ So it computes the intersection over union of these two bounding boxes
+ - 
+\begin_inset Formula $\frac{size\,of\,intersection}{size\,of\,union}$
+\end_inset
+
+.
+ A low CV task will judge that the predicted answer is correct if this value
+ is greater equal to 0.5 (usually between 0.5 and 0.7).
+ The higher IoU is, the more accurate prediction we have.
+\end_layout
+
+\begin_layout Itemize
+Popular algorithm because it achieves high accuracy while also being able
+ to run in real-time.
+ This algorithm "only looks once" at the image in the sense that it requires
+ only one forward propagation pass through the network to make predictions.
+ After non-max suppression, it then outputs recognized objects together
+ with the bounding boxes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/yolo_model.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of Encoding architecture for YOLO.
+ If the center/midpoint of an object falls into a grid cell, that grid cell
+ is responsible for detecting that object.
+ Since we are using 5 anchor boxes, each of the 19 x19 cells thus encodes
+ information about 5 boxes.
+ Anchor boxes are defined only by their width and height.
+ 
+\series bold
+For simplicity, we can flat the last two last dimensions 
+\series default
+of the shape (19, 19, 5, 85) encoding.
+ So the output of the Deep CNN is (19, 19, 425).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/yolo_class_detected.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of finding a class detected by each box.
+ This is a continuation of the previous figure.
+ Now, for each box (of each cell) we will compute the following elementwise
+ product and extract a probability that the box contains a certain class.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/yolo_visualization.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Visualization of results from YOLO algorithm.
+ Another way to visualize YOLO's output is to plot the bounding boxes that
+ it outputs.
+ Doing that results in a very chaotic visualization = there would be too
+ many boxes.
+ You'd like to filter the algorithm's output down to a much smaller number
+ of detected objects.
+ To do so, you'll use 
+\series bold
+non-max suppression:
+\series default
+ i) get rid of boxes with a low score (thresholding), ii) select only one
+ box when several boxes overlap with each other and detect the same object.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_yolo_algorithm.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of input and output of YOLO algorithm using CNN.
+ We can see that the output is basically a vector for each window and it
+ consist of X and Y position of a centre of 
+\series bold
+found bounding box
+\series default
+ ( in values between 0 and 1), along with its height and width (these can
+ be bigger than 1) = all these values are 
+\series bold
+relative to a given window
+\series default
+.
+ If no object was detected in a given window, the first value in the vector
+ is 0 and all other values are irelevant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_yolo_bounding_boxes.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of found bounding boxes description in a vector.
+ Further explanation was in the previous figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An example of flow of YOLO:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Input image 
+\begin_inset Formula $(608,608,3)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The input image goes through a CNN, resulting in a 
+\begin_inset Formula $(19,19,5,85)$
+\end_inset
+
+ dimensional output.
+\end_layout
+
+\begin_layout Enumerate
+After flattening the last two dimensions, the output is a volume of shape
+ 
+\begin_inset Formula $(19,19,425)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Each cell in a 19x19 grid over the input image gives 425 numbers.
+\end_layout
+
+\begin_layout Enumerate
+425 = 5 x 85 because each cell contains predictions for 5 boxes, corresponding
+ to 5 anchor boxes.
+\end_layout
+
+\begin_layout Enumerate
+85 = 5 + 80 where 5 is because 
+\begin_inset Formula $(p_{c},b_{x},b_{y},b_{h},b_{w})$
+\end_inset
+
+ has 5 numbers, and and 80 is the number of classes we'd like to detect.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+You then select only few boxes based on:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Score-thresholding
+\series default
+: throw away boxes that have detected a class with a score less than the
+ threshold.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Non-max suppression
+\series default
+: Compute the 
+\series bold
+Intersection over Union
+\series default
+ and avoid selecting overlapping boxes (learn how to ensure the object detection
+ algorithm detects each object only once).
+ In general, this IoU measures a degree of overlap between two bounding
+ boxes - how similar they are.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+This gives you YOLO's final output.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+There can be a situation, when multiple detections (bounding boxes) will
+ be found for the same object.
+ This solves 
+\series bold
+non-max suppression
+\series default
+ method - only the most probable classifications will be outputted, and
+ all other will be suppressed.
+ The algorithm starts by suppressing all bounding boxes below some threshold
+ (0.6 for instance).
+ Then, for all remaining boxes, pick one with the largest probability (save
+ this as a prediction) and discard any remaining box with IoU bigger equal
+ to 0.5 with such predicted box.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_non_max_supressed_outputs.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Non-max supressed outputs pseudo-algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There can be a situation, when multiple objects overlaps (partially) - solution
+ is to use 
+\series bold
+anchor boxes
+\series default
+ (predefined two shapes called 
+\begin_inset Quotes eld
+\end_inset
+
+Anchor Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ and for each, associate multiple predictions - we use 5 or more anchor
+ boxes in general; for example, one anchor box for pedestrian, another one
+ for car; and they are associated with either the car or pedestrian based
+ on how similar their shape is).
+ As a much more advanced version (in comparison to manually set 5-10 anchor
+ box shapes - that cover the type of objects we want to detect, which is
+ also possible), is to use a K-means algorithm (this was suggested in YOLO
+ paper) to group together two types of object shapes you want to detect.
+ Then, use that to select a set of anchor boxes that are the most representative.
+\end_layout
+
+\begin_layout Itemize
+At training time, only one cell - the one containing the center/midpoint
+ of an object - is responsible for detecting this object.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_yolo_training.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A brief training explanation with dimensions of input and anchors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Region proposals 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Very influential in computer vision.
+ Motivation - some traditional and popular CV algorithms tends to search
+ a lot of regions where there is clearly no object.
+ There is nothing interesting to classify.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+R-CNN
+\series default
+ is a solution for such optimization (Girshik et al, from 2013).
+ It tries to pick only a few regions that make sense to run a classifier
+ later on.
+ The way it searches for these regions is by using segmentation algorithm
+ (it searches for a blobs and then places bounding boxes around them).
+ So, in a nutshell, propose regions, classify them, one at a time; output
+ label + bounding box (this bounding box is a new one,determined by running
+ the classifier on the proposed region bounding box and finding an object).
+ It turned out that R-CNN is still slow.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fast R-CNN
+\series default
+ is an improvement to R-CNN (Girshik, from 2015) that uses convolution implement
+ation of sliding windows to classify all the proposed regions.
+ However, it also turned out to be quite slow.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Faster R-CNN 
+\series default
+is another improvement to region proposals (Ren et al, from 2016).
+ This one uses the whole convolutional network to propose regions instead
+ of segmentation algorithms (Region Proposal Network).
+ However, Faster R-CNN implementations are usually still slower than YOLO
+ algorithm.
+ In the previous Fast R-CNN and R-CNN, region proposals are generated by
+ selective search rather than using convolutional neural network.
+ Basically:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.quora.com/How-does-the-region-proposal-network-RPN-in-Faster-R-CNN
+-work} and 
+\backslash
+url{https://medium.com/@smallfishbigsea/faster-r-cnn-explained-864d4fb7e3f8}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+In the first step, the input image goes through a CNN which outputs a set
+ of convolutional feature maps on the last convolutional layer.
+\end_layout
+
+\begin_layout Enumerate
+Then a sliding window is run spatially on these feature maps.
+ The size of sliding window is 
+\begin_inset Formula $nxn$
+\end_inset
+
+ (for example 3x3).
+ For each sliding window, a set of 9 anchors (9 by default and these are
+ region boxes, only those will be proposed that the most likely contain
+ some objects) are generated (because we have 3x3 sliding window size) which
+ all have the same center, but with 3 different aspect ratios and 3 different
+ scales (in order to accommodate different types of objects, elongated objects
+ like buses, for example, cannot be properly represented by a square bounding
+ box).
+ All these coordinates are computed with respect to the original image.
+ Furthermore, for each of these anchors, value 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+is computed which indicates how much these anchors overlap with the ground
+ truth bounding boxes:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p^{*}=\begin{cases}
+1 & if\,IoU>0.7\\
+-1 & if\,IoU<0.3\\
+0 & otherwise
+\end{cases}\label{eq:fast_rcnn_overlap}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where IoU is intersection over union of anchor and ground truth box.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Filter out anchors - keep only top anchors, non-maximum suppression algorithm).
+ Finally, 3x3 spatial features extracted from these convolution feature
+ maps are fed into a small network which has 2 tasks: a) classification,
+ and b) regression.
+ The output of regressor determines a predicted bounding box 
+\begin_inset Formula $(x,y,w,h)$
+\end_inset
+
+, and the output of classification subnet is a probability 
+\begin_inset Formula $p$
+\end_inset
+
+ indicating whether the predicted box contains an object (1) or it is from
+ background (0 for no object).
+ The loss function is defined over output of both subnets, with 2 terms
+ and balancing factor 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Some popular CNN architectures
+\end_layout
+
+\begin_layout Standard
+This section provides a list and a brief description of some well-known
+ architectures of CNNs.
+ All were designed for image recognition etc problems.
+\end_layout
+
+\begin_layout Subsubsection
+LeNet-5
+\end_layout
+
+\begin_layout Itemize
+When this architecture was designed (LeCun et all, 1998), people used usually
+ average pooling, and no padding (so always valid convolutions).
+\end_layout
+
+\begin_layout Itemize
+This CNN was used for recognition of digits.
+ However, the output layer does not have softmax (it has something different,
+ not relevant these days).
+\end_layout
+
+\begin_layout Itemize
+It has about 60,000 parameters, so this CNN is relatively small.
+ It is mostly historical matter.
+ Let's say in about 2017, it is common to have 10M up to 100M of parameters.
+ 
+\end_layout
+
+\begin_layout Itemize
+What is still trendy is, that as you go more deep, dimensions (height and
+ width) are smaller, but number of channels increases.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_lenet5.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architecture of LeNet-5 with dimensions of each layer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+AlexNet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+This paper convinced a lot of researchers in CV to take a 
+\bar under
+serious look at deep learning
+\bar default
+ (Krizhevsky et al, 2012).
+ This paper was very significant.
+\end_layout
+
+\begin_layout Itemize
+AlexNet has a lot of similarities with LeNet-5, but it is much bigger (and
+ uses max-pooling as well as softmax).
+\end_layout
+
+\begin_layout Itemize
+It has around 60M parameters.
+ 
+\end_layout
+
+\begin_layout Itemize
+It uses ReLU activation functions.
+\end_layout
+
+\begin_layout Itemize
+Here the author proposed LRN layer - 
+\series bold
+Local Response Normalization
+\series default
+ layer, that is not used very much in present.
+ It basically goes through all the channels (in a filter) and normalize
+ these numbers.
+ However, many researchers found that this does not help that much.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_alexnet.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architecture of AlexNet with dimensions of each layer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+VGG-16
+\end_layout
+
+\begin_layout Itemize
+The authors (Simonyan and Zisserman, 2015) in comparison to the previous
+ architecture, proposed much simpler network (=convolutions are simple,
+ pooling and so on - no need to have so much hyperparameters).
+ But it is very large - it is very deep network with about 138M of parameters.
+ The network has 16 layers.
+\end_layout
+
+\begin_layout Itemize
+Number of filters is always a double (64 to 128, 256 and then 512) and dimension
+ of a layer goes down by factor 2.
+\end_layout
+
+\begin_layout Itemize
+There is another version, VGG-19, that is even bigger version of this one.
+ Both have similar performance.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_vgg16.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architecture of VGG-16 with dimensions of each layer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ResNet
+\end_layout
+
+\begin_layout Itemize
+Also known as Residual Networks (He et al, 2015).
+ Basically, you can make these neural networks deeper and deeper without
+ really hurting your ability to at least get them to do well on the training
+ set.
+ And hopefully, doing well on the training set is usually a prerequisite
+ to doing well on your hold out set, dev set, or test set.
+\end_layout
+
+\begin_layout Itemize
+Very deep "plain" networks don't work in practice because they are hard
+ to train due to vanishing gradients.
+ The skip-connections help to address the Vanishing Gradient problem.
+ They also make it easy for a ResNet block to learn an identity function.
+\end_layout
+
+\begin_layout Itemize
+It uses
+\series bold
+ skip connections
+\series default
+ which allows you to take the activation from one layer and suddenly feed
+ it to another layer even much deeper in the neural network
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{When there is no skipping, just a sequence of layers and direct
+ connection between each consecutive two, it is called 'plain network' -
+ from original paper of ResNet.}
+\end_layout
+
+\end_inset
+
+(if a dimension of such 2 layers don't fit, padding can be used).
+ And using that, it is possible to train very, very deep networks, sometimes
+ over 100 layers (which is one of the best advantage of this).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Residual block
+\series default
+ - a basic block they are built from, they are using skip connections as
+ can be seen in the next figure.
+ Information is passed into a deeper block.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_residual_block.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Residual block scheme in ResNet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are 2 main types of blocks used in ResNet, very deep Residual Networks
+ are built by stacking these blocks together.:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+The identity block 
+\series default
+- standard block which corresponds to the case where the input activation
+ (say 
+\begin_inset Formula $a^{[l]}$
+\end_inset
+
+ ) has the same dimension as the output activation (say 
+\begin_inset Formula $a^{[l+2]}$
+\end_inset
+
+ ).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/resnet_identity_block.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identity block.
+ Skip connection "skips over" 2 layers.
+ The upper path is the "shortcut path." The lower path is the "main path."
+ In this diagram, we have also made explicit the CONV2D and ReLU steps in
+ each layer.
+ To speed up training there is alos a BatchNorm step.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The convolutional block 
+\series default
+- you can use this type of block when the input and output dimensions don't
+ match up.
+ The difference with the identity block is that there is a CONV2D layer
+ in the shortcut path.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/resnet_conv_block.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Convolutional block.
+ The CONV2D layer in the shortcut path is used to resize the input xx to
+ a different dimension, so that the dimensions match up in the final addition
+ needed to add the shortcut value back to the main path.
+ For example, to reduce the activation dimensions's height and width by
+ a factor of 2, you can use a 1x1 convolution with a stride of 2.
+ The CONV2D layer on the shortcut path does not use any non-linear activation
+ function.
+ Its main role is to just apply a (learned) linear function that reduces
+ the dimension of the input, so that the dimensions match up for the later
+ addition step.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_resnet_learning.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Residual network architecture and a comparison of learning plots of plain
+ and ResNet.
+ We can see, that plain NN with adding hidden layers the training error
+ will tend to decrease after a while but then they'll tend to go back up
+ (in theory, as you make ANN deeper, it should only do better and better
+ on the training set.
+ But in reality, having deeper and deeper plain network means that your
+ optimization algorithm just has a much harder time training.
+ So your training error gets worse if you pick a network that's too deep.
+ But what happens with ResNet is that even as the number of layers gets
+ deeper, you can have the performance of the training error kind of keep
+ on going down.
+ Even if we train a network with over a hundred layers.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When we calculate 
+\begin_inset Formula $a^{[layer+2]}=g(z^{[layer+2]}+a^{[layer]}$
+\end_inset
+
+, we are assuming that 
+\begin_inset Formula $z^{[layer+2]}$
+\end_inset
+
+and 
+\begin_inset Formula $a^{[layer]}$
+\end_inset
+
+ have the same dimensions.
+ This imposes the use of 
+\begin_inset Quotes eld
+\end_inset
+
+same convolution
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If they does not have the same dimensions, then we will use a helping operation
+ to make dimensions the same: 
+\begin_inset Formula $a^{[layer+2]}=g(z^{[layer+2]}+W_{s}a^{[layer]}$
+\end_inset
+
+, where 
+\begin_inset Formula $a^{[layer+2]}$
+\end_inset
+
+has 256 dimensions and 
+\begin_inset Formula $a^{[layer]}$
+\end_inset
+
+has 128, then 
+\begin_inset Formula $W_{s}$
+\end_inset
+
+ will have 256x128 dimensions (multiplication) and this matrix can be either
+ learned or fixed.
+\end_layout
+
+\begin_layout Subsubsection
+Inception Network
+\end_layout
+
+\begin_layout Itemize
+Previous architectures - you had to pick what size of filter and what pooling
+ layer (or without pooling) you want.
+ Inception network (Szegedy et al, 2014) combines them all - the network
+ learn what works best.
+ It is very complicated ANN architecture, see the next figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_inception_network_motivation.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inception Network motivation.
+ We can have multiple (in this example 'same') convolutions (each with different
+ size of filters) at the same time and stack the result along with max-pooling
+ (with padding to have the same dimensions as an input).
+ Results have different number of channels, but the same heights and widths.
+ And then, a network will find out whatever the combinations and sizes are
+ good to have.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The problem of having such layer, is a very big computational cost.
+ Therefore, it is possible to do an 
+\begin_inset Quotes eld
+\end_inset
+
+optimization
+\begin_inset Quotes erd
+\end_inset
+
+ - first, let's decrease a number of channels with 1x1 convolution (
+\begin_inset Formula $n$
+\end_inset
+
+ of them, depending on the resulting channel dimension), which is sometimes
+ called as 
+\series bold
+bottleneck layer
+\series default
+ (and this won't hurt the performance of ANN very much).
+ Then we can increase the size again, but the part after 1x1 convolution
+ is the smaller one (therefore a bottleneck).
+ So this 1x1 convolution is here only for reducing the computational cost.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_inception_module.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of Inception module.
+ These 1x1 convolutions are there for reducing computational cost.
+ There can be 10 or more of such modules in Inception network.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Inception network consists of 
+\series bold
+inception modules
+\series default
+ (as the previous figure), and there are also 
+\series bold
+side branches
+\series default
+.
+ These side branches help to ensure that the features computed even in the
+ hidden units, even at intermediate layers, are not too bad for predicting
+ the output cause of a image.
+ And this appears to have a regularizing effect on the inception network
+ and helps prevent this network from overfitting.
+\end_layout
+
+\begin_layout Itemize
+Making an inception network deeper (by stacking more inception blocks together)
+ could hurt training set performance.
+\end_layout
+
+\begin_layout Itemize
+Originally developed at Google, and called GoogleNet.
+ But Inception network is named after the movie The Inception.
+\end_layout
+
+\begin_layout Itemize
+There are newer versions of Inception network, for example there is a version
+ that combines ResNet idea (skipping layers) and Inception network.
+\end_layout
+
+\begin_layout Subsubsection
+Siamese Network
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Siamese-Network"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is widely used in face recognition problem, 
+\series bold
+for one-shot encoding (for building a similarity function for calculation
+ of a distance between 2 images if there is a match, see also Subsection
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "One-ShotLearning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\series default
+.
+ The idea is from Taigman et al, DeepFace, from 2014.
+\end_layout
+
+\begin_layout Itemize
+Siamese network can be implemented as any kind of neural network (CNN, RNN,
+ MLP).
+ The network only takes one image as input at a time (so the size of the
+ network is not doubled).
+\end_layout
+
+\begin_layout Itemize
+This is (mostly) kind of CNN, that learns representation of input (image)
+ in a vector of fixed size.
+ And this resulting vector is sometimes said that it is 
+\series bold
+encoded
+\series default
+ 
+\series bold
+input
+\series default
+ (because this CNN is computing basically a function, that encodes its input).
+ Then, when we have 2 images, so 2 vectors, from the same CNN, we can compute
+ their 
+\series bold
+similarity 
+\series default
+with 
+\begin_inset Formula $||f(x_{1})-f(x_{2})||^{2}$
+\end_inset
+
+ - 
+\series bold
+L2 norm
+\series default
+, to determine a 
+\series bold
+distance between two vectors
+\series default
+.
+ If the result is small, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+is the same person.
+\end_layout
+
+\begin_layout Itemize
+Running 2 different inputs through two identical convolutional neural nets,
+ and comparing the outputs is called Siamese neural network architecture.
+ Goal of training is that we want to train a neural net so that its encoded
+ output can be used in a function that indicates when the 2 input pictures
+ are of the same person.
+\end_layout
+
+\begin_layout Itemize
+In Siamese networks, we take an input image of a person and find out the
+ encodings of that image, then, we take the same network without performing
+ any updates on weights or biases and input an image of a different person
+ and again predict it’s encodings.
+ Now, we compare these two encodings to check whether there is a similarity
+ between the two images.
+ These two encodings act as a latent feature representation of the images.
+ Images with the same person have similar features/encodings.
+ Using this, we compare and tell if the two images have the same person
+ or not.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/siamese-network-triplet-loss-b4ca82c1aec8}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Objective function they use is called 
+\series bold
+triplet Loss
+\series default
+ (Schroff et al, FaceNet, from 2015).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a one way to learn the parameters of neural network that gives you
+ a good encoding for your pictures of faces.
+ Just apply gradient descent on the triplet loss function.
+\end_layout
+
+\begin_layout Itemize
+In Triplet Loss, you always look at 3 images: Anchor (A), Positive (P),
+ and Negative (N) examples.
+ So we want 
+\begin_inset Formula $||f(A)-f(P)||^{2}$
+\end_inset
+
+ to be small, to be more particular: 
+\begin_inset Formula $||f(A)-f(P)||^{2}\leq||f(A)-f(N)||^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We can rewrite the previous formula as 
+\begin_inset Formula $||f(A)-f(P)||^{2}-||f(A)-f(N)||^{2}\leq0$
+\end_inset
+
+.
+ To make sure that this is satisfied, both formulas can be set to 
+\begin_inset Formula $0$
+\end_inset
+
+, so 
+\begin_inset Formula $0-0\leq0$
+\end_inset
+
+.
+ So make sure, that our NN will not output always zeroes, or always the
+ same values, we need a modification - we say, that this equation does not
+ need to be lower equal to zero, but it needs to be quite a bit smaller
+ than zero.
+ We add (on the right side) a hyperparameter 
+\begin_inset Formula $-\alpha$
+\end_inset
+
+ (also called a margin), so that our neural network will not find trivial
+ solutions (zeroes or same values).
+ If we move 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ to the left side, we have eventually:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+||f(A)-f(P)||^{2}-||f(A)-f(N)||^{2}+\alpha\leq0\label{eq:triplet_loss_basic_block}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Triplet loss function is then defined on 3 images A, P, and N.
+ We want the previous formula to be always lower than 0, so:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L(A,P,N)=max(||f(A)-f(P)||^{2}-||f(A)-f(N)||^{2}+\alpha,\,0)\label{eq:triplet_loss}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So, if you have a training set of 10k images of 1k people, you have to split
+ them into 3 sets (A, N, and P).
+ Traditional CNNs will not work, as each person has only 10 images, and
+ CNN needs far more data to learn features required to sucessfully beat
+ this task.
+ So, you can notice that for 1 person, it is needed to have multiple images
+ (at least 2: Anchor and Positive example) for training.
+ After the training, you can apply a given model to one-shot learning problem,
+ where you can have just a single example of a person you want to recognize.
+\end_layout
+
+\begin_layout Itemize
+Choosing these triplets - cannot be chosen randomly, because 
+\begin_inset Formula $||f(A)-f(P)||^{2}+\alpha\leq||f(A)-f(N)||^{2}$
+\end_inset
+
+ is easily satisfied, because chances that A and P are the same person are
+ much lower than A and N is different person, and ANN will not learn much
+ from it.
+ It is needed to chose triplets that are 
+\begin_inset Quotes eld
+\end_inset
+
+hard
+\begin_inset Quotes erd
+\end_inset
+
+ to train on (both distances are relatively close to each other).
+\end_layout
+
+\begin_layout Itemize
+By using Siamese networks, it is possible to deal with Face recognition
+ problem as with binary classification problem (see the next figure).
+ This is an alternative to using triplet loss function.
+\end_layout
+
+\begin_layout Itemize
+The triplet loss function tries to "push" the encodings of two images of
+ the same person (Anchor and Positive) closer together, while "pulling"
+ the encodings of two images of different persons (Anchor, Negative) further
+ apart.
+\end_layout
+
+\begin_layout Itemize
+The triplet loss is an effective loss function for training a neural network
+ to learn an encoding of a face image.
+ The same encoding can be used for verification and recognition.
+ Measuring distances between two images' encodings allows you to determine
+ whether they are pictures of the same person.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cnn_siamesse_similarity_learning.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Learning a similarity between 2 images by using Siamese Network as a binary
+ classification task (an alternative to triplet loss).
+ Both CNNs are computing vectors 
+\begin_inset Formula $f(x^{(i)})$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x^{(j)})$
+\end_inset
+
+ (each is maybe 128 dimensional or even higher) and both networks have the
+ same (or really tight) parameters.
+ The output 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ can be a sigmoid function that takes an element-wise difference between
+ these 2 encodings (results are basically 'features').
+ It may have also weights and bias, as a traditional Logistic regression,
+ so that the model will train these.
+ Green text is an alternative formula sometimes called chi-squared.
+ Purple vector is basically a computational trick, when we precompute that
+ vector from data in our database.
+ When a new person will come on the input, the upper ConvNet will compute
+ its encoding (vector) and then this one is compared to precomputed encoding.
+ That information will be used for making a prediction.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So, we need multiple pictures of the same person to train the network.
+ But, after training, we don't need to have multiple images of the same
+ person to test the face recognition classifier.
+\end_layout
+
+\begin_layout Itemize
+To build an SNN, we first decide on the architecture of our neural network.
+ Given an example, to calculate the average triplet loss, we apply consecutively
+, the model to anchor, positive, and then to negative image, and then we
+ compute the loss for that example.
+ We repeat this for all triplets in the batch and then compute the cost.
+ Geradient descent with backpropagation will propagate the cost through
+ the network to update its parameters.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There is an alternative to triplet loss - binary classification.
+ Train a Siamese network so that we got just 2 input images.
+ Each is going through the different, but identical convolutional network,
+ that computes output vector (image encodings).
+ Such encoding output from both are feed to logistic regression node, which
+ outputs 
+\begin_inset Formula $1$
+\end_inset
+
+ if the input image is the same person, or 
+\begin_inset Formula $0$
+\end_inset
+
+ if these people are different.
+ Computational trick - precompute the encodings for all current entries
+ in the database; just new entries will be computed (their encoding) at
+ test time.
+ So we don't even need to store images.
+ This precomputing trick can be used for triple loss classifiers as well.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Stacked Auto-Encoders*
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Generative Adversarial Networks
+\end_layout
+
+\begin_layout Itemize
+This is a class of neural networks used in unsupervised learning.
+ They are implemented as a system of two neural networks contesting with
+ each other.
+\end_layout
+
+\begin_layout Itemize
+The most popular application of GANs is to learn to generate photographs
+ that look authentic to humans.
+\end_layout
+
+\begin_layout Itemize
+They consist of two parts:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+the discriminator 
+\series default
+is a CNN that is trained to recognize images.
+ This networks takes as input two images: one 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ from some collection of images, and the image generated by the generator
+ network.
+ It has to learn to recognize which one of the two images was generated
+ by the generator.
+ It gets penalized if it fails to recognize which one of the two images
+ is fake.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+the generator 
+\series default
+is an inverse network that take a random seed and uses it to generate images.
+ This networks takes a random input (typically a Gaussian noise) and learns
+ to generate an image as a matrix of pixels.
+ This network gets a negative loss if the discriminator network recognizes
+ the fake image.
+\end_layout
+
+\begin_layout Standard
+The discriminator evaluates the output of the generator and sends signals
+ to the generator on how to improve, and the generator in turn sends signals
+ to the discriminator to improve its accuracy as well, going back and forth
+ in a zero-sum game till they both converge to best quality.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Reinforcement Learning
+\end_layout
+
+\begin_layout Itemize
+RL solves a very specific kind of problem where the decision making is sequentia
+l.
+\end_layout
+
+\begin_layout Itemize
+Usually, there is an agent acting in an unknown environment.
+ Each action brings a reward and moves the agent to another state of the
+ environment (usually as a result of some random process with unknown properties
+).
+ The goal of the agent is to optimize its long-term reward.
+\end_layout
+
+\begin_layout Itemize
+RL algorithms, such as 
+\series bold
+Q-learning
+\series default
+, are used in learning to play video games, robotic navigation and coordination,
+ inventory and supply chain management, optimization of complex electric
+ power systems, or learning financial trading strategies.
+\end_layout
+
+\end_body
+\end_document

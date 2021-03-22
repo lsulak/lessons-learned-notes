@@ -1,0 +1,5 @@
+.directory
+*.lyx~
+*.lyx#
+*.log
+pdfs/

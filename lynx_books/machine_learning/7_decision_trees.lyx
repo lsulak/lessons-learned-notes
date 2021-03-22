@@ -1,0 +1,1043 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Decision Trees
+\end_layout
+
+\begin_layout Itemize
+A decision tree is an acyclic graph that can be used to make decisions.
+ In each branching node of the graph, a specific feature 
+\begin_inset Formula $j$
+\end_inset
+
+ of the feature vector is examined.
+ If the value of the feature is below a specific threshold, then the left
+ branch is followed, otherwise the right branch is followed.
+ As the leaf node is reached, the decision is made about the class to which
+ the example belongs.
+ A decision tree can be learned from data.
+\end_layout
+
+\begin_layout Itemize
+They are basically a hierarchical non-linear models.
+ They primary use is for classification of qualitative values based on input
+ attributes.
+\end_layout
+
+\begin_layout Itemize
+They main advantage is (except non-linearity) also a very good interpretability,
+ flexibility, and existence of algorithms which are able to create those
+ trees automatically.
+\end_layout
+
+\begin_layout Itemize
+Each node in a decision tree represents a feature in an instance to be classifie
+d, and each branch represents a value that the node can assume.
+ Instances are classified starting at the root node and sorted based on
+ their feature values.
+\end_layout
+
+\begin_layout Itemize
+The feature that best divides the training data would be the root node of
+ the tree.
+ There are numerous methods for finding the feature that best divides the
+ training data such as information gain and gini index.
+\end_layout
+
+\begin_layout Itemize
+They construct a model of decisions made based on actual values of attributes
+ in the data.
+ Decisions fork in tree structures until a prediction decision is made for
+ a given record.
+\end_layout
+
+\begin_layout Itemize
+Decision trees are trained on data and can be used for both classification
+ and regression.
+ They are built by recursively partitioning of the input space to distinct
+ non-overlapping regions (nodes in the tree).
+ Leaves of the tree contain the final decision about the predicted class
+ (in case of classification).
+ The purpose is to find such tree, that best separates data into given classes.
+ Finding an optimal partition is an NP-complete problem.
+\end_layout
+
+\begin_layout Itemize
+They can suffer from high variance: decision trees learned on different
+ training sets generated by the same phenomenon are often very different,
+ when in fact they should be the same.
+\end_layout
+
+\begin_layout Itemize
+The problem of constructing optimal binary decision trees is an NP-complete
+ problem and thus theoreticians have searched for efficient heuristics for
+ constructing near-optimal decision trees.
+\end_layout
+
+\begin_layout Itemize
+Decision trees tend to perform better when dealing with discrete or categorical
+ features.
+\end_layout
+
+\begin_layout Itemize
+Overfitting:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The most straightforward way of tackling overfitting is to pre-prune the
+ decision tree by not allowing it to grow to its full size.
+ There is no single best pruning method.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pseudo-algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Do in a loop (there is usually some termination condition, which determines
+ when the algorithm stops and it is very important since it influences overfitti
+ng):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Get information about a node.
+\end_layout
+
+\begin_layout Enumerate
+Decide if a node will be split (step c), or if a node will be changed to
+ a list (if so, determine its output value).
+\end_layout
+
+\begin_layout Enumerate
+Choose the best attribute (feature) for splitting.
+\end_layout
+
+\begin_layout Enumerate
+Split data into new nodes.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Perform tree pruning (something like regularization, this technique reduces
+ too complex, over-fitted trees).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Termination condition
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+All values can be set and they depends on a given problem and data:
+\end_layout
+
+\begin_layout Itemize
+Maximum number of records in a given node reached, no splitting is allowed
+ on a given node (this can be set, for instance to
+\begin_inset Formula $10\%$
+\end_inset
+
+ as a minimum records in node for splitting).
+\end_layout
+
+\begin_layout Itemize
+Maximum depth of a tree reached, do not create more and more nodes (this
+ can be set, for instance to
+\begin_inset Formula $5$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+One class is has a given node majority of records (this can be set, for
+ instance to
+\begin_inset Formula $90\%$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Reduced-Error Pruning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Splits data to training (2/3) and validation (1/3).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pseudo-algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Train a tree on all training data (over-fit).
+\end_layout
+
+\begin_layout Enumerate
+Repeat on validation data, until a new tree is created.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Try to substitute all nodes in tree with a list (according to validation
+ data) and evaluate all new trees.
+\end_layout
+
+\begin_layout Enumerate
+Among all the new trees, pick the best one.
+ If this tree is better than a tree chosen last time, then choose the new
+ one, otherwise keep the old one as the best option.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Rule Post-Pruning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Final model is more general.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pseudo-algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Transform over-fitted tree to rules.
+\end_layout
+
+\begin_layout Enumerate
+For each rule, try to remove all combination of conditions, estimate accuracy,
+ and save the best condition.
+\end_layout
+
+\begin_layout Enumerate
+Sort and use rules according to accuracy.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Iterative Dichotomiser 3
+\end_layout
+
+\begin_layout Itemize
+Input quantitative /
+\series bold
+ output qualitative (nominal).
+\end_layout
+
+\begin_layout Itemize
+Historically, before ID3 there was CLS.
+ Successor of ID3 was C4.5.
+\end_layout
+
+\begin_layout Itemize
+Topology depends on attribute.
+ It generates tree in deterministic way.
+ There is no guarantee to generate optimal tree.
+\end_layout
+
+\begin_layout Itemize
+The optimization criterion is in this case the average log-likelihood: 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1...N}[y_{i}\,ln\,f_{ID3}(x_{i})+(1-y_{i})\,ln\,f_{ID3}(x_{i}))]$
+\end_inset
+
+ where 
+\begin_inset Formula $f_{ID3}$
+\end_inset
+
+ is a decision tree.
+ It may look similar to
+\series bold
+ logistic regression
+\series default
+, whic
+\series bold
+h builds a parametric model
+\series default
+ 
+\begin_inset Formula $f_{w,b}$
+\end_inset
+
+ by 
+\series bold
+finding an optimal solution to the optimization criterion
+\series default
+.
+ 
+\series bold
+ID3
+\series default
+ algorithm
+\series bold
+ optimizes
+\series default
+ 
+\series bold
+the optimization criterion approximately 
+\series default
+by constructing a 
+\series bold
+non-parametric model
+\series default
+ 
+\begin_inset Formula $f_{ID3}(x)=P(y=1|x)$
+\end_inset
+
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+It chooses attribute with the lowest 
+\series bold
+conditional entropy 
+\series default
+(so the 
+\series bold
+highest information gain
+\series default
+) - the algorithm tries to chose such attributes, that increases information
+ gain of a tree as much as possible (by lowering total entropy).
+ 
+\series bold
+The problem with information gain is that it favors attributes with many
+ possible values.
+ C4.5 solves this by introducing gain ratio, which normalizes the information
+ gain by the number of feature values (instead of entropy, there is Gini
+ index).
+\end_layout
+
+\begin_layout Itemize
+Entropy-based split criterion makes sense - entropy reaches its minimum
+ of 
+\begin_inset Formula $0$
+\end_inset
+
+ when all examples in 
+\begin_inset Formula $S$
+\end_inset
+
+ have the same label.
+ On the other hand, the entropy is at its maximum of 
+\begin_inset Formula $1$
+\end_inset
+
+ when exactly one-half of examples in 
+\begin_inset Formula $S$
+\end_inset
+
+ is labeled with 
+\begin_inset Formula $1$
+\end_inset
+
+, making such a leaf useless for classification.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The algorithm does not guarantee, that final tree is the best possible one.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Each list represents classification into a single specific class.
+\end_layout
+
+\begin_layout Itemize
+Missing attribute values - it uses value which is more occurring in a given
+ node, or/and most occurring in a given class.
+\end_layout
+
+\begin_layout Itemize
+Reduced-Error Pruning - new trees are created from validation data and the
+ best one is always chosen instead of previous one.
+\end_layout
+
+\begin_layout Itemize
+Rule Post-Pruning - new model is more general, it converts over-fitted tree
+ to rules and according to accuracy it chooses only certain rules and removes
+ other ones.
+\end_layout
+
+\begin_layout Itemize
+The algorithm is as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $S$
+\end_inset
+
+ denote a set of labeled examples.
+ In the beginning, the decision tree has only a start node that contains
+ all training examples.
+ Start with a constant model defined as 
+\begin_inset Formula $f_{ID3}^{S}=\frac{1}{|S|}\sum_{(x,y)\in S}y$
+\end_inset
+
+.
+ The prediction given by the above model would be the same for any input
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Then we search through all features 
+\begin_inset Formula $j=1,...,D$
+\end_inset
+
+ and all thresholds 
+\begin_inset Formula $t$
+\end_inset
+
+, and split the set 
+\begin_inset Formula $S$
+\end_inset
+
+ into two subsets: 
+\begin_inset Formula $S_{-}=\{(x,y)|(x,y)\in S,x^{(j)}<t\}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{+}=\{(x,y)|(x,y)\in S,x^{(j)}\geq t\}$
+\end_inset
+
+.
+ These two new subsets would go to the new leaf nodes, and we evaluate for
+ all possible pairs 
+\begin_inset Formula $(j,t)$
+\end_inset
+
+
+\series bold
+ how good the split 
+\series default
+(more on this later) with pieces 
+\begin_inset Formula $S_{-}$
+\end_inset
+
+and 
+\begin_inset Formula $S_{+}$
+\end_inset
+
+is.
+ Finally, we pick the best such values 
+\begin_inset Formula $(j,t)$
+\end_inset
+
+, split 
+\begin_inset Formula $S$
+\end_inset
+
+ into 
+\begin_inset Formula $S_{-}$
+\end_inset
+
+and 
+\begin_inset Formula $S_{+}$
+\end_inset
+
+, form two new leaf nodes, and continue recursively on 
+\begin_inset Formula $S_{-}$
+\end_inset
+
+and 
+\begin_inset Formula $S_{+}$
+\end_inset
+
+(or quit if no split produces a model that is sufficiently better than the
+ current one).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How good the split is - in ID3, the goodness of a split is estimated by
+ using the criterion called 
+\series bold
+entropy
+\series default
+.
+ It is a measure of uncertainty about a random variable.
+ It reaches a maximum when all values of the random variables are equiprobable,
+ and reaches minimum when the random variable can have only 1 value.
+ The entropy of a set of examples 
+\begin_inset Formula $S$
+\end_inset
+
+ is given by 
+\begin_inset Formula $H(S)=-f_{ID3}^{S}ln\,f_{ID3}^{S}-(1-f_{ID3}^{S})ln(1-f_{ID3}^{S})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+When we split a set of examples by a certain feature 
+\begin_inset Formula $j$
+\end_inset
+
+ and a threshold 
+\begin_inset Formula $t$
+\end_inset
+
+, the entropy of a split, 
+\begin_inset Formula $H(S_{-},S_{+})$
+\end_inset
+
+ is simply a weighted sum of two entropies: 
+\begin_inset Formula $H(S_{-},S_{+})=\frac{|S_{-}|}{|S|}H(S_{-})+\frac{|S_{+}|}{|S|}H(S_{+})$
+\end_inset
+
+.
+ So, in ID3, at each step at each leaf node, we find a split that minimizes
+ the entropy given by this equation, or we stop at this leaf node.
+\end_layout
+
+\begin_layout Itemize
+The algorithm stops at a leaf node in any of the situations:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+All examples in the leaf node are classified correctly by the one-piece
+ model (equation 
+\begin_inset Formula $f_{ID3}^{S}=\frac{1}{|S|}\sum_{(x,y)\in S}y$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+We cannot find an attribute to split upon.
+\end_layout
+
+\begin_layout Itemize
+The split reduces the entropy less than some 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ - the value for which as to be found experimentally.
+ This is a hyperparameter.
+\end_layout
+
+\begin_layout Itemize
+The tree reaches some maximum depth 
+\begin_inset Formula $d$
+\end_inset
+
+ (also hyperparameter).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The decision to split the dataset on each iteration is local (doesn't depend
+ on future splits), the algorithm doesn't guarantee an optimal solution.
+ The model can be improved by using techniques like backtracking during
+ the search for the optimal decision tree at the cost of possibly taking
+ longer to build a model.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+C4.5 and C5.0
+\end_layout
+
+\begin_layout Itemize
+C4.5 is an extension to ID3 - it also uses entropy and information gain.
+ What is different than ID3 is, that input values can be quantitative (so
+ in these, features can be both continuous and discrete), missing attribute
+ values are better handled, and it solves overfitting problem by using a
+ pruning technique.
+\end_layout
+
+\begin_layout Itemize
+Pruning consists of going back through the tree once it's been created and
+ removing branches that don't contribute significantly enough to the error
+ reduction by replacing them with leaf nodes.
+\end_layout
+
+\begin_layout Itemize
+C5.0 has even more improvements than C4.5 and is protected by license.
+\end_layout
+
+\begin_layout Itemize
+Input quantitative+qualitative /
+\series bold
+ output qualitative (nominal).
+\end_layout
+
+\begin_layout Itemize
+Topology depends on attribute.
+\end_layout
+
+\begin_layout Itemize
+In node, quantitative attribute is converted to nominal (binary threshold
+ or intervals).
+\end_layout
+
+\begin_layout Itemize
+State of node S is determined by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $|S|$
+\end_inset
+
+, number of items in node
+\begin_inset Formula $S$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $H(S)$
+\end_inset
+
+, entropy in node
+\begin_inset Formula $S$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\{A\}$
+\end_inset
+
+, of attributes
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ which can be used for splitting.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Evaluation of quality of split in node
+\begin_inset Formula $A$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $|A|$
+\end_inset
+
+, enumeration of potential attributes of
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I(S,A),$
+\end_inset
+
+information gain during splitting by
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I(S,A)=H(S)-H(S|A)\label{eq:information_gain}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+or, with missing values (where
+\begin_inset Formula $S_{0}$
+\end_inset
+
+is number of items with missing value/feature
+\begin_inset Formula $A$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I(S,A)=\frac{|S-S_{0}|}{S}(H(S)-H(S|A))\label{eq:information_gain_missing_values}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $P(S|A)$
+\end_inset
+
+, ratio gain during splitting by
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S|A)=\sum_{i=1}^{|A|}\frac{|S_{i}|}{|S|}log_{2}(\frac{|S_{i}|}{|S|})\label{eq:ratio_gain}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+or, with missing values (where
+\begin_inset Formula $S_{0}$
+\end_inset
+
+is number of items with missing value/feature
+\begin_inset Formula $A$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S|A)=-\frac{|S_{0}|}{|S|}log_{2}(\frac{|S_{0}|}{|S|})-\sum_{i=1}^{|A|}\frac{|S_{i}|}{|S|}log_{2}(\frac{|S_{i}|}{|S|})\label{eq:ratio_gain_missing_values}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $I_{p}(S,A)$
+\end_inset
+
+, ratio information gain (aka gain ratio).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I_{p}(S,A)=\frac{I(S,A)}{P(S,A)}\label{eq:ratio_information_gain}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The algorithm stops in some leaf node in one of the following cases:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+All the examples in the leaf node belong to the same class.
+\end_layout
+
+\begin_layout Itemize
+None of the features provide any information gain.
+\end_layout
+
+\begin_layout Itemize
+Additional stopping criteria as hyperparameters - is a tree is already deep
+ enough, or a number of examples in a given leaf node is below a certain
+ threshold.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Division on node according to attribute with the 
+\series bold
+biggest ratial information gain
+\series default
+
+\begin_inset Formula $I_{p}(S,A)$
+\end_inset
+
+, but a node must have
+\series bold
+ at least average information gain
+\series default
+
+\begin_inset Formula $I(S,A)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+C4.5 algorithm is trying to look for a split that maximizes the information
+ gain.
+\end_layout
+
+\begin_layout Itemize
+There is a built-in overfitting prevention mechanism.
+ Once the tree is built, C4.5 replaces some branches (subtrees) by leaf nodes.
+ Doing that the algorithm reduces variance (but increases bias).
+ One possible way to 
+\series bold
+decide whether to keep a subtree or replace it with a leaf 
+\series default
+is to apply the tree to the examples from the 
+\series bold
+validation set
+\series default
+ and measure the 
+\series bold
+error made in different leaves
+\series default
+.
+ If the 
+\series bold
+weighted sum of errors
+\series default
+ made in the leaves of some branch is higher than the error that would have
+ been made should the tree stop one level earlier, then the branch is replaced
+ by the leaf.
+\end_layout
+
+\begin_layout Section
+Classification and Regression Tree
+\end_layout
+
+\begin_layout Itemize
+Also known as CART.
+\end_layout
+
+\begin_layout Itemize
+Input quantitative+qualitative /
+\series bold
+output quantitative+qualitative.
+\end_layout
+
+\begin_layout Itemize
+Binary topology.
+\end_layout
+
+\begin_layout Itemize
+Division on node according to only 1 attribute - this can cause, that a
+ tree is not able to approximate a simple relation.
+\end_layout
+
+\begin_layout Itemize
+An advantage is that there is a possibility of class weighting, and we can
+ also create and use cost matrix (penalization for miss-classification)
+ for penalization function.
+\end_layout
+
+\begin_layout Itemize
+The algorithm uses GINI index (as information gain) for splitting.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+GINI(X)=1-\sum_{\forall x\in X}p(x)^{2}\label{eq:gini_index}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Chi-squared Automatic Interaction Detection*
+\end_layout
+
+\begin_layout Section
+Conditional Decision Trees*
+\end_layout
+
+\begin_layout Section
+M5*
+\end_layout
+
+\end_body
+\end_document

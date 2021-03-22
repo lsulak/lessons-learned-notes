@@ -1,0 +1,3475 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Practical Hints & Observations
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+“It’s not who has the best algorithm that wins.
+ It’s who has the most data.”
+\end_layout
+
+\begin_layout Subsection
+Working with our dataset
+\end_layout
+
+\begin_layout Standard
+More details will be in the next subsection.
+ Just an brief idea how it should work - split (ideally randomly) to, for
+ example:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $70\%$
+\end_inset
+
+ of data is for training, 
+\begin_inset Formula $30\%$
+\end_inset
+
+ is for testing.
+ This is now not considered to be a good idea in many cases.
+ This old heuristic does not apply for problems where you have a lot of
+ data; the dev and test sets can be much less than 30% of the data.
+\end_layout
+
+\begin_layout Itemize
+or another example - 
+\begin_inset Formula $60\%$
+\end_inset
+
+ for training set (optimization of parameters 
+\begin_inset Formula $\theta$
+\end_inset
+
+), 
+\begin_inset Formula $20\%$
+\end_inset
+
+ for cross validation set (or just validation set, dev set, or hold-out
+ cross validation set for finding out the best hyperparameters, like polynomial
+ degree of linear regression, select features, and make other decisions
+ regarding the learning algorithm), and 
+\begin_inset Formula $20\%$
+\end_inset
+
+ for testing set (estimate generalization error with cost function with
+ learned thetas and hyperparameters - you are not making any decisions regarding
+ what learning algorithm or parameters to use).
+ You should choose dev and test sets to reflect data you expect to get in
+ the future and want to do well on.
+ 
+\series bold
+But don't assume your training distribution is the same as your test distributio
+n.
+ 
+\series default
+Try to pick test examples that reflect what you ultimately want to perform
+ well on, rather than whatever data you happen to have for training.
+ The purpose of the dev and test sets are to direct your team toward the
+ most important changes to make to the machine learning system.
+ The dev and test sets allow your team to quickly see how well your algorithm
+ is doing.
+\end_layout
+
+\begin_layout Itemize
+another example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=F1ka6a13S9I&t=421s&index=2&list=WL}}
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $70\%$
+\end_inset
+
+ training set, 
+\begin_inset Formula $15\%$
+\end_inset
+
+ dev set, and 
+\begin_inset Formula $15\%$
+\end_inset
+
+ test set.
+ Because, if you have data, you don't want to spend only 
+\begin_inset Formula $60\%$
+\end_inset
+
+ on training, like the previous example.
+ There is no need to have excessively large dev/test sets beyond what is
+ needed to evaluate the performance of your algorithms.
+ Dev sets with sizes from 1,000 to 10,000 examples are common.
+ Your dev set should be large enough to detect meaningful changes in the
+ accuracy of your algorithm, but not necessarily much larger.
+ Your test set should be big enough to give you a confident estimate of
+ the final performance of your system.
+\end_layout
+
+\begin_layout Standard
+Concrete example
+\end_layout
+
+\begin_layout Itemize
+50,000 hours of some audio data form some distribution.
+ Then, we also came up with different 10 hours of audio data, from other
+ distribution.
+\end_layout
+
+\begin_layout Itemize
+It is a bad idea to use these 10 hours of data for testing set.
+ Rather, use half of that 10 hours 
+\series bold
+for dev set 
+\series default
+and half of that for
+\series bold
+ test set
+\series default
+.
+ Then, from these 50,000 hours, cut 20 hours for 
+\series bold
+train-dev set
+\series default
+, and train a model on data consisting of the rest 49,980 hours.
+ So, 
+\series bold
+dev, train-dev, and test set are from the same distribution
+\series default
+, but training set is not.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+There is no need for dev and test sets to come from the same distribution
+\series default
+.
+ It is an important research problem to 
+\series bold
+develop
+\series default
+ 
+\series bold
+learning algorithms that are trained on one distribution and generalize
+ well to another
+\series default
+.
+ 
+\series bold
+But if your goal is to make progress on a specific machine learning application
+ rather than make research progress, I recommend trying to choose dev and
+ test sets that are drawn from the same distribution.
+
+\series default
+ This will make your team more efficient.
+\end_layout
+
+\begin_layout Itemize
+Then, measure error on: training set, training-dev set, dev set, test set.
+ Based on the values, we can estimate bias/variance and make further improvement
+s.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+BTW, never change your test set = it's your problem specification!!
+\end_layout
+
+\begin_layout Itemize
+When you are done developing, you will evaluate your system on the test
+ set.
+ If you find that your 
+\series bold
+dev set performance is much better than your test set performance
+\series default
+, it is a sign that you have 
+\series bold
+over-fit to the dev set.
+ In this case, get a fresh dev set.
+\end_layout
+
+\begin_layout Itemize
+Choose dev and test sets from a distribution that reflects what data you
+ expect to get in the future and want to do well on.
+ This may not be the same as your training data’s distribution.
+\end_layout
+
+\begin_layout Itemize
+If your dev set and metric are no longer pointing your team in the right
+ direction, quickly change them: (i) If you had over-fit the dev set, get
+ more dev set data.
+ (ii) If the actual distribution you care about is different from the dev/test
+ set distribution, get new dev/test set data.
+ (iii) If your metric is no longer measuring what is most important to you,
+ change the metric.
+\end_layout
+
+\begin_layout Subsection
+Bad results for prediction
+\end_layout
+
+\begin_layout Standard
+Be very careful, because you can spend few months on 
+\begin_inset Quotes eld
+\end_inset
+
+randomly
+\begin_inset Quotes erd
+\end_inset
+
+ picking one of these below, and will end up with almost no result.
+ What you should do, is to implement some diagnostic test for measuring
+ a performance of some learning algorithm.
+ This can take time to implement, but it is worth it.
+\end_layout
+
+\begin_layout Itemize
+Get more training samples -> fix 
+\series bold
+high variance
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Reduce a number of features -> fix 
+\series bold
+high variance
+\series default
+ (lowering features to lower down high bias does not help).
+\end_layout
+
+\begin_layout Itemize
+Increase a number of features -> fix 
+\series bold
+high bias
+\series default
+ (current hypothesis is too simple, so after few more features, it better
+ fits to the training set).
+\end_layout
+
+\begin_layout Itemize
+Try to add polynomial features.
+ What polynomial degree? Try more variants, for example up to degree = 10,
+ and evaluate a cost function on evaluation dataset.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note - if we evaluate what degree is the best on test set, this is an optimistic
+ estimate of generalization error.
+ Because I fit this parameter on test set and it is no longer fair to evaluate
+ a hypothesis on this test set.
+ So it would do better on this test set than on new examples a model has
+ not seen before.
+\end_layout
+
+\begin_layout Itemize
+Fix 
+\series bold
+high bias
+\series default
+ (current hypothesis is too simple, so after adding more polynomial features,
+ it better fits to the training set).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Try to increase regularization -> fix 
+\series bold
+high variance
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Try to decrease regularization -> fix 
+\series bold
+high bias
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Overfitting
+\end_layout
+
+\begin_layout Itemize
+=
+\series bold
+high variance
+\series default
+ - if a model is too complex (too many features/parameters and too less
+ data) and it overreacts on even a small fluctuations in training data.
+\end_layout
+
+\begin_layout Itemize
+On graph - performs very good on training data, but there are unnecessary
+ curves.
+ 
+\end_layout
+
+\begin_layout Itemize
+High variance can be observed from learning curve.
+\end_layout
+
+\begin_layout Itemize
+Performs very good during learning, but bad with previously unseen data.
+\end_layout
+
+\begin_layout Itemize
+Solution:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A bigger dataset should help.
+\end_layout
+
+\begin_layout Itemize
+Reduction of a number of features:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+use a model selection algorithm, or 
+\end_layout
+
+\begin_layout Itemize
+manually select which features to keep.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Regularization - all features are kept, we all consider to be good and important.
+ Reduce magnitude/values of parameters 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Perform a statistical significance test - for example chi-square, before
+ adding new structure, to decide whether the distribution of a class really
+ is different with and without this structure.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Learning algorithms with a high-variance
+\series default
+ profile can generate arbitrarily 
+\series bold
+complex
+\series default
+ 
+\series bold
+models
+\series default
+ which fit data variations more readily.
+ Examples of high-variance algorithms are
+\series bold
+ decision trees, neural networks
+\series default
+ and 
+\series bold
+SVMs
+\series default
+.
+ The obvious pitfall of high-variance model classes is overfitting.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Underfitting
+\end_layout
+
+\begin_layout Itemize
+= 
+\series bold
+high bias
+\series default
+ - if a model does not fit training data very well.
+ This is caused by too few features or some function is too simple on a
+ given problem.
+\end_layout
+
+\begin_layout Itemize
+High bias can be observed from learning curve.
+\end_layout
+
+\begin_layout Itemize
+Bigger dataset is not enough.
+ With high bias, the model is not fitting the training data currently present,
+ so adding more data is unlikely to help.
+\end_layout
+
+\begin_layout Itemize
+A 
+\begin_inset Quotes eld
+\end_inset
+
+compromise
+\begin_inset Quotes erd
+\end_inset
+
+ can be seen as well
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{'Just fine' is something between underfitting and overfitting.}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Learning algorithms with a high-bias
+\series default
+ profile usually generate 
+\series bold
+simple
+\series default
+, highly constrained 
+\series bold
+models
+\series default
+ which are quite insensitive to data fluctuations, so that variance is low.
+ 
+\series bold
+Naive Bayes
+\series default
+ is considered to have high bias, because it assumes that the dataset under
+ consideration can be summarized by a single probability distribution and
+ that this model is sufficient to discriminate between classes.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Data mismatch
+\end_layout
+
+\begin_layout Itemize
+The algorithm generalizes well to new data drawn from the same distribution
+ as the training set, but not to data drawn from the dev/test set distribution.
+ This is because the training set data is a poor match for the dev/test
+ set data.
+ To address this, you might try to make the training data more similar to
+ the dev/test data.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: Suppose you have developed a speech recognition system that does very
+ well on the training set and on the training dev set.
+ However, it does poorly on your dev set.
+ Recommended is to: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Try to 
+\series bold
+understand
+\series default
+ what 
+\series bold
+properties of the data differ between the training and the dev set distributions
+\series default
+ 
+\series bold
+by manual examination
+\series default
+ - the purpose of the error analysis is to understand the significant difference
+s between the training and the dev set, which is what leads to the data
+ mismatch.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Try to find more training data
+\series default
+ that better 
+\series bold
+matches the dev set 
+\series default
+examples that your algorithm has trouble with.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Diagnosing bias vs variance
+\end_layout
+
+\begin_layout Itemize
+Below are 2 examples of how the problem could look like on plot.
+ In reality, the graphs can be a bit more messy and just a little bit more
+ noisy.
+ Selecting the most optimal point (
+\begin_inset Quotes eld
+\end_inset
+
+just fine
+\begin_inset Quotes erd
+\end_inset
+
+) between bias and variance, can be done manually or automatically.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bias_variance.png
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of high bias vs high variance during choosing a best candidate
+ of polynome degree 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Hyperparameter 
+\begin_inset Formula $d$
+\end_inset
+
+ is for estimating a polynome degree of linear regression.
+ During high bias, an error is very high for both train and validation set.
+ During high variance, training error is low because it overfitted the training
+ set, but a model is performing poorly on validation set.
+ Cross validation error is usually a bit higher than error on training set.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bias_variance_reg.png
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Another example of high bias vs high variance during choosing the best candidate
+ of regularization parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ The graph is different in comparison to the previous one, because we are
+ dealing with different hyperparameters.
+ Note: in the first formula, 
+\begin_inset Formula $J(\theta)$
+\end_inset
+
+, the SUM in the regularization should be from 1 to 
+\begin_inset Formula $n$
+\end_inset
+
+, not 
+\begin_inset Formula $m$
+\end_inset
+
+ - that is just a typo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bias_variance_darts.png
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bias and variance in dart-throwing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/model_process_learning.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of responding to a training a model with alternatives solving
+ high bias and high variance.
+ 4 datasets were used - 
+\series bold
+training
+\series default
+ 
+\series bold
+set
+\series default
+ (data that the algorithm will learn from, not necessary from the same distribut
+ion as dev/test set), 
+\series bold
+training-dev
+\series default
+ 
+\series bold
+set
+\series default
+ (same distribution as training set, usually smaller than training set -
+ it is usually large enough for evaluation and tracking progress of learning
+ algorithm), 
+\series bold
+dev set 
+\series default
+(same data distribution as test set), 
+\series bold
+test set
+\series default
+ (data we ultimately care about doing well on).
+ Now we can evaluate training error, the algorithm's ability to generalize
+ to new data drawn from the training set distribution, by evaluating on
+ the training-dev set, and the algorithm's performance on a specific task
+ by evaluating dev / test set..
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Learning curves
+\end_layout
+
+\begin_layout Itemize
+It is useful thing to plot - for either to 
+\series bold
+sanity checking that our algorithm is working correctly
+\series default
+, or if we want to 
+\series bold
+improve the performance of the algorithm
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+It is recommended to 
+\series bold
+estimate an optimal error rate 
+\series default
+(and to put it to a learning curve plot) - from, if possible, human-level
+ performance.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+An example: diagnoses from x-ray images problem: a typical person with no
+ previous medical background besides some basic training achieves 15% error
+ on this task.
+ A junior doctor achieves 10% error.
+ An experienced doctor achieves 5% error.
+ And a small team of doctors that discuss and debate each image achieves
+ 2% error.
+ In this case, it is recommended to use 2% as the human-level performance
+ proxy for our optimal error rate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/bayes_optimal_error.png
+	scale 27
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparing machine learning systems to human-level performance.
+ We can see, that human level performance is not changing over time (as
+ training continues), and that in theory, ML systems have upper bound (no
+ matter how data and training time the algorithm has) called Bayes optimal
+ error (or Bayes error, it is the best possible error, and there is no way
+ for any function that it could surpass a certain level of accuracy).
+ Also we can see, that progress seems to be relatively rapid as approaches
+ to human level performance.
+ After a while, the algorithm's progress actually slows down, but still
+ increases.
+ Why? Probably because human level performance can be relatively close to
+ Bayes optimal error.
+ For example, people are good at recognizing cats from a picture.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+If your ML system is worse than humans
+\series default
+, it is recommended to:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+get labeled data from humans
+\end_layout
+
+\begin_layout Itemize
+gain insight from manual error analysis - why a person get this right?
+\end_layout
+
+\begin_layout Itemize
+better analysis of bias / variance
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Depending on what human level error is
+\series default
+, we can decide what to focus on: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+bias reduction
+\series default
+ - training error is much bigger than human error
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+variance reduction
+\series default
+ - training error is similar to human level performance (this is called
+ 
+\series bold
+avoidable bias
+\series default
+ - calculated as a difference between training error and Bayes error - or
+ human-level error, that can be similar), but there is a gap between training
+ error and dev/test error
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Andrew Ng is plotting them quite often to determine if a learning algorithm
+ is suffering from high variance or bias, or a bit of both.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Training error usually increases as the training set size grows
+\series default
+ - for a model, it is more difficult to learn on newer and newer sample,
+ and this is perfectly normal (for example, to remember - learn - 2 images
+ of cats is easier than to learn 1,000 of images - there can be great variety,
+ noise, and so on).
+\end_layout
+
+\begin_layout Itemize
+Usually, with growing number of samples:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Scenario 1: 
+\series bold
+high bias
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for training set, the average error should grow.
+ Because, it is more and more difficult to have a hypothesis which fits
+ to our problem.
+\end_layout
+
+\begin_layout Itemize
+for validation set, the average error should decrease.
+ Because more data we have, the better we do at generalizing to new examples.
+\end_layout
+
+\begin_layout Itemize
+these two curves will end up
+\series bold
+ close to each other
+\series default
+.
+ Ultimately, the performance on both validation and training set will be
+ very similar.
+ And quite high, so that's why it is called high bias.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+getting more data usually does not help much!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/high_bias_learning_curve.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of high bias shown on learning curve.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Scenario 2: 
+\series bold
+high variance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for training set, the average error should grow.
+ Because, it can be a bit harder to fit dataset correctly if we have more
+ and more data.
+ However, the training error will be still pretty low (in comparison to
+ situation in Scenario 1).
+\end_layout
+
+\begin_layout Itemize
+for validation set, the average error should remain high, or perhaps a slightly
+ be decreasing, even if we add more and more validation data.
+\end_layout
+
+\begin_layout Itemize
+high variance can be identified that there is a 
+\series bold
+large gap between those 2 curves
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+getting more data is likely to help
+\series default
+, since these 2 curves are converging to each other.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/high_variance_learning_curve.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of high variance shown on learning curve.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beginning & fast prototyping
+\end_layout
+
+\begin_layout Standard
+Ideal case - start quick & dirty the easiest solution possible, see if that
+ works.
+ Give it 1 day, max 24hours.
+\end_layout
+
+\begin_layout Itemize
+Simple algorithm that is easy to implement.
+ Test it on cross-validation data.
+\end_layout
+
+\begin_layout Itemize
+Draw learning curves and find out if it is needed to add more features,
+ more data, or so.
+ 
+\end_layout
+
+\begin_layout Itemize
+Then - error analysis: why the results are wrong, see manually concrete
+ samples why they are misclassified / wrong.
+ And by this time, create new features.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Error analysis on cross-validation data - if we create a new feature, we
+ can end up that we choose features which works good on specific test set
+ (=generalization of overall solution to newer examples).
+ Be careful.
+ In other words, if we develop new features by examining the test set, then
+ we may end up choosing features that work well specifically for the test
+ set, so 
+\begin_inset Formula $J_{test}(\theta)$
+\end_inset
+
+ is no longer a good estimate of how well we generalize to new examples.
+\end_layout
+
+\begin_layout Itemize
+Test set should be TOTALLY SEPARATED and used on the very end.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Then, having a numerical evaluation is a good thing - single number (floating
+ point) which tells a performance of an algorithm.
+ So - we have an idea - quickly try, rerun algorithm and see this number
+ (F-score for instance).
+ If this number is higher or lower, we can say if the idea was good or bad,
+ no need to manually examining.
+\end_layout
+
+\begin_layout Itemize
+CNN - start fitting on small number of hidden layers, scale-up to overfitting
+ takes over.
+ Then use regularization (or another way how to deal with overfitting),
+ and then scale-up again.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hyperparameter tuning
+\end_layout
+
+\begin_layout Standard
+Note: In deep learning, the learning rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is one of the most important hyperparameter to start with.
+\end_layout
+
+\begin_layout Standard
+Note2: Once you find the best values of hyperparameters, you use the entire
+ training set to build the model with these, and then you measure the performanc
+e of your model using the test set.
+\end_layout
+
+\begin_layout Itemize
+There exist a lot of approaches to this problem:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Grid search
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The most simple technique, that uses all possible combination of the input
+ hyperparameters you specify, and find the best combination.
+\end_layout
+
+\begin_layout Itemize
+If there is a big gap between some hyperparameter values (range of possible
+ values you want), it is more recommended to generate values with 
+\series bold
+logarithm scale
+\series default
+ (
+\begin_inset Formula $0.0001,0.001,0.01,0.1,1$
+\end_inset
+
+ is better than using a linear 
+\begin_inset Quotes eld
+\end_inset
+
+step
+\begin_inset Quotes erd
+\end_inset
+
+ by 
+\begin_inset Formula $0.1$
+\end_inset
+
+ for instance).
+ Once you find the best combination of hyperparameters, you can explore
+ the values close to the best ones in some region around them.
+ And then, finally you assess the selected model using the test set.
+\end_layout
+
+\begin_layout Itemize
+It can be used when you have enough data to have decent validation set (in
+ which each class is represented by at least a couple of dozens examples),
+ and the number of hyperparameters and their range is not too large.
+ When you don't have a decent validation set, the common technique you can
+ use is called 
+\series bold
+cross-validation
+\series default
+.
+ However, you can also use for example grid search with cross-validation
+ to find the best values of hyperparameters for you model.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Random search
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If a number of hyperparameters is small, it is possible to use a grid and
+ try all the combinations.
+ Otherwise - and this is better and more recommended approach - use randomness
+ (generate random values), or other methods such as Bayesian hyperparameter
+ optimization.
+\end_layout
+
+\begin_layout Itemize
+Here, you no longer provide a discrete set of values to explore for each
+ hyperparameter.
+ Instead, you provide a
+\series bold
+ statistical distribution for each hyperparameter 
+\series default
+from which values are randomly sampled and set the total number of combinations
+ you want to try.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Bayesian hyperparameter optimization
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bayesian techniques use past evaluation results to choose the next values
+ to evaluate.
+\end_layout
+
+\begin_layout Itemize
+The idea is to limit the number of expensive optimizations of the objective
+ function by choosing the next hyperparameter values based on those that
+ have done well in the past.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There exist also other techniques such as 
+\series bold
+gradient-based techniques
+\series default
+, or 
+\series bold
+evolutionary optimization techniques
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Batch normalization
+\end_layout
+
+\begin_layout Itemize
+This makes your hyperparameter search problem much easier and makes your
+ neural network much more robust.
+\end_layout
+
+\begin_layout Itemize
+Normalizing inputs to speed up learning causes, that learning algorithm
+ converges faster.
+ This can be applied not just to input features, but also to input of each
+ neuron, so we can perform normalization of input of each hidden layer (=activat
+ions 
+\begin_inset Formula $a^{[l]}$
+\end_inset
+
+, or before activations 
+\begin_inset Formula $z^{[l]}$
+\end_inset
+
+ - there are works that compares both approaches.
+ However, to normalize values before activations is done more often).
+\end_layout
+
+\begin_layout Itemize
+In practice, batch normalization is usually applied on mini-batches of samples.
+ So, you are normalizing a layer by layer on the whole mini-batch of samples.
+ In neural network libraries, you can often insert a batch normalization
+ layer between two layers.
+\end_layout
+
+\begin_layout Itemize
+Batch normalization reduces 
+\series bold
+co-variate shift problem
+\series default
+.
+ If values of parameters change, at least mean and variance stays the same.
+ It limits the amount to which updating the parameters in the earlier layers
+ can affect the distribution of values that the 
+\begin_inset Formula $n$
+\end_inset
+
+ layer now sees and therefore has to learn on.
+ And so, batch normalization reduces the problem of the input values changing,
+ it really causes these values to 
+\series bold
+become more stable
+\series default
+, so that the later layers of the neural network has more firm ground to
+ stand on.
+ And even though the input distribution changes a bit, it changes less,
+ and what this does is, even as the earlier layers keep learning, the amounts
+ that this forces the later layers to adapt to as early as layer changes
+ is reduced or, if you will, it weakens the coupling between what the early
+ layers parameters has to do and what the later layers parameters have to
+ do.
+ And so it allows 
+\series bold
+each layer of the network to learn by itself, a little bit more independently
+ of other layers
+\series default
+, and this has the effect of 
+\series bold
+speeding up of learning in the whole network
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Another effect of batch normalization is a 
+\series bold
+small regularization effect
+\series default
+ (when using mini-batch training).
+ Each mini-batch is scaled by the mean and variance computed on just that
+ mini-batch.
+ This adds some noise to the values 
+\begin_inset Formula $z^{[l]}$
+\end_inset
+
+ with that mini-batch, because it is not done on the whole training set
+ (standard deviation and mean are noisy).
+ So, similar to dropout, it adds some noise to each hidden layer's activations.
+ Because by adding noise to the hidden units, it's forcing the downstream
+ hidden units not to rely too much on any hidden unit.
+ This regularization effect is small and it is fine to use also Dropout.
+ If you use a bigger mini-batch size, you are reducing this noise and therefore
+ also this regularization effect.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+At
+\series default
+ 
+\series bold
+test time 
+\series default
+(predictions), it is needed to have slightly different approach - because
+ you are computing mean and standard deviation on a 1 example, instead of
+ a mini-batch of samples.
+ So it is needed to compute these 2 values differently - using 
+\series bold
+exponentially weighted average
+\series default
+, where the average is across the mini-batches.
+ Therefore it is needed to keep track of all values on all hidden layers
+ as well as it is needed to keep a track of the current (exponentially weighted)
+ average of mean values and also the same for standard deviation.
+ Then, during normalization at test time, these 2 values are used (and you
+ will use batch norm parameters 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ learned during training process).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/batch_norm_on_single_neuron.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Batch normalization of a single neuron.
+ Values 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ set the mean and variance of the linear variable 
+\begin_inset Formula $z^{[l]}$
+\end_inset
+
+ of a given layer.
+ They can be learned using Adam, Gradient descent with momentum, or RMSprop,
+ not just with gradient descent.
+ Batch normalization is about normalizing inputs to each hidden layer =
+ so, normalization of activations or before applying activation function
+ - in practice, the second option is more used.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/batch_norm_on_ann.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Batch normalization of the whole ANN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/batch_norm_gradient_descent.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gradient descent implementation using batch normalization with mini-batches.
+ Batch normalization also works with Adam and RMSprop and so on.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As been detailed in the figures above, we can set different variance and
+ mean for normalized values.
+ However, having 
+\begin_inset Formula $\mu=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}=1$
+\end_inset
+
+ is not always wanted for all hidden layers.
+ It is needed for input features, but in general - if we would do this,
+ and we would have sigmoid activation function, then it would be in linear
+ regime (for this to see, please see sigmoid activation function how it
+ looks, and focus on values between 
+\begin_inset Formula $-0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $0.5$
+\end_inset
+
+).
+ We want to take advantage of non-linear regimes of the sigmoid activation
+ function, which means 
+\begin_inset Formula $\mu\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Transfer learning
+\end_layout
+
+\begin_layout Itemize
+Information mostly from here
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine
+-tuning-a-pre-trained-model/}}
+\end_layout
+
+\end_inset
+
+ and also see tips and a list of learned models here
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/deep-learning-tips-and-tricks-1ef708ec5f53}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Transfer learning is a research problem in machine learning that focuses
+ on storing knowledge gained while solving one problem and applying it to
+ a different but related problem.
+ So basically we use pre-trained models from other people by making small
+ changes.
+\end_layout
+
+\begin_layout Itemize
+Do not re-invent the wheel!
+\end_layout
+
+\begin_layout Itemize
+Be careful what pre-trained model you use.
+ The problem has to be similar.
+ For example, a model previously trained for speech recognition would work
+ horribly if we try to use it to identify objects using it.
+\end_layout
+
+\begin_layout Itemize
+Since we assume that a pre-trained model (DNN for instance) has been trained
+ quite well, we would not want to modify the weights too soon and too much.
+ While modifying we generally use a learning rate smaller than the one used
+ for initially training the model.
+\end_layout
+
+\begin_layout Itemize
+There are more ways to fine tune the model:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Feature extraction.
+ We can use a pre-trained model as a feature extraction mechanism.
+ What we can do is that we can remove the output layer, and then use the
+ entire network as a fixed feature extractor for the new data set.
+\end_layout
+
+\begin_layout Itemize
+Use the architecture of the pre-trained model.
+ We can use architecture of the pre-trained model while we initialize all
+ the weights randomly and train the model according to our dataset again.
+\end_layout
+
+\begin_layout Itemize
+Train some layers while freeze others.
+ This means that we will train the pre-trained model only partially by keeping
+ the weights of initial layers of the model frozen while we retrain only
+ the higher layers.
+ We can try and test as to how many layers to be frozen and how many to
+ be trained.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+How to proceed on using pre-trained model regarding the previous ways, we
+ can have a few scenarios; mostly relevant to DNN, because they are very
+ resource-intensive (and can be found pre-trained and freely available on
+ the Internet):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Size of 
+\series bold
+dataset is small
+\series default
+ while 
+\series bold
+data similarity is very high.
+ 
+\series default
+Since data similarity is high, we do not need to re-train the model.
+ All we need to do is to customize and modify the output layers according
+ to our problem statement.
+ We use the pre-trained model as a feature extractor.
+\end_layout
+
+\begin_layout Itemize
+Size of
+\series bold
+ dataset is small 
+\series default
+as well as 
+\series bold
+data similarity is very low.
+ 
+\series default
+In this case we can freeze the initial 
+\begin_inset Formula $k$
+\end_inset
+
+ layers of the pre-trained model and train just the remaining layers again.
+ The top layers would then be customized to the new data set.
+ Since the new data set has low similarity it is needed to re-train and
+ customize the higher layers according to the new dataset.
+ The small size of the data set is compensated by the fact that the initial
+ layers are kept pre-trained (which have been trained on a large dataset
+ previously) and the weights for those layers are frozen.
+\end_layout
+
+\begin_layout Itemize
+Size of
+\series bold
+ dataset is large
+\series default
+ however 
+\series bold
+data similarity is very low.
+ 
+\series default
+Since we have a large dataset, our neural network training would be effective.
+ However, data we have are very different as compared to data used for training
+ of pre-trained model.
+ The predictions made using pre-trained models would not be effective.
+ Hence, 
+\series bold
+it is best to train the neural network from scratch according to your data
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Size of 
+\series bold
+dataset is large
+\series default
+ as well as 
+\series bold
+data similarity is high.
+
+\series default
+ This is ideal situation, pre-trained model should be most effective.
+ keep weights and architecture the same, and retrain this model using the
+ weights as initialized in the pre-trained model.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An example of one approach to identify handwritten digits: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Retrain the output layers only - we just train the weights of these layers
+ and try to identify the digits.
+\end_layout
+
+\begin_layout Enumerate
+Freeze the weights of the first layers - this is because the first few layers
+ capture universal features like curves and edges that are also relevant
+ to our new problem.
+ We want to keep those weights intact and we will get the network to focus
+ on learning dataset-specific features in the subsequent layers.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Multi-task learning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+In comparison to transfer learning
+\series default
+, in which there is a sequential process where you learn from task 
+\begin_inset Formula $A$
+\end_inset
+
+ and then transfer that to task 
+\begin_inset Formula $B$
+\end_inset
+
+, in multi-task learning you start off simultaneously, trying to have 1
+ ANN do several things at the same time.
+ And then, each of these tasks help hopefully all of the other tasks.
+ Also, activation function for the output layer also needs to be changed
+ from softmax to something different.
+ Softmax is a good choice if and only if one of the possibilities is present
+ in each picture (so 1 of distinct classes).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+For example
+\series default
+, let's have a deep neural network, and output layer computes a vector of
+ 4 attributes - if there is a pedestrian, car, stop sign, or traffic lights
+ on a given picture.
+ So it is not a vector where only 1 of these can be detected, and other
+ ones not - such ANN can perform multiple 
+\begin_inset Quotes eld
+\end_inset
+
+tasks
+\begin_inset Quotes erd
+\end_inset
+
+ at the same time (also, our annotation in training set is represented by
+ vector of 4 values)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Multi-task learning makes sense when:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You are training on a set of tasks that could benefit from having shared
+ lower-level features.
+ As in the example above, it makes sense that recognizing traffic lights
+ and cars and pedestrians, those should have similar features that could
+ also help you to recognize stop signs, because these are all features of
+ roads.
+\end_layout
+
+\begin_layout Itemize
+(Usually): amount of data you have for each task is quite similar.
+ In comparison to transfer learning, a task 
+\begin_inset Formula $A$
+\end_inset
+
+ has usually a lot of data (let's say 1M), and task 
+\begin_inset Formula $B$
+\end_inset
+
+ has small amount of data (let's say 1k).
+ In multi-task learning, let's say that we have 100 tasks and each has 1k
+ examples.
+ If we would want to do 1 task in isolation, you would have only 1k examples
+ to train with, which is not much.
+ However, by training all tasks simultaneously, you have 100k of training
+ examples which could be a big boost because they could give a lot of knowledge.
+\end_layout
+
+\begin_layout Itemize
+You can train a big enough ANN to do well on all the tasks.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An alternative is to train a separate model for each task.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Rich Carona, found many years ago was that the only time a multi-task learning
+ hurts performance, compared to training separate neural networks, is if
+ your neural network isn't big enough.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In practice, multi-task learning is used much less often than transfer learning.
+ Often it is just probably difficult to set up or to find so many different
+ tasks that you would actually want to train a single neural network for.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Online learning
+\end_layout
+
+\begin_layout Itemize
+Large-scale machine learning setting, which allows us to model problems
+ where we have a continuous flood or stream of data coming in and we would
+ like to have an algorithm to learn from that.
+\end_layout
+
+\begin_layout Itemize
+So, we update parameter 
+\begin_inset Formula $θ_{j}$
+\end_inset
+
+ by one example after another (like in SGD).
+ However, we use that one example, and we never use it again, we throw it
+ away.
+ But remember, that online learning is mostly if we have really a continuous
+ stream of data, basically unlimited.
+ If we have a website with a lot of online users, it is a good choice.
+ If we don’t have a lot of users, maybe it is not a good idea.
+\end_layout
+
+\begin_layout Itemize
+Online learning is adaptable to changes.
+ For example, thanks to online learning, a model can adapt due to some change
+ in behavior of users which are coming to your website and you have data
+ from them, let’s say because of some change in economic situation.
+\end_layout
+
+\begin_layout Subsection
+Map Reduce and Data Paralelism
+\end_layout
+
+\begin_layout Itemize
+Not all machine learning tasks can be done on just 1 machine.
+ In some bigger tasks, we need to paralyze.
+ For some problems, even SGD is not enough and this map reduce can be very
+ helpful.
+\end_layout
+
+\begin_layout Itemize
+If we have n machines, we split (uniformly) our training data into 
+\begin_inset Formula $n$
+\end_inset
+
+ parts.
+ On each machine we perform training with Batch gradient descent (for instance)
+ on 
+\begin_inset Formula $m/n$
+\end_inset
+
+ training samples, where m is the number of all training samples we have.
+ After all 
+\begin_inset Formula $n$
+\end_inset
+
+ computers are finished (so we speed up the training almost by 
+\begin_inset Formula $n$
+\end_inset
+
+ times - just almost, because there are network latencies, overhead of combining
+ temporary results, and so on), they will send these intermediate results
+ to 1 centralized master server.
+ This server will combine the results of these temporary results of SGD
+ together: 
+\begin_inset Formula $θ_{j}=θ_{j}-α\frac{1}{m}(temp_{j}^{(1)}+...+temp_{j}^{(n)})$
+\end_inset
+
+ which is equal to a simple Batch gradient descent on 1 computer.
+\end_layout
+
+\begin_layout Itemize
+To use map reduce, we have to have a learning algorithm that uses a summation
+ over the training set.
+ And fortunately, many learning algorithms can be expressed as computing
+ sums of some functions over the training set.
+\end_layout
+
+\begin_layout Itemize
+It is possible to take a benefit of this approach on 1 computer, if we have
+ multiple CPU cores.
+\end_layout
+
+\begin_layout Subsection
+Anomaly detection 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+We have small number of positive examples, and a bigger number of negative
+ examples.
+
+\series default
+ We have a big amount of anomaly types, it is difficult to find an algorithm
+ which would learn from positive examples about how anomaly looks like and
+ new ones can come.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+We learn model basically what is normal.
+ Everything else (beyond some threshold for example) is considered to be
+ an anomaly.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+The algorithm(s) can use a set of features for training (can be from just
+ one, bigger class) in Gaussian distribution.
+ If values in some feature are not Gaussian, then we can transform them
+ to be in one.
+ An example is depicted on the next figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/anomaly_detection_example.png
+	scale 24
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of anomaly detection algorithm with 2 features.
+ All the green points are approximately equal in the terms of (low) probability
+ of being an anomaly, even to the fact that they are really distant and
+ placed somewhere else.
+ What is inside of the blue (left) curve, that should be normal activity.
+ Green ones are anomalies, but the algorithm cannot see it that way.
+ This simple anomaly detection algorithm is not realizing that this blue
+ ellipse shows the high probability region.
+ To fix this problem, we can use for example Multivariate Gaussian Distribution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Multivariate Gaussian Distribution
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+idea: we have 
+\begin_inset Formula $x\in\mathbb{R}^{n}$
+\end_inset
+
+ .
+ Don't model 
+\begin_inset Formula $p(x_{1}),p(x_{2}),...$
+\end_inset
+
+ separately, but model 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ all in one go (together).
+\end_layout
+
+\begin_layout Itemize
+parametrized by mean 
+\begin_inset Formula $μ\in\mathbb{R}^{n}$
+\end_inset
+
+ and covariance matrix 
+\begin_inset Formula $\Sigma\in\mathbb{R}^{n\,x\,n}$
+\end_inset
+
+ and we also need determinant 
+\begin_inset Formula $|\Sigma|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p(x;μ,\text{\Sigma})=\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu))\label{eq:multivariate_gaus_distrib}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/multivar_gaussian_example1.png
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example of multivariate gaussian distribution when changing values of covariance
+ matrix (I).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/multivar_gaussian_example2.png
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example of multivariate gaussian distribution when changing values of covariance
+ matrix (II).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/anomaly_detection_multivariate_gaussian.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorithm of anomaly detection with multivariate gaussian distribution.
+ Sample 'X' (green) which is 'outlier' is correctly considered to be an
+ anomaly, because now with multivariate gaussian distribution the shape
+ of elipsis is different, it is not circle like on the very first figure
+ in this subsection.
+ And this elipsoid shape, determined by 
+\begin_inset Formula $μ$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, can be fit from data.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Anomaly detection vs supervised learning 
+\series default
+- big amount of negative as well as positive examples.
+ There is enough positive examples for algorithm to learn from them, the
+ future unseen ones are similar.
+ Examples: email spam classification, weather prediction, cancer classification.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Examples
+\series default
+ - fraud detection (but this can be also Supervised Learning), or monitoring
+ machines in data center.
+ Another example of usage the data: let’s say that we have 10,000 negative
+ examples and 20 positives.
+ Now we will use for training the model 6,000 negative examples and 0 positives.
+ And then for validation (threshold parameter estimation for example) and
+ test set 10 and 10, and 2,000 and 2,000 samples.
+\end_layout
+
+\begin_layout Subsection
+Working with Big Datasets
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Usage of Batch vs Stochastic gradient descent 
+\series default
+(see Types of Gradient descent in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minimizing-cost-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Map-Reduce principle and data parallelism.
+
+\series default
+ Training set is uniformly divided to few parts and then the results are
+ send to some master server, which will combine them.
+\end_layout
+
+\begin_layout Subsection
+Acquiring even more data - increasing training set
+\end_layout
+
+\begin_layout Itemize
+Syntesis of artificial data - for example, usage of GANs.
+\end_layout
+
+\begin_layout Itemize
+Gather (and label) data manually or via crows sourcing (Amazon Mechanical
+ Turk).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Your speech system needs more data that sounds as if it were taken from
+ within a car.
+ Rather than collecting a lot of data while driving around, there might
+ be an easier way to get this data: by artificially synthesizing it.
+\end_layout
+
+\begin_layout Itemize
+However, keep in mind that artificial data synthesis has its challenges:
+ it is sometimes easier to create synthetic data that appears realistic
+ to a person than it is to create data that appears realistic to a computer.
+ For example, suppose you have 1,000 hours of speech training data, but
+ only 1 hour of car noise.
+ If you repeatedly use the same 1 hour of car noise with different portions
+ from the original 1,000 hours of training data, you will end up with a
+ synthetic dataset where the same car noise is repeated over and over.
+ While a person listening to this audio probably would not be able to tell
+ – all car noise sounds the same to most of us - t is possible that a learning
+ algorithm would “over-fit” to the 1 hour of car noise.
+ Thus, it could generalize poorly to a new audio clip where the car noise
+ happens to sound different.
+ 
+\end_layout
+
+\begin_layout Itemize
+Alternatively, suppose you have 1,000 unique hours of car noise, but all
+ of it was taken from just 10 different cars.
+ In this case, it is possible for an algorithm to “over-fit” to these 10
+ cars and perform poorly if tested on audio from a different car.
+ Unfortunately, these problems can be hard to spot.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+When synthesizing data, put some thought into whether you’re really synthesizing
+ a representative set of examples.
+
+\series default
+ Try to avoid giving the synthesized data properties that makes it possible
+ for a learning algorithm to distinguish synthesized from non-synthesized
+ examples - such as if all the synthesized data comes from one of 20 car
+ designs, or all the synthesized audio comes from only 1 hour of car noise.
+ This advice can be hard to follow.
+ If you are able to get all the details right, you can suddenly access a
+ far
+\series bold
+ larger training set
+\series default
+ than before.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data augmentation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a technique that aims at improving the performance of for example
+ a computer vision systems (mostly?) by creating new data samples from existing
+ ones.
+ For example, mirroring of an image, multiple random crops, playing with
+ RGB colors, shifting, and so on.
+\end_layout
+
+\begin_layout Itemize
+We can use this when we are overfitting and the best solution is to add
+ more data, but that would be too expensive.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Weighting Data
+\end_layout
+
+\begin_layout Standard
+Example of problem and a solution:
+\end_layout
+
+\begin_layout Itemize
+Suppose you have 200k images from the Internet and 5k images from your mobile
+ app users.
+ So there is a 40:1 ratio between the size of these datasets.
+ In practice, having 40x as many internet images as mobile app images might
+ mean you need to spend 40x (or more) as much computational resources to
+ model both, compared to if you trained on only the 5k images.
+\end_layout
+
+\begin_layout Itemize
+If you don’t have huge computational resources, you could give the internet
+ images a much lower weight as a compromise.
+\end_layout
+
+\begin_layout Itemize
+Suppose your optimization objective is squared error (not good for classificatio
+n, but it's simple for this example), where the first sum is over 5k examples
+ and the second one over 200k examples:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+min_{\theta}\sum_{(x,y)\in MobileImg}(h_{\theta}(x)-y)^{2}+\sum_{(x,y)\in InternetImg}(h_{\theta}(x)-y)^{2}\label{eq:squared_err_example}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Instead, it is better to use additional parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+ .
+ If you set 
+\begin_inset Formula $\beta=1/40$
+\end_inset
+
+, then the algorithm would give equal weight to mobile images and internet
+ images.
+ So you don't have to build a massive ANN to make sure that the algorithm
+ does well on both types of tasks.:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+min_{\theta}\sum_{(x,y)\in MobileImg}(h_{\theta}(x)-y)^{2}+\beta\sum_{(x,y)\in InternetImg}(h_{\theta}(x)-y)^{2}\label{eq:sqared_error_weighted_example}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This type of re-weighting is needed only when you suspect the additional
+ data (Internet images) has a very different distribution than the dev/test
+ set, or if the additional data is much larger than the data that came from
+ the same distribution as the dev/test set (mobile images).
+\end_layout
+
+\begin_layout Subsection
+Neural Networks Problems
+\end_layout
+
+\begin_layout Itemize
+37 Reasons why your Neural Network is not working
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://blog.slavv.com/37-reasons-why-your-neural-network-is-not-working-40208
+54bd607}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Outlier Detection
+\end_layout
+
+\begin_layout Itemize
+Outlier detection is the problem of detecting such examples from the dataset,
+ that are very different from what a typical example in the dataset looks
+ like.
+\end_layout
+
+\begin_layout Itemize
+There are several techniques that could help to solve this problem, for
+ example autoencoder and one-class classifier learning.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If we use an autoencoder, we train it on our dataset.
+ Then, if we want to predict whether an example is an outlier, we can use
+ the autoencoder model to reconstruct the example from the bottleneck layer.
+ The model will unlikely be capable of reconstructing an outlier.
+\end_layout
+
+\begin_layout Itemize
+In one-class classification, the model either predicts that the input example
+ belongs to the class, or it's an outlier.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Performance - Micro vs Macro average methods
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Micro-average
+\series default
+: individual TP, FP and FN of the system are summed for different sets and
+ applied to the statistics.
+ Micro-averaging may be preferred in multi-label settings, including multi-class
+ classification where a majority class is to be ignored.
+ It will aggregate the contributions of all classes to compute the average
+ metric.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Macro-average
+\series default
+: (=classes are equal) more straight forward, just take the average of the
+ precision and recall of the system on different sets.
+ So each metric for each class and then average.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+An alternative
+\series default
+, when classes are imbalanced, is to compute a weighted macro-average, in
+ which each class contribution to the average is weighted by the relative
+ number of examples available for it.
+\end_layout
+
+\begin_layout Subsection
+Classification on unbalanced data
+\end_layout
+
+\begin_layout Standard
+There exist 4 approaches how to tackle this problem in literature (at least
+ one such taxonomy)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://dl.acm.org/citation.cfm?id=2907070} or 
+\backslash
+url{https://arxiv.org/pdf/1505.01658.pdf}}
+\end_layout
+
+\end_inset
+
+.
+ They are described in this section.
+ Some algorithms are less sensitive to this problem, such as decision trees
+ (also random forest or gradient boosting).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data pre-processing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Re-sampling 
+\series default
+- the idea is to modify the class distribution so that the proportion of
+ instances of each class is balanced.
+ There are different types:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Under-sampling
+\series default
+ - randomly select a group of 
+\series bold
+majority
+\series default
+ 
+\series bold
+class
+\series default
+ and 
+\series bold
+removes
+\series default
+ them from training set.
+ Smaller datasets are being generated, so learning algorithms are more time
+ and memory efficient at the cost of losing information.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Over-sampling
+\series default
+ - randomly select a group of
+\series bold
+ minority class
+\series default
+ instances and 
+\series bold
+duplicates
+\series default
+ them.
+ No information is lost, but on the other hand, it might lead to overfitting.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Active learning 
+\series default
+- in traditional way, active learning approach is used to select the unlabeled
+ instances for an expert to annotate it.
+ In imbalanced learning, this means selecting instances that are difficult
+ to classify, those that are close to the boundaries to construct a classifier
+ there.
+ Afterwards, it is usually combined with another classification method,
+ such as SVM.
+ Problems - computational cost related to identifying the most informative
+ instances.
+ These methods are usually ot included in the existing algorithm comparison
+ and reviews.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Weighting the data space 
+\series default
+- give a higher weight to examples of the minority class.
+ This is related to cost-sensitive learning.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Special-purpose learning Methods 
+\series default
+- instead of modifying the underlying data, many research efforts have focused
+ on algorithm modifications.
+ The goal is to put the bias towards the minority class into the learning
+ process so that it penalizes the errors on the minority class more.
+ Many of the existing work is based on the foundation of cost-sensitive
+ learning, building on the concept of cost matrix, sometimes utilizing ensemble
+ techniques; some other techniques are based on editing kernel functions.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Cost-sensitive learning methods
+\series default
+ penalize the misclassification of minority class instances more than the
+ instances from the majority class.
+ To achieve this, they utilize the cost matrix, which contains penalties/costs
+ for all correct and wrong classifications.
+ The concept is applicable not only for imbalanced data but in any case
+ where one wants to express that one class is more important than another.
+ Also, it is not only limited to binary classification.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Prediction Post-Processing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Threshold method
+\series default
+ - easy method to deal with the imbalance after the training the classifier.
+ Having a scoring classifier, it is possible to apply different threshold
+ values and thus move on the ROC curve.
+ Then, it is important to select the threshold where the error (e.g.
+ cost error defined by the cost matrix) is minimal.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cost-sensitive post-processing
+\series default
+ - one base learner is used to train the classifier, and then some meta-learning
+ method (MetaCost for example) that operates only with predicted probabilities
+ of the base learner (i.e.
+ it post-processes the probabilities) and it chooses the class with the
+ minimum expected cost of the wrong prediction.
+ Partially, this method can be considered as an ensemble method as it internally
+ uses the aggregate of predictions across more samples of the data.
+ But these methods are not very used in practice.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hybrid methods
+\series default
+, combining 
+\series bold
+special-purpose learning methods
+\series default
+ and 
+\series bold
+re-sampling.
+\end_layout
+
+\begin_layout Standard
+You might also try to create synthetic examples by randomly sampling feature
+ values of several examples of the minority class and combining them to
+ obtain a new example of that class.
+ There are two popular informed sampling algorithms that over-sample the
+ minority class by creating synthetic examples:
+\end_layout
+
+\begin_layout Itemize
+Synthetic Minority Oversampling Technique (
+\series bold
+SMOTE
+\series default
+).
+\end_layout
+
+\begin_layout Itemize
+Adaptive Synthetic Sampling Method (
+\series bold
+ADASYN
+\series default
+).
+\end_layout
+
+\begin_layout Standard
+SMOTE and ADASYN work similarly in many ways.
+ For a given example 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ of the minority class, they pick 
+\series bold
+
+\begin_inset Formula $k$
+\end_inset
+
+ nearest neighbors
+\series default
+ of this example (let's denote this set of 
+\begin_inset Formula $k$
+\end_inset
+
+ examples 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+) and then create a synthetic example 
+\begin_inset Formula $x_{new}$
+\end_inset
+
+ as 
+\begin_inset Formula $x_{i}+λ(x_{zi}−x_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{zi}$
+\end_inset
+
+ is an example of the minority class chosen randomly from 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+ .
+ The interpolation hyperparameter 
+\begin_inset Formula $λ$
+\end_inset
+
+ is a random number in the range 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ Both algorithms randomly pick all possible 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ in the dataset.
+ Both SMOTE and ADASYN randomly pick all possible xi in the dataset.
+ In ADASYN, the number of synthetic examples generated for each 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is proportional to the number of examples in 
+\begin_inset Formula $S_{k}$
+\end_inset
+
+ which are not from the minority class.
+ 
+\series bold
+Therefore, more synthetic examples are generated in the area where the examples
+ of the minority class are rare.
+\end_layout
+
+\begin_layout Standard
+There exist a lot more algorithms that uses nearest neighbors principle
+ - 
+\series bold
+Borderline-SMOTE
+\series default
+,
+\series bold
+ Edited Nearest Neighbourhood 
+\series default
+(ENN),
+\series bold
+ Neighbourhood Cleaning Rule
+\series default
+ (NCR),
+\series bold
+ Condensed Nearest Neighbours 
+\series default
+(CNN),
+\series bold
+ One-sided Selection 
+\series default
+(OSS), and others.
+\end_layout
+
+\begin_layout Subsection
+Learn many models, not just one (ensembles)
+\end_layout
+
+\begin_layout Standard
+In the early days of machine learning, everyone had their favorite learner,
+ together with some a priori reasons to believe in its superiority.
+ Most effort went into trying many variations of it and selecting the best
+ one.
+ Then systematic empirical comparisons showed that the best learner varies
+ from application to application, and systems containing many different
+ learners started to appear.
+ Effort now went into trying many variations of many learners, and still
+ selecting just the best one.
+ But then researchers noticed that, if instead of selecting the best variation
+ found, we combine many variations, the results are better - often much
+ better - and at little extra effort for the user.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ensembles are now a standard.
+\end_layout
+
+\begin_layout Subsection
+Simplicity does not imply accuracy
+\end_layout
+
+\begin_layout Itemize
+A learner with a larger hypothesis space that tries fewer hypotheses from
+ it is less likely to over-fit than one that tries more hypotheses from
+ a smaller space.
+ Simpler hypotheses should be preferred because simplicity is a virtue in
+ its own right, not because of a hypothetical connection with accuracy.
+\end_layout
+
+\begin_layout Itemize
+As a rule, it pays to try 
+\series bold
+the simplest learners first
+\series default
+ (e.g.
+ Naive Bayes before logistic regression, k-nearest neighbor before SVM).
+\end_layout
+
+\begin_layout Subsection
+A brief comparison of supervised learning algorithms
+\end_layout
+
+\begin_layout Itemize
+Generally, 
+\series bold
+SVMs
+\series default
+ and 
+\series bold
+ANNs
+\series default
+ tend to perform much better when dealing with 
+\series bold
+multi-dimensions
+\series default
+ and 
+\series bold
+continuous features
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Logic-based systems 
+\series default
+tend to perform better when dealing with 
+\series bold
+discrete 
+\series default
+or 
+\series bold
+categorical features
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+For 
+\series bold
+ANNs
+\series default
+ and 
+\series bold
+SVMs
+\series default
+, a 
+\series bold
+large sample size
+\series default
+ is required in order to achieve its maximum prediction accuracy.
+ 
+\series bold
+Naive Bayes 
+\series default
+may need a 
+\series bold
+relatively small dataset
+\series default
+.
+\end_layout
+
+\begin_layout Description
+Traditional
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+algorithms
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+vs
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+deep
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+learning
+\end_layout
+
+\begin_layout Itemize
+Even as you accumulate more data, usually the performance of older learning
+ algorithms, such as logistic regression, 
+\begin_inset Quotes eld
+\end_inset
+
+plateaus
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This means its learning curve “flattens out,” and the algorithm stops improving
+ even as you give it more data.
+\end_layout
+
+\begin_layout Itemize
+If you train a small neutral network (NN) on the same supervised learning
+ task, you might get slightly better performance.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/traditional_learning_ann_comparison.png
+	scale 38
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Traditional learning algorithms and artificial neural networks performance
+ comparison.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Ceiling analysis 
+\end_layout
+
+\begin_layout Standard
+If you have a pipeline of multiple machine learning systems, it helps us
+ decide on allocation of resources in terms of which component in a machine
+ learning pipeline to spend more effort on.
+ Because, if we spend too much time on some component, it does not mean
+ that the overall system will be improved significantly.
+ We can spend 1 year on improving background removal from an image, and
+ then the overall system will be better by few %.
+ In this case it may not be worth a significant amount of work improving,
+ because even if it had perfect performance its impact on the overall system
+ is small.
+\end_layout
+
+\begin_layout Subsection
+McNemar test
+\end_layout
+
+\begin_layout Standard
+Problem - is 30 errors in 10k test examples significantly better than 40
+ errors?
+\end_layout
+
+\begin_layout Itemize
+It depends on the particular errors!
+\end_layout
+
+\begin_layout Itemize
+This test uses particular errors and can be much more powerful than a test
+ that just uses the number of errors.
+\end_layout
+
+\begin_layout Subsection
+AI Transformation Playbook
+\end_layout
+
+\begin_layout Standard
+This is from Andrew NG.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://landing.ai/ai-transformation-playbook/}}
+\end_layout
+
+\end_inset
+
+ He recommend this to companies that want to become effective at using AI.
+ Don't expect traditional planning processes to apply without changes; instead,
+ work with AI team to establish timeline estimates, KPIs, milestones.
+ It is iterative process! This transformation from a good company to good
+ AI company can take 2 or 3 years.
+ However, it is intended for companies with market cap from $500M to $500B.
+ This is a 5 step program:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Execute pilot projects to gain momentum
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+More important for initial project is to succeed rather than be the most
+ valuable.
+ This can be outsourced or in-house.
+\end_layout
+
+\begin_layout Itemize
+The goal is also to gain familiarity with AI within the company and also
+ persuade others to 
+\begin_inset Quotes eld
+\end_inset
+
+join
+\begin_inset Quotes erd
+\end_inset
+
+ and invest time and energy to AI as well.
+\end_layout
+
+\begin_layout Itemize
+You have to have a clearly defined and measurable objective that creates
+ business value.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Build an in-house AI team
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Build up an AI capability to support the whole company.
+\end_layout
+
+\begin_layout Itemize
+Execute an initial sequence of cross-functional projects to support different
+ divisions / business units with AI projects.
+ After completing the initial projects, set up repeated processes to continuousl
+y deliver a sequence of valuable AI projects.
+\end_layout
+
+\begin_layout Itemize
+Develop consistent standards for recruiting and retention.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Provide broad AI training
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not just to engineers, but also for managers, division leaders, and executives,
+ and so on.
+ It can be from couple of hours to even hundred (or more), depending on
+ a role of person.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Develop an AI strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Leverage AI to create an advantage specific to your industry sector.
+ Andrew Ng recommends this step to be fourth, not the first one.
+ The reason is that firstly, a company needs to understand more about AI
+ itself, and how to apply to a given business.
+ After this, it is recommended to build an AI strategy.
+ It is needed to also understand, what AI can and cannot do in a particular
+ industry sector.
+\end_layout
+
+\begin_layout Itemize
+Design such strategy, that will lead to a circle ...
+ ->more data -> better product -> more users -> more data -> ...
+\end_layout
+
+\begin_layout Itemize
+Consider also strategic data acquisition.
+ Recognize what data is valuable, and what is not.
+ And have ideally unified data warehouse.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Develop internal and external communications
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Investor relations - make sure, that investor(s) value your company appropriatel
+y as an AI company.
+ Or also maybe even government relations.
+\end_layout
+
+\begin_layout Itemize
+Consumer/user education.
+\end_layout
+
+\begin_layout Itemize
+Talent/recruiting.
+\end_layout
+
+\begin_layout Itemize
+Internal communication.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

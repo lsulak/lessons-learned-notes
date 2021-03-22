@@ -1,0 +1,1357 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Dimensionality Reduction Techniques 
+\end_layout
+
+\begin_layout Itemize
+Simplifies inputs by mapping them into a lower-dimensional space.
+\end_layout
+
+\begin_layout Itemize
+Removing of redundant of highly correlated features, but is also reduces
+ the noise in the data.
+\end_layout
+
+\begin_layout Itemize
+Usage: data visualization, and also some learning algorithms may perform
+ faster.
+\end_layout
+
+\begin_layout Itemize
+Algorithms usually creates some new 
+\begin_inset Quotes eld
+\end_inset
+
+feature
+\begin_inset Quotes erd
+\end_inset
+
+ which is calculated by several older ones, which are deleted.
+ We can visualize data once we have 2 or 3 dimensions.
+\end_layout
+
+\begin_layout Itemize
+Three algorithms are widely used - 
+\series bold
+PCA
+\series default
+, 
+\series bold
+UMAP
+\series default
+, and 
+\series bold
+autoencoders
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Linear Discriminant Analysis
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Supervised learning method
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Statistical learning algorithm.
+\end_layout
+
+\begin_layout Itemize
+Simple method used in statistics and machine learning to find the linear
+ combination of features which best separate two or more classes of object.
+\end_layout
+
+\begin_layout Itemize
+It works when the measurements made on each observation are continuous quantitie
+s.
+ When dealing with categorical variables, the equivalent technique is Discrimina
+nt Correspondence Analysis.
+\end_layout
+
+\begin_layout Itemize
+Method is trying to project data to such direction, that the distances between
+ mean values of classes are maximized, and the average variance of classes
+ is minimized.
+\end_layout
+
+\begin_layout Itemize
+Covariant matrix is same for all classes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Principal Component Analysis 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Unsupervised learning method.
+\end_layout
+
+\begin_layout Itemize
+It is basically linear dimensionality reduction using Singular Value Decompositi
+on of the data to project it to a lower dimensional space.
+\end_layout
+
+\begin_layout Itemize
+By minimizing the average square area between a data point and its projection
+ onto the principle subspace, the best thing to do is to project onto the
+ subspace that is spanned by the eigenvectors that belonged to the largest
+ eigenvalues, which is the goal of PCA.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Usage 
+\series default
+(to reduce dimensionality)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compression: speed up learning algorithms, reducing memory/disk needed to
+ store data.
+\end_layout
+
+\begin_layout Itemize
+Data visualization (2D/3D).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NOT
+\series default
+ for preventing overfitting! We have regularization for that!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It does not use labels, so it can throw away some potential information.
+
+\series bold
+ Do not use PCA if not needed.
+ 
+\series default
+Always perform whatever you want to do without PCA on original raw data.
+\end_layout
+
+\begin_layout Itemize
+If we think of variance in the data as information contained in the data,
+ this means that PCA can also be interpreted as a method that retains as
+ much information as possible.
+\end_layout
+
+\begin_layout Itemize
+We can also think of PCA as a linear autoencoder.
+ An autoencoder encodes a data point 
+\begin_inset Formula $x$
+\end_inset
+
+ and tries to decode it to something similar to the same data point.
+ The mapping from the data to the code is called an encoder.
+ If the encoder and decoder are linear mappings, then we get the PCA solution
+ when we minimize the squared auto-encoding loss.
+ If we replace the linear mapping of PCA with a nonlinear mapping, we get
+ a nonlinear autoencoder.
+ A prominent example of this is a deep autoencoder when the linear functions
+ of the encoder and decoder are replaced with deep neural networks.
+\end_layout
+
+\begin_layout Itemize
+What it does is that if we took a high dimensional vector (data point) 
+\begin_inset Formula $x$
+\end_inset
+
+, we can project it onto a lower dimensional representation 
+\begin_inset Formula $z$
+\end_inset
+
+ using the matrix 
+\begin_inset Formula $B^{T}$
+\end_inset
+
+ (this part can be thought as an encoder).
+ The columns of this matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ are the eigenvectors of the data covariance matrix that are associated
+ with the largest eigenvalues.
+ The 
+\begin_inset Formula $z$
+\end_inset
+
+ values are the coordinates of our data point with respect to the basis
+ vectors which span the principal subspace, and that is also called the
+ code of our data point.
+ Once we have that lower dimensional representation 
+\begin_inset Formula $z$
+\end_inset
+
+, we can get a higher dimensional version of it by using the matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ again, so multiplying 
+\begin_inset Formula $B$
+\end_inset
+
+ onto 
+\begin_inset Formula $z$
+\end_inset
+
+ to get a higher dimensional version of the 
+\begin_inset Formula $z$
+\end_inset
+
+ in the original data space (we can think of this as decoder).
+ We have, of course some reconstruction error here, but PCA is trying to
+ minimize such error.
+\end_layout
+
+\begin_layout Itemize
+PCA should run on training set.
+ The resulting mapping can run also on testing/validation set.
+\end_layout
+
+\begin_layout Itemize
+Sensitive to relative scaling of original dataset.
+ It is good enough to perform mean normalization, so that all features have
+ comparable range of values.
+\end_layout
+
+\begin_layout Itemize
+Provides de-correlation by orthogonal transformation.
+ 
+\end_layout
+
+\begin_layout Itemize
+There exist also kernel version (like 
+\begin_inset Quotes eld
+\end_inset
+
+kernel trick
+\begin_inset Quotes erd
+\end_inset
+
+ in SVM) - 
+\series bold
+Kernel PCA
+\series default
+, for nonlinear dimensionality reduction.
+\end_layout
+
+\begin_layout Itemize
+PCA is not linear regression, as we can see on the following figure.
+ In linear regression, we have features and then value 
+\begin_inset Formula $y$
+\end_inset
+
+ which we are trying to predict.
+ In PCA, we have features which are treated equally.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/pca_and_lr.png
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PCA and linear regression uses two very different algorithm.
+ In logistic refression (left), the algorithm is trying to lower down (minimize)
+ a vertical distance between value from data and predicted value from the
+ hypothesis.
+ PCA (right) is trying to lower down the magnitude of the blue lines which
+ are drawn at an angle giving the shortest orthogonal distances between
+ the red line and a given point 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/pca_howto.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+An intuition about algorithm, how to use PCA on our data.
+
+\series default
+ To reduce dimensions from 10,000 to 1,000 is not that unrealistic, in real
+ world we usually reduces by 5x or 10x without a significant impact on accuracy.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/pca_formulation.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of dimensionality reduction of the data from 2D to 1D.
+ So we wanted to find a line onto which to project the data.
+ 
+\series bold
+Red line
+\series default
+: the distance between each point and its projected version is pretty small
+ (=blue line segments on plot are pretty short).
+ In fact, PCA tries to find a lower dimensional surface, in this case a
+ line, onto which to project data so that the
+\series bold
+ sum of squares of these blue line segments is minimized.
+ The length of these segments is called the projection error.
+ Magenta line: 
+\series default
+we can see a great projection error for blue lines.
+ And it is very bad, PCA would choose red line, not magenta line.
+ 
+\series bold
+So, PCA tries to find a direction (a vector) onto which to project data
+ so that the projection error is minimized.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Perform mean normalization (so that every feature has zero mean), you can
+ also perform feature scaling.
+ If you do not perform mean normalization, PCA will rotate the data in a
+ possibly undesired way.
+ So by subtracting the mean value from each data point, data is now centered
+ and we can avoid numerical problems.
+\end_layout
+
+\begin_layout Enumerate
+Next, we divide by the standard deviation.
+ Now the data is unit-free (and by doing this, we can avoid having centimeters
+ in one dimension, and meters in another one, for example).
+ Also, data has variance equals to 1 along each axes.
+\end_layout
+
+\begin_layout Enumerate
+Compute
+\series bold
+ covariance matrix
+\series default
+ (
+\begin_inset Formula $n\,x\,n$
+\end_inset
+
+ matrix, because 
+\begin_inset Formula $x^{(i)}$
+\end_inset
+
+is 
+\begin_inset Formula $n\,x\,1$
+\end_inset
+
+ vector, and then there is its transposed version 
+\begin_inset Formula $1\,x\,n$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Sigma=\frac{1}{m}\sum_{i=1}^{n}(x^{(i)})(x^{(i)})^{T}\label{eq:covariance_matrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Compute 
+\series bold
+eigenvectors
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{There is also a term eigenvalues.
+ The eigenvectors are scaled by the magnitude of the corresponding eigenvalue.
+ Eivengectors refers to diagonal matrix created from eigenvalues.
+ So these are scalar values representing principal components.
+ We can work with them, or just with eigenvalues matrix for transforming
+ feature space of our examples for visualizing, training, or so.}
+\end_layout
+
+\end_inset
+
+
+\series default
+ (also known as 
+\series bold
+principal components
+\series default
+), computed from 
+\series bold
+covariance matrix
+\series default
+ (there are multiple ways, one is to calculate SVD - singular value decompositio
+n).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+From 
+\begin_inset Formula $n$
+\end_inset
+
+ dimensions to 
+\begin_inset Formula $k$
+\end_inset
+
+ dimensions - find 
+\begin_inset Formula $k$
+\end_inset
+
+ eigenvectors 
+\begin_inset Formula $u^{(1)},u^{(2)},\ldots u^{(k)}$
+\end_inset
+
+ onto which to project the data, so that projection error is minimized (there
+ are more eigenvectors, 
+\begin_inset Formula $n$
+\end_inset
+
+ totally, and we will pick only the first 
+\begin_inset Formula $k$
+\end_inset
+
+, because this is our resulting dimension we want to have).
+ 
+\end_layout
+
+\begin_layout Itemize
+All eigenvectors have the same dimension (
+\begin_inset Formula $n$
+\end_inset
+
+ dimensions each eigenvector).
+ 
+\end_layout
+
+\begin_layout Itemize
+From eigenvectors and original data 
+\begin_inset Formula $(x^{1},y^{1}),(x^{2},y^{2})...(x^{(m)},y^{(m)})$
+\end_inset
+
+, where 
+\begin_inset Formula $x^{j}$
+\end_inset
+
+ is 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional (we are not interested in labels), we can compute a new feature
+ space for datapoints, resulting in 
+\begin_inset Formula $z^{(1)},z^{2},...,z^{(m)}$
+\end_inset
+
+ where 
+\begin_inset Formula $z^{(j)}$
+\end_inset
+
+is 
+\begin_inset Formula $k$
+\end_inset
+
+-dimensional and we have 
+\begin_inset Formula $m$
+\end_inset
+
+ samples.
+ 
+\end_layout
+
+\begin_layout Itemize
+How to estimate a number of dimensions (so, how to select 
+\begin_inset Formula $k$
+\end_inset
+
+)? Iteratively, to obtain as smallest projection error as possible as detailed
+ in the following figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/pca_variance.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Choosing a number of principal components in PCA should not be based on
+ some guessed number, but on retained variance - it should be at least 99%
+ (or 95%, different people use different values).
+ And based on this, choose as smallest 
+\begin_inset Formula $k$
+\end_inset
+
+ as possible.
+ It is recommended to start with 
+\begin_inset Formula $k=1$
+\end_inset
+
+, and then compute 
+\begin_inset Formula $U_{reduce},z^{(1)},...z^{(m)},x_{approx}^{(1)},...x_{approx}^{(m)}$
+\end_inset
+
+ and then check how much variance is retained.
+ If it is not at least 99%, then increment 
+\begin_inset Formula $k$
+\end_inset
+
+ and repeat.
+ There is no need to compute PCA again with different 
+\begin_inset Formula $k$
+\end_inset
+
+ = just once by computation of variance retained by choosing different 
+\begin_inset Formula $k$
+\end_inset
+
+ using equation on the figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Then if you want to have 
+\begin_inset Formula $z\mathbb{\in R}^{k}$
+\end_inset
+
+ (
+\begin_inset Formula $z$
+\end_inset
+
+
+\begin_inset Formula $^{j}$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+transformed
+\begin_inset Quotes erd
+\end_inset
+
+ example 
+\begin_inset Formula $x^{j}$
+\end_inset
+
+ after PCA), just multiply these vectors (put them into 1 matrix, resulting
+ in 
+\begin_inset Formula $n\,x\,k$
+\end_inset
+
+ matrix and then transpose it) with 
+\begin_inset Formula $x$
+\end_inset
+
+ (which can be training set, evaluation set, or test set data, 
+\begin_inset Formula $x\mathbb{\in R}^{n}$
+\end_inset
+
+).
+ Figure below describes this step better.
+\end_layout
+
+\begin_layout Enumerate
+If we want to add a new example 
+\begin_inset Formula $x^{new}$
+\end_inset
+
+, we have to perform mean normalization on it, divide it by the previously
+ computed standard deviation (so we have to remember these 2 terms).
+ And we have to do it obviously in every dimension.
+ And then we can project resulting normalized data point 
+\begin_inset Formula $x^{norm\,new}$
+\end_inset
+
+ onto principal subspace (
+\begin_inset Formula $BB^{T}x^{norm\,new}$
+\end_inset
+
+, where 
+\begin_inset Formula $B$
+\end_inset
+
+ is the matrix that contains the eigenvectors that belong to the 
+\bar under
+largest eigenvalues
+\bar default
+ - largest variance, which is what we want here.
+ And 
+\begin_inset Formula $B^{T}x^{new}$
+\end_inset
+
+ are the coordinates of the projection with respect to the basis of the
+ principal subspace).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/pca_from_eigenvectors.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Computation of 
+\begin_inset Formula $z$
+\end_inset
+
+ (also for reconstruction to the previous feature space) in PCA from eigenvector
+s and data sample.
+ We can compute some particular datapoint 
+\begin_inset Formula $z_{j}=(u^{(j)})^{T}x$
+\end_inset
+
+.
+ Then if we want to go back, just calculate 
+\begin_inset Formula $x_{approx}=U_{reduce}*z$
+\end_inset
+
+ where 
+\begin_inset Formula $U_{reduce}$
+\end_inset
+
+is 
+\begin_inset Formula $n\,x\,k$
+\end_inset
+
+ dimensional vector and 
+\begin_inset Formula $z$
+\end_inset
+
+ is 
+\begin_inset Formula $k\,x\,1$
+\end_inset
+
+ vector.
+ If we would perform 
+\begin_inset Formula $n=k$
+\end_inset
+
+, so that we do not reduce dimensionality, then 
+\begin_inset Formula $x_{approx}=x$
+\end_inset
+
+ for every example 
+\begin_inset Formula $x$
+\end_inset
+
+, and the percentage of variance retained is 100%.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consider a two-dimensional data as shown on the figure below.
+ Principal components are vectors that define a new coordinate system in
+ which the first axis goes in the direction of the highest variance in the
+ data.
+ The second axis is orthogonal to the first one and goes in the direction
+ of the second highest variance in the data.
+ If our data was three-dimensional, the third axis would be orthogonal to
+ both the first and the second axes and go in the direction of the third
+ highest variance, and so on.
+ In figure below, the two principal components are shown as arrows.
+ The length of the arrow reflects the variance in this direction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/pca_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PCA: (a) the original data; (b) two principal components displayed as vectors;
+ (c) the data projected on the first principal component.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sammon Mapping*
+\end_layout
+
+\begin_layout Section
+Multidomensional Scaling*
+\end_layout
+
+\begin_layout Section
+Projection Pursuit*
+\end_layout
+
+\begin_layout Section
+Principal Component Regression*
+\end_layout
+
+\begin_layout Section
+Mixture Discriminant Analysis* 
+\end_layout
+
+\begin_layout Section
+Quadratic Discriminant Analysis* 
+\end_layout
+
+\begin_layout Section
+Flexible Disctiminant Analysis* 
+\end_layout
+
+\begin_layout Section
+Uniform Manifold Approximation and Projection
+\end_layout
+
+\begin_layout Itemize
+The idea behind many of the modern dimensionality reduction algorithms,
+ especially those designed specifically for visualization purposes, such
+ as 
+\series bold
+t-SNE
+\series default
+ and 
+\series bold
+UMAP
+\series default
+, is basically the same.
+ We first design a similarity metric for two examples.
+ For visualization purposes, besides the Euclidean distance between the
+ two examples, this similarity metric often reflects some local properties
+ of the two examples, such as the density of other examples around them.
+\end_layout
+
+\begin_layout Itemize
+Here, the similarity metric 
+\begin_inset Formula $w$
+\end_inset
+
+ is defined as:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w(x_{i},x_{j})=w_{i}(x_{i},x_{j})+w_{j}(x_{j},x_{i})\text{−}w_{i}(x_{i},x_{j})w_{j}(x_{j},x_{i})\label{eq:umap_similarity_metric}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $w_{i}(x_{i},x_{j})=exp(-\frac{d(x_{i},x_{j})-\rho_{i}}{\sigma_{i}})$
+\end_inset
+
+ and 
+\begin_inset Formula $d(x_{i},x_{j})$
+\end_inset
+
+ is the Euclidean distance between two examples, 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+is the distance from 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to its closest neighbor, and 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ is the distance from 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to its 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ closest neighbor (
+\begin_inset Formula $k$
+\end_inset
+
+ is a hyperparameter to the algorithm).
+ This similarity metric 
+\begin_inset Formula $w$
+\end_inset
+
+ is symmetric (which means that 
+\begin_inset Formula $w(x_{i},x_{j})=w(x_{j},x_{i})$
+\end_inset
+
+, and is in the range from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/dim_red_comparison.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dimensionality reduction of the MNIST dataset using three different techniques.
+ This dataset contains 70k labeled examples.
+ Ten different colors on the plot correspond to ten classes.
+ Each point on the plot corresponds a specific example in the dataset.
+ As you can see, UMAP separates examples visually better (remember, it doesn’t
+ have access to labels).
+ In practice, UMAP is slightly slower than PCA but faster than autoencoder.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $w$
+\end_inset
+
+ denote the similarity of two examples in the original high-dimensional
+ space, and let 
+\begin_inset Formula $w^{'}$
+\end_inset
+
+be the similarity given by the same equation for similarity metric above,
+ in the new low-dimensional space.
+\end_layout
+
+\begin_layout Itemize
+Because the values of 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $w^{'}$
+\end_inset
+
+ lie in the range between 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+, we can see 
+\begin_inset Formula $w(x_{i},x_{j})$
+\end_inset
+
+ as membership of the pair of examples 
+\begin_inset Formula $(x_{i},x_{j})$
+\end_inset
+
+ in a certain fuzzy set.
+ The same can be said about 
+\begin_inset Formula $w^{'}$
+\end_inset
+
+.
+ The 
+\series bold
+notion of similarity of two fuzzy sets 
+\series default
+(what fuzzy set is, please see 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:Basic-Terms"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is called 
+\series bold
+fuzzy set cross-entropy 
+\series default
+and is defined as:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{w,w^{'}}=\sum_{i=1}^{N}\sum_{j=1}^{N}[w(x_{i},x_{j})ln(\frac{w(x_{i},x_{j})}{w^{'}(x_{i}^{'},x_{j}^{'})})+(1\text{−}w(x_{i},x_{j}))ln(\frac{1-w(x_{i},x_{j})}{1-w^{'}(x_{i}^{'},x_{j}^{'})})]\label{eq:fuzzy_cross_entropy}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x^{'}$
+\end_inset
+
+ is the low-dimensional 
+\begin_inset Quotes eld
+\end_inset
+
+version
+\begin_inset Quotes erd
+\end_inset
+
+ of the original high-dimensional example 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ The unknown parameters here are 
+\begin_inset Formula $x_{i}^{'}$
+\end_inset
+
+ (for all 
+\begin_inset Formula $i=1,...,N$
+\end_inset
+
+), the low-dimensional examples we look for.
+ We can compute them by gradient descent by minimizing 
+\begin_inset Formula $C_{w,w^{'}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+t-distributed Stochastic Neighbor Embedding*
+\end_layout
+
+\end_body
+\end_document

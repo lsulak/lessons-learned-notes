@@ -1,0 +1,1685 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Linear Models
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Linear-Models"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Consider the usage of these models on the following scenarios:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+YES
+\series default
+ = problem which is 
+\series bold
+linearly separable
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+YES
+\series default
+ =
+\series bold
+ non-linear
+\series default
+ problem with 
+\series bold
+few features
+\series default
+.
+ We can use polynomial regression 
+\begin_inset Quotes eld
+\end_inset
+
+trick
+\begin_inset Quotes erd
+\end_inset
+
+ on some linear model, so that we have more features, but can find solution
+ anyway.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NO
+\series default
+ = once the problem is non-linearly separable and we have many (dozens or
+ hundreds) of features, application of polynomial regression on some of
+ these models is not reasonable.
+ The reason is, that we would end up with extremely great amount of features,
+ and for this there are other models, like SVM or ANN.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Polynomial regression - from 100 features it would result in ~5000 features,
+ it grows ~
+\begin_inset Formula $O(n^{2}),$
+\end_inset
+
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of original features (closed to 
+\begin_inset Formula $\frac{n^{2}}{2}$
+\end_inset
+
+, when we include all the quadratic terms - for example, if we have 10.000
+ features, we would end up with 
+\begin_inset Formula $5*10^{7}$
+\end_inset
+
+ features).
+ 
+\end_layout
+
+\begin_layout Itemize
+So many features can end up with overfitting the training set and a requirement
+ of a great computational power.
+ 
+\end_layout
+
+\begin_layout Itemize
+If we would keep only certain, for example only quadratic features, it would
+ be not enough to fit even training set probably.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Linear Regression
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Linear-Regression"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear regression is one of the simplest approach for predictive analysis
+ using linear algebra.
+\end_layout
+
+\begin_layout Itemize
+It is a popular regression learning algorithm that learns a model which
+ is a linear combination of the input features.
+\end_layout
+
+\begin_layout Itemize
+Linear regression 
+\series bold
+does not need
+\series default
+ 
+\series bold
+feature scaling
+\series default
+ necessary, but it can converge faster with it.
+\end_layout
+
+\begin_layout Itemize
+It is actually very similar to SVM with linear kernel.
+ Hypothesis function of SVM is 
+\begin_inset Formula $f(x)=sign(wx-b)$
+\end_inset
+
+ (where 
+\begin_inset Formula $sign$
+\end_inset
+
+ is a function that returns 
+\begin_inset Formula $+1$
+\end_inset
+
+ if its input is positive number, and returns 
+\begin_inset Formula $-1$
+\end_inset
+
+ if its input is a negative number) and for LR it is 
+\begin_inset Formula $f(x)=wx+b)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The rest of this section describes univariate and multivariate linear regression.
+ Definition of their cost functions and gradient descent is similar since
+ univariate is a special form of multivariate linear regression.
+\end_layout
+
+\begin_layout Subsection
+Univariate Linear Regression
+\end_layout
+
+\begin_layout Itemize
+Very simple, this is also known as Linear regression with 1 variable (feature).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hypothesis function
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h_{\theta}(x)=\theta_{0}+\text{\theta}_{1}x\label{eq:lin_reg_onevar}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Always convex, so it always converge to 1 local minimum = global minimum.
+ Loss function is squared error loss (sometimes only with 
+\begin_inset Formula $\frac{1}{m}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\frac{1}{2m}$
+\end_inset
+
+).
+ Here, the cost function is given by the 
+\series bold
+average loss
+\series default
+, also called the 
+\series bold
+empirical risk
+\series default
+.
+ Intuitively, 
+\series bold
+squared penalties
+\series default
+ are also advantageous because they 
+\series bold
+exaggerate
+\series default
+ 
+\series bold
+the difference between the true target and the predicted one
+\series default
+ according to the value of this difference.
+ We might also use the powers 3 or 4, but their derivatives are more complicated
+ to work with:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta_{0},\theta_{1})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}\label{eq:lr_cost_function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+J is cost function (in the terms that we will want to minimize it = find
+ the best values for all the parameters, in this case 
+\begin_inset Formula $\text{\theta}_{0},\text{\theta}_{1}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+m is # of training samples in dataset.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig/contour_plot_ulr.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of visualization a cost function of univariate linear regression
+ in contour plot.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/contour_plot_lr2.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Another example of visualization a cost function of univariate linear regression
+ in contour plot.
+ We can see, that there can be different values for parameters, and resulting
+ value of cost function will be the same (three green points on the right
+ side).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function can be
+\series default
+ 
+\series bold
+regularized
+\series default
+ in the same style like in Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:regularized_cost_function_multi_lr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\series bold
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Gradient Descent
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+repeat until convergence {
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\text{\theta}_{j}=\text{\theta}_{j}-\alpha\frac{𝜕}{𝜕\text{\theta}_{j}}J(\text{\theta}_{0},\text{\theta}_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+(for j = {0, 1} - univariate linear regression)
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is a learning rate (control how big step we perform).
+ If it is too small, gradient descend can be slow.
+ If too big, it can not end up in local minimum (it fails to converge),
+ or it can even diverge.
+\end_layout
+
+\begin_layout Itemize
+The direction in which the step is taken is determined by the partial derivative
+ of 
+\begin_inset Formula $J(\text{\theta}_{0},\theta_{1})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+All thetas have to be update simultaneously - in parallel way across all
+ parameters, or using temporary variables.
+\end_layout
+
+\begin_layout Itemize
+If we are already (initial step) in local minimum, the algorithm will have
+ partial derivative of J equals to 0 (slope will be horizontal), and gradient
+ descent will not perform any steps (also not to global minimum if there
+ is any).
+ 
+\end_layout
+
+\begin_layout Itemize
+More and more it gets to minimum, derivative is closer and closer to 0 and
+ gradient descend performs smaller and smaller steps - no need to decrease
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ over time (but all this probably depends on a function).
+\end_layout
+
+\begin_layout Itemize
+Following graph shows when partial derivative of 
+\begin_inset Formula $J$
+\end_inset
+
+ is a positive number or negative number:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gradient_descent_slope.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different signs of slope for partial derivative of 
+\begin_inset Formula $J$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Partial derivation of 
+\begin_inset Formula $J(\theta_{0},\text{\theta}_{1})$
+\end_inset
+
+ is the following (both results on the right side)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.coursera.org/learn/machine-learning/supplement/U90DX/gradient-desc
+ent-for-linear-regression}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+for\:j=0:\qquad\frac{𝜕}{𝜕\text{\theta}_{\boldsymbol{0}}}J(\theta_{0},\text{\theta}_{1})=\frac{1}{m}*\sum_{i=1}^{m}(h_{\text{\theta}}(x^{(i)})-y^{(i)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+for\:j=1:\qquad\frac{𝜕}{𝜕\text{\theta}_{\boldsymbol{1}}}J(\text{\theta}_{0},\text{\theta}_{1})=\frac{1}{m}*\sum_{i=1}^{m}(h_{\text{\theta}}(x^{(i)})-y^{(i)})\boldsymbol{*}\boldsymbol{x^{(i)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gradient descent here is a special case of one with multivariate linear
+ regression, see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:grad_desc_multivar_lr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Multivariate Linear Regression
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hypothesis
+\series default
+ has more variables (features, let's say 
+\begin_inset Formula $n$
+\end_inset
+
+ is their amount): 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h_{\theta}(x)=\text{\theta}_{0}+\text{\theta}_{1}x_{1}+\text{\theta}_{2}x_{2}+\ldots+\text{\theta}_{n}x_{n}\label{eq:lin_reg_mvar}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function 
+\series default
+is almost the same as for univariate linear regression:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}\label{eq:cost_func_mult_lr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function can be
+\series default
+ 
+\series bold
+regularized
+\series default
+ as follows (and this is the same for univariate linear regression):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}+\lambda\sum_{j=1}^{n}\theta_{j}^{2}]\label{eq:regularized_cost_function_multi_lr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cost function will be always convex here, so no matter if we use regularization
+ or not, gradient descent will still converge to the global minimum.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gradient descent
+\series default
+ is as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gradient_descent_multivar_lr.png
+	scale 42
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gradient descent for multivariate linear regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:grad_desc_multivar_lr"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Polynomial Regression
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Polynomial-Regression"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Polynomial regression is a special case of linear regression.
+\end_layout
+
+\begin_layout Itemize
+One common pattern within machine learning is to use linear models trained
+ on nonlinear functions of the data.
+ This approach maintains the generally fast performance of linear methods,
+ while allowing them to fit a much wider range of data.
+\end_layout
+
+\begin_layout Itemize
+For example, 
+\series bold
+a simple linear regression can be extended by constructing polynomial features
+ from the coefficients
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Sometimes we want to combine multiple features and new feature is created.
+ Then we may want to use polynomial regression to learn from such modified
+ data.
+\end_layout
+
+\begin_layout Itemize
+TL;DR - it is a 
+\begin_inset Quotes eld
+\end_inset
+
+feature
+\begin_inset Quotes erd
+\end_inset
+
+ how to create new matrix of polynomial features, it is not 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ itself.
+\end_layout
+
+\begin_layout Itemize
+We can use it if our hypothesis function need not be linear.
+ We can change the behavior or curve of our hypothesis function by making
+ it a quadratic, cubic or square root function (or any other form).
+ 
+\end_layout
+
+\begin_layout Itemize
+An example of hypothesis function, cubic parameters 
+\begin_inset Formula $n=3$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h_{\theta}(x)=\text{\theta}_{0}+\text{\theta}_{1}x^{1}+\text{\theta}_{2}x^{2}+\text{\theta}_{n}x^{n}\label{eq:polyn_reg}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+One important thing to keep in mind is, if you choose your features this
+ way then 
+\series bold
+feature scaling becomes very important
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Logistic Regression
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Logistic-Regression"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Deals with classification problems, no regression as the name tells us.
+ This model maps random real number to interval of discrete values 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ (probability).
+ 
+\end_layout
+
+\begin_layout Itemize
+Feature scaling is good to have as well - faster run.
+\end_layout
+
+\begin_layout Itemize
+For non-linear decision boundary - we can also use polynomial regression
+ 
+\begin_inset Quotes eld
+\end_inset
+
+trick
+\begin_inset Quotes erd
+\end_inset
+
+, as in the case of linear regression.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hypothesis
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h_{\theta}(x)=g(\theta^{T}x)\label{eq:logistic_reg}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $g(z)=\frac{1}{1+e^{-z}}$
+\end_inset
+
+ is sigmoid / logistic function, where 
+\begin_inset Formula $z$
+\end_inset
+
+ is a real number.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/sigmoid.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sigmoid function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $h_{\theta}(x)$
+\end_inset
+
+ gives us a probability, that the output is equal to 1 on input x.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For example, if 
+\begin_inset Formula $h_{\theta}(x)=0.7$
+\end_inset
+
+ on some input x, that means that the probability of positive output (label
+ '1') on x is 70%.
+\end_layout
+
+\begin_layout Itemize
+So, mathematically: 
+\begin_inset Formula $h_{\theta}(x)=p(y=1|x;\theta)$
+\end_inset
+
+ (probability that y=1, given x, parametrized by 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $h_{\theta}(x)$
+\end_inset
+
+ is always in 
+\series bold
+range [0, 1], because of sigmoid function.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $h_{\theta}(x)\geq0.5\ldots y=1$
+\end_inset
+
+, so 
+\begin_inset Formula $\theta^{T}*x\geq0\Rightarrow y=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h_{\theta}(x)<0.5\ldots y=0$
+\end_inset
+
+, so 
+\begin_inset Formula $\theta^{T}*x<0\Rightarrow y=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Without function 
+\begin_inset Formula $g$
+\end_inset
+
+, the hypothesis is same as in linear regression.
+\end_layout
+
+\begin_layout Itemize
+So the hypothesis function is basically the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h_{\theta}(x)=\frac{1}{1+e^{-\theta^{T}*x}}\label{eq:logistic_reg2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Is always greater or equal zero.
+ 
+\end_layout
+
+\begin_layout Itemize
+Is computed by using logarithms.
+ It cannot be the same like in the case of linear regression, because the
+ cost function would be non-convex (because of sigmoid function) = many
+ local minima.
+ We want convex function, with 1 local (=global) minima.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+In linear regression
+\series default
+, we minimized the empirical risk, defined as the average squared error
+ loss, also known as 
+\series bold
+mean squared error
+\series default
+, or MSE.
+ 
+\series bold
+In logistic regression
+\series default
+, we maximize the likelihood of our training set according to the model.
+ In statistics, the 
+\series bold
+likelihood function
+\series default
+ defines how likely the observation (a simple example) is according to our
+ model.
+ So the optimization criterion in logistic regression is called 
+\series bold
+maximum likelihood
+\series default
+.
+ So instead of minimizing the average loss, we now maximize the likelihood
+ of the training data according to our model.
+ For a complete definition, please follow the mathematical equations below.
+ It is basically 
+\begin_inset Formula $\prod_{i=1...N}h_{\theta}(x)^{y_{i}}(1-h_{\theta}(x))^{(1-y_{i})}$
+\end_inset
+
+- which is just that it results in 
+\begin_inset Formula $h_{\theta}$
+\end_inset
+
+ if 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $1-h_{\theta}$
+\end_inset
+
+ otherwise.
+ There is the product operator 
+\begin_inset Formula $\prod$
+\end_inset
+
+ in objective function instead of sum operator 
+\begin_inset Formula $\sum$
+\end_inset
+
+ which was used in linear regression.
+ This is because the likelihood of observing 
+\begin_inset Formula $N$
+\end_inset
+
+ labels for 
+\begin_inset Formula $N$
+\end_inset
+
+ examples is the product of likelihoods of each observation = assuming that
+ all observations are independent of one another, which is the case.
+ In practice, because of 
+\begin_inset Formula $exp$
+\end_inset
+
+ function used in the model, it is more convenient to maximize the 
+\series bold
+log-likelihood 
+\series default
+instead of 
+\series bold
+likelihood
+\series default
+: 
+\begin_inset Formula $\sum_{i=1...N}[y_{i}\,ln\,h_{\theta}(x)+(1-y_{i})\,ln\,h_{\theta}(x))]$
+\end_inset
+
+.
+ Because 
+\series bold
+
+\begin_inset Formula $ln$
+\end_inset
+
+ is strictly increasing function
+\series default
+, maximizing this function is the same as maximizing its argument, and the
+ solution to this new optimization problem is the same as the solution to
+ the original problem.
+ Typical optimization procedure here is 
+\series bold
+gradient descent
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $J(\theta)=\frac{1}{m}\sum_{i=1}^{m}Cost(h_{\theta}(x^{(i)}),y^{(i)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Cost(h_{\theta}(x),y)=\begin{cases}
+-log(h_{\theta}(x)) & y=1\\
+-log(1-h_{\theta}(x)) & y=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cost_function0_lr.png
+	scale 57
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename fig/cost_function1_lr.png
+	scale 62
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cost function of Logistic Regression for y=0 and y=1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Some observations:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Cost(h_{\theta}(x),y)=0\quad\;if\:h_{θ}(x)=y\label{eq:costfunc_log_reg1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Cost(h_{θ}(x),y)\rightarrow\infty\;\begin{cases}
+if\:y=0, & h_{θ}(x)\rightarrow1,\:or\\
+if\:y=1, & h_{θ}(x)\rightarrow0
+\end{cases}\label{eq:costfunc_log_reg2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So as a result, cost function can be re-written as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta)=-\frac{1}{m}\sum_{i=1}^{m}[y^{(i)}*log(h_{\vartheta}(x^{(i)}))+(1-y^{(i)})*(log(1-h_{\theta}(x^{(i)}))]\label{eq:cost_function_lr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Another view on cost function for logistic regression is in figure below.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/log_reg_cost_function.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cost function calculation for logistic regression.
+ Minus sign in the end is there because we want to minimize the loss function.
+ This is what the loss function on a single example looks like.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cost function with regularization
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\theta)=-\frac{1}{m}\sum_{i=1}^{m}[y^{(i)}*log(h_{\vartheta}(x^{(i)}))+(1-y^{(i)})*(log(1-h_{\theta}(x^{(i)}))]+\boldsymbol{\lambda}\boldsymbol{\frac{1}{2m}\sum_{j=1}^{n}\theta_{j}^{2}}\label{eq:lr_cost_function_regularized}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Where the second sum means to explicitly exclude the bias term 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+(
+\begin_inset Formula $j$
+\end_inset
+
+ is going from 1).
+\end_layout
+
+\begin_layout Itemize
+Cost function here will be always convex, so no matter if we use regularization
+ or not, gradient descent will still converge to the global minimum.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/lr_regularization.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logistic regression with L1 and L2 regularization.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Gradient descent 
+\series default
+is the same as in linear regression.
+ Only hypothesis has changed to sigmoid.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For the completeness, following is 
+\series bold
+gradient descent
+\series default
+ (after the step of derivation) with 
+\series bold
+regularization
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/regularized_gd_log_reg.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gradient descent of regularized Logistic Regression (after derivation).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document

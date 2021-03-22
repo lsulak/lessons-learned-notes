@@ -1,0 +1,3297 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Cryptography Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Modern Cryptography
+\end_layout
+
+\begin_layout Chapter
+Symmetric Cryptography
+\end_layout
+
+\begin_layout Description
+Tajny
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+kluc - zdielane tajomstvo.
+ 
+\end_layout
+
+\begin_layout Description
+Utoky - Ciphertext only attack, Known plaintext attack, Brute force.
+ 
+\end_layout
+
+\begin_layout Description
+Bezpecnostne
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+funkcie
+\end_layout
+
+\begin_layout Itemize
+Dovernost: 
+\series bold
+ANO
+\series default
+ - ochrana proti neopravnenemu precitaniu informacie.
+\end_layout
+
+\begin_layout Itemize
+Autentizacia: 
+\series bold
+ANO 
+\series default
+- vieme, od koho ta sprava prisla, ale za rovnakeho predpokladu ako v Integrite.
+\end_layout
+
+\begin_layout Itemize
+Integrita: 
+\series bold
+ANO
+\series default
+, iba ak sprava obsahuje nejaku redundanciu a podla nej poznam, ci je to
+ zmysluplna sprava, napriklad XML; integer nema ziadnu redundanciu.
+ Ale mozeme pridat napriklad CRC v zasifrovanej sprave.
+\end_layout
+
+\begin_layout Itemize
+Nepopieratelnost: 
+\series bold
+NIE
+\series default
+ - nepozname, kto klame - obe strany vedia, kto podvadzal, no nevieme dokazat
+ kto, pretoze tajomstvo poznaju obaja)
+\end_layout
+
+\begin_layout Description
+Dlzka
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+kluca: 
+\end_layout
+
+\begin_layout Itemize
+32b - 38m
+\end_layout
+
+\begin_layout Itemize
+48b - 4,5 roku
+\end_layout
+
+\begin_layout Itemize
+56b - > 100 rokov (10h u 10^6 procesorov, rok 1999 - 100,000 proc - 22h)
+ 
+\end_layout
+
+\begin_layout Standard
+Je moznost vytvorit novy algoritmus.
+\end_layout
+
+\begin_layout Section
+Prudove Sifry
+\end_layout
+
+\begin_layout Standard
+Spravu beru po bajtoch/bitoch.
+\end_layout
+
+\begin_layout Description
+Synchronne - pseudonahodna postupnost (key stream) je nezavisla na sprave.
+ Ciphertext obvykle spocitany ako plaintext XOR hodnota key streamu.
+ Napriklad Vernamova sifra, alebo DES v OFB.
+\end_layout
+
+\begin_layout Description
+Samosynchronizujuce - kazdy bajt pseudonahodnej postupnosti je zavisly na
+ pevnom pocte predchadzajucich bajtov sifrovaneho textu.
+ Umi sa resynchronizovat, napriklad Autokey, alebo DES v CFB.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Problemy - je treba dobre volit IV - nesmie sa pouzit rovnaky kluc pre sifrovani
+ 2 sprav a je treba dat pozor na integritu.
+ Utocnik moze zmenit dolezity obsah spravy iba preklopenim bitov.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Generatory
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+PRNG, metody:
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Blokove sifry v OFB
+\bar default
+ - pomale - 1 sirovanie / byte.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Linearne kongruencne generatory
+\bar default
+ - nie prilis bezpecne.
+ 
+\bar under
+Kryptograficky slabe
+\bar default
+ dokonca aj s pouzitim kvadratickej alebo kubickej funkcie.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+LFSR (linear feedback shift registers)
+\bar default
+ - rychle, nie vzdy bezpecne.
+ Maximalna perioda: 
+\begin_inset Formula $2^{n-1}$
+\end_inset
+
+, dosiahneme ju ak je polynom T(x) primitivny.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Utoky - KPA, je treba 2n bitov plaintext/ciphertext.
+ Je treba xorovat M a C a tym ziskame 2n bitov key streamu.
+ Tie jedinecne urcuju zpatne vazby - urci sa linearnou funkciou.
+ Na 
+\bar under
+utok
+\bar default
+ je treba cas O(
+\begin_inset Formula $n^{3}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+Kombinovane generatory
+\bar default
+ - niekolko LFSR pre zvysenie bezpecnosti.
+ Mozu mat rozne dlzky a rozne zpatne vazby, tiez rozne hodiny (hodinovy
+ IN moze zxavisiet na OUT ineho - feed forward, alebo sama sebe - feedback).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Sposoby kombinacie - XOR, Multiplexor - Gefe Generator (1 LFSR bezi rychlejsie
+ nez ostatne a urcuje, z kt.
+ z ostatnych vezme nasledujuci bit), Threshold (vystupom generatoru je bit
+ odpovedajuci majorite bitov jednotl.
+ generatorov).
+\end_layout
+
+\end_deeper
+\begin_layout Description
+A5 - v GSM pre zasifrovanie dat prenasanych radiovym kanalom.
+ 3 LFSR s dlzkami 19, 22 a 23 - vystupy su XORovane.
+ Registry nie su prilis dlhe a kazdy ma hodiny zo svojho prostredneho bitu
+ XORovaneho vystupom funkcie (threshold) prostrednych bitov vsetkych 3 registrov.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Bezpecnost
+\bar default
+ - utok silou 2^64 (alebo skor 54).
+ Utok na 2 mensie registry 
+\begin_inset Formula $2^{45}$
+\end_inset
+
+.
+ Skutocny utok - su treba 2s plaintextua 
+\begin_inset Formula $2^{48}$
+\end_inset
+
+ predvypoctov, 148 GB priestoru.
+ 
+\bar under
+Doba utoku 1 minuta
+\bar default
+ na PC.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Prudova
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+sifra
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Bluetooth - dlzka kluca 128 bitov, najlepsi znamy utok 
+\begin_inset Formula $2^{70}$
+\end_inset
+
+.
+ Pouziva 4 LFSR, ktore XORuje.
+\end_layout
+
+\begin_layout Description
+PKZIP - prudova sifra, berie text po bajtoch.
+ 32 bitove hodnoty, 3 magicke cisla.
+ 
+\bar under
+Nedostatocna bezpecnost
+\bar default
+, nevhodne k pouzitiu.
+\end_layout
+
+\begin_layout Description
+RC4 - 1987.
+ Premenna dlzka kluca.
+ Pouziva S-box s prvkami 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ az 
+\begin_inset Formula $S_{255}$
+\end_inset
+
+, ktore su permutaciami 8bitopvych cisel 0...255.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Slabiny
+\bar default
+ - nezaistuje integritu - je treba zaistit inak, napr MAC.
+ Dalej problem pri zasifrovani 2 sprav rovnakym klucom - modifikacia kluca.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Utok
+\bar default
+ - pociatocny keystream nie je dostatocne nahodny.
+ Ak je kluc iba konkatenovany s nahodnym cislom, lze ho rekonstruovat.
+ Pouzite pre rozlomeni sifrovani WEP pri WiFi sieti.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Blokove Sifry
+\end_layout
+
+\begin_layout Standard
+Spravu berie po vacsich blokoch (64/128/256 bitov).
+ Pred zasifrovanim musi byt cely blok k dispozicii, vacsia velkost zabranuje
+ slovnikovym a statistickym utokom.
+\end_layout
+
+\begin_layout Itemize
+Pre 64 bitovy blok - 2^64 moznych blokov otvoreneho textu a aspon tolko
+ isto odpoved.
+ blokov zasifrovaneho textu.
+ 
+\end_layout
+
+\begin_layout Itemize
+Idealne nahodne zobrazenie aproximujeme pomocou niekolko komponent, riadenych
+ hodnotou kluca.
+\end_layout
+
+\begin_layout Itemize
+rezimy blokovych sifier mozu byt pouzite pre akukolvek blokovu sifru
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+ECB (Electronic Codebook)
+\bar default
+ - umoznuje - slovnikove utoky, repeticie alebo preskladanie blokov Spravu
+ rozdelim na bloky, kazdy sifrujem nezavisle.
+ Dlzka spravy musi byt nasobkom velkosti bloku.
+ Nie je dobre spravu doplnovat nulami.
+ Jednoducha implementacia.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+CBC (Cipher Block Chaining)
+\bar default
+ - kazdy blok spravy je XOR-ovany s predch.
+ zasifrovanym blokom a 1.
+ blok je XOR-ovany IV (nemusi byt tajny, no je treba chranit jeho integritu
+ - jeho modifikacia utocnikom mu umoznuje cielene zmenit 1.
+ blok).
+ Odolne voci slovnikovym utokom, repetici/preskladania bloku.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Padding: Doplnenie dodatocnych blokov na koniec, ak dlzka spravy nie je
+ nasobkom dlzky bloku.
+\end_layout
+
+\begin_layout Itemize
+Musi byt jednoznacne! Jednoznacne znamena vzdy predlzenie aspon o 1 byte,
+ mal by niest dlzky zarovnania (napr zarovname o 5 bytov, tak v poslednom
+ byte je '05') 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+OFB (Output Feedback)
+\bar default
+ - synchronna prudova sifra (DES - pri generovani pseudonahodnej postupnosti,
+ key stream).
+ DES je inicializovany IV.
+ IN blok DESu je posunuty dolava o 'k' bitov a sprava je doplneny 'k' bitmi
+ z vystupneho bloku.
+ Typicky k=8 alebo 64.
+ Ten isty key stream nesmie btyt viackrat pouzity! Obrazok vyzera tak, ze
+ do blokov E prichadza vzdy ten isty kluc K a najprv IV, ale v dalsich uz
+ vysledok z laveho (predchadzajuceho) bloku E.
+ Vysledok z bloku E sa vzdy XORuje s Pi a vysledkom je Ci.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CTR je podobne, citac sa nesmie pre rovnaky kluc opakovat a kazdy blok je
+ sifrovany nezavisle na ostatnych, paralelizovatelny.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+CFB (Cipher Feedback)
+\bar default
+ - samosynchronizujuca prudova sifra (DES - pri generovani pseudonahodnej
+ postupnosti, key stream).
+ DES je inicializovany IV.
+ IN blok DESu je posunuty dolava o 'k' bitov a sprava je doplneny 'k' bitmi
+ z ciphertextu.
+ Typicky k=8 alebo 64 - blokova sifra sa vlastne prevadza na prudovu - obrazok
+ vyzera ako v OFB, ale do bloku E sa pridava vysledok po predchadzajucim
+ XORe, nie po predchadzajucim bloku E.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Feistelova sifra 
+\end_layout
+
+\begin_layout Standard
+Vznik IBM, 1973 - zaklad pre IBM's Lucifer algoritmus, ktory bol zas zakladom
+ pre DES.
+ 
+\end_layout
+
+\begin_layout Itemize
+blokova sifra 
+\end_layout
+
+\begin_layout Itemize
+substitucna/permutacna siet
+\end_layout
+
+\begin_layout Itemize
+plaintext rozdelime na 2 casti, prava bude v lavej casti OUT a pouzije sa
+ aj do F; lava bude pouzita pre XOR s vystupom z F a vysledok pojde do pravej
+ casti OUT.
+ Je to na kola, kde jedno: L_i = R_(i-1) a R_i = L_(i-1) XOR F(R_(i-1),
+ K_i) 
+\end_layout
+
+\begin_layout Itemize
+proces je reverzibilny (poradie subklucov je opacne) 
+\end_layout
+
+\begin_layout Itemize
+poziadavky na F - aby bol alg.
+ bezpecny - skrytie vlastnosti spravy aj kluca.
+ Vytvorit dobru F je tazke
+\end_layout
+
+\begin_layout Itemize
+cim vacsi blok a kluc, tym je vacsia bezpecnost
+\end_layout
+
+\begin_layout Itemize
+zlozitejsia generacia subklucov a F moze znamenat vacsiu bezpecnost
+\end_layout
+
+\begin_layout Itemize
+subkluce - v bloku "key schedule" (pozor na moznost slabych klucov)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+DES
+\end_layout
+
+\begin_layout Standard
+56bit - v IBM, na zakazku NBS (dnes NIST), na zaklade Lucifer.
+ Modifikovan NSA - zmena S-boxov, kluc zo 128 na 56.
+ Ako standard v 1976.
+ Zasifroval najviac bitov zo vsetkych algoritmov.
+\end_layout
+
+\begin_layout Itemize
+Vylepsenie - 3DES.
+ Pracuje s velkostou bloku 112bitov.
+ Double DES nie je bezpecny - KPA (known plaintext attack) utok MitM - 
+\begin_inset Formula $2^{n+1}$
+\end_inset
+
+pokusov.
+ 
+\end_layout
+
+\begin_layout Itemize
+Posuvy a permutacie vytvaraju 48-bitove subkluce pre kazde kolo.
+ 
+\begin_inset Formula $2^{56}$
+\end_inset
+
+ klucov.
+\end_layout
+
+\begin_layout Itemize
+IN -> pociatocna permutacia (IP) -> 16 cyklov -> koncova permutacia -> OUT
+\end_layout
+
+\begin_layout Itemize
+F funkce: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+32 bitov -> E funkce -> 48 bitov XOR K_n -> Substituce (S boxy) -> 32 bitov
+ -> Permutace P
+\end_layout
+
+\begin_layout Itemize
+E funkce - expanze bitov, duplikacia niektorych S-boxy (Selection, neskor
+ Substitution boxy) - zasadne pre bezpecnost, NSA zmenila ich obsah, jediny
+ nelinearny krok DESu
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Key Schedule - je treba 16x48-bitovych klucov.
+ Idealne by bolo mat 768 bitov, teda 16 nezavislych klucov.
+ Pouziva sa 56 bitovy kluc, 64 s paritou.
+ Pouziva sa operacia rotace.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Bezpecnost
+\end_layout
+
+\begin_layout Itemize
+DES Avalanche Effect - zmena v plaintexte - pocet OUT bitov, kt.
+ sa zmeni pri zmene 1 bitu na IN.
+ Rovnaka vlastnost sa skuma pre zmenu 1 bitu kluca.
+\end_layout
+
+\begin_layout Itemize
+Slabiny a pochybnosti: velkost bloku a kluca - je viac blokov nez klucov,
+ pre 1 blok 
+\begin_inset Formula $2^{64}$
+\end_inset
+
+sprav -> 
+\begin_inset Formula $2^{56}$
+\end_inset
+
+ klucov.
+ Zasifrovany konstantny blok nemoze mat vsetkych 
+\begin_inset Formula $2^{64}$
+\end_inset
+
+ hodnot
+\end_layout
+
+\begin_layout Itemize
+56 bitovy kluc je moc kratky - utok silou
+\end_layout
+
+\begin_layout Itemize
+komplementarne kluce, alebo existencia slabych - pri generovani treba kontrolova
+t, ci sa nejedna o: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+slaby kluc - vsetky su rovnake, lava alebo prava polka su same 0 ci 1 (4ks)
+\end_layout
+
+\begin_layout Itemize
+poloslaby kluc - generuju iba 2 rozne subkluce (12ks)
+\end_layout
+
+\begin_layout Itemize
+asi slabe kluce - generuju iba 4 rozne subkluce (48ks)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+dokopy 
+\series default
+teda 64 klucov, zo 72,000 trilionov
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+nevieme, ci 16 cyklov staci pre bezpecne zasifrovanie
+\end_layout
+
+\begin_layout Itemize
+navrh S-boxov nebol zverejneny - moznost zadnych vratek - ak by mali nejaku
+ linearnu funkciu, ich autor by sifru mohol lahko rozbit
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+utok na slabe, komplementarne kluce 
+\series default
+(56 na 55 bitov), diferencialna / linearna kryptoanalyza nie je prakticky
+ pouzitelna 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Brute force
+\series default
+, teoreticke utoky: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Diffie a Hellman - 1976 - stroj za 20M dolarov a 1M procesorov, 
+\begin_inset Formula $10^{12}$
+\end_inset
+
+keys/sec a vsetky za 1 den 
+\end_layout
+
+\begin_layout Itemize
+Michael Wiener - 1993 - 1M dolarov s 57,600 cipmy, kazdy testuje 50M keys/sec,
+ 1 kluc priemerne za 3.5h
+\end_layout
+
+\begin_layout Itemize
+EFF DES Cracker - 1998 - 250,000 dolarov, 41,472 procesorov - 2.5M klucov/sec
+\end_layout
+
+\begin_layout Itemize
+1999 - 56 bitovy kluc za 22 hodin- 100,000 pocitacov + 1 EEF
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+IDEA
+\end_layout
+
+\begin_layout Standard
+pomocou 128bit key sifruje 64bitove bloky.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ako DES - pracuje v kolach a operacia je rovnaka pre sifrovanie aj desifrovanie.
+ No lisi sa od neho v tom, ze je navrhnuta tak, aby bola efektivna aj v
+ SW a nepouziva S-boxy ani P-boxy.
+ 
+\end_layout
+
+\begin_layout Itemize
+Zakladne operacie - XOR, scitanie mod 
+\begin_inset Formula $2^{16}$
+\end_inset
+
+a nasobenie mod 
+\begin_inset Formula $2^{16}+1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Blowfish
+\end_layout
+
+\begin_layout Standard
+sifruje 64bitove bloky.
+ Kluc ma premennu dlzku, az do 448bitov.
+\end_layout
+
+\begin_layout Itemize
+Takmer Feistelova sifra.
+ Pouziva F funkciu - ta 4 S-boxy, kazdy S-box prevadza 8bitov na 32bitov.
+\end_layout
+
+\begin_layout Itemize
+Klucovo zavisle S-boxy - ich obsah je urceny hodnotou kluca.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+TEA (Tiny Encryption Algorithm)
+\end_layout
+
+\begin_layout Standard
+64-bitovy blok, 128 bitovy kluc.
+\end_layout
+
+\begin_layout Itemize
+Vyuziva 32-bitovu aritmetiku.
+\end_layout
+
+\begin_layout Itemize
+Premenny pocet kol (obvykle 32).
+ V kazdom pouziva slabu funkciu, preto treba vacsi pocet kol.
+\end_layout
+
+\begin_layout Itemize
+Takmer Feistelova sifra.
+ Pouziva + a - namiesto XORu.
+ Jednoducha, lahko implementovatelna, rychla a pamatovo nenarocna.
+ 
+\end_layout
+
+\begin_layout Itemize
+Existuje tzv.
+ 
+\series bold
+related key attack
+\series default
+ - eXtended TEA (XTEA) ho eliminuje.
+\end_layout
+
+\begin_layout Subsection
+AES (Advanced Encryption Standard)
+\end_layout
+
+\begin_layout Standard
+Velkost bloku 128, variabilne dlzky klucov 128 (10 kol) / 192 (12 kol) /
+ 256 (14 kol).
+\end_layout
+
+\begin_layout Itemize
+Zalozeny na Rijndael algorithm (Belgicko), platny od 2002.
+ Mal odstranit nedostatky DESu.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Sifrovanie
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Krok Add Round Key (subkluc XOR blok) 
+\end_layout
+
+\begin_layout Itemize
+Kola:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a) Byte Sub - kazdy bajt bloku je nahradeny inym podla S-boxu.
+ Je to nelinearny krok, ale invertovatelny.
+\end_layout
+
+\begin_layout Itemize
+b) Shift Row - bajty su usporiadane do matice a posunute.
+\end_layout
+
+\begin_layout Itemize
+c) Mix Column - nasobenie matic.
+ Je to nelinearny krok, ale invertovatelny, aplikovany na kazdy stlpec.
+ Obvykle implementovane ako velka tabulka.
+ 
+\end_layout
+
+\begin_layout Itemize
+d) Add Round Key - subkluc (round key) je vytvoreny algoritmom Key Schedule.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+Desifrovanie
+\bar default
+ (proces sifrovania musi byt invertovatelny)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inverzia MixAddRoundKey je jednoducha
+\end_layout
+
+\begin_layout Itemize
+XOR je inverzny sam o sebe
+\end_layout
+
+\begin_layout Itemize
+MixColumn je invertovatelny pomocou inej tabulky
+\end_layout
+
+\begin_layout Itemize
+inverzia ShiftRow je jednoducha (cyklicky posuv v opacnom smere)
+\end_layout
+
+\begin_layout Itemize
+ByteSub je tiez invertovatelny inou tabulkou 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+RC2, 4, 5
+\end_layout
+
+\begin_layout Standard
+Ron Rivest - variable key size.
+\end_layout
+
+\begin_layout Subsection
+Skipjack
+\end_layout
+
+\begin_layout Standard
+80bit key, 32 rounds, NSA initially classified.
+\end_layout
+
+\begin_layout Chapter
+Symetricka sprava klucov 
+\end_layout
+
+\begin_layout Standard
+Zdielany kluc je casto dlhodoby (
+\begin_inset Formula $W_{AB}$
+\end_inset
+
+alebo 
+\begin_inset Formula $KEK_{AB}$
+\end_inset
+
+) a pomocou neho sa dohaduje kluc relace (
+\begin_inset Formula $K_{AB}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+Kluc
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+relace - iba docasne tajomstvo, pouzivane iba pre kratku dobu a potom znicene.
+ Nezavislost zabezpecenia jednotlivych relaci, obmedzenie potreby pamatat
+ si mnozstvo klucov, mnozstvo zasifrovanych sprav pre analyzu utocnikom
+ a casovy rozsah dopadu prezradenia 1 kluca.
+\end_layout
+
+\begin_layout Description
+Vlastnosti
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+spravy
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+klucov
+\end_layout
+
+\begin_layout Itemize
+sposob autentizacie - autentizacia subjektu a kluca 
+\end_layout
+
+\begin_layout Itemize
+vzajomna autentizacia - jednozmerna, obojsmerna
+\end_layout
+
+\begin_layout Itemize
+cerstvost kluca 
+\end_layout
+
+\begin_layout Itemize
+cinnost: distribucia kluca, dohoda na kluci
+\end_layout
+
+\begin_layout Itemize
+efektivnost - pocet prenesenych sprav, bajtov, zlozitost vypoctov ucastnikov
+\end_layout
+
+\begin_layout Itemize
+poziadavky na 3.
+ nezavislu stranu (TTP - Trusted Third Party - KDC, CA, KTC, bez nej by
+ mohlo byt 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+klucov) - Online, Offline, miera dovery v TTP
+\end_layout
+
+\begin_layout Description
+Ciele
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+utocnika
+\end_layout
+
+\begin_layout Itemize
+ziskat kluc relace pomocou odposluchu, ucastnit sa beziaceho protokolu a
+ pomocou zmien prav ziskat kluc relacie
+\end_layout
+
+\begin_layout Itemize
+iniciovat 1+ behov protokolu a kombinovat ich spravy pre realizaciu prechadzajuc
+ich utokov
+\end_layout
+
+\begin_layout Itemize
+bez schopnosti zistit kluc relace podviest 1 z ucastnikov ohladne identity
+ ucastnika, s ktorym navazuje protokol 
+\end_layout
+
+\begin_layout Itemize
+presvecit 1 z ucastnikov, ze uspesne naviazal protokol s inym ucastnikom
+ nez je utocnik
+\end_layout
+
+\begin_layout Description
+Utok
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+replay
+\end_layout
+
+\begin_layout Itemize
+Simple replay - skopirovat spravu, neskor zaslat
+\end_layout
+
+\begin_layout Itemize
+Suppressed replay - odstranit spravu, neskor zaslat 
+\end_layout
+
+\begin_layout Itemize
+Timed replay - skopirovat spravu, zaslat ju v ramci casu expiracie 
+\end_layout
+
+\begin_layout Itemize
+Replay to Sender - zaslat spravu spat odosielatelovi (Reflection attack,
+ napriklad pre protokoly vyzva-odpoved) 
+\end_layout
+
+\begin_layout Itemize
+Interleaved runs - kombinacia sprav z roznych/subeznych behov toho isteho
+ protokolu
+\end_layout
+
+\begin_layout Description
+Cerstvost - Seq numbers (musia byt udrzovane pre kazdy kanal), timestamps
+ (sprava je projata iba ak je casova znacka dostatocne cerstva), Nonces
+ (nahodne cisla zasielana po vyzve, vratena v odpovedi)
+\end_layout
+
+\begin_layout Description
+KDC (Key Distribution Center) - KDC generuje kluc relace 
+\begin_inset Formula $K_{AB}$
+\end_inset
+
+ - Push (A posle poziadavok KDC, to posle spat kluc A, potom A posle kluc
+ B) model, Pull model (A posle poziadavok B, B posle poziadavok KDC a KDC
+ ho vrati B), alebo Hybridny model (A posle KDC poziadavok, KDC odpovie
+ A zaslanim klucu a zaroven ho posle i B)
+\end_layout
+
+\begin_layout Description
+KTC (Key Translation Center) - jedna z komunikujucich stran generuje kluc
+ relacie 
+\begin_inset Formula $K_{AB}$
+\end_inset
+
+ - Push model (A generuje kluc, posle ho KTC, ten ho posle spat A a ten
+ ho posle B), Hybridny model (A generuje kluc, posle ho KTC a ten ho posle
+ B)
+\end_layout
+
+\begin_layout Description
+Nevyhody - kazda komunikacia vyzaduje kontakt s TTP (trusted third party)
+ a to musi mat ulozene n dlhodobych klucov.
+ Okrem toho moze citat vsetky spravy a ak je kompromitovana, je akakolvek
+ komunikacia nebezpecna.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Oproti tomu asymetricka - TTP nemusi byt kontaktovane pred kazdou komunikaciou,
+ nemoze jednoducho odposluchavat komunikaciu a dovera v TTP staci mensia
+ (TTP moze iba docasne zmenit identitu ucastnika).
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Protokoly
+\end_layout
+
+\begin_layout Itemize
+Najjednoduhsi protokol: symetricky kluc, 
+\bar under
+challenge-response
+\bar default
+ - jednosmerna autentizacia, autentizovany kanal sa da ukrast (conn hijacking),
+ staci hashovacia funkcia, ak je K odvodene od hesla, da sa provaded offline
+ hadanie hesla.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+One-message protocol
+\bar default
+ - symetricky kluc, casova znacka - jednoducha integracia do systemov s
+ heslom.
+ Velmi efektivny, 1 sprava a je bezstavovy.
+ Je treba dat pozor na replay a ak je kluc zdielany medzi viacerymi servermi.
+ Je treba chranit hodiny a alternativne sa da pouzit s hash funkciou.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Verejny kluc
+\bar default
+ - vyzva odpoved - pomocou podpisu alebo desifrovania (B moze pozadovat
+ po A, aby podpisala/desifrovala akykolvek text, ktory si oni zvoli.
+ Riesenie - nepouzivat rovnaky kluc pre viac ucelov - pre prihlasenie a
+ podpis, a pouzivat formatovane vyzvy).
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Obojstranna autentizacia
+\bar default
+.
+ Slabina - Utocnik moze vykonat slovnikovy utok na zdielany kluc vydavajuci
+ sa za A, bez odposluchavania.
+ Riesenie: pouzitie napriklad principu, ze iniciujuca strana by mala preukazat
+ svoju identitu prva.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Otway-Rees protokol
+\bar default
+ - KDC, Pull
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Wide-Mouthed Frog
+\bar default
+ - KTC, Hybridny model, casove znacky.
+ Neskor objaveny problem s periodickou ziadostou o presifrovanie kluca a
+ 'predlzovanim' casovej znamky
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Needham-Schroeder
+\bar default
+ - KDC, Push 
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Weird Reflection Attack
+\bar default
+ - symetricka sifra v ECB rezime - obecne nevhodne
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Kerberos
+\bar default
+ v4 a v5 - protokol pre autentizaciu a bezpecnu komunikaciu PC prepojenych
+ sietou.
+ Ziadatelom sa prideluju bezpecne tickety, ktore sluzia pre naviazanie bezpecnej
+ komunikacie.
+ Standardne formaty zabezpecenych sprav.
+ Spravy zachycuju aj mena, doby expiracie.
+ Mechanizmus centralneho KDC (AS - auth server).
+ Podporuje 'slave KDC', ktore mozu provadet iba obmedzene operacie (TGS
+ - Ticket Granting Server).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Pouzivatel sa zaloguje na pracovnu stanicu a pozaduje na hostovi sluzby.
+ 
+\end_layout
+
+\begin_layout Enumerate
+AS verifikuje jeho uzivatelske pristupove prava v DB, vytvori ticket-tgranting
+ ticket a kluc relacie.
+ Vysledok je zasifrovany pouzitim klucu derivovaneho z uzivatelovho hesla.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Workstation vyzyva uzivatela o heslo a pouziva heslo pre odsifrovanie prichadzaj
+ucej spravy, potom posle ticket a autentikator, ktory obsahuje uzivatelovo
+ meno, sietovu adresu a cas k TGS.
+ 
+\end_layout
+
+\begin_layout Enumerate
+TGS odsifruje tiket a autentikatora, verifikuje request a potom vytvori
+ ticket pre pozadovany server.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Workstation posle ticket a autenticator na server.
+\end_layout
+
+\begin_layout Enumerate
+Server verifikuje ze ticket a authenticator sa zhoduju, potom povoli vstup.
+ Ak je vyzadovana vzajomna autentizacia, server vrati autenticatora.
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Asymmetric Cryptography
+\end_layout
+
+\begin_layout Standard
+Dlzky klucov - 768, 1024, 2048b.
+ Diffie a Hellman a nezavisle na nich Merkle (1976).
+ 
+\end_layout
+
+\begin_layout Description
+Aplikacia - sifrovanie, elektronicky podpis, vymena klucov pre ustanovanie
+ kluca relacie 
+\end_layout
+
+\begin_layout Description
+Sifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+VK
+\end_layout
+
+\begin_layout Itemize
+Dovernost (ANO-prijemca je jediny, kto sa moze zoznamit s obsahom spravy.
+ Rozsifrovat to moze iba ten, co pozna sukromny kluc), 
+\end_layout
+
+\begin_layout Itemize
+Autentizacia (NIE - verejny kluc pozna ktokolvek aj utocnik, sprava moze
+ byt kludne aj od neho), 
+\end_layout
+
+\begin_layout Itemize
+Integrita (NIE-prijemca moze prijat pozmenenu spravu), 
+\end_layout
+
+\begin_layout Itemize
+Nepopieratelnost (NIE - neviem co prislo, neviem od koho to prislo).
+\end_layout
+
+\begin_layout Description
+Sifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+SK
+\end_layout
+
+\begin_layout Itemize
+Dovernost (NIE, VK poznaju vsetci) ,
+\end_layout
+
+\begin_layout Itemize
+Autentizaca (ANO - ak tu spravu zasifrujem, mohla byt zasifrovana iba odpovedaju
+cim SK), 
+\end_layout
+
+\begin_layout Itemize
+Integrita (ANO-odosielatel ju mohol jediny zasifrovat svojim SK tak, aby
+ som ju mohol spravne desifrovat), 
+\end_layout
+
+\begin_layout Itemize
+Nepopieratelnost - el.
+ podpis (ANO).
+\end_layout
+
+\begin_layout Description
+Sifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+SK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+potom
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+VK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+desifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+SK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+potom
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+VK
+\end_layout
+
+\begin_layout Itemize
+Dovernost,
+\end_layout
+
+\begin_layout Itemize
+Autentizaca, 
+\end_layout
+
+\begin_layout Itemize
+Integrita,
+\end_layout
+
+\begin_layout Itemize
+Nepopieratelnost.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ANO 
+\series default
+vsetky 4 bezpecnostne funkcie, no za cenu 4 klucov.
+\end_layout
+
+\begin_layout Description
+Sifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+VK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+potom
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+SK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+desifrovanie
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+VK,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+potom
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+SK
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ako vyssie uvedena, no v 90% pripadov sa pouziva ta vyssie uvedena.
+ V normalnom svete tiez podpis najprv podpiseme a potom ho zalepime do obalky.
+ Okrem toho, mozeme sa dostat do situacie, ze je sprava uz desifrovana,
+ ale este je podpisana elektronickym podpisom.
+ Tento druhy pripad to nepokryva.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Hash functions
+\end_layout
+
+\begin_layout Itemize
+SU tiez zname ako jednocestna funkcia, hash, one way function, digest, message
+ digest, charakteristika spravy.
+\end_layout
+
+\begin_layout Itemize
+Funkcie aplikovatelne na IN lubovolnej velkosti, OUT ma konstantnu dlzku
+ (128/160/256 bitov) a lze ju rychle spocitat.
+\end_layout
+
+\begin_layout Itemize
+Rychle ju lze spocitat.
+\end_layout
+
+\begin_layout Itemize
+CRC, digitalny podpis.
+ 
+\end_layout
+
+\begin_layout Itemize
+Je vypocetne nezvladnutelne najst: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(first preimage resistance) - pre dane y take x, aby platilo F(x)=y ...
+ (k hashu nenajdeme plaintext)
+\end_layout
+
+\begin_layout Itemize
+(second preimage resistance) - pre dane x take x'<>x, aby platilo F(x')=F(x)
+ ...
+ (k plaintextu nenajdeme iny plaintext s rovnakym hashom)
+\end_layout
+
+\begin_layout Itemize
+(collision resistance) - take x' a x, x'<>x, aby platilo F(x')=F(x) ...
+ (nenajdeme 2 rozne plaintexty s rovnakym hashom) 
+\end_layout
+
+\begin_layout Standard
+Ak je collision resistance, tak aj 2nd preimage.
+ Ak je MAC, tak vzhladom k utoku chosen-text attack je 2nd preimage a collision
+ resistant, aj 1st preimage resistant.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Klasifikacia
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+neklucovane
+\series default
+ - 
+\series bold
+MDC
+\series default
+ (manipulation detection codes) alebo 
+\series bold
+MIC
+\series default
+ (message integrity codes): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One-way Hash Functions (
+\series bold
+OWHFs
+\series default
+), cielom navrhu je collision resistance, cielom utocnika je koliziu najst
+ (sila 
+\begin_inset Formula $2^{\frac{n}{2}}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Collision Resistant Hash Functions (
+\series bold
+CRHFs
+\series default
+), cielom navrhu je 1st & 2nd preimage resistance, cielom utocnika je ich
+ najst (oboje zvlast maju silu 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+klucovane
+\series default
+ - 
+\series bold
+MAC
+\series default
+ (message authentication codes) - zaistuju autentizaciu a integritu.
+ Cielom navrhu je non-recovery key a odolnost voci vypoctu, cielom utocnika
+ je najst kluc (
+\begin_inset Formula $2^{n}$
+\end_inset
+
+) alebo vytvorit novy MAC, ( sila
+\begin_inset Formula $2^{-n}$
+\end_inset
+
+sila az 
+\begin_inset Formula $2^{-t}$
+\end_inset
+
+), kde t je dlzka kluca.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detailnejsi pohlad 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vstup je zarovnany, potom sa pripoji dlzka (predspracovanie).
+ Potom nastava iterativne spracovanie, pritom sa ziskany upraveny IN v kompresne
+j funkcii meni spolu s vystupom s predchadzajucom kole (prvy je IV).
+ Posledne volitelne kolo je este nejaka transformacia.
+\end_layout
+
+\begin_layout Itemize
+obvykle su zlozene z kompresnej funkcie f, ktora pracuje nad blokmi - podobne
+ blokovym sifram v CBC rezime.
+ Hodnota hashu pre kazdy blok je zavisla na hodnote bloku a hodnoty hashe
+ predchadzajucich blokov.
+ Na zaciatku sa pouziva IV.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Merklova meta-metoda
+\series default
+: kazda kompresna funkcia odolna proti koliziam sa da rozsirit na CRHF.
+ Tato metoda popisuje efektivny sposob ako ju vytvorit - n bitovy vystup,
+ r bitova premenna.
+ Ak existuje kolizia pre vystup h, to znamena ze vznikla kolizia pre f v
+ urcitom kole i.
+ Vlozenim dlzky bloku je zaistene, ze ziadny IN nie je prefixom ineho IN
+ (Merkle-Damgardovo zosilenie).
+\end_layout
+
+\begin_layout Itemize
+Zarovnanie
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+nejednoznacne (ambiguous padding): pripaja k sprave tolko nulovych bitov,
+ aby bola sprava nasobkom dlzky bloku 
+\end_layout
+
+\begin_layout Itemize
+jednoznacne (unambiguous padding): pripoj k sprave 1, proved nejednoznacne
+ zarovnanie.
+ Je to neintuitivne pre programatora.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Zakladny utok 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+na hash, n-bitovy neklucovany hash ma idealnu bezpecnost, ak splnuje poziadavky
+ na OWHF a CHRF 
+\end_layout
+
+\begin_layout Itemize
+utok silou na kluc MAC (known-text attack) vyzaduje 
+\begin_inset Formula $2^{t}$
+\end_inset
+
+operaci 
+\end_layout
+
+\begin_layout Itemize
+predvypocitanie hashu (memory-time tradeoff) * uhadnutie MAC: 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ operaci 
+\end_layout
+
+\begin_layout Itemize
+paralelizacia 2nd-preimage utoky na dlhe spravy pre 2nd-preimage.
+ Ak je h iterovana funkcia a nepouziva sa MD zosilenie, potom 2nd preimage
+ moze byt najdene v case "
+\begin_inset Formula $2^{\frac{n}{s}}+s$
+\end_inset
+
+" a priestoru "
+\begin_inset Formula $n*(s+logs)$
+\end_inset
+
+" bitov pre 1 < s < min(t, 2n/2) - narodeninovy utok na medzivysledky
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Priklad birthday attack: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+predpokladajme hash funkciu s n-bitovym OUT.
+ Utocnik vytvori dokument 'priatelska dohoda' a priblizne 
+\begin_inset Formula $2^{\frac{n}{2}+1}$
+\end_inset
+
+ semanticky ekvivalentnych verzii.
+ Podobne utocnik vytvori dokument 'nepriatelska dohoda' a tolko isto semanticky
+ ekvivalentnych verzi.
+ S pravdepodobnostou 1/2 bude existovat verzia priatelskej a nepriatelskej
+ dohody, ktore budu mat rovnaky hash.
+\end_layout
+
+\begin_layout Itemize
+pozadovane dlzky: OWHF: n>=80, CHRD: n>=160 (birthday attack), MAC: n>=64
+ s klucom aspon 64 bitov (je vhodne obmedzit pocet pokusov hladania)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Blokove sifry
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Matyas-Meyer-Oseas - do funkcii ide INi a g(Hi-1) a jej vystup XOR INi 
+\end_layout
+
+\begin_layout Itemize
+Davis-Meyer - do funkcii ide INi a Hi-1 a jej vystup XOR Hi-1 
+\end_layout
+
+\begin_layout Itemize
+Miyagucho-Preneel - do funkcii ide INi a g(Hi-1) a jej vystup XOR INi XOR
+ Hi-1
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Algoritmy: MD2, MD4, MD5, SHS, SHA
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MD2 - dava 128-bitovu charakteristiku spravy.
+ Jednoduchy a rychly algoritmus.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nahodna substitucia je tabulka z cislic Ludolfovho cisla, nemoze teda obsahovat
+ skryte vratka.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+MD4 - specialne navrhnute ako hashovacia funkcia specialne pre SW implementaciu
+ na 32-bit strojoch.
+ Startovaci bod pre MD5, SHA-1 a RIPEMD.
+ 128-bitovy OUT.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dobbertin nasiel kolizie pre zmysluplne spravy.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+MD5 - OUT 128 bitov a bloky 512 bitov.
+ Sprava je doplnena o dlzku k = 448 mod 512.
+ Na koniec spravy je pridany 64-bitovy blok s dlzkou spravy.
+ Vysledna je nasobkom 512 bitov.
+ 64 krokov (4 po 16), velkost spravy neobmedzena.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nie je odolne proti koliziam a pouziva sa v IPSec a inych protokoloch.
+ 
+\end_layout
+
+\begin_layout Itemize
+Uz od 2005 
+\series bold
+sa
+\series default
+ 
+\series bold
+neodporuca
+\series default
+ 
+\series bold
+ju
+\series default
+ 
+\series bold
+pouzivat
+\series default
+ (
+\series bold
+Halloween Hash Bash
+\series default
+) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RIPEMD-160: OUT 160 bitov a 160 krokov (5 po 16), inak ako MD5.
+ Kompresna fce, mapuje 21-slovny IN (5 slovna stavova premenna, 16 slovny
+ blok spravy, 32 bitova slova) na 5-slovny OUT.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Viac kol nez MD-4 a bezpecnost porovnatelna s SHA-1.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SHA: 1993, podobna MD5, revidovana v roku 1995 a druhy krat (SHA-2) v 2001.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SHA-1: OUT 160 bitov, blok 512 bitov, 80 krokov (4 po 20), max velkost spravy
+ 
+\begin_inset Formula $2^{64}-1$
+\end_inset
+
+.
+ Uz sa v novych aplikaciach pouzivat nemoze (
+\series bold
+Halloween Hash Bash
+\series default
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+SHA-2: rodina algoritmov, bezne sa pouziva iba SHA-256.
+ Malo efektivne v HW implementacii, behom 10 rokov pravdepodobne nebude
+ existovat prakticky utok, mozno len teoreticky.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+MAC
+\series default
+ - rodina funkcii parametrizovanych tajnym klucom.
+ Snadny vypocet ak je k zname, vypocetna bezpecnost, pri znalosti paru (INi,
+ hk(INi)) je vypocetne nemozne spocitat novu dvojicu (IN, hk(IN)) pre nove
+ IN != INi.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+V podstate sa vypocita MAC_ALG(MSG, K) = MAC.
+ MSG+MAC je vysledok.
+ ten sa vlastne tym istym klucom potom rozsifrovava.
+ 
+\end_layout
+
+\begin_layout Itemize
+CBC MAC - volitelny krok ma zabranit utoku chosen-text existential forgery
+ bez ovplivnenia predchadzajucich krokov.
+ Lebo zakladny CBC-MAC je bezpecny iba pre spravy s pevnym poctom blokov.
+ Inak ak mame dvojice (x1, H1) a (x2, H2) a mozeme pozadovat ((x1 || z),
+ M) potom je mozne skonstruovat novu spravu (x2 || (H1 XOR z XOR H2), M)
+ ktora je platna.
+ MD zosilenie nepomaha.
+ (A, B) - A je sprava, B je jej hash.
+ 
+\end_layout
+
+\begin_layout Itemize
+MAC vytvorene z MDC - velmi rozsirena konstrukcia - IPSec, SSL.
+ 3 rozne strategie:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Secret prefix: na zaciatok spravy sa prida tajny kluc k a MAC je potom M=h(k||x).
+ Je tu 
+\series bold
+utok
+\series default
+, kedy je mozne na koniec spravy pridat y a spocitat h(k||x||y) zo znalosti
+ h(k||x) bez znalosti k !!! Nepomaha ani MD zosilenie (i dlzka x sa da zahrnut
+ do spravy) a ani ta varianta nie je bezpecna, kedy pouzijeme k ako H0 (teda
+ IV).
+\end_layout
+
+\begin_layout Itemize
+Secret suffix: MAC je M=h(x||k).
+ 
+\series bold
+Moznost narodeninoveho utoku
+\series default
+ - utocnik, ktory moze zvolit x moze vytvorit tiez x' pre ktore h(x) = h(x')
+ so zlozitostou 
+\begin_inset Formula $O(2^{\frac{n}{2}})$
+\end_inset
+
+ bez ohladu na dlzku kluca k.
+ Metoda v podstate vypocita hash a v konecnej faze ho 'zasifruje'.
+ Nie je to dobry sposob!.
+\end_layout
+
+\begin_layout Itemize
+Enveloping: hk(s) = h(k||p||x||k), pricom p je retazec pouzity pre zarovnanie
+ kluca k na dlzku 1 bloku.
+ Lepsie nez predchadzajuce 2, no nie je to najlepsia metoda.
+ 
+\series bold
+Je to zaklad pre algoritmus HMAC
+\series default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+HMAC
+\series default
+ - klucovany hash.
+ Pouziva sa v IPSec a TLS.
+ Spocita sa H1 ako hash konkatenancie M a K1.
+ Pre zabranenie utoku 'dodatocny blok' sa spocita H2 ako hash konkatenancie
+ H1 a K2.
+ K1 a K2 pouzivaju polovicu bitov kluca K.
+ Kluc K sa zvykne doplnat nulami.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Metody pre integritu dat
+\series default
+: iba MAC, alebo MDC a autentizovany kanal, alebo MDC a sifrovanie.
+\end_layout
+
+\begin_layout Section
+RSA (Rivest-Shamir-Adleman)
+\end_layout
+
+\begin_layout Description
+Faktorizacia
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+velkych
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+cisiel.
+ Ako blokova sifra, blok je v rozmedzi 0-n.
+\end_layout
+
+\begin_layout Description
+Kluce 
+\end_layout
+
+\begin_layout Itemize
+n je verejny modulus, 
+\end_layout
+
+\begin_layout Itemize
+e je verejny exponent, 
+\end_layout
+
+\begin_layout Itemize
+d sukromny exponent, 
+\end_layout
+
+\begin_layout Itemize
+p a q su cinitele modulu n (n = p*q)
+\end_layout
+
+\begin_layout Itemize
+musi platit vztah d*e mod (p-1)(q-1) = 1
+\end_layout
+
+\begin_layout Itemize
+verejny kluc je (n,e) 
+\end_layout
+
+\begin_layout Itemize
+sukromny kluc je (n,d)
+\end_layout
+
+\begin_layout Description
+Postup
+\end_layout
+
+\begin_layout Enumerate
+vygeneruj prvocisla p, q 
+\end_layout
+
+\begin_layout Enumerate
+spocitaj theta(n)=(p-1)(q-1) 
+\end_layout
+
+\begin_layout Enumerate
+zvol hodnotu e < theta(n) taku, ze GCD(theta(n), e) = 1 
+\end_layout
+
+\begin_layout Enumerate
+spocitaj d tak, ze 
+\begin_inset Formula $d=e^{-1}mod\,theta$
+\end_inset
+
+(n)
+\end_layout
+
+\begin_layout Description
+Sifrovanie/desifrovanie, plaintext (m), ciphertext (c) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+utajenie: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sifrovanie VK: 
+\begin_inset Formula $c=m^{e}mod\,n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+desifrovanie SK: 
+\begin_inset Formula $m=c^{d}mod\,n$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+elektronicky podpis: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sifrovanie SK: 
+\begin_inset Formula $s=m^{d}mod\,n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+desifrovanie VK: 
+\begin_inset Formula $m=s^{e}mod\,n$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Utoky 
+\end_layout
+
+\begin_layout Itemize
+ak utocnik vie rozlozit n na cinitele p, q, moze dopocitat SK.
+ Ak uhadne (p-1)(q-1) tak moze dopocitat SK aj bez faktorizacie n.
+ 
+\end_layout
+
+\begin_layout Description
+Rady
+\end_layout
+
+\begin_layout Itemize
+nepouzivat male hodnoty pre d,
+\end_layout
+
+\begin_layout Itemize
+vzdy doplnovat spravy nahodnymi cislami, aby m malo priblizne rovnaku velkost
+ ako n.
+\end_layout
+
+\begin_layout Section
+DSS/DSA (Digital signature standard/algorithm)
+\end_layout
+
+\begin_layout Standard
+Problem diskretneho logaritmu, navrhnuty NISTom v 1991.
+ Velkost kluca najprv 512bitov, potom 2 nasobok.
+ Bezpecnost je porovnatelna s RSA.
+\end_layout
+
+\begin_layout Description
+Nevyhody
+\end_layout
+
+\begin_layout Itemize
+neda sa pouzit pre sifrovanie alebo distribuciu klucov
+\end_layout
+
+\begin_layout Itemize
+rychlejsie nez RSA pri podpisu ale pomalsi pri verifikacii 
+\end_layout
+
+\begin_layout Itemize
+v dobe, kedy je uz znacne rozsirene RSA 
+\end_layout
+
+\begin_layout Itemize
+obavy, ci neobsahuje zadne vratka od NIST
+\end_layout
+
+\begin_layout Description
+Utoky
+\end_layout
+
+\begin_layout Itemize
+uhadnutie nahodneho cisla k, ak je zname, da sa spocitat r a x 
+\end_layout
+
+\begin_layout Itemize
+zadne vratka - pre niektore specialne hodnoty p je problem diskretneho algoritmu
+ lahko riesitelny, moznost ze v parametroch su od NISTu
+\end_layout
+
+\begin_layout Section
+DH (Diffie-Hellman) 
+\end_layout
+
+\begin_layout Standard
+Prvy algoritmus s VK, zalozeny na problemu diskretnych logaritmov modulo
+ n.
+\end_layout
+
+\begin_layout Description
+Protokol
+\end_layout
+
+\begin_layout Itemize
+Pre ustanovanie kluca relacie K
+\end_layout
+
+\begin_layout Itemize
+Kluc relace sa pouzije pre sifrovanie dalsej komunikacie 
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Zvolenie parametrov
+\bar default
+: zvoli sa velke prvocislo n, hodnota g, ktora nedeli n.
+\end_layout
+
+\begin_layout Description
+Komunikacia
+\end_layout
+
+\begin_layout Enumerate
+Alica zvoli x.
+ posle spravu
+\begin_inset Formula $X=g^{x}mod\ n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bob obdrzi spravu, zvoli y.
+ Posle spravu 
+\begin_inset Formula $Y=g^{y}mod\ n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Alica spocita kluc K=Y^x mod n 
+\begin_inset Formula $K=Y^{x}mod\ n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bob spocita kluc K=X^y mod n 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Kluc 
+\series bold
+bude 
+\series default
+
+\begin_inset Formula $K=g^{xy}mod\ n$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Knapsack
+\end_layout
+
+\begin_layout Standard
+Problem balenia veci do batohu.
+ Ako vybrat predmety, ktore maju sucet presne rovny kapacite batoha.
+\end_layout
+
+\begin_layout Description
+Priklad
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Nech S={4,7,1,12,10} a T=17.
+ T=17=4+1+12, potom existuje vektor V={1,0,1,1,0} ako riesenie.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+EC (Elliptic Curves)
+\end_layout
+
+\begin_layout Standard
+Odporuca sa bitovy kluc aspon 160 bitov, no idealne 256.
+\end_layout
+
+\begin_layout Itemize
+scitanie: P + Q = R, P != Q 
+\end_layout
+
+\begin_layout Itemize
+zdvojnasobenie: P + P = 2P = R 
+\end_layout
+
+\begin_layout Itemize
+lahky vypocet: Q = kP = P + P + ...
+ + P (k-krat) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(P je bod na krivke a k je cele cislo)
+\end_layout
+
+\begin_layout Itemize
+Obtiazny vypocet: mame danu krivku, bod P a kP - je tazke vypocitat k, ide
+ o 
+\series bold
+ECDLP - Elliptic Curve Discrete Logarithm Problem.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+take kryptosystemy poskytuju najvacsiu mieru obtiaznosti na 1 bit dlzky
+ kluca so vsetkych asymetrickych alg a ich sila s dlzkou kluca rastie ovela
+ viac nez sila RSA
+\end_layout
+
+\begin_layout Itemize
+120 bitovy kluc EC == 1,024 bit RSA (10^12 rokov u MIPS) 
+\end_layout
+
+\begin_layout Itemize
+1200 bitovy kluc RC == 120,000 bit RSA (10^168 rokov u MIPS)
+\end_layout
+
+\begin_layout Itemize
+vyhodne na miestach s obmedzenym: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vypocetnym vykonom alebo kapacitou pamati 
+\end_layout
+
+\begin_layout Itemize
+plochou cipu integrovaneho obvodu 
+\end_layout
+
+\begin_layout Itemize
+prenosovou rychlostou tam, kde je potrebna vysoka rychlost
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Asymetricka sprava klucov
+\end_layout
+
+\begin_layout Section
+X.509 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bezpecnostne funkcie 
+\series default
+- autentizacia, dovera, integrita a nepopieratelnost.
+ 
+\end_layout
+
+\begin_layout Itemize
+Certifikacia verejnehop kluca - CA podpise VK uzivatela a jeho meno (plus
+ dalsie udaje) svojim tajnym klucom = certifikat.
+ Moze byt teda overeny VK CA.
+\end_layout
+
+\begin_layout Itemize
+VK CA mozu byt opat certifikovane inymi CA - stromove struktury, krizova
+ certifikacia medzi stromami.
+ Retazec certifikaci nie je nekonecny, existuje korenovy VK a ten zostava
+ necertifikovany.
+\end_layout
+
+\begin_layout Itemize
+Polozky certifikatu
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+version (standardne 0), 
+\end_layout
+
+\begin_layout Itemize
+serial number (uniq, poradove cislo cert), 
+\end_layout
+
+\begin_layout Itemize
+issuer (meno vydavajuce CA), 
+\end_layout
+
+\begin_layout Itemize
+subject (meno vlastnika cert), 
+\end_layout
+
+\begin_layout Itemize
+validity, 
+\end_layout
+
+\begin_layout Itemize
+subjectPublicKeyInfo (VK subjectu), 
+\end_layout
+
+\begin_layout Itemize
+signature (alg podpisu certif).
+\end_layout
+
+\begin_layout Standard
+Format mena - postupnost relativnych jedinecnych mien (RDN - Relative Distinguis
+hed Names): 
+\end_layout
+
+\begin_layout Itemize
+C - countryName, 
+\end_layout
+
+\begin_layout Itemize
+OU - organizationalUnitName, 
+\end_layout
+
+\begin_layout Itemize
+CN - commonName, 
+\end_layout
+
+\begin_layout Itemize
+SP - stateOrProvinceName, 
+\end_layout
+
+\begin_layout Itemize
+T - title, 
+\end_layout
+
+\begin_layout Itemize
+BC - businessCategory, 
+\end_layout
+
+\begin_layout Itemize
+O - organizationName, 
+\end_layout
+
+\begin_layout Itemize
+S - surname, 
+\end_layout
+
+\begin_layout Itemize
+L - localityName,
+\end_layout
+
+\begin_layout Itemize
+ST - streetAddress,
+\end_layout
+
+\begin_layout Itemize
+SN - serialNumber, 
+\end_layout
+
+\begin_layout Itemize
+D - description.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ulohy CA - registracia VK, distribucia alebo rusenie certifikatov.
+\end_layout
+
+\begin_layout Itemize
+Typy CA 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+korenova, 'policy' - vydava certifikaty CA,
+\end_layout
+
+\begin_layout Itemize
+uzivatelska - vydava certifikaty uzivatelom.
+ Negeneruje kluce, nemoze zarucit kvalitu alebo jedinecnost uzivatelskych
+ klucov.
+ Vykonava:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+udrzba zaznamov vo svojom adresari, 
+\end_layout
+
+\begin_layout Itemize
+udrzba ciernych listin certif vydanych a potom odobratych touto CA, 
+\end_layout
+
+\begin_layout Itemize
+zaslanie mena a novych verejnych klucov korenovej CA formou spolahliveho
+ krizoveho certif pri kazdej zmene korenovej CA alebo ich klucov, 
+\end_layout
+
+\begin_layout Itemize
+zaslanie doprednej certif cesty pri zmene ktorejkolvek vyssej CA/ich klucov,
+\end_layout
+
+\begin_layout Itemize
+aktualizaciu hodnot uzivatelskych certifikatov v zaznamoch svojich uzivatelov
+ v adresari.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Vydanie certifikatu - uzivatel si lokalne vygeneruje kluce, uzivatelske
+ CA zasle prototypovy certif, po jeho overeni posle uzivatelska CA uzivatelovi
+ jeho podpisany certifikat.
+\end_layout
+
+\begin_layout Itemize
+Dovody rusenia certifikatu 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+bol prezradeny SK uzivatela, 
+\end_layout
+
+\begin_layout Itemize
+zmenil sa zamestnavatel uzivatela, cim je neplatne meno obsiahnute v certifikate
+, 
+\end_layout
+
+\begin_layout Itemize
+uzivatel uz nema byt certifikovany danou CA, 
+\end_layout
+
+\begin_layout Itemize
+SK CA bol kompromitovany, 
+\end_layout
+
+\begin_layout Itemize
+uzivatel porusil bezpecnostne pravidla CA.
+ 
+\end_layout
+
+\begin_layout Standard
+Dve moznosti: 
+\end_layout
+
+\begin_layout Itemize
+Zruseny certifikat je umiestneny na ciernu listinu, zoznam zrusenych certifikato
+v - 
+\series bold
+CRL
+\series default
+ (A certificate revocation list).
+ Je to zoznam zneplatnenych a nevyexpirovanych certifikatov.
+ Pull model (prijemca cert si stahuje podla potreby CRL od CA) alebo Push
+ model (CA pravidelne posiela CRL prijemcom certifikatov - prakticky nerealizova
+telny, zoznam byva velmi velky a uzivatelov mnoho).
+
+\series bold
+ CRL je nachylny na DOS
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Na stav certifikatu je mozno sa dotazat mechanizmom 
+\series bold
+OCSP
+\series default
+ (Online Certificate Status Protocol).
+ Pouziva protokol Request / Response.
+ Odpoved je vytvarana na strane serveru, redukuje sa mnozstvo prenasanych
+ dat, server moze pozadovat, aby poziadavky boli podpisane.
+ 
+\series bold
+Stale nachylne na DOS
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dokumentacia 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CP (Certificate Policy) popisuje vlastnosti cert
+\end_layout
+
+\begin_layout Itemize
+CPS (Certificaton Practise Statement) popisuje ako bol cert vydany
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Miera dovery v certifikaty
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Trieda 1: certifikat zaistuje iba jedinecnost mena vlastnika, je ho mozne
+ ziskat anonymne 
+\end_layout
+
+\begin_layout Itemize
+Trieda 2: identita vlastnika musi byt overena tretou stranou - notarsky
+ overeny formular, zaslany postou 
+\end_layout
+
+\begin_layout Itemize
+Trieda 3: vlastnik musi osobne navstivit CA, overenie osobnej totoznosti
+ 
+\end_layout
+
+\begin_layout Itemize
+Trieda 4: Trieda 3 + prokazanie opravnenosti ziadatela pozadovat certifikat
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Elektronicky
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+podpis
+\end_layout
+
+\begin_layout Standard
+Vlozenie textu podpisu do dokumentu alebo naskenovaneho obrazku.
+ Digitalny podpis je podmnozina, zalozeny na pouziti kryptografickych mechanizmo
+v.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bezpecnostne funkcie
+\series default
+ - autenticita, integrita a nepopieratelnost.
+\end_layout
+
+\begin_layout Itemize
+PKCS - public key cryptography standards:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+#1: RSA cryptography - sifrovanie a podpis pomocou RSA
+\end_layout
+
+\begin_layout Itemize
+#7: Cryptographic Message Syntax - sprava klucov moze byt pomocou Diffie-Hellman
+a, syntaxe zasifrovanej a podpisanej spravy
+\end_layout
+
+\begin_layout Itemize
+#11: Cryptographic Token Interface - jednotne API pre cipove karty a ine
+ zariadenia
+\end_layout
+
+\begin_layout Itemize
+#15: Cryptographic Token Information Format - format suborov pre kryptograficke
+ data na cipovych kartach a inych zariadeniach 
+\end_layout
+
+\begin_layout Standard
+Dalsie:
+\end_layout
+
+\begin_layout Itemize
+#3:Diffie-Hellman Key-Agreement
+\end_layout
+
+\begin_layout Itemize
+#5:Password-Based Cryptography
+\end_layout
+
+\begin_layout Itemize
+#8:Private-key information Syntax
+\end_layout
+
+\begin_layout Itemize
+#9:Selected Attribute Types
+\end_layout
+
+\begin_layout Itemize
+#10:Certification RequestSyntax
+\end_layout
+
+\begin_layout Itemize
+#12: Personal Information Exchange Syntax
+\end_layout
+
+\begin_layout Standard
+#2, #4 a #6 su uz zastarale a #13 a #14 su stale vo vyvoji
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bezna
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+elektronicka
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+posta 
+\end_layout
+
+\begin_layout Description
+PEM (privacy enhanced mail) - navrh standardu definujuci procedury pre sifrovani
+e a autentizaciu sprav el.
+ posty pri zlepseni bezpecnosti v ramci siete Internet.
+ Poskytuje symetricku aj asymetricku spravu klucov.
+ Cert VK podla X.509, vlastna hierarchia CA.
+ Implementacie TIS/PEM (od firmy Trusted Information Systems) alebo RIPEM.
+ Neuchytil sa, bol vytlaceny S/MIME.
+ Najprv bol standardizovany a az potom implementovany.
+ Poskytuje: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zasifrovanie sprav - dovernost - sprava je zasifrovana algoritmom DES-CBC
+ nahodnym klucom relacie a ten je zasifrovany bud VK prijemcu pomocou RSA
+ alebo tajnym klucom
+\end_layout
+
+\begin_layout Itemize
+elektronicky podpis - autentizace integrita a neodmietnutelnost odpovednosti
+ (ta je ak je pouzita asymetricka sprava klucov) - Pomocou MD2/MD5 je spocitany
+ hash spravy a je zasifrovany pomocou RSA SK odosielatela.
+\end_layout
+
+\begin_layout Itemize
+kompresie dat a segmentacia nie je 
+\end_layout
+
+\begin_layout Itemize
+kodovanie do textovej podoby - radix64
+\end_layout
+
+\begin_layout Itemize
+autentizacia - symetricka kryptografia - MD2/MD5, DES-ECB alebo DES-EDE
+\end_layout
+
+\begin_layout Standard
+Sposoby zabezpecenia: 
+\end_layout
+
+\begin_layout Enumerate
+konverzia spravy do kanonickej formy 
+\end_layout
+
+\begin_layout Enumerate
+generovanie autentizacneho a integritneho zabezpecenia 
+\end_layout
+
+\begin_layout Enumerate
+zasifrovanie spravy 
+\end_layout
+
+\begin_layout Enumerate
+konverzia do textovej podoby.
+ 
+\end_layout
+
+\begin_layout Standard
+Typy zabezpecenia: 
+\end_layout
+
+\begin_layout Itemize
+MIC-CLEAR - kroky 1,2 
+\end_layout
+
+\begin_layout Itemize
+MIC-ONLY - kroky 1,2,4 
+\end_layout
+
+\begin_layout Itemize
+ENCRYPTED - vsetky 4 kroky
+\end_layout
+
+\begin_layout Standard
+Korenova CA sa nazyva IPRA (Internet Policy Registration Authority), potom
+ su tam High Assurance, Residential, Mimd-Level Assurance, Persona a uzivatelia.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+PGP (pretty good privacy) - aplikacny SW s kryptografickymi vlastnostami
+ vykazujucimi vysoky stupen bezpecnosti.
+ Poskytuje:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zasifrovanie sprav - dovernost - sprava je zasifrovana IDEA nahodnym klucom
+ relace.
+ Ten je zasifrovany VK prijemca pomocou RSA a zaslany so spravou.
+ 
+\end_layout
+
+\begin_layout Itemize
+elektronicky podpis - autentizace integrita a neodmietnutelnost odpovednosti
+ (nepopieratelnost odosielatela) - pomocou MD5 je spocitany hash spravy
+ a je zasifrovany pomocou RSA SK odosielatela.
+\end_layout
+
+\begin_layout Itemize
+kompresiu dat - zip 
+\end_layout
+
+\begin_layout Itemize
+kodovanie do textovej podoby - radix64 
+\end_layout
+
+\begin_layout Itemize
+segmentace - dlha sprava moze byt rozdelena na segmenty
+\end_layout
+
+\begin_layout Standard
+Na Windows - WinPGP napriklad.
+ Ma to aj GUI.
+\end_layout
+
+\begin_layout Standard
+Pouziva Web of Trust - ak uzivatel A nedoveruje B, ale doveruje C, ktory
+ doveruje B, tak tranzitivne aj A doveruje B.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+S/MIME (Secure/MIME) - specifikacia bezpecnej vymeny sprav aplikovanim standardo
+v asymetrickej kryptografie PKCS.
+ Certif VK podla X.509.
+ Je flexibilny.
+ Poskytuje: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zasifrovanie sprav - DES/ 3DES / RC2 - sprava je zasifrovana symetrickym
+ alg.
+ nahodnym klucom relace,
+\end_layout
+
+\begin_layout Itemize
+elektronicky podpis - pomocou MD5 / SHA-1 je spocitan hash spravy a je zasifrova
+ny pomocou RSA SK odosielatela,
+\end_layout
+
+\begin_layout Itemize
+kodovanie do textovej podoby - MIME.
+\end_layout
+
+\begin_layout Standard
+Typy zabezpecenych sprav: 
+\end_layout
+
+\begin_layout Itemize
+Data (data) - obecne, nesifrovane a nepodpisane data 
+\end_layout
+
+\begin_layout Itemize
+Podpisane data (signedData) * Sifrovane data pre prenos (envelopedData)
+\end_layout
+
+\begin_layout Itemize
+Podpisane sifrovane data pre prenos (signedAndEnvelopedData) 
+\end_layout
+
+\begin_layout Itemize
+Data s charakteristikou (digestData) 
+\end_layout
+
+\begin_layout Itemize
+Sifrovane data pre ulozenie (encryptedData) - napriklad na lokalny disk,
+ sifrovaci kluc je odvodeny z hesla.
+ Predpoklada sa, ze sprava sifrovacich kludov je robena offline.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+SSH
+\end_layout
+
+\begin_layout Standard
+Motivacia: klasicke sluzby vzdialeneho terminalu (telnet, rsh, rlogin) nie
+ su bezpecne.
+ Autentizacia heslom - odposluch hesla, prenasanych dat, alebo modifikacia
+ prenasanych dat.
+ SSH nahradzuje tieto sluzby a moze tunelovat aj ine sluzby.
+ Pouziva RSA, DES/3DES/IDEA/RC4.
+\end_layout
+
+\begin_layout Description
+Vlastnosti
+\end_layout
+
+\begin_layout Itemize
+autentizacia pomocou RSA - zabranenie podvrhnutie IP adresy.
+ Host si vygeneruje SK/VK.
+ Uzivatel tiez, su ulozene v suboru .ssh zasifrovane heslom uzivatela pomocou
+ IDEA.
+ RSA autentizace host-host, uzivatel-host.
+ Autentizacia UNIXovym heslom (zasifrovanym kanalom!) 
+\end_layout
+
+\begin_layout Itemize
+zabranuje unosu uz naviazaneho a autentizovaneho spojenia 
+\end_layout
+
+\begin_layout Itemize
+zabranuje odposluchu hesla
+\end_layout
+
+\begin_layout Section
+SSL
+\end_layout
+
+\begin_layout Standard
+Zabezpecenie TCP/IP na transportnej urovni, je mozne pomocou toho implementovat
+ rozne sluzby, napriklad HTTPS = HTTP+SSL.
+ Vyzaduje TCP a podporuje rozne aplikacie a protokoly.
+ Certifikaty podla X.509
+\end_layout
+
+\begin_layout Description
+SSL
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Handshake
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+protocol - naviaze sifrovane spojenie symetrickym algoritmom.
+ 
+\end_layout
+
+\begin_layout Description
+SSL
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Record
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+protocol - stara sa o skladanie paketov, sifrovanie a desifrovanie.
+\end_layout
+
+\begin_layout Description
+Bezpecnostne
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+funkcie
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Autentizacia - klient-server a server-klient 
+\end_layout
+
+\begin_layout Itemize
+Dovernost - zasifrovanie dat prenasanych kanalom 
+\end_layout
+
+\begin_layout Itemize
+Integrita
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Sada
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+algoritmov - algoritmus s VK RSA, Diffie-Hellman, hashovaci algoritmus MD5,
+ SHA a symetricka sifra RC2, RC4, IDEA-CBC, DES-CBC, 3DES-CBC.
+\end_layout
+
+\begin_layout Description
+Faza
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+ustavenia
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+relacie
+\end_layout
+
+\begin_layout Itemize
+ustavenie master kry - klient iniciuje relaciu, server zasle svoj certifikat,
+ klient vygeneruje premaster secret a zasle ho zasifrovany VK serveru 
+\end_layout
+
+\begin_layout Itemize
+autentizacia klienta (volitelne) - server ziada klienta o certif, klient
+ ho zasle spolu s autentizacnymi informaciami
+\end_layout
+
+\begin_layout Itemize
+ustavenie kluca relacie - z premaster secret obe strany vygeneruju 2 kluce
+ relace, 1 pre kazdy smer prenosu
+\end_layout
+
+\begin_layout Description
+Tvorba
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+klucov
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Premaster secret - vytvoreny klientom - jednoduchy: 2 bytes of SSL version
+ + 46 nahodnych bajtov.
+ Zasiela sa serveru zasifrovany VK serveru.
+\end_layout
+
+\begin_layout Itemize
+Master secret - vytvoreny obecne oboma ucastnikmi z premaster secret a nahodnych
+ hodnot klienta a serveru.
+\end_layout
+
+\begin_layout Itemize
+Klucovy material - vytvaraju s az nich kluce.
+ Je vytvoreny z master secret a nahodnych hodnot klienta a serveru.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+SSL
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+v3 - poskytuje tie iste bezpecnostne sluzby ako v2, no naviac:
+\end_layout
+
+\begin_layout Itemize
+rychlejsie naviazanie spojenia podpora viacerych algoritmov - Diffie-Hellman,
+ Fortezza 
+\end_layout
+
+\begin_layout Itemize
+podpis HW autentizatorov - Fortezza karty - 1.
+ krok k podpore cipovych kariet 
+\end_layout
+
+\begin_layout Itemize
+vylepsenie protokolu v okamihu, kedy server ziada klienta o certifikat
+\end_layout
+
+\begin_layout Itemize
+server moze zaslat klientovi zoznam CA, ktorym veri a klient tak moze sam
+ vybrat vhodny cert (ak ich ma viac)
+\end_layout
+
+\end_body
+\end_document

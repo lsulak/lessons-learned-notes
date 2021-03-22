@@ -1,0 +1,821 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Algebra
+\end_layout
+
+\begin_layout Section
+Basics
+\end_layout
+
+\begin_layout Itemize
+Algebraic operations
+\end_layout
+
+\begin_layout Itemize
+Polynomial arithmetic (adding, subtracting, multiplication, division, factorizat
+ion)
+\end_layout
+
+\begin_layout Itemize
+Complex numbers
+\end_layout
+
+\begin_layout Itemize
+Solving equations and inequalities
+\end_layout
+
+\begin_layout Itemize
+Functions
+\end_layout
+
+\begin_layout Itemize
+Sequences
+\end_layout
+
+\begin_layout Itemize
+Trigonometry (unit circle, the Pythagorean identity, sinusoidal models,
+ etc)
+\end_layout
+
+\begin_layout Section
+Linear Algebra
+\end_layout
+
+\begin_layout Standard
+Linear algebra is a mathematical system for manipulating vectors in the
+ spaces described by vectors.
+ Or in another words, Linear algebra is the branch of mathematics concerning
+ linear equations and functions, and their representations through matrices
+ and vector spaces.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vectors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+basic operations: 
+\begin_inset Formula $+$
+\end_inset
+
+, 
+\begin_inset Formula $-$
+\end_inset
+
+, 
+\begin_inset Formula $*$
+\end_inset
+
+, and 
+\begin_inset Formula $/$
+\end_inset
+
+ (result is always vector of the same dimensions)
+\end_layout
+
+\begin_layout Itemize
+dot product (result of 
+\begin_inset Formula $a.b$
+\end_inset
+
+ is a single number, not a vector)
+\end_layout
+
+\begin_layout Itemize
+size of vector (
+\begin_inset Quotes eld
+\end_inset
+
+general
+\begin_inset Quotes erd
+\end_inset
+
+ Pythagoras theorem, the length of vector is also called as norm)
+\end_layout
+
+\begin_layout Itemize
+angle between vectors (
+\begin_inset Formula $\frac{x.y}{||x||.||y||}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+distance between vectors (
+\begin_inset Formula $||x-y||=\sqrt{(x-y,x-y)}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+inner product
+\end_layout
+
+\begin_layout Itemize
+sub-spaces and the basis for a subspace
+\end_layout
+
+\begin_layout Itemize
+scalar projection (can be derived from cosine product of orthogonal triangle
+ - if we want to project vector 
+\begin_inset Formula $x$
+\end_inset
+
+ on vector 
+\begin_inset Formula $b$
+\end_inset
+
+, then it is 
+\begin_inset Formula $\frac{b.x}{||b||^{2}}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+vector projection (result of scalar projection multiplied by the vector
+ itself and divided by the size of the vector, so from the previous example:
+ 
+\begin_inset Formula $\frac{b.x}{||b||^{2}}b$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+linear independence (
+\begin_inset Formula $b_{3}≠a_{1}b_{1}+a_{2}b_{2}$
+\end_inset
+
+, for any 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ = algebraic understanding; geometric understanding is that 
+\begin_inset Formula $b_{3}$
+\end_inset
+
+ does not lie in the plane spanned by 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+basis (it is a set of vectors that are orthogonal to each other = are linearly
+ independent, so they are not linear combinations of each other; and basis
+ span the space)
+\end_layout
+
+\begin_layout Itemize
+changing basis of a vector (scalar projection of all axes)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Matrices
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+solving equations with matrices (in an augmented matrix, each row represents
+ one equation in the system and each column represents a variable or the
+ constant terms)
+\end_layout
+
+\begin_layout Itemize
+basic operations: 
+\begin_inset Formula $+,$
+\end_inset
+
+
+\begin_inset Formula $-$
+\end_inset
+
+, 
+\begin_inset Formula $*$
+\end_inset
+
+, and 
+\begin_inset Formula $/$
+\end_inset
+
+ (remember that dimensions cannot be random)
+\end_layout
+
+\begin_layout Itemize
+determinant (scalar value denoted as 
+\begin_inset Formula $|A|$
+\end_inset
+
+ that can be computed from the elements of a square matrix and encodes certain
+ properties of the linear transformation described by the matrix)
+\end_layout
+
+\begin_layout Itemize
+matrix inverses (given 2x2 matrix 
+\begin_inset Formula $A$
+\end_inset
+
+, inverse is 
+\begin_inset Formula $\frac{1}{|A|}$
+\end_inset
+
+ multiplied by matrix that has switched scalars on diagonal and numbers
+ on off-diagonal are multiplied by 
+\begin_inset Formula $-1$
+\end_inset
+
+; if determinant is 
+\begin_inset Formula $0$
+\end_inset
+
+, then matrix is not invertible, and this is called a singular matrix)
+\end_layout
+
+\begin_layout Itemize
+matrix transposition
+\end_layout
+
+\begin_layout Itemize
+how matrices transform space (if we multiply matrix 
+\begin_inset Formula $M$
+\end_inset
+
+ with vector 
+\begin_inset Formula $N$
+\end_inset
+
+, then the matrix just tells us where the basis vectors go; we can think
+ of for example vector 
+\begin_inset Formula $\left[\begin{array}{c}
+5\\
+6
+\end{array}\right]$
+\end_inset
+
+ as 
+\begin_inset Formula $5*\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]+6\left[\begin{array}{c}
+0\\
+1
+\end{array}\right]$
+\end_inset
+
+ , and calculate the original multiplication of 
+\begin_inset Formula $M*N$
+\end_inset
+
+ with this)
+\end_layout
+
+\begin_layout Itemize
+matrix transformations (changing basis with a matrix for stretching, rotation,
+ etc, but also combination and composition of matrix transformations; in
+ fact, matrices are a way of representing linear transformations)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Alternate coordinate systems (bases)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+orthogonal complements
+\end_layout
+
+\begin_layout Itemize
+orthogonal projections
+\end_layout
+
+\begin_layout Itemize
+change of basis
+\end_layout
+
+\begin_layout Itemize
+orthonormal bases and the Gram-Schmidt process (method for orthonormalizing
+ a set of vectors in an inner product space, most commonly the Euclidean
+ space))
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eigenvalues and Eigenvectors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They mean 
+\begin_inset Quotes eld
+\end_inset
+
+characteristics
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If we perform a certain linear transformation to a space some vectors from
+ this space will not be changed at all, some will change their length, and
+ some even their direction.
+ Those vectors which do not change their original direction are eigenvectors,
+ and their length changes are eigenvalues.
+ Be careful, if a vector changes its direction by 180 degrees, that still
+ means that it is eigenvector, but only its direction was reverted, thus
+ its eigenvalue is 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Imagine a square space, and 3 vectors in that - one horizontal, one vertical,
+ and one diagonal (between them).
+ If you stretch the square vertically, then vertical vector will have bigger
+ size, horizontal vector will not be changed at all, and diagonal vector
+ will point to different direction (and will have different length).
+ Vectors which direction was not changed by a given transformation are called
+ 
+\series bold
+eigenvectors
+\series default
+.
+ Because horizontal vector was not changed, it is eigenvector, and because
+ the horizontal vector's length was unchanged, we say that it has a correspondin
+g 
+\series bold
+eigenvalue
+\series default
+ of 
+\begin_inset Formula $1$
+\end_inset
+
+ whereas, the vertical eigenvector doubled in length, so we say it has an
+ eigenvalue of 
+\begin_inset Formula $2$
+\end_inset
+
+ (let's imagine that we stretched the square two times).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Project high dimensional data into lower dimensional space
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Projection onto k-dimensional sub-spaces
+\series default
+ (projection into 1-D is simpler, it is explained here as well).
+ Consider a 
+\series bold
+n-dimensional vector space
+\series default
+ 
+\begin_inset Formula $V$
+\end_inset
+
+ with the dot product at the inner product and a subspace 
+\begin_inset Formula $U$
+\end_inset
+
+ of 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ With a basis vector 
+\begin_inset Formula $b_{1},b_{2},...,b_{k}$
+\end_inset
+
+ of 
+\begin_inset Formula $U$
+\end_inset
+
+, we obtain the 
+\series bold
+orthogonal projection
+\series default
+ of any vector 
+\begin_inset Formula $x\in V$
+\end_inset
+
+ onto 
+\begin_inset Formula $U$
+\end_inset
+
+ via 
+\begin_inset Formula $\pi_{U}(x)=B\lambda$
+\end_inset
+
+, where 
+\begin_inset Formula $B=(b_{1}|b_{2}|...|b_{k})\in R^{nxk}$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the coordinate of 
+\begin_inset Formula $\pi_{U}(x)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $b_{1},b_{2},...,b_{k}$
+\end_inset
+
+ of 
+\begin_inset Formula $U$
+\end_inset
+
+, and can be calculated, in such multi-dimensional space as 
+\begin_inset Formula $\lambda=(B^{T}B)^{-1}B^{T}x$
+\end_inset
+
+ (and in 1-D space where we have just 1 basis vector 
+\begin_inset Formula $b$
+\end_inset
+
+, as 
+\begin_inset Formula $\lambda=\frac{b^{T}x}{b^{T}b}=\frac{b^{T}x}{||b||^{2}}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+The projection matrix can be calculated as 
+\begin_inset Formula $P=B(B^{T}B)^{-1}B^{T}$
+\end_inset
+
+ (and in 1-D space, it would be calculated as 
+\begin_inset Formula $P=\frac{bb^{T}}{b^{T}b}=\frac{bb^{T}}{||b||^{2}}$
+\end_inset
+
+), such that 
+\begin_inset Formula $\pi_{U}(x)=Px$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+So the projected vector can be represented as a linear combination of the
+ basis of the subspace, and the vector that connects the data point and
+ its projection must be orthogonal to the subspace.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+For example
+\series default
+, let's have a vector 
+\begin_inset Formula $x=\left[\begin{array}{c}
+6\\
+0\\
+0
+\end{array}\right]$
+\end_inset
+
+ and the subspace 
+\begin_inset Formula $U$
+\end_inset
+
+ spanned by the basis vectors 
+\begin_inset Formula $b_{1}=\left[\begin{array}{c}
+1\\
+1\\
+1
+\end{array}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{2}=\left[\begin{array}{c}
+0\\
+1\\
+2
+\end{array}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The orthogonal projection was given as 
+\begin_inset Formula $\pi_{u}(x)=B\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Basis 
+\begin_inset Formula $B$
+\end_inset
+
+ is calculated as a concatenation of all input basis, so 
+\begin_inset Formula $B=\left[\begin{array}{cc}
+1 & 0\\
+1 & 1\\
+1 & 2
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lambda 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, which is a vector that contains coordinates of projection point with respect
+ to bases, can be calculated as 
+\begin_inset Formula $\lambda=(B^{T}B)^{-1}B^{T}x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+So first, we can calculate 
+\begin_inset Formula $B^{T}x=\left[\begin{array}{c}
+6\\
+0
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then, 
+\begin_inset Formula $B^{T}=\left[\begin{array}{ccc}
+1 & 1 & 1\\
+0 & 1 & 2
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then, 
+\begin_inset Formula $B^{T}B=\left[\begin{array}{cc}
+3 & 3\\
+3 & 5
+\end{array}\right]$
+\end_inset
+
+ and its inverse is 
+\begin_inset Formula $(B^{T}B)^{-1}=\left[\begin{array}{cc}
+5/6 & -1/2\\
+-1/2 & 1/2
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So, now we can calculate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, either with the inverse matrix calculated from the previous step using
+ equation 
+\begin_inset Formula $\lambda=(B^{T}B)^{-1}B^{T}x$
+\end_inset
+
+, or with the following equation:
+\begin_inset Formula $B^{T}B\lambda=B^{T}x$
+\end_inset
+
+ (here we just eliminated inverse matrix 
+\begin_inset Formula $(B^{T}B)^{-1}$
+\end_inset
+
+ so that only 
+\begin_inset Formula $B^{T}B$
+\end_inset
+
+ is on the left side) - in either way, the result is 
+\begin_inset Formula $\lambda=\left[\begin{array}{c}
+5\\
+-3
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And now, from lambda, we can calculate the projection of 
+\begin_inset Formula $x$
+\end_inset
+
+ onto space 
+\begin_inset Formula $U$
+\end_inset
+
+: 
+\begin_inset Formula $\pi_{U}(x)=\lambda B=5b_{1}+(-3)b_{2}=\left[\begin{array}{c}
+5\\
+2\\
+-1
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The resulting projection matrix in this example is 
+\begin_inset Formula $P=1/6\left[\begin{array}{ccc}
+5 & 2 & -1\\
+2 & 2 & 2\\
+-1 & 2 & 5
+\end{array}\right]$
+\end_inset
+
+ and it can be seen that it is symmetric (projection matrices are always
+ symmetrical).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+PCA
+\series default
+ - an algorithm that minimizes average reconstruction errors by orthogonal
+ projections.
+ It is quite old mathematical method, and it is detailed in my ML notes
+ book.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

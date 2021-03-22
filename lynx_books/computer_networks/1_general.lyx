@@ -1,0 +1,575 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Networking Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bandwidth
+\series default
+: This is the 
+\bar under
+maximum amount of data that can be transferred in a unit of time
+\bar default
+.
+ It is typically expressed in bits per second (or some similar ways, such
+ as gigabytes per second).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Throughput
+\series default
+: Whereas bandwidth is the maximum data that can be transferred in a unit
+ of time, throughput is the 
+\bar under
+actual
+\bar default
+ 
+\bar under
+amount of data that is transferred
+\bar default
+.
+ Bandwidth is the number of items that can be transferred per unit of time,
+ in the best possible conditions.
+ Throughput is the time it really takes, when the machines perhaps aren't
+ operating smoothly.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Latency
+\series default
+: This is how long it takes data to go from one end to the other.
+ That is, it is the delay between the sender sending information (even a
+ very small chunk of data) and the receiver receiving it.
+\end_layout
+
+\begin_layout Section
+Internet Connection Troubleshooting
+\end_layout
+
+\begin_layout Standard
+Step by Step:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+L3 - is an IP address allocated correctly?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Windows: 
+\end_layout
+
+\begin_layout Itemize
+ipconfig /?
+\end_layout
+
+\begin_layout Itemize
+ipconfig /all
+\end_layout
+
+\begin_layout Itemize
+ipconfig /release
+\end_layout
+
+\begin_layout Itemize
+ipconfig /renew 
+\end_layout
+
+\begin_layout Standard
+Linux:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ip address
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ip route
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Mapping L3 and L2 - is it working properly?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+arp
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ip neigh
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+netsh interface ipv6 show neighbors
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Switching - is correctly set? 
+\series default
+What's the default gate?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+IP, route, ipconfig 
+\end_layout
+
+\begin_layout Itemize
+test ping 
+\end_layout
+
+\begin_layout Itemize
+traceroute/tracert
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Is DNS working properly? 
+\series default
+What is your DNS resolver, can I use it and translate a domain name? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ipconfig /all
+\end_layout
+
+\begin_layout Itemize
+cat /etc/resolv.conf
+\end_layout
+
+\begin_layout Itemize
+ping $SERVER_IP
+\end_layout
+
+\begin_layout Itemize
+telnet $SERVER_IP 53 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+dig | nslookup | host seznam.cz
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Local Network Troubleshooting
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+L1
+\series default
+ - kabelaz, pomocou testeru, overenie linky medzi uzivatelom a prepinacom,
+ ci su trasy a kable spravne zapojene
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Topology
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Services-
+\series default
+ monitorovanie dostupnosti (nie len dostupnost ale aj zatazenie atd) sluzieb
+ (DHCP, DNS) a monitorovanie zarizenich (SNMP)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Security 
+\series default
+- DHCP snooping, port security, ACL, ARP snooping
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Others
+\series default
+ - Netflow - statistika, uctovanie, dohladavanie problemov a dotazovanie
+\end_layout
+
+\begin_layout Section
+WebSockets
+\end_layout
+
+\begin_layout Itemize
+Communication protocol, provides full-duplex communication channels over
+ a single TCP connection.
+ Standardized in 2011.
+\end_layout
+
+\begin_layout Itemize
+WebSocket is distinct from HTTP.
+ Both protocols are located at layer 7 in the OSI model and depend on TCP
+ at layer 4.
+ Websocket has also handshake.
+ However
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stackoverflow.com/questions/14703627/websockets-protocol-vs-http}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Persistent stateful connection for the duration of connection 
+\end_layout
+
+\begin_layout Itemize
+Low latency: near real-time communication between server/client due to no
+ overhead of reestablishing connections for each request as HTTP requires.
+ 
+\end_layout
+
+\begin_layout Itemize
+Full duplex: both server and client can send/receive simultaneously
+\end_layout
+
+\begin_layout Itemize
+WebSocket and HTTP protocol have been designed to solve different problems,
+ I.E.
+ WebSocket was designed to improve bi-directional communication whereas
+ HTTP was designed to be stateless, distributed using a request/response
+ model.
+ 
+\end_layout
+
+\begin_layout Itemize
+The basic thing behind both the WebSocket and HTTP is the socket.
+ In HTTP, it opens a connection on request and closes on response.
+ For WebSocket, concept is a 2 way communication (full duplex) rather than
+ request-response cycle.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Websockets vs RESTful:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stackoverflow.com/questions/29925955/what-are-the-pitfalls-of-using-w
+ebsockets-in-place-of-restful-http}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With RESTful HTTP you have a stateless request/response system where the
+ client sends request and server returns the response.
+\end_layout
+
+\begin_layout Itemize
+With WebSockets you have a stateful (or potentially stateful) message passing
+ system where messages can be sent either way and sending any given message
+ is lower overhead than with a RESTful HTTP request/response.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The WebSocket protocol enables interaction between a web browser (or other
+ client application) and a web server with lower overhead than half-duplex
+ alternatives such as HTTP polling, facilitating real-time data transfer
+ from and to the server.
+\end_layout
+
+\begin_layout Itemize
+In WebSocket, it's using ping-pong mechanism to make sure that the client
+ or the server is alive.
+ For every ping requests from one end, other end is subjected to reply a
+ pong response.
+ This mechanism helps to detect failures and hence to maintain stability.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages of WebSockets over RESTful
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two way communication.
+ So, the server can notify the client of anything at any time.
+ So, instead of polling a server on some regular interval to see if there
+ is something new, a client can establish a WebSocket and just listen for
+ any messages coming from the server.
+ From the server's point of view, when an event of interest to a client
+ occurs, the server simply sends a message to the client.
+ The server cannot do this with plain HTTP.
+\end_layout
+
+\begin_layout Itemize
+Lower overhead per message than RESTful HTTP.
+ This is because the TCP connection is already established and you just
+ have to send a message on an already open socket.
+ With an HTTP REST request, you have to first establish a TCP connection
+ which is several back and forth between client and server.
+ Then, you send HTTP request, receive the response and close the TCP connection.
+ The HTTP request will necessarily include some overhead such as all cookies
+ that are aligned with that server even if those are not relevant to the
+ particular request.
+\end_layout
+
+\begin_layout Itemize
+Stateful connections.
+ Without resorting to cookies and session IDs, you can directly store state
+ in your program for a given connection.
+ While a lot of development has been done with stateless connections to
+ solve most problems, sometimes it's just simpler with stateful connections.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages of RESTful over WebSockets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Universal support.
+\end_layout
+
+\begin_layout Itemize
+Compatible with more server environments.
+ 
+\end_layout
+
+\begin_layout Itemize
+For a one-off request/response, a single HTTP request is more efficient
+ than establishing a WebSocket, using it and then closing it.
+ This is because opening a WebSocket starts with an HTTP request/response
+ and then after both sides have agreed to upgrade to a WebSocket connection,
+ the actual WebSocket message can be sent.
+\end_layout
+
+\begin_layout Itemize
+Stateless.
+ If your job is not made more complicated by having a stateless infrastructure,
+ then a stateless world can make scaling much easier.
+\end_layout
+
+\begin_layout Itemize
+Automatically cacheable.
+ With the right server settings, http responses can be cached by browser
+ or by proxies.
+ There is no such built-in mechanism for requests sent via WebSockets.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+An alternative: WebRTC
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stackoverflow.com/questions/14703627/websockets-protocol-vs-http}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+API definition drafted by W3C that supports browser-to-browser communication
+ without plugins.
+\end_layout
+
+\begin_layout Itemize
+It allows audio and video communication to work inside web pages by allowing
+ direct peer-to-peer communication, eliminating the need to install plugins
+ or download native apps.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,1014 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Cryptography Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Classical Cryptography
+\end_layout
+
+\begin_layout Chapter
+
+\series bold
+Steganograficke sifry
+\end_layout
+
+\begin_layout Standard
+Prenasany text ukryty v inom texte.
+ Niektore bity su spravy, niektore vata.
+ Pomocou kluca sa zisti, ktore je ktore.
+ Sifrovany text je dlhsi (niekedy vyznamne) nez otvoreny text.
+ 
+\end_layout
+
+\begin_layout Chapter
+
+\series bold
+Transpozicne sifry
+\end_layout
+
+\begin_layout Standard
+Menia poradie znakov v texte.
+\end_layout
+
+\begin_layout Description
+Scytale - v Grecku, pomocou pruzku papieru na tyci.
+ Sprava sa zapisuje na omotany pruzok papieru po riadkoch, na pruzku su
+ zdanlivo nahodne znaky.
+ Nie je prilis bezpecna, klucom je iba priemer tyce.
+\end_layout
+
+\begin_layout Description
+Red
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Fence - vezmeme kluc, jednotl.
+ pismena ocislujeme podla ich abecedneho poradia v kluci.
+ Plaintext napiseme postupne na jednotlive riadky a zasifrovany text ziskame
+ citanim riadkov podla ich poradi.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Napriklad kluc THEYKEY - ocislujeme ako 531426 (napr E su tam 2x, sice je
+ najskorsie, teda '1', jeho druhy vyskyt nebude '1' ale uz '2').
+ Plaintext zapiseme kaskadovito:
+\end_layout
+
+\begin_layout Standard
+T 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\backslash
+ 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ K
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+H 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+S 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+E 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\backslash
+ 
+\backslash
+ 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+I 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\backslash
+ 
+\backslash
+ 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ Y
+\end_layout
+
+\begin_layout Standard
+Zasifrovany text potom piseme postupne citanim riadkov podla ich poradia.
+ V priklade vyssie ak by sme mali kluc KEY = 213, tak by sme mali zasifrovany
+ text ako HSETKIY.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Rail
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Fence - zanedbava poradie, kluc urcuje iba pocet riadkov.
+ Teda potom citame riadky jeden za druhym postupne zhora dole.
+\end_layout
+
+\begin_layout Description
+Stlpcova
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+transpozicia - sprava sa zapise po riadkoch a sifrovany text sa vytvori
+ tak, ze sa cita po stlpcoch v danom poradi, napr matica 5x4 a kluc je 4-2-1-3.
+\end_layout
+
+\begin_layout Description
+Dvojita
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+stlpcova
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+transpozicia - prva faza ako predchadzajuci, potom pre jednoduhsie zapamatanie
+ kluca je mozne mu priradit slovo, kluc je potom poradie pismen slova v
+ abecede.
+\end_layout
+
+\begin_layout Chapter
+Substitucne sifry
+\end_layout
+
+\begin_layout Standard
+Nahradzuju jednotl.
+ znaky textu inymi (mono/poly-alfabeticke).
+ Priklady:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Freemason
+\series default
+ - abeceda sa sklada z akychkolvek symbolov.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Caesarova
+\series default
+ - kazde pismeno nahradil 3.
+ dalsim v abecede.
+ Vylepsenie - odosielatel a prijemca maju dohodnuty kluc (1-25), ktory znamena,
+ o kolko pismen sa posuva.
+ Sifra je slaba - stavovy priestor klucov je moc maly.
+ Utoky:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+utok silou - iba 26 moznosti
+\end_layout
+
+\begin_layout Itemize
+frekvencna analyza
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Monoalfabeticke 
+\series default
+-
+\series bold
+ 
+\series default
+jednotlive pismena nahradzuju pomocou kluca, ktorym je permutace vs.
+ 26 pismen.
+ Pocet vs klucov je 26!
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Zapamatovatelny kluc
+\bar default
+ - specialny pripad, klucom je keyphrase (niekolko slov).
+ Pouzitie - napis kluc, pod nim postupne do stlpcov po riadkoch zapis pismena
+ abecedy ale vynechaj tie co uz su (z kluca) a potom citaj vysledok po stlpcoch.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Anatomia jazyka
+\bar default
+ - frekvencia, patterny - pravdepodobne (dalsie/predchadzajuce) slovo, opakovani
+e slov, slova z daneho kontextu.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Zvysenie odolnosti
+\bar default
+:
+\end_layout
+
+\begin_layout Itemize
+uriznuti vrcholov tabulky frekvencii - 
+\series bold
+homofonne sifry
+\series default
+, prevadzaju 1 znak textu na niekolko inych dalsich 
+\end_layout
+
+\begin_layout Itemize
+sifrovanie skupin znakov (napr.
+ dvojic) - symbol abecedy sa sklada z viac znakov.
+ 
+\series bold
+Polygramove sifry
+\series default
+ - nahradzuju skupinu znakov inou skupinou znakov.
+\end_layout
+
+\begin_layout Itemize
+kazdy znak sa sifruje inou transformaciou - 
+\series bold
+polyalfabeticke.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Nomenklator
+\bar default
+ - 16.
+ st.
+ - obsahuju klasicke substirucne homofonne zameny a klamace (nevyznamove
+ skupiny pismen, kt.
+ mali stisit kryptoanalyzu zasifrovanych textov).
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Kodova kniha (codebook)
+\bar default
+ - monoalfabeticka polygramova sifra (casto homofonna) - Dreyfusov alebo
+ Zimmermanov telegram.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Playfair
+\bar default
+ - 25 znakov (okrem 'j') pocinaje heslom, je vpisanych do 5x5 stvorca (torus).
+ Ak sa digram plaintextu nachadza v 1 riadku (stlpci) je nahradeny pismenami
+ od neho vpravo (dole), inak je 1.
+ pismeno nahradene pismenom v rovnakom riadku ale v stlpci druheho znaku
+ a naopak (zaciname tym na riadku).
+ Ak je v texte 2-ica rovnakych znakov, je 1 vynechany.
+ Desifrovanie presne naopak, riadok - vlavo, stlpec - hore.
+\end_layout
+
+\begin_layout Standard
+Ma urcite charakteristika a vieme ju na zaklade nich lepsie identifikovat:
+ 
+\end_layout
+
+\begin_layout Itemize
+Je to teda substitucna sifra, niektore spoluhlasky v EN sa vyskytuju castejsie
+ v plaintexte a aj ich digramy.
+ 
+\end_layout
+
+\begin_layout Itemize
+V sprave je vzdy sudy pocet pismen a neobjavuju sa v nich dvojice rovnakych
+ pismen (SS, EE, ...).
+ Ak prideme k tomu, ze je v texte 2ica rovnakych znakov a 1 je vynechany,
+ bude lichy pocet znakov.
+ Bigram oddelime nejakym velkym pismenom napr X, na koniec spravy potom
+ tiez pridame X.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ziadne pismeno nemoze byt zasifrovane samo na seba.
+ 
+\end_layout
+
+\begin_layout Itemize
+2 reverzovane digramy v plaintexte (ER a RE) budu vzdy zasifrovane ako 2
+ reverzovane digramy v zasifrovanom texte.
+\end_layout
+
+\begin_layout Itemize
+Opakovanie a frekvencia digramov je obecne rovnaka ako u ich ekvivalentov
+ v plaintexte.
+\end_layout
+
+\begin_layout Itemize
+Kazde pismeno v plaintexte moze byt zasofrovane iba ako 1 z 5 pismen - 1.
+ ktore je hned pod nim v rovnakom stlpci a 4, kt.
+ su v rovnakom riadku.
+ Vysledkom je, ze 3/4 najcastejsie pismena sa nachadzaju v rovnakom riadku
+ ako 'e'.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Polyalfabeticke 
+\series default
+- kazdy znak zasifrovany inou substitucnou funkciou - splostenie frekvencnej
+ charakteristiky jazyka, nelze pouzit frekvencnu analyzu ani ine statisticke
+ metody.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Leon Battista Alberti
+\bar default
+ - Albertiho disk - 1.
+ polyalfabeticky sifrovy system, doporucoval posunut abecedy po 3/4 slovach.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Johannes Trithemius
+\bar default
+ - Kniha Polygraphia (1518).
+ Tabula recta - 26 riadkov, prvy zacina od pismena A po Z, druhe od B po
+ A, teda vzdy posuv o 1 pismeno.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Vigenerova sifra
+\bar default
+ - 1550, nezlomitelna cca 300 let.
+ Diplomat vo Vatikane.
+ 
+\end_layout
+
+\begin_layout Itemize
+Pouziva Caesarovho principu - rozdielne posuvy pre jednotl.
+ znaky aby sa zakryla frekvencia znakov.
+ Znaky kluca definuju posuv pre jednotlive pismena a kluc je periodicky
+ opakovany, aby obsiahol celu dlzku sifrovaneho textu.
+ Vigenerova tabulka - ako Tabula recta od Trithemiusa.
+ Vylepsenie by bolo, keby sme kluc neopakovali periodicky, ale bol by 1
+ v dlzke rovnakej ako text, ktory chceme sifrovat.
+\end_layout
+
+\begin_layout Itemize
+Autokluc - mechanizmus, kedy je domluven iba pociatocny kluc (casto iba
+ 1 pismeno), ktory je potom modifovany:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a) samotnou spravou (autokey plaintext), 
+\end_layout
+
+\begin_layout Itemize
+b) zasifrovanou spravou (autokey encrypted text).
+ 
+\end_layout
+
+\begin_layout Standard
+Napriklad kluc D, plaintext PES, autokluc bude DPE.
+ Dnes sa nepouziva scitanie ale XOR.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Najprv rozlustena Ch.
+ Babbagom, postup bol ale utajovany - vyuzitie opakovania pre uhadnutie
+ dlzky kluca - postupnost XFO sa nachadza na poziciach 65, 71, 122, 176.
+ Vzdialenosti su - 71-65=3*2, 122-65=3*19, 176-122=3*18, kluc ma teda pravdepodo
+bne dlzku 3 znaky.
+\end_layout
+
+\begin_layout Itemize
+Nezavisle rozlustena F.
+ Kasiskim, 1863 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zalozene na pozorovani, ze 2 identicke useky plaintextu budu zasifrovane
+ na rovnaky encrypted text vtedy, ak su vzdialene delta pozid od seba.
+ 
+\end_layout
+
+\begin_layout Itemize
+cielom je najst niekolko identickych usekov, kazdy o dlzke aspon 3 a zaznamenat
+ si vzdialenost medzi ich pociatkami.
+ Dlzka kluca m deli vsetky vzdialenosti delta_1 az delta_n.
+ Potom je m NSD vsetkych vzdialenosti delta_i.
+ 
+\end_layout
+
+\begin_layout Itemize
+napriklad trigram TYZ sa vyskytuje na poc.
+ poziciach 25, 181 a 235.
+ Vzdialenost medzi prvou a druhou je 156, medzi prvou a tretou je 210.
+ GCD je 6, takze mozeme predpokladat ze |key|=6.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Desifrovanie
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Najdi dlzku kluca k - pre kratky kluc skus 1, 2, 3,...
+ alebo vytvor tabulku vsetkych vzdialenosti rovnakych znakov v encrypted
+ text.
+ GCD najcastejsich vzdialenosti je dlzka kluca.
+\end_layout
+
+\begin_layout Itemize
+Najdi pismena kluca jedno po druhom - rozdel spravu na k mensich sprav,
+ kazda obsahuje znaky sifrovane stejnym pismenom kluca.
+ Ries ako k sprav zasifrovanych Caesarovou sifrou.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Index koincidence - dalsia moznost kryptoanalyzy.
+ Je definovany ako retazec n znakov a udava pravdepodobnost, ze 2 nahodne
+ prvky z retazca su identicke.
+ Vypocitame vzorec pre priemerny index koincidencie.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Sifrovacie strojky
+\bar default
+ 
+\end_layout
+
+\begin_layout Itemize
+Saint-Cyrovo pravitko 
+\end_layout
+
+\begin_layout Itemize
+Jeffersonov cylindr - 1790, skladal sa z 36 diskov, kazdy s nahodnou abecedou.
+ Poradie diskov bolo klucom, v 1 rade s anastavila sprava, v inej sa precitala
+ sifrovana sprava.
+\end_layout
+
+\begin_layout Itemize
+Wheatstonov disk - 19.
+ st.
+ - 2 sustredne kruhy, ktore generovali polyalfabeticku sifru.
+\end_layout
+
+\begin_layout Itemize
+Rotorove stroje 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Zalozene na jednoduchej substitucii - horizontalne, vertikalne posuvana
+ abeceda, rotovana abeceda.
+ Implementuju polyalfabetifke substitucne sifry s dlhou periodou pomocou
+ sady rotorov.
+ Kazdy rotor ma 26 kontaktov na oboch stranach.
+ Kontakty z prednej strany su prepojene s kontaktami zo zadnej strany.
+ Kluc je dany prepojenim kontaktov a pociatocnej pozicii rotorov.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plaintext vstupuje do sady rotorov na 1 strane a vystupuje zasifrovany na
+ druhej strane.
+ Po zasifrovani pismena sa pootoci 1+ rotorov.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Enigma
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+3 rotory (vybrane z 5 moznych).
+ Po kazdom znaku sa 1.
+ rotor pootoci.
+ Po dojeti na zarazku sa pootoci dalsi rotor.
+ Kluc - pociatocna orientacia 3 rotorov (Grundstellung), posunutie pociatocnej
+ orientacie a nastavenie, kedy sa pootoci dalsi rotor (Ringstellung).
+\end_layout
+
+\begin_layout Itemize
+Reflektor - na konci posledneho rotora, zvoli inu cestu spat az na vystup.
+\end_layout
+
+\begin_layout Itemize
+Prepojovacia doska (Plugboard, Steckerbrett), kluc - vymena parov znakov
+ pomocou kablu, pocet kablov sa menil.
+\end_layout
+
+\begin_layout Itemize
+Pocet moznych klucov:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ak utocnik nepozna prepojenie rotorov - 
+\begin_inset Formula $26!^{3}$
+\end_inset
+
+a ani prepojenie reflektorov:
+\begin_inset Formula $(26*\frac{25}{2})*(26*\frac{25}{2})...*(2*\frac{2}{2})/13!$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+prepojovacia doska so 6 kablami: 
+\begin_inset Formula $(26*\frac{25}{2})*...*(16*\frac{15}{2})/6!$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+rotory Ringstellung: 
+\begin_inset Formula $26^{2}$
+\end_inset
+
+, Grundstellung: 
+\begin_inset Formula $26^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Celkom 
+\series default
+
+\begin_inset Formula $6*10^{110}$
+\end_inset
+
+(viac nez atomov vo vesmiru) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ak ukoristime 1 stroj: pozname rotory: 3!, alebo 3 z 5 = 5*4*3 = 60.
+ Znamy reflektor: 1.
+ Ostatne ostava rovnake, teda okolo 
+\begin_inset Formula $10^{16}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Sposob provozu - denny kluc - distribuovany pomocou kodovej knihy.
+ Kazda sprava zacina prenosom kluca spravy (Grundstellung iba) "nahodne"
+ vytvorenym odosielatelom zasifrovanym dennym klucom.
+ Kluc je poslany 2x pre zamedzenie moznej chyby.
+ Po prijati kluca spravy sa pootocia rotory do pozicii kluca spravy.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\bar under
+Vernamova sifra
+\bar default
+ 
+\end_layout
+
+\begin_layout Itemize
+bez opakovania kluca, objavena G.
+ Vernamom z AT&T v 1917 pre sifrovanie telegrafnich sprav.
+ 
+\end_layout
+
+\begin_layout Itemize
+plaintext XOR kluc = sifrovany text 
+\end_layout
+
+\begin_layout Itemize
+je nerozlustitelna, ak ma kluc rovnaku dlzku ako vsetky sifrovane spravy
+ a nikdy sa nepouzije znovu a je nahodne zvoleny.
+ 
+\end_layout
+
+\begin_layout Itemize
+C.
+ E.
+ Shannonom prokazane ze je to absolutne bezpecny sifrovy system.
+\end_layout
+
+\begin_layout Itemize
+pouziva v case kubanskej krizi v 1963 pomocou ETCRRM (El.
+ Teleprinter Crypt.
+ Regenerative Repeater Mixer II).
+\end_layout
+
+\begin_layout Itemize
+DEINSTAR - varianta, text sa tabulkou previedol na 1-2 miestne ciselne symboly
+ a k tym sa pricital kluc (ak je prechod cez 10, zahadzuje sa to - 9+5=4).
+\end_layout
+
+\begin_layout Itemize
+Co nie je Vernamova sifra: Autokey, ani proudova sifra.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

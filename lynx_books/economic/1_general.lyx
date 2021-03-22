@@ -1,0 +1,1888 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Machine Learning Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+General
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+The simplest definition of economics is the effort to maximize the availability
+ of limited resources
+\series default
+ (and just about every resource is limited)
+\series bold
+ to meet as many human demands as possible.
+
+\series default
+ Tools, capital, and innovation are the keys to this equation.
+ Keeping this in mind, it is easy to see what makes economies grow: finding
+ better ways of producing more stuff that humans want.
+ This doesn't change ...
+ no matter how big an economy eventually gets.
+ (Peter Schiff)
+\end_layout
+
+\begin_layout Itemize
+Scarce resources are: capital, enterprise, land, labor.
+ This forces us to made choices: a) what to produce? b) how to produce it?
+ c) from whom to produce for?
+\end_layout
+
+\begin_layout Itemize
+Society can do only 5 things with the savings:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Save what was saved.
+\end_layout
+
+\begin_layout Enumerate
+Consume what was saved.
+\end_layout
+
+\begin_layout Enumerate
+Lend out what was saved.
+\end_layout
+
+\begin_layout Enumerate
+Invest what was saved.
+\end_layout
+
+\begin_layout Enumerate
+Try a combination of the other 4 options.
+\end_layout
+
+\begin_layout Standard
+Savings can mean the difference between the life and death of society.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\emph on
+\begin_inset Quotes eld
+\end_inset
+
+Economy doesn't grow because people consume more.
+ People consume more because economy grows.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\series default
+\emph default
+from the book How an Economy Grows and Why it Crashes (Peter Schiff)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Real Economy
+\emph default
+ depends on
+\emph on
+ Financial Economy 
+\emph default
+which depends on 
+\emph on
+Interest rates 
+\emph default
+(TODO).
+\end_layout
+
+\begin_layout Itemize
+Gold is money, fiat currency is credit.
+ Gold is global currency, it doesn't require any government to tell it's
+ money.
+ It's been like this for thousands of years.
+ Gold price raises if people lose enough confidence in currency and financial
+ system.
+\end_layout
+
+\begin_layout Itemize
+What determine the movements of one currency versus another? Future growth
+ rates and inflation rates.
+ 
+\end_layout
+
+\begin_layout Itemize
+5 world currencies (2021): pound, euro (20% of world reserves), yen, dollar
+ (~65 % of reserve assets all around the world), Chinese currency (IMF board
+ decides this).
+\end_layout
+
+\begin_layout Itemize
+Money - It is a token of a trust.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+See history of money 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=cXud8LM-Nis"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In addition to the primary function as a medium of exchange, money has 2
+ other purposes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+unit of account, meaning it is a yardstick against which things can be priced,
+ helping us to judge the value of something
+\end_layout
+
+\begin_layout Itemize
+store of value meaning it will not lose its worth over time - although it
+ is debatable whether modern paper currencies fulfill this function
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Technically, any kind of tradable unit can be treated as money - shells,
+ jewellery, cigarettes, drugs, ...
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Ayn Rand - "So you think that money is the root of all evil.
+ Have you ever asked what is the root of all money?" 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Benjamin Franklin - "Money never made a man happy yet, nor will it.
+ The more a man has, the more he wants.
+ Instead of filling a vacuum, it makes one."
+\end_layout
+
+\begin_layout Itemize
+Types of money:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Commodity money - this has intrinsic value, even though it is not actually
+ a form of money.
+ Gold is an example, but also rice, copper, cigarettes, drugs, ...
+\end_layout
+
+\begin_layout Itemize
+Fiat money - without intrinsic value.
+ From the Latin 
+\begin_inset Quotes eld
+\end_inset
+
+let it be
+\begin_inset Quotes erd
+\end_inset
+
+, it simply means that a government has decreed that coins and notes of
+ negligible intrinsic value are legally worth a certain amount.
+ This is the system in place in modern advanced economies.
+ Dollar bills are issued by the Federal Reserve and the US Treasury.
+ In the UK, there is the Bank of England.
+ Originally, paper money was convertible into commodity money, so that technical
+ly, citizens could demand a certain amount of gold in exchange for their
+ dollar bills.
+ However, since 15 August 1971, following an order from President Nixon,
+ convertibility stopped and the dollar became a pure fiat currency.
+ They are reliant for their stability on people's faith in the country's
+ legal system and in the government's economic credibility.
+\end_layout
+
+\begin_layout Itemize
+Central banks measure money in various ways.
+ The most popular is what the Federal Reserve calls M1 - the amount of currency
+ in circulation outside banks and the amount of funds people have left in
+ their bank accounts.
+ So it represents how much cash people have readily available.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+M2 - less liquid assets, such as savings accounts that require notice for
+ withdrawals
+\end_layout
+
+\begin_layout Itemize
+M3 - financial instruments such as long-term savings and money-market funds.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For some reason, in the UK, the Bank of England's equivalent of M3 is called
+ M4.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The marginal revolution - Rational people think at the margin 19th century
+ - Carl Menger and the Austrian School - the value of a given thing is subjectiv
+e.
+ It depends entirely of how people value that thing at a given moment.
+ Previously, people assumed something had an inherent value.
+ After the marginal revolution, it became clear that things have value insofar
+ as people want them.
+\end_layout
+
+\begin_layout Itemize
+Zero unemployment is impossible.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is, in practice, partly because people need time to seek out the right
+ job even when it's available and partly because, as an economy develops
+ and technology advances, some workers will inevitably lack the skills necessary
+ to take on particular jobs.
+ Also, the existence of unemployment benefit can encourage some to remain
+ unemployed rather than work.
+\end_layout
+
+\begin_layout Itemize
+If unemployment falls below a certain level, it will push wages, and hence
+ inflation, higher as companies become prepared to pay more to get hold
+ of staff.
+ The opposite is also true - high unemployment tends to push down inflation.
+ Phillips Curve graphically illustrates this negative correlation - if you
+ want to keep unemployment at say 4%, then you will have to settle for inflation
+ of 6%.
+ If you want to restrict inflation to 2%, you will have to accept an unemploymen
+t level of 7%.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Key Concepts
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+The Invisible Hand 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Self-interest is good for society.
+ 
+\end_layout
+
+\begin_layout Itemize
+Invisible hand is a shorthand for the law of supply and demand and explains
+ how the pull and push of these 2 factors serve to benefit society as s
+ whole.
+ 
+\end_layout
+
+\begin_layout Itemize
+The combined force of everyone in free market pursuing his or her own individual
+ interests is to the benefit of society as a whole, enriching everyone.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Government
+\series default
+ can use three different levers 
+\series bold
+to control the macroeconomics
+\series default
+: fiscal policy, monetary policy, and foreign exchange policy.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Fiscal policy
+\emph default
+.
+ The decisions a government takes about what to spend its money on, how
+ to raise taxes, and how much to borrow.
+ Keysians - those who believe in Fiscal policy.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Monetary policy
+\emph default
+.
+ The decisions a government or central bank (usually the latter) make about
+ regulating the amount and price of money flowing around the economy (changing
+ money supply, interest rates, etc).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Interest Rates 
+\emph default
+(Policy/Lending Rates - overnight borrowing rate for financial institutions
+ from Central Bank).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Money Supply
+\emph default
+ (OMO - Open Market Operations - governments buying or selling securities
+ in the markets, such as quantitative easing).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Exchange Rate 
+\emph default
+(Reserve Requirements - funds that financial institutions are required to
+ hold at the Central Bank as a percentage of their total deposit liabilities).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Kingston Currency System 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gold is not an underlying asset.
+\end_layout
+
+\begin_layout Itemize
+State cannot borrow money from its own central bank.
+\end_layout
+
+\begin_layout Itemize
+Concept of 
+\emph on
+Money Supply:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+M0 - money in cash in physical form - notes and coins 
+\end_layout
+
+\begin_layout Itemize
+M1 - M0 + deposits in bank accounts 
+\end_layout
+
+\begin_layout Itemize
+M2 - M1 + term deposits up to two years (M2 is also called 
+\emph on
+broad money
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+M3 - M2 + shares, funds, bonds, ...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+How a new fiat money is being created in Kingston system?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Central banks will manage the money generation.
+\end_layout
+
+\begin_layout Enumerate
+Commercial banks will generate the money by so called 
+\begin_inset Quotes eld
+\end_inset
+
+multiplication
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is fractional reserve banking.
+\end_layout
+
+\begin_layout Standard
+So new money = new debt.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Supply and Demand
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The way these 2 forces interact determines the prices of goods in the shops,
+ profits a company makes, and how one family becomes rich while another
+ remains poor.
+\end_layout
+
+\begin_layout Itemize
+Demand represents the amount of goods or services people are willing to
+ buy from a vendor at a particular price.
+ The higher the price, the less people will want to buy, up to the point
+ then they simply refuse to buy at all.
+ Supply indicates the amount of goods or services a seller will part with
+ for a certain price.
+ The lower the price, the fewer goods the vendor will want to sell, since
+ making them costs money and time.
+\end_layout
+
+\begin_layout Itemize
+Prices are the signal that tell us whether the supply of or demand for a
+ particular product is rising or falling.
+ 
+\end_layout
+
+\begin_layout Itemize
+Equilibrium price - the optimal price, at which the supply of goods matches
+ demand.
+ Something is perfectly priced when supply equals demand.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+The Malthusian trap
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Man needs food in order to survive, and man is multiplying at a rapid rate.
+\end_layout
+
+\begin_layout Itemize
+In Malthus eyes, the human race was heading for an inevitable crunch.
+ Unless it voluntarily cut its birth rate, the human population would suffer
+ one of three things - famine, disease, or war.
+\end_layout
+
+\begin_layout Itemize
+But he was wrong, because of new technologies that solve these problems,
+ and partly thanks to he laws of supply and demand, which encouraged producers
+ to devise better, more efficient means of generating food.
+ Also, human population does not always grow exponentially.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Division of labor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Concentrate on your specialties.
+ We can produce far more, far better, by dividing up the work and specializing
+ in what each of us is good at.
+\end_layout
+
+\begin_layout Itemize
+It is what helped drive the first Industrial Revolution, enabling countries
+ around the world to improve their productivity and wealth dramatically.
+\end_layout
+
+\begin_layout Itemize
+But there are problems as well - company can fire lot of redundant people,
+ or become dependent on one person or small group of people.
+ Also, for an individual, it can be morale-sapping to be forced to specialize
+ only in one specific trade or expertise (having one repetitive job - degrading
+ minds of such person and alienating him from others).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Comparative Advantage
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+specialization + free trade = win-win
+\end_layout
+
+\begin_layout Itemize
+It is most often applied to international economics, it is just as important
+ on a smaller scale.
+ 
+\end_layout
+
+\begin_layout Itemize
+David Ricardo's theory.
+ He claimed (about free trade), that by trading freely with other countries
+ - even those that, on paper, are more efficient at producing goods and
+ services - one can become more prosperous than by closing one's borders.
+\end_layout
+
+\begin_layout Itemize
+However, some people such as Hillary Clinton and Paul Samuelson have warned,
+ that these ideas are no longer strictly applicable to today's rather more
+ sophisticated economic world.
+ Before, there were restrictions on people moving their capital overseas,
+ but now it's very easy to transfer worth of assets electronically from
+ one side of the world to another.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Capitalism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It has attracted perhaps more criticism than any other model of economics,
+ such as - it generates inequality, promotes unemployment and instability,
+ and has tendency towards boom and bust.
+ Also ,that it often has a proclivity towards monopolies - where one company
+ takes exclusive control of an industry, oligopolies (where a group of companies
+ share an effective monopoly), and oligarchies (where economies are run
+ by small groups of powerful people).
+ The problem is also that monopolies are able to charge their customers
+ more than they would if there was competition.
+\end_layout
+
+\begin_layout Itemize
+Since it is people rather than governments who dominate the economy, capitalism
+ usually goes hand in hand with the free market.
+\end_layout
+
+\begin_layout Itemize
+It is the system where capital (the companies, equipment, and structures
+ used for producing goods and services) is owned not by the state but by
+ private individuals.
+ It is probably the least worst way to run an economy.
+\end_layout
+
+\begin_layout Itemize
+Stock markets sit at the heart of capitalism.
+\end_layout
+
+\begin_layout Itemize
+Globalization is the adrenaline of capitalism.
+\end_layout
+
+\begin_layout Itemize
+Booms and busts seem to be an inevitable component of market capitalism.
+ See The Black-Scholes equation.
+\end_layout
+
+\begin_layout Itemize
+It evolved as the feudal system in medieval Europe - in which agricultural
+ laborers had to work for the profit of the landed gentry.
+ This gave way in the late 16th century to mercantilism.
+ This was a recognizable precursor to capitalism, fueled by trade between
+ different nations and by the discovery by Europeans of lucrative resources
+ in the Americas.
+ The operators of these trade routes became extremely wealthy, and for the
+ first time in history ordinary people started making money in their own
+ right, rather than relying on the patronage of a rich monarch or aristocrat.
+ In the 19th century merchants were replaced as the leading wealth generators
+ by industrialists and factory owners, in what many regard as a golden age
+ for free markets.
+ However, the tendency of some industries to generate monopolies, and the
+ economic and social trauma of the Great Depression in the 1930s - followed
+ by the Second World War - spurred governments to intervene in their economies
+ more, nationalizing certain select sectors and creating a welfare state
+ for their citizens.
+\end_layout
+
+\begin_layout Itemize
+Capitalism is inherently democratic.
+ Invisible hand, encouraging entrepreneurs to work hard and improve themselves,
+ prioritizing individuals` self-interest over the state's decisions about
+ what might be best for people, and allowing shareholders control over companies
+, it enshrines individual democratic and voting rights in society in a way
+ other top-down systems simply can't do.
+ It's no coincidence that non-capitalist societies have tended almost exclusivel
+y to be unelected dictatorships.
+ 
+\end_layout
+
+\begin_layout Itemize
+When the Berlin Wall and the Soviet Union fell, it became clear to all that
+ capitalism had left the Western economies in a far healthier position than
+ those previously run under communism.
+ Economies therefore concluded that despite its many flaws, it remains the
+ best means we have yet discovered of running a modern, thriving economy.
+\end_layout
+
+\begin_layout Itemize
+TODO Late stage capitalism
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Keynesian economics 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Governments should spend to prevent deep recessions.
+\end_layout
+
+\begin_layout Itemize
+He argued that it was the responsibility of government to kick-start the
+ economy (in times of recession) by borrowing cash and spending it, hiring
+ public-sector staff and pouring cash into public infrastructure projects.
+ Interest-rate cuts ca go some way towards boosting an economy, but they
+ are not the whole answer.
+ According to him, the extra cash spent by government would filter thought
+ the economy.
+\end_layout
+
+\begin_layout Itemize
+The 6 principal ideas, according to former presidential adviser Alan Blinder:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Keynesians believe that an economy's performance is influenced by both public
+ and private decisions and sometimes behaves erratically.
+\end_layout
+
+\begin_layout Enumerate
+The short term matters, sometimes even more than the long term.
+ Short-term rises in unemployment may cause even more damage in the long
+ run since they can leave a permanent dent in a country's economy.
+\end_layout
+
+\begin_layout Enumerate
+Prices and wages respond slowly to changes in supply and demand, which in
+ turn means unemployment is often higher or lower than it ought to be given
+ the economy's strength.
+\end_layout
+
+\begin_layout Enumerate
+Unemployment is often too high and volatile, while recessions and expressions
+ are economic maladies - not, as the invisible hand would have it, efficient
+ market responses to unattractive opportunities.
+\end_layout
+
+\begin_layout Enumerate
+The natural boom and bust of the economy is a problem that governments should
+ actively attempt to stabilize.
+\end_layout
+
+\begin_layout Enumerate
+Keynesian economics tend to be more concerned about combating unemployment
+ than conquering inflation.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There is also some criticism.
+ Such as - on what basis should we assume that governments know best how
+ to run an economy? Also, Keynesian policies came under fire in 1970s from
+ monetarists.
+ One of the main arguments was that governments cannot 
+\begin_inset Quotes eld
+\end_inset
+
+fine-tune
+\begin_inset Quotes erd
+\end_inset
+
+ an economy by regularly adjusting fiscal and monetary policy to keep employment
+ high.
+ There is simply too long a time lag between recognizing the need for such
+ a policy (tax cuts, say) and the policy actually having effect by the time
+ that tax cuts are actually having an effect, the problem they were designed
+ to solve may have worsened - or dissipated.
+\end_layout
+
+\begin_layout Itemize
+Keynesians - at the core of their view was the idea that governments could
+ smooth out the volatility of free markets by expanding the supply of money
+ and running large budget deficits when times were tough.
+ The Austrians argued that recessions are necessary to compensate for unwise
+ decisions made during the booms that always precede the busts.
+ Austrians believe that the booms are created in the first place by the
+ false signals sent to business when governments "stimulate" economies with
+ low interest rates.
+ So whereas the Keynesians look to mitigate the busts, Austrians look to
+ prevent artificial booms.
+\end_layout
+
+\begin_layout Itemize
+Because it offers the hope of pain-free solutions, Keynesianism was an instant
+ hit with politicians.
+ By promising to increase employment and boost growth without raising taxes
+ or cutting government services, the policies advocated by Keynes were the
+ economic equivalent of miracle weight-loss programs that require no dieting
+ or exercise.
+\end_layout
+
+\begin_layout Itemize
+Some economists say that Keynesian policies were responsible for ending
+ the Great Depression.
+ Many have argued that without stimuli provided by government we would never
+ have recovered from the economic abyss.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Monetarism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Control the growth of money.
+\end_layout
+
+\begin_layout Itemize
+Whereas Keynes paid more attention to unemployment than inflation, and warned
+ that the economy could be improved by a certain amount of state interference,
+ Friedman argued people should be left to their own devices with the government'
+s main role to monitor and control the amount of money flowing around the
+ economy.
+ In short, by pumping extra money into the system, as Keynesians suggested,
+ governments would drive up inflation, risking major pain for the economy.
+ Friedman believed that if central banks were charged with maintaining control
+ of prices (using interest rates with some strict rules), most other aspects
+ of the economy - unemployment, economic growth, productivity - would more
+ or less take care of themselves.
+\end_layout
+
+\begin_layout Itemize
+"Always fight inflation"
+\end_layout
+
+\begin_layout Itemize
+In a downturn, Friedman said, central banks should prevent deflation by
+ pumping more money into the system.
+\end_layout
+
+\begin_layout Itemize
+Problems - inflation may be a monetary phenomenon, but the amount of money
+ in circulation often rises and falls for reasons that have nothing to do
+ with inflation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Communism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An egalitarian, entirely state-run society.
+ It can be summed up in one sentence - Abolish all private property.
+\end_layout
+
+\begin_layout Itemize
+Karl Marx states that a commodity is worth the amount of time it takes for
+ someone to make it.
+ He also predicted, that capitalism was inherently chaotic, it would be
+ prone to ever-larger booms and busts over time, causing a series of major
+ economic slumps and large rises in unemployment.
+ Plus, daily drudgery of doing the same repetitive job would eventually
+ become too much for the proletariat to bear, and revolution would ensue.
+\end_layout
+
+\begin_layout Itemize
+In communist society, property and the means of production (factories, tools,
+ raw materials, ...) would be owned not by private individuals or companies,
+ but by everyone.
+ Initially the state would own and control all companies and institutions,
+ running them from the top-down and ensuring companies did not oppress their
+ workers.
+\end_layout
+
+\begin_layout Itemize
+Marx was wrong about the eventual evolution of capitalism.
+ It has not descended into a monopolistic system (at least not yet) thanks
+ in part to government regulation and in part to the invisible hand.
+ The world did not become overrun with unemployed, and although booms and
+ busts have continued, government control is as much to blame for these
+ capitalist forces.
+\end_layout
+
+\begin_layout Itemize
+While the forces of supply and demand created dynamic economies that generated
+ wealth at a rapid rate, the staid, centrally controlled systems in the
+ Soviet Union and China stifled innovation - no competition between companies
+ (the fundamental driving force of free markets), the economy simply trundled
+ along, pushed forward by bureaucrats.
+ But the Soviets truly excelled at military and astronautic innovation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Individualism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Individual human choices are paramount.
+\end_layout
+
+\begin_layout Itemize
+The Austrian School emphasizes instead of aggregate measures such as GDP
+ or inflation, that individual decision-making should be at the forefront.
+ After all, only individuals can act; countries, companies, and institutions
+ do not have minds of their own - they are a collective entity, but one
+ that comprises many different individuals.
+\end_layout
+
+\begin_layout Itemize
+According to Carl Menger, father of the Austrian School, he maintained that
+ economics is still a social science, aiming to classify people's actions
+ into a logical framework and asset of patterns.
+\end_layout
+
+\begin_layout Itemize
+Friedrich Hayek -
+\emph on
+ "A society that does not recognize that each individual has values of his
+ own which he is entitled to follow can have no respect for the dignity
+ of the individual and cannot really know freedom."
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Supply-side economics
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Higher taxes mean lower growth.
+\end_layout
+
+\begin_layout Itemize
+It is among the most controversial of economic theories.
+ The debate over it encapsulates the divide between those who believe in
+ greater government distribution of wealth and those who believe, above
+ all in individual liberty and free market.
+\end_layout
+
+\begin_layout Itemize
+The government raises taxes but rather than bringing in more money to its
+ accounts this actually reduces its revenues.
+ Conversely, cutting taxes brings in more cash.
+ This is the main tenet of supply-side economics.
+\end_layout
+
+\begin_layout Itemize
+Arthur Laffer argued, that the more people have to pay in taxes, the greater
+ will be people's incentive to avoid paying them or to work less hard.
+\end_layout
+
+\begin_layout Itemize
+The Laffer Curve - Laffer argued, that if a government levied no taxes it
+ would receive no revenue; neither would any money pour into its coffers
+ if it imposed 100% taxes (because no one would have any incentive to work).
+ He then sketched out a bell-shaped curve which showed that there was a
+ point somewhere between 0 and 100% where a government could get maximum
+ potential revenues.
+ The argument - lower taxes could actually increase government revenues.
+ When tax rates are low, it encourages people to work longer hours, although
+ the respective share the government takes of every extra dollar earned
+ is less.
+ The Laffer Curve illustrates that the government must strike a balance
+ between the two.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Creative destruction
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Companies must adapt or die.
+\end_layout
+
+\begin_layout Itemize
+Joseph Schumpeter - he argued that recessions should not be avoided.
+ Most economists, as well as John Maynard Keynes argued that recessions
+ and depressions cause such significant collateral damage, in terms if unemploym
+ent and slumping confidence, that they should be countered by every means
+ at a government's disposal, such as cutting interest rates and spending
+ public funds to kick-start the economy.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+"The process of industrial mutation ...
+ incessantly revolutionizes the economic structure from within, incessantly
+ destroying the old one, incessantly creating a new one ...
+ This process of Creative Destruction is the essential fact about capitalism."
+ 
+\emph default
+(Joseph Schumpeter)
+\end_layout
+
+\begin_layout Itemize
+During a boom, consumers are spending more money and often borrowing more,
+ and is easier for business to make money.
+ Schumpeter and his fellow Austrian, Friedrich Hayek, argued that this leads
+ to inefficient firms that, in less favorable times, would not even have
+ been formed in the first place.
+ Conversely, when economy slumps and people spend less, inefficient companies
+ go bankrupt.
+ It forces investors to put their money into other, more attractive parts
+ of the economy.
+ This in turn boosts the potential growth rate for the economy in the years
+ ahead.
+ He argued that governments should not slash interest rates massively to
+ prevent recessions.
+ Instead, those who made unprofitable investments during booms should suffer
+ the consequences or else the same mistakes would invariably be made in
+ the future.
+ Survival of the fittest.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Modern Monetary Theory 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Multilateralism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nations can achieve more by working together.
+\end_layout
+
+\begin_layout Itemize
+It means collaborating with all other major countries when taking major
+ decisions, rather than a country acting on its own unilaterally or bilaterally
+ (with partnership with other country of a set of countries).
+\end_layout
+
+\begin_layout Itemize
+Often, when a country decides to raise tariffs on trade, or to artificially
+ inflate the value of its currency, it sets off a chain reaction that can
+ cause major damage to other countries.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+International Monetary Fund (IMF)
+\emph default
+ and
+\emph on
+ General Agreement on Tariffs and Trade (GATT)
+\emph default
+ which later metamorphosed into the 
+\emph on
+World Trade Organization (WTO)
+\emph default
+.
+ These were major multilateral organizations.
+ The IMF acts as the world's central bank, pooling resources from its members
+ and lending out cash to those who suffer a major currency or capital account
+ crisis.
+ It is a lender of last resort - but in this case to countries rather than
+ banks and companies.
+ Its second role is to ensure that countries around the world are running
+ their economies sensibly.
+ But it has failed in the past to prevent some countries taking poor economic
+ decisions - it has no power to discipline those who defy it.
+\end_layout
+
+\begin_layout Itemize
+BRICs are an idea, a phenomenon and a quarter of the world's most up-and-coming
+ countries - Brazil, Russia, India, and China.
+ Massive population, incredible appetite for work and growth.
+ They together account for 40% of the world's population and more than 25%
+ of its landmass.
+ Their economies are growing at rates of 10% or even more.
+\end_layout
+
+\begin_layout Itemize
+In the 20th-century economy was dominated by the G7 - group of the world's
+ 7 major industrialized economies - US, Japan, Germany, UK, France, Italy
+ and Canada.
+ However, in 2008, G7 was replaced with the G20 - a far broader group of
+ the world's largest economies.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Protectionism
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The biggest threat to world peace and prosperity.
+\end_layout
+
+\begin_layout Itemize
+It usually means the imposition of high barriers and tariffs on goods imported
+ from overseas, and the prevention of foreign takeovers.
+\end_layout
+
+\begin_layout Itemize
+The World Trade Organization (WTO) is charged with leading the fight against
+ protectionism.
+ Its primary role is to bring countries together to discuss how to remove
+ tariffs and barriers on trade.
+ These talks must be global, since only by removing tariffs internationally
+ rather than unilaterally can all countries benefit.
+\end_layout
+
+\begin_layout Itemize
+(Frederic Bastiat) 
+\emph on
+"When goods cannot cross borders, armies will." 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+The Millennium Development Goals (MDGs)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Set of 8 goals focused on improving the plight of those living in developing
+ nations.
+ They were laid down by the United Nations in 2001:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Eradicate extreme poverty and hunger
+\end_layout
+
+\begin_layout Enumerate
+Achieve universal primary education
+\end_layout
+
+\begin_layout Enumerate
+Promote gender equality and empower women
+\end_layout
+
+\begin_layout Enumerate
+Reduce child mortality
+\end_layout
+
+\begin_layout Enumerate
+Improve maternal health
+\end_layout
+
+\begin_layout Enumerate
+Combat HIV/AIDS, malaria and other diseases
+\end_layout
+
+\begin_layout Enumerate
+Ensure environmental sustainability
+\end_layout
+
+\begin_layout Enumerate
+Develop a Global Partnership for Development
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Macroeconomic goals (of a government)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+T - Trade performance, the objective is to balance trade - not having much
+ deficit neither surplus (revenue entering the country and leaving the country)
+\end_layout
+
+\begin_layout Itemize
+I - Inflation, the objective is low and stable
+\end_layout
+
+\begin_layout Itemize
+G - Growth, strong and sustained growth (GDP)
+\end_layout
+
+\begin_layout Itemize
+E - Employment, as low as possible
+\end_layout
+
+\begin_layout Itemize
+R - Redistribution of income, inequality
+\end_layout
+
+\begin_layout Itemize
+S - Stability (economic stability)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Globalization
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Process in which national economies have become increasingly integrated
+ and inter-dependent.
+\end_layout
+
+\begin_layout Itemize
+Causes: trade liberalization, trading blocks, technological advancement,
+ mobility of labor and capital, growth of MNCs.
+\end_layout
+
+\begin_layout Itemize
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lower prices
+\end_layout
+
+\begin_layout Itemize
+Benefits of trade
+\end_layout
+
+\begin_layout Itemize
+Greater employment
+\end_layout
+
+\begin_layout Itemize
+Free movement of labor
+\end_layout
+
+\begin_layout Itemize
+Technological transfers and innovations
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Growing inequality
+\end_layout
+
+\begin_layout Itemize
+Higher structural unemployment
+\end_layout
+
+\begin_layout Itemize
+Environmental costs - lack of sustainability
+\end_layout
+
+\begin_layout Itemize
+Trade imbalances
+\end_layout
+
+\begin_layout Itemize
+Less cultural diversity 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Privatization
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+allocative efficiency, it's great for consumers
+\end_layout
+
+\begin_layout Itemize
+private companies are driven by profits, which encourages competition
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+limited competition will lead to productive and allocative inefficiency
+\end_layout
+
+\begin_layout Itemize
+loss making services and products are not being run, even if they are socially
+ desirable
+\end_layout
+
+\begin_layout Itemize
+law of natural monopoly
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It depends on 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the level of competition past privatization
+\end_layout
+
+\begin_layout Itemize
+level of government regulation
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Happynomics
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The idea is that the economics is not all about money.
+\end_layout
+
+\begin_layout Itemize
+The hierarchy of needs, devised by psychologists Abraham Maslow in 1943
+ 0 physiological needs (body functions working properly, safer (shelter,
+ employment, health), love, esteem and morality.
+ Furthermore, by the Richard Easterlin, argued that one you get rich you
+ get accustomed to it very quickly, and soon take such a standard of life
+ for granted.
+ Moreover, research shown that once one's basic needs are fulfilled we tart
+ to measure our own contentedness based not on our absolute wealth or achievemen
+ts, but on comparison to others.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Today's (2020) Economics is divided into 2 camps: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Austrian Economics 
+\emph default
+- savings and production drive economic growth.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Keynesian Economics -
+\emph default
+ spending drives economic growth, savings decrease it (in the last 50 years
+ the world was driven mostly by Keynesian approach).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+According to Paul Collier, poor countries can fall into 4 traps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Civil War 
+\end_layout
+
+\begin_layout Enumerate
+Resource trap 
+\end_layout
+
+\begin_layout Enumerate
+Land trap 
+\end_layout
+
+\begin_layout Enumerate
+Bad governance
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+What drives the economy? (see GDP over time) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Productivity growth
+\end_layout
+
+\begin_layout Itemize
+Short-term debt cycle
+\end_layout
+
+\begin_layout Itemize
+Long-term debt cycle
+\end_layout
+
+\begin_layout Standard
+An economy is simple a sum of the transactions.
+ If you divide total spending (credit spend + money spend) by total quantity
+ sold, you get a price.
+ Total amount of spending drives the economy.
+ 
+\end_layout
+
+\begin_layout Standard
+A transaction is a building block of an economy machine.
+ All cycles and all forces in an economy are driven by transactions.
+\end_layout
+
+\begin_layout Standard
+The biggest buyer and seller is a government.
+ It consists of 2 important parts:
+\end_layout
+
+\begin_layout Itemize
+Central government - collects taxes and spends money
+\end_layout
+
+\begin_layout Itemize
+Central bank - controls the amount of money and credit in the economy by
+ influencing interest rates and printing new money
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If interest rates are high, there is less borrowing because it's expensive.
+ If they are low, borrowing increases because it's cheaper.
+ When borrowers promise to repay and lenders believe them, credit is created.
+ Credit is one of the most important thing and probably least understood.
+ Any two people can agree to create a credit out of thin air.
+ Credit has a different names - as soon as credit is created, it immediately
+ turns into debt.
+ Debt is both an asset to the lender and a liability to the borrower.
+ In the future when the borrower repays the loan plus interest, the asset
+ and liability disappear and the transaction is settled.
+ Credit is important because when a borrower receives a credit it increases
+ his spending.
+ And spending drives the economy.
+ Because one person's spending is another person's income.
+ So when you spend more, someone else earns more.
+\end_layout
+
+\begin_layout Itemize
+Borrower - having a lot of income in relation to his debt gives him the
+ ability to repay.
+ In the event that he can't repay, he has valuable assets to use as collateral
+ that can be sold.
+ This makes lenders feel comfortable lending him money.
+ Increase income increase borrowing which allows increase spending.
+ And since one person's spending is another person's income, this increases
+ borrowing.
+ This self-reinforcement pattern leads to economic growth and is why we
+ have cycles.
+\end_layout
+
+\begin_layout Itemize
+Productivity matters in the long run and credit matters in the short run.
+ This is because productivity growth doesn't fluctuate much so it's not
+ a big driver of economic swings.
+ Debt is - because it allows us to consume more than we produce when we
+ acquire it and it forces us to consume less than we produce when we pay
+ it back.
+\end_layout
+
+\begin_layout Itemize
+Debt swings occurs in 2 big cycles - one takes about 5-8 years and the other
+ about 75-100 years.
+ Swings are not due to how much innovation or hard work there is, they're
+ primarily due to how much credit there is.
+\end_layout
+
+\begin_layout Itemize
+If you buy something you can't afford, you need to spend more than you make.
+ To do this, you essentially need to borrow from your future self.
+ In doing so you create a time in the future that you need to spend less
+ than you make in order to pay it back.
+ It resembles a cycle.
+ Basically any time you borrow, you create a cycle.
+ This the true for individual as well as for an economy.
+ This makes credit very important because it sets into motion a mechanical,
+ predictable series of events that will happen in the future.
+\end_layout
+
+\begin_layout Itemize
+This makes credit different from money because money.
+ Money is what you settle transactions with.
+ The total amount of credit in US is about $50 trillion and total amount
+ of money is about $3 trillion (2013).
+\end_layout
+
+\begin_layout Itemize
+Central Bank decisions determine the econmic path of the country, or group
+ of counries by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rate changes
+\end_layout
+
+\begin_layout Itemize
+Currency devaluation/depegging
+\end_layout
+
+\begin_layout Itemize
+Policy changes
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Central Banks provide additional information to the market via:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Testimonies, press conferences, speehes, meeting minutes.
+\end_layout
+
+\begin_layout Itemize
+Sentiment surveys.
+\end_layout
+
+\begin_layout Itemize
+Economic research papers.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Debt Cycles:
+\end_layout
+
+\begin_layout Itemize
+Short cycle
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Expansion - spending continues to increase and prices start to rise.
+ This happens because increase in spending is fueled by credit.
+ When the amount of spending and income grow faster than the production
+ of goods, prices rise, which we call inflation.
+ Central bank doesn't want too much inflation, because it causes problems.
+ Seeing prices rise, it raises interest rates.
+ With higher interest rates, fewer people can afford to borrow money.
+ And the cost of existing debt rises.
+ Because people borrow less and have higher debt repayments they have less
+ money left over to spend, so spending slows.
+ And since one person's spending is another person's income, incomes drop.
+ When people spend less, prices go down.
+ This is deflation.
+ Economic activity decreases and we have a recession.
+ 
+\end_layout
+
+\begin_layout Itemize
+If recession is severe and inflation is no longer a problem, the central
+ bank will lower interest rates to cause everything to pick up again.
+\end_layout
+
+\begin_layout Itemize
+With low interest rates, debt repayments are reduced and borrowing and spending
+ pick up and we see another expansion.
+\end_layout
+
+\begin_layout Itemize
+When credit is easily available, there is an economic expansion.
+ When credit isn't easily available, there is a recession.
+\end_layout
+
+\begin_layout Itemize
+This cycle is controlled primarily by central bank.
+ The bottom and top of each short cycle finish with more growth and more
+ debt than the previous cycle
+\end_layout
+
+\begin_layout Itemize
+Because of this, over long periods of time, debts rise faster than income,
+ creating long term debt cycle.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Long term debt cycle:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Despite people becoming more indebted, lenders even more freely extend credit.
+ Because everybody thinks things are great.
+ People are focusing on what's been happening lately - asset values are
+ up, income is raising, stock market roars, there is much more borrowing
+ and spending - we call this a bubble.
+ So even though debts have been growing, incomes have been growing nearly
+ as fast to offset the debt.
+ As long as income rises, debt stays manageable.
+ People feel wealthy.
+ But this cannot continue to go forever.
+ 
+\end_layout
+
+\begin_layout Itemize
+Over decades, debt burdens slowly increase creating larger and larger debt
+ repayments.
+ At some point, debt repayments start growing faster than income forcing
+ people to cut back on their spending.
+ And since one person's spending is another person's income, incomes begin
+ to go down, which makes people less creditworthy causing borrowing to go
+ down.
+ Debt repayments continue to rise, which makes spending drop even further,
+ and the cycle reverses itself.
+ Debt burdens simply becomes too big.
+ 
+\end_layout
+
+\begin_layout Itemize
+Now there comes deleveraging - people cut spending, income falls, credit
+ disappears, asset prices drop, banks get squeezed, stock market crashes.
+ As incomes fall and debt repayments rise, borrowers get squeezed.
+ No longer creditworthy, credit dries up and borrowers can no longer borrow
+ enough money to make their debt repayments.
+ Borrowers are forced to sell assets.
+ People feel poor.
+ Less spending, less income, less wealth, less credit, less borrowing, and
+ so on.
+ 
+\end_layout
+
+\begin_layout Itemize
+This is similar to recession, but interest rates can't be lowered to save
+ the day.
+ In recession, lowering interest rates works to stimulate the borrowing.
+ However, in deleveraging, lowering interest rates doesn't work because
+ the interest rates are already low and soon hit 0%, so stimulation ends.
+\end_layout
+
+\begin_layout Itemize
+The difference between a recession and deleveraging is that in deleveraging
+ borrowers` debt burdens have simply gotten too big and can't be relieved
+ by lowering interest rates.
+ Lenders realize that debts have become too large to ever be fully paid
+ back.
+ Borrowers have lost their ability to repay and collateral has lost value.
+ Lenders stop lending.
+ Borrowers stop borrowing.
+ 
+\end_layout
+
+\begin_layout Itemize
+The problem is that the debt is too high and it must lower down.
+ There are four ways this can happen:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Cut spending (this is usually the first step - businesses, banks and even
+ governments cut their spending to repay debt.
+ This can cause incomes to fall.
+ They fall faster than debts are repaid and the debt burden actually get
+ worse.
+ This cut in spending is deflationary and painful.
+ Businesses are forced to cut costs - less jobs and higher unemployment).
+\end_layout
+
+\begin_layout Enumerate
+Reduce debt through defaults and restructurings - debt restructuring means
+ lenders get paid less or get paid over a longer time frame or a lower interest
+ rates than was originally agreed.
+ Lenders would rather have little of something than nothing.
+ But still, debt burden continues to get worse because debt disappears,
+ but debt restructuring causes income and asset values to disappear faster,
+ so the debt burden continues to get worse.
+ Like cutting spending, debt reduction is also painful and deflationary.
+ All of this impacts central government, because lower interest rates and
+ less employment means the government collects less taxes.
+ At the same time it needs to increase its spending because unemployment
+ has risen.
+ Many people needs money and government creates stimulus plans and increase
+ their spending to make up for the decrease in the economy.
+ Government's budget deficit explode in a deleveraging because they spend
+ more than they earn in taxes.
+ This is budget deficit.
+ To fund their deficits, governments need to either raise taxes, or borrow
+ money.
+ But with income falling and unemployment rises, they have to take money
+ from the rich.
+\end_layout
+
+\begin_layout Enumerate
+Redistribute wealth - governments naturally raises taxes on the wealthy,
+ which facilitates a redistribution of wealth in the economy.
+ Most of what people thought was money was actually credit.
+ So when credit disappears, people don't have enough money.
+ People are desperate for money - and central bank can print money.
+\end_layout
+
+\begin_layout Enumerate
+Print money - this is inflationary and stimulative.
+ New money is used to buy financial assets and government bonds.
+ It helps to drive asset prices which makes people more creditworthy.
+ However this only helps those who own financial assets.
+ The central government on the other hand can buy goods and services and
+ put money in the hands of people.
+ But it can't print money.
+ So in order to stimulate the economy, the two must cooperate.
+ Bu buying government bonds, the Central bank essentially lends money to
+ the government, allowing it to run a deficit and increase spending on goods
+ and services through stimulus programs and unemployment benefits.
+ This increases people's income and government debt.
+ However, it will lower the economy's total debt burden.
+\end_layout
+
+\begin_layout Standard
+This is risky time.
+ Policy makers need to balance - the deflationary ways need to balance with
+ inflationary ways in order to maintain stability.
+ If balanced nicely, there can be a nice deleveraging.
+ In such deleveraging, debts decline relative to income, real economic growth
+ is positive, and inflation isn't a problem.
+ This balance can be achieved by doing balance between all 4 steps above.
+ Printing money won't raise inflation if it offsets falling credit.
+ Spending is what matters.
+ Income must grow faster than debt grows.
+\end_layout
+
+\begin_layout Standard
+Leveraging - 50+ years, depression - 2-3 years, and reflation (debt burdens
+ to fall and economy activity is going back to normal) - 7-10 years (hence
+ the term 
+\begin_inset Quotes eld
+\end_inset
+
+lost decade
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+So it's super important:
+\end_layout
+
+\begin_layout Itemize
+don't have debt rise faster than income
+\end_layout
+
+\begin_layout Itemize
+don't have income rise faster than productivity
+\end_layout
+
+\begin_layout Itemize
+do all that you can to rise productivity
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

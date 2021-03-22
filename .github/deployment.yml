@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*.*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: x11vnc/lyx-desktop
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build PDF notes
+        run: make all
+
+  release:
+    name: Release
+      if: github.ref == 'refs/heads/master'
+      needs: [build]
+      runs-on: x11vnc/lyx-desktop
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build PDF notes
+          run: make all
