@@ -20,6 +20,8 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get upgrade -y
           sudo apt-get install lyx fonts-lyx
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Build PDF notes
         run: make all
 
