@@ -17,7 +17,9 @@ jobs:
         uses: colinaaa/chktex-action@v1.1.2
       - uses: docker://aergus/latex
       - name: Install LyX
-        run: apt-get install lyx fonts-lyx
+        run: |
+          apt-get update && apt-get upgrade -y
+          apt-get install lyx fonts-lyx
       - name: Build PDF notes
         run: make all
 
