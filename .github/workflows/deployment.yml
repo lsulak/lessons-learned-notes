@@ -18,7 +18,7 @@ jobs:
       - uses: docker://aergus/latex
       - name: Install LyX
         run: |
-          sudo apt-get update && apt-get upgrade -y
+          sudo apt-get update && sudo apt-get upgrade -y
           sudo apt-get install lyx fonts-lyx
       - name: Build PDF notes
         run: make all
