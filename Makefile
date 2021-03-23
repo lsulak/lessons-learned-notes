@@ -1,6 +1,6 @@
 install:
-    sudo apt-get update && sudo apt-get upgrade -y
-    sudo apt-get install texlive lyx fonts-lyx
+	sudo apt-get update && sudo apt-get upgrade -y
+	sudo apt-get install texlive lyx fonts-lyx
 
 make_dest_dir:
 	$(info    === Making a directory with the final PDFs if it doesn't exist.)
