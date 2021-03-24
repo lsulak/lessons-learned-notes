@@ -8,20 +8,26 @@ on:
       - '*.*.*'
 
 jobs:
-  build:
+  check:
     name: Build
-    runs-on: x11vnc/lyx-desktop
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build PDF notes
-        run: make all
+      - name: LaTeX linter
+        uses: colinaaa/chktex-action@v1.1.2
 
   release:
     name: Release
     if: github.ref == 'refs/heads/master'
-    needs: [build]
-    runs-on: x11vnc/lyx-desktop
+    needs: [check]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install LyX and Latex dependencies
+        run: make install
       - name: Build PDF notes
         run: make all
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PDF Artifacts
+          path: lessons-learned-notes/pdfs/*.pdf
