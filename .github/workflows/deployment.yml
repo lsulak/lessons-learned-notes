@@ -30,4 +30,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: PDF Artifacts
-          path: lessons-learned-notes/pdfs/*.pdf
+          path: pdfs/*.pdf

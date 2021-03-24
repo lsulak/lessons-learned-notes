@@ -21,7 +21,7 @@ make_pdfs:
 	sudo lyx --export pdf4 $${FILES}
 
 copy_pdfs:
-	$(info    === Copying PDFs into the final directory.)
+	$(info    === Copying PDFs into the final directory '$(shell pwd)'.)
 	FILES=`find lynx_books -name '[a-z-A-Z_-]*.pdf' -print`; \
 	mv $${FILES} pdfs
 
