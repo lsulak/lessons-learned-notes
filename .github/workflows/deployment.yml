@@ -27,7 +27,3 @@ jobs:
         run: make install
       - name: Build PDF notes
         run: make all
-      - uses: actions/upload-artifact@v2
-        with:
-          name: PDF Artifacts
-          path: lessons-learned-notes/pdfs/*.pdf
