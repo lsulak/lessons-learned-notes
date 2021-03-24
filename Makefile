@@ -1,6 +1,49 @@
 install:
 	sudo apt-get update && sudo apt-get upgrade -y
-	sudo apt-get install texlive lyx fonts-lyx
+	sudo apt-get install -q -y texlive-full lyx build-essential python3-argcomplete ubuntu-make
+#		texlive lyx fonts-lyx \
+# 		texmaker texlive-xetex \
+# 		texlive-lang-english \
+# 		texlive-latex-recommended \
+# 		texlive-fonts-recommended \
+# 		texlive-extra-utils \
+# 		texlive-font-utils \
+# 		texlive-formats-extra \
+# 		texlive-latex-extra \
+# 		texlive-bibtex-extra \
+# 		texlive-publishers \
+# 		texlive-pstricks \
+# 		texlive-science \
+# 		preview-latex-style \
+# 		dvipng \
+# 		texmaker \
+# 		lyx \
+# 		fonts-lyx \
+# 		msttcorefonts \
+# 		jabref \
+# 		imagemagick \
+# 		hunspell \
+# 		hunspell-en-us \
+# 		aspell \
+# 		aspell-en \
+# 		ispell \
+# 		dbus-x11 \
+# 		evince \
+# 		at-spi2-core \
+# 		psutils \
+# 		pstoedit \
+# 		ps2eps \
+# 		gv \
+# 		latex2rtf \
+# 		latex2html \
+# 		libreoffice \
+# 		chktex \
+# 		pandoc \
+# 		pinta \
+# 		inkscape \
+# 		tgif \
+# 		xfig \
+# 		texlive-lang-czechslovak
 
 make_dest_dir:
 	$(info    === Making a directory with the final PDFs if it doesn't exist.)
