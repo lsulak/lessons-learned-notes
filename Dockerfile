@@ -17,25 +17,19 @@ RUN add-apt-repository ppa:lyx-devel/release && \
     apt-get update && \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && \
     apt-get install -q -y --no-install-recommends \
-        texlive \
+        texlive lyx fonts-lyx \
+        texmaker texlive-xetex \
         texlive-lang-english \
-        texlive-generic-recommended \
         texlive-latex-recommended \
         texlive-fonts-recommended \
         texlive-extra-utils \
         texlive-font-utils \
         texlive-formats-extra \
-        texlive-generic-extra \
         texlive-latex-extra \
         texlive-bibtex-extra \
         texlive-publishers \
         texlive-pstricks \
         texlive-science \
-        lmodern \
-        \
-        libtool m4 automake \
-        python-lxml \
-        \
         preview-latex-style \
         dvipng \
         texmaker \
@@ -49,10 +43,9 @@ RUN add-apt-repository ppa:lyx-devel/release && \
         aspell \
         aspell-en \
         ispell \
-	dbus-x11 \
+        dbus-x11 \
         evince \
-        xpdf \
-	at-spi2-core \
+        at-spi2-core \
         psutils \
         pstoedit \
         ps2eps \
@@ -62,11 +55,11 @@ RUN add-apt-repository ppa:lyx-devel/release && \
         libreoffice \
         chktex \
         pandoc \
-        \
         pinta \
         inkscape \
         tgif \
-        xfig && \
+        xfig \
+        texlive-lang-czechslovak
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     chown -R $DOCKER_USER:$DOCKER_USER $DOCKER_HOME/.config && \
