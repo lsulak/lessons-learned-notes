@@ -72,7 +72,7 @@ jobs:
             --delete \
             --exclude "*" \
             --include "*.pdf" \
-            ${ github.repository }}/pdfs/ \
+            ${{ github.repository }}/pdfs/ \
             s3://$DEPLOYED_ARTIFACTS_BUCKET/my_personal_notes/
 #        uses: shallwefootball/s3-upload-action@master
 #        with:
