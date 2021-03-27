@@ -1,0 +1,83 @@
+name: lyx-notes-deployment
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*.*'
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cfn-lint
+        uses: scottbrenner/cfn-lint-action@master
+        with:
+          args: "**/*.yml"
+
+      - name: yaml-lint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          config_data: |
+            rules:
+              line-length:
+                max: 119
+
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/master'
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Deploy AWS CloudFormation Stack
+        uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
+        with:
+          name: lessons-learned-notes
+          template: cloudformation/template.yml
+          no-fail-on-empty-changeset: "1"
+
+      - name: Discover s3 bucket with artifacts
+        run: |
+          DEPLOYED_ARTIFACTS_BUCKET=$(
+            aws ssm get-parameter \
+              --name lsulak-deployed-artifacts-bucket \
+              --query 'Parameter.Value' \
+              --output text
+          )
+          echo "DEPLOYED_ARTIFACTS_BUCKET=$DEPLOYED_ARTIFACTS_BUCKET" >> $GITHUB_ENV
+
+      - name: Install LyX and Latex dependencies
+        run: make install
+
+      - name: Build PDF notes
+        run: make all
+
+      - name: Upload PDF notes to AWS S3 bucket
+        run: |
+          aws s3 sync \
+            --delete \
+            --exclude "*" \
+            --include "*.pdf" \
+            ${ github.repository }}/pdfs/ \
+            s3://$DEPLOYED_ARTIFACTS_BUCKET/my_personal_notes/
+#        uses: shallwefootball/s3-upload-action@master
+#        with:
+#          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+#          aws_bucket: $DEPLOYED_ARTIFACTS_BUCKET
+#          source_dir: ${ github.repository }}/pdfs/
+#          destination_dir: my_personal_notes/
