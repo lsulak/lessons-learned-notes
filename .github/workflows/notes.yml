@@ -1,4 +1,4 @@
-name: Deployment
+name: lyx-notes-deployment
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: cloudformation-project
+name: cloudformation-iac-deployment
 on:
   push:
     branches:
@@ -13,7 +13,7 @@ jobs:
       - name: cfn-lint
         uses: scottbrenner/cfn-lint-action@master
         with:
-          args: "*/.yml"
+          args: "**/*.yml"
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
         with:
