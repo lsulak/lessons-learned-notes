@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      AccessControl: PublicRead
+      BucketName: lsulak-deployed-artifacts
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:ListBucket
+            Effect: Allow
+            Principal:
+              AWS: '617309595707'
+            Resource:
+              - !GetAtt Bucket.Arn
+          - Action:
+              - s3:PutObject
+              - s3:DeleteObject
+            Effect: Allow
+            Principal:
+              AWS: '617309595707'
+            Resource:
+              - !Sub arn:aws:s3:::${Bucket}/my_pdf_notes/*
+
+  SSMParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: lsulak-deployed-artifacts-bucket
+      Type: String
+      Value: !Ref Bucket
+      Description: Bucket for storing deployed artifacts of my personal projects
