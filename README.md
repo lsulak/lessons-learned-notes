@@ -11,14 +11,14 @@ and real estate investing.
 
 There are two groups of notes in this repository: LyX notes and sheet cheats.
 
-### 1. LyX books
+### 1. LyX Notes (PDF Books)
 
 I was writing notes over the years - I finally decided to give it a structure
 and a proper format, versioning support, and the final shape available on any
 platform. Collection of LyX notes is compiled into a collection of PDFs, which
 is stored on AWS, which is publicly available to anyone.
 
-My collection of IT-related books:
+My collection of IT-related notes:
 
 1. [Software Development](
     https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/software_development.pdf
@@ -48,7 +48,7 @@ My collection of IT-related books:
     https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/cryptography.pdf
   ) [SK]
 
-My collection of investing-related books:
+My collection of investing-related notes:
 
 1. [Investing](
     https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/investing.pdf
