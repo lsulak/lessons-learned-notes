@@ -13,6 +13,14 @@ Resources:
         BlockPublicPolicy: true
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
+      LoggingConfiguration:
+        DestinationBucketName: !Ref LoggingBucket
+        LogFilePrefix: testing-logs
+
+  LoggingBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: LogDeliveryWrite
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -35,7 +43,13 @@ Resources:
               AWS: '617309595707'
             Resource:
               - !Sub arn:aws:s3:::${Bucket}/my_pdf_notes/*
-
+          - Action:
+              - s3:GetObject
+              - s3:GetObjectVersion
+            Effect: Allow
+            Principal: '*'
+            Resource:
+              - !Sub arn:aws:s3:::${Bucket}/my_pdf_notes/*
   SSMParam:
     Type: AWS::SSM::Parameter
     Properties:
