@@ -7,20 +7,12 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       AccessControl: PublicRead
-      BucketName: lsulak-deployed-artifacts
+      BucketName: lsulak-deployed-notes
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: false
         IgnorePublicAcls: true
-        RestrictPublicBuckets: true
-      LoggingConfiguration:
-        DestinationBucketName: !Ref LoggingBucket
-        LogFilePrefix: testing-logs
-
-  LoggingBucket:
-    Type: AWS::S3::Bucket
-    Properties:
-      AccessControl: LogDeliveryWrite
+        RestrictPublicBuckets: false
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -29,31 +21,16 @@ Resources:
       PolicyDocument:
         Statement:
           - Action:
-              - s3:ListBucket
-            Effect: Allow
-            Principal:
-              AWS: '617309595707'
-            Resource:
-              - !GetAtt Bucket.Arn
-          - Action:
-              - s3:PutObject
-              - s3:DeleteObject
-            Effect: Allow
-            Principal:
-              AWS: '617309595707'
-            Resource:
-              - !Sub arn:aws:s3:::${Bucket}/my_pdf_notes/*
-          - Action:
               - s3:GetObject
-              - s3:GetObjectVersion
             Effect: Allow
             Principal: '*'
             Resource:
-              - !Sub arn:aws:s3:::${Bucket}/my_pdf_notes/*
+              - !Sub arn:aws:s3:::${Bucket}/*
+
   SSMParam:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: lsulak-deployed-artifacts-bucket
+      Name: lsulak-deployed-notes-bucket
       Type: String
       Value: !Ref Bucket
       Description: Bucket for storing deployed artifacts of my personal projects
