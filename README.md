@@ -1,60 +1,65 @@
 # lessons-learned-notes
 
-My personal notes about various things I learnt (and I'm continuously
-learning).
+My personal notes about various things I learned, and I'm continuously
+learning.
+
+Topics: software and data engineering, math and machine learning, and some
+other things related to IT and beyond, including investing - especially stocks
+and real estate investing.
 
 ## Notes Collection
 
-There are two groups of notes: LyX notes and sheet cheats.
+There are two groups of notes in this repository: LyX notes and sheet cheats.
 
 ### 1. LyX books
 
-Software and data engineering, math and machine learning, and some other
-things related to IT and beyond, including investing - especially stocks and
-real estate investing.
+I was writing notes over the years - I finally decided to give it a structure
+and a proper format, versioning support, and the final shape available on any
+platform. Collection of LyX notes is compiled into a collection of PDFs, which
+is stored on AWS, which is publicly available to anyone.
 
 My collection of IT-related books:
 
 1. [Software Development](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/software_development.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/software_development.pdf
   )
 
 1. [Python](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/python.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/python.pdf
   )
 
 1. [Databases](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/databases.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/databases.pdf
   )
 
 1. [Machine Learning](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/machine_learning.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/machine_learning.pdf
   )
 
 1. [Math](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/math.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/math.pdf
   )
 
 1. [Computer Networks](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/computer_networks.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/computer_networks.pdf
   ) [SK]
 
 1. [Cryptography](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/cryptography.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/cryptography.pdf
   ) [SK]
 
 My collection of investing-related books:
 
 1. [Investing](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/investing.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/investing.pdf
   )
 
 1. [Economy](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/economy.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/economy.pdf
   )
 
 1. [Real Estate](
-    https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/real_estate.pdf
+    https://lsulak-deployed-notes.s3-eu-west-1.amazonaws.com/real_estate.pdf
   )
 
 ### 2. Sheet Cheats

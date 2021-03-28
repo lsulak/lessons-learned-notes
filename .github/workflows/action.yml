@@ -53,7 +53,7 @@ jobs:
           template: cloudformation/template.yml
           no-fail-on-empty-changeset: "1"
 
-      - name: Discover s3 bucket with artifacts
+      - name: Discover s3 bucket with deployed notes
         run: |
           DEPLOYED_NOTES_BUCKET=$(
             aws ssm get-parameter \
