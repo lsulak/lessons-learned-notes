@@ -10,7 +10,7 @@ Resources:
       BucketName: lsulak-deployed-artifacts
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
-        BlockPublicPolicy: true
+        BlockPublicPolicy: false
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
       LoggingConfiguration:
