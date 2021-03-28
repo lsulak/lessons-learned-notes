@@ -27,6 +27,9 @@ jobs:
               line-length:
                 max: 119
 
+      - name: markdown-lint
+        uses: actionshub/markdownlint@main
+
   release:
     name: Release
     if: github.ref == 'refs/heads/master'
