@@ -18,21 +18,27 @@ My collection of IT-related books:
 1.[Software Development](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/software_development.pdf
   )
+
 2.[Python](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/python.pdf
   )
+
 3.[Databases](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/databases.pdf
   )
+
 4.[Machine Learning](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/machine_learning.pdf
   )
+
 5.[Math](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/math.pdf
   )
+
 6.[Computer Networks](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/computer_networks.pdf
   ) [SK]
+
 7.[Cryptography](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/cryptography.pdf
   ) [SK]
@@ -42,9 +48,11 @@ My collection of investing-related books:
 1.[Investing](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/investing.pdf
   )
+
 2.[Economy](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/economy.pdf
   )
+
 3.[Real Estate](
     https://lsulak-deployed-artifacts.s3-eu-west-1.amazonaws.com/real_estate.pdf
   )
