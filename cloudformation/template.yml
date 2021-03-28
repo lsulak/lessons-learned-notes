@@ -33,4 +33,4 @@ Resources:
       Name: lsulak-deployed-notes-bucket
       Type: String
       Value: !Ref Bucket
-      Description: Bucket for storing deployed artifacts of my personal projects
+      Description: Bucket for storing my deployed LyX notes
