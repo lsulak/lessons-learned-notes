@@ -85,3 +85,4 @@ from various places on the Internet. See the content of directory
   a rush and there might be significant grammar errors and typos.
 * Most of the notes are in English language, but some of them are (or contain)
   segments written in Slovak language.
+* Some notes are still in progress.
