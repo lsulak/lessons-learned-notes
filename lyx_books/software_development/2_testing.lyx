@@ -308,7 +308,7 @@ BUT NOT
 
 \end_deeper
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsection
 Test-Driven-Development
 \end_layout
 
@@ -421,7 +421,7 @@ There are times when following the 3 laws is simply impractical or inappropriate
  does more harm than good.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 F.I.R.S.T.
 \end_layout
 
@@ -499,7 +499,7 @@ Timely
  You may not design the production code to be testable.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Test Hierarchy
 \end_layout
 
@@ -512,12 +512,13 @@ More details about each type of tests is written in the following sections.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/test_automation_pyramid.png
+	scale 60
 
 \end_inset
 
@@ -534,6 +535,22 @@ Test hierarchy including a coverage.
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -593,6 +610,22 @@ Unit tests provide as close to 100% coverage as is practical.
  Generally this number should be somewhere in the 90s.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Component Tests
 \end_layout
@@ -623,6 +656,22 @@ Component tests cover roughly half the system.
  boundary, and alternate-path cases.
  The vast majority of unhappy-path cases are covered by unit tests and are
  meaningless at the level of component tests.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -766,6 +815,22 @@ If you want to turn your integration test into unit test, maybe a solution
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 System Tests
 \end_layout
@@ -809,6 +874,22 @@ System tests cover perhaps 10% of the system.
  been tested in the lower layers of the pyramid.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Exploratory Tests
 \end_layout
@@ -841,6 +922,22 @@ Exploratory testing is often thought of as a black box testing technique.
  It may cover also a quick smoke testing.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Specialized Tests
 \end_layout
@@ -850,7 +947,7 @@ These tests are not always implemented.
  Here belong acceptance tests, functional tests, and non-functional tests.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Acceptance Tests
 \end_layout
 
@@ -926,7 +1023,7 @@ It should be QA’s role to work with business to create the automated acceptanc
  them into tests that describe to developers how the system should behave.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Functional Tests
 \end_layout
 
@@ -997,7 +1094,7 @@ Usability testing
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsection
 Non-Functional Tests
 \end_layout
 

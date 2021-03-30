@@ -1026,12 +1026,13 @@ Consider a two-dimensional data as shown on the figure below.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/pca_example.png
+	scale 45
 
 \end_inset
 
@@ -1201,12 +1202,13 @@ is the distance from
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/dim_red_comparison.png
+	scale 50
 
 \end_inset
 

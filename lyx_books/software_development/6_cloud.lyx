@@ -127,7 +127,7 @@ shapepar
 Cloud Technologies
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 
 \series bold
 Cloud Computing
@@ -168,7 +168,7 @@ AWS has a high level of security with many security features written especially
  machine learning, the list is bigger than 140 items.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Types of Cloud Computing
 \end_layout
 
@@ -293,6 +293,22 @@ On-premises
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Amazon Web Services
 \end_layout
@@ -829,8 +845,11 @@ AWS Container Services
 
 \series bold
 Amazon Elastic Container Service (Amazon ECS)
-\series default
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
+ECS
 \begin_inset ERT
 status open
 
@@ -847,17 +866,25 @@ url{https://aws.amazon.com/ecs/}}
 
  is a highly scalable, high-performance container orchestration service
  that supports Docker containers.
- It allows you to run and scale containerized applications on AWS.
+ 
+\end_layout
+
+\begin_layout Itemize
+It allows you to run and scale containerized applications on AWS.
  With simple API calls, you can launch and stop Docker-enabled applications,
  query the complete state of your application, and more.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 Amazon Elastic Container Service for Kubernetes (Amazon EKS)
-\series default
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
+EKS
 \begin_inset ERT
 status open
 
@@ -876,18 +903,30 @@ url{https://aws.amazon.com/eks/}}
 s that use Kubernetes on AWS.
  Amazon EKS runs the Kubernetes management infrastructure for you across
  multiple AWS availability zones to eliminate a single point of failure.
- Amazon EKS is certified Kubernetes conformant so you can use existing tooling
- and plugins from partners and the Kubernetes community.
- Applications running on any standard Kubernetes environment are fully compatibl
-e and can be easily migrated to Amazon EKS.
+ 
 \end_layout
 
+\begin_layout Itemize
+Amazon EKS is certified Kubernetes conformant so you can use existing tooling
+ and plugins from partners and the Kubernetes community.
+ 
+\end_layout
+
+\begin_layout Itemize
+Applications running on any standard Kubernetes environment are fully compatible
+ and can be easily migrated to Amazon EKS.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 AWS Fargate
-\series default
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Fargate
 \begin_inset ERT
 status open
 
@@ -904,7 +943,11 @@ url{https://aws.amazon.com/fargate/}}
 
  is a compute engine for Amazon ECS and Amazon EKS that allows you to run
  containers without having to manage servers or clusters.
- You just define your application as you do for Amazon ECS.
+ 
+\end_layout
+
+\begin_layout Itemize
+You just define your application as you do for Amazon ECS.
  You package your application into task definitions, specify the CPU and
  memory needed, define the networking and IAM policies that each container
  needs, and upload everything to Amazon ECS.
@@ -912,6 +955,7 @@ url{https://aws.amazon.com/fargate/}}
  for you.
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Computing Services
 \end_layout

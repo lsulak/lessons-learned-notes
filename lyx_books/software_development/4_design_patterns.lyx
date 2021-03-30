@@ -221,6 +221,22 @@ Iterator
  pattern.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Creational Patterns
 \end_layout
@@ -316,6 +332,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/factory_method_and_abstract_factory.jpg
+	scale 10
 
 \end_inset
 
@@ -332,6 +349,22 @@ Factory method and Abstract Factory design patterns.
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -361,6 +394,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/adapter_and_facade.jpg
+	scale 10
 
 \end_inset
 
@@ -395,6 +429,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/decorator.jpg
+	scale 10
 
 \end_inset
 
@@ -429,6 +464,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/proxy_and_bridge.jpg
+	scale 10
 
 \end_inset
 
@@ -445,6 +481,22 @@ Proxy and Bridge design patterns.
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -473,6 +525,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/command.jpg
+	scale 10
 
 \end_inset
 
@@ -507,6 +560,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/iterator.jpg
+	scale 10
 
 \end_inset
 
@@ -541,6 +595,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/state.jpg
+	scale 10
 
 \end_inset
 
@@ -575,6 +630,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/null_object.png
+	scale 40
 
 \end_inset
 
@@ -609,6 +665,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/template.jpg
+	scale 10
 
 \end_inset
 
@@ -643,6 +700,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/design_patterns/strategy_and_observer.jpg
+	scale 10
 
 \end_inset
 

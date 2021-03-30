@@ -213,6 +213,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename ../machine_learning/fig/types_of_matrix_multiplication.png
+	scale 60
 
 \end_inset
 
@@ -724,6 +725,8 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename ../machine_learning/fig/central_limit_theorem.jpg
+	scale 15
+	rotateAngle -90
 
 \end_inset
 
@@ -787,10 +790,6 @@ The somewhat surprising strength of the theorem is that (under certain natural
  conditions) there is essentially no assumption on the probability distribution
  of the variables themselves; the theorem remains true no matter what the
  individual probability distributions are.
-\begin_inset Formula $ $
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1305,14 +1304,21 @@ An example: Suppose that after 96 rolls of a die, the die has shown 24x
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="5">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="middle" width="0pt">
+<column alignment="center" valignment="middle" width="0pt">
+<column alignment="center" valignment="middle" width="0pt">
+<column alignment="center" valignment="middle" width="0pt">
+<column alignment="center" valignment="middle" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1658,6 +1664,23 @@ An example: Suppose that after 96 rolls of a die, the die has shown 24x
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chi-square test example
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -2026,6 +2049,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/density_estimation_kernel.png
+	scale 60
 
 \end_inset
 
@@ -2264,7 +2288,7 @@ This relates the probability of the hypothesis before getting the evidence
  ratio".
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Deriving Bayes' Theorem
 \end_layout
 

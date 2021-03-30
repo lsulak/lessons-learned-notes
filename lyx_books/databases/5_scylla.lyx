@@ -285,7 +285,7 @@ Very young technology, there are less articles and no books (yet).
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -318,6 +318,22 @@ url{https://github.com/datastax/python-driver/}
 \end_inset
 
  - very active project, and quite popular (almost 1,000 of stars on GitHub)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

@@ -247,7 +247,7 @@ filename "1_general.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "2_git.lyx"
+filename "2_testing.lyx"
 
 \end_inset
 
@@ -257,7 +257,7 @@ filename "2_git.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "3_licences.lyx"
+filename "3_clean_code.lyx"
 
 \end_inset
 
@@ -267,7 +267,7 @@ filename "3_licences.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "4_jetbrains_ide.lyx"
+filename "4_design_patterns.lyx"
 
 \end_inset
 
@@ -277,14 +277,7 @@ filename "4_jetbrains_ide.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "5_linux.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "6_interviews.lyx"
+filename "5_software_architecture_patterns.lyx"
 
 \end_inset
 
@@ -294,7 +287,7 @@ filename "6_interviews.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "7_clean_code.lyx"
+filename "6_cloud.lyx"
 
 \end_inset
 
@@ -304,7 +297,7 @@ filename "7_clean_code.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "8_design_patterns.lyx"
+filename "7_interviews.lyx"
 
 \end_inset
 
@@ -314,7 +307,7 @@ filename "8_design_patterns.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "9_software_architecture_patterns.lyx"
+filename "8_linux.lyx"
 
 \end_inset
 
@@ -324,7 +317,7 @@ filename "9_software_architecture_patterns.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "10_testing.lyx"
+filename "9_git.lyx"
 
 \end_inset
 
@@ -334,7 +327,17 @@ filename "10_testing.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "11_cloud.lyx"
+filename "10_licences.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "11_jetbrains_ide.lyx"
 
 \end_inset
 

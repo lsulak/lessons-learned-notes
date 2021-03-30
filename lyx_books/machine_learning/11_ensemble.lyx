@@ -486,12 +486,13 @@ n? The bad experts would be assigned very low probability by the manager
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/mixture_of_experts_architecture.png
+	scale 20
 
 \end_inset
 

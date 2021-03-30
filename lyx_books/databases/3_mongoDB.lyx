@@ -412,7 +412,7 @@ Kerberos authentication available in Enterprise edition only
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Standard
@@ -844,6 +844,22 @@ $ sudo ln -s /new/disk/mongodb/ /var/lib/mongodb
 
 \begin_layout Description
 $ sudo mongod --dbpath=/home/mongo 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset

@@ -187,7 +187,7 @@ Customers don't know exactly what they want and thus don't always tell the
  Challenge your customers early, and challenge them often.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 How to Learn, The 10-step system
 \end_layout
 
@@ -454,7 +454,7 @@ In the first 6 steps, you’ll focus on doing enough research upfront to make
  plan.
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Subsection
 Focus
 \end_layout
 
@@ -478,7 +478,7 @@ zone
 .
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Subsection
 Productivity and Planning
 \end_layout
 
@@ -688,7 +688,7 @@ I will get 50 pomodori done each week.
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsection
 Conway's Law
 \end_layout
 
@@ -697,7 +697,7 @@ Any organization that designs a system will produce a design whose structure
  is a copy of the organization's communication structure.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Jimmy's Law
 \end_layout
 
@@ -706,7 +706,7 @@ A broken, dysfunctional organization driven by meeting unhealthy goals and
  metrics will produce broken, dysfunctional systems.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 LeBlanc's Law
 \end_layout
 
@@ -729,7 +729,7 @@ Later equals never.
 
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Law of Demeter
 \end_layout
 
@@ -907,7 +907,7 @@ url{https://www.youtube.com/watch?v=FyJhALHmFXU}
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsection
 Very important and always true things
 \end_layout
 
@@ -927,7 +927,7 @@ Requirements are in constant flux.
 Estimates are always wrong.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Abstractions and requirements
 \end_layout
 
@@ -952,7 +952,7 @@ But in software, we usually don't fully know what a specific problem is.
  So from economic point of view, the best thing to do is to stay flexible.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Duck Typing
 \end_layout
 
@@ -989,8 +989,12 @@ url{https://www.youtube.com/watch?v=oaIxRQSAZXE}
  of a given object.
 \end_layout
 
-\begin_layout Paragraph*
-Common Anti-patterns (during SW development)
+\begin_layout Subsection
+Common Anti-patterns 
+\end_layout
+
+\begin_layout Standard
+(during SW development
 \begin_inset ERT
 status open
 
@@ -1006,7 +1010,7 @@ x=57}}
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Itemize
@@ -1043,7 +1047,7 @@ Using an interface just to forcing the creation of a method.
  Avoid interfaces that just force action.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Data Clamp
 \end_layout
 
@@ -1065,7 +1069,7 @@ To resolve these, we may have, for instance, less arguments to our functions,
  which is a good thing.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 UML
 \end_layout
 
@@ -1092,11 +1096,11 @@ using
  is 'is-a' (inheritance)
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Professional Programmer
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \emph on
 “Do; or do not.
@@ -1861,6 +1865,22 @@ There are more approaches - Flying Fingers, Planning Poker, or Affinity
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Programming Paradigms
 \end_layout
@@ -2189,6 +2209,22 @@ See SOLID principles for writing clean OOP code that make it easy for a
  programmer to develop software that is easy to maintain and extend.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Software Development Paradigms and Methodologies
 \end_layout
@@ -2236,7 +2272,7 @@ what actually happened
 Paradigms and models
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Waterfall Model
 \end_layout
 
@@ -2285,7 +2321,7 @@ Waterfall development can work well for complex or mission-critical systems
  often and lacks the flexibility for today’s environment.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Agile
 \end_layout
 
@@ -2384,7 +2420,7 @@ The most used practices in agile development are Scrum, Kanban, XP, and
 Methodologies and Frameworks
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 DevOps
 \end_layout
 
@@ -2394,7 +2430,7 @@ n-technology operations (Ops) which aims to shorten the systems development
  life cycle and provide continuous delivery with high software quality.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Lean
 \end_layout
 
@@ -2433,7 +2469,7 @@ Optimize the whole
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Kanban
 \end_layout
 
@@ -2451,7 +2487,7 @@ Kanban is commonly used in software development in combination with other
  methods and frameworks such as Scrum.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Rational Unified Process (RUP)
 \end_layout
 
@@ -2531,7 +2567,7 @@ Iterations occur in each phase.
  moves from phase to phase.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Scrum
 \end_layout
 
@@ -2647,12 +2683,13 @@ Daily stand-up
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/scrum.png
+	scale 60
 
 \end_inset
 
@@ -2673,7 +2710,7 @@ Scrum
 
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 
 \series bold
 Extreme Programming
@@ -2806,7 +2843,7 @@ As an example, code reviews are considered a beneficial practice; taken
  the practice of pair programming.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 OKR
 \end_layout
 
@@ -2818,7 +2855,7 @@ This is especially great for smaller teams.
 Practices
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 CI, CD
 \end_layout
 
@@ -2826,7 +2863,7 @@ CI, CD
 See the next section.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Pair Programming (PP)
 \end_layout
 
@@ -2837,18 +2874,18 @@ Two programmers work together at one workstation.
  The two programmers switch roles frequently.
 \end_layout
 
-\begin_layout Paragraph*
-Test-driven Development (TDD)
+\begin_layout Subsubsection
+Test-Driven Development (TDD)
 \end_layout
 
 \begin_layout Itemize
 See chapter about testing.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 
 \series bold
-Behavior-driven development (BDD)
+Behavior-Driven development (BDD)
 \end_layout
 
 \begin_layout Itemize
@@ -2883,6 +2920,22 @@ It encourages collaboration between developers, QA and non-technical or
  business participants in a software project.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Continuous Integration/Delivery/Deployment
 \end_layout
@@ -2892,7 +2945,10 @@ Continuous Integration/Delivery/Deployment
 \series bold
 Continuous Integration
 \series default
- - merge code ASAP.
+ - merge high-quality code ASAP.
+ Each integration is verified by an automated build (including test) to
+ detect integration errors as quickly as possible.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -2900,7 +2956,11 @@ Continuous Integration
 \series bold
 Continuous Delivery
 \series default
- - short release cycles (days).
+ - producing software in short cycles, ensuring that the software can be
+ reliably released at any time and, when releasing the software, doing so
+ manually.
+ It aims at building, testing, and releasing software with greater speed
+ and frequency.
 \end_layout
 
 \begin_layout Itemize
@@ -2908,7 +2968,11 @@ Continuous Delivery
 \series bold
 Continuous Deployment
 \series default
- - Fast deployment, can be automated.
+ - it goes one step further than continuous delivery.
+ With this practice, every change that passes all stages of your production
+ pipeline is released on production.
+ There's no human intervention, and only a failed test will prevent a new
+ change to be deployed to production.
 \end_layout
 
 \begin_layout Itemize
@@ -2947,12 +3011,13 @@ It forces devs to write tests.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/cicd_boxes.png
+	scale 50
 
 \end_inset
 
@@ -2965,9 +3030,7 @@ status collapsed
 \begin_layout Plain Layout
 Ideal world how CI/CD should work.
  Many companies are migrating to this model.
- TTD means test-driven development.
- Used technologies can be: gitlab, python, docker, kubernetess, coala/pylint,
- 
+ (TTD means test-driven development, typo.)  
 \end_layout
 
 \end_inset
@@ -3472,7 +3535,7 @@ Popular technologies are Docker, Kubernetes, OpenShift, ...
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Buildah + Ansible
 \end_layout
 
@@ -3515,7 +3578,7 @@ url{blog.tomecek.net}
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection
 Docker
 \end_layout
 
@@ -3719,7 +3782,7 @@ Docker UCP
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\begin_layout Subsubsection
 Podman
 \end_layout
 
@@ -3741,7 +3804,7 @@ Podman pods - similar concept to Kubernetes pods.
  Group of containers that share resources and deploy as a single unit.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection
 
 \series bold
 Kubernetes 
@@ -4022,7 +4085,7 @@ in-kubernetes}
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\begin_layout Subsubsection
 
 \series bold
 OpenShift
@@ -4103,7 +4166,7 @@ Prow CI
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Serverless + KNative
 \end_layout
 
@@ -4154,7 +4217,7 @@ url{https://medium.com/@pkerrison/pizza-as-a-service-2-0-5085cd4c365e} and
 \backslash
  
 \backslash
-url{		https://blog.openshift.com/knative-serving-your-serverless-services/}}
+url{https://blog.openshift.com/knative-serving-your-serverless-services/}}
 \end_layout
 
 \end_inset
@@ -4163,6 +4226,22 @@ url{		https://blog.openshift.com/knative-serving-your-serverless-services/}}
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Concurrency
 \end_layout
@@ -4235,17 +4314,16 @@ Keep the amount of shared objects and the scope of the sharing as narrow
  as possible.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsection
 Basic definitions
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Process
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 A process can be thought of as an instance of a program in execution.
 \end_layout
@@ -4263,14 +4341,12 @@ Each process is executed in a separate address space, and one process cannot
  These include pipes, files, sockets, and other forms.
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Thread
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 A thread exists within a process and shares the process's resources (including
  its heap space).
@@ -4290,60 +4366,77 @@ A thread is a particular execution path of a process.
  visible to sibling threads.
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Reentrant lock
 \series default
- - A lock that can be acquired in one method and released in another.
+ 
 \end_layout
 
 \begin_layout Itemize
+A lock that can be acquired in one method and released in another.
+\end_layout
+
+\begin_layout Paragraph
 
 \series bold
 Semaphore
 \series default
- - An implementation of the classic synchronization mechanism, a lock with
+ 
+\end_layout
+
+\begin_layout Itemize
+An implementation of the classic synchronization mechanism, a lock with
  a count.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Bound resources
-\series default
- - Resources of a fixed size or number used in a concurrent environment.
- Examples include database connections and fixed-size read/write buffers.
 \end_layout
 
 \begin_layout Itemize
+Resources of a fixed size or number used in a concurrent environment.
+ Examples include database connections and fixed-size read/write buffers.
+\end_layout
+
+\begin_layout Paragraph
 
 \series bold
 Starvation
-\series default
- - One thread or a group of threads is prohibited from proceeding for an
- excessively long time or forever.
+\end_layout
+
+\begin_layout Itemize
+One thread or a group of threads is prohibited from proceeding for an excessivel
+y long time or forever.
  For example, always letting fast-running threads through first could starve
  out longer running threads if there is no end to the fast-running threads.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Livelock
 \series default
- - Threads in lockstep, each trying to do work but finding another “in the
+ 
+\end_layout
+
+\begin_layout Itemize
+Threads in lockstep, each trying to do work but finding another “in the
  way.” Due to resonance, threads continue trying to make progress but are
  unable to for an excessively long time - or forever.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
 Deadlock
-\series default
- - Two or more threads waiting for each other to finish.
+\end_layout
+
+\begin_layout Itemize
+Two or more threads waiting for each other to finish.
  Each thread has a resource that the other thread requires and neither can
  finish until it gets the other resource.
  There are 4 conditions required for deadlock to occur.
@@ -4351,14 +4444,15 @@ Deadlock
  Break any one of these conditions and deadlock is not possible:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \series bold
-Mutual Exclusion.
+Mutual Exclusion
+\end_layout
 
-\series default
- Mutual exclusion occurs when multiple threads need to use the same resources
+\begin_deeper
+\begin_layout Itemize
+Mutual exclusion occurs when multiple threads need to use the same resources
  and those resources a) cannot be used by multiple threads at the same time,
  and b) are limited in number.
  A common example of such a resource is a database connection, a file open
@@ -4373,7 +4467,6 @@ So mutual exclusion means that only 1 process or thread can access a resource
  A deadlock could also occur if a resource has limited quantity.)
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Breaking Mutual Exclusion:
 \end_layout
@@ -4404,17 +4497,18 @@ Unfortunately, most resources are limited in number and don’t allow simultaneo
 \begin_layout Itemize
 
 \series bold
-Lock & Wait.
+Lock & Wait
+\end_layout
 
-\series default
- Once a thread acquires a resource, it will not release the resource until
+\begin_deeper
+\begin_layout Itemize
+Once a thread acquires a resource, it will not release the resource until
  it has acquired all of the other resources it requires and has completed
  its work.
  So this is a situation where processes that already hold a resource can
  request additional resources, without relinquishing their current resources.
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Breaking Lock & Wait:
 \end_layout
@@ -4451,15 +4545,16 @@ Livelock.
 \begin_layout Itemize
 
 \series bold
-No preemption.
+No preemption
+\end_layout
 
-\series default
- One thread cannot take resources away from another thread.
+\begin_deeper
+\begin_layout Itemize
+One thread cannot take resources away from another thread.
  Once a thread holds a resource, the only way for another thread to get
  it is for the holding thread to release it.
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Breaking Preemption:
 \end_layout
@@ -4483,15 +4578,16 @@ When a thread discovers that a resource is busy, it asks the owner to release
 \begin_layout Itemize
 
 \series bold
-Circular Wait.
+Circular Wait
+\end_layout
 
-\series default
- Imagine 2 threads, T1 and T2, and 2 resources, R1 and R2.
+\begin_deeper
+\begin_layout Itemize
+Imagine 2 threads, T1 and T2, and 2 resources, R1 and R2.
  T1 has R1, T2 has R2.
  T1 also requires R2, and T2 also requires R1.
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Breaking Circular Wait:
 \end_layout
@@ -4524,8 +4620,7 @@ and if they all allocate resources in that order, then deadlock is impossible.
 
 \end_deeper
 \end_deeper
-\end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsection
 Execution models used in concurrent programming
 \end_layout
 

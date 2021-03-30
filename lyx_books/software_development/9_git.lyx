@@ -938,6 +938,22 @@ will determine the most recent common commit between 2 branches, in this
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Commit message
 \end_layout
@@ -1029,11 +1045,27 @@ Use the body to explain what and why vs.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Submodules
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 
 \series bold
 Clone and Init
@@ -1094,7 +1126,7 @@ newline
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Pull 
 \series bold
 all submodules from master branch
@@ -1128,7 +1160,7 @@ $ git submodule foreach git pull origin master
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 How to delete a submodule
 \end_layout
 
@@ -1183,7 +1215,7 @@ $ git rm --cached [path/module]
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Discard changes in submodule
 \end_layout
 
@@ -1230,7 +1262,7 @@ $ git submodule update --init
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Adding a submodule
 \end_layout
 
@@ -1255,6 +1287,22 @@ status open
 
 \begin_layout Description
 $ git submodule add lsulak@git_hostname:repo libs/repo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -1461,7 +1509,7 @@ Once all is ready, you can just merge feature branch into master.
  there will be no conflicts or new changes from master.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Interactive rebasing
 \end_layout
 
@@ -1690,6 +1738,22 @@ $ git push –force-with-lease <remote> <branch>
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Feature Branch
 \end_layout
@@ -1738,6 +1802,22 @@ $ git push origin devel
 
 \begin_layout Description
 $ git branch -d some-feature git push origin --delete some-feature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -1821,7 +1901,7 @@ $ git reset HEAD~2
 These 3 parameters do not work with an individual file.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Examples
 \end_layout
 
@@ -1985,6 +2065,22 @@ $ git reset <Commit-level>
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Checkout
 \end_layout
@@ -1995,7 +2091,7 @@ A checkout is an operation that moves the HEAD ref pointer to a specified
  It is possible to work with an individual file, commit, or a branch.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection
 Examples
 \end_layout
 
@@ -2077,6 +2173,22 @@ $ git checkout <File-level>
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Revert
 \end_layout
@@ -2131,7 +2243,7 @@ git reset
  HEAD is for undoing uncommitted changes.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection
 Examples
 \end_layout
 
@@ -2252,11 +2364,27 @@ $ git symbolic-ref --short HEAD
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Tags
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Examples
 \end_layout
 
@@ -2459,6 +2587,22 @@ $ git push origin master --tags
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Git Hooks
 \end_layout
@@ -2515,7 +2659,7 @@ post-hooks
 are used only for notifications.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Local Hooks
 \end_layout
 
@@ -2611,7 +2755,7 @@ git rebase
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Server-side
 \end_layout
 
@@ -2665,6 +2809,22 @@ post-commit
  only on the user’s local machine.
  Emailing other developers and triggering a continuous integration system
  are common use cases for post-receive.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2770,12 +2930,7 @@ This tells Git to take the changes that went into 4a4f449 and apply them
 \end_layout
 
 \end_deeper
-\begin_layout Section
-GitLab
-\end_layout
-
-\begin_layout Description
-Examples
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2783,9 +2938,31 @@ status open
 
 
 \backslash
-footnote{
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GitLab
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-url{https://about.gitlab.com/2016/10/25/gitlab-workflow-an-overview/}}
+url{https://about.gitlab.com/2016/10/25/gitlab-workflow-an-overview/}
 \end_layout
 
 \end_inset
@@ -2953,6 +3130,22 @@ $ git rebase devel 1234_branch <resolve conflicts>
 
 \begin_layout Description
 $ git push --force
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset
@@ -3272,6 +3465,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/git_flow.png
+	scale 70
 
 \end_inset
 
@@ -3450,6 +3644,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/github_flow.png
+	scale 50
 
 \end_inset
 
@@ -3695,12 +3890,13 @@ If multiple versions of production are needed, this flow can become very
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/gitlab_flow.png
+	scale 50
 
 \end_inset
 
@@ -3735,6 +3931,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/gitlab_flow_release_branches.png
+	scale 50
 
 \end_inset
 

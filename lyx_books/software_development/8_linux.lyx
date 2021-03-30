@@ -145,30 +145,31 @@ seek
 General Tools and Packages
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Compilers: cc, gcc, c89, as, gas 
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Debugging: dbx, debug, dgb
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Libraries: ar, ld, nm, objdump
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Linkers: ld, ldd
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Optimizations: prof, gprof
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 Projects
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 make (recommended content and order: all, install, clean, doc, depend),
  
@@ -188,6 +189,23 @@ CVS - RCS for big projects
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Helper tools for smaller scripting
 \end_layout
@@ -439,6 +457,22 @@ zcat
 zip
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Networking
 \end_layout
@@ -581,6 +615,22 @@ $ sudo systemctl start sshd.service
 
 \begin_layout Itemize
 ping
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -814,6 +864,22 @@ will ignore this signal and process will run even after a user's logout.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Bash
 \end_layout

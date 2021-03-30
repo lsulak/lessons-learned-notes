@@ -186,34 +186,11 @@ Observe
  Answer something between 20 seconds to 2 minutes.
 \end_layout
 
-\begin_layout Description
-
-\series bold
-What
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
+\begin_layout Itemize
+What is success? (Bessie Anderson Stanley (1879–1952))
 \end_layout
 
-\end_inset
-
-is
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-success?
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
 To laugh often and much;
 \end_layout
@@ -248,36 +225,14 @@ To know even one life has breathed easier because you have lived;
 This is to have succeeded.
 \end_layout
 
-\begin_layout Standard
-—Bessie Anderson Stanley (1879–1952)
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+CV and Linkedin
 \end_layout
 
-\begin_layout Description
-CV
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-and
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Linkedin
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -331,26 +286,36 @@ Being too language focused:
  "not our kind of person.
 \end_layout
 
-\begin_layout Description
-Cover
-\begin_inset ERT
-status open
+\end_deeper
+\begin_layout Itemize
 
-\begin_layout Plain Layout
-
-~
+\series bold
+Cover Letter
 \end_layout
 
-\end_inset
-
-Letter
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
 Brief cover that summarizes the whole long resume.
  It is a report, and you have to make it personal and specific to a concrete
  job.
  Research the companies!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -486,6 +451,22 @@ Possibility to be transferred to another country or team?
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 General Things to Know
 \end_layout
@@ -633,6 +614,22 @@ What the Flower Diagram does is describe who you are in all 7 ways, summarized
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Behavioral Questions
 \end_layout
@@ -840,6 +837,22 @@ Describe a time when you could only use written communication to get your
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Software Engineering Interview Preparation
 \end_layout
@@ -927,12 +940,14 @@ Test.
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
+\begin_layout Subsection
 
 \series bold
 OO questions 
-\series default
-are mostly about demonstrating that you understand how to create elegant,
+\end_layout
+
+\begin_layout Standard
+These are mostly about demonstrating that you understand how to create elegant,
  maintainable object-oriented code.
  Poor performance on this type of question may raise serious red flags.
  These questions are intentionally vague in order to test whether you'll
@@ -949,7 +964,6 @@ why
  There are multiple steps that needs to be taken:
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Handle ambiguity
 \end_layout
@@ -966,21 +980,18 @@ Analyze relationships
 Investigate actions
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection
 
 \series bold
 Data Structures
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
 Hash Tables (also known as Associative Arrays)
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 They are data structures, (Python 
 \emph on
@@ -990,6 +1001,7 @@ implements it) that are associative arrays, that maps keys to values in
  effective way (for highly effective lookup).
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Very common implementation is with an array of linked lists (because of
  possible collisions) and a hash code function.
@@ -1705,14 +1717,12 @@ is used to find the shortest path between a source and destination node.
 
 \end_deeper
 \end_deeper
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection
 
 \series bold
 Algorithms
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -2136,21 +2146,18 @@ NP-Complete problems are a subset of NP problems that can all be reduced
 
 \end_deeper
 \end_deeper
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection
 
 \series bold
 Concepts
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
 Bit Manipulation
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 There are 2 right shifts: logical shift and it fills 0 from left side, and
  arithmetic shift and it keeps the sign bit - so it divides
@@ -2160,6 +2167,7 @@ There are 2 right shifts: logical shift and it fills 0 from left side, and
 a number basically by 2).
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Sequence of all 1s in signed integer (as in binary number) is 
 \begin_inset Formula $-1$
@@ -2325,20 +2333,22 @@ Note3: log conversion (base) from base
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection
 
 \series bold
 Testing
 \series default
- - at their surface, testing questions seem like they're just about coming
+ 
+\end_layout
+
+\begin_layout Standard
+At their surface, testing questions seem like they're just about coming
  up with an extensive list of test cases.
  And to some extent, that's right.
  You do need to come up with a reasonable list of test cases.
  The interviewers want to do the following from you:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Big picture understanding.
 \end_layout
@@ -2355,21 +2365,52 @@ Organization.
 Practical point of view.
 \end_layout
 
-\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Machine Learning Interview Preparation
 \end_layout
 
-\begin_layout Subsection
-Top companies for Data Science
-\end_layout
-
 \begin_layout Itemize
-Microsoft, IBM, Facebook, Amazon, Google, Accenture, Apple, Capital One,
- Uber, B.A Hamilton.
+Top companies for Data Science: Microsoft, IBM, Facebook, Amazon, Google,
+ Accenture, Apple, Capital One, Uber, B.A Hamilton.
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 
 \series bold
 Topics

@@ -462,6 +462,22 @@ The trick is that while you’re coding, the logical part of your brain is
 It can’t present anything to you until the logical side takes a break.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Comments
 \end_layout
@@ -615,6 +631,22 @@ Inobvious connection - the connection between a comment and the code it
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Formatting
 \end_layout
@@ -709,6 +741,22 @@ In rare cases a variable might be declared at the top of a block or just
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Error Handling
 \end_layout
@@ -781,6 +829,22 @@ You can use assertions, but that does not solve the problem.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Functions and Methods
 \end_layout
@@ -1389,6 +1453,22 @@ In the end, I wind up with functions that follow the rules I've laid down
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Classes
 \end_layout
@@ -1494,19 +1574,566 @@ ties.
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-See 
+\begin_layout Subsection
+
 \series bold
 SOLID
+\end_layout
+
+\begin_layout Itemize
+Good software systems begin with clean code.
+ On the one hand, if the bricks aren't well made, the architecture of the
+ building doesn't matter much.
+ On the other hand, you can make a substantial mess with well-made bricks.
+ This is where the SOLID principles come in.
+ They were grouped and stabilized in early 2000s.
+\end_layout
+
+\begin_layout Itemize
+The SOLID principles tell us how to arrange our functions and data structures
+ into classes, and how those classes should be interconnected.
+ The use of the word “class” does not imply that these principles are applicable
+ only to object-oriented software.
+ A class is simply a coupled grouping of functions and data.
+ Every software system has such groupings, whether they are called classes
+ or not.
+ The SOLID principles apply to those groupings.
+\end_layout
+
+\begin_layout Itemize
+The goal of the principles is the creation of mid-level (module level) software
+ structures that: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+tolerate change, 
+\end_layout
+
+\begin_layout Itemize
+are easy to understand, and 
+\end_layout
+
+\begin_layout Itemize
+are the basis of components that can be used in many software systems.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+SRP (The Single Responsibility Principle)
+\end_layout
+
+\begin_layout Itemize
+It states that a class or module (or a function) should have one, and only
+ one, reason to change (responsibility).
+ This principle gives us both a definition of responsibility, and a guidelines
+ for class size.
+ Classes should have one responsibility—one reason to change.
+ Each small class encapsulates a single responsibility, has a single reason
+ to change, and collaborates with a few others to achieve the desired system
+ behaviors.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Gather together those things that change for the same reason, and separate
+ those things that change for different reasons.
+\end_layout
+
+\begin_layout Itemize
+It has an inappropriate name, it is very misunderstood by programmers and
+ does not mean that every module should do just one thing.
+ Make no mistake, there is a principle like that.
+ A function should do one, and only one, thing.
+ We use that principle when we are refactoring large functions into smaller
+ functions; we use it at the lowest levels.
+ But it is not one of the SOLID principles - it is not the SRP.
+\end_layout
+
+\begin_layout Itemize
+Software systems are changed to satisfy users and stakeholders; those users
+ and stakeholders are the “reason to change” that the principle is talking
+ about.
+ Indeed, we can rephrase the principle to say this: A module should be responsib
+le to one, and only one, user or stakeholder.
+ Unfortunately, the words “user” and “stakeholder” aren't really the right
+ words to use here.
+ There will likely be more than one user or stakeholder who wants the system
+ changed in the same way.
+ Instead, we’re really referring to a group—one or more people who require
+ that change.
+ We’ll refer to that group as an actor.
+ And by module we mean source file for example.
+ Thus the final version of the SRP is: A module should be responsible to
+ one, and only one, actor.
+\end_layout
+
+\begin_layout Subsubsection
+OCP (The Open-Closed Principle)
+\end_layout
+
+\begin_layout Itemize
+Bertrand Meyer made this principle famous in the 1988.
+ The gist is that for software systems to be easy to change, they must be
+ designed to allow the behavior of those systems to be changed by adding
+ new code, rather than changing existing code: 
+\series bold
+A software artifact should be open for extension but closed for modification.
+\end_layout
+
+\begin_layout Itemize
+We want to structure our systems so that we muck with as little as possible
+ when we update them with new or changed features.
+ In an ideal system, we incorporate new features by extending the system,
+ not by making modifications to existing code.
+\end_layout
+
+\begin_layout Itemize
+Most students of software design recognize the OCP as a principle that guides
+ them in the design of classes and modules.
+ But the principle takes on even greater significance when we consider the
+ level of architectural components.
+ If component A should be protected from changes in component B, then component
+ B should depend on component A.
+ Why should A hold such a privileged position? Because it contains the business
+ rules.
+ Higher-level components in a hierarchy are protected from the changes made
+ to lower-level components.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The OCP is one of the driving forces behind the architecture of systems.
+
 \series default
- (mostly SRP, Open-Closed Principle, and DIP).
+ The goal is to make the system easy to extend without incurring a high
+ impact of change.
+ This goal is accomplished by partitioning the system into components, and
+ arranging those components into a 
+\series bold
+dependency hierarchy that protects higher-level components from changes
+ in lower-level components.
+\end_layout
+
+\begin_layout Subsubsection
+LSP (The Liskov Substitution Principle)
+\end_layout
+
+\begin_layout Itemize
+Barbara Liskov’s famous definition of subtypes, from 1988.
+\end_layout
+
+\begin_layout Itemize
+In short, this principle says that to build software systems from interchangeabl
+e parts, those parts must adhere to a contract that allows those parts to
+ be substituted one for another.
+\end_layout
+
+\begin_layout Itemize
+So, if you have a base type, and a subtype, that subclass should be substitutabl
+e for the base class (at any point in a program).
+\end_layout
+
+\begin_layout Itemize
+What this practically means is that a 
+\series bold
+method in a subclass must receive everything that base class is expecting
+ to be able to receive, but it may also expect a bit more 
+\series default
+(superset).
+ What a
+\series bold
+ method in a subclass can return, must be the same as in base class, or
+ just its subset
+\series default
+.
+ Also, a 
+\series bold
+set of possible states of subclass must either be the same as in base class,
+ or their subset
+\series default
+.
+
+\series bold
+ So basically, everything base class can do, must do also derived class
+ (plus, of course, something more).
+ 
+\series default
+See videos [5:30]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=bVwZquRH1Vk&list=PLrhzvIcii6GMQceffIgKCRK98yTm
+0oolm&index=3}}
+\end_layout
+
+\end_inset
+
+ and [10:30]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=ObHQHszbIcE&list=PLrhzvIcii6GMsfGSgRL1xmS3Bvo4
+TPliQ}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Some people (also see the videos above) recommend that composition si better
+ than inheritance.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So basically, you are liberal what to receive, but conservative what to
+ send (if people were like this, world would be fantastic).
+ No unexpected surprises, so that you may 'count' on subclass.
+ In reality, we mostly do it wrong - we are subclassing 'too much'.
+ You are maybe overusing inheritance in places where inheritance shouldn't
+ actually be used.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Derived classes must be usable through the base class interface, without
+ the need for the user to know the difference.
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{ https://www.youtube.com/watch?v=TMuno5RZNeE}}
+\end_layout
+
+\end_inset
+
+ For example: 
+\begin_inset Formula $Client\rightarrow AbstractServer\leftarrowtriangle ConcreteServer$
+\end_inset
+
+, and we should be able to substitute that 
+\begin_inset Formula $AbstractServer$
+\end_inset
+
+ with 
+\begin_inset Formula $ConcreteServer$
+\end_inset
+
+ and the 
+\begin_inset Formula $Client$
+\end_inset
+
+ shouldn't know the difference.
+ This is a simple polymorphism.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A simple violation of substitutability, can cause a system’s architecture
+ to be polluted with a significant amount of extra mechanisms.
+\end_layout
+
+\begin_layout Itemize
+This is probably the most technical of the 5 SOLID principles and the one
+ I would guess fewest people consider much.
+ However, it does have some important consequences for designing object-oriented
+ software.
+\end_layout
+
+\begin_layout Itemize
+If we can rely on the LSP, it allows us to use polymorphism reliably in
+ our code.
+ Polymorphism is a key way to avoid repetition in code as it allows you
+ to maximize the generality of the code you are writing.
+\end_layout
+
+\begin_layout Subsubsection
+ISP (The Interface Segregation Principle)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+This principle advises software designers to avoid depending on things that
+ they don’t use.
+
+\series default
+ The lesson here is that depending on something that carries baggage that
+ you don’t need can cause you troubles that you didn't expect.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+It says that it is better to have smaller interfaces, rather than a few
+ very large interfaces.
+ But be careful, this depends on a given project and your requirements!
+ 
+\series default
+Small can mean different things across the projects.
+ In this way, we are favoring composition over inheritance, and decoupling
+ over coupling.
+ If you are thinking about microservices, it is basically the same thing
+ (we are creating objects with small responsibilities and then we are composing
+ them together).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=xahwVmf8itI&list=PLrhzvIcii6GMQceffIgKCRK98yTm
+0oolm&index=4}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In general, it is harmful to depend on modules that contain more than you
+ need.
+ This is obviously true for source code dependencies that can force unnecessary
+ recompilation and redeployment—but it is also true at a much higher, architectu
+ral level.
+\end_layout
+
+\begin_layout Itemize
+For example, consider that an architect is working on a system, 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ He wants to include a certain framework, 
+\begin_inset Formula $F$
+\end_inset
+
+, into the system.
+ Now suppose that the authors of 
+\begin_inset Formula $F$
+\end_inset
+
+ have bound it to a particular database, 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $S$
+\end_inset
+
+ depends on 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ which depends on 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Now suppose that 
+\begin_inset Formula $D$
+\end_inset
+
+ contains features that 
+\begin_inset Formula $F$
+\end_inset
+
+ does not use and, therefore, that 
+\begin_inset Formula $S$
+\end_inset
+
+ does not care about.
+ Changes to those features within 
+\begin_inset Formula $D$
+\end_inset
+
+ may well force the redeployment of 
+\begin_inset Formula $F$
+\end_inset
+
+ and, therefore, the redeployment of 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Even worse, a failure of one of the features within 
+\begin_inset Formula $D$
+\end_inset
+
+ may cause failures in 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+DIP (The Dependency Inversion Principle)
+\end_layout
+
+\begin_layout Itemize
+In essence, the DIP says that our classes should depend upon abstractions,
+ not on concrete details.
+ An example, instead of depend on an implementation details of some concrete
+ class, it would be better to depend on an interface instead.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+High-level modules should not depend on low-level modules.
+ Both should depend on abstractions.
+\end_layout
+
+\begin_layout Itemize
+Abstractions should not depend on details.
+ Details should depend on abstractions.
+\end_layout
+
+\begin_layout Itemize
+The "inversion" concept does not mean that lower-level layers depend on
+ higher-level layers.
+ Both layers should depend on abstractions that draw the behavior needed
+ by higher-level layers.
+\end_layout
+
+\begin_layout Itemize
+The code that implements high-level policy should not depend on the code
+ that implements low-level details.
+ Rather, details should depend on policies.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In a statically typed language, like Java, this means that the use, import,
+ and include statements should refer only to source modules containing interface
+s, abstract classes, or some other kind of abstract declaration.
+ Nothing concrete should be depended on.
+ The same rule applies for dynamically typed languages, like Ruby and Python.
+ Source code dependencies should not refer to concrete modules.
+ However, in these languages it is a bit harder to define what a concrete
+ module is.
+ In particular, it is any module in which the functions being called are
+ implemented.
+ Clearly, treating this idea as a rule is unrealistic, because software
+ systems must depend on many concrete facilities.
+ For example, the String class in Java is concrete, and it would be unrealistic
+ to try to force it to be abstract.
+ The source code dependency on the concrete java.lang.string cannot, and should
+ not, be avoided.
+ By comparison, the String class is very stable.
+ Changes to that class are very rare and tightly controlled.
+ Programmers and architects do not have to worry about frequent and capricious
+ changes to String.
+ We tolerate such concrete dependencies because we know we can rely on them
+ not to change.
+\end_layout
+
+\begin_layout Itemize
+Good software designers and architects work hard to reduce the volatility
+ of interfaces.
+ They try to find ways to add functionality to implementations without making
+ changes to the interfaces.
+\end_layout
+
+\begin_layout Itemize
+DIP violations cannot be entirely removed, but they can be gathered into
+ a small number of concrete components and kept separate from the rest of
+ the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/DIP_application.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of DIP application.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 System Level
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 “
 \emph on
 Complexity kills.
@@ -1826,546 +2453,6 @@ Our goal is to keep our overall system small while we are also keeping our
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-SOLID
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Good software systems begin with clean code.
- On the one hand, if the bricks aren't well made, the architecture of the
- building doesn't matter much.
- On the other hand, you can make a substantial mess with well-made bricks.
- This is where the SOLID principles come in.
- They were grouped and stabilized in early 2000s.
-\end_layout
-
-\begin_layout Itemize
-The SOLID principles tell us how to arrange our functions and data structures
- into classes, and how those classes should be interconnected.
- The use of the word “class” does not imply that these principles are applicable
- only to object-oriented software.
- A class is simply a coupled grouping of functions and data.
- Every software system has such groupings, whether they are called classes
- or not.
- The SOLID principles apply to those groupings.
-\end_layout
-
-\begin_layout Itemize
-The goal of the principles is the creation of mid-level (module level) software
- structures that: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-tolerate change, 
-\end_layout
-
-\begin_layout Itemize
-are easy to understand, and 
-\end_layout
-
-\begin_layout Itemize
-are the basis of components that can be used in many software systems.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-SRP (The Single Responsibility Principle)
-\end_layout
-
-\begin_layout Itemize
-It states that a class or module (or a function) should have one, and only
- one, reason to change (responsibility).
- This principle gives us both a definition of responsibility, and a guidelines
- for class size.
- Classes should have one responsibility—one reason to change.
- Each small class encapsulates a single responsibility, has a single reason
- to change, and collaborates with a few others to achieve the desired system
- behaviors.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Gather together those things that change for the same reason, and separate
- those things that change for different reasons.
-\end_layout
-
-\begin_layout Itemize
-It has an inappropriate name, it is very misunderstood by programmers and
- does not mean that every module should do just one thing.
- Make no mistake, there is a principle like that.
- A function should do one, and only one, thing.
- We use that principle when we are refactoring large functions into smaller
- functions; we use it at the lowest levels.
- But it is not one of the SOLID principles - it is not the SRP.
-\end_layout
-
-\begin_layout Itemize
-Software systems are changed to satisfy users and stakeholders; those users
- and stakeholders are the “reason to change” that the principle is talking
- about.
- Indeed, we can rephrase the principle to say this: A module should be responsib
-le to one, and only one, user or stakeholder.
- Unfortunately, the words “user” and “stakeholder” aren't really the right
- words to use here.
- There will likely be more than one user or stakeholder who wants the system
- changed in the same way.
- Instead, we’re really referring to a group—one or more people who require
- that change.
- We’ll refer to that group as an actor.
- And by module we mean source file for example.
- Thus the final version of the SRP is: A module should be responsible to
- one, and only one, actor.
-\end_layout
-
-\begin_layout Description
-OCP (The Open-Closed Principle)
-\end_layout
-
-\begin_layout Itemize
-Bertrand Meyer made this principle famous in the 1988.
- The gist is that for software systems to be easy to change, they must be
- designed to allow the behavior of those systems to be changed by adding
- new code, rather than changing existing code: 
-\series bold
-A software artifact should be open for extension but closed for modification.
-\end_layout
-
-\begin_layout Itemize
-We want to structure our systems so that we muck with as little as possible
- when we update them with new or changed features.
- In an ideal system, we incorporate new features by extending the system,
- not by making modifications to existing code.
-\end_layout
-
-\begin_layout Itemize
-Most students of software design recognize the OCP as a principle that guides
- them in the design of classes and modules.
- But the principle takes on even greater significance when we consider the
- level of architectural components.
- If component A should be protected from changes in component B, then component
- B should depend on component A.
- Why should A hold such a privileged position? Because it contains the business
- rules.
- Higher-level components in a hierarchy are protected from the changes made
- to lower-level components.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-The OCP is one of the driving forces behind the architecture of systems.
-
-\series default
- The goal is to make the system easy to extend without incurring a high
- impact of change.
- This goal is accomplished by partitioning the system into components, and
- arranging those components into a 
-\series bold
-dependency hierarchy that protects higher-level components from changes
- in lower-level components.
-\end_layout
-
-\begin_layout Description
-LSP (The Liskov Substitution Principle)
-\end_layout
-
-\begin_layout Itemize
-Barbara Liskov’s famous definition of subtypes, from 1988.
-\end_layout
-
-\begin_layout Itemize
-In short, this principle says that to build software systems from interchangeabl
-e parts, those parts must adhere to a contract that allows those parts to
- be substituted one for another.
-\end_layout
-
-\begin_layout Itemize
-So, if you have a base type, and a subtype, that subclass should be substitutabl
-e for the base class (at any point in a program).
-\end_layout
-
-\begin_layout Itemize
-What this practically means is that a 
-\series bold
-method in a subclass must receive everything that base class is expecting
- to be able to receive, but it may also expect a bit more 
-\series default
-(superset).
- What a
-\series bold
- method in a subclass can return, must be the same as in base class, or
- just its subset
-\series default
-.
- Also, a 
-\series bold
-set of possible states of subclass must either be the same as in base class,
- or their subset
-\series default
-.
-
-\series bold
- So basically, everything base class can do, must do also derived class
- (plus, of course, something more).
- 
-\series default
-See videos [5:30]
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\backslash
-url{https://www.youtube.com/watch?v=bVwZquRH1Vk&list=PLrhzvIcii6GMQceffIgKCRK98yTm
-0oolm&index=3}}
-\end_layout
-
-\end_inset
-
- and [10:30]
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\backslash
-url{https://www.youtube.com/watch?v=ObHQHszbIcE&list=PLrhzvIcii6GMsfGSgRL1xmS3Bvo4
-TPliQ}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Some people (also see the videos above) recommend that composition si better
- than inheritance.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-So basically, you are liberal what to receive, but conservative what to
- send (if people were like this, world would be fantastic).
- No unexpected surprises, so that you may 'count' on subclass.
- In reality, we mostly do it wrong - we are subclassing 'too much'.
- You are maybe overusing inheritance in places where inheritance shouldn't
- actually be used.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Derived classes must be usable through the base class interface, without
- the need for the user to know the difference.
-\series default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\backslash
-url{ https://www.youtube.com/watch?v=TMuno5RZNeE}}
-\end_layout
-
-\end_inset
-
- For example: 
-\begin_inset Formula $Client\rightarrow AbstractServer\leftarrowtriangle ConcreteServer$
-\end_inset
-
-, and we should be able to substitute that 
-\begin_inset Formula $AbstractServer$
-\end_inset
-
- with 
-\begin_inset Formula $ConcreteServer$
-\end_inset
-
- and the 
-\begin_inset Formula $Client$
-\end_inset
-
- shouldn't know the difference.
- This is a simple polymorphism.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-A simple violation of substitutability, can cause a system’s architecture
- to be polluted with a significant amount of extra mechanisms.
-\end_layout
-
-\begin_layout Itemize
-This is probably the most technical of the 5 SOLID principles and the one
- I would guess fewest people consider much.
- However, it does have some important consequences for designing object-oriented
- software.
-\end_layout
-
-\begin_layout Itemize
-If we can rely on the LSP, it allows us to use polymorphism reliably in
- our code.
- Polymorphism is a key way to avoid repetition in code as it allows you
- to maximize the generality of the code you are writing.
-\end_layout
-
-\begin_layout Description
-ISP (The Interface Segregation Principle)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-This principle advises software designers to avoid depending on things that
- they don’t use.
-
-\series default
- The lesson here is that depending on something that carries baggage that
- you don’t need can cause you troubles that you didn't expect.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-It says that it is better to have smaller interfaces, rather than a few
- very large interfaces.
- But be careful, this depends on a given project and your requirements!
- 
-\series default
-Small can mean different things across the projects.
- In this way, we are favoring composition over inheritance, and decoupling
- over coupling.
- If you are thinking about microservices, it is basically the same thing
- (we are creating objects with small responsibilities and then we are composing
- them together).
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\backslash
-url{https://www.youtube.com/watch?v=xahwVmf8itI&list=PLrhzvIcii6GMQceffIgKCRK98yTm
-0oolm&index=4}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-In general, it is harmful to depend on modules that contain more than you
- need.
- This is obviously true for source code dependencies that can force unnecessary
- recompilation and redeployment—but it is also true at a much higher, architectu
-ral level.
-\end_layout
-
-\begin_layout Itemize
-For example, consider that an architect is working on a system, 
-\begin_inset Formula $S$
-\end_inset
-
-.
- He wants to include a certain framework, 
-\begin_inset Formula $F$
-\end_inset
-
-, into the system.
- Now suppose that the authors of 
-\begin_inset Formula $F$
-\end_inset
-
- have bound it to a particular database, 
-\begin_inset Formula $D$
-\end_inset
-
-.
- So 
-\begin_inset Formula $S$
-\end_inset
-
- depends on 
-\begin_inset Formula $F$
-\end_inset
-
-.
- which depends on 
-\begin_inset Formula $D$
-\end_inset
-
-.
- Now suppose that 
-\begin_inset Formula $D$
-\end_inset
-
- contains features that 
-\begin_inset Formula $F$
-\end_inset
-
- does not use and, therefore, that 
-\begin_inset Formula $S$
-\end_inset
-
- does not care about.
- Changes to those features within 
-\begin_inset Formula $D$
-\end_inset
-
- may well force the redeployment of 
-\begin_inset Formula $F$
-\end_inset
-
- and, therefore, the redeployment of 
-\begin_inset Formula $S$
-\end_inset
-
-.
- Even worse, a failure of one of the features within 
-\begin_inset Formula $D$
-\end_inset
-
- may cause failures in 
-\begin_inset Formula $F$
-\end_inset
-
- and 
-\begin_inset Formula $S$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-DIP (The Dependency Inversion Principle)
-\end_layout
-
-\begin_layout Itemize
-In essence, the DIP says that our classes should depend upon abstractions,
- not on concrete details.
- An example, instead of depend on an implementation details of some concrete
- class, it would be better to depend on an interface instead.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-High-level modules should not depend on low-level modules.
- Both should depend on abstractions.
-\end_layout
-
-\begin_layout Itemize
-Abstractions should not depend on details.
- Details should depend on abstractions.
-\end_layout
-
-\begin_layout Itemize
-The "inversion" concept does not mean that lower-level layers depend on
- higher-level layers.
- Both layers should depend on abstractions that draw the behavior needed
- by higher-level layers.
-\end_layout
-
-\begin_layout Itemize
-The code that implements high-level policy should not depend on the code
- that implements low-level details.
- Rather, details should depend on policies.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-In a statically typed language, like Java, this means that the use, import,
- and include statements should refer only to source modules containing interface
-s, abstract classes, or some other kind of abstract declaration.
- Nothing concrete should be depended on.
- The same rule applies for dynamically typed languages, like Ruby and Python.
- Source code dependencies should not refer to concrete modules.
- However, in these languages it is a bit harder to define what a concrete
- module is.
- In particular, it is any module in which the functions being called are
- implemented.
- Clearly, treating this idea as a rule is unrealistic, because software
- systems must depend on many concrete facilities.
- For example, the String class in Java is concrete, and it would be unrealistic
- to try to force it to be abstract.
- The source code dependency on the concrete java.lang.string cannot, and should
- not, be avoided.
- By comparison, the String class is very stable.
- Changes to that class are very rare and tightly controlled.
- Programmers and architects do not have to worry about frequent and capricious
- changes to String.
- We tolerate such concrete dependencies because we know we can rely on them
- not to change.
-\end_layout
-
-\begin_layout Itemize
-Good software designers and architects work hard to reduce the volatility
- of interfaces.
- They try to find ways to add functionality to implementations without making
- changes to the interfaces.
-\end_layout
-
-\begin_layout Itemize
-DIP violations cannot be entirely removed, but they can be gathered into
- a small number of concrete components and kept separate from the rest of
- the system.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename fig/DIP_application.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-An example of DIP application.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \end_body
 \end_document

@@ -138,6 +138,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/software_architecture_patterns_summary.png
+	scale 45
 
 \end_inset
 
@@ -491,6 +492,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/clean_architecture.png
+	scale 45
 
 \end_inset
 
@@ -652,7 +654,7 @@ Regardless of how they are eventually deployed, well-designed components
  independently developable.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Component Cohesion
 \end_layout
 
@@ -678,12 +680,13 @@ There are 3 principles of component cohesion.
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/cohension_principle_tension_diagram.png
+	scale 65
 
 \end_inset
 
@@ -730,7 +733,7 @@ The balance is almost always dynamic.
  to reusability.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 The Reuse/Release Equivalence Principle
@@ -767,7 +770,7 @@ Classes and modules that are grouped together into a component should be
  both to the author and to the users.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 The Common Closure Principle
@@ -833,7 +836,7 @@ The CCP tells us to separate classes into different components, if they
  Separate those things that change at different times or for different reasons.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 The Common Reuse Principle (CRP)
@@ -872,7 +875,7 @@ Therefore the CRP tells us more about which classes shouldn’t be together
  not be in the same component.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Component Coupling
 \end_layout
 
@@ -901,7 +904,7 @@ Any component that we expect to be volatile should not be depended on by
 The following principles deals with relationships between components.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 The Acyclic Dependencies Principle (ADP)
@@ -954,6 +957,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/new_component.png
+	scale 55
 
 \end_inset
 
@@ -978,7 +982,7 @@ New component.
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 Stable Dependencies Principle (SDP)
@@ -1010,6 +1014,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/stable_component.png
+	scale 45
 
 \end_inset
 
@@ -1056,6 +1061,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/unstable_component.png
+	scale 45
 
 \end_inset
 
@@ -1126,7 +1132,7 @@ Not all components should be stable.
  and some are stable.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 The Stable Abstractions Principle (SAP)
@@ -1164,7 +1170,7 @@ Implementation details - this is the source of the devil.
  then 2 implementation details - web and database.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Package by Layer
 \end_layout
 
@@ -1203,7 +1209,7 @@ The purpose of a layered architecture is to separate code that has the same
  This architecture is not ideal.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Package by Feature
 \end_layout
 
@@ -1220,7 +1226,7 @@ Uncle Bob often sees software development teams realize that they have problems
  In his opinion, both are sub-optimal.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Ports and Adapters
 \end_layout
 
@@ -1253,7 +1259,7 @@ package by layer
  in each package.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Package by Components
 \end_layout
 
@@ -1276,6 +1282,22 @@ A key benefit of the “package by component” approach is that if you’re wri
  the business logic is separate from database, but that’s a component implementa
 tion detail that consumers don’t need to know about.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1733,6 +1755,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/event_driven_architecture_mediator_topology.png
+	scale 50
 
 \end_inset
 
@@ -1815,6 +1838,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/event_driven_architecture_broker_topology.png
+	scale 50
 
 \end_inset
 
@@ -1965,6 +1989,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/microkernel_architecture_pattern.png
+	scale 50
 
 \end_inset
 
@@ -2146,6 +2171,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/space_based_architecture_pattern.png
+	scale 50
 
 \end_inset
 
@@ -2180,6 +2206,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/space_based_architecture_processing_unit_component.png
+	scale 50
 
 \end_inset
 
@@ -2546,6 +2573,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/microservices_architecture.png
+	scale 40
 
 \end_inset
 
@@ -2556,7 +2584,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Microservices architecture.
+Microservices architecture [CZ].
 \end_layout
 
 \end_inset
@@ -3200,7 +3228,7 @@ nce applications due to the distributed nature of the microservices architecture
 Patterns, Recommendations, or Solutions
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Pattern Topologies
 \end_layout
 
@@ -3251,7 +3279,7 @@ Centralized messaging topology, which is similar to the previous application
  areas of the system).
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Saga
 \end_layout
 
@@ -3505,7 +3533,7 @@ It is potentially error prone since the developer might forget to publish
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph*
+\begin_layout Subsubsection
 Kappa Architecture
 \end_layout
 
@@ -3514,12 +3542,13 @@ Kappa Architecture
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/microservices_kappa_architecture.png
+	scale 50
 
 \end_inset
 
@@ -3530,7 +3559,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Microservices architecture with Kappa topology.
+Microservices architecture with Kappa topology [CZ].
 \end_layout
 
 \end_inset

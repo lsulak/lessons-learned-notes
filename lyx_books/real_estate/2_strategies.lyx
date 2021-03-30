@@ -444,6 +444,22 @@ Calculate ROI:
 
 \end_deeper
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Rules of thumb 
 \end_layout
@@ -609,6 +625,22 @@ It works the other way around too.
  Multiply your rent by 12 and divide by 5%.
  So if your rent is $1,000, then paying $1,000 in rent is financially equivalent
  in terms of unrecoverable costs to owning $240,000 house.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

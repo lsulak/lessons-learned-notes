@@ -140,30 +140,8 @@ Bayesian methods are those that explicitly apply Bayes' Theorem for problems
 Statistical learning algorithms.
 \end_layout
 
-\begin_layout Description
-Permutations
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-vs
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Combinations
+\begin_layout Subsection
+Permutations vs Combinations
 \end_layout
 
 \begin_layout Itemize
@@ -268,7 +246,7 @@ With the options permutation, combination, with replacement, and without
  to arise in a basic probability world.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection
 Probabilities
 \end_layout
 
@@ -388,6 +366,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/join_probabilities.png
+	scale 50
 
 \end_inset
 
@@ -423,6 +402,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/joint_probability2.png
+	scale 50
 
 \end_inset
 
@@ -671,6 +651,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/marginal_probabilities.png
+	scale 25
 
 \end_inset
 
@@ -706,6 +687,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/marginal_probabilities2.png
+	scale 65
 
 \end_inset
 
@@ -731,19 +713,8 @@ Marginal probabilities and the sum rule 2.
 \end_layout
 
 \end_deeper
-\begin_layout Description
-Binomial
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Theorem
+\begin_layout Subsection
+Binomial Theorem
 \end_layout
 
 \begin_layout Itemize
@@ -845,52 +816,8 @@ For example, let's say I want to know what is the probability of getting
  Binomial theorem will tell me the answer.
 \end_layout
 
-\begin_layout Description
-Bayes
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Theorem
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-for
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-discrete
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-features:
+\begin_layout Subsubsection
+Bayes Theorem For Discrete Features
 \end_layout
 
 \begin_layout Standard
@@ -1081,12 +1008,13 @@ Example of such usage of Bayes Theorem from above - we got 2 urns:
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/bayes_theorem_example.png
+	scale 20
 
 \end_inset
 
@@ -1116,12 +1044,13 @@ Bayes theorem, example application.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/bayes_theorem_example2.png
+	scale 20
 
 \end_inset
 
@@ -1158,6 +1087,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/bayes_theorem_example3.png
+	scale 50
 
 \end_inset
 
@@ -1263,12 +1193,13 @@ An example (can be taken as an interview question) is on figure below.
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/bayesian_rule_example.jpg
+	scale 14
 
 \end_inset
 
