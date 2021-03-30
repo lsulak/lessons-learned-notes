@@ -1,0 +1,2585 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Linux Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Interviews
+\end_layout
+
+\begin_layout Itemize
+(Technical interviews) Note down, and replicate the question! After all
+ is written down and properly understood, you can start with solution.
+ So that me and interviewer are not disconnected from each other.
+ Clarify the question! Don't waste time if/when you don't fully understand
+ the question! Write it down and also maybe along with some example! Define
+ inputs and outputs of some algorithm, if suitable.
+\end_layout
+
+\begin_layout Itemize
+Do not talk only about the job that already 
+\emph on
+exists
+\emph default
+, but about the job that you hope the organization will 
+\emph on
+create
+\emph default
+ for you.
+ For this, it is necessary to know:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+what do you like about the organization,
+\end_layout
+
+\begin_layout Itemize
+what needs and challenges (don't use the word 
+\begin_inset Quotes eld
+\end_inset
+
+problems
+\begin_inset Quotes erd
+\end_inset
+
+) can be seen in a given field,
+\end_layout
+
+\begin_layout Itemize
+what skills do you have to help them (with concrete examples from the past),
+ and what is unique about you and these skills, and
+\end_layout
+
+\begin_layout Itemize
+what will them cost them not to hire you in the long run.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Observe 
+\emph on
+50-50
+\emph default
+ rule.
+ Mix speaking and listening fifty-fifty in the interviews.
+ Answer something between 20 seconds to 2 minutes.
+\end_layout
+
+\begin_layout Itemize
+What is success? (Bessie Anderson Stanley (1879–1952))
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To laugh often and much;
+\end_layout
+
+\begin_layout Itemize
+To win the respect of intelligent people and the affection of children;
+\end_layout
+
+\begin_layout Itemize
+To earn the appreciation of honest critics and endure the betrayal of false
+ friends;
+\end_layout
+
+\begin_layout Itemize
+To appreciate beauty;
+\end_layout
+
+\begin_layout Itemize
+To find the best in others;
+\end_layout
+
+\begin_layout Itemize
+To leave the world a bit better, whether by a healthy child, a garden patch
+ or a redeemed social condition;
+\end_layout
+
+\begin_layout Itemize
+To know even one life has breathed easier because you have lived;
+\end_layout
+
+\begin_layout Itemize
+This is to have succeeded.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+CV and Linkedin
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Show what you did, how you did it, and what the results were.
+
+\series default
+ Ideally, you should try to make the results "measurable" somehow.
+\end_layout
+
+\begin_layout Itemize
+CV shouldn't be written in the first person.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CV
+\series default
+ 
+\series bold
+and Linkedin should highlight your accomplishments, not job duties or descriptio
+ns.
+ 
+\series default
+Don't be task-based, be achievement-based.
+ Write your resume to emphasize what you did well, not what your duties
+ entailed.
+\end_layout
+
+\begin_layout Itemize
+For US positions, do not include age, marital status, or nationality.
+ This sort of 
+\series bold
+personal information is not appreciated
+\series default
+ by companies, as it creates a legal liability for them.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Being too language focused:
+\series default
+ When recruiters at some of the top tech companies see resumes that list
+ every flavor of Java on their resume, they make negative assumptions about
+ the caliber of candidate.
+ There is a belief in many circles that the best software engineers don't
+ define themselves around a particular language.
+ Thus, when they see a candidate seems to flaunt which specific versions
+ of a language they know, recruiters will often bucket the candidate as
+ "not our kind of person.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cover Letter
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Brief cover that summarizes the whole long resume.
+ It is a report, and you have to make it personal and specific to a concrete
+ job.
+ Research the companies!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Questions for Employer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Technical questions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Code reviews? Coding standards? Agile team?
+\end_layout
+
+\begin_layout Itemize
+Who is in team? (seniors, architects, ...)
+\end_layout
+
+\begin_layout Itemize
+Ratio of testers to developers to PMs? What is their interaction like?
+\end_layout
+
+\begin_layout Itemize
+Architecture?
+\end_layout
+
+\begin_layout Itemize
+My duties? What should I accomplish? Report to whom?
+\end_layout
+
+\begin_layout Itemize
+How would I be evaluated, how often, and by whom?
+\end_layout
+
+\begin_layout Itemize
+If you don’t mind my asking, I’m curious as to why you yourself decided
+ to work at this organization? What don’t you like about this company (what
+ is this company’s greatest flaw)?
+\end_layout
+
+\begin_layout Itemize
+What would you expect from me in the first 90 days?
+\end_layout
+
+\begin_layout Itemize
+Room for initiative and freedom, vs strict specifications from someone.
+\end_layout
+
+\begin_layout Itemize
+Operating system, etc.?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Non-technical questions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+About position
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why has this position become available? (Someone left / was promoted, or
+ they are expanding a team, or creating a new one.
+ Is there a possibility to become teamleader in the future?)
+\end_layout
+
+\begin_layout Itemize
+How would you define success in this or related position?
+\end_layout
+
+\begin_layout Itemize
+How do you see this position evolving in the next 3 years?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Company
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What business problem are they trying to solve? (Everybody likes a candidate
+ who shows genuine interest, motivation, and curiosity for a problem that
+ is close to their hearts.)
+\end_layout
+
+\begin_layout Itemize
+What are the company’s highest goals for the next year?
+\end_layout
+
+\begin_layout Itemize
+What significant changes has this company gone through in the past 5 years?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Benefits question
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Type of employment, flexibility, growth opportunities, perks (table tennis,
+ gym, ...).
+\end_layout
+
+\begin_layout Itemize
+Benefits, stock options, annual bonuses?
+\end_layout
+
+\begin_layout Itemize
+The ability to work from home?
+\end_layout
+
+\begin_layout Itemize
+Possibility to be transferred to another country or team?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+General Things to Know
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+STAR method - Situation, Target, Action, Result
+\series default
+ - you can use this for solving almost any problem using this 
+\begin_inset Quotes eld
+\end_inset
+
+template
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Throughout the interview, keep in mind: employers don’t really care about
+ your past; they only ask about it, in order to try to predict your future
+ (behavior) with them, if they decide to hire you.
+\end_layout
+
+\begin_layout Itemize
+Do not bad-mouth your previous employer(s) during the interview, even if
+ they were terrible people.
+ Therefore, during the hiring-interview, before you answer any question
+ the employer asks you about your past, you should pause to think, “What
+ fear about the future caused them to ask this question about my past?”
+\end_layout
+
+\begin_layout Itemize
+Basically approach them not as a “job-beggar” but humbly as a resource person,
+ able to produce better work for that organization than any of the people
+ who worked in that position, previously.
+\end_layout
+
+\begin_layout Itemize
+Salary negotiation should only happen when they have definitely said they
+ want you; prior to that, it’s pointless.
+ Before accepting a job offer, always ask about salary.
+ However, it has been proven that a person who mention salary (as a number)
+ first, generally loses.
+ Research the range that the employer likely has in mind, and then define
+ an interrelated range for yourself, relative to the employer’s range.
+\end_layout
+
+\begin_layout Itemize
+Arrogance is a red flag, but you still want to make yourself sound impressive.
+ So how do you make yourself sound good without being arrogant? By being
+ specific!
+\end_layout
+
+\begin_layout Itemize
+After an interview, when it went good, you may ask: “When may I expect to
+ hear from you?”
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flower exercise
+\series default
+ - it is a self-inventory technique with 7 petals, because there are 7 ways
+ of thinking about yourself, or 7 ways of describing who you are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+people
+\series default
+ - the kinds of people you most prefer to work with
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+workplace
+\series default
+ - your favorite workplace, or working conditions—indoors/outdoors, small
+ company/large company, windows/no windows, etc
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+skills
+\series default
+ - what you can do, and what your favorite functional/transferable skills
+ are
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+purpose
+\series default
+ - your goals or sense of mission and purpose for your life.
+ Alternatively, or in addition, you can get even more particular and describe
+ the goals or mission you want the organization to have, where you decide
+ to work
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+knowledge
+\series default
+ - what you already know—and what your favorite knowledge or interests are
+ among all that stuff stored away in your head
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+salary
+\series default
+ - your preferred salary and level of responsibility— working by yourself,
+ or as a member of a team, or supervising others, or running the show—that
+ you feel most fitted for, by experience, temperament, and appetite
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+geography
+\series default
+ - your preferred surroundings—here or abroad, warm/cold, north/south, east/west
+, mountains/coast, urban/suburban/rural/rustic - where you’d be happiest,
+ do your best work, and would most love to live, all year long, or part
+ of the year, or vacation time, or sabbatical - either now, five years from
+ now, or at retirement
+\end_layout
+
+\begin_layout Standard
+What the Flower Diagram does is describe who you are in all 7 ways, summarized
+ on one page, in one graphic.
+ After all, you are not just one of these things; you are all of these things.
+ The Flower Diagram is a complete picture of you.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Behavioral Questions
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Getting to Know You
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What motivates you at work?
+\end_layout
+
+\begin_layout Itemize
+Describe what your preferred supervisor - employee relationship looks like.
+\end_layout
+
+\begin_layout Itemize
+What two or three things are most important to you in your work?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Knowledge & Interests
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What do you think are the most pressing issues in this field?
+\end_layout
+
+\begin_layout Itemize
+What challenges does this position present for you?
+\end_layout
+
+\begin_layout Itemize
+What do you think it takes to be successful in this organization?
+\end_layout
+
+\begin_layout Itemize
+What do you know about our company?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Readiness & Experience
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is your greatest strength/weakness?
+\end_layout
+
+\begin_layout Itemize
+Tell me about a problem you have encountered and how you dealt with it?
+\end_layout
+
+\begin_layout Itemize
+Tell me about a mistake you made and what you learned from it.
+\end_layout
+
+\begin_layout Itemize
+What experience do you have in this field?
+\end_layout
+
+\begin_layout Itemize
+How have you prepared yourself to switch fields?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Goals, Motivation & Values
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why do you think you will like this field?
+\end_layout
+
+\begin_layout Itemize
+Describe a time when you saw some problem and took the initiative to correct
+ it rather than waiting for someone else to do it.
+\end_layout
+
+\begin_layout Itemize
+Give me an example of a time you were able to be creative with your work.
+ What was exciting or difficult about it?
+\end_layout
+
+\begin_layout Itemize
+Tell me about a time you were dissatisfied in your work.
+ What could have been done to make it better?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Teamwork
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Describe a time when you worked closely with someone who had a very different
+ personality than you.
+\end_layout
+
+\begin_layout Itemize
+Tell me about a time you faced a conflict while working on a team.
+ How did you handle the conflict?
+\end_layout
+
+\begin_layout Itemize
+Describe a time when you struggled to build a relationship with someone
+ important.
+\end_layout
+
+\begin_layout Itemize
+Tell me about a time you needed to get information from someone who wasn't
+ very responsive.
+ What did you do?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Ability to Adapt
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tell me about a time you were under a lot of pressure.
+ What was the situation and how did you get through it?
+\end_layout
+
+\begin_layout Itemize
+Describe a time when your team or company was undergoing change.
+ How did it impact you, and how did you adapt?
+\end_layout
+
+\begin_layout Itemize
+Tell me about your very first job.
+ What did you do to learn the ropes?
+\end_layout
+
+\begin_layout Itemize
+Tell me about a time you failed.
+ How did you deal with this situation?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Time Management Skills
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tell me about a long-term project that you managed.
+ How did you keep organized and make sure everything was moving along as
+ planned?
+\end_layout
+
+\begin_layout Itemize
+Tell me about a time you set a goal for yourself.
+ How did you ensure that you would meet your objective?
+\end_layout
+
+\begin_layout Itemize
+Give me an example of a time you managed multiple responsibilities.
+ How did you handle it?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Communication Skills
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tell me about a time you successfully persuaded someone to understand your
+ perspective at work.
+\end_layout
+
+\begin_layout Itemize
+Describe a time when you were the primary “expert”.
+ How did you ensure that everyone understood you?
+\end_layout
+
+\begin_layout Itemize
+Describe a time when you could only use written communication to get your
+ ideas across to your team.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Software Engineering Interview Preparation
+\end_layout
+
+\begin_layout Itemize
+These steps are good to perform during technical question:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Listen carefully.
+
+\series default
+ Listen to every detail.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Draw an example.
+
+\series default
+ Never try to solve it in your head and never use minimalist example.
+ Write specific and sufficiently large example, not some special case.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+State a brute force.
+ 
+\series default
+Write sub-optimal PoC that works.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Optimize.
+
+\series default
+ What you can - unused information, space / time trade-offs, using hash
+ table, ...
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Walk through.
+
+\series default
+ Go through your algorithm to see if it actually still works.
+ Write pseudo-code if you like.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Implement.
+ 
+\series default
+Yes, implementation is here, in such later 
+\begin_inset Quotes eld
+\end_inset
+
+phase
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Start with top left corner, write beautiful code with nicely named variables,
+ good spacing, and so on.
+ This part is very important.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Test.
+
+\series default
+ See if the implementation works.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+OO questions 
+\end_layout
+
+\begin_layout Standard
+These are mostly about demonstrating that you understand how to create elegant,
+ maintainable object-oriented code.
+ Poor performance on this type of question may raise serious red flags.
+ These questions are intentionally vague in order to test whether you'll
+ make assumptions or if you'll ask clarifying questions.
+ You may even want to go through the "six Ws": 
+\series bold
+who, what, where, when, how, 
+\series default
+and 
+\series bold
+why
+\series default
+.
+ There are multiple steps that needs to be taken:
+\end_layout
+
+\begin_layout Enumerate
+Handle ambiguity
+\end_layout
+
+\begin_layout Enumerate
+Define the core objects
+\end_layout
+
+\begin_layout Enumerate
+Analyze relationships
+\end_layout
+
+\begin_layout Enumerate
+Investigate actions
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Data Structures
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hash Tables (also known as Associative Arrays)
+\end_layout
+
+\begin_layout Itemize
+They are data structures, (Python 
+\emph on
+dict 
+\emph default
+implements it) that are associative arrays, that maps keys to values in
+ effective way (for highly effective lookup).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Very common implementation is with an array of linked lists (because of
+ possible collisions) and a hash code function.
+\end_layout
+
+\begin_layout Itemize
+A hash table uses a hash function to compute an index into an array of slots,
+ from which the correct value can be found.
+\end_layout
+
+\begin_layout Itemize
+Two different keys could have the same hash code, as there may be an infinite
+ number of keys and a finite number of ints.
+ Two different hash codes could, of course, map to the same index.
+\end_layout
+
+\begin_layout Itemize
+To retrieve the value pair by its key, you repeat this process.
+ Compute the hash code from the key, and then compute the index from the
+ hash code.
+ Then, search through the linked list for the value with this key.
+ If the number of collisions is very high, the worst case runtime is 
+\begin_inset Formula $O(N)$
+\end_inset
+
+, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of keys.
+ However, we generally assume a good implementation that keeps collisions
+ to a minimum, in which case the lookup time is 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Alternatively, we can implement the hash table with a balanced binary search
+ tree.
+ This gives us an 
+\begin_inset Formula $O(log\,N)$
+\end_inset
+
+ lookup time.
+ The advantage of this is potentially using less space, since we no longer
+ allocate a large array.
+ We can also iterate through the keys in order, which can be useful sometimes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Arrays = Lists
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They are automatically resizable.
+ The array or list will grow as you append items.
+ In some languages, like Java, arrays are fixed length.
+ The size is defined when you create the array.
+\end_layout
+
+\begin_layout Itemize
+An array that resizes itself as needed while still providing 
+\begin_inset Formula $O(1)$
+\end_inset
+
+ access.
+ A typical implementation is that when the array is full, the array doubles
+ in size.
+ Each doubling takes 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ time, but happens so rarely that its amortized insertion time is still
+ 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Linked Lists
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A linked list is a data structure that represents a sequence of nodes.
+ In a singly linked list, each node points to the next node in the linked
+ list.
+ A doubly linked list gives each node pointers to both the next node and
+ the previous node.
+\end_layout
+
+\begin_layout Itemize
+Unlike an array, a linked list does not provide constant time access to
+ a particular "index" within the list.
+ This means that if you'd like to find the Kth element in the list, you
+ will need to iterate through 
+\emph on
+K
+\emph default
+ elements.
+ The benefit of a linked list is that you can add and remove items from
+ the beginning of the list in constant time.
+ For specific applications, this can be useful.
+\end_layout
+
+\begin_layout Itemize
+A linked list saves memory.
+ It only allocates the memory required for values to be stored.
+ In arrays, you have to set an array size before filling it with values,
+ which can potentially waste memory.
+\end_layout
+
+\begin_layout Itemize
+Linked list nodes can live anywhere in the memory.
+ Whereas an array requires a sequence of memory to be initiated, as long
+ as the references are updated, each linked list node can be flexibly moved
+ to a different address.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Stacks & Queues
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A stack uses LIFO (last-in first-out) ordering.
+ There are 
+\emph on
+push(item), pop(), peek(), isEmpty() 
+\emph default
+operations.
+ Unlike an array, a stack does not offer constant-time access to the ith
+ item.
+ However, it does allow constant time adds and removes, as it doesn't require
+ shifting elements around.
+\end_layout
+
+\begin_layout Itemize
+A queue implements FIFO (first-in first-out) ordering.
+ There are 
+\emph on
+add(), remove(item), peek(), isEmpty() 
+\emph default
+operations.
+\end_layout
+
+\begin_layout Itemize
+One place where queues are often used is in breadth-first search or in implement
+ing a cache.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Heap
+\emph default
+ (as a datastructure, not heap in memory)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/data-structure-heap-23d4c78a6962}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Common implementation of a priority queue.
+ A priority queue contains items with some priority.
+ You can always take an item out in the priority order from a priority queue.
+ You can also use stack or queue for implementation of a priority queue,
+ but it works differently.
+ This is because the priority of an inserted item in stack increases, and
+ the priority of an inserted item in a queue decreases.
+\end_layout
+
+\begin_layout Itemize
+A heap is one of the tree structures and represented as a 
+\series bold
+binary tree
+\series default
+ (see below).
+\end_layout
+
+\begin_layout Itemize
+If you implement this structure with an array, you have to manipulate with
+ nodes/items by indices:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A root node | 
+\begin_inset Formula $i=1$
+\end_inset
+
+, the first item of the array
+\end_layout
+
+\begin_layout Itemize
+A parent node | 
+\begin_inset Formula $parent(i)=i/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A left child node | 
+\begin_inset Formula $left(i)=2i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A right child node | 
+\begin_inset Formula $right(i)=2i+1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+You need 2 operations to build a heap from an arbitrary array:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+min_heapif
+\emph default
+y: make some node and its descendant nodes meet the heap property.
+ It basically iterates though all non-leaf nodes, from reversed order (
+\emph on
+for =n/2 downto 1
+\emph default
+), and it calls procedure 
+\emph on
+build_min_heap
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+build_min_heap
+\emph default
+: produce a heap from an arbitrary array.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It is possible to implement 
+\emph on
+heapsort
+\emph default
+ with 
+\emph on
+heap:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Build a heap from an arbitrary array with 
+\emph on
+build_min_heap
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Swap the first item with the last item in the array.
+\end_layout
+
+\begin_layout Enumerate
+Remove the last item from the array.
+\end_layout
+
+\begin_layout Enumerate
+Run 
+\emph on
+min_heapify
+\emph default
+ to the first item.
+\end_layout
+
+\begin_layout Enumerate
+Back to step 2.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Trees, Tries, and Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+A tree is a data structure composed of nodes.
+
+\series default
+ Each tree has a root node.
+ (Actually, this isn't strictly necessary in graph theory, but it's usually
+ how we use trees in programming).
+ The root node has 0+ child nodes.
+ Each child node has 0+ child nodes, and so on.
+ The tree cannot contain cycles.
+ The nodes may or may not be in a particular order, they could have any
+ data type as values, and they may or may not have links back to their parent
+ nodes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A binary search tree
+\series default
+ - every node fits a specific ordering property: 
+\emph on
+all left descendants
+\emph default
+ 
+\begin_inset Formula $<=n<$
+\end_inset
+
+ 
+\emph on
+all right descendants
+\emph default
+.
+ This must be true for each node 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Note that this inequality must be true for all of a node's descendants,
+ not just its immediate children.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Balanced trees
+\series default
+ - balancing a tree does not mean the left and right sub-trees are exactly
+ the same size.
+ One way to think about it is that a "balanced" tree really means something
+ more like "not terribly imbalanced
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It's balanced enough to ensure 
+\begin_inset Formula $O(log\,n)$
+\end_inset
+
+ times for insert and find, but it's not necessarily as balanced as it could
+ be.
+ Two common types of balanced trees are 
+\emph on
+Red-black trees 
+\emph default
+and 
+\emph on
+AVL trees
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Complete binary tree 
+\series default
+- it is a binary tree in which every level of the tree is fully filled,
+ except for perhaps the last level.
+ To the extent that the last level is filled, it is filled left to right.
+ So if, for example, there is binary tree that has depth = 3, but with just
+ 3 nodes instead of 4, it is complete binary tree if there are leaf nodes
+ from left to right except the the most right one.
+ If leaf node in the middle is missing, or the very left one, it is not
+ complete binary tree.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Full binary trees 
+\series default
+- every node has either zero or two children.
+ That is, no nodes have only one child.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Perfect binary tree 
+\series default
+- one that is both full and complete.
+ All leaf nodes will be at the same level, and this level has the maximum
+ number of nodes.
+ Note that
+\series bold
+ perfect trees are
+\series default
+ 
+\series bold
+rare
+\series default
+ 
+\series bold
+in interviews and in real life
+\series default
+, as a perfect tree must have exactly 
+\begin_inset Formula $2^{k}-1$
+\end_inset
+
+ nodes (where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the number of levels).
+ In an interview, do not assume a binary tree is perfect.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Binary tree traversal
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In-Order Traversal means to "visit" (often, print) the left branch, then
+ the current node, and finally, the right branch.
+\end_layout
+
+\begin_layout Itemize
+Pre-Order Traversal visits the current node before its child nodes.
+ Root is always the first node visited.
+\end_layout
+
+\begin_layout Itemize
+Post-Order Traversal visits the current node after its child nodes.
+ Root is always the last node visited.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Binary heaps
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+See heap data structure above, they can be also used for implementation
+ of priority queue.
+\end_layout
+
+\begin_layout Itemize
+Max-heaps are essentially equivalent to min-heaps, but the elements are
+ in descending order rather than ascending order.
+\end_layout
+
+\begin_layout Itemize
+A min-heap is a complete binary tree (that is, totally filled other than
+ the rightmost elements on the last level) where each node is smaller than
+ its children.
+ So, leave nodes don't have to be placed in total order! Actually, absolutely
+ no order of nodes in this tree is guaranteed, only that a given node must
+ be smaller than each of its children! The root, therefore, is the minimum
+ element in the tree.
+ There are 2 operations: 
+\emph on
+insert 
+\emph default
+and 
+\emph on
+extract_min
+\emph default
+.
+ We insert at the rightmost spot so as to maintain the complete tree property.
+ Then, we "fix" the tree by swapping the new element with its parent, until
+ we find an appropriate spot for the element.
+ We essentially bubble up the minimum element.
+ This takes 
+\begin_inset Formula $O(log\,n)$
+\end_inset
+
+ time, where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of nodes in the heap.
+ Extraction of min: first, we remove the minimum element and swap it with
+ the last element in the heap (the bottom-most, right-most element).
+ Then, we bubble down this element, swapping it with one of its children
+ (always the smaller one) until the min-heap property is restored.
+ This operation also takes 
+\begin_inset Formula $O(log\,n)$
+\end_inset
+
+ time.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Tries (Prefix trees)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A trie is a variant of an n-ary tree in which characters are stored at each
+ node.
+ Each path down the tree may represent a word.
+ The 
+\series bold
+*
+\series default
+ nodes (sometimes called "null nodes") are often used to indicate complete
+ words.
+ Root is special node that has no character value.
+\end_layout
+
+\begin_layout Itemize
+A node in a trie could have anywhere from 1 through ALPHABET_SIZE + 1 children.
+\end_layout
+
+\begin_layout Itemize
+Very commonly, a trie is used to store the entire (English) language for
+ quick prefix lookups.
+ While a hash table can quickly look up whether a string is a valid word,
+ it cannot tell us if a string is a prefix of any valid words.
+ A trie can do this very quickly.
+ A trie can check if a string is a valid prefix in 
+\begin_inset Formula $O(K)$
+\end_inset
+
+ time, where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the length of the string.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A tree is actually a type of graph, but not all graphs are trees.
+ Simply put, a
+\series bold
+ tree is a connected graph without cycles.
+
+\series default
+ A graph is simply a collection of nodes with edges between (some of) them.
+\end_layout
+
+\begin_layout Itemize
+Graphs can be either 
+\series bold
+directed
+\series default
+ (like the following graph) or 
+\series bold
+undirected
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+The graph might consist of multiple isolated sub-graphs.
+ If there is a path between every pair of vertices, it is called a "connected
+ graph
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The graph can also have cycles.
+ An "acyclic graph" is one without cycles.
+\end_layout
+
+\begin_layout Itemize
+They can be implemented using adjacency list (for example, a class 
+\emph on
+Graph
+\emph default
+ with one member - a 
+\emph on
+list of nodes
+\emph default
+, and class 
+\emph on
+Node
+\emph default
+, that contain members 
+\emph on
+value
+\emph default
+ and 
+\emph on
+list of children
+\emph default
+), or adjacency matrices (
+\begin_inset Formula $NxN$
+\end_inset
+
+ boolean matrix, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of nodes, and 
+\begin_inset Formula $matrix[i][j]=true$
+\end_inset
+
+ indicates the edge from node 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+).
+ In the adjacency list representation, you can easily iterate through the
+ neighbors of a node.
+ In the adjacency matrix representation, you will need to iterate through
+ all the nodes to identify a node's neighbors.
+\end_layout
+
+\begin_layout Itemize
+The two most common ways to search a graph are
+\series bold
+ depth-first search 
+\series default
+and 
+\series bold
+breadth-first search
+\series default
+.
+ In depth-first search (DFS), we start at the root (or another arbitrarily
+ selected node) and explore each branch completely before moving on to the
+ next branch.
+ That is, we go deep first (hence the name depth-first search) before we
+ go wide.
+ In breadth-first search (BFS) we start at the root (or another arbitrarily
+ selected node) and explore each neighbor before going on to any of their
+ children.
+ That is, we go wide (hence breadth-first search) before we go deep.
+ DFS is often preferred if we want to visit every node in the graph.
+ If we want to find the shortest path (or just any path) between two nodes,
+ BFS is generally better.
+\end_layout
+
+\begin_layout Itemize
+DFS can be recursive algorithm, and BFS iterative one.
+ If you are asked to implement BFS, the key thing to remember is the use
+ of the queue.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bidirectional search 
+\series default
+is used to find the shortest path between a source and destination node.
+ It operates by essentially running two simultaneous breadth-first searches,
+ one from each node.
+ When their searches collide, we have found a path.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+Algorithms
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Breadth-First Search
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Depth-First Search
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Binary Search
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Here, we look for an element 
+\begin_inset Formula $x$
+\end_inset
+
+ in a 
+\bar under
+sorted array
+\bar default
+ by first comparing 
+\begin_inset Formula $x$
+\end_inset
+
+ to the midpoint of the array.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x$
+\end_inset
+
+ is less than the midpoint, then we search the left half of the array.
+ If x is greater than the midpoint, then we search the right half of the
+ array.
+\end_layout
+
+\begin_layout Itemize
+We then repeat this process, treating the left and right halves as sub-arrays.
+ Again, we compare 
+\begin_inset Formula $x$
+\end_inset
+
+ to the midpoint of this sub-array and then search either its left or right
+ side.
+ We repeat this process until we either find 
+\begin_inset Formula $x$
+\end_inset
+
+ or the sub-array has size O.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Bubble Sort
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Runtime is 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+.
+ Space complexity is 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We start at the beginning of the array and swap the first two elements if
+ the first is greater than the second.
+ Then, we go to the next pair, and so on, continuously making sweeps of
+ the array until it is sorted.
+ In doing so, the smaller items slowly"bubble" up to the beginning of the
+ list.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Selection Sort
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Runtime is 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+.
+ Space complexity is 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Find the smallest element using a linear scan and move it to the front (swapping
+ it with the front element).
+ Then, find the second smallest and move it, again doing a linear scan.
+ Continue doing this until all the elements are in place.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Merge Sort
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Runtime is 
+\begin_inset Formula $O(nlog\,n)$
+\end_inset
+
+.
+ Space complexity is 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Merge sort divides the array in half, sorts each of those halves, and then
+ merges them back together.
+ Each of those halves has the same sorting algorithm applied to it.
+ Eventually, you are merging just two single element arrays.
+ It is the "merge" part that does all the heavy lifting.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Quick Sort
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Runtime is 
+\begin_inset Formula $O(nlog\,n)$
+\end_inset
+
+ in average, but the worst case is 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+.
+ Space complexity is 
+\begin_inset Formula $O(log\,n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In quick sort, we pick a median (usually just a random element) and partition
+ the array, such that all numbers that are less than the partitioning element
+ come before all elements that are greater than it.
+ The partitioning can be performed efficiently through a series of swaps.
+\end_layout
+
+\begin_layout Itemize
+If we repeatedly partition the array (and its sub-arrays) around an element,
+ the array will eventually become sorted.
+ However, as the partitioned element is not guaranteed to be the median
+ (or anywhere near the median), our sorting could be very slow.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Radix Sort
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Runtime is 
+\begin_inset Formula $O(kn)$
+\end_inset
+
+, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the number of passes of the sorting algorithm, and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of elements.
+\end_layout
+
+\begin_layout Itemize
+It is a sorting algorithm for integers (and some other data types) that
+ takes advantage of the fact that integers have a 
+\bar under
+finite number of bits
+\bar default
+.
+ In Radix sort, we iterate through each digit of the number, grouping numbers
+ by each digit.
+\end_layout
+
+\begin_layout Itemize
+For example, if we have an array of integers, we might first sort by the
+ first digit, so that the Os are grouped together.
+ Then, we sort each of these groupings by the next digit.
+ We repeat this process sorting by each subsequent digit.
+ until finally the whole array is sorted.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+The Sieve of Eratosthenes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For generating list of prime numbers by generating all values from 1 to
+ a given max number, and cross-out prime numbers sequentially (first prime
+ number is 2, then 4, then 6, and so on; the next prime number is always
+ incremented from the last one, so then it would be 3, and then 6, 9, and
+ so on).
+ Eventually there will be only those left, which are actual prime numbers.
+\end_layout
+
+\begin_layout Itemize
+This can be implemented with 
+\begin_inset Quotes eld
+\end_inset
+
+flags
+\begin_inset Quotes erd
+\end_inset
+
+ list, that contain 
+\begin_inset Formula $True$
+\end_inset
+
+/
+\begin_inset Formula $False$
+\end_inset
+
+ values for all numbers.
+ Crossing out is labeling from 
+\begin_inset Formula $True$
+\end_inset
+
+ (from initialization) to 
+\begin_inset Formula $False$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(Optional) Very advanced:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+MapReduce
+\emph default
+ is used widely in system design to process large amounts of data.
+ As its name suggests, a MapReduce program requires you to write a Map step
+ and a Reduce step.
+ The rest is handled by the system.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+AVL trees
+\emph default
+ are a way of implementing tree balancing.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Red-black trees
+\emph default
+ are a type of self-balancing binary search tree.
+ They require a bit less memory than AVL trees, and can rebalance faster
+ (which means faster insertions and removals), so they are often used in
+ situations where the tree will be modified frequently.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+B-Trees
+\emph default
+: A self-balancing search tree (not a binary search tree) that is commonly
+ used on disks or other storage devices.
+ It is similar to a red-black tree, but uses fewer I/O operations.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dijkstra's algorithm
+\emph default
+ is used for calculating the shortest path in graph.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+A*
+\emph default
+: Find the least-cost path between a source node and a goal node (or one
+ of several goal nodes).
+ It extends Dijkstra's algorithm and achieves better performance by using
+ heuristics.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Floyd-Warshall algorithm
+\emph default
+: Finds the shortest paths in a weighted graph with positive or negative
+ weight edges (but no negative weight cycles).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bellman-Ford algorithm
+\emph default
+: Finds the shortest paths from a single node in a weighted directed graph
+ with positive and negative edges.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Graph coloring
+\emph default
+: A way of coloring the nodes in a graph such that no two adjacent vertices
+ have the same color.
+ There are various algorithms to do things like determine if a graph can
+ be colored with only K colors.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+P, NP, and NP-Complete
+\emph default
+: P, NP, and NP-Complete refer to classes of problems.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P problems are problems that can be quickly solved (where "quickly" means
+ in polynomial time).
+\end_layout
+
+\begin_layout Itemize
+NP problems are those for which the problem instances, where the answer
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+yes
+\begin_inset Quotes erd
+\end_inset
+
+, have proofs verifiable in polynomial time; so their solution can be quickly
+ verified.
+ An equivalent definition of NP is the set of decision problems solvable
+ in polynomial time by a non-deterministic Turing machine.
+ This definition is the basis for the abbreviation NP; "non-deterministic,
+ polynomial time." These two definitions are equivalent because the algorithm
+ based on the Turing machine consists of two phases, the first of which
+ consists of a guess about the solution, which is generated in a non-determinist
+ic way, while the second phase consists of a deterministic algorithm that
+ verifies if the guess is a solution to the problem.
+\end_layout
+
+\begin_layout Itemize
+It is easy to see that the complexity class P (all problems solvable, determinis
+tically, in polynomial time) is contained in NP (problems where solutions
+ can be verified in polynomial time), because if a problem is solvable in
+ polynomial time then a solution is also verifiable in polynomial time by
+ simply solving the problem.
+ But NP contains many more problems, the hardest of which are called NP-complete
+ problems.
+\end_layout
+
+\begin_layout Itemize
+NP-Complete problems are a subset of NP problems that can all be reduced
+ to each other (that is, if you found a solution to one problem, you could
+ tweak the solution to solve other problems in the set in polynomial time).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+Concepts
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bit Manipulation
+\end_layout
+
+\begin_layout Itemize
+There are 2 right shifts: logical shift and it fills 0 from left side, and
+ arithmetic shift and it keeps the sign bit - so it divides
+\emph on
+ 
+\emph default
+a number basically by 2).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sequence of all 1s in signed integer (as in binary number) is 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Memory (Stack vs.
+ Heap)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stack is used for static memory allocation and Heap for dynamic memory allocatio
+n, both stored in the computer's RAM.
+ In a multi-threaded situation each thread will have its own completely
+ independent stack but they will share the heap.
+ Stack is thread specific and Heap is application specific.
+ The stack is attached to a thread, so when the thread exits the stack is
+ reclaimed.
+ The heap is typically allocated at application start-up by the runtime,
+ and is reclaimed when the application (technically process) exits.
+ The size of the stack is set when a thread is created.
+ The size of the heap is set on application start-up, but can grow as space
+ is needed (the allocator requests more memory from the operating system).
+\end_layout
+
+\begin_layout Standard
+By the way, the amount of memory that get’s assigned to an application depends
+ on the computer’s architecture and will vary across most devices, but the
+ variable that remains constant is the five parts of an application’s memory
+ which are the heap, stack, initialized data segment (global and static
+ variables that are initialized when a file gets compiled), uninitialized
+ data segment (all global and static variables that are initialized to zero
+ or do not have explicit initialization in source code), and the text segment
+ (also known as the code segment, contains the machine instructions which
+ make up your program.
+ The text segment is often read-only and prevents a program from accidentally
+ modifying its instructions).
+\end_layout
+
+\begin_layout Description
+Stack
+\end_layout
+
+\begin_layout Itemize
+Is a special region of your computer's memory that stores temporary variables
+ created by each function (including the main() function).
+ The stack is a "LIFO" (last in, first out) data structure, that is managed
+ and optimized by the CPU quite closely.
+ Every time a function declares a new variable, it is "pushed" onto the
+ stack.
+ Then every time a function exits, all of the variables pushed onto the
+ stack by that function, are freed (that is to say, they are deleted).
+ Once a stack variable is freed, that region of memory becomes available
+ for other stack variables.
+\end_layout
+
+\begin_layout Itemize
+The advantage of using the stack to store variables, is that memory is managed
+ for you.
+ You don't have to allocate memory by hand, or free it once you don't need
+ it any more.
+ What's more, because the CPU organizes stack memory so efficiently, reading
+ from and writing to stack variables is very fast.
+\end_layout
+
+\begin_layout Itemize
+A key to understanding the stack is the notion that when a function exits,
+ all of its variables are popped off of the stack (and hence lost forever).
+ Thus stack variables are local in nature.
+\end_layout
+
+\begin_layout Itemize
+Summary: the stack grows and shrinks as functions push and pop local variables
+ there is no need to manage the memory yourself, variables are allocated
+ and freed automatically the stack has size limits stack variables only
+ exist while the function that created them, is running.
+\end_layout
+
+\begin_layout Description
+Heap
+\end_layout
+
+\begin_layout Itemize
+The heap is a region of your computer's memory that is not managed automatically
+ for you, and is not as tightly managed by the CPU.
+ It is a more free-floating region of memory (and is larger).
+ To allocate memory on the heap, you must use malloc() or calloc(), which
+ are built-in C functions.
+ Once you have allocated memory on the heap, you are responsible for using
+ free() to deallocate that memory once you don't need it any more.
+ If you fail to do this, your program will have what is known as a memory
+ leak.
+ That is, memory on the heap will still be set aside (and won't be available
+ to other processes).
+ As we will see in the debugging section, there is a tool called valgrind
+ that can help you detect memory leaks.
+\end_layout
+
+\begin_layout Itemize
+Unlike the stack, the heap does not have size restrictions on variable size
+ (apart from the obvious physical limitations of your computer).
+ Heap memory is slightly slower to be read from and written to, because
+ one has to use pointers to access memory on the heap.
+ Heap size is only limited by the size of virtual memory.
+\end_layout
+
+\begin_layout Itemize
+Unlike the stack, variables created on the heap are accessible by any function,
+ anywhere in your program.
+ Heap variables are essentially global in scope.
+\end_layout
+
+\begin_layout Itemize
+Another performance hit for the heap is that the heap, being mostly a global
+ resource, typically has to be multi-threading safe, i.e.
+ each allocation and deallocation needs to be - typically - synchronized
+ with "all" other heap accesses in the program.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Big O (Time & Space complexity)
+\end_layout
+
+\begin_layout Itemize
+Note1: 
+\begin_inset Formula $1+2+3+...+n=\frac{n(n+1)}{2}=n^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note2: 
+\begin_inset Formula $2^{0}+2^{1}+2^{2}+...+2^{n}=2^{n+1}-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note3: log conversion (base) from base 
+\begin_inset Formula $2$
+\end_inset
+
+ to base 
+\begin_inset Formula $b$
+\end_inset
+
+: 
+\begin_inset Formula $log_{b}k=\frac{log_{2}k}{log_{2}b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Testing
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+At their surface, testing questions seem like they're just about coming
+ up with an extensive list of test cases.
+ And to some extent, that's right.
+ You do need to come up with a reasonable list of test cases.
+ The interviewers want to do the following from you:
+\end_layout
+
+\begin_layout Itemize
+Big picture understanding.
+\end_layout
+
+\begin_layout Itemize
+Knowing how the pieces fit together.
+\end_layout
+
+\begin_layout Itemize
+Organization.
+\end_layout
+
+\begin_layout Itemize
+Practical point of view.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Machine Learning Interview Preparation
+\end_layout
+
+\begin_layout Itemize
+Top companies for Data Science: Microsoft, IBM, Facebook, Amazon, Google,
+ Accenture, Apple, Capital One, Uber, B.A Hamilton.
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\series bold
+Topics
+\end_layout
+
+\begin_layout Standard
+Good sources: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Machine Learning Interview Preparation (from Udacity)"
+target "https://eu.udacity.com/course/machine-learning-interview-prep--ud1001"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Computer Science Fundamentals and Programming Techniques
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+All from above:
+\end_layout
+
+\begin_layout Itemize
+Data structures: Lists, stacks, queues, strings, hash maps, vectors, matrices,
+ classes & objects, trees, graphs, etc.
+\end_layout
+
+\begin_layout Itemize
+Algorithms: Recursion, searching, sorting, optimization, dynamic programming,
+ etc.
+\end_layout
+
+\begin_layout Itemize
+Computability and complexity: P vs.
+ NP, NP-complete problems, big-O notation, approximate algorithms, etc.
+\end_layout
+
+\begin_layout Itemize
+Computer architecture: Memory, cache, bandwidth, threads & processes, deadlocks,
+ etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Probability and Statistics
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Basic probability: Conditional probability, Bayes rule, likelihood, independence
+, etc.
+\end_layout
+
+\begin_layout Itemize
+Probabilistic models: Bayes Nets, Markov Decision Processes, Hidden Markov
+ Models, etc.
+\end_layout
+
+\begin_layout Itemize
+Statistical measures: Mean, median, mode, variance, population parameters
+ vs.
+ sample statistics etc.
+\end_layout
+
+\begin_layout Itemize
+Proximity and error metrics: Cosine similarity, mean-squared error, Manhattan
+ and Euclidean distance, log-loss, etc.
+\end_layout
+
+\begin_layout Itemize
+Distributions and random sampling: Uniform, normal, binomial, Poisson, etc.
+\end_layout
+
+\begin_layout Itemize
+Analysis methods: ANOVA, hypothesis testing, factor analysis, etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Data Modeling and Evaluation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data preprocessing: Munging/wrangling, transforming, aggregating, etc.
+\end_layout
+
+\begin_layout Itemize
+Pattern recognition: Correlations, clusters, trends, outliers & anomalies,
+ etc.
+\end_layout
+
+\begin_layout Itemize
+Dimensionality reduction: Eigenvectors, Principal Component Analysis, etc.
+\end_layout
+
+\begin_layout Itemize
+Prediction: classification, regression, sequence prediction, suitable error/accu
+racy metrics.
+\end_layout
+
+\begin_layout Itemize
+Evaluation: Training-testing split, sequential vs.
+ randomized cross-validation, etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Applying Machine Learning Algorithms and Libraries
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Models: Parametric vs.
+ non-parametric, decision tree, nearest neighbor, neural net, support vector
+ machine, ensemble of multiple models, etc.
+\end_layout
+
+\begin_layout Itemize
+Learning procedure: Linear regression, gradient descent, genetic algorithms,
+ bagging, boosting, and other model-specific methods; regularization, hyperparam
+eter tuning, etc.
+\end_layout
+
+\begin_layout Itemize
+Trade-offs and gotchas: Relative advantages and disadvantages, bias and
+ variance, overfitting and underfitting, vanishing/exploding gradients,
+ missing data, data leakage, etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Software Engineering and System Design
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Software interface: Library calls, REST APIs, data collection endpoints,
+ database queries, etc.
+\end_layout
+
+\begin_layout Itemize
+User interface: Capturing user inputs & application events, displaying results
+ & visualization, etc.
+\end_layout
+
+\begin_layout Itemize
+Scalability: Map-reduce, distributed processing, etc.
+\end_layout
+
+\begin_layout Itemize
+Deployment: Cloud hosting, containers & instances, microservices, etc.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,4059 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Git Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Mastering Git
+\end_layout
+
+\begin_layout Standard
+There are many tools that offer code collaboration and version control using
+ Git, such as:
+\end_layout
+
+\begin_layout Itemize
+Gitlab
+\end_layout
+
+\begin_layout Itemize
+GitHub
+\end_layout
+
+\begin_layout Itemize
+Gitolite
+\end_layout
+
+\begin_layout Itemize
+Bitbucket
+\end_layout
+
+\begin_layout Section
+Basics & General
+\end_layout
+
+\begin_layout Itemize
+Delete the last pushed commit: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git reset --hard HEAD~1 
+\end_layout
+
+\begin_layout Description
+$ git push origin HEAD --force
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Commands 
+\emph on
+git remote prune 
+\emph default
+and 
+\emph on
+git fetch --prune 
+\emph default
+do the same thing: delete the refs to branches that don't exist on the remote.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{url{https://www.atlassian.com/git/tutorials/git-prune}}
+\end_layout
+
+\end_inset
+
+ This is highly desirable when working in a team workflow in which remote
+ branches are deleted after merge to master.
+ The second command, 
+\emph on
+git fetch --prune
+\emph default
+ will connect to the remote and fetch the latest remote state before pruning.
+ It is essentially a combination of commands:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git fetch --all && git remote prune
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The generic 
+\emph on
+git prune
+\emph default
+ command deletes locally detached commits.
+ It basically cleans up unreachable or "orphaned" Git objects.
+ Unreachable objects are those that are inaccessible by any refs.
+ Any commit that cannot be accessed through a branch or tag is considered
+ unreachable.
+\end_layout
+
+\begin_layout Itemize
+There is a fast cloning possibility for saving time and disk space.
+ It copies only recent revisions
+\emph on
+.
+ 
+\emph default
+Git’s shallow clone option allows you to pull down only the latest 
+\begin_inset Formula $n$
+\end_inset
+
+ commits of the repository's history: 
+\emph on
+git clone --depth [depth] [remote-url]
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For more options how to deal with repositories that have big files, or very
+ long commit commit history, read the following tutorial: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.atlassian.com/git/tutorials/big-repositories}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Delete untracked files in the local working directory, but only with dry
+ run where nothing is actually deleted: 
+\emph on
+git clean -n
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Relative Referencing
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://realpython.com/advanced-git-for-pythonistas/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sometimes it’s useful to be able to indicate a revision relative to a known
+ position, like HEAD or a branch name.
+ Git provides two operators that, while similar, behave slightly differently.
+\end_layout
+
+\begin_layout Itemize
+The first of these is the tilde (
+\emph on
+~
+\emph default
+) operator.
+ Git uses tilde to point to a parent of a commit, so 
+\emph on
+HEAD~
+\emph default
+ indicates the revision before the last one committed.
+ To move back further, you use a number after the tilde: 
+\emph on
+HEAD~3
+\emph default
+ takes you back three levels.
+ This works great until we run into merges.
+ Merge commits have two parents, so the ~ just selects the first one.
+ While that works sometimes, there are times when you want to specify the
+ second or later parent.
+ That’s why Git has the caret (^) operator.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+^
+\emph default
+ operator moves to a specific parent of the specified revision.
+ You use a number to indicate which parent.
+ So 
+\emph on
+HEAD^2 
+\emph default
+tells Git to select the second parent of the last one committed, not the
+ “grandparent.” It can be repeated to move back further: 
+\emph on
+HEAD^2^^
+\emph default
+ takes you back three levels, selecting the second parent on the first step.
+\end_layout
+
+\begin_layout Itemize
+These two operators can be combined together.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Revision Ranges
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The “double dot” method for specifying ranges looks like it sounds: 
+\emph on
+git log b05022238cdf08..60f89368787f0e
+\end_layout
+
+\begin_layout Itemize
+Triple dot notation uses 3 dots between the revision specifiers.
+ This works in a similar manner to the double dot notation except that it
+ shows all commits that are in either revision that are not included in
+ both revisions.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Handling Interruptions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Here, 
+\emph on
+git stash 
+\emph default
+and 
+\emph on
+git stash pop
+\emph default
+ are your friends.
+ Along with some others such as 
+\emph on
+git list, git stash apply, git stash show -p stash@{N}, git stash drop 
+\emph default
+and 
+\emph on
+git stash pop.
+ 
+\emph default
+They are all very simple commands.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Ref
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A ref is an indirect way of referring to a commit.
+ You can think of it as a user-friendly alias for a commit hash.
+ This is Git’s internal mechanism of representing branches and tags.
+\end_layout
+
+\begin_layout Itemize
+Refs are stored as normal text files in the 
+\emph on
+.git/refs
+\emph default
+ directory.
+\end_layout
+
+\begin_layout Itemize
+To change the location of the master branch, all Git has to do is change
+ the contents of the 
+\emph on
+refs/heads/master
+\emph default
+ file.
+ Similarly, creating a new branch is simply a matter of writing a commit
+ hash to a new file.
+\end_layout
+
+\begin_layout Itemize
+When passing a ref to a Git command, you can either define the full name
+ of the ref, or use a short name and let Git search for a matching ref.
+ So 
+\emph on
+git show some-feature 
+\emph default
+is equal to 
+\emph on
+git show refs/heads/some-feature.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Refspec
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It maps a branch in the local repository to a branch in a remote repository.
+ This makes it possible to manage remote branches using local Git commands
+ and to configure some advanced git push and git fetch behavior.
+\end_layout
+
+\begin_layout Itemize
+A refspec is specified as 
+\emph on
+[+]<src>:<dst>
+\emph default
+.
+ The
+\emph on
+ <src>
+\emph default
+ parameter is the source branch in the local repository, and the 
+\emph on
+<dst>
+\emph default
+ parameter is the destination branch in the remote repository.
+ The optional 
+\emph on
++
+\emph default
+ sign is for forcing the remote repository to perform a non-fast-forward
+ update.
+\end_layout
+
+\begin_layout Itemize
+Refspecs can be used with the git push command to give a different name
+ to the remote branch.
+\end_layout
+
+\begin_layout Itemize
+For example, the following command pushes the master branch to the origin
+ remote repo like an ordinary 
+\emph on
+git push
+\emph default
+, but it uses
+\emph on
+ qa-master
+\emph default
+ as the name for the branch in the origin repo.
+ This is useful for QA teams that need to push their own branches to a remote
+ repo:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+git push origin master:refs/heads/qa-master
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Reflog
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The reflog is Git’s safety net.
+ It records almost every change you make in your repository, regardless
+ of whether you committed a snapshot or not.
+ You can think of it as a chronological history of everything you've done
+ in your local repo.
+\end_layout
+
+\begin_layout Itemize
+So it shows a log of changes to the local repository’s HEAD.
+ Good for finding lost work.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://towardsdatascience.com/10-git-commands-you-should-know-df54bea1595c}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To view the reflog, run the 
+\emph on
+git reflog 
+\emph default
+command.
+\end_layout
+
+\begin_layout Itemize
+If you want to recover the last change before the last commit from reflog,
+ you can do it with 
+\emph on
+git checkout HEAD@{1} 
+\emph default
+command.
+ See a practical example with much verbose explanation here: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.atlassian.com/git/tutorials/refs-and-the-reflog}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Git Log
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.atlassian.com/git/tutorials/git-log}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Formatting log output
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Seeing all tags, branches, etc in high-level overview: 
+\emph on
+git log --oneline --decorate
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+--stat
+\emph default
+ option displays the number of insertions and deletions to each file altered
+ by each commit.
+ Or, for actual changes, pass 
+\emph on
+-p 
+\emph default
+parameter instead.
+\end_layout
+
+\begin_layout Itemize
+Command 
+\emph on
+git shortlog
+\emph default
+ is intended for creating release announcements.
+ It groups each commit by author and displays the first line of each commit
+ message.
+ This is an easy way to see who's been working on what.
+ By default, git shortlog sorts the output by author name, but you can also
+ pass the 
+\emph on
+-n
+\emph default
+ option to sort by the number of commits per author.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+--graph
+\emph default
+ option draws an ASCII graph representing the branch structure of the commit
+ history.
+ This is commonly used in conjunction with the 
+\emph on
+--oneline
+\emph default
+ and 
+\emph on
+--decorate
+\emph default
+ commands to make it easier to see which commit belongs to which branch.
+ While this is a nice option for simple repositories, you’re probably better
+ off with a more full-featured visualization tool such as 
+\emph on
+gitk
+\emph default
+ or 
+\emph on
+Sourcetree
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Or you can use custom formatting, with 
+\emph on
+--pretty=format:"<string>"
+\emph default
+ option.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Filtering the commit history
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+By amount, with parameter 
+\emph on
+-n <N>
+\end_layout
+
+\begin_layout Itemize
+By date, with parameter for example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+--after="2014-7-1"
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+--after="yesterday"
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+--after="2014-7-1" --before="2014-7-4" 
+\emph default
+for outputting all commits in between 2 dates
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+--since
+\emph default
+ and 
+\emph on
+--until
+\emph default
+ flags are synonymous with 
+\emph on
+--after
+\emph default
+ and 
+\emph on
+--before
+\emph default
+, respectively
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By author, wth 
+\emph on
+--author="John" 
+\emph default
+parameter.
+ You can also use regular expressions here.
+\end_layout
+
+\begin_layout Itemize
+By commit message, with 
+\emph on
+--grep="pattern" 
+\emph default
+parameter (you can use 
+\emph on
+-i
+\emph default
+ to ignore case differences while pattern matching).
+ This parameter works as the previous one.
+\end_layout
+
+\begin_layout Itemize
+By files, with 
+\emph on
+-- <file1> <file2> 
+\emph default
+parameter.
+\end_layout
+
+\begin_layout Itemize
+Filtering out displaying merge commits can be achieved by passing the 
+\emph on
+--no-merges 
+\emph default
+option.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Git Blame
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+C
+\emph default
+ommand 
+\emph on
+git blame <file>
+\emph default
+ is like annotation in PyCharm.
+ You can see who changed what and when in a given file.
+ It can be quite useful.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Git Patch
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first time a file is committed to a project in GIT, a copy is stored.
+ For all commits after that, GIT essentially stores instructions telling
+ it how to transform the previous version of the project to the newly committed
+ version (these are 
+\bar under
+diffs
+\bar default
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.thegeekstuff.com/2014/03/git-patch-create-and-apply/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Whenever you checkout a branch, GIT will basically start at the original
+ state of the project, and apply all of these diffs in order, to to get
+ to the desired state.
+\end_layout
+
+\begin_layout Itemize
+For creating a patch from some commit to another commit, we will use the
+ following: 
+\emph on
+git diff <from-commit> <to-commit> > patch.diff
+\end_layout
+
+\begin_layout Itemize
+After patch file has been created, applying it is easy.
+ Make sure that the branch you have checked out is the one that you want
+ to apply the patch to.
+ Then you can apply the patch using 
+\emph on
+git apply patch.diff 
+\emph default
+command.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Warning: 
+\series default
+Although applying a patch in this way will exactly replicate content, 
+\bar under
+no commit history will be replicated
+\bar default
+.
+ This means that even if the patch you create spans several commits, it
+ will appear as a single set of changes when applied.
+ You will lose both the knowledge of how the commits were broken up and
+ also the messages for each commit.
+ Applying the patch did not commit the changes, nor did it bring any of
+ the commit history associated with these changes with it.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Git Merge-base
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The command 
+\emph on
+git merge-base <master> <feature> 
+\emph default
+will determine the most recent common commit between 2 branches, in this
+ case between master and feature branch.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Commit message
+\end_layout
+
+\begin_layout Itemize
+A team’s approach to its commit log should be no different.
+ In order to create a useful revision history, teams should first agree
+ on a commit message convention that defines at least the following three
+ things:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Style
+\series default
+.
+ Markup syntax, wrap margins, grammar, capitalization, punctuation.
+ Spell these things out, remove the guesswork, and make it all as simple
+ as possible.
+ The end result will be a remarkably consistent log that’s not only a pleasure
+ to read but that actually does get read on a regular basis.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Content
+\series default
+.
+ What kind of information should the body of the commit message (if any)
+ contain? What should it not contain?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Metadata
+\series default
+.
+ How should issue tracking IDs, pull request numbers, etc.
+ be referenced?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The seven rules of a great Git commit message
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Separate subject from body with a blank line
+\end_layout
+
+\begin_layout Enumerate
+Limit the subject line to 50 characters.
+ If you’re having a hard time summarizing, you might be committing too many
+ changes at once.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Capitalize the subject line
+\end_layout
+
+\begin_layout Enumerate
+Do not end the subject line with a period
+\end_layout
+
+\begin_layout Enumerate
+Use the imperative mood in the subject line.
+ Spoken or written as if giving a command or instruction.
+ Use of the imperative is important only in the subject line.
+ You can relax this restriction when you’re writing the body.
+\end_layout
+
+\begin_layout Enumerate
+Wrap the body at 72 characters
+\end_layout
+
+\begin_layout Enumerate
+Use the body to explain what and why vs.
+ how.
+ How is not important, code is self-explanatory (if there is very sophisticated
+ change, use code documentation).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Submodules
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Clone and Init
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git clone git@git_hostname:submoduleX
+\end_layout
+
+\begin_layout Description
+$ git submodule init -- update
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Pull 
+\series bold
+all submodules from master branch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git submodule foreach git pull origin master 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+How to delete a submodule
+\end_layout
+
+\begin_layout Itemize
+remove entry from 
+\emph on
+.gitmodule 
+\end_layout
+
+\begin_layout Itemize
+remove entry from 
+\emph on
+.git/config
+\emph default
+ (not necessarily)
+\end_layout
+
+\begin_layout Itemize
+remove path created for a given submodule (but be careful here, there cannot
+ be 
+\emph on
+'/'
+\emph default
+ n the end of the path)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git rm --cached [path/module]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Discard changes in submodule
+\end_layout
+
+\begin_layout Standard
+If something went wrong, we can discard changes in submodule and initialize
+ it again.
+ We just have to go to a given directory, and type:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git submodule deinit -f .
+ 
+\end_layout
+
+\begin_layout Description
+$ git submodule update --init
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Adding a submodule
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git submodule add lsulak@git_hostname:repo libs/repo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Rebasing
+\end_layout
+
+\begin_layout Itemize
+The aim of rebasing and merging is the same, but both commands are doing
+ things differently.
+ And also history of commits will look differently using one command or
+ another.
+ With rebasing, you may have a perfectly linear project history.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.atlassian.com/git/tutorials/merging-vs-rebasing}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let's have an example of incorporating changes from 
+\emph on
+master 
+\emph default
+branch to my local 
+\emph on
+feature 
+\emph default
+branch (so 
+\emph on
+master 
+\emph default
+branch was changed since we checkout the 
+\emph on
+feature
+\emph default
+ branch).
+ This will put the 
+\emph on
+feature
+\emph default
+ branch on the top of master (so we are rebasing 
+\emph on
+feature 
+\emph default
+branch onto 
+\emph on
+master 
+\emph default
+branch), but for each commit from the original 
+\emph on
+feature 
+\emph default
+branch there will be a change - project history is re-written by creating
+ branch new commits for each original commit in feature branch (alternative
+ is merging with command 
+\emph on
+git merge feature master
+\emph default
+, but that creates a new merge commit in the feature branch, and that is
+ ugly and it master branch is very active, it can pollute your feature branch
+ a lot; but it is easy and non-destructive):
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout feature 
+\end_layout
+
+\begin_layout Description
+$ git rebase master
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rebasing loses the context provided by a merge commit - you can’t see when
+ upstream changes were incorporated into the feature (but that is probably
+ not needed in most scenarios).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Do not use rebasing on public branches
+\series default
+ (=use rebasing only on your branches).
+ From the previous example, rebasing master onto feature - that is bad!
+ The rebase moves all of the commits in master onto the top of feature.
+ The problem is that this only happened in your repository.
+ All of the other developers are still working with the original master.
+ Since rebasing results in brand new commits, Git will think that your master
+ branch’s history has diverged from everybody else’s.
+ The only way to synchronize the 2 master branches is to merge them back
+ together, resulting in an extra merge commit and 2 sets of commits that
+ contain the same changes = ugly and confusing.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+So before you use rebasing, ask yourself
+\series default
+:
+\emph on
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Is anyone else looking at this branch?
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph default
+If the answer is yes, use a different approach instead of rebasing.
+ But if you and some other person are developing code in a single feature
+ branch, and you want to incorporate his changes into yours, you can still
+ do it - because you will not change or move his commits, only yours (its
+ like 
+\begin_inset Quotes eld
+\end_inset
+
+add my changes to what he has already done
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+It is possible to push changes after rebasing with parameter –force (but
+ be careful here).
+ One of the only times you should be force-pushing is when you've performed
+ a local cleanup after you've pushed a private feature branch to a remote
+ repository (e.g., for backup purposes).
+ This is like saying, “Oops, I didn't really want to push that original
+ version of the feature branch.
+ Take the current one instead.” Again, it’s important that nobody is working
+ off of the commits from the original version of the feature branch.
+\end_layout
+
+\begin_layout Itemize
+It is a good idea to clean up your code with an interactive rebase before
+ submitting your PR or MR (because after the submitting, the branch is public
+ and you would re-write the commit history...but this is violated by lot of
+ people).
+\end_layout
+
+\begin_layout Itemize
+Once all is ready, you can just merge feature branch into master.
+ By performing a rebase before the merge, you’re assured that the merge
+ will be fast-forwarded, resulting in a perfectly linear history - because
+ there will be no conflicts or new changes from master.
+\end_layout
+
+\begin_layout Subsubsection
+Interactive rebasing
+\end_layout
+
+\begin_layout Itemize
+Simple flow with local feature branch:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git rebase --interactive [HEAD~7 or other_branch_name] 
+\end_layout
+
+\begin_layout Plain Layout
+<some changes>
+\end_layout
+
+\begin_layout Description
+$ git rebase --continue
+\end_layout
+
+\begin_layout Description
+$ git push origin branch --force
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are several options in interactive rebase:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+squash - combination of multiple commits
+\end_layout
+
+\begin_layout Itemize
+pick - commit choose/reorder
+\end_layout
+
+\begin_layout Itemize
+fixup - merge commit with one above and commit message is discarded
+\end_layout
+
+\begin_layout Itemize
+edit - commit edit/split
+\end_layout
+
+\begin_layout Itemize
+reword - fix commit message only
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If something went wrong, you can abort rebasing, or you can use command
+ 
+\emph on
+git reflog
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git rebase --abort 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Further changes = new commits, and then combination with staged changes
+ with the previous commit (git rebase –continue is for to moving branch
+ HEAD back to the commit we originally had, while also including the new
+ changes we added):
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git commit --amend 
+\end_layout
+
+\begin_layout Description
+$ git rebase --continue 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we want to add some new changes to the previous commit, we can use command
+ 
+\emph on
+git amend.
+
+\emph default
+ So it will add your staged changes to the most recent commit.
+ If nothing is staged, this command just allows you to edit the most recent
+ commit message.
+ 
+\bar under
+Only use this command if the commit has not been integrated into the remote
+ master branch!
+\bar default
+ So first we will perform some changes, then we will put the changes into
+ staging area, and do the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git commit --amend 
+\end_layout
+
+\begin_layout Description
+$ git push –force-with-lease <remote> <branch>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Feature Branch
+\end_layout
+
+\begin_layout Standard
+Merging of a feature branch:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout some-feature git pull origin devel
+\end_layout
+
+\begin_layout Description
+$ git checkout devel git merge --no-ff --log some-feature
+\end_layout
+
+\begin_layout Description
+$ git push origin devel
+\end_layout
+
+\begin_layout Description
+$ git branch -d some-feature git push origin --delete some-feature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Reset
+\end_layout
+
+\begin_layout Standard
+Resetting changes back (only those that weren't already pushed).
+ So this is for local branch.
+ It is possible to work with individual files.
+ This is a permanent undo.
+ For example, changing a branch to another commit, for example 2 commits
+ back:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout hotfix
+\end_layout
+
+\begin_layout Description
+$ git reset HEAD~2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+--soft - staged area a working directory are not affected
+\end_layout
+
+\begin_layout Itemize
+--mixed - default choice, staged area will be changed according to commit,
+ but not working directory
+\end_layout
+
+\begin_layout Itemize
+--reset - all is based on a given commit
+\end_layout
+
+\begin_layout Standard
+These 3 parameters do not work with an individual file.
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+Reset staged area:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git reset --mixed HEAD
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Discard staged and unstaged changes since the most recent commit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+$ git reset --hard HEAD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Unstage file 
+\emph on
+foo.py, 
+\emph default
+but changes will be still present in the working directory:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git reset HEAD foo.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discard commits in a private branch or throw away uncommited changes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git reset <Commit-level> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Checkout
+\end_layout
+
+\begin_layout Standard
+A checkout is an operation that moves the HEAD ref pointer to a specified
+ commit.
+ It is possible to work with an individual file, commit, or a branch.
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+Switch between branches or inspect old snapshots: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout <Commit-level>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discard changes in the working directory:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout <File-level>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Revert
+\end_layout
+
+\begin_layout Itemize
+A revert is an operation that takes a specified 
+\bar under
+commit
+\bar default
+ and creates a new commit which inverses the specified commit.
+ git revert can only be run at a commit level scope and has no file level
+ functionality.
+ Revert is considered a safe operation for 
+\begin_inset Quotes eld
+\end_inset
+
+public undos
+\begin_inset Quotes erd
+\end_inset
+
+ as it creates new history which can be shared remotely and doesn't overwrite
+ history remote team members may be dependent on.
+ So it is safe operation for already pushed commits.
+\end_layout
+
+\begin_layout Itemize
+Contrast this with 
+\emph on
+git reset
+\emph default
+, which does alter the existing commit history.
+ For this reason, 
+\emph on
+git revert
+\emph default
+ should be used to undo changes on a public branch, and 
+\emph on
+git reset 
+\emph default
+should be reserved for undoing changes on a private branch.
+\end_layout
+
+\begin_layout Itemize
+You can also think of 
+\emph on
+git revert
+\emph default
+ as a tool for undoing committed changes, while 
+\emph on
+git reset
+\emph default
+ HEAD is for undoing uncommitted changes.
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+Undo commits in a public branch:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git revert <Commit-level>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+reverting a newly created commit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git revert HEAD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Find a branch which is currently on HEAD:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git symbolic-ref --short HEAD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Tags
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+Update:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git fetch --tags
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+New tag:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git tag -a v1.4 -m "comment"
+\end_layout
+
+\begin_layout Description
+$ git push --tags
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Remove tag on some remote branch:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git push origin :refs/tags/<tagname>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Replace tag on the last commit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git tag -fa <tagname>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Push tag onto a remote origin:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git push origin master --tags
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Git Hooks
+\end_layout
+
+\begin_layout Itemize
+Git hooks are scripts that run automatically every time a particular event
+ occurs in a Git repository.
+ They let you customize Git’s internal behavior and trigger customizable
+ actions at key points in the development life cycle.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.atlassian.com/git/tutorials/git-hooks}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Common use cases for Git hooks include encouraging a commit policy, altering
+ the project environment depending on the state of the repository, and implement
+ing continuous integration workflows.
+ But, since scripts are infinitely customizable, you can use Git hooks to
+ automate or optimize virtually any aspect of your development workflow.
+\end_layout
+
+\begin_layout Itemize
+All Git hooks are ordinary scripts that Git executes when certain events
+ occur in the repository.
+ They are placed in 
+\emph on
+.git/hooks 
+\emph default
+directory of every Git repository.
+\end_layout
+
+\begin_layout Itemize
+All of the 
+\emph on
+pre-hooks 
+\emph default
+let you alter the action that’s about to take place, while the 
+\emph on
+post-hooks 
+\emph default
+are used only for notifications.
+\end_layout
+
+\begin_layout Subsubsection
+Local Hooks
+\end_layout
+
+\begin_layout Standard
+Local hooks affect only the repository in which they reside.
+ As you read through this section, remember that each developer can alter
+ their own local hooks, so you can’t use them as a way to enforce a commit
+ policy.
+\end_layout
+
+\begin_layout Itemize
+For entire commit life cycle: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+pre-commit
+\emph default
+ - this one is executed every time you run git commit before Git asks the
+ developer for a commit message or generates a commit object.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+prepare-commit-msg 
+\emph default
+- this is called after the pre-commit hook to populate the text editor with
+ a commit message.
+ This is a good place to alter the automatically generated commit messages
+ for squashed or merged commits.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+commit-msg 
+\emph default
+- this hook is much like the previous one, but it’s called after the user
+ enters a commit message.
+ This is an appropriate place to warn developers that their message doesn't
+ adhere to your team’s standards.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+post-commit 
+\emph default
+- this one is called immediately after the previous hook.
+ It can’t change the outcome of the git commit operation, so it’s used primarily
+ for notification purposes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Some other extra actions or safety checks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+post-checkout
+\emph default
+ - this hook works a lot like the 
+\emph on
+post-commit
+\emph default
+ hook, but it’s called whenever you successfully check out a reference with
+ 
+\emph on
+git checkout
+\emph default
+.
+ This is nice for clearing out your working directory of generated files
+ that would otherwise cause confusion.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+pre-rebase
+\emph default
+ - this one is called before 
+\emph on
+git rebase
+\emph default
+ changes anything, making it a good place to make sure something terrible
+ isn't about to happen.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Server-side
+\end_layout
+
+\begin_layout Standard
+These reside in server-side repositories (e.g., a central repository, or a
+ developer’s public repository).
+ When attached to the official repository, some of these can serve as a
+ way to enforce policy by rejecting certain commits.
+ All of these hooks let you react to different stages of the 
+\emph on
+git push
+\emph default
+ process.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+pre-receive
+\emph default
+ - this is executed immediately after 
+\emph on
+git push
+\emph default
+, so it is possible to reject changes.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+update
+\emph default
+ - this hook is called after the previous one.
+ It’s still called before anything is actually updated, but it’s called
+ separately for each ref that was pushed.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+post-receive
+\emph default
+ - this is called after a successful push operation, making it a good place
+ to perform notifications.
+ For many workflows, this is a better place to trigger notifications than
+ 
+\emph on
+post-commit
+\emph default
+ because the changes are available on a public server instead of residing
+ only on the user’s local machine.
+ Emailing other developers and triggering a continuous integration system
+ are common use cases for post-receive.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cherry Pick
+\end_layout
+
+\begin_layout Itemize
+This command enables arbitrary Git commits to be picked by reference and
+ appended to the current working HEAD.
+\end_layout
+
+\begin_layout Itemize
+Cherry picking is the act of picking a commit from a branch and applying
+ it to another.
+ git cherry-pick can be useful for undoing changes.
+\end_layout
+
+\begin_layout Itemize
+For example, say a commit is accidentally made to the wrong branch.
+ You can switch to the correct branch and cherry-pick the commit to where
+ it should belong.
+\end_layout
+
+\begin_layout Itemize
+Cherry picking can cause duplicate commits and many scenarios where cherry
+ picking would work, traditional merges are preferred instead.
+ With that said git cherry-pick is a handy tool for a few scenarios.
+\end_layout
+
+\begin_layout Itemize
+The most common use case is probably bug fix: a developer creates an explicit
+ commit patching that bug.
+ This new patch commit can be cherry-picked directly to the master branch
+ to fix the bug before it effects more users.
+\end_layout
+
+\begin_layout Itemize
+Let's say, that we want to use commit 
+\emph on
+A 
+\emph default
+in master branch.
+ So we will checkout master branch, and then use command 
+\emph on
+git cherry-pick A
+\emph default
+, where, of course, 
+\emph on
+A 
+\emph default
+is an SHA of a given commit.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.atlassian.com/git/tutorials/cherry-pick}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cherry picking is another method for moving commits from one branch to another.
+ Unlike merging and rebasing, with cherry-picking you specify exactly which
+ commits you mean.
+ The easiest way to do this is just specifying a single SHA:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://realpython.com/python-git-github-intro/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+git cherry-pick 4a4f4492ded256aa7b29bf5176a17f9eda66efbb
+\end_layout
+
+\begin_layout Standard
+This tells Git to take the changes that went into 4a4f449 and apply them
+ to the current branch.
+ This feature can be very handy when you want a specific change but not
+ the entire branch that change was made on.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GitLab
+\end_layout
+
+\begin_layout Subsubsection
+Examples
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://about.gitlab.com/2016/10/25/gitlab-workflow-an-overview/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Create own branch and start working on feature:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Description
+$ git checkout devel 
+\end_layout
+
+\begin_layout Description
+$ git pull 
+\end_layout
+
+\begin_layout Description
+$ git checkout -b feature/1234_my_cool_feature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If you are ready for review, open a merge request.
+ Please create a merge request against devel branch as target in original
+ repository.
+\end_layout
+
+\begin_layout Itemize
+Updating merge request, using force push:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ touch new_file.txt 
+\end_layout
+
+\begin_layout Description
+$ git add new_file.txt 
+\end_layout
+
+\begin_layout Description
+$ git commit -m 'new file' 
+\end_layout
+
+\begin_layout Description
+$ git push --force
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro tip: You can amend existing commits instead of adding news at the end
+ by interactive rebase (git rebase -i master 1234_branch)
+\end_layout
+
+\begin_layout Itemize
+On merge request conflicts:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Description
+$ git checkout devel 
+\end_layout
+
+\begin_layout Description
+$ git pull 
+\end_layout
+
+\begin_layout Description
+$ git rebase devel 1234_branch <resolve conflicts> 
+\end_layout
+
+\begin_layout Description
+$ git push --force
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Git branching workflows
+\end_layout
+
+\begin_layout Standard
+Inspired or taken from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.atlassian.com/git/tutorials/comparing-workflows}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+GitFlow
+\end_layout
+
+\begin_layout Itemize
+This flow is based on 2 main branches 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+master
+\series default
+ - production code, all development code is merged into master after some
+ time.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+develop
+\series default
+ - pre-production code, where all finished features are merged here.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Also, during development cycle, a variety of supporting branches are used:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+feature-
+\series default
+* - new features for upcoming releases.
+ May branch off 
+\series bold
+from develop 
+\series default
+and must be merged 
+\series bold
+into develop.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+hotfix-
+\series default
+* - necessary to act upon an undesired status of 
+\series bold
+master
+\series default
+.
+ May branch off 
+\series bold
+from master 
+\series default
+and must be merged 
+\series bold
+into master 
+\series default
+and 
+\series bold
+develop
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+release
+\series default
+-* - these branches support preparation of a new production release.
+ They allow many minor bugs to be fixed and also preparing metadata for
+ a release.
+ May be branch off 
+\series bold
+from develop 
+\series default
+and must be merged 
+\series bold
+into master 
+\series default
+and 
+\series bold
+develop
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This is also known as 
+\begin_inset Quotes eld
+\end_inset
+
+A successful Git branching model
+\begin_inset Quotes erd
+\end_inset
+
+, from 2010.
+ It was one of the first proposals to use git branches and it has gotten
+ a lot of attention.
+ However, it has few problems:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-har
+mful/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Developers must use the develop branch and not master, master is reserved
+ for code that is released to production.
+ It is a convention to call your default branch master and to mostly branch
+ from and merge to this.
+ Since most tools automatically make the master branch the default one and
+ display that one by default it is annoying to have to switch to another
+ one.
+ 
+\end_layout
+
+\begin_layout Itemize
+The complexity introduced by the hotfix and release branches is another
+ problem.
+ These branches can be a good idea for some organizations but are overkill
+ for the vast majority of them.
+ Nowadays most organizations practice continuous delivery which means that
+ your default branch can be deployed.
+ This means that hotfix and release branches can be prevented including
+ all the ceremony they introduce.
+ An example of this ceremony is the merging back of release branches.
+ Though specialized tools do exist to solve this, they require documentation
+ and add complexity.
+ Frequently developers make a mistake and for example changes are only merged
+ into master and not into the develop branch.
+ The root cause of these errors is that git flow is too complex for most
+ of the use cases.
+ And doing releases doesn't automatically mean also doing hotfixes.
+\end_layout
+
+\begin_layout Itemize
+Using individual (long lived) branches for features also make it harder
+ to ensure that everything works together when changes are merged back together.
+ This is especially pronounced in today’s world where continuous integration
+ should be the default practice of software development regardless how big
+ the project is.
+ By integrating all changes together regularly you’ll avoid big integration
+ issues that waste a lot of time to resolve, especially for bigger projects
+ with hundreds or thousands of developers.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A lot simpler is GitHub flow or GitLab flow.
+ Or the cactus model
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-har
+mful/}}
+\end_layout
+
+\end_inset
+
+ (this is much more simple and makes sure that continuous integration principles
+ are used).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Clean state of branches at any given moment in lifecycle of project.
+\end_layout
+
+\begin_layout Itemize
+It has many extensions and support on most used git tools.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://github.com/nvie/gitflow}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ideal when there are multiple versions of production.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Git history becomes unreadable.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.endoflineblog.com/gitflow-considered-harmful}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Master/develop split is considered redundant and makes CD and CI harder.
+ It is very complex and over-engineered.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+It isn't recommended when it is needed to maintain a single version of productio
+n.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/git_flow.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Git flow diagram.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+GitHub Flow
+\end_layout
+
+\begin_layout Itemize
+Suppose you have a staging environment (
+\series bold
+master
+\series default
+), a pre-production environment (
+\series bold
+MR from the master branch to pre-production branch
+\series default
+) and a production environment (merging pre-production into production).
+\end_layout
+
+\begin_layout Itemize
+GitHub flow does assume you are able to deploy to production every time
+ you merge a feature branch.
+ There are many cases where this is not possible.
+\end_layout
+
+\begin_layout Itemize
+This is a lightweight workflow created by GitHub in 2011 and it respects
+ the following principles:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Anything in 
+\emph on
+master
+\series bold
+\emph default
+ 
+\series default
+branch is deployable.
+\end_layout
+
+\begin_layout Enumerate
+If you are working on something new, create a branch off from 
+\emph on
+master
+\series bold
+\emph default
+ 
+\series default
+and give a proper descriptive name.
+\end_layout
+
+\begin_layout Enumerate
+Commit to that new branch locally and regularly push your work to the same
+ named remote branch on the server.
+\end_layout
+
+\begin_layout Enumerate
+When you need a feedback or help, or all changes are ready for merging,
+ open a 
+\series bold
+PR
+\series default
+ (pull request).
+\end_layout
+
+\begin_layout Enumerate
+After 
+\series bold
+someone
+\series default
+ 
+\series bold
+else
+\series default
+ has 
+\series bold
+reviewed and signed off 
+\series default
+on the feature, 
+\series bold
+YOU can merge it into master
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Once it is merged and pushed into master, you can and 
+\series bold
+should 
+\series default
+deploy immediately.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Friendly for CD and CI.
+\end_layout
+
+\begin_layout Itemize
+A simpler alternative to Git Flow.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ideal when it needs to maintain a single version in production.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Production code can become unstable most easily.
+\end_layout
+
+\begin_layout Itemize
+Not adequate when it is needed to have release plans.
+\end_layout
+
+\begin_layout Itemize
+It doesn't resolve anything about deployment, environment, releases, and
+ issues.
+\end_layout
+
+\begin_layout Itemize
+Not recommended when multiple versions in production are needed.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/github_flow.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+GitHub flow diagram.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+GitLab Flow
+\end_layout
+
+\begin_layout Itemize
+Combination of feature-driven development and feature branches with issue
+ tracking.
+\end_layout
+
+\begin_layout Itemize
+Created by GitLab in 2014.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://about.gitlab.com/2014/09/29/gitlab-flow/?fbclid=IwAR3qjO-fttOzRLytF6ln
+6PheiGYE9wwZji3MHgU-iOtPjBbNOC1TGpjAh3I}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+There can be a project that isn't able to deploy to production every time
+ you merge a feature branch
+\series default
+ - in that case, GitHub Flow is not a way, GitLab is!
+\end_layout
+
+\begin_layout Itemize
+BTW, merge or pull requests are created in a git management application
+ and ask an assigned person to merge two branches.
+ Tools such as GitHub and Bitbucket choose the name pull request since the
+ first manual action would be to pull the feature branch.
+ Tools such as GitLab and others choose the name merge request since that
+ is the final action that is requested of the assignee.
+ In this article we’ll refer to them as merge requests.
+\end_layout
+
+\begin_layout Itemize
+Merge requests always create a merge commit even when the commit could be
+ added without one.
+ This merge strategy is called 
+\begin_inset Quotes eld
+\end_inset
+
+no fast-forward
+\begin_inset Quotes erd
+\end_inset
+
+ in git.
+ Git history is not linear, but the advantage is that reverting the entire
+ feature requires reverting only 1 commit (the merge commit).
+\end_layout
+
+\begin_layout Itemize
+It respects the following principles:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://about.gitlab.com/2016/07/27/the-11-rules-of-gitlab-flow/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Use 
+\series bold
+feature branches
+\series default
+, no direct commits on 
+\series bold
+master
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Test all commits
+\series default
+, not only ones on 
+\series bold
+master.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Run all the tests on all commits 
+\series default
+(you may have them in parallel if they are running longer than 5min).
+\end_layout
+
+\begin_layout Enumerate
+Perform code reviews before merging into 
+\series bold
+master.
+\end_layout
+
+\begin_layout Enumerate
+Deployments are automatic, based on branches or tags.
+\end_layout
+
+\begin_layout Enumerate
+Tags are set by the user, not by CI.
+ A user sets a tag and, based on that, the CI will perform an action.
+ You shouldn't have the CI change the repository.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Releases are based on tags.
+ If you tag something, that creates a new release.
+\end_layout
+
+\begin_layout Enumerate
+Pushed commits are never rebased.
+ If you push to a public branch you shouldn't rebase it since that makes
+ it hard to follow what you're improving, what the test results were, and
+ it breaks cherry-picking.
+ Code should be clean, history should be realistic
+\end_layout
+
+\begin_layout Enumerate
+Everyone starts from 
+\series bold
+master
+\series default
+, and targets 
+\series bold
+master
+\series default
+.
+ You don’t have any long branches.
+ You check out master, build your feature, create your merge request, and
+ target master again.
+ You should do your complete review before you merge, and not have any intermedi
+ate stages.
+\end_layout
+
+\begin_layout Enumerate
+Fix bugs in 
+\series bold
+master 
+\series default
+first and release branches afterwards.
+ Fix it in master, then cherry-pick it into another patch-release branch.
+ If you find a bug, the worst thing you can do is fix it in the just-released
+ version, and not fix it in master.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Commit messages reflect intent.
+ You should not only say what you did, but also why you did it.
+ It’s even more useful if you explain why you did this over any other options.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It defines how to make CI and CD.
+\end_layout
+
+\begin_layout Itemize
+Git history will be cleaner, less messy and more readable.
+\end_layout
+
+\begin_layout Itemize
+Ideal when it is needed to have a single version in production.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+More complex than GitHub Flow.
+\end_layout
+
+\begin_layout Itemize
+If multiple versions of production are needed, this flow can become very
+ complex.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gitlab_flow.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Environment branches with GitLab flow
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/gitlab_flow_release_branches.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Release branches with GitLab flow.
+ Only in case you need to release software to the outside world you need
+ to work with release branches.
+ After a release branch is announced, only serious bug fixes are included
+ in the release branch.
+ If possible these bug fixes are first merged into master and then cherry-picked
+ into the release branch.
+ This way you can’t forget to cherry-pick them into master and encounter
+ the same bug on subsequent releases.
+ This is called an ‘upstream first’ policy that is also practiced by Google
+ and Red Hat.
+ Every time a bug-fix is included in a release branch the patch version
+ is raised (to comply with Semantic Versioning) by setting a new tag.
+ In this flow it is not common to have a production branch.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+OneFlow
+\end_layout
+
+\begin_layout Itemize
+You have only one eternal branch in your repository (for example 
+\emph on
+master
+\emph default
+).
+ And then you have feature/hotfix branches, and release branches (all these
+ are being removed after their usage and integration into master)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The only condition that needs to be satisfied is that every new production
+ release is based on the previous release.
+ The most difference between OneFlow and GitFlow (above) is, that there
+ is
+\series bold
+ no develop branch
+\series default
+.
+ Actually, OneFlow was meant to be a replacement for GitFlow.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pros
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Clean and more readable git history.
+\end_layout
+
+\begin_layout Itemize
+Flexible according to team decisions.
+\end_layout
+
+\begin_layout Itemize
+Ideal when it is needed to have a single version in production.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+f your project has a high degree of automation - uses Continuous Delivery,
+ or even Continuous Deployment, for example, then this workflow will most
+ likely be too heavy for you.
+ Perhaps parts of it might still be useful, but other elements (like the
+ release process, for instance) would have to be heavily modified to make
+ sense when releasing on such a very frequent cadence.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Not recommended when it needs to maintain a multiple incompatible release
+ versions
+\series default
+ (such as Python2 and Python 3 versions of a project).
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

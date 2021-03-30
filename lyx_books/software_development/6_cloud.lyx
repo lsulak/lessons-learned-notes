@@ -1,0 +1,1687 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Linux Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Cloud Technologies
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Cloud Computing
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cloud computing is the on-demand delivery of compute power, database storage,
+ applications, and other IT resources through a cloud services platform
+ via the internet with pay-as-you-go pricing.
+\end_layout
+
+\begin_layout Itemize
+The moment you need services like storage and compute or networking, they're
+ available immediately without any advanced contract.
+\end_layout
+
+\begin_layout Itemize
+It's not just a substitute for what you have on-premises.
+ Look at the idea of IT as a series of actions: some of them are important
+ to your business, and some of them are common everywhere.
+ Everybody needs compute, storage, and identity management.
+ AWS exists to eliminate those undifferentiated heavy lifting tasks that
+ your IT department needs, that everyone's IT department needs.
+ This means your business can spend time working on what is strategically
+ unique to you rather than repetitive common tasks that everyone has to
+ do.
+\end_layout
+
+\begin_layout Itemize
+AWS has a high level of security with many security features written especially
+ for your operations team.
+ There are automation suites designed to deploy all of your applications,
+ all of your databases, all of your environments automatically.
+ Also there is a database as a service.
+ A lot of other services, such as virtual reality, game development, IoT,
+ machine learning, the list is bigger than 140 items.
+\end_layout
+
+\begin_layout Subsubsection
+Types of Cloud Computing
+\end_layout
+
+\begin_layout Itemize
+There is a range of deployment models, from all on-premises to fully deployed
+ in the cloud.
+ Many users begin with a new project in the cloud, and they might integrate
+ some on-premises applications with these new projects in a hybrid architecture.
+ They might decide to keep some legacy systems on-premises.
+ Over time, they might migrate more and more of their infrastructure to
+ the cloud, and they might eventually reach an all-in-the-cloud deployment.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://aws.amazon.com/types-of-cloud-computing/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are 3 main types of 
+\series bold
+Cloud Computing models
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Infrastructure as a Service (IaaS): 
+\emph default
+this typically provides access to networking features, computers (virtual
+ or on dedicated hardware), and data storage space.
+ IaaS provides you with the highest level of flexibility and management
+ control over your IT resources and is most similar to existing IT resources
+ that many IT departments and developers are familiar with today.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Platform as a Service (PaaS):
+\emph default
+ this removes the need for organizations to manage the underlying infrastructure
+ (usually hardware and operating systems) and allow you to focus on the
+ deployment and management of your applications.
+ This helps you be more efficient as you don’t need to worry about resource
+ procurement, capacity planning, software maintenance, patching, or any
+ of the other undifferentiated heavy lifting involved in running your applicatio
+n.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Software as a Service (SaaS):
+\emph default
+ this provides a completed product that is run and managed by the service
+ provider.
+ In most cases, people referring to SaaS are referring to end-user applications.
+ With a SaaS offering you do not have to think about how the service is
+ maintained or how the underlying infrastructure is managed; you only need
+ to think about how you will use that particular piece software.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are 3 types of 
+\series bold
+Cloud Computing Deployment Models
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Cloud:
+\emph default
+ A cloud-based application is fully deployed in the cloud and all parts
+ of the application run in the cloud.
+ Applications in the cloud have either been created in the cloud or have
+ been migrated from an existing infrastructure to take advantage of the
+ benefits of cloud computing.
+ Cloud-based applications can be built on low-level infrastructure pieces
+ or can use higher level services that provide abstraction from the management,
+ architectonic, and scaling requirements of core infrastructure.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hybrid:
+\emph default
+ this is a way to connect infrastructure and applications between cloud-based
+ resources and existing resources that are not located in the cloud.
+ The most common method of hybrid deployment is between the cloud and existing
+ on-premises infrastructure to extend, and grow, an organization's infrastructur
+e into the cloud while connecting cloud resources to internal system.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+On-premises
+\emph default
+: using virtualization and resource management tools, this is sometimes
+ called “private cloud”.
+ On-premises deployment does not provide many of the benefits of cloud computing
+ but is sometimes sought for its ability to provide dedicated resources.
+ In most cases this deployment model is the same as legacy IT infrastructure
+ while using application management and virtualization technologies to try
+ and increase resource utilization.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Amazon Web Services
+\end_layout
+
+\begin_layout Itemize
+Since 2006, Amazon Web Services has been the world’s most comprehensive
+ and broadly adopted cloud platform.
+\end_layout
+
+\begin_layout Itemize
+AWS offers over 90 fully featured services for compute, storage, networking,
+ database, analytics, application services, deployment, management, developer,
+ mobile, Internet of Things (IoT), Artificial Intelligence (AI), security,
+ hybrid and enterprise applications, from 44 Availability Zones (AZs) across
+ 16 geographic regions in the U.S., Australia, Brazil, Canada, China, Germany,
+ India, Ireland, Japan, Korea, Singapore, and the UK.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The AWS Cloud infrastructure is built around Regions and Availability Zones.
+
+\series default
+ AWS Regions provide multiple, physically separated, and isolated Availability
+ Zones that are connected with low latency, high throughput, and highly
+ redundant networking.
+\end_layout
+
+\begin_layout Itemize
+AWS also offers managed compute options, like Amazon Lightsail, that allow
+ you to use compute capacity without worrying about provisioning or managing
+ the underlying hardware.
+ In addition, AWS has other options that go beyond raw server capacity.
+ It offers container services that allow you to use Docker through Elastic
+ Container Service, or ECS, or Kubernetes through EKS.
+ We also offer pure serverless solutions, like AWS Lambda.
+ With the flexibility of AWS compute services, you can run virtually any
+ application in the cloud.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Lambda vs Amazon EC2
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.simform.com/aws-lambda-vs-ec2/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+EC2 requires management and provisioning of the environment.
+ Each EC2 instances runs not just a full copy of an operating system, but
+ a virtual copy of all the hardware that the operating system needs to run.
+ In contrast, what AWS Lambda requires is enough system resources and dependenci
+es to run a specific program.
+\end_layout
+
+\begin_layout Itemize
+The main difference between AWS Lambda vs EC2 (virtual server-based resources)
+ is the responsibility of provisioning and use cases to name a few.
+ AWS Lambda pricing is one of the biggest factors as well.
+\end_layout
+
+\begin_layout Itemize
+With the computing resources like AWS Lambda, the computing resources can
+ scale and descends automatically based on real-time demands.
+\end_layout
+
+\begin_layout Itemize
+The architecture of applications built using functions like AWS Lambda is
+ popularly called serverless architecture.
+ AWS Lambda is a splendid example of how the overhead of the operation team
+ is going to be a distant memory.
+\end_layout
+
+\begin_layout Itemize
+EC2 is a virtual cloud infrastructure service offered by AWS.
+ This provides on-demand computing resources through which you can create
+ powerful servers in the cloud.
+\end_layout
+
+\begin_layout Itemize
+The entire hardware of EC2 is fragmented into multiple resources which are
+ offered in the form of instances which are scalable in terms of computing
+ memory and processing power.
+\end_layout
+
+\begin_layout Itemize
+With Amazon EC2, you have the facility of provisioning virtual machines
+ as per your applications’ requirements.
+ Such facility is provided on a utility based subscription model where the
+ user is billed as per their consumption of resources.
+\end_layout
+
+\begin_layout Itemize
+Lambdas use ECS and these containers are not available to configure manually.
+ On the other hand, Lambdas are exposed through API Gateway which functions
+ as a URL router to your Lambdas.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Setup & Management Environment
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+AWS Lambda: 
+\series default
+Whether you need to set up a multiple or single environment, you do not
+ need to do much of a work.
+ You are not required to spin up or provision containers or make them available
+ for your applications, scaling is fully automated.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon EC2: 
+\series default
+With EC2, setting up includes logging in via SSH and manually installing
+ Apache and doing a git clone.
+ Along with that, you need to install and configure all the required software
+ in a manner which is automated and reproducible.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Performance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+AWS Lambda:
+\series default
+ As per the official documentation, AWS Lambda has the timeout of 300 seconds.
+ This limits the type of tasks lambda can deal with.
+ Long-running functions and complex tasks aren't a good fit.
+ Also, Lambda has a package size limit of 50 MB.
+ More to that, “/tmp” file storage has a limit of 512 MB.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon EC2:
+\series default
+ This has pretty flexible options.
+ You can definitely work with long running tasks since instances are available
+ for different types of requirements with different configurations.
+ This makes EC2 a better option over Lambda.
+ Managing dependencies in EC2 isn't a big problem since it doesn't have
+ constraints when it comes to temporary storage.
+ Though what you should consider is the size of software packages and correspond
+ing instance CPU.
+ This is because your CPU may undergo burden if it’s not configured for
+ the same.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The serverless architecture
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Is a way to build and run applications and services without having to manage
+ the infrastructure behind it.
+ Your application still runs on servers, of course, but the server management
+ is done by AWS.
+ You no longer have to provision, scale, and maintain services to run your
+ applications, databases, or storage systems.
+ With the serverless architecture, you can execute your code only when needed,
+ and scale automatically from a few requests per day to thousands of requests
+ per second.
+ And you only pay for the compute time you consume.
+ There is no charge when your code's not running.
+\end_layout
+
+\begin_layout Itemize
+Serverless is the native architecture of the cloud that enables you to shift
+ more of your operational responsibilities to AWS, increasing your agility
+ and innovation.
+ Serverless allows you to build and run applications and services without
+ thinking about servers.
+ It eliminates infrastructure management tasks such as server or cluster
+ provisioning, patching, operating system maintenance, and capacity provisioning.
+ You can build them for nearly any type of application or back-end service,
+ and everything required to run and scale your application with high availabilit
+y is handled for you.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Lambda 
+\series default
+is serverless compute service from Amazon.
+\end_layout
+
+\begin_layout Itemize
+So there are 4 main benefits:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No server management.
+\end_layout
+
+\begin_layout Itemize
+Flexible scaling.
+\end_layout
+
+\begin_layout Itemize
+Pay for value.
+\end_layout
+
+\begin_layout Itemize
+Automated high availability.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+AWS CloudFormation 
+\series default
+provides a common language for you to describe and provision all the infrastruct
+ure resources in your cloud environment via JSON file.
+ CloudFormation allows you to use programming languages or a simple text
+ file to model and provision, in an automated and secure manner, all the
+ resources needed for your applications across all regions and accounts.
+ This gives you a single source of truth for your AWS resources.
+ AWS CloudFormation is available at no additional charge, and you pay only
+ for the AWS resources needed to run your applications.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Database Migration Service 
+\series default
+migrate databases to AWS quickly and securely.
+ The source database remains fully operational during the migration, minimizing
+ downtime to applications that rely on the database.
+ The AWS Database Migration Service can migrate your data to and from most
+ widely used commercial and open-source databases.
+ There is no need to install any drivers or applications, and it does not
+ require changes to the source database in most cases.
+ You can begin a database migration with just a few clicks in the AWS Management
+ Console.
+ You only pay for the compute resources used during the migration process
+ and any additional log storage.
+ Migrating a terabyte-size database can be done for as little as $3.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Cost Explorer 
+\series default
+lets you visualize, understand, and manage your AWS costs and usage over
+ time.
+ You can create custom reports (including charts and tabular data) that
+ analyze cost and usage data, both at a high level (e.g., total costs and
+ usage across all accounts) and for highly specific requests.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Trusted Advisor
+\series default
+ is an online resource to help you reduce costs, increase performance, and
+ improve security by optimizing your AWS environment.
+ Trusted Advisor provides real-time guidance to help you provision your
+ resources by following our best practices.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A Region
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Region is a geographically self-contained area where all of the resources
+ you need for your application, all the compute, all the storage, are contained.
+ All resources you need for your application are there.
+\end_layout
+
+\begin_layout Itemize
+A region is a collection of availability zones.
+ It can consist of one or more data centers.
+ And you don't have to worry about the distance between them because AWS
+ connects those availability zones with a proprietary high speed fiber network,
+ multiple lines between every availability zone so you can treat it as a
+ single area.
+ But you run your application simultaneously across all of the availability
+ zones.
+ The idea is it doesn't matter what might happen to an availability zone,
+ because there might be some natural disaster, a hurricane, a tornado, an
+ earthquake that we don't want you to worry about.
+ It doesn't matter if there's a temporary loss of connectivity to an availabilit
+y zone because your application runs in both of them at the same time.
+ This is how you can not only be effective, be scalable, but also highly
+ available all while running in a single region of your choice.
+\end_layout
+
+\begin_layout Itemize
+There are many many regions all over the world, and you need to decide which
+ is the best for your business:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Latency: where are your customers located?
+\end_layout
+
+\begin_layout Itemize
+Cost: not every region is priced the same.
+\end_layout
+
+\begin_layout Itemize
+Compliance: legal restrictions (such as GDPR from Europe).
+\end_layout
+
+\begin_layout Itemize
+Service availability: sometimes a new feature is released and is not available
+ for some regions (it will run eventually, but that can take even a few
+ months).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Virtual Private Cloud (VPC)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In AWS, VPC is used for isolating a single application from the millions
+ other applications running on AWS.
+\end_layout
+
+\begin_layout Itemize
+Amazon VPC lets you provision a logically isolated section of the AWS Cloud
+ where you can launch AWS resources in a virtual network that you define.
+ You have complete control over your virtual networking environment, including
+ the selection of your own IP address range, the creation of subnets, and
+ the configuration of route tables and network gateways.
+ You can use both IPv4 and IPv6 in your VPC for secure and easy access to
+ resources and applications.
+ You could create up to five non-default VPCs per AWS account per Region.
+\end_layout
+
+\begin_layout Itemize
+A VPC spans all the Availability Zones in the Region.
+ After creating a VPC, you can add one or more subnets in each Availability
+ Zone.
+ When you create a subnet, you specify the CIDR block for the subnet, which
+ is a subset of the VPC CIDR block.
+ Each subnet must reside entirely within one Availability Zone, and it can't
+ span Availability Zones.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The point of VPC is to provide a frame/box that all of your application
+ lives inside, and the idea is nothing comes in the box, nothing gets out
+ of the box, without your specific permission, and whether you're filtering
+ by network protocol, or port, or IP address, or by user or other information,
+ you maintain complete control of all the assets inside your VPC.
+\end_layout
+
+\begin_layout Itemize
+When you create a VPC, you also then divide the space inside the VPC into
+ subnets.
+\end_layout
+
+\begin_layout Itemize
+An important concept that's used in networking on AWS is CIDR, or Classless
+ Inter-Domain Routing.
+ CIDR network addresses are allocated in a virtual private cloud (VPC) and
+ in a subnet by using CIDR notation.
+\end_layout
+
+\begin_layout Itemize
+But VPC stops all traffic in and all traffic out, and if we're going to
+ put a web server in there, well, that means nobody can talk to it.
+ We have to add a IGW (Internet Gateway) and attach it to the VPC and then
+ she'll create a route table and associate that with the subnet, so that
+ any communication that wants to talk to assets in this subnet, can come
+ in and out of that IGW.
+\end_layout
+
+\begin_layout Itemize
+Then, once we defined VPC, subnet, IGW (associated with a given subnet),
+ then we can launch EC2 instance in that subnet.
+\end_layout
+
+\begin_layout Itemize
+Also, we can add a database to it.
+ But a database shouldn't go in the same public access subnet where my web
+ servers are, because I never want anyone from the outside, at least, in
+ my business case, to access a database directly.
+ So, we're going to make another subnet inside my VPC (private one).
+ But we will not associate this new subnet to IGW.
+ We want that only our web server can communicate with the database - and
+ it can do it, because they are in the same VPC.
+\end_layout
+
+\begin_layout Itemize
+If you want to achieve high-availability, you should create another subnet
+ (with different Availability Zone), so that you have two pairs: two private
+ and two public subnets.
+ All 4 are in the same VPC (we don't have to change this, because VPC is
+ already multi-availability Zone structure).
+ And we have to associate our route table (Public Route Table) to both public
+ subnets.
+\end_layout
+
+\begin_layout Itemize
+Now you need ELB - Elastic Load Balancer, that will balance the input load.
+ So you have to associate ELB with two EC2 instances, so that it doesn't
+ matter which one gets the traffic.
+\end_layout
+
+\begin_layout Itemize
+There's one more type of gateway we can add into your VPC and that's called
+ a virtual private gateway.
+ And a virtual private gateway, or a VGW, can be created and attached, and
+ this can even be associated with your private subnets.
+ So that if you've got a DBA, that is connecting over your own on-premises
+ data center, she can connect through the VGW over a VPN connection and
+ never go through the IGW.
+ And that's it.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+AWS Lambda
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It lets you run code without provisioning or managing servers.
+ You pay only for the compute time you consume - there is no charge when
+ your code isn't running.
+\end_layout
+
+\begin_layout Itemize
+With Lambda, you can run code for virtually any type of application or backend
+ service - all with zero administration.
+ Just upload your code and Lambda takes care of everything required to run
+ and scale your code with high availability.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://aws.amazon.com/lambda/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lambda natively supports 6 programming languages: Node.js, Python, Java,
+ C#, Ruby, and Go.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+AWS Container Services
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Elastic Container Service (Amazon ECS)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ECS
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://aws.amazon.com/ecs/}}
+\end_layout
+
+\end_inset
+
+ is a highly scalable, high-performance container orchestration service
+ that supports Docker containers.
+ 
+\end_layout
+
+\begin_layout Itemize
+It allows you to run and scale containerized applications on AWS.
+ With simple API calls, you can launch and stop Docker-enabled applications,
+ query the complete state of your application, and more.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Elastic Container Service for Kubernetes (Amazon EKS)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+EKS
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://aws.amazon.com/eks/}}
+\end_layout
+
+\end_inset
+
+ makes it straightforward to deploy, manage, and scale containerized application
+s that use Kubernetes on AWS.
+ Amazon EKS runs the Kubernetes management infrastructure for you across
+ multiple AWS availability zones to eliminate a single point of failure.
+ 
+\end_layout
+
+\begin_layout Itemize
+Amazon EKS is certified Kubernetes conformant so you can use existing tooling
+ and plugins from partners and the Kubernetes community.
+ 
+\end_layout
+
+\begin_layout Itemize
+Applications running on any standard Kubernetes environment are fully compatible
+ and can be easily migrated to Amazon EKS.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+AWS Fargate
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fargate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://aws.amazon.com/fargate/}}
+\end_layout
+
+\end_inset
+
+ is a compute engine for Amazon ECS and Amazon EKS that allows you to run
+ containers without having to manage servers or clusters.
+ 
+\end_layout
+
+\begin_layout Itemize
+You just define your application as you do for Amazon ECS.
+ You package your application into task definitions, specify the CPU and
+ memory needed, define the networking and IAM policies that each container
+ needs, and upload everything to Amazon ECS.
+ After everything is setup, AWS Fargate launches and manages your containers
+ for you.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Computing Services
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Elastic Compute Cloud (Amazon EC2)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+EC2 is a web service that provides secure and resizable compute capacity
+ in the cloud.
+ It's designed to make web-scale cloud computing easier for developers.
+\end_layout
+
+\begin_layout Itemize
+It is a compute service that allows you to provision virtual servers on
+ demand.
+ Each virtual server you provision is called an EC2 instance.
+ Just about anything you can do with a server in a traditional sense, you
+ can do with an EC2 instance.
+\end_layout
+
+\begin_layout Itemize
+AWS supports a range of operating systems including Linux, Ubuntu, Windows,
+ and more.
+ To select the operating system, you choose an Amazon Machine Image, or
+ what we call an AMI.
+ An AMI contains information about how you want your instance to be configured,
+ including the operating system and possible applications to be installed
+ on that instance.
+\end_layout
+
+\begin_layout Itemize
+You can launch one or many instances from a single AMI, which would create
+ multiple instances that all share the same configuration.
+\end_layout
+
+\begin_layout Itemize
+Beyond the operating system, you can also configure the instance type and
+ size, which correspond to the amount of compute, memory, and networking
+ capabilities available per instance.
+ This allows you to control the underlying hardware and the capacity of
+ that hardware with just a few clicks or lines of code.
+\end_layout
+
+\begin_layout Itemize
+If you choose an EC2 instance type and then later realized a different type
+ would have been better suited for the application, you can easily change
+ the underlying hardware.
+ If you decide that you want to resize your EC2 instance, that isn't a problem
+ in the cloud either.
+ EC2 is a resizable resource with a few clicks in the console, or it can
+ be done programmatically through an API call.
+ This enables you to embrace change over time.
+\end_layout
+
+\begin_layout Itemize
+Amazon EC2 provides a wide selection of 
+\series bold
+instance types 
+\series default
+that are optimized to fit different use cases.
+ Instance types comprise varying combinations of CPU, memory, storage, and
+ networking capacity.
+ They give you the flexibility to choose the appropriate mix of resources
+ for your applications.
+ Each instance type includes one or more instance sizes, which allows you
+ to scale your resources to the requirements of your target workload.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Lightsail
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is the easiest way to get started with AWS for developers, small businesses
+, students, and other users who need a simple virtual private server (VPS)
+ solution.
+\end_layout
+
+\begin_layout Itemize
+Lightsail provides developers compute, storage, and networking capacity,
+ and it also provides capabilities to deploy and manage websites and web
+ applications in the cloud.
+ Lightsail includes everything you need to launch your project quickly--a
+ virtual machine, solid state drive (SSD)-based storage, data transfer,
+ Domain Name System (DNS) management, and a static IP--for a low, predictable
+ monthly price.
+\end_layout
+
+\begin_layout Itemize
+If you want to just simplify the whole process of EC2.
+ You don't want to go through the process of spinning up an EC2 instance.
+ You just want a solution to running your application.
+\end_layout
+
+\begin_layout Itemize
+Lightsail has a number of pre-built options, you simply select, launch,
+ and you're done.
+ For example, you might just want a WordPress site.
+ Lightsail has one already built for you.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Storage Services
+\end_layout
+
+\begin_layout Standard
+There are 2 different approaches: object storage, and block storage.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Elastic Block Store (Amazon EBS)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The most common block storage.
+ It provides persistent block storage volumes for use with Amazon EC2 instances
+ in the AWS Cloud.
+ Each Amazon EBS volume is automatically replicated inside an Availability
+ Zone to protect you from component failure, which offers high availability
+ and durability.
+ Amazon EBS volumes offer the consistent and low-latency performance that
+ you need to run your workloads.
+\end_layout
+
+\begin_layout Itemize
+When you launch your EC2 instance, you're going to need some kind of block
+ storage to go with it.
+ It's part of the boot volume or maybe it's a separate data volume.
+ And AWS has racks of unused storage that you can provision to sizes as
+ large as you need up to many terabytes in size.
+\end_layout
+
+\begin_layout Itemize
+EBS can be attached to only 1 instance of EC2.
+\end_layout
+
+\begin_layout Itemize
+When you launch the EC2 instance, the boot volume can attach directly to
+ your EC2 instance, as well as the data volume.
+ These volumes live independent of the EC2 instance themselves.
+ In fact, they may already exist before your EC2 instance launches.
+ When it launches, it simply finds the volume and attaches it the same way
+ you might have an old drive from a laptop.
+\end_layout
+
+\begin_layout Itemize
+Amazon EBS provides a range of options that allow you to optimize storage
+ performance and cost for your workload.
+ These options are divided into two major categories: SSD-backed storage
+ for transactional workloads, such as databases and boot volumes (performance
+ depends primarily on IOPS), and hard disk drive (HDD)-backed storage for
+ throughput-intensive workloads, such as MapReduce and log processing (performan
+ce depends primarily on MB/s).
+\end_layout
+
+\begin_layout Itemize
+The Elastic Volume feature of Amazon EBS allows you to dynamically increase
+ capacity, tune performance, and change the type of live volumes with no
+ downtime or performance impact.
+ This allows you to easily right-size your deployment and adapt to performance
+ changes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Simple Storage Service (Amazon S3)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This stores data as objects within resources that are called buckets.
+ You can store as many objects as you want within a bucket, and you can
+ write, read, and delete objects in your bucket.
+ Objects can be up to 5 TB in size.
+\end_layout
+
+\begin_layout Itemize
+You can control access to both the bucket and the objects (who can create,
+ delete, and retrieve objects in the bucket for example), and view access
+ logs for the bucket and its objects.
+ You can also choose the AWS Region where a bucket is stored to optimize
+ for latency, minimize costs, or address regulatory requirements.
+\end_layout
+
+\begin_layout Itemize
+With Amazon S3, you pay only for what you use.
+ There is no minimum fee.
+ There is even a calculator
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://calculator.s3.amazonaws.com/index.html}}
+\end_layout
+
+\end_inset
+
+ for estimating your monthly bill.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Elastic File System (Amazon EFS)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It provides simple, scalable, elastic file storage for use with AWS Cloud
+ services and on-premises resources.
+ It is straightforward to use, and it offers a simple interface that allows
+ you to create and configure file systems quickly and easily.
+\end_layout
+
+\begin_layout Itemize
+Amazon EFS is designed to provide massively parallel shared access to thousands
+ of Amazon EC2 instances.
+ When an Amazon EFS file system is mounted on Amazon EC2 instances, it provides
+ a standard file system interface and file system access semantics, which
+ allows you to seamlessly integrate Amazon EFS with your existing applications
+ and tools.
+ Multiple Amazon EC2 instances can access an Amazon EFS file system at the
+ same time, thus allowing Amazon EFS to provide a common data source for
+ workloads and applications that run on more than one Amazon EC2 instance.
+\end_layout
+
+\begin_layout Itemize
+This is designed to be a regionally distributed, meaning it doesn't live
+ inside any one subnet, a regionally distributed file store that can automatical
+ly attach to multiple EC2 instances simultaneously, many EC2 instances,
+ including the instances in different VPCs.
+\end_layout
+
+\begin_layout Itemize
+This way, if you need a corporate directory, a corporate file store where
+ everyone connects to the same document store, EFS can be that solution
+ for you.
+ In fact, using EFS File Sync, you can even have that directory connect
+ to your on-premises data center, allowing your people at your home network
+ to think they're connecting to home directories when really they're being
+ stored inside EFS on AWS, with all the security and regional distribution
+ that comes automatically.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Database Services
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Relational Database Service (Amazon RDS)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It makes it straightforward to set up, operate, and scale a relational database
+ in the cloud.
+ It provides cost-efficient and resizable capacity while automating time-consumi
+ng administration tasks such as provisioning hardware, setting up the database,
+ patching, and making backups.
+\end_layout
+
+\begin_layout Itemize
+Amazon RDS currently supports 6 database engines:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Amazon Aurora
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL
+\end_layout
+
+\begin_layout Itemize
+MySQL
+\end_layout
+
+\begin_layout Itemize
+MariaDB
+\end_layout
+
+\begin_layout Itemize
+Oracle
+\end_layout
+
+\begin_layout Itemize
+Microsoft SQL Server
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon DynamoDB
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DynamoDB is a fully managed, fast, and scalable NoSQL database solution
+ that delivers reliable performance at any scale.
+\end_layout
+
+\begin_layout Itemize
+You do not have to manage any of the underlying infrastructure running that
+ database.
+ When you need to start using DynamoDB, you simply create a table, define
+ your throughput needs, and you can start populating it with your data.
+\end_layout
+
+\begin_layout Itemize
+Its a fully managed cloud database, and it supports both document and key-value
+ store models.
+\end_layout
+
+\begin_layout Itemize
+To compare this with Amazon RDS, with RDS when you need to use it, you define
+ how much capacity you need in terms of memory and CPU.
+ So you're defining the underlying hardware that we're running your database
+ on.
+ With Dynamo, you simply just tell us how much you need talk to that table
+ by provisioning your throughput needs.
+ With Amazon DynamoDB, you can start small, specify the throughput you need,
+ and easily scale your capacity requirements in seconds, as needed.
+\end_layout
+
+\begin_layout Itemize
+It automatically partitions data over multiple servers to meet your requested
+ capacity.
+ As your data grows, AWS handles the management of scaling your database.
+ There is no limit on table size, which means you can store any amount of
+ data.
+ DynamoDB synchronously replicates your data across three facilities in
+ an AWS Region to ensure redundancy and availability.
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+table
+\series default
+ is a
+\series bold
+ collection of items
+\series default
+, and each item is a
+\series bold
+ collection of attributes
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+The first is the 
+\series bold
+partition key
+\series default
+, which is a simple primary key, composed of one attribute.
+ For example, if we are storing music data, our primary key should be "Artist".
+ The next to the partition key is a 
+\series bold
+sort key
+\series default
+.
+ That should be a song title.
+ When a partition and a sort key exist in a table, it is referred to as
+ a "
+\series bold
+composite primary key
+\series default
+" and is composed of two attributes.
+ And then we have a set of attributes.
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+"secondary index"
+\series default
+ is a data structure that contains a subset of attributes from a table,
+ along with an alternate key to support query operations.
+ A table can have multiple secondary indexes, which give you application
+ access to many different query patterns.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A 
+\series bold
+"local secondary index"
+\series default
+ is an index that has the same partition key as the base table, but a different
+ sort key.
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+"global secondary index"
+\series default
+ is an index that has a partition key and a sort key that can be different
+ from those based on the base table.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Monitoring AWS - 
+\series bold
+Amazon CloudWatch
+\end_layout
+
+\begin_layout Itemize
+With Amazon CloudWatch, you can monitor your cloud infrastructure intelligently.
+ CloudWatch will collect data from your cloud-based infrastructure in one
+ centralized location.
+ With this data, you can create statistics, which drive operational procedures
+ using features such as
+\series bold
+ CloudWatch Alarms
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+CloudWatch also allows you to visualize the statistics about your environment
+ through dashboards.
+ You can use out-of-the-box dashboards to view built-in or custom metrics,
+ and you can build your own custom dashboards or partner with a wide range
+ of consultants through the Amazon Partner Network.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon CloudWatch Events 
+\series default
+delivers a near real-time stream of system events that describe changes
+ in AWS resources.
+ Using simple rules that you can quickly set up, you can match events and
+ route them to one or more target functions or streams.
+ CloudWatch Events becomes aware of operational changes as they occur.
+\end_layout
+
+\begin_layout Itemize
+You can use
+\series bold
+ Amazon CloudWatch Logs 
+\series default
+to monitor, store, and access your log files from Amazon EC2 instances,
+ AWS CloudTrail, Amazon Route 53, and other sources.
+ You can then retrieve the associated log data from CloudWatch Logs.
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Elastic Load Balancing (ELB)
+\end_layout
+
+\begin_layout Itemize
+It automatically distributes incoming application traffic across multiple
+ targets, such as Amazon EC2 instances, containers, and IP addresses.
+ It can handle the varying load of your application traffic in a single
+ Availability Zone or across multiple Availability Zones.
+\end_layout
+
+\begin_layout Itemize
+ELB offers 3 types of load balancers that all feature the high availability,
+ automatic scaling, and robust security that are necessary to make your
+ applications fault-tolerant:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+An Application Load Balancer
+\series default
+ operates at the request level (Layer 7), routing traffic to targets - such
+ as EC2 instances, microservices and containers - within Amazon VPC, based
+ on the content of the request.
+ It's ideal for the advanced load balancing of Hypertext Transfer Protocol
+ (HTTP) and Secure HTTP (HTTPS) traffic.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A Network Load Balancer 
+\series default
+operates at the connection level (Layer 4), routing connections to targets
+ - such as Amazon EC2 instances, microservices, and containers - within
+ Amazon VPC, based on IP protocol data.
+ It's ideal for load-balancing Transmission Control Protocol (TCP) traffic.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The Classic Load Balancer
+\series default
+ provides basic load balancing across multiple Amazon EC2 instances, and
+ it operates at both the request level and the connection level.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+At some point, our 
+\begin_inset Formula $N$
+\end_inset
+
+ instances aren't going to be able to handle that demand, and we're going
+ to need more EC2 instances.
+ Instead of launching these instances manually, we want to do it automatically.
+ So, we're going to use what's called 
+\series bold
+Auto Scaling
+\series default
+.
+ Auto Scaling is what allows us to provision more capacity on demand, depending
+ on different thresholds that we set, and we can set those in CloudWatch.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon EC2 Auto Scaling 
+\series default
+helps you maintain application availability, and it allows you to dynamically
+ scale your Amazon EC2 capacity up or down automatically according to conditions
+ that you define.
+\end_layout
+
+\begin_layout Itemize
+You can also use Amazon EC2 Auto Scaling to dynamically scale Amazon EC2
+ instances.
+ Dynamic scaling automatically increases the number of Amazon EC2 instances
+ during demand spikes to maintain performance and decrease capacity during
+ lulls, which can help reduce costs.
+ Amazon EC2 Auto Scaling is well-suited to applications that have stable
+ demand patterns, or applications that experience hourly, daily, or weekly
+ variability in usage.
+\end_layout
+
+\begin_layout Subsection
+Security
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Shared Responsibility Model
+\series default
+ - security and compliance are shared responsibilities between AWS and the
+ customer.
+ This shared model can help relieve a customer’s operational burden because
+ Amazon operate, manage, and control the components from the host operating
+ system and virtualization layer down to the physical security of the facilities
+ where the service operates.
+ The customer is responsible for (and manages) the guest operating system
+ (including updates and security patches) and other associated application
+ software, in addition to the configuration of the AWS-provided security
+ group firewall.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS responsibility
+\series default
+: Security of the Cloud: Amazon is responsible for protecting the infrastructure
+ that runs all of the services that are offered in the AWS Cloud.
+ This infrastructure is composed of the hardware, software, networking,
+ and facilities that run AWS Cloud services.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Customer responsibility
+\series default
+: Security in the Cloud: Customer responsibility will be determined by the
+ AWS Cloud services that a customer selects.
+ This determines the amount of configuration work the customer must perform
+ as part of their security responsibilities.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AWS Identity Access Management (IAM)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An IAM role is an IAM entity that defines a set of permissions for making
+ AWS service requests.
+ IAM roles are not associated with a specific user or group.
+ Instead, trusted entities assume roles such as an IAM user, an application,
+ or an AWS service like EC2.
+\end_layout
+
+\begin_layout Itemize
+So IAM is a web service that helps you securely control access to AWS resources.
+ Amazon typically uses credentials from IAM Users or IAM Roles to authenticate
+ with AWS when making API calls.
+ They control the permissions for which API actions those Users or Roles
+ can perform with IAM Policies.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Machine Learning Services
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon Lex
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It provides the advanced deep learning functionalities of automatic speech
+ recognition and NLP that powers Amazon Alexa.
+\end_layout
+
+\begin_layout Itemize
+The only language that is supported in this moment is English.
+\end_layout
+
+\begin_layout Itemize
+Amazon Lex uses Amazon Polly that uses text-to-speech, so it is possible
+ to build the complete chat bot with Amazon Lex.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon Polly
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This service provides text to speech functionality.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+API
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Amazon API Gateway
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a fully managed service that makes it easy for developers to create,
+ publish, maintain, monitor, and secure APIs at any scale.
+ With a few clicks in the AWS Management Console, you can create an API
+ that acts as a “front door” for applications to access data, business logic,
+ or functionality from your back-end services, such as workloads running
+ on Amazon Elastic Compute Cloud (Amazon EC2), code running on AWS Lambda,
+ or any web application.
+\end_layout
+
+\begin_layout Itemize
+Amazon API Gateway supports mock integrations for API methods.
+ This feature enables API developers to generate API responses from API
+ Gateway directly, without the need for an integration backend.
+ As an API developer, you can use this feature to unblock dependent teams
+ that need to work with an API before the project development is complete.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Amazon CloudFront
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a global content delivery network (CDN) service that securely delivers
+ data, videos, applications, and APIs to your viewers with low latency and
+ high transfer speeds.
+\end_layout
+
+\begin_layout Itemize
+CloudFront is integrated with AWS – including physical locations that are
+ directly connected to the AWS global infrastructure, as well as software
+ that works seamlessly with services including AWS Shield for DDoS mitigation,
+ Amazon S3, Elastic Load Balancing or Amazon EC2 as origins for your application
+s.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

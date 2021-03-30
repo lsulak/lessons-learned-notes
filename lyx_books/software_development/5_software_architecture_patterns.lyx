@@ -1,0 +1,3672 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Linux Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Software Architecture Patterns
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/software_architecture_patterns_summary.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Summary of some software architecrutal patterns that are detailed in this
+ chapter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The word “architecture” is often used in the context of something at a high
+ level that is divorced from the lower-level details, whereas “design” more
+ often seems to imply structures and decisions at a lower level.
+ But this usage is nonsensical when you look at what a real architect does.
+ But there is no difference between them.
+ None at all.
+ The low-level details and the high-level structure are all part of the
+ same whole.
+\end_layout
+
+\begin_layout Itemize
+The goal of software architecture is to minimize the human resources required
+ to build and maintain the required system.
+\end_layout
+
+\begin_layout Itemize
+The measure of design quality is simply the measure of the effort required
+ to meet the needs of the customer.
+ If that effort is low, and stays low throughout the lifetime of the system,
+ the design is good.
+ If that effort grows with each new release, the design is bad.
+ It’s as simple as that.
+\end_layout
+
+\begin_layout Itemize
+A software architect is a programmer; and continues to be a programmer.
+ Software architects are the best programmers, and they continue to take
+ programming tasks, while they also guide the rest of the team toward a
+ design that maximizes productivity.
+ Software architects may not write as much code as other programmers do,
+ but they continue to engage in programming tasks.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Which kinds of decisions are premature? 
+\series default
+Decisions that have nothing to do with the business requirements (the use
+ cases) of the system.
+ These include decisions about frameworks, databases, web servers, utility
+ libraries, dependency injection, and the like.
+ A good system architecture is one in which decisions like these are rendered
+ ancillary and deferrable.
+ A good system architecture does not depend on those decisions.
+
+\series bold
+ A good system architecture allows those decisions to be made at the latest
+ possible moment, without significant impact.
+\end_layout
+
+\begin_layout Itemize
+Your architecture should tell readers about the system, not about the frameworks
+ you used in your system.
+ If you are building a health care system, then when new programmers look
+ at the source repository, their first impression should be, “Oh, this is
+ a heath care system.”
+\end_layout
+
+\begin_layout Itemize
+GUI is a detail.
+ Web is GUI.
+ Mobile apps are also GUI.
+ You have to separate business logic from details! Make plugins! Database
+ system is also just a detail.
+ All these are just technologies (the same comes with frameworks), and technolog
+ies change! Also, you want to test business rules separately, not with GUI
+ or database.
+ These things can change! It is not good to have all mixed together from
+ long term perspective.
+ And, as an architect, you want to put details like that behind boundaries
+ that keep them separate from your core business logic.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The first step in determining the initial architecture of the system is
+ to identify the actors and use cases.
+
+\series default
+ Imagine that you identified some actors in use case diagram (for example).
+ According to the SRP, these 
+\begin_inset Formula $N$
+\end_inset
+
+ actors will be the 
+\begin_inset Formula $N$
+\end_inset
+
+ primary sources of change for the system.
+ Every time some new feature is added, or some existing feature is changed,
+ that step will be taken to serve one of these actors.
+ Therefore we want to partition the system such that a change to one actor
+ does not affect any of the other actors.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Eisenhower Matrix
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I have 2 kinds of problems, the urgent and the important.
+ The urgent are not important, and the important are never urgent.
+\end_layout
+
+\begin_layout Itemize
+The first value of software - 
+\series bold
+behavior - is urgent but not always particularly important
+\series default
+.
+ The second value of software - 
+\series bold
+architecture - is important but never particularly urgent
+\series default
+.
+ Of course, some things are both urgent and important.
+ Other things are not urgent and not important.
+\end_layout
+
+\begin_layout Itemize
+We can arrange them into priorities:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Urgent and important
+\end_layout
+
+\begin_layout Enumerate
+Not urgent and important
+\end_layout
+
+\begin_layout Enumerate
+Urgent and not important
+\end_layout
+
+\begin_layout Enumerate
+Not urgent and not important
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sometimes managers fail to separate those features that are urgent but not
+ important from those features that truly are urgent and important.
+ This failure then leads to ignoring the important architecture of the system
+ in favor of the unimportant features of the system.
+ It is the responsibility of the software development team to assert the
+ importance of architecture over the urgency of features.
+ (!)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+A good architecture must support:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+The development of the system
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The reason why so many systems lack good architecture: They were begun with
+ none, because the team was small and did not want the impediment of a superstru
+cture.
+\end_layout
+
+\begin_layout Itemize
+On the other hand, a system being developed by five different teams, each
+ of which includes seven developers, cannot make progress unless the system
+ is divided into well-defined components with reliably stable interfaces.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The deployment of the system
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To be effective, a software system must be deployable.
+ The higher the cost of deployment, the less useful the system is.
+ A goal of a software architecture, then, should be to make a system that
+ can be easily deployed with a single action.
+\end_layout
+
+\begin_layout Itemize
+Unfortunately, deployment strategy is seldom considered during initial developme
+nt.
+ This leads to architectures that may make the system easy to develop, but
+ leave it very difficult to deploy.
+ For example, in the early development of a system, the developers may decide
+ to use a “micro-service architecture.” They may find that this approach
+ makes the system very easy to develop since the component boundaries are
+ very firm and the interfaces relatively stable.
+ However, when it comes time to deploy the system, they may discover that
+ the number of micro-services has become daunting; configuring the connections
+ between them, and the timing of their initiation, may also turn out to
+ be a huge source of errors.
+\end_layout
+
+\begin_layout Itemize
+A good architecture does not rely on dozens of little configuration scripts
+ and property file tweaks.
+ It does not require manual creation of directories or files that must be
+ arranged just so.
+ A good architecture helps the system to be immediately deployable after
+ build.
+ This is achieved through the proper partitioning and isolation of the component
+s of the system, including those master components that tie the whole system
+ together and ensure that each component is properly started, integrated,
+ and supervised.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The operation of the system
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The impact of architecture on system operation tends to be less dramatic
+ than the impact of architecture on development, deployment, and maintenance.
+\end_layout
+
+\begin_layout Itemize
+Almost any operational difficulty can be resolved by throwing more hardware
+ at the system without drastically impacting the software architecture.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+The maintenance of the system
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Of all the aspects of a software system, maintenance is the most costly.
+\end_layout
+
+\begin_layout Itemize
+The never-ending parade of new features and the inevitable trail of defects
+ and corrections consume vast amounts of human resources.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Keeping options open
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Software has two types of value: the value of its behavior and the value
+ of its structure.
+ The second of these is the greater of the two because it is this value
+ that makes software soft.
+ Software was invented because we needed a way to quickly and easily change
+ the behavior of machines.
+ But that flexibility depends critically on the shape of the system, the
+ arrangement of its components, and the way those components are interconnected.
+\end_layout
+
+\begin_layout Itemize
+The way you keep software soft is to leave as many options open as possible,
+ for as long as possible.
+ (!)
+\end_layout
+
+\begin_layout Itemize
+If you can develop the high-level policy without committing to the details
+ that surround it, you can delay and defer decisions about those details
+ for a long time.
+ And the longer you wait to make those decisions, the more information you
+ have with which to make them properly.
+\end_layout
+
+\begin_layout Itemize
+This also leaves you the option to try different experiments.
+ If you have a portion of the high-level policy working, and it is agnostic
+ about the database, you could try connecting it to several different databases
+ to check applicability and performance.
+ The same is true with web systems, web frameworks, or even the web itself.
+\end_layout
+
+\begin_layout Itemize
+What if the decisions have already been made by someone else? What if your
+ company has made a commitment to a certain database, or a certain web server,
+ or a certain framework? A good architect pretends that the decision has
+ not been made, and shapes the system such that those decisions can still
+ be deferred or changed for as long as possible.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+There are many abstract layers in an architecture (see figure below).
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/clean_architecture.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The concentric circles in figure below represent different areas of software.
+ In general, the further in you go, the higher level the software becomes.
+ The outer circles are mechanisms.
+ The inner circles are policies.
+ Nothing in an inner circle can know anything at all about something in
+ an outer circle.
+ In particular, the name of something declared in an outer circle must not
+ be mentioned by the code in an inner circle.
+ That includes functions, classes, variables, or any other named software
+ entity.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Entity
+\series default
+ 
+\series bold
+Layer
+\series default
+.
+ It can be an object with methods, or it can be a set of data structures
+ and functions.
+ It doesn't matter so long as the entities can be used by many different
+ applications in the enterprise.
+ If you don’t have an enterprise and are writing just a single application,
+ then these entities are the business objects of the application.
+ They encapsulate the most general and high-level rules.
+ They are the least likely to change when something external changes.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Use Case Layer
+\series default
+.
+ It contains application-specific business rules.
+ It encapsulates and implements all of the use cases of the system.
+ These use cases orchestrate the flow of data to and from the entities,
+ and direct those entities to use their Critical Business Rules to achieve
+ the goals of the use case.
+ We do not expect changes in this layer to affect the entities.
+ We also do not expect this layer to be affected by changes to externalities
+ such as the database, the UI, or any of the common frameworks.
+ The use cases layer is isolated from such concerns.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interface Adapters Layer.
+
+\series default
+ It is a set of adapters that convert data from the format most convenient
+ for the use cases and entities, to the format most convenient for some
+ external agency such as the database or the web.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Frameworks and Drivers Layer
+\series default
+.
+ It is generally composed of frameworks and tools such as the database and
+ the web framework.
+ Generally you don’t write much code in this layer, other than glue code
+ that communicates to the next circle inward.
+ The frameworks and drivers layer is where all the details go.
+ The web is a detail.
+ The database is a detail.
+ We keep these things on the outside where they can do little harm.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Architectural boundaries exist everywhere.
+ We, as architects, must be careful to recognize when they are needed.
+ We also have to be aware that such boundaries, when fully implemented,
+ are expensive.
+ At the same time, we have to recognize that when such boundaries are ignored,
+ they are very expensive to add in later—even in the presence of comprehensive
+ test-suites and refactoring discipline.
+\end_layout
+
+\begin_layout Itemize
+O Software Architect, you must see the future.
+ You must guess - intelligently.
+ You must weigh the costs and determine where the architectural boundaries
+ lie, and which should be fully implemented, and which should be partially
+ implemented, and which should be ignored.
+ But this is not a one-time decision.
+ You don’t simply decide at the start of a project which boundaries to implement
+ and which to ignore.
+ Rather, you watch.
+ You pay attention as the system evolves.
+ You note where boundaries may be required, and then carefully watch for
+ the first inkling of friction because those boundaries don’t exist.
+\end_layout
+
+\begin_layout Itemize
+In every system, there is at least one component that creates, coordinates,
+ and oversees the others.
+ Let's call it Main.
+ It is the initial entry point of the system.
+ Nothing, other than the operating system, depends on it.
+ Its job is to create all the Factories, Strategies, and other global facilities
+, and then hand control over to the high-level abstract portions of the
+ system.
+ Think of Main (for example function) as a plugin to the application a plugin
+ that sets up the initial conditions and configurations, gathers all the
+ outside resources, and then hands control over to the high-level policy
+ of the application.
+ Since it is a plugin, it is possible to have many Main components, one
+ for each configuration of your application.
+ For example, you could have a Main plugin for Dev, another for Test, and
+ yet another for Production.
+ You could also have a Main plugin for each country you deploy to.
+\end_layout
+
+\begin_layout Subsection
+Component Principles
+\end_layout
+
+\begin_layout Itemize
+If the SOLID principles tell us how to arrange the bricks into walls and
+ rooms, then the component principles tell us how to arrange the rooms into
+ buildings.
+ Large software systems, like large buildings, are built out of smaller
+ components.
+\end_layout
+
+\begin_layout Itemize
+Regardless of how they are eventually deployed, well-designed components
+ always retain the ability to be independently deployable and, therefore,
+ independently developable.
+\end_layout
+
+\begin_layout Subsubsection
+Component Cohesion
+\end_layout
+
+\begin_layout Itemize
+There are 3 principles of component cohesion.
+ They tend to fight each other (see figure below).
+ The REP and CCP are inclusive principles: Both tend to make components
+ larger.
+ The CRP is an exclusive principle, driving components to be smaller.
+ It is the tension between these principles that good architects seek to
+ resolve.
+ A good architect finds a position in that tension triangle that meets the
+ current concerns of the development team, but is also aware that those
+ concerns will change over time.
+ For example, early in the development of a project, the CCP is much more
+ important than the REP, because develop-ability is more important than
+ reuse.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/cohension_principle_tension_diagram.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cohension principles tension diagram.
+ It shows how the 3 principles interact with each other.
+ The edges of the diagram describe the cost of abandoning the principle
+ on the opposite vertex.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Generally, projects tend to start on the right hand side of the triangle,
+ where the only sacrifice is reuse.
+ As the project matures, and other projects begin to draw from it, the project
+ will slide over to the left.
+ This means that the component structure of a project can vary with time
+ and maturity.
+ 
+\end_layout
+
+\begin_layout Itemize
+The balance is almost always dynamic.
+ That is, the partitioning that is appropriate today might not be appropriate
+ next year.
+ As a consequence, the composition of the components will likely jitter
+ and evolve with time as the focus of the project changes from develop-ability
+ to reusability.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Reuse/Release Equivalence Principle
+\series default
+ 
+\series bold
+(REP)
+\end_layout
+
+\begin_layout Itemize
+Group for reusers.
+\end_layout
+
+\begin_layout Itemize
+People who want to reuse software components cannot, and will not, do so
+ unless those components are tracked through a release process and are given
+ release numbers.
+\end_layout
+
+\begin_layout Itemize
+From a software design and architecture point of view, this principle means
+ that the classes and modules that are formed into a component must belong
+ to a cohesive group.
+ The component cannot simply consist of a random hodgepodge of classes and
+ modules; instead, there must be some overarching theme or purpose that
+ those modules all share.
+\end_layout
+
+\begin_layout Itemize
+Classes and modules that are grouped together into a component should be
+ releasable together.
+ The fact that they share the same version number and the same release tracking,
+ and are included under the same release documentation, should make sense
+ both to the author and to the users.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Common Closure Principle
+\series default
+ 
+\series bold
+(CCP)
+\end_layout
+
+\begin_layout Itemize
+Group for maintenance.
+ Classes that change together are packaged together.
+\end_layout
+
+\begin_layout Itemize
+This is the Single Responsibility Principle restated for components.
+ It says that a component should not have multiple reasons to change.
+\end_layout
+
+\begin_layout Itemize
+For most applications, maintainability is more important than reusability.
+ If the code in an application must change, you would rather that all of
+ the changes occur in one component, rather than being distributed across
+ many components.
+ If changes are confined to a single component, then we need to redeploy
+ only the one changed component.
+ Other components that don’t depend on the changed component do not need
+ to be re-validated or redeployed.
+ 
+\end_layout
+
+\begin_layout Itemize
+The CCP prompts us to gather together in one place all the classes that
+ are likely to change for the same reasons.
+ If two classes are so tightly bound, either physically or conceptually,
+ that they always change together, then they belong in the same component.
+ This minimizes the workload related to releasing, re-validating, and redeployin
+g the software.
+\end_layout
+
+\begin_layout Itemize
+This principle is closely associated with the Open Closed Principle (OCP).
+ Indeed, it is “closure” in the OCP sense of the word that the CCP addresses.
+ The OCP states that classes should be closed for modification but open
+ for extension.
+ Because 100% closure is not attainable, closure must be strategic.
+ We design our classes such that they are closed to the most common kinds
+ of changes that we expect or have experienced.
+\end_layout
+
+\begin_layout Itemize
+The CCP amplifies this lesson by gathering together into the same component
+ those classes that are closed to the same types of changes.
+ Thus, when a change in requirements comes along, that change has a good
+ chance of being restricted to a minimal number of components.
+\end_layout
+
+\begin_layout Itemize
+The CCP tells us to separate classes into different components, if they
+ change for different reasons.
+ Both principles can be summarized by the following sound bite: Gather together
+ those things that change at the same times and for the same reasons.
+ Separate those things that change at different times or for different reasons.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Common Reuse Principle (CRP)
+\end_layout
+
+\begin_layout Itemize
+Split to avoid unneeded releases.
+ Classes that are used together are packaged together.
+\end_layout
+
+\begin_layout Itemize
+Don’t force users of a component to depend on things they don’t need.
+\end_layout
+
+\begin_layout Itemize
+The Common Reuse Principle (CRP) is yet another principle that helps us
+ to decide which classes and modules should be placed into a component.
+ It states that classes and modules that tend to be reused together belong
+ in the same component.
+\end_layout
+
+\begin_layout Itemize
+When we depend on a component, we want to make sure we depend on every class
+ in that component.
+ Put another way, we want to make sure that the classes that we put into
+ a component are inseparable—that it is impossible to depend on some and
+ not on the others.
+ Otherwise, we will be redeploying more components than is necessary, and
+ wasting significant effort.
+\end_layout
+
+\begin_layout Itemize
+Therefore the CRP tells us more about which classes shouldn’t be together
+ than about which classes should be together.
+ The CRP says that classes that are not tightly bound to each other should
+ not be in the same component.
+\end_layout
+
+\begin_layout Subsubsection
+Component Coupling
+\end_layout
+
+\begin_layout Itemize
+As the application continues to grow, we start to become concerned about
+ creating reusable elements.
+ At this point, the CRP begins to influence the composition of the components.
+ Finally, as cycles appear, the ADP is applied and the component dependency
+ graph jitters and grows.
+ If we tried to design the component dependency structure before we designed
+ any classes, we would likely fail rather badly.
+ We would not know much about common closure, we would be unaware of any
+ reusable elements, and we would almost certainly create components that
+ produced dependency cycles.
+ Thus the component dependency structure grows and evolves with the logical
+ design of the system.
+\end_layout
+
+\begin_layout Itemize
+Any component that we expect to be volatile should not be depended on by
+ a component that is difficult to change.
+ Otherwise, the volatile component will also be difficult to change.
+\end_layout
+
+\begin_layout Itemize
+The following principles deals with relationships between components.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Acyclic Dependencies Principle (ADP)
+\end_layout
+
+\begin_layout Itemize
+Allow no cycles in the component dependency graph.
+ The art of architecture often involves forming the regrouped components
+ into a directed acyclic graph.
+ In a good architecture, the direction of those dependencies is based on
+ the level of the components that they connect.
+ In every case, low-level components are designed so that they depend on
+ high-level components.
+\end_layout
+
+\begin_layout Itemize
+If there are cycles in the dependency graph, such cycles make it very difficult
+ to isolate components.
+ Unit testing and releasing become very difficult and error prone.
+ In addition, build issues grow geometrically with the number of modules.
+ Also, it can be very difficult to work out the order in which you must
+ build the components.
+\end_layout
+
+\begin_layout Itemize
+It is always possible to break a cycle of components and reinstate the dependenc
+y graph as a DAG:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Apply DIP - create an interface between them! See the image below.
+\end_layout
+
+\begin_layout Enumerate
+Create a new component that both classes depend on (so let's imagine that
+ in component dependency graph, component A and component B has dependency
+ B->A which brings the circular dependency into the whole system, because
+ if they would be as A->B, then no circular dependency would be possible).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/new_component.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+New component.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\series bold
+Stable Dependencies Principle (SDP)
+\end_layout
+
+\begin_layout Itemize
+Depend in the direction of stability.
+\end_layout
+
+\begin_layout Itemize
+We ensure that modules that are intended to be easy to change are not depended
+ on by modules that are harder to change.
+ One sure way to make a software component difficult to change, is to make
+ lots of other software components depend on it.
+ A component with lots of incoming dependencies is very stable because it
+ requires a great deal of work to reconcile any changes with all the dependent
+ components.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/stable_component.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A component X is a 
+\emph on
+stable component
+\emph default
+.
+ Three other components depend on X, so it has three good reasons not to
+ change.
+ We say that X is responsible to those 3 components.
+ Conversely, X depends on nothing, so it has no external influence to make
+ it change.
+ We say it is independent.
+ Its dependents make it hard to change the component, and its has no dependencie
+s that might force it to change.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/unstable_component.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A component Y is an 
+\emph on
+unstable component.
+
+\emph default
+ No other components depend on Y, so we say that it is irresponsible.
+ Y also has three components that it depends on, so changes may come from
+ three external sources.
+ We say that Y is dependent.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The SDP says that the Instability metric of a component should be larger
+ than the Instability metrics of the components that it depends on.
+ That is, I metrics should decrease in the direction of dependency.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Instability can be calculated as 
+\begin_inset Formula $I=Fan\,out/(Fan\,in+Fan\,out)$
+\end_inset
+
+.
+ It is a number between 0 and 1 and 0 indicates maximally stable component,
+ 1 indicates unstable component.
+ 
+\end_layout
+
+\begin_layout Itemize
+Fan_out are outgoing dependencies (number of classes inside of a given component
+ that depend on classes outside the component), 
+\end_layout
+
+\begin_layout Itemize
+Fan_in are incoming dependencies (number of classes outside this component
+ that depend on classes within the component).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Not all components should be stable.
+ If all the components in a system were maximally stable, the system would
+ be unchangeable.
+ This is not a desirable situation.
+ We want to design our component structure so that some components are unstable
+ and some are stable.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+The Stable Abstractions Principle (SAP)
+\end_layout
+
+\begin_layout Itemize
+Abstractness increases with stability.
+\end_layout
+
+\begin_layout Itemize
+This sets up a relationship between stability and abstractness.
+ On the one hand, it says that a stable component should also be abstract
+ so that its stability does not prevent it from being extended.
+ On the other hand, it says that an unstable component should be concrete
+ since it its instability allows the concrete code within it to be easily
+ changed.
+\end_layout
+
+\begin_layout Itemize
+Thus, if a component is to be stable, it should consist of interfaces and
+ abstract classes so that it can be extended.
+ Stable components that are extensible are flexible and do not overly constrain
+ the architecture.
+\end_layout
+
+\begin_layout Subsection
+Design a Code Organization
+\end_layout
+
+\begin_layout Standard
+Implementation details - this is the source of the devil.
+ We want to get rid of it.
+ There are 4 ways of organizing code.
+ Let's consider, as for an example, that there is domain-related code, and
+ then 2 implementation details - web and database.
+\end_layout
+
+\begin_layout Subsubsection
+Package by Layer
+\end_layout
+
+\begin_layout Itemize
+The simplest one, traditional horizontal layered architecture where we separate
+ our code based on what it does from a technical perspective.
+\end_layout
+
+\begin_layout Itemize
+For example, in this typical layered architecture, we have one layer for
+ the web code, one layer for our “business logic,” and one layer for database
+ (with interfaces implemented with each layer/package).
+ So it can be used as a way to group similar types of things.
+\end_layout
+
+\begin_layout Itemize
+It is a good way how to start.
+ However, later, it is not sufficient to have a few separated packages (for
+ example), and you have to modularize further.
+\end_layout
+
+\begin_layout Itemize
+The purpose of a layered architecture is to separate code that has the same
+ sort of function.
+ Web stuff is separated from business logic, which is in turn separated
+ from data access.
+ The big problem here is that we can cheat by introducing some undesirable
+ dependencies, yet still create a nice, acyclic dependency graph.
+ In this architecture, it is possible to bypass the domain-related component,
+ for example if web is using database directly.
+ Bypassing the business logic layer is undesirable, especially if that business
+ logic is responsible for ensuring authorized access to individual records,
+ for example.
+ This organization is often called a relaxed layered architecture, as layers
+ are allowed to skip around their adjacent neighbor(s).
+ This architecture is not ideal.
+\end_layout
+
+\begin_layout Subsubsection
+Package by Feature
+\end_layout
+
+\begin_layout Itemize
+This is a vertical slicing, based on related features or domain concepts.
+ There is for example just one package that implements all related - domain,
+ database, and web.
+\end_layout
+
+\begin_layout Itemize
+Uncle Bob often sees software development teams realize that they have problems
+ with horizontal layering (“package by layer”) and switch to vertical layering
+ (“package by feature”) instead.
+ In his opinion, both are sub-optimal.
+\end_layout
+
+\begin_layout Subsubsection
+Ports and Adapters
+\end_layout
+
+\begin_layout Itemize
+In this architecture, business/domain-focused code is independent and separate
+ from the technical implementation details such as frameworks and databases.
+\end_layout
+
+\begin_layout Itemize
+The “inside” region contains all of the domain concepts, whereas the “outside”
+ region contains the interactions with the outside world (e.g., UIs, databases,
+ third-party integrations).
+ The major rule here is that the “outside” depends on the “inside” - never
+ the other way around.
+\end_layout
+
+\begin_layout Itemize
+So here would be one package for code related to a given domain, then another
+ one to database, and another one for web.
+ They would interact through interfaces implemented in domain package.
+ The difference between this and 
+\begin_inset Quotes eld
+\end_inset
+
+package by layer
+\begin_inset Quotes erd
+\end_inset
+
+ is, that here, interfaces are implemented in a given domain package, not
+ in each package.
+\end_layout
+
+\begin_layout Subsubsection
+Package by Components
+\end_layout
+
+\begin_layout Itemize
+It’s a hybrid approach to above three, with the goal of bundling all of
+ the responsibilities related to a single coarse-grained component into
+ a single package.
+\end_layout
+
+\begin_layout Itemize
+In essence, this approach would bundle up the “business logic” and database
+ code into a component.
+\end_layout
+
+\begin_layout Itemize
+A key benefit of the “package by component” approach is that if you’re writing
+ code that needs to do something with domain-related code, there’s just
+ one place to go the given component for it.
+ Inside the component, the separation of concerns is still maintained, so
+ the business logic is separate from database, but that’s a component implementa
+tion detail that consumers don’t need to know about.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Single-Tiered / Monolithic Architecture
+\end_layout
+
+\begin_layout Itemize
+User interface and data access code are combined into a single program from
+ a single platform.
+\end_layout
+
+\begin_layout Itemize
+A monolithic application is self-contained, and independent from other computing
+ applications.
+ The design philosophy is that the application is responsible not just for
+ a particular task, but can perform every step needed to complete a particular
+ function.
+\end_layout
+
+\begin_layout Itemize
+Some personal finance applications are monolithic in the sense that they
+ help the user carry out a complete task, end to end, and are private data
+ silos rather than parts of a larger system of applications that work together.
+ 
+\end_layout
+
+\begin_layout Itemize
+In its original use, the term "monolithic" described enormous main frame
+ applications with no usable modularity.
+ This – in combination with rapid increase in computational power and therefore
+ rapid increase in the complexity of the problems which could be tackled
+ by software – resulted in unmaintainable systems and the "software crisis".
+\end_layout
+
+\begin_layout Section
+Multi-Tiered / Multi-Layered Architecture
+\end_layout
+
+\begin_layout Itemize
+One of the most common architecture pattern, also known as the n-tier architectu
+re pattern.
+\end_layout
+
+\begin_layout Itemize
+It is a client-server architecture in which presentation, application processing
+, and data management functions are physically separated.
+\end_layout
+
+\begin_layout Itemize
+Components within the layered architecture pattern are organized into horizontal
+ layers, each layer performing a specific role within the application (e.g.,
+ presentation logic or business logic).
+\end_layout
+
+\begin_layout Itemize
+This architectural pattern doesn't specify the number and types of layers,
+ but it is usually 3 or 4 of them: presentation (UI), application (service
+ layer), business (domain layer), persistence (data access layer - the only
+ thing communicates with database).
+ Business and persistence are sometimes put together.
+ But big applications may have even 5 or more layers.
+\end_layout
+
+\begin_layout Itemize
+While the concepts of layer and tier are often used interchangeably, one
+ fairly common point of view is that there is indeed a difference.
+ This view holds that a layer is a logical structuring mechanism for the
+ elements that make up the software solution, while a tier is a physical
+ structuring mechanism for the system infrastructure.
+ For example, a three-layer solution could easily be deployed on a single
+ tier, such as a personal workstation.
+ So basically, multi-layer architecture can be a single-tier monolith.
+\end_layout
+
+\begin_layout Itemize
+One of the powerful features of the layered architecture pattern is the
+ separation of concerns among components.
+ Components within a specific layer deal only with logic that pertains to
+ that layer.
+ For example, components in the presentation layer deal only with presentation
+ logic, whereas components residing in the business layer deal only with
+ business logic.
+ This type of component classification makes it easy to build effective
+ roles and responsibility models into your architecture, and also makes
+ it easy to develop, test, govern, and maintain applications using this
+ architecture pattern due to well-defined component interfaces and limited
+ component scope.
+\end_layout
+
+\begin_layout Itemize
+The layers of isolation concept means that changes made in one layer of
+ the architecture generally don’t impact or affect components in other layers:
+ the change is isolated to the components within that layer, and possibly
+ another associated layer.
+ This means that each layer is independent of the other layers, thereby
+ having little or no knowledge of the inner workings of other layers in
+ the architecture.
+ 
+\end_layout
+
+\begin_layout Itemize
+The layered architecture pattern is a solid general-purpose pattern, making
+ it a good starting point for most applications, particularly when you are
+ not sure what architecture pattern is best suited for your application.
+ 
+\end_layout
+
+\begin_layout Itemize
+Most developers and architects will resort to the de-facto standard traditional
+ layered architecture pattern (also called the n-tier architecture), creating
+ implicit layers by separating source-code modules into packages.
+ Unfortunately, what often results from this practice is a collection of
+ unorganized source-code modules that lack clear roles, responsibilities,
+ and relationships to one another.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+High testability
+\end_layout
+
+\begin_layout Itemize
+Easier development (it is not so complex to implement)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Architecture sinkhole anti-pattern.
+ Be careful on this pattern, that describes the situation where requests
+ flow through multiple layers of the architecture as simple pass-through
+ processing with little or no logic performed within each layer.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Every layered architecture will have at least some scenarios that fall into
+ the architecture sinkhole anti-pattern.
+ The key, however, is to analyze the percentage of requests that fall into
+ this category.
+ The 80-20 rule is usually a good practice to follow to determine whether
+ or not you are experiencing the architecture sinkhole anti-pattern.
+ It is typical to have around 20 percent of the requests as simple pass-through
+ processing and 80 percent of the requests having some business logic associated
+ with the request.
+ However, if you find that this ratio is reversed and a majority of your
+ requests are simple pass-through processing, you might want to consider
+ making some of the architecture layers open, keeping in mind that it will
+ be more difficult to control change due to the lack of layer isolation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It tends to lend itself toward monolithic applications, even if you split
+ the presentation layer and business layers into separate deployable units.
+ So quickly responding to changes in code can be hard.
+ Also deployment can be difficult for larger applications (there may be
+ even a must of re-deployment).
+ Also performance and scalability may be in danger.
+ It is much expensive to scale.
+\end_layout
+
+\begin_layout Itemize
+Applications lacking a formal architecture are generally tightly coupled,
+ brittle, difficult to change, and without a clear vision or direction.
+ As a result, it is very difficult to determine the architectural characteristic
+s of the application without fully understanding the inner-workings of every
+ component and module in the system.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Client-Server Architecture
+\end_layout
+
+\begin_layout Itemize
+The server component will provide services to multiple client components.
+ Clients request services from the server and the server provides relevant
+ services to those clients.
+ Furthermore, the server continues to listen to client requests.
+\end_layout
+
+\begin_layout Itemize
+Requests are typically handled in separate threads on the server.
+\end_layout
+
+\begin_layout Section
+Master-Slave Pattern
+\end_layout
+
+\begin_layout Itemize
+The master component distributes the work among identical slave components,
+ and computes a final result from the results which the slaves return.
+\end_layout
+
+\begin_layout Section
+Broker Pattern
+\end_layout
+
+\begin_layout Itemize
+This pattern is used to structure distributed systems with decoupled components.
+ These components can interact with each other by remote service invocations.
+ A broker component is responsible for the coordination of communication
+ among components.
+\end_layout
+
+\begin_layout Itemize
+Servers publish their services to a broker.
+ Clients request a service from the broker, and the broker then redirects
+ the client to a suitable service from its registry.
+\end_layout
+
+\begin_layout Section
+Peer-to-Peer Architecture
+\end_layout
+
+\begin_layout Itemize
+Individual components are known as peers.
+ Peers may function both as a client, requesting services from other peers,
+ and as a server, providing services to other peers.
+ A peer may act as a client or as a server or as both, and it can change
+ its role dynamically with time.
+\end_layout
+
+\begin_layout Itemize
+Performance depends on the number of nodes, and security is difficult to
+ be guaranteed.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is highly robust in the failure of any given node.
+\end_layout
+
+\begin_layout Itemize
+Highly scalable in the terms of resources and computing power.
+\end_layout
+
+\begin_layout Section
+Model-View-Controller Pattern
+\end_layout
+
+\begin_layout Itemize
+This architectural pattern has 3 parts:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+model, that contains the core functionality and data
+\end_layout
+
+\begin_layout Itemize
+view, that displays the information to the user (more than one view may
+ be defined)
+\end_layout
+
+\begin_layout Itemize
+controller, that handles the input from the user
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Django uses this pattern.
+\end_layout
+
+\begin_layout Itemize
+MVC is different from the layered architecture.
+ Layered architecture does not allow coupling like in MVC, where MVC components
+ could talk to each other.
+ In contrast, layered architecture only allows message passing between layers.
+ MVC architecture is mostly used for presentation, but layered architecture
+ is focused on the entire system.
+\end_layout
+
+\begin_layout Section
+Representational State Transfer (REST)
+\end_layout
+
+\begin_layout Itemize
+As described in a dissertation by Roy Fielding, REST is an "architectural
+ style" that basically exploits the existing technology and protocols of
+ the Web.
+ RESTful is typically used to refer to web services implementing such an
+ architecture.
+ So RESTful service is a service layer that follows the REST architecture
+ and HTTP protocol methods.
+ Service layer is a protocol independent interface to our application logic.
+ It is a common interface to your application logic that different clients
+ like a web interface, a command line tool or a scheduled job can use.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://stackoverflow.com/questions/1568834/whats-the-difference-between-rest
+-restful}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So REST is the architecture and RESTful an adjective.
+ Since it is not a formally defined protocol there are many opinions on
+ the details of implementing REST APIs.
+ However, the following five constraints must be present for any application
+ to be considered RESTful:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://blog.feathersjs.com/design-patterns-for-modern-web-apis-1f046635215}}
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Client-server:
+\series default
+ A client-server architecture allows a clear separation of concerns.
+ The client is responsible for requesting and displaying the data while
+ the server is taking care of data storage and application logic.
+ One advantage is that both sides can be developed separately as long as
+ the agreed-upon request format is followed.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Statelessness
+\series default
+: Communication between client and server is stateless.
+ This means that every client request contains all the information necessary
+ for the server to process the request.
+ This further reduces server complexity since no global state (other than
+ a possibly shared database) is necessary and improves scalability since
+ any request can be processed by any server.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Caching
+\series default
+: Stateless client-server communication can increase server load since some
+ information may have to be transferred several times so requests that only
+ retrieve data should be cache-able.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Layered system
+\series default
+: A key feature of most networked systems.
+ In the context of REST, this means that a client can not necessarily tell
+ if it is directly communicating with the server or an intermediate (proxy).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Uniform interface
+\series default
+: REST defines a set of well defined operations that can be executed on
+ a resource.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sometimes, using REST is not the best choice.
+ There are many alternatives, such as Websockets, or WebRTC, but it really
+ depends on a given situation.
+\end_layout
+
+\begin_layout Section
+Event-Driven Architecture
+\end_layout
+
+\begin_layout Itemize
+It is distributed asynchronous architecture pattern used to produce highly
+ scalable applications.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is highly adaptable and can be used for small applications and as well
+ as large, complex ones.
+ The event-driven architecture is made up of highly decoupled, single-purpose
+ event processing components that asynchronously receive and process events.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is a relatively complex pattern to implement, primarily due to its asynchrono
+us distributed nature.
+\end_layout
+
+\begin_layout Itemize
+Perhaps one of the most difficult aspects of the event-driven architecture
+ pattern is the creation, maintenance, and governance of the event-processor
+ component contracts.
+\end_layout
+
+\begin_layout Itemize
+It consists of 2 main topologies:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+The Mediator
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/event_driven_architecture_mediator_topology.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Event-driven architectural pattern with mediator topology.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is commonly used when you need to orchestrate multiple steps within
+ an event through a central mediator.
+\end_layout
+
+\begin_layout Itemize
+There are 4 main types of components: event queues, an event mediator, event
+ channels, and event processors.
+ The flow starts with a client sending an event to an event queue, which
+ is used to transport the event to the event mediator.
+ It receives the initial event, and orchestrates that event by sending additiona
+l asynchronous events to event channels to execute each step of the process.
+ It is important to note that the event mediator doesn't actually perform
+ the business logic necessary to process the initial event; rather, it knows
+ of the steps required to process the initial event.
+ Event processors listen on the event channels, receive the event from event
+ mediator, and execute specific business logic to process the event.
+ They are self-contained, independent, highly decoupled architecture components
+ that perform a specific task in the application or system.
+ It is important to keep in mind that in general, each event-processor component
+ should per form a single business task and not rely on other event processors
+ to complete its specific task.
+ Event channels are used by the event mediator to asynchronously pass specific
+ processing events related to each step in the initial event to the event
+ processors.
+ The event channels can be for example message queues.
+\end_layout
+
+\begin_layout Itemize
+It is common to have anywhere from a dozen to several hundred event queues
+ in an event-driven architecture.
+ It can be message queue, web service endpoint, or so.
+\end_layout
+
+\begin_layout Itemize
+There are 2 types of events: initial event (original event received by the
+ mediator) and processing event (these are generated by the mediator and
+ received by event-processing components).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+The Broker
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/event_driven_architecture_broker_topology.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Event-driven architectural pattern with broker topology.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is used when you want to chain events together without the use of a
+ central mediator.
+ Rather, the message flow is distributed across the event processor components
+ in a chain-like fashion through a lightweight message broker.
+\end_layout
+
+\begin_layout Itemize
+This topology is useful when you have a relatively simple event processing
+ flow and you do not want (or need) central event orchestration.
+\end_layout
+
+\begin_layout Itemize
+There are 2 main types of architecture components within the broker topology:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+A broker component.
+
+\emph default
+ It can be centralized or federated and contains all of the event channels
+ that are used within the event flow.
+ The event channels contained within the broker component can be message
+ queues, message topics, or a combination of both.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+An event processor component
+\emph default
+.
+ Each event processor component is responsible for processing an event and
+ publishing a new event indicating the action it just performed.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Broker topology is all about the chaining of events to perform a business
+ function.
+ The best way to understand the broker topology is to think about it as
+ a relay race.
+ In a relay race, runners hold a baton and run for a certain distance, then
+ hand off the baton to the next runner, and so on down the chain until the
+ last runner crosses the finish line.
+ Once an event processor hands off the event, it is no longer involved with
+ the processing of that specific event.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The overall ability to respond quickly to changing environment is pretty
+ good.
+ Since event-processor components are single-purpose and completely decoupled
+ from other event processor components, changes are generally isolated to
+ one or a few event processors and can be made quickly without impacting
+ other components.
+\end_layout
+
+\begin_layout Itemize
+Deployment is also relatively easy due to decoupled nature of the components.
+ The broker topology tends to be easier to deploy than the mediator topology,
+ primarily because the event mediator component is somewhat tightly coupled
+ to the event processors: a change in an event processor component might
+ also require a change in the event mediator, requiring both to be deployed
+ for any given change.
+\end_layout
+
+\begin_layout Itemize
+Performance is in general very good, because of its asynchronous capabilities;
+ in other words, the ability to perform decoupled, parallel asynchronous
+ operations outweighs the cost of queuing and dequeuing messages.
+\end_layout
+
+\begin_layout Itemize
+Scalability is also high, because of highly independent and decoupled event
+ processors.
+ Each event processor can be scaled separately, allowing for fine-grained
+ scalability.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Testing can be difficult mostly by the asynchronous nature of this pattern.
+\end_layout
+
+\begin_layout Itemize
+Development can be somewhat complicated due to the asynchronous nature of
+ the pattern as well as contract creation and the need for more advanced
+ error handling conditions within the code for unresponsive event processors
+ and failed brokers.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Microkernel Architecture
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/microkernel_architecture_pattern.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Microkernel architectural pattern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is sometimes referred to as the plug-in architecture pattern.
+\end_layout
+
+\begin_layout Itemize
+It is a natural pattern for implementing product-based applications (they
+ are ones that are packaged and made available for download in versions
+ as a typical third-party product).
+ 
+\end_layout
+
+\begin_layout Itemize
+The microkernel architecture pattern allows you to add additional application
+ features as plug-ins to the core application, providing extensibility as
+ well as feature separation and isolation.
+\end_layout
+
+\begin_layout Itemize
+It consists of two types of architecture components: a core system and plug-in
+ modules.
+ Application logic is divided between independent plug-in modules and the
+ basic core system, providing extensibility, flexibility, and isolation
+ of application features and custom processing logic.
+ 
+\end_layout
+
+\begin_layout Itemize
+The core system of the microkernel architecture pattern traditionally contains
+ only the minimal functionality required to make the system operational.
+ Many operating systems implement the microkernel architecture pattern,
+ hence the origin of this pattern’s name.
+ The core system needs to know about which plug-in modules are available
+ and how to get to them.
+ One common way of implementing this is through some sort of plug-in registry.
+ This registry contains information about each plug-in module, including
+ things like its name, data contract, and remote access protocol details.
+\end_layout
+
+\begin_layout Itemize
+The plug-in modules are stand-alone, independent components that contain
+ specialized processing, additional features, and custom code that is meant
+ to enhance or extend the core system to produce additional business capabilitie
+s.
+ Generally, plug-in modules should be independent of other plug-in modules,
+ but you can certainly design plug-ins that require other plug-ins to be
+ present.
+ Either way, it is important to keep the communication between plug-ins
+ to a minimum to avoid dependency issues.
+ Plug-in modules can be connected to the core system through a variety of
+ ways, including OSGi (open service gateway initiative), messaging, web
+ services, or even direct point-to-point binding (i.e., object instantiation).
+ The architecture pattern itself does not specify any of these implementation
+ details, only that the plug-in modules must remain independent from one
+ another.
+\end_layout
+
+\begin_layout Itemize
+Perhaps the best example of the microkernel architecture is the Eclipse
+ IDE.
+ Downloading the basic Eclipse product provides you little more than a fancy
+ editor.
+ However, once you start adding plug-ins, it becomes a highly customizable
+ and useful product.
+ Internet browsers are another common product example using the microkernel
+ architecture: viewers and other plug-ins add additional capabilities that
+ are not otherwise found in the basic browser (i.e., core system).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One great thing about the microkernel architecture pattern is that it can
+ be embedded or used as part of another architecture pattern.
+ For example, if this pattern solves a particular problem you have with
+ a specific volatile area of the application, you might find that you can’t
+ implement the entire architecture using this pattern.
+ In this case, you can embed the microservices architecture pattern in another
+ pattern you are using (e.g., layered architecture).
+ 
+\end_layout
+
+\begin_layout Itemize
+The overall ability to respond quickly to changing environment is pretty
+ good.
+ Changes can largely be isolated and implemented quickly through loosely
+ coupled plug-in modules.
+ In general, the core system of most microkernel architectures tends to
+ become stable quickly, and as such is fairly robust and requires few changes
+ over time.
+\end_layout
+
+\begin_layout Itemize
+Deployment is relatively easy.
+ Depending on how the pattern is implemented, the plug-in modules can be
+ dynamically added to the core system at runtime (e.g., hot-deployed), minimizing
+ downtime during deployment.
+\end_layout
+
+\begin_layout Itemize
+This pattern is relatively easy to test.
+ Plug-in modules can be tested in isolation and can be easily mocked by
+ the core system to demonstrate or prototype a particular feature with little
+ or no change to the core system.
+\end_layout
+
+\begin_layout Itemize
+This pattern does not naturally lend itself to high-performance applications,
+ in general, most applications built using the microkernel architecture
+ pattern perform well because you can customize and streamline applications
+ to only include those features you need.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Because most microkernel architecture implementations are product based
+ and are generally smaller in size, they are implemented as single units
+ and hence not highly scalable.
+ Depending on how you implement the plug-in modules, you can sometimes provide
+ scalability at the plug-in feature level, but overall this pattern is not
+ known for producing highly scalable applications.
+\end_layout
+
+\begin_layout Itemize
+The microkernel architecture requires thoughtful design, and it is rather
+ complex to implement.
+ Internal plug-in registries, plug-in granularity, and the wide choices
+ available for plug-in connectivity all contribute to the complexity involved
+ with implementing this pattern.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Space-Based Architecture
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/space_based_architecture_pattern.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Space-based architecture pattern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/space_based_architecture_processing_unit_component.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A single processing unit component as a part of space-based architecture
+ pattern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is also sometimes referred to as the cloud architecture pattern.
+\end_layout
+
+\begin_layout Itemize
+The space-based architecture pattern is specifically designed to address
+ and solve scalability and concurrency issues.
+ It is also a useful architecture pattern for applications that have variable
+ and unpredictable concurrent user volumes.
+ Solving the extreme and variable scalability issue architecturally is often
+ a better approach than trying to scale out a database or retrofit caching
+ technologies into a non-scalable architecture.
+ 
+\end_layout
+
+\begin_layout Itemize
+Most applications that fit into this pattern are standard websites that
+ receive a request from a browser and perform some sort of action.
+ 
+\end_layout
+
+\begin_layout Itemize
+High scalability is achieved by removing the central database constraint
+ and using replicated in-memory data grids instead.
+ Application data is kept in memory and replicated among all the active
+ processing units.
+ Processing units can be dynamically started up and shut down as user load
+ increases and decreases, thereby addressing variable scalability.
+ Because there is no central database, the database bottleneck is removed,
+ providing near-infinite scalability within the application.
+\end_layout
+
+\begin_layout Itemize
+Although the space-based architecture pattern does not require a centralized
+ datastore, one is commonly included to perform the initial in-memory data
+ grid load and asynchronously persist data updates made by the processing
+ units.
+\end_layout
+
+\begin_layout Itemize
+There are 2 primary components within this architecture pattern:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+A processing unit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This component contains the application components (or portions of the applicati
+on components).
+ This includes web-based components as well as backend business logic.
+ The contents of the processing unit varies based on the type of application—sma
+ller web-based applications would likely be deployed into a single processing
+ unit, whereas larger applications may split the application functionality
+ into multiple processing units based on the functional areas of the application.
+ 
+\end_layout
+
+\begin_layout Itemize
+It typically contains the application modules, along with an in-memory data
+ grid and an optional asynchronous persistent store for fail-over.
+\end_layout
+
+\begin_layout Itemize
+It also contains a replication engine that is used by the virtualized middleware
+ to replicate data changes made by one processing unit to other active processin
+g units.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+A virtualized middleware
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It contains components that control various aspects of data synchronization
+ and request handling.
+ Included in the virtualized middleware are the messaging grid, data grid,
+ processing grid, and deployment manager.
+ 
+\end_layout
+
+\begin_layout Itemize
+It is essentially the controller for the architecture and manages requests,
+ sessions, data replication, distributed request processing, and process-unit
+ deployment.
+\end_layout
+
+\begin_layout Itemize
+It basically contains 4 components:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Messaging grid.
+
+\emph default
+ The messaging grid manages input request and session information.
+ When a request comes into the virtualized-middleware component, the messaging-g
+rid component determines which active processing components are available
+ to receive the request and forwards the request to one of those processing
+ units.
+ The complexity of the messaging grid can range from a simple round-robin
+ algorithm to a more complex next-available algorithm that keeps track of
+ which request is being processed by which processing unit.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Data grid.
+
+\emph default
+ It is perhaps the most important and crucial component in this pattern.
+ The data grid interacts with the data replication engine in each processing
+ unit to manage the data replication between processing units when data
+ updates occur.
+ Since the messaging grid can forward a request to any of the processing
+ units available, it is essential that each processing unit contains exactly
+ the same data in its in-memory data grid.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Processing grid.
+ 
+\emph default
+It is an optional component within the virtualized middleware that manages
+ distributed request processing when there are multiple processing units,
+ each handling a portion of the application.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Deployment manager.
+ 
+\emph default
+This component continually monitors response times and user loads, and starts
+ up new processing units when load increases, and shuts down processing
+ units when the load decreases.
+ It is a critical component to achieving variable scalability needs within
+ an application.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is a good architecture choice for smaller web-based applications with
+ variable load.
+\end_layout
+
+\begin_layout Itemize
+The overall ability to respond quickly to changing environment is pretty
+ good.
+ Because processing units (deployed instances of the application) can be
+ brought up and down quickly, applications respond well to changes related
+ to an increase or decrease in user load (environment changes).
+ Architectures created using this pattern generally respond well to coding
+ changes due to the small application size and dynamic nature of the pattern.
+\end_layout
+
+\begin_layout Itemize
+Although space-based architectures are generally not decoupled and distributed,
+ they are dynamic, and sophisticated cloud-based tools allow for applications
+ to easily be “pushed” out to servers, simplifying deployment.
+\end_layout
+
+\begin_layout Itemize
+High performance is achieved through the in-memory data access and caching
+ mechanisms build into this pattern.
+ 
+\end_layout
+
+\begin_layout Itemize
+High scalability come from the fact that there is little or no dependency
+ on a centralized database, therefore essentially removing this limiting
+ bottleneck from the scalability equation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The space-based architecture pattern is a complex and expensive pattern
+ to implement.
+\end_layout
+
+\begin_layout Itemize
+It is not well suited for traditional large-scale relational database applicatio
+ns with large amounts of operational data.
+\end_layout
+
+\begin_layout Itemize
+Achieving very high user loads in a test environment is both expensive and
+ time consuming, making it difficult to test the scalability aspects of
+ the application.
+\end_layout
+
+\begin_layout Itemize
+Sophisticated caching and in-memory data grid products make this pattern
+ relatively complex to develop, mostly because of the lack of familiarity
+ with the tools and products used to create this type of architecture.
+ Furthermore, special care must be taken while developing these types of
+ architectures to make sure nothing in the source code impacts performance
+ and scalability.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Service-Oriented Architecture (SOA)
+\end_layout
+
+\begin_layout Itemize
+One thing all service-based architectures have in common is that they are
+ generally distributed architectures, meaning that service components are
+ accessed remotely through some sort of remote access protocol (such as
+ REST, AMQP, SOAP, and so on).
+ 
+\end_layout
+
+\begin_layout Itemize
+Distributed architectures offer significant advantages over monolithic and
+ layered-based architectures, including better scalability, better decoupling,
+ and better control over development, testing, and deployment.
+ 
+\end_layout
+
+\begin_layout Itemize
+Maintaining service contracts, choosing the right remote-access protocol,
+ dealing with unresponsive or unavailable services, securing remote services,
+ and managing distributed transactions are just a few of the many complex
+ issues you have to address when creating service-based architectures.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rather than use ACID transactions, service-based architectures rely on BASE
+ transactions.
+ BASE is a family of styles that include basic availability, soft state,
+ and eventual consistency.
+ Distributed applications relying on BASE transactions strive for eventual
+ consistency in the database rather than consistency at every transaction.
+ 
+\end_layout
+
+\begin_layout Itemize
+Service components within a microservices architecture are generally single-purp
+ose services that do one thing really, really well.
+ With SOA, service components can range in size anywhere from small application
+ services to very large enterprise services.
+ In fact, it is common to have a service component within SOA represented
+ by a large product or even a subsystem.
+\end_layout
+
+\begin_layout Itemize
+Service granularity has the most potential impact on your choice of which
+ architecture pattern is best suited for your situation !! SOA vs Microservices.
+ If you are able to break down the business functionality of your application
+ into very small, independent parts, then the microservices pattern is a
+ likely candidate for your architecture.
+\end_layout
+
+\begin_layout Itemize
+SOA is built on the concept of a share-as-much-as-possible architecture
+ style, whereas microservices architecture is built on the concept of a
+ share-as-little-as-possible architecture style.
+ One way to achieve a bounded context and minimize dependencies in extreme
+ cases is to violate the Don’t Repeat Yourself (DRY) principle and replicate
+ common functionality across services to achieve total independence.
+ Another way is to compile relatively static modules into shared libraries
+ that service components can use in either a compile-time or runtime binding.
+ 
+\end_layout
+
+\begin_layout Itemize
+SOA, being a share-as-much-as-possible architecture, relies on both service
+ orchestration and service choreography to process business requests.
+ 
+\end_layout
+
+\begin_layout Itemize
+In some cases you might find that the microservices pattern is a good initial
+ architecture choice in the early stages of your business, but as the business
+ grows and matures, you begin to need capabilities such as complex request
+ transformation, complex orchestration, and heterogeneous systems integration.
+ In these situations you will likely turn to the SOA pattern to replace
+ your initial microservices architecture.
+ Of course, the opposite is true as well—you may have started out with a
+ large, complex SOA architecture, only to find that you didn't need all
+ of those powerful capabilities that it supports after all.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you find yourself in a heterogeneous environment where you need to integrate
+ several different types of systems or services using different protocols,
+ chances are that you will need to look toward SOA rather than microservices.
+ However, if all of your services can be exposed and accessed through the
+ same remote-access protocol (e.g., REST), then microservices can be the right
+ choice.
+\end_layout
+
+\begin_layout Section
+Microservices Pattern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/microservices_architecture.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Microservices architecture [CZ].
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each service has only one job (Single Responsibility Principle).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{http://microservices.io/patterns/microservices.html}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+More complex results are retrieved by combining services.
+\end_layout
+
+\begin_layout Itemize
+Database per microservice (for metadata for example).
+\end_layout
+
+\begin_layout Itemize
+Martin Fowler's definition: 
+\emph on
+"The microservice architectural style is an approach to developing a single
+ application as a suite of small services, each running in its own process
+ and communicating with lightweight mechanisms, often an HTTP resource API."
+\end_layout
+
+\begin_layout Itemize
+Again, Martin Fowler: 
+\emph on
+“Don’t even consider microservices unless you have a system that’s too complex
+ to manage as a monolith.”
+\end_layout
+
+\begin_layout Itemize
+Martin Fowler
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://martinfowler.com/bliki/MonolithFirst.html}}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+\begin_inset Quotes eld
+\end_inset
+
+Almost all the successful microservice stories have started with a monolith
+ that grew too big and was broken up.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\begin_inset Quotes eld
+\end_inset
+
+Almost all the cases I’ve heard of a system that was built as a microservice
+ system from scratch, it has ended up in serious trouble.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The microservices architecture style naturally evolved from two main sources:
+ monolithic applications developed using the layered architecture pattern
+ and distributed applications developed through the service-oriented architectur
+e pattern.
+\end_layout
+
+\begin_layout Itemize
+While the SOA pattern is very powerful and offers unparalleled levels of
+ abstraction, heterogeneous connectivity, service orchestration, and the
+ promise of aligning business goals with IT capabilities, it is nevertheless
+ complex, expensive, ubiquitous, difficult to understand and implement,
+ and is usually overkill for most applications.
+ The microservices architecture style addresses this complexity by simplifying
+ the notion of a service, eliminating orchestration needs, and simplifying
+ connectivity and access to service components.
+ In the mid-2000’s, service-oriented architecture (SOA) took the IT industry
+ by storm.
+ SOA can be a big, expensive, complicated architecture style that took too
+ long to design and implement.
+ Microservices architecture holds the promise of being able to address some
+ of the problems associated with large, complex SOAs as well as the problems
+ found with big, bloated monolithic applications.
+ 
+\end_layout
+
+\begin_layout Itemize
+They are about optimizing for speed.
+ Also about how to faster develop and deploy.
+ Also the key is to manage (and reduce) dependencies.
+\end_layout
+
+\begin_layout Itemize
+The microservices pattern is better suited for smaller, well partitioned
+ web-based systems rather than large-scale enterprise wide systems.
+ The lack of a mediator (messaging middleware) is one of the factors that
+ makes it ill-suited for large-scale complex business application environments.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+“Start with a small number of larger services first.”
+\emph default
+, Sam Newman.
+ Just watch out for transaction issues and too much inter-service communication,
+ particularly with microservices.
+ These are good indicators that your services might be too fine-grained.
+\end_layout
+
+\begin_layout Itemize
+Microservices architecture favors service choreography over service orchestratio
+n, primarily because the architecture topology lacks a centralized middleware
+ component.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Service orchestration refers to the coordination of multiple services through
+ a centralized mediator.
+ 
+\end_layout
+
+\begin_layout Itemize
+Service choreography refers to the coordination of multiple service calls
+ without a central mediator.
+ The term inter-service communication is sometimes used in conjunction with
+ service choreography.
+ With service choreography, one service calls another service, which may
+ call another service and so on, performing what is also referred to as
+ service chaining.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There is a lot of disadvantages
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=1xo-0gCVhTU}}
+\end_layout
+
+\end_inset
+
+, such as complex networking, developers need to learn a lot more stuff,
+ lot of servers and databases to maintain (infrastructure overhead).
+ It is especially a disadvantage in smaller teams.
+ The whole system is fragmented, and it is needed to connect all parts.
+ If the whole system is wrongly designed, when a single microservice when
+ fail, the whole system will fail.
+ Communication between processes is slower than inter-process communication
+ (direct function calls etc).
+\end_layout
+
+\begin_layout Itemize
+It is needed to have as small dependencies between each individual microservices
+ as possible!
+\end_layout
+
+\begin_layout Itemize
+So there is Monolithic Architecture as one extreme, Microservices Architecture
+ on the other side of the extreme, and SOA as something in between.
+\end_layout
+
+\begin_layout Itemize
+One security design implemented in microservices that works well is to delegate
+ authentication to a separate service and place the responsibility for authoriza
+tion in the service itself.
+ Although this design could be modified to delegate both authentication
+ and authorization to a separate security service, I prefer encapsulating
+ the authorization in the service itself to avoid chattiness with a remote
+ security service and to create a stronger bounded context with fewer external
+ dependencies.
+\end_layout
+
+\begin_layout Itemize
+SOA was 
+\begin_inset Quotes eld
+\end_inset
+
+invented
+\begin_inset Quotes erd
+\end_inset
+
+ before Microservices, and it is also based on techniques that splits applicatio
+n to individual components, that should be independent from each other and
+ should communicate to each other.
+ They should be ideally stateless.
+ Microservices can be seen as even more extreme version of SOA, in which
+ we are splitting the application even more (in SOA, there are 
+\begin_inset Quotes eld
+\end_inset
+
+micromonoliths
+\begin_inset Quotes erd
+\end_inset
+
+ with a single shared database), so that it is possible to develop, maintain,
+ and deploy such components independently.
+ In Microservices, we usually don't have application server, because it
+ is an overkill for it.
+ Also, in SOA, there are a lot more communication protocols and in Microservices
+, we are trying to have simple messages.
+ In SOA, the application should be ideally written in 1 language, but in
+ Microservices, there is no restriction.
+\end_layout
+
+\begin_layout Itemize
+We need to constantly assess the way that we do things to ensure that we’re
+ on the right track.
+ Even the classic PlanDo-Check-Act (PDCA) process is a variation of the
+ feedback loop.
+ In software (as with everything we do in life) the longer the feed‐back
+ loop, the worse the results are.
+ And this happens because we have a limited amount of capacity for holding
+ information in our brains, both in terms of volume and duration.
+\end_layout
+
+\begin_layout Itemize
+Avoid dependencies and orchestration - one of the main challenges of the
+ microservices architecture pattern is determining the correct level of
+ granularity for the service components.
+ If you find you need to orchestrate your service components from within
+ the user interface or API layer of the application, then chances are your
+ service components are too fine-grained.
+ Similarly, if you find you need to perform inter-service communication
+ between service components to process a single request, chances are your
+ service components are either too fine-grained or they are not partitioned
+ correctly from a business functionality standpoint.
+\end_layout
+
+\begin_layout Itemize
+A fairly common practice in most business applications implementing the
+ microservices architecture pattern, trading off the redundancy of repeating
+ small portions of business logic for the sake of keeping service components
+ independent and separating their deployment.
+\end_layout
+
+\begin_layout Itemize
+If you find that regardless of the level of service component granularity
+ you still cannot avoid service-component orchestration, then it’s a good
+ sign that this might not be the right architecture pattern for your application.
+ Because of the distributed nature of this pattern, it is very difficult
+ to maintain a single transactional unit of work across (and between) service
+ components.
+ Such a practice would require some sort of transaction compensation framework
+ for rolling back transactions, which adds significant complexity to this
+ relatively simple and elegant architecture pattern.
+ Inter-service communication, which could force undesired couplings between
+ components, can be handled instead through a shared database.
+\end_layout
+
+\begin_layout Itemize
+One final consideration to take into account is that since the micro‐services
+ architecture pattern is a distributed architecture, it shares some of the
+ same complex issues found in the event-driven architecture pattern, including
+ contract creation, maintenance, and government, remote system availability,
+ and remote access authentication and authorization.
+ 
+\end_layout
+
+\begin_layout Itemize
+Some might think that the discussion around microservices is about scalability.
+ Most likely it’s not (well, in Netflix or Amazon, there are different scalabili
+ty requirements than in smaller companies).
+ It’s all about again improving our lead time and reducing the time between
+ our releases.
+ With microservices, we’re trying to split a piece of this huge monolithic
+ codebase into a smaller, well-defined, cohesive, and loosely coupled artifact.
+ 
+\end_layout
+
+\begin_layout Itemize
+A very mature software deployment pipeline is an absolute requirement for
+ any microservices architecture.
+ Some indicators that you can use to assess pipeline maturity are the amount
+ of manual intervention required, the amount of automated tests, the automatic
+ provisioning of environments, and monitoring.
+\end_layout
+
+\begin_layout Itemize
+Any refactoring of functionality between services is much harder than it
+ is in a monolith.
+ But even experienced architects working in familiar domains have great
+ difficulty getting boundaries right at the beginning.
+ By building a monolith first, you can figure out what the right boundaries
+ are, before a microservices design brushes a layer of treacle over them.
+\end_layout
+
+\begin_layout Itemize
+The monolith-first is also called the strangler pattern.
+ Having a stable monolith is a good starting point because one of the hardest
+ things in software is the identification of boundaries between the domain
+ model—things that change together, and things that change apart.
+ Create wrong boundaries and you’ll be doomed with the consequences of cascading
+ changes and bugs.
+\end_layout
+
+\begin_layout Itemize
+From a domain model perspective, microservices are all about boundaries:
+ we’re splitting a specific piece of our domain model that can be turned
+ into an independently releasable artifact.
+ With a badly defined boundary, we will create an artifact that depends
+ too much on information confined in another microservice.
+ We will also create another operational pain: whenever we make modifications
+ in one artifact, we will need to synchronize these changes with another
+ artifact.
+ From the beginning, it’s very difficult to guess which parts of the system
+ change together and which ones change separately.
+ However, after months, or more likely years, developers and business analysts
+ should have a better picture of the evolution cycle of each one of the
+ bounded contexts.
+\end_layout
+
+\begin_layout Itemize
+There are many different success stories about using NoSQL databases in
+ different contexts, and some of these contexts might fit your current enterpris
+e context, as well.
+ But even if it does, we still recommend that you begin your microservices
+ journey on the safe side: using a relational database.
+ First, make it work using your existing relational database.
+ Once you have successfully finished implementing and integrating your first
+ microservice, you can decide whether you (or) your project will be better
+ served by another type of database technology.
+\end_layout
+
+\begin_layout Itemize
+Using the Decentralized Data Management characteristic of microservices
+ architectures, each one of our microservices should have its own separate
+ database—which could possibly, again, be a relational database or not.
+ However, a legacy monolithic relational database is very unlikely to simply
+ migrate the tables and the data from your current schema to a new separate
+ schema or database instance, or even a new database technology.
+ We want to evolve our architecture as smoothly as possible: it requires
+ baby steps and carefully considered migrations in each one of these steps
+ to minimize disruption and, consequently, downtime.
+ Moreover, a microservice is not an island; it requires information provided
+ by other services, and also provides information required by other services.
+ Therefore, we need to integrate the data between at least two separate
+ services: one can be your old monolithic application and the other one
+ will be your new microservice artifact.
+\end_layout
+
+\begin_layout Itemize
+Sometimes you are not building microservices, but distributed monolith,
+ which is the worst.
+ You can ask these questions for determining the answer on what you are
+ building (at least few of the following points):
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.simplethread.com/youre-not-actually-building-microservices/}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A change to one microservice often requires changes to other microservices
+\end_layout
+
+\begin_layout Itemize
+Deploying one microservice requires other microservices to be deployed at
+ the same time
+\end_layout
+
+\begin_layout Itemize
+Your microservices are overly chatty
+\end_layout
+
+\begin_layout Itemize
+The same developers work across a large number of microservices
+\end_layout
+
+\begin_layout Itemize
+Many of your microservices share a datastore
+\end_layout
+
+\begin_layout Itemize
+Your microservices share a lot of the same code or models
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Having a single, non-distributed codebase can be a huge advantage when starting
+ out with a new system.
+ It allows you to more easily reason about your code, allows you to more
+ easily test your code, and it allows you to move quickly and change quickly
+ without having to worry about orchestration between services, distributed
+ monitoring, keeping your services in sync, eventual consistency, all of
+ the things you’ll run into with microservices.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Production-ready microservices, requirements
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+Stability
+\bar default
+ - Stable development cycle and deployment process.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Reliability
+\bar default
+ - Reliable deployment process; planning, mitigating, and protecting against
+ the failures of dependencies; reliable routing and discovery.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Scalability
+\bar default
+ - Well-defined quantitative and qualitative growth scales, Identification
+ of resource bottlenecks and requirements, Careful, accurate capacity planning,
+ Scalable handling of traffic, The scaling of dependencies, and Scalable
+ data storage.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Fault Tolerance and Catastrophe Prepareness
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Potential catastrophes and failure scenarios are identified and planned
+ for.
+\end_layout
+
+\begin_layout Itemize
+Single points of failure are identified and resolved.
+\end_layout
+
+\begin_layout Itemize
+Failure detection and remediation strategies are in place.
+\end_layout
+
+\begin_layout Itemize
+The microservice is tested for resiliency through code testing, load testing,
+ and chaos testing.
+\end_layout
+
+\begin_layout Itemize
+Traffic is managed carefully in preparation for failure.
+\end_layout
+
+\begin_layout Itemize
+Incident and outages are handled appropriately and productively.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+Performance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Proper task handling and processing.
+\end_layout
+
+\begin_layout Itemize
+Efficient utilization of resources.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+Monitoring
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Proper logging of all important and relevant information.
+\end_layout
+
+\begin_layout Itemize
+Useful graphical displays (dashboards) that are easily understood by any
+ developer in the company and that accurately reflect the health of the
+ services.
+ 
+\end_layout
+
+\begin_layout Itemize
+Alerting on key metrics that is effective and actionable.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+Documentation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Thorough, updated, and centralized documentation containing all of the relevant
+ and essential information about the microservice.
+\end_layout
+
+\begin_layout Itemize
+Organizational understanding at the developer, team, and ecosystem levels.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The overall ability to respond quickly to changing environment is pretty
+ good.
+ Due to the notion of separately deployed units, change is generally isolated
+ to individual service components, which allows for fast and easy deployment.
+\end_layout
+
+\begin_layout Itemize
+Services are generally deployed as separate units of software, resulting
+ in the ability to do “hot deployments” any time during the day or night.
+ 
+\end_layout
+
+\begin_layout Itemize
+Due to the separation and isolation of business functionality into independent
+ applications, testing can be scoped, allowing for more targeted testing
+ efforts.
+ Also, since the service components in this pattern are loosely coupled,
+ there is much less of a chance from a development perspective of making
+ a change that breaks another part of the application, easing the testing
+ burden of having to test the entire application for one small change.
+\end_layout
+
+\begin_layout Itemize
+Because the application is split into separately deployed units, each service
+ component can be individually scaled, allowing for fine-tuned scaling of
+ the application.
+ 
+\end_layout
+
+\begin_layout Itemize
+Because functionality is isolated into separate and distinct service components,
+ development becomes easier due to the smaller and isolated scope.
+ There is much less chance a developer will make a change in one service
+ component that would affect other service components, thereby reducing
+ the coordination needed among developers or development teams.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+While you can create applications implemented from this pattern that perform
+ very well, overall this pattern does not naturally lend itself to high-performa
+nce applications due to the distributed nature of the microservices architecture
+ pattern.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Patterns, Recommendations, or Solutions
+\end_layout
+
+\begin_layout Subsubsection
+Pattern Topologies
+\end_layout
+
+\begin_layout Itemize
+API REST-based topology, is useful for websites that expose small, self-containe
+d individual services through some sort of API.
+ In this topology, these fine-grained service components are typically accessed
+ using a REST-based interface implemented through a separately deployed
+ web-based API layer.
+ 
+\end_layout
+
+\begin_layout Itemize
+Application REST-based topology, which differs from the previous one in
+ that client requests are received through traditional web-based or fat-client
+ business application screens rather than through a simple API layer.
+ User-interface layer of the application is deployed as a separate web applicati
+on that remotely accesses separately deployed service components (business
+ functionality) through simple REST-based interfaces.
+ The service components in this topology differ from those in the API-REST-based
+ topology in that these service components tend to be larger, more coarse-graine
+d, and represent a small portion of the overall business application rather
+ than fine-grained, single-action services.
+ This topology is common for small to medium-sized business applications
+ that have a relatively low degree of complexity.
+ 
+\end_layout
+
+\begin_layout Itemize
+Centralized messaging topology, which is similar to the previous application
+ REST-based topology except that instead of using REST for remote access,
+ this topology uses a lightweight centralized message broker.
+ It is vitally important when looking at this topology not to confuse it
+ with the service-oriented architecture pattern or consider it “SOA-Lite."
+ The lightweight message broker found in this topology does not perform
+ any orchestration, transformation, or complex routing; rather, it is just
+ a lightweight transport to access remote service components.
+ The centralized messaging topology is typically found in larger business
+ applications or applications requiring more sophisticated control over
+ the transport layer between the user interface and the service components.
+ The benefits of this topology over the simple REST-based topology discussed
+ previously are advanced queuing mechanisms, asynchronous messaging, monitoring,
+ error handling, and better overall load balancing and scalability.
+ The single point of failure and architectural bottleneck issues usually
+ associated with a centralized broker are addressed through broker clustering
+ and broker federation (splitting a single broker instance into multiple
+ broker instances to divide the message throughput load based on functional
+ areas of the system).
+\end_layout
+
+\begin_layout Subsubsection
+Saga
+\end_layout
+
+\begin_layout Itemize
+Saga solves a problem how to maintain data consistency across multiple microserv
+ices (since each have a separate database) without using distributed transaction
+s.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://microservices.io/patterns/data/saga.html}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A saga is a sequence of local transactions.
+ Each local transaction updates the database and publishes a message or
+ event to trigger the next local transaction in the saga.
+ If a local transaction fails because it violates a business rule then the
+ saga executes a series of compensating transactions that undo the changes
+ that were made by the preceding local transactions.
+\end_layout
+
+\begin_layout Itemize
+There can be choreography-based saga, and orchestration-based saga.
+\end_layout
+
+\begin_layout Itemize
+However, the programming model is more complex.
+ For example, a developer must design compensating transactions that explicitly
+ undo changes made earlier in a saga.
+\end_layout
+
+\begin_layout Itemize
+In order to be reliable, a service must atomically update its database and
+ publish a message/event.
+ It cannot use the traditional mechanism of a distributed transaction that
+ spans the database and the message broker.
+ Instead, it must use one of the patterns listed below:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Database per Service pattern creates the need for this pattern.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://microservices.io/patterns/data/database-per-service.html}}
+\end_layout
+
+\end_inset
+
+ There could be also alternatives, such as tables per service, or schema
+ per service.
+ If database per service is implemented, then joining data together can
+ be done on application (another service that would retrieve data from other
+ services and connects the information together), or with Command Query
+ Responsibility Segregation (CQRS).
+\end_layout
+
+\begin_layout Itemize
+CQRS - maintain one or more materialized views that contain data from multiple
+ services.
+ The views are kept by services that subscribe to events that each services
+ publishes when it updates its data.
+ For example, the online store could implement a query that finds customers
+ in a particular region and their recent orders by maintaining a view that
+ joins customers and orders.
+ The view is updated by a service that subscribes to customer and order
+ events.
+\end_layout
+
+\begin_layout Itemize
+Ways to atomically update state and publish messages/events:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Event sourcing
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://microservices.io/patterns/data/event-sourcing.html}}
+\end_layout
+
+\end_inset
+
+ or
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Transactional Outbox
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://microservices.io/patterns/data/transactional-outbox.html}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Event sourcing
+\series default
+ persists the state of a business entity such an Order or a Customer as
+ a sequence of state-changing events.
+ Whenever the state of a business entity changes, a new event is appended
+ to the list of events.
+ Since saving an event is a single operation, it is inherently atomic.
+ The application reconstructs an entity’s current state by replaying the
+ events.
+ Applications persist events in an event store, which is a database of events.
+ The store has an API for adding and retrieving an entity’s events.
+ The event store also behaves like a message broker.
+ It provides an API that enables services to subscribe to events.
+ When a service saves an event in the event store, it is delivered to all
+ interested subscribers.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Some entities, such as a Customer, can have a large number of events.
+ In order to optimize loading, an application can periodically save a snapshot
+ of an entity’s current state.
+ To reconstruct the current state, the application finds the most recent
+ snapshot and the events that have occurred since that snapshot.
+ As a result, there are fewer events to replay.
+ 
+\end_layout
+
+\begin_layout Itemize
+The CQRS must often be used with event sourcing.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Event sourcing solves one of the key problems in implementing an event-driven
+ architecture and makes it possible to reliably publish events whenever
+ state changes.
+\end_layout
+
+\begin_layout Itemize
+Event sourcing-based business logic consists of loosely coupled business
+ entities that exchange events.
+ This makes it a lot easier to migrate from a monolithic application to
+ a microservice architecture.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Learning curve, and that the event store is difficult to query since it
+ requires typical queries to reconstruct the state of the business entities.
+ That is likely to be complex and inefficient.
+ As a result, the application must use Command Query Responsibility Segregation
+ (CQRS) to implement queries.
+ This in turn means that applications must handle eventually consistent
+ data.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Transactional outbox
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An alternative solution is Event sourcing.
+\end_layout
+
+\begin_layout Itemize
+Problem: How to reliably/atomically update the database and publish messages/eve
+nts?
+\end_layout
+
+\begin_layout Itemize
+The main benefit is, that the service publishes high-level domain events.
+\end_layout
+
+\begin_layout Itemize
+A service that uses a relational database inserts messages/events into an
+ outbox table as part of the local transaction.
+ A service that uses a NoSQL database appends the messages/events to attribute
+ of the record (e.g.
+ document or item) being updated.
+ A separate Message Relay process publishes the events inserted into database
+ to a message broker.
+\end_layout
+
+\begin_layout Itemize
+It is potentially error prone since the developer might forget to publish
+ the message/event after updating the database.
+ Or, the Message Relay process might publish a message more than once.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Kappa Architecture
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/microservices_kappa_architecture.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Microservices architecture with Kappa topology [CZ].
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The main problem this architecture solves is data distribution and synchronizati
+on of databases of each individual microservices.
+\end_layout
+
+\begin_layout Itemize
+Database role is inverted in this architecture.
+ Databases are not used for actual data, but just for materialized view
+ on data.
+ Actual data (and even historical ones) are stored in message broker (Apache
+ Kafka used as a message broker for example).
+ Each microservice reads information from message broker, processes this
+ information, and applies the result on its database.
+\end_layout
+
+\begin_layout Itemize
+It is based on that primary source of information about state of application
+ are not SQL/NoSQL databases, but events recorded to streaming platform
+ (Apache Kafka for example).
+\end_layout
+
+\begin_layout Itemize
+Databases themselves are also used in this architecture, as materialized
+ views.
+ Every microservice that owns its database, sequentially receives each individua
+l events and changes the content of its database based on the data in the
+ event.
+ So such databases have data that can be delayed.
+\end_layout
+
+\begin_layout Itemize
+Besides of the streaming platform, it is still good that microservices are
+ not communicating directly with each other, but by some intermediator,
+ such as message broker.
+\end_layout
+
+\begin_layout Itemize
+Ideally, each microservice is autonomous and it also handles change of it
+ state.
+ But it is good if a microservice is stateless.
+ If shouldn't share its internal state, or any state, all it should share
+ is API (it is kind of encapsulation).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Microservices are isolated, there is no need to use any orchestration.
+ 
+\end_layout
+
+\begin_layout Itemize
+If there is a new microservice added, its database will be filled with data
+ very simply - just with filling all events from streaming platform.
+ 
+\end_layout
+
+\begin_layout Itemize
+Small blackout of some microservice does not lead to data loss, but can
+ lead to slowing down of some work from user point of view.
+ 
+\end_layout
+
+\begin_layout Itemize
+Migration of database, changing its schema or moving to totally different
+ database is not that difficult because of streaming platform.
+ 
+\end_layout
+
+\begin_layout Itemize
+Audit log - the whole application has it because of the streaming platform.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
+Lambda Architecture
+\end_layout
+
+\begin_layout Itemize
+Very straightforward architecture, in which the central piece is streaming
+ platform (such as Apache Kafka) or a message broker.
+\end_layout
+
+\begin_layout Itemize
+Data acquired from broker are typically processed in several components
+ (microservices).
+ One component is optimized for obtaining results in real time, another
+ one is for batch processing, another component may aggregate results from
+ the previous component, and so on.
+\end_layout
+
+\end_body
+\end_document

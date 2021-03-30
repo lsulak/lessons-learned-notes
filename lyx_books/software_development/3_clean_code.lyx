@@ -1,0 +1,2458 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+
+ \pagenumbering{arabic}}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+\usepackage{listings}
+
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myorange}{RGB}{200,100,0}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\scriptsize\ttfamily, % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=leftline,   	           % adds a frame around the code
+  inputencoding=utf8,
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Java,                   % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{myorange},    % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\usepackage[hyphenbreaks]{breakurl}
+\end_preamble
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Linux Notes"
+\pdf_author "Ladislav Sulak"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Clean Code
+\end_layout
+
+\begin_layout Itemize
+The only way to go fast, is to go well.
+ (productivity / clean code / clean architecture)
+\end_layout
+
+\begin_layout Itemize
+The only way to make the deadline and the only way to go fast is to keep
+ the code as clean as possible at all times.
+\end_layout
+
+\begin_layout Itemize
+Generalizing your code in this way to make it adaptable for something which
+ will never happen costs complexity and inflexibility in other areas plus
+ time and thought, which is wasted.
+\end_layout
+
+\begin_layout Itemize
+Any time you bring in a new software engineering technique, you have to
+ consider what do I get, and what does it cost.
+ Everything has a cost, but its proponents won’t tell you so much about
+ it.
+ At the very least, it will make your code less straightforward, and someone
+ who doesn't know the trick you’re pulling will have a hard time following
+ what’s going on.
+ And quite likely, it will reduce the performance of your code to some extent.
+\end_layout
+
+\begin_layout Itemize
+A programmer with “code-sense” will look at a messy module and see 
+\series bold
+options and variations
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Bad code tries to do too much, it has muddled intent and ambiguity of purpose.
+ Clean code is focused.
+ Each function, each class, each module exposes a single-minded attitude
+ that remains entirely undistracted, and unpolluted, by the surrounding
+ details.
+\end_layout
+
+\begin_layout Itemize
+Code, without tests, is not clean.
+ It should have unit and acceptance tests.
+\end_layout
+
+\begin_layout Itemize
+Duplication.
+ When the same thing is done over and over, it’s a sign that there is an
+ idea in our mind that is not well represented in the code.
+ I try to figure out what it is.
+ Then I try to express that idea more clearly.
+\end_layout
+
+\begin_layout Itemize
+Reduced duplication, high expressiveness, and early building of simple abstracti
+ons.
+ That’s a clean code.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The ratio of time spent reading vs.
+ writing is well over 10:1
+\series default
+.
+ We are constantly reading old code as part of the effort to write new code.
+ Because this ratio is so high, we want the reading of code to be easy,
+ even if it makes the writing harder.
+ Of course there’s no way to write code without reading it, so making it
+ easy to read actually makes it easier to write.
+\end_layout
+
+\begin_layout Itemize
+Nothing has a more profound and long-term degrading effect upon a development
+ project than a bad code.
+ Bad schedules can be redone, bad requirements can be redefined.
+ Bad team dynamics can be repaired.
+ But bad code rots and ferments, becoming an inexorable weight that drags
+ the team down.
+\end_layout
+
+\begin_layout Itemize
+Each variable should have the smallest possible scope.
+ For example, a local object can be declared right before its first usage.
+\end_layout
+
+\begin_layout Itemize
+Programming is often an exploration.
+ You think you know the right algorithm for something, but then you wind
+ up fiddling with it, prodding and poking at it, until you get it to “work.”
+ Before you consider yourself to be done with a function, make sure you
+ understand how it works.
+ It is not good enough that it passes all the tests.
+ You must know that the solution is correct.
+ Often the best way to gain this knowledge and understanding is to refactor
+ the function into something that is so clean and expressive that it is
+ obvious how it works.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Distinguish business exceptions from technical.
+
+\series default
+ It is a potential source of confusion to represent them both using the
+ same exception hierarchy, not to mention the same exception class.
+ It would be a mistake to attempt to resolve these situations you caused
+ yourself.
+ Instead, we let the exception bubble up to the highest architectural level
+ and let some general exception-handling mechanism do what it can to ensure
+ that the system is in a safe state, such as rolling back a transaction,
+ logging and alerting administration, and reporting back (politely) to the
+ user.
+ Mixing technical exceptions and business exceptions in the same hierarchy
+ blurs the distinction and confuses the caller about what the method contract
+ is, what conditions it is required to ensure before calling, and what situation
+s it is supposed to handle.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Replace magic numbers with named constants.
+
+\series default
+ However, some constants are so easy to recognize that they don’t always
+ need a named constant to hide behind so long as they are used in conjunction
+ with very self-explanatory code.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Encapsulate conditionals.
+ 
+\series default
+Extract functions that explain the intent of the conditional.
+ For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+if (shouldBeDeleted(timer)) 
+\end_layout
+
+\begin_layout Standard
+is preferable to
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+if (timer.hasExpired() && !timer.isRecurrent())
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Avoid negative conditionals.
+ 
+\series default
+Negatives are just a bit harder to understand than positives.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Encapsulate boundary conditions.
+
+\series default
+ Boundary conditions are hard to keep track of.
+ Put the processing for them in one place.
+ Don't let them leak all over the code.
+ For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+if(level + 1 < tags.length) { parts = new Parse(body, tags, level + 1, offset
+ + endTag); body = null; }
+\end_layout
+
+\begin_layout Standard
+and better is:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+int nextLevel = level + 1; if(nextLevel < tags.length) { parts = new Parse(body,
+ tags, nextLevel, offset + endTag); body = null; }
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Names should describe side-effects.
+ 
+\series default
+Names should describe everything that a function, variable, or class is
+ or does.
+ Don’t hide side effects with a name.
+ For example, 
+\emph on
+getSomeObj()
+\emph default
+ is not a proper name, if this function also creates such object 
+\emph on
+'SomeObj'
+\emph default
+.
+ Better name would be
+\emph on
+ createOrReturnSomeObj()
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Don't use unambiguous names
+\series default
+, for example 
+\emph on
+doRename()
+\emph default
+ and 
+\emph on
+renamePage()
+\emph default
+.
+ What do the names tell you about the difference between the two functions?
+ Nothing.
+ A better name for that function is 
+\emph on
+renamePageAndOptionallyAllReferences()
+\emph default
+.
+ This may seem long, and it is, but it’s only called from one place in the
+ module, so it’s explanatory value outweighs the length.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Frameworks
+\series default
+ can be very powerful and very useful.
+ Framework authors often believe very deeply in their frameworks.
+ The examples they write for how to use their frameworks are told from the
+ point of view of a true believer.
+ Other authors who write about the framework also tend to be disciples of
+ the true belief.
+ They show you the way to use the framework.
+ Often they assume an all-encompassing, all-pervading, let-the-framework-do-ever
+ything position.
+
+\series bold
+ This is not the position you want to take.
+ Look at each framework skeptically.
+ Yes, it might help, but at what cost?
+\series default
+ Ask yourself how you should use it, and how you should protect yourself
+ from it.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prefer domains-specific types to primitive types.
+\end_layout
+
+\begin_layout Itemize
+You’ve been focused for hours on some gnarly problem, and there’s no solution
+ in sight.
+ 
+\series bold
+The trick is that while you’re coding, the logical part of your brain is
+ active and the creative side is shut out.
+ 
+\series default
+It can’t present anything to you until the logical side takes a break.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Comments
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+“Don’t comment bad code—rewrite it.”
+\emph default
+ — Brian W.
+ Kernighan and P.
+ J.
+ Plaugher
+\end_layout
+
+\begin_layout Itemize
+Nothing can be quite so helpful as a well-placed comment.
+ Nothing can clutter up a module more than frivolous dogmatic comments.
+ Nothing can be quite so damaging as an old crufty comment that propagates
+ lies and misinformation.
+\end_layout
+
+\begin_layout Itemize
+The proper use of comments is to compensate for our failure to express ourselves
+ in code.
+ Note that I used the word failure.
+ I meant it.
+ Comments are always failures.
+ We must have them because we cannot always figure out how to express ourselves
+ without them, but their use is not a cause for celebration.
+ 
+\end_layout
+
+\begin_layout Itemize
+So when you find yourself in a position where you need to write a comment,
+ think it through and see whether there isn't some way to turn the tables
+ and express yourself in code.
+ Every time you express yourself in code, you should pat yourself on the
+ back.
+ Every time you write a comment, you should grimace and feel the failure
+ of your ability of expression.
+\end_layout
+
+\begin_layout Itemize
+Why am I so down on comments? Because they lie.
+ Not always, and not intentionally, but too often.
+ The older a comment is, and the farther away it is from the code it describes,
+ the more likely it is to be just plain wrong.
+ The reason is simple.
+ Programmers can’t realistically maintain them.
+ 
+\end_layout
+
+\begin_layout Itemize
+Inaccurate comments are far worse than no comments at all.
+ They delude and mislead.
+ They set expectations that will never be fulfilled.
+\end_layout
+
+\begin_layout Itemize
+Truth can only be found in one place: the code.
+ Only the code can truly tell you what it does.
+ It is the only source of truly accurate information.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Good comments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Legal comments (licenses, authors and so on).
+\end_layout
+
+\begin_layout Itemize
+Informative comments (useful basic information with a comment).
+ A comment like this can sometimes be useful, but it is better to use the
+ name of the function to convey the information where possible.
+ 
+\end_layout
+
+\begin_layout Itemize
+Explanation of intent.
+\end_layout
+
+\begin_layout Itemize
+Clarification (sometimes it is just helpful to translate the meaning of
+ some obscure argument or return value into something that’s readable).
+ There is a substantial risk, of course, that a clarifying comment is incorrect.
+ 
+\end_layout
+
+\begin_layout Itemize
+Warning of consequences.
+\end_layout
+
+\begin_layout Itemize
+TODO comments - TODOs are jobs that the programmer thinks should be done,
+ but for some reason can’t do at the moment.
+ However, a lot of people think that TODO comments are not good any more,
+ because we have issue tracking systems for features, bugs, and ideas.
+\end_layout
+
+\begin_layout Itemize
+Amplification of something very important.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Bad comments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Redundant, misleading, mandated, or noise comments.
+\end_layout
+
+\begin_layout Itemize
+Closing brace comments - if you find yourself wanting to mark your closing
+ braces, try to shorten your functions instead.
+\end_layout
+
+\begin_layout Itemize
+Commented-out code - there was a time, back in the sixties, when commenting-out
+ code might have been useful.
+ But we've had good source code control systems for a very long time now.
+ Those systems will remember the code for us.
+ We don’t have to comment it out any more.
+ Just delete the code.
+ We won’t lose it.
+ Promise.
+\end_layout
+
+\begin_layout Itemize
+Nonlocal information
+\end_layout
+
+\begin_layout Itemize
+Too much information
+\end_layout
+
+\begin_layout Itemize
+Inobvious connection - the connection between a comment and the code it
+ describes should be obvious.
+ The purpose of a comment is to explain code that does not explain itself.
+ It is a pity when a comment needs its own explanation.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Formatting
+\end_layout
+
+\begin_layout Itemize
+First of all, let’s be clear.
+ Code formatting is important.
+ It is too important to ignore and it is too important to treat religiously.
+ Code formatting is about communication, and communication is the professional
+ developer’s first order of business.
+\end_layout
+
+\begin_layout Itemize
+The functionality that you create today has a good chance of changing in
+ the next release, but the readability of your code will have a profound
+ effect on all the changes that will ever be made.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The newspaper metaphor.
+ 
+\series default
+Think of a well-written newspaper article.
+ You read it vertically.
+ We would like a source file to be like a newspaper article.
+ The name should be simple but explanatory.
+ The name, by itself, should be sufficient to tell us whether we are in
+ the right module or not.
+ The topmost parts of the source file should provide the high-level concepts
+ and algorithms.
+ Detail should increase as we move downward, until at the end we find the
+ lowest level functions and details in the source file.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vertical openness between concepts
+\series default
+.
+ Nearly all code is read left to right and top to bottom.
+ Each line represents an expression or a clause, and each group of lines
+ represents a complete thought.
+ Those thoughts should be separated from each other with blank lines.
+ Each blank line is a visual cue that identifies a new and separate concept.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vertical density.
+
+\series default
+ If openness separates concepts, then vertical density implies close association.
+ So lines of code that are tightly related should appear vertically dense.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vertical distance.
+
+\series default
+ Concepts that are closely related should be kept vertically close to each
+ other.
+ Clearly this rule doesn't work for concepts that belong in separate files.
+ But then closely related concepts should not be separated into different
+ files unless you have a very good reason.
+ Indeed, this is one of the reasons that protected variables should be avoided.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Variable declarations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variables should be declared as close to their usage as possible.
+ Because our functions are very short, local variables should appear a the
+ top of each function.
+ Control variables for loops should usually be declared within the loop
+ statement.
+\end_layout
+
+\begin_layout Itemize
+In rare cases a variable might be declared at the top of a block or just
+ before a loop in a long-ish function.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Error Handling
+\end_layout
+
+\begin_layout Itemize
+Error handling is important, but if it obscures logic, it’s wrong.
+\end_layout
+
+\begin_layout Itemize
+Use exceptions rather than return codes (more details in the next section).
+\end_layout
+
+\begin_layout Itemize
+Provide context with exceptions.
+\end_layout
+
+\begin_layout Itemize
+Define exception classes in terms of a caller’s needs.
+\end_layout
+
+\begin_layout Itemize
+It is important to end up with a good amount of separation between your
+ business logic and your error handling.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Don’t return 
+\emph on
+Null
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When we return null, we are essentially creating work for ourselves and
+ foisting problems upon our callers.
+ All it takes is one missing null check to send an application spinning
+ out of control.
+ We invite errors with returning null.
+\end_layout
+
+\begin_layout Itemize
+If you are tempted to return null from a method, consider throwing an exception
+ or returning a SPECIAL CASE object instead.
+ If you are calling a null-returning method from a third-party API, consider
+ wrapping that method with a method that either throws an exception or returns
+ a special case object.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Don’t pass 
+\emph on
+Null
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Returning null from methods is bad, but passing null into methods is worse.
+ Unless you are working with an API which expects you to pass null, you
+ should avoid passing null in your code whenever possible.
+\end_layout
+
+\begin_layout Itemize
+You can use assertions, but that does not solve the problem.
+ It is better to avoid passing nulls where they don't belong.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Functions and Methods
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Blocks and indenting
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The blocks within if statements, else statements, while statements, and
+ so on should be one line long.
+ Probably that line should be a function call.
+\end_layout
+
+\begin_layout Itemize
+Not only does this keep the enclosing function small, but it also adds documenta
+ry value because the function called within the block can have a nicely
+ descriptive name.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Dependent functions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If one function calls another, they should be vertically close, and the
+ caller should be above the callee, if at all possible.
+ This gives the program a natural flow.
+ If the convention is followed reliably, readers will be able to trust that
+ function definitions will follow shortly after their use.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Vertical ordering
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In general we want function call dependencies to point in the downward direction.
+\end_layout
+
+\begin_layout Itemize
+That is, a function that is called should be below a function that does
+ the calling.
+ This creates a nice flow down the source code module from high level to
+ low level.
+\end_layout
+
+\begin_layout Itemize
+This is the exact opposite of languages like Pascal, C, and C++ that enforce
+ functions to be defined, or at least declared, before they are used.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Do one thing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A way to know that a function is doing more than “one thing” is if you can
+ extract another function from it with a name that is not merely a restatement
+ of its implementation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+One level of abstraction per function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In order to make sure our functions are doing “one thing,” we need to make
+ sure that the statements within our function are all at the same level
+ of abstraction.
+\end_layout
+
+\begin_layout Itemize
+Mixing levels of abstraction within a function is always confusing.
+ Readers may not be able to tell whether a particular expression is an essential
+ concept or a detail.
+\end_layout
+
+\begin_layout Itemize
+The statements within a function should all be written at the same level
+ of abstraction, which should be one level below the operation described
+ by the name of the function.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Reading code from top to bottom
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Stepdown Rule: We want the code to read like a top-down narrative.
+\end_layout
+
+\begin_layout Itemize
+We want every function to be followed by those at the next level of abstraction
+ so that we can read the program, descending one level of abstraction at
+ a time as we read down the list of functions.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Switch or if/else statements
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It’s hard to make a small switch or if/else statement.
+ Even a switch statement with only two cases is larger than I’d like a single
+ block or function to be.
+ It’s also hard to make a switch statement that does one thing.
+ By their nature, switch statements always do 
+\begin_inset Formula $N$
+\end_inset
+
+ things.
+ Unfortunately we can’t always avoid switch statements, but we can make
+ sure that each switch statement is buried in a low-level class and is never
+ repeated.
+ We do this, of course, with polymorphism.
+ For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=14]{src/switch_problem.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+There are a lot of problems with this function.
+ First, it’s large, and when new employee types are added, it will grow.
+ Second, it very clearly does more than one thing.
+ Third, it violates SRP because there is more than one reason for it to
+ change.
+ Fourth, it violates the OCP because it must change whenever new types are
+ added.
+ But possibly the worst problem with this function is that there are an
+ unlimited number of other functions that will have the same structure.
+\end_layout
+
+\begin_layout Itemize
+The solution here is to bury the switch statement in the basement of an
+ 
+\bar under
+abstract factory
+\bar default
+ design pattern, and never let anyone see it.
+ The factory will use the switch statement to create appropriate instances
+ of the derivatives of 
+\emph on
+Employee
+\emph default
+, and the various functions, such as 
+\emph on
+calculatePay
+\emph default
+, 
+\emph on
+isPayday
+\emph default
+, and 
+\emph on
+deliverPay
+\emph default
+, will be dispatched polymorphically through the Employee interface.
+\end_layout
+
+\begin_layout Itemize
+One general rule for switch statements is that they can be tolerated if
+ they appear only once, are used to create polymorphic objects, and are
+ hidden behind an inheritance relationship so that the rest of the system
+ can’t see them.
+ Of course every circumstance is unique, and there are times when I violate
+ one or more parts of that rule.
+ Solution to above problem might me:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=26]{src/switch_solution.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Use descriptive names
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The smaller and more focused a function is (hardly 20 LoC), the easier it
+ is to choose a descriptive name.
+\end_layout
+
+\begin_layout Itemize
+Don’t be afraid to make a name long.
+ A long descriptive name is better than a short enigmatic name.
+ A long descriptive name is better than a long descriptive comment.
+ Use a naming convention that allows multiple words to be easily read in
+ the function names, and then make use of those multiple words to give the
+ function a name that says what it does.
+\end_layout
+
+\begin_layout Itemize
+Choosing descriptive names will clarify the design of the module in your
+ mind and help you to improve it.
+ It is not at all uncommon that hunting for a good name results in a favorable
+ restructuring of the code.
+ Be consistent in your names.
+ Use the same phrases, nouns, and verbs in the function names you choose
+ for your modules.
+\end_layout
+
+\begin_layout Itemize
+Consider, for example, the names 
+\emph on
+includeSetupAndTeardownPages
+\emph default
+, 
+\emph on
+includeSetupPages
+\emph default
+, 
+\emph on
+includeSuiteSetupPage
+\emph default
+, and 
+\emph on
+includeSetupPage
+\emph default
+.
+ The similar phraseology in those names allows the sequence to tell a story.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Function arguments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The ideal number of arguments for a function is 0 (niladic).
+ Next comes one (monadic), followed closely by two (dyadic).
+ Three arguments (triadic) should be avoided where possible.
+ More than three (polyadic) requires very special justification—and then
+ shouldn't be used anyway.
+\end_layout
+
+\begin_layout Itemize
+Arguments are even harder from a testing point of view.
+ Imagine the difficulty of writing all the test cases to ensure that all
+ the various combinations of arguments work properly.
+ If there are no arguments, this is trivial.
+\end_layout
+
+\begin_layout Itemize
+Flag arguments are ugly.
+ Passing a boolean into a function is a truly terrible practice.
+ It immediately complicates the signature of the method, loudly proclaiming
+ that this function does more than one thing.
+ It does one thing if the flag is true and another if the flag is false!
+\end_layout
+
+\begin_layout Itemize
+When a function seems to need more than 2 or 3 arguments, it is likely that
+ some of those arguments ought to be wrapped into a class of their own.
+ Reducing the number of arguments by creating objects out of them may seem
+ like cheating, but it’s not.
+ When groups of variables are passed together, the way x and y are in the
+ example above, they are likely part of a concept that deserves a name of
+ its own.
+ Consider, for example, the difference between the following declarations:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Circle makeCircle(double x, double y, double radius);
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Circle makeCircle(Point center, double radius);
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Have no side effects.
+
+\series default
+ Side effects are lies.
+ Your function promises to do one thing, but it also does other hidden things.
+\end_layout
+
+\begin_layout Itemize
+Output (that are input) arguments.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For example, 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+report
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ is an output argument:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+public void appendFooter(StringBuffer report)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In the days before object oriented programming it was sometimes necessary
+ to have output arguments.
+ However, much of the need for output arguments disappears in OO languages
+ because this is intended to act as an output argument.
+ In other words, it would be better for 
+\emph on
+appendFooter
+\emph default
+ to be invoked as
+\emph on
+: report.appendFooter(); 
+\end_layout
+
+\begin_layout Itemize
+In general output arguments should be avoided.
+ If your function must change the state of something, have it change the
+ state of its owning object.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Command Query Separation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Functions should either do something or answer something, but not both.
+ Either your function should change the state of an object, or it should
+ return some information about that object.
+ Doing both often leads to confusion.
+\end_layout
+
+\begin_layout Itemize
+For example, function: 
+\emph on
+public boolean set(String attribute, String value);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It sets the value of a named attribute and returns true if it is successful
+ and false if no such attribute exists.
+ 
+\end_layout
+
+\begin_layout Itemize
+Imagine this from the point of view of the reader.
+ What does it mean? Is it asking whether the “username” attribute was previously
+ set to “unclebob”? Or is it asking whether the “username” attribute was
+ successfully set to “unclebob”? It’s hard to infer the meaning from the
+ call because it’s not clear whether the word “set” is a verb or an adjective.
+ 
+\end_layout
+
+\begin_layout Itemize
+The real solution is to separate the command from the query so that the
+ ambiguity cannot occur:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=4]{src/command_query_separation.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Prefer exceptions to returning error codes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Returning error codes from command functions is a subtle violation of command
+ query separation.
+ It promotes commands being used as expressions in the predicates of if
+ statements: 
+\emph on
+if (deletePage(page) == E_OK)
+\end_layout
+
+\begin_layout Itemize
+On the other hand, if you use exceptions instead of returned error codes,
+ then the error processing code can be separated from the happy path code
+ and can be simplified:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=8]{src/exceptions_instead_or_return_codes.ja
+va}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Extract try/catch blocks
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Try/catch blocks are ugly in their own right.
+ They confuse the structure of the code and mix error processing with normal
+ processing.
+ So it is better to extract the bodies of the try and catch blocks out into
+ functions of their own.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=18]{src/extracted_exception_blocks.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In the above, the 
+\emph on
+delete
+\emph default
+ function is all about error processing.
+ It is easy to understand and then ignore.
+ The 
+\emph on
+deletePageAndAllReferences
+\emph default
+ function is all about the processes of fully deleting a page.
+ Error handling can be ignored.
+ This provides a nice separation that makes the code easier to understand
+ and modify.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Error handling is one thing.
+ 
+\series default
+Functions should do one thing.
+ Error handing is one thing.
+ Thus, a function that handles errors should do nothing else.
+ This implies (as in the example above) that if the keyword try exists in
+ a function, it should be the very first word in the function and that there
+ should be nothing after the catch/finally blocks.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+How to write clean functions?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Writing software is like any other kind of writing.
+ When you write a paper or an article, you get your thoughts down first,
+ then you massage it until it reads well.
+ The first draft might be clumsy and disorganized, so you wordsmith it and
+ restructure it and refine it until it reads the way you want it to read.
+\end_layout
+
+\begin_layout Itemize
+When I write functions, they come out long and complicated.
+ They have lots of indenting and nested loops.
+ They have long argument lists.
+ The names are arbitrary, and there is duplicated code.
+ But I also have a suite of unit tests that cover every one of those clumsy
+ lines of code.
+\end_layout
+
+\begin_layout Itemize
+So then I massage and refine that code, splitting out functions, changing
+ names, eliminating duplication.
+ I shrink the methods and reorder them.
+ Sometimes I break out whole classes, all the while keeping the tests passing.
+\end_layout
+
+\begin_layout Itemize
+In the end, I wind up with functions that follow the rules I've laid down
+ in this chapter.
+ I don’t write them that way to start.
+ I don’t think anyone could.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Classes
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+In general, base classes should know nothing about their derivatives.
+ There are exceptions to this rule, of course.
+ 
+\series default
+Sometimes the number of derivatives is strictly fixed, and the base class
+ has code that selects between the derivatives.
+ However, in that case the derivatives and base class are strongly coupled
+ and always deploy together in the same (for instance) jar file.
+ In the general case we want to be able to deploy derivatives and bases
+ in different jar files.
+\end_layout
+
+\begin_layout Itemize
+Make logical dependencies physical.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Well-defined modules have very small interfaces that allow you to do a lot
+ with a little.
+ 
+\series default
+Poorly defined modules have wide and deep interfaces that force you to use
+ many different gestures to get simple things done.
+ A well-defined interface does not offer very many functions to depend upon,
+ so coupling is low.
+ A poorly defined interface provides lots of functions that you must call,
+ so coupling is high.
+ Good software developers learn to limit what they expose at the interfaces
+ of their classes and modules.
+ The fewer methods a class has, the better.
+ The fewer variables a function knows about, the better.
+ The fewer instance variables a class has, the better.
+ Hide your data.
+ Hide your utility functions.
+ Hide your constants and your temporaries.
+ Don’t create classes with lots of methods or lots of instance variables.
+ Don’t create lots of protected variables and functions for your subclasses.
+ 
+\series bold
+Concentrate on keeping interfaces very tight and very small.
+\end_layout
+
+\begin_layout Itemize
+Interfaces occur at the highest level of abstraction (user interfaces),
+ at the lowest (function interfaces), and at levels in between (class interfaces
+, library interfaces, etc.).
+ Good interfaces are easy to use correctly, and hard to use incorrectly.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Encapsulation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We like to keep our variables and utility functions private, but we’re not
+ fanatic about it.
+\end_layout
+
+\begin_layout Itemize
+Sometimes we need to make a variable or utility function protected so that
+ it can be accessed by a test.
+ For us, tests rule.
+ If a test in the same package needs to call a function or access a variable,
+ we’ll make it protected or package scope.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Classes should be small
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first rule of classes is that they should be small.
+ The second rule of classes is that they should be smaller than that.
+ With functions we measured size by counting physical lines.
+ With classes we use a different measure.
+ 
+\series bold
+We count responsibilities.
+\end_layout
+
+\begin_layout Itemize
+The name of a class should describe what responsibilities it fulfills.
+ In fact, naming is probably the first way of helping determine class size.
+ If we cannot derive a concise name for a class, then it’s likely too large.
+ The more ambiguous the class name, the more likely it has too many responsibili
+ties.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\series bold
+SOLID
+\end_layout
+
+\begin_layout Itemize
+Good software systems begin with clean code.
+ On the one hand, if the bricks aren't well made, the architecture of the
+ building doesn't matter much.
+ On the other hand, you can make a substantial mess with well-made bricks.
+ This is where the SOLID principles come in.
+ They were grouped and stabilized in early 2000s.
+\end_layout
+
+\begin_layout Itemize
+The SOLID principles tell us how to arrange our functions and data structures
+ into classes, and how those classes should be interconnected.
+ The use of the word “class” does not imply that these principles are applicable
+ only to object-oriented software.
+ A class is simply a coupled grouping of functions and data.
+ Every software system has such groupings, whether they are called classes
+ or not.
+ The SOLID principles apply to those groupings.
+\end_layout
+
+\begin_layout Itemize
+The goal of the principles is the creation of mid-level (module level) software
+ structures that: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+tolerate change, 
+\end_layout
+
+\begin_layout Itemize
+are easy to understand, and 
+\end_layout
+
+\begin_layout Itemize
+are the basis of components that can be used in many software systems.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+SRP (The Single Responsibility Principle)
+\end_layout
+
+\begin_layout Itemize
+It states that a class or module (or a function) should have one, and only
+ one, reason to change (responsibility).
+ This principle gives us both a definition of responsibility, and a guidelines
+ for class size.
+ Classes should have one responsibility—one reason to change.
+ Each small class encapsulates a single responsibility, has a single reason
+ to change, and collaborates with a few others to achieve the desired system
+ behaviors.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Gather together those things that change for the same reason, and separate
+ those things that change for different reasons.
+\end_layout
+
+\begin_layout Itemize
+It has an inappropriate name, it is very misunderstood by programmers and
+ does not mean that every module should do just one thing.
+ Make no mistake, there is a principle like that.
+ A function should do one, and only one, thing.
+ We use that principle when we are refactoring large functions into smaller
+ functions; we use it at the lowest levels.
+ But it is not one of the SOLID principles - it is not the SRP.
+\end_layout
+
+\begin_layout Itemize
+Software systems are changed to satisfy users and stakeholders; those users
+ and stakeholders are the “reason to change” that the principle is talking
+ about.
+ Indeed, we can rephrase the principle to say this: A module should be responsib
+le to one, and only one, user or stakeholder.
+ Unfortunately, the words “user” and “stakeholder” aren't really the right
+ words to use here.
+ There will likely be more than one user or stakeholder who wants the system
+ changed in the same way.
+ Instead, we’re really referring to a group—one or more people who require
+ that change.
+ We’ll refer to that group as an actor.
+ And by module we mean source file for example.
+ Thus the final version of the SRP is: A module should be responsible to
+ one, and only one, actor.
+\end_layout
+
+\begin_layout Subsubsection
+OCP (The Open-Closed Principle)
+\end_layout
+
+\begin_layout Itemize
+Bertrand Meyer made this principle famous in the 1988.
+ The gist is that for software systems to be easy to change, they must be
+ designed to allow the behavior of those systems to be changed by adding
+ new code, rather than changing existing code: 
+\series bold
+A software artifact should be open for extension but closed for modification.
+\end_layout
+
+\begin_layout Itemize
+We want to structure our systems so that we muck with as little as possible
+ when we update them with new or changed features.
+ In an ideal system, we incorporate new features by extending the system,
+ not by making modifications to existing code.
+\end_layout
+
+\begin_layout Itemize
+Most students of software design recognize the OCP as a principle that guides
+ them in the design of classes and modules.
+ But the principle takes on even greater significance when we consider the
+ level of architectural components.
+ If component A should be protected from changes in component B, then component
+ B should depend on component A.
+ Why should A hold such a privileged position? Because it contains the business
+ rules.
+ Higher-level components in a hierarchy are protected from the changes made
+ to lower-level components.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The OCP is one of the driving forces behind the architecture of systems.
+
+\series default
+ The goal is to make the system easy to extend without incurring a high
+ impact of change.
+ This goal is accomplished by partitioning the system into components, and
+ arranging those components into a 
+\series bold
+dependency hierarchy that protects higher-level components from changes
+ in lower-level components.
+\end_layout
+
+\begin_layout Subsubsection
+LSP (The Liskov Substitution Principle)
+\end_layout
+
+\begin_layout Itemize
+Barbara Liskov’s famous definition of subtypes, from 1988.
+\end_layout
+
+\begin_layout Itemize
+In short, this principle says that to build software systems from interchangeabl
+e parts, those parts must adhere to a contract that allows those parts to
+ be substituted one for another.
+\end_layout
+
+\begin_layout Itemize
+So, if you have a base type, and a subtype, that subclass should be substitutabl
+e for the base class (at any point in a program).
+\end_layout
+
+\begin_layout Itemize
+What this practically means is that a 
+\series bold
+method in a subclass must receive everything that base class is expecting
+ to be able to receive, but it may also expect a bit more 
+\series default
+(superset).
+ What a
+\series bold
+ method in a subclass can return, must be the same as in base class, or
+ just its subset
+\series default
+.
+ Also, a 
+\series bold
+set of possible states of subclass must either be the same as in base class,
+ or their subset
+\series default
+.
+
+\series bold
+ So basically, everything base class can do, must do also derived class
+ (plus, of course, something more).
+ 
+\series default
+See videos [5:30]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=bVwZquRH1Vk&list=PLrhzvIcii6GMQceffIgKCRK98yTm
+0oolm&index=3}}
+\end_layout
+
+\end_inset
+
+ and [10:30]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=ObHQHszbIcE&list=PLrhzvIcii6GMsfGSgRL1xmS3Bvo4
+TPliQ}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Some people (also see the videos above) recommend that composition si better
+ than inheritance.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So basically, you are liberal what to receive, but conservative what to
+ send (if people were like this, world would be fantastic).
+ No unexpected surprises, so that you may 'count' on subclass.
+ In reality, we mostly do it wrong - we are subclassing 'too much'.
+ You are maybe overusing inheritance in places where inheritance shouldn't
+ actually be used.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Derived classes must be usable through the base class interface, without
+ the need for the user to know the difference.
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{ https://www.youtube.com/watch?v=TMuno5RZNeE}}
+\end_layout
+
+\end_inset
+
+ For example: 
+\begin_inset Formula $Client\rightarrow AbstractServer\leftarrowtriangle ConcreteServer$
+\end_inset
+
+, and we should be able to substitute that 
+\begin_inset Formula $AbstractServer$
+\end_inset
+
+ with 
+\begin_inset Formula $ConcreteServer$
+\end_inset
+
+ and the 
+\begin_inset Formula $Client$
+\end_inset
+
+ shouldn't know the difference.
+ This is a simple polymorphism.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A simple violation of substitutability, can cause a system’s architecture
+ to be polluted with a significant amount of extra mechanisms.
+\end_layout
+
+\begin_layout Itemize
+This is probably the most technical of the 5 SOLID principles and the one
+ I would guess fewest people consider much.
+ However, it does have some important consequences for designing object-oriented
+ software.
+\end_layout
+
+\begin_layout Itemize
+If we can rely on the LSP, it allows us to use polymorphism reliably in
+ our code.
+ Polymorphism is a key way to avoid repetition in code as it allows you
+ to maximize the generality of the code you are writing.
+\end_layout
+
+\begin_layout Subsubsection
+ISP (The Interface Segregation Principle)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+This principle advises software designers to avoid depending on things that
+ they don’t use.
+
+\series default
+ The lesson here is that depending on something that carries baggage that
+ you don’t need can cause you troubles that you didn't expect.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+It says that it is better to have smaller interfaces, rather than a few
+ very large interfaces.
+ But be careful, this depends on a given project and your requirements!
+ 
+\series default
+Small can mean different things across the projects.
+ In this way, we are favoring composition over inheritance, and decoupling
+ over coupling.
+ If you are thinking about microservices, it is basically the same thing
+ (we are creating objects with small responsibilities and then we are composing
+ them together).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\backslash
+url{https://www.youtube.com/watch?v=xahwVmf8itI&list=PLrhzvIcii6GMQceffIgKCRK98yTm
+0oolm&index=4}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In general, it is harmful to depend on modules that contain more than you
+ need.
+ This is obviously true for source code dependencies that can force unnecessary
+ recompilation and redeployment—but it is also true at a much higher, architectu
+ral level.
+\end_layout
+
+\begin_layout Itemize
+For example, consider that an architect is working on a system, 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ He wants to include a certain framework, 
+\begin_inset Formula $F$
+\end_inset
+
+, into the system.
+ Now suppose that the authors of 
+\begin_inset Formula $F$
+\end_inset
+
+ have bound it to a particular database, 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $S$
+\end_inset
+
+ depends on 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ which depends on 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Now suppose that 
+\begin_inset Formula $D$
+\end_inset
+
+ contains features that 
+\begin_inset Formula $F$
+\end_inset
+
+ does not use and, therefore, that 
+\begin_inset Formula $S$
+\end_inset
+
+ does not care about.
+ Changes to those features within 
+\begin_inset Formula $D$
+\end_inset
+
+ may well force the redeployment of 
+\begin_inset Formula $F$
+\end_inset
+
+ and, therefore, the redeployment of 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Even worse, a failure of one of the features within 
+\begin_inset Formula $D$
+\end_inset
+
+ may cause failures in 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+DIP (The Dependency Inversion Principle)
+\end_layout
+
+\begin_layout Itemize
+In essence, the DIP says that our classes should depend upon abstractions,
+ not on concrete details.
+ An example, instead of depend on an implementation details of some concrete
+ class, it would be better to depend on an interface instead.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+High-level modules should not depend on low-level modules.
+ Both should depend on abstractions.
+\end_layout
+
+\begin_layout Itemize
+Abstractions should not depend on details.
+ Details should depend on abstractions.
+\end_layout
+
+\begin_layout Itemize
+The "inversion" concept does not mean that lower-level layers depend on
+ higher-level layers.
+ Both layers should depend on abstractions that draw the behavior needed
+ by higher-level layers.
+\end_layout
+
+\begin_layout Itemize
+The code that implements high-level policy should not depend on the code
+ that implements low-level details.
+ Rather, details should depend on policies.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In a statically typed language, like Java, this means that the use, import,
+ and include statements should refer only to source modules containing interface
+s, abstract classes, or some other kind of abstract declaration.
+ Nothing concrete should be depended on.
+ The same rule applies for dynamically typed languages, like Ruby and Python.
+ Source code dependencies should not refer to concrete modules.
+ However, in these languages it is a bit harder to define what a concrete
+ module is.
+ In particular, it is any module in which the functions being called are
+ implemented.
+ Clearly, treating this idea as a rule is unrealistic, because software
+ systems must depend on many concrete facilities.
+ For example, the String class in Java is concrete, and it would be unrealistic
+ to try to force it to be abstract.
+ The source code dependency on the concrete java.lang.string cannot, and should
+ not, be avoided.
+ By comparison, the String class is very stable.
+ Changes to that class are very rare and tightly controlled.
+ Programmers and architects do not have to worry about frequent and capricious
+ changes to String.
+ We tolerate such concrete dependencies because we know we can rely on them
+ not to change.
+\end_layout
+
+\begin_layout Itemize
+Good software designers and architects work hard to reduce the volatility
+ of interfaces.
+ They try to find ways to add functionality to implementations without making
+ changes to the interfaces.
+\end_layout
+
+\begin_layout Itemize
+DIP violations cannot be entirely removed, but they can be gathered into
+ a small number of concrete components and kept separate from the rest of
+ the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fig/DIP_application.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of DIP application.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+System Level
+\end_layout
+
+\begin_layout Itemize
+“
+\emph on
+Complexity kills.
+ It sucks the life out of developers, it makes products difficult to plan,
+ build, and test.
+\emph default
+” — Ray Ozzie, CTO, Microsoft Corporation
+\end_layout
+
+\begin_layout Itemize
+Cities grow from towns, which grow from settlements.
+ At first the roads are narrow and practically nonexistent, then they are
+ paved, then widened over time.
+ How many times have you driven, bumper to bumper through a road “improvement”
+ project and asked yourself, “Why didn't they build it wide enough the first
+ time!?” But it couldn't have happened any other way.
+ Who can justify the expense of a six-lane highway through the middle of
+ a small town that anticipates growth? It is a myth that we can get systems
+ “right the first time.” Instead, we should implement only today’s stories,
+ then refactor and expand the system to implement new stories tomorrow.
+ This is the essence of iterative and incremental agility.
+ Test-driven development, refactoring, and the clean code they produce make
+ this work at the code level.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\begin_inset Quotes eld
+\end_inset
+
+Construction
+\begin_inset Quotes erd
+\end_inset
+
+ is a very different process from 
+\begin_inset Quotes eld
+\end_inset
+
+use
+\begin_inset Quotes erd
+\end_inset
+
+.
+
+\series default
+ Software systems should separate the startup process, when the application
+ objects are constructed and the dependencies are “wired” together, from
+ the runtime logic that takes over after startup.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Dependency Injection
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is the application of 
+\emph on
+Inversion of Control (IoC)
+\emph default
+ to dependency management.
+ Inversion of Control moves secondary responsibilities from an object to
+ other objects that are dedicated to the purpose, thereby supporting the
+ Single Responsibility Principle.
+ In the context of dependency management, an object should not take responsibili
+ty for instantiating dependencies itself.
+ Instead, it should pass this responsibility to another “authoritative”
+ mechanism, thereby inverting the control.
+ 
+\end_layout
+
+\begin_layout Itemize
+True Dependency Injection goes one step further.
+ The class takes no direct steps to resolve its dependencies; it is completely
+ passive.
+ Instead, it provides setter methods or constructor arguments (or both)
+ that are used to inject the dependencies.
+ During the construction process, the DI container instantiates the required
+ objects (usually on demand) and uses the constructor arguments or setter
+ methods provided to wire together the dependencies.
+ Which dependent objects are actually used is specified through a configuration
+ file or programmatically in a special-purpose construction module.
+\end_layout
+
+\begin_layout Itemize
+So it is used when you want to change behavior of your class in runtime,
+ and not in compile time.
+ It can be helpful for achieving Dependency Inversion (with interfaces and
+ so on).
+ So dependency injection increases flexibility of our code.
+ Also, unit testing is easier because of isolation.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Big Design Up Front
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is a practice of designing everything up front before implementing
+ anything at all.
+\end_layout
+
+\begin_layout Itemize
+In fact, BDUF is even harmful because it inhibits adapting to change, due
+ to the psychological resistance to discarding prior effort and because
+ of the way architecture choices influence subsequent thinking about the
+ design.
+\end_layout
+
+\begin_layout Itemize
+Building architects have to do BDUF because it is not feasible to make radical
+ architectural changes to a large physical structure once construction is
+ well underway.
+\end_layout
+
+\begin_layout Itemize
+We can start a software project with a “naively simple” but nicely decoupled
+ architecture, delivering working user stories quickly, then adding more
+ infrastructure as we scale up.
+ 
+\end_layout
+
+\begin_layout Itemize
+Of course, this does not mean that we go into a project “rudderless.” We
+ have some expectations of the general scope, goals, and schedule for the
+ project, as well as the general structure of the resulting system.
+ However, we must maintain the ability to change course in response to evolving
+ circumstances.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Optimize decision making
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We often forget that it is also best to postpone decisions until the last
+ possible moment.
+ This isn't lazy or irresponsible; it lets us make informed choices with
+ the best possible information.
+ A premature decision is a decision made with sub-optimal knowledge.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Simple design
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A design is “simple” if it follows these rules (given in order of importance):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tests
+\series default
+.
+ Writing tests leads to better designs.
+ Fortunately, making our systems testable pushes us toward a design where
+ our classes are small and single purpose.
+ It’s just easier to test classes that conform to the SRP.
+ The more tests we write, the more we’ll continue to push toward things
+ that are simpler to test.
+ So making sure our system is fully testable helps us create better designs.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+No duplication
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Duplication is the primary enemy of a well-designed system.
+ It represents additional work, additional risk, and additional unnecessary
+ complexity.
+\end_layout
+
+\begin_layout Itemize
+The most obvious form of duplication is when you have clumps of identical
+ code.
+ These should be replaced with simple functions/methods.
+\end_layout
+
+\begin_layout Itemize
+Switch/case or if/else chain that appears again and again in various modules,
+ always testing for the same set of conditions, is also duplication.
+ These should be replaced by polymorphism.
+\end_layout
+
+\begin_layout Itemize
+In databases, there are 
+\emph on
+Codd Normal Forms
+\emph default
+ for eliminating duplication.
+\end_layout
+
+\begin_layout Itemize
+Modules that have similar algorithms, but don't share similar lines of code.
+ It is duplication and should be addressed by 
+\emph on
+template method 
+\emph default
+design pattern, which is a common technique for removing higher-level duplicatio
+n.
+ For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=18]{src/duplication_problem.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+can be refactored to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[firstline=1,lastline=21]{src/duplication_solution.java}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Expresses the intent of the programmer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The majority of the cost of a software project is in long-term maintenance.
+ In order to minimize the potential for defects as we introduce change,
+ it’s critical for us to be able to understand what a system does.
+ As systems become more complex, they take more and more time for a developer
+ to understand, and there is an ever greater opportunity for a misunderstanding.
+ Therefore, code should clearly express the intent of its author.
+ 
+\end_layout
+
+\begin_layout Itemize
+Good names.
+ Small functions and classes.
+ Using standard nomenclature, for example design patterns (and use standard
+ names for classes that implements these patterns).
+\end_layout
+
+\begin_layout Itemize
+Well-written unit tests - documentation by example.
+ Someone reading our tests should be able to get a quick understanding of
+ what a class is all about.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Minimizes the number of classes and methods
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In an effort to make our classes and methods small, we might create too
+ many tiny classes and methods.
+ So this rule suggests that we also keep our function and class counts low.
+ 
+\end_layout
+
+\begin_layout Itemize
+Our goal is to keep our overall system small while we are also keeping our
+ functions and classes small.
+ Remember, however, that this rule is the lowest priority of the four rules
+ of simple design.
+ So, although it’s important to keep class and function count low, it’s
+ more important to have tests, eliminate duplication, and express yourself.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document
