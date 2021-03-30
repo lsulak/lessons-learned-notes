@@ -212,7 +212,7 @@ not so easy to work with (out of the box) - learning curve can be steeper
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -229,6 +229,22 @@ url{https://github.com/elastic/elasticsearch-py}
 \end_inset
 
  - active project, quite a lot of stars on GitHub (almost 2,000) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

@@ -5651,11 +5651,12 @@ So, the content cost takes a hidden layer activation of the neural network,
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename fig/neural_style_transfer_unrolling.png
+	scale 50
 
 \end_inset
 
@@ -5774,11 +5775,12 @@ By capturing the prevalence of different types of features (
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename fig/neural_transfer_gram_matrix.png
+	scale 50
 
 \end_inset
 
@@ -13244,11 +13246,12 @@ we have to calculate eigenvalues and eigenvectors of the covariance matrix
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename fig/eigenvectors.jpg
+	scale 13
 
 \end_inset
 

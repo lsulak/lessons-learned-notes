@@ -268,7 +268,7 @@ url{https://www.trustradius.com/products/riak/reviews}}
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -296,6 +296,22 @@ status open
 
 \backslash
 url{https://basho.github.io/riak-python-client/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset

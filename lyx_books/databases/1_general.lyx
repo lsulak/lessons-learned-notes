@@ -1548,7 +1548,7 @@ Event sourcing is just one of the possible solutions when auditing is a
 
 \end_deeper
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Subsection
 Consistency
 \end_layout
 
@@ -1560,19 +1560,8 @@ The way that we deal with updates on different nodes and how we propagate
  same.
 \end_layout
 
-\begin_layout Description
-Eventual
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Consistency
+\begin_layout Subsubsection
+Eventual Consistency
 \end_layout
 
 \begin_layout Itemize
@@ -1614,19 +1603,8 @@ This model tends to be favored for scenarios in which high throughput and
 For example, CouchDB and Cassandra are using this consistency model.
 \end_layout
 
-\begin_layout Description
-Strong
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Consistency
+\begin_layout Subsubsection
+Strong Consistency
 \end_layout
 
 \begin_layout Itemize
@@ -3156,7 +3134,7 @@ This rule works as well for a database model; maybe database model is even
 \end_layout
 
 \begin_layout Subsection
-Application layers
+Application Layers
 \end_layout
 
 \begin_layout Itemize
@@ -3187,6 +3165,22 @@ File system, kernel -
 Storage, RAM/CPU, network - 
 \series bold
 hardware
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3350,7 +3344,7 @@ status open
 \backslash
 footnote{
 \backslash
-url{https://panoply.io/data-warehouse-guide/}
+url{https://panoply.io/data-warehouse-guide/}}
 \end_layout
 
 \end_inset
@@ -3380,7 +3374,7 @@ The snowflake schema splits the fact table into normalized dimension tables.
 
 \end_deeper
 \begin_layout Subsection
-ETL based Data warehousing
+ETL Based Data Warehousing
 \end_layout
 
 \begin_layout Itemize
@@ -3441,7 +3435,7 @@ The main source of the data is cleansed, transformed, cataloged, and made
 \end_layout
 
 \begin_layout Subsection
-ELT based Data warehousing
+ELT Based Data Warehousing
 \end_layout
 
 \begin_layout Itemize
@@ -3477,7 +3471,6 @@ There are 2 prominent architecture styles practiced today to build a data
  This difference in the architecture impacts the initial delivery time of
  the data warehouse and the ability to accommodate future changes in the
  ETL design.
- 
 \begin_inset ERT
 status open
 
@@ -3677,6 +3670,22 @@ Cannot handle all the enterprise reporting needs because the model is oriented
  towards business processes rather than the enterprise as a whole.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Data Lake
 \end_layout
@@ -3800,6 +3809,22 @@ ty.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 SQL
 \begin_inset CommandInset label
@@ -4031,6 +4056,22 @@ memory and bandwidth
 resources usage
 \bar default
  depend directly on the size of the result sets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4433,7 +4474,7 @@ lack of standardization, steeper learning curve.
 \end_layout
 
 \begin_layout Subsection
-Types of NoSQL databases
+Types of NoSQL Databases
 \end_layout
 
 \begin_layout Standard
@@ -4544,6 +4585,22 @@ url{https://neo4j.com/developer/graph-database}}
  or at handling queries that span the entire database.
  Also, they are usually not so mature, so you have to be sure that they
  truly fit into your needs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

@@ -586,7 +586,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -603,6 +603,22 @@ url{https://github.com/datastax/python-driver}
 \end_inset
 
  - it's under development and quite popular
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

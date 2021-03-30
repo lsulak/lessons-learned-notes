@@ -360,7 +360,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -378,6 +378,22 @@ url{https://github.com/wbolster/happybase }
 
  - for more than half an year not updated, community also not very good
  (~420 stars) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

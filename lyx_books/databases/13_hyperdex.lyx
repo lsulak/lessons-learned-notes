@@ -225,7 +225,7 @@ url{https://github.com/rescrv/Consus}
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -237,6 +237,22 @@ status open
 
 \backslash
 url{http://hyperdex.org/doc/latest/PythonClientAPI/#chap:api:python-client}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
 \end_layout
 
 \end_inset

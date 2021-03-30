@@ -1894,6 +1894,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/early_stopping_works.png
+	scale 20
 
 \end_inset
 
@@ -2596,12 +2597,13 @@ Use gradient descent or some advanced optimization method (BFGS, L-BFGS,
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/backpropagation_hinton_derivatives.png
+	scale 20
 
 \end_inset
 
@@ -4019,12 +4021,13 @@ Approximating full Bayesian learning in a neural net - this is possible
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/full_bayesian_learning_example.png
+	scale 40
 
 \end_inset
 
@@ -5586,12 +5589,13 @@ between [0, 1].
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/fuzzy_set_operations.png
+	scale 50
 
 \end_inset
 

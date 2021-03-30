@@ -323,7 +323,7 @@ url{https://www.cockroachlabs.com/docs/stable/frequently-asked-questions.html}}
 \end_layout
 
 \begin_layout Section
-Python usage
+Python Usage
 \end_layout
 
 \begin_layout Itemize
@@ -357,6 +357,22 @@ sqlalchemy.html}
 \end_inset
 
  - SQLAlchemy/psycopg2 possible
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

@@ -412,6 +412,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/gradient_clipping.png
+	scale 60
 
 \end_inset
 
@@ -751,9 +752,11 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
 \align center
 \begin_inset Graphics
 	filename fig/autoencoder_example.png
+	scale 65
 
 \end_inset
 
@@ -798,6 +801,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/autoencoder.png
+	scale 45
 
 \end_inset
 
@@ -1140,13 +1144,13 @@ Based on calculated energy of the model, we can calculate probabilities
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/rbm_graph.png
-	scale 25
+	scale 47
 
 \end_inset
 
@@ -1234,12 +1238,13 @@ First, train a layer of features that receive inputs directly from pixels
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/dmb.png
+	scale 18
 
 \end_inset
 
@@ -1283,12 +1288,13 @@ Combination of three RBM into one Deep Boltzmann Machine.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/deep_boltzman_machine.png
+	scale 24
 
 \end_inset
 
@@ -1515,12 +1521,13 @@ variational learning
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/wake_sleep.png
+	scale 40
 
 \end_inset
 
@@ -1573,12 +1580,13 @@ The recognition weights do not follow the gradient of log probability of
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/mode_averaging.png
+	scale 40
 
 \end_inset
 
@@ -1756,12 +1764,13 @@ n exactly one element of each column is "hot" (meaning set to 1).
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/one-hot_encoding.png
+	scale 42
 
 \end_inset
 
@@ -2005,12 +2014,13 @@ backward pass
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/rnn_vs_classical_net.png
+	scale 20
 
 \end_inset
 
@@ -2537,6 +2547,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/rnn_backward_pass.png
+	scale 40
 
 \end_inset
 
@@ -2646,13 +2657,13 @@ One-to-many
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/rnn_architecture_types.png
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -2705,12 +2716,13 @@ It is very useful when there is a very long sequence on the input.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/attention_motivation.png
+	scale 40
 
 \end_inset
 
@@ -2819,13 +2831,13 @@ The network learns where to “pay attention” by learning the values
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/attention_model.png
-	scale 25
+	scale 30
 
 \end_inset
 
@@ -2918,13 +2930,13 @@ and this will depend on attention parameters
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/attention_weights_computation.png
-	scale 25
+	scale 30
 
 \end_inset
 
@@ -2967,12 +2979,13 @@ Computation of attention weights.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/attn_model.png
+	scale 50
 
 \end_inset
 
@@ -3043,12 +3056,13 @@ Attention model schema.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/attn_mechanism.png
+	scale 50
 
 \end_inset
 
@@ -4219,6 +4233,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename fig/skip_gram_model_schema_example.png
+	scale 60
 
 \end_inset
 
@@ -4844,12 +4859,13 @@ pe associated with babysitting.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/word_embeddings_equalization.png
+	scale 42
 
 \end_inset
 
@@ -4879,12 +4895,13 @@ An intuition about equalization for debiasing of word embeddings.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/word_embeddings_equalization_formulas.png
+	scale 40
 
 \end_inset
 
@@ -5092,13 +5109,13 @@ is maintained if the update is not performed, and therefore gradient vanishing
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/rnn_gru.png
-	scale 25
+	scale 18
 
 \end_inset
 
@@ -5344,12 +5361,13 @@ as detailed in the figure.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/lstm_cell.png
+	scale 60
 
 \end_inset
 
@@ -6495,6 +6513,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/bounding_box.png
+	scale 80
 
 \end_inset
 
@@ -6572,12 +6591,13 @@ Popular algorithm because it achieves high accuracy while also being able
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename fig/yolo_model.png
+	scale 55
 
 \end_inset
 
@@ -6623,6 +6643,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/yolo_class_detected.png
+	scale 72
 
 \end_inset
 
@@ -6660,6 +6681,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/yolo_visualization.png
+	scale 42
 
 \end_inset
 
@@ -6706,7 +6728,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/cnn_yolo_algorithm.png
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -7318,7 +7340,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/cnn_vgg16.png
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -7411,7 +7433,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/cnn_residual_block.png
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -7472,6 +7494,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/resnet_identity_block.png
+	scale 60
 
 \end_inset
 
@@ -7525,6 +7548,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/resnet_conv_block.png
+	scale 45
 
 \end_inset
 
@@ -7678,7 +7702,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/cnn_inception_network_motivation.png
-	scale 25
+	scale 23
 
 \end_inset
 
@@ -7747,7 +7771,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/cnn_inception_module.png
-	scale 25
+	scale 22
 
 \end_inset
 

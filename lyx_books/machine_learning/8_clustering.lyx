@@ -1497,6 +1497,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename fig/gmm_example.png
+	scale 65
 
 \end_inset
 

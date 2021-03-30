@@ -6245,7 +6245,7 @@ Checkpoints are fairly expensive, first because they require writing out
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Subsubsection
 
 \series bold
 WAL files
@@ -6598,7 +6598,7 @@ A synchronous standby can be a physical replication standby or a logical
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Logical Replication
 \end_layout
 
@@ -8850,6 +8850,22 @@ literal "false"
  driver is the most popular and supports a lot of this stuff.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 General
 \end_layout
@@ -9811,6 +9827,22 @@ NULLs
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 PSQL
 \end_layout
@@ -11407,6 +11439,22 @@ watch [check_period_in_secs]
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 PL/pgSQL
 \end_layout
@@ -12212,6 +12260,22 @@ language plpgsql;
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 SQLAlchemy
 \end_layout
@@ -12328,6 +12392,22 @@ result tuple
 \end_deeper
 \begin_layout Itemize
 Reflector - for showing existing DB structure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -15238,30 +15318,8 @@ It is a very efficient way to purge a table of all of its content at once,
  files on disk.
 \end_layout
 
-\begin_layout Description
-Functions
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-and
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-Statements
+\begin_layout Subsubsection
+Functions and Statements
 \end_layout
 
 \begin_layout Itemize
@@ -17466,7 +17524,7 @@ select concat_lower_or_upper('Hello', 'World', uppercase => true);
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\begin_layout Subsubsection
 Extensions
 \end_layout
 
@@ -17515,33 +17573,10 @@ Foreign data wrappers
 \end_layout
 
 \end_deeper
-\begin_layout Description
-Full
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
+\begin_layout Subsubsection
+Full-text search
 \end_layout
 
-\end_inset
-
-text
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-~
-\end_layout
-
-\end_inset
-
-search
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 Full Text Searching (or just text search) provides the capability to identify
  natural-language documents that satisfy a 
@@ -17557,6 +17592,7 @@ query
 .
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 PostgreSQL has 
 \emph on
@@ -17792,6 +17828,22 @@ Text search parses and templates are built from low-level C functions; therefore
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Some common problems from the past
 \end_layout
@@ -19676,7 +19728,7 @@ where query = refresh materialized view some_view'
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\begin_layout Subsubsection
 PgBouncer
 \end_layout
 
