@@ -47,8 +47,10 @@ Resources:
   AthenaLoggingDatabase:
     Type: AWS::Glue::Database
     Properties:
+      CatalogId: !Ref AWS::AccountId
       DatabaseInput:
         Name: notes_s3_access_logs_db
+        Description: Database with server access logs for our S3 bucket with notes
 
   LoggingTable:
     Type: AWS::Glue::Table
