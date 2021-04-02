@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 
 Resources:
-  Bucket:
+  NotesBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
@@ -13,11 +13,19 @@ Resources:
         BlockPublicPolicy: false
         IgnorePublicAcls: true
         RestrictPublicBuckets: false
+      LoggingConfiguration:
+        DestinationBucketName: !Ref LoggingBucket
+        LogFilePrefix: logs/
+
+  LoggingBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: LogDeliveryWrite
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: !Ref Bucket
+      Bucket: !Ref NotesBucket
       PolicyDocument:
         Statement:
           - Action:
@@ -25,12 +33,101 @@ Resources:
             Effect: Allow
             Principal: '*'
             Resource:
-              - !Sub arn:aws:s3:::${Bucket}/*
+              - !Sub arn:aws:s3:::${NotesBucket}/*
 
   SSMParam:
     Type: AWS::SSM::Parameter
     Properties:
       Name: lsulak-deployed-notes-bucket
       Type: String
-      Value: !Ref Bucket
+      Value: !Ref NotesBucket
       Description: Bucket for storing my deployed LyX notes
+
+  # https://aws.amazon.com/premiumsupport/knowledge-center/analyze-logs-athena/
+  AthenaLoggingDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: notes_s3_access_logs_db
+        Description: Database with server access logs for our S3 bucket with notes
+
+  LoggingTable:
+    Type: AWS::Glue::Table
+    Properties:
+      DatabaseName: !Ref AthenaLoggingDatabase
+      CatalogId: !Ref AWS::AccountId
+      TableInput:
+        Name: access_logs
+        TableType: EXTERNAL_TABLE
+        Parameters:
+          EXTERNAL: True
+        StorageDescriptor:
+          Columns:
+            - Name: 'bucketowner'
+              Type: string
+            - Name: 'bucket_name'
+              Type: string
+            - Name: 'requestdatetime'
+              Type: string
+            - Name: 'remoteip'
+              Type: string
+            - Name: 'requester'
+              Type: string
+            - Name: 'requestid'
+              Type: string
+            - Name: 'operation'
+              Type: string
+            - Name: 'key'
+              Type: string
+            - Name: 'request_uri'
+              Type: string
+            - Name: 'httpstatus'
+              Type: string
+            - Name: 'errorcode'
+              Type: string
+            - Name: 'bytessent'
+              Type: bigint
+            - Name: 'objectsize'
+              Type: bigint
+            - Name: 'totaltime'
+              Type: string
+            - Name: 'turnaroundtime'
+              Type: string
+            - Name: 'referrer'
+              Type: string
+            - Name: 'useragent'
+              Type: string
+            - Name: 'versionid'
+              Type: string
+            - Name: 'hostid'
+              Type: string
+            - Name: 'sigv'
+              Type: string
+            - Name: 'ciphersuite'
+              Type: string
+            - Name: 'auth  Type'
+              Type: string
+            - Name: 'endpoint'
+              Type: string
+            - Name: 'tlsversion'
+              Type: string
+          Location:
+            Fn::Join:
+              - ''
+              - - 's3://'
+                - !Ref LoggingBucket
+                - '/'
+                - logs/
+          InputFormat: org.apache.hadoop.mapred.TextInputFormat
+          OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+          Compressed: false
+          NumberOfBuckets: -1
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.serde2.RegexSerDe
+            Parameters:
+              input.regex: "([^ ]*) ([^ ]*) \\[(.*?)\\] ([^ ]*) ([^ ]*) ([^ ]*) \
+                ([^ ]*) ([^ ]*) (\"[^\"]*\"|-) (-|[0-9]*) ([^ ]*) ([^ ]*) ([^ ]*) \
+                ([^ ]*) ([^ ]*) ([^ ]*) (\"[^\"]*\"|-) ([^ ]*)(?: ([^ ]*) ([^ ]*) \
+                ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*))?.*$"
+              serialization.format: 1
