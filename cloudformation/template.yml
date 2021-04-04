@@ -19,8 +19,11 @@ Resources:
 
   LoggingBucket:
     Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       AccessControl: LogDeliveryWrite
+      BucketName: lsulak-deployed-notes-logging
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
