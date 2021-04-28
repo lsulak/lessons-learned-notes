@@ -196,6 +196,12 @@ Depending on the context, equity has been found to have varying meaning.
 Negative equity 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+TODO
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -927,25 +933,18 @@ Stock Markets and Exchanges
 \end_layout
 
 \begin_layout Itemize
-Stock exchanges, for example:
+Stock Exchanges (a few examples)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-New York Stock Exchange, NYSE - founded 1792 
+The Amsterdam Stock Exchange was established in 1602 by the Dutch East India
+ Company (Verenigde Oostindische Compagnie, or "VOC") for dealings in its
+ printed stocks and bonds.
+ It was subsequently renamed the Amsterdam Bourse and was the first to formally
+ begin trading in securities.
 \end_layout
 
-\begin_layout Itemize
-National Association of Securities Dealers Automated Quotations, NASDAQ
- - founded 1971
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Stock Exchanges
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 New York Stock Exchange, NYSE - founded 1792.
  Worlds largest stock exchange located in New York city over 14 billions
@@ -957,11 +956,13 @@ American Stock Exchange, Amex - founded 1842
 \end_layout
 
 \begin_layout Itemize
-
+National Association of Securities Dealers Automated Quotations, NASDAQ
+ - founded 1971.
+ It's 
 \emph on
-NASDAQ - 
+t
 \emph default
-the
+he
 \emph on
  s
 \emph default
@@ -988,7 +989,7 @@ index for all stocks traded on Shanghai exchange, mostly Chinese stocks
 
 \end_deeper
 \begin_layout Itemize
-Market indexes, for example:
+Market indexes (a few examples)
 \end_layout
 
 \begin_deeper
@@ -1191,12 +1192,12 @@ Primary Market
 \begin_deeper
 \begin_layout Itemize
 An IPO is one example of a primary market, which is when a company sells
- stocks or bonds to buyers
+ stocks or bonds to buyers.
 \end_layout
 
 \begin_layout Itemize
 Whether the company has sold shares before or not, in the primary market,
- the shares on offer are always new shares
+ the shares on offer are always new shares.
 \end_layout
 
 \begin_layout Itemize
@@ -1221,13 +1222,13 @@ Secondary Market
 
 \begin_deeper
 \begin_layout Itemize
-This is an exchange between equity holders
+This is an exchange between equity holders.
 \end_layout
 
 \begin_layout Itemize
 Equities on the secondary market can be bought and sold electronically,
  physically, or over-the-counter, or OTC.
- OTC trades are between two parties without including an equity exchange
+ OTC trades are between two parties without including an equity exchange.
 \end_layout
 
 \end_deeper
@@ -1240,15 +1241,15 @@ Third Market
 \begin_deeper
 \begin_layout Itemize
 OTC trading of shares listed on an exchange, between non-exchange listed
- brokers and institutional investors
+ brokers and institutional investors.
 \end_layout
 
 \begin_layout Itemize
-Mostly well known stocks
+Mostly well known stocks.
 \end_layout
 
 \begin_layout Itemize
-May be open when exchange is closed or trading suspended
+May be open when exchange is closed or trading suspended.
 \end_layout
 
 \end_deeper
@@ -1260,19 +1261,19 @@ Fourth Market
 
 \begin_deeper
 \begin_layout Itemize
-Direct trading of securities between two parties with no broker intermediary
+Direct trading of securities between two parties with no broker intermediary.
 \end_layout
 
 \begin_layout Itemize
-Usually both parties are institutions
+Usually both parties are institutions.
 \end_layout
 
 \begin_layout Itemize
-Can save transaction costs
+Can save transaction costs.
 \end_layout
 
 \begin_layout Itemize
-No data are available regarding its specific size and growth
+No data are available regarding its specific size and growth.
 \end_layout
 
 \end_deeper
@@ -1390,14 +1391,8 @@ Market Makers
 They create the bid-ask spread.
  They are large institutional banks that are both buyers and sellers of
  a stock.
- They will post a Bid, and Post and Ask.
- They create the spread, and the profit by selling shares between the spread.
+ They create the spread, and they profit by selling shares between the spread.
  The larger the spreads, the more the market makers can profit.
-\end_layout
-
-\begin_layout Itemize
-Specialist is an exchange member assigned to handle particular stocks.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1406,11 +1401,11 @@ Has two roles:
 
 \begin_deeper
 \begin_layout Itemize
-Broker to match buyers and sellers
+Broker to match buyers and sellers.
 \end_layout
 
 \begin_layout Itemize
-Dealer to maintain fair and orderly market
+Dealer to maintain fair and orderly market.
 \end_layout
 
 \end_deeper
@@ -1424,22 +1419,24 @@ Designated Market Maker (DMM)
 \begin_deeper
 \begin_layout Itemize
 Maintains fair and orderly markets for an assigned set of listed firms.
- it provides a best available bid and ask prices for market orders.
  
 \end_layout
 
 \begin_layout Itemize
-DMM buys in the absence of public buy orders.
- DMM is a point of contact for a listed company.
+It provides a best available bid and ask prices for market orders.
  
 \end_layout
 
 \begin_layout Itemize
-Sell in the absence of public sell orders.
+DMM buys in the absence of public buy orders or sell in the absence of public
+ sell orders.
 \end_layout
 
 \begin_layout Itemize
-Execute public orders.
+
+\series bold
+DMM is a point of contact for a listed company.
+ 
 \end_layout
 
 \end_deeper
@@ -1503,8 +1500,12 @@ Smart Routing
 \begin_deeper
 \begin_layout Itemize
 Most brokers offer smart routing.
- Instead of asking you to direct route your order, they will choose the
- route they feel is best.
+ 
+\end_layout
+
+\begin_layout Itemize
+Instead of asking you to direct route your order, they will choose the route
+ they feel is best.
  If they have arranged a discounted rate with a certain broker, they may
  use that route as a preferred route.
  They may also see if they have shares available from traders inside the
@@ -1524,11 +1525,30 @@ Thin Market
 \begin_deeper
 \begin_layout Itemize
 A thin market means not many traders actively trade a particular stock.
- A Thick Market Thickly traded markets and stocks will be crowded with traders.
- Many times these stocks have very large floats, are very well capitalized,
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Thick Market 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Here, traded markets and stocks will be crowded with traders.
+ 
+\end_layout
+
+\begin_layout Itemize
+Many times these stocks have very large floats, are very well capitalized,
  and trade slowly.
  This makes them great vehicles for long term and lower risk investment.
- At the same time, that makes them unattractive for day traders.
+ 
+\end_layout
+
+\begin_layout Itemize
+At the same time, that makes them unattractive for day traders.
  Even with high demand they rarely move that quickly.
 \end_layout
 
@@ -1542,8 +1562,15 @@ Circuit Breaker Halts
 \begin_deeper
 \begin_layout Itemize
 Stocks can be halted and paused from trading for several reasons.
- During circuit breaker halts traders cannot trade the stock in any way.
- Halts can last from 5 minutes to hours or days.
+ 
+\end_layout
+
+\begin_layout Itemize
+During circuit breaker halts traders cannot trade the stock in any way.
+\end_layout
+
+\begin_layout Itemize
+Halts can last from 5 minutes to hours or days.
  
 \end_layout
 
@@ -1666,45 +1693,44 @@ You pay tax on dividends (perhaps about 15% if you are under $400k per year,
 
 \begin_layout Itemize
 Why some companies pay dividends: slower growth companies.
- These are usually very safer.
+ These are usually safer.
 \end_layout
 
 \begin_layout Itemize
-Why some are not: faster growing companies usually want to hold onto their
- money to invest it or simply use the money to build their own business.
- Companies are generally speaking not paying dividends unless they are very
- confident their future profits are gonna be at least as good as they are
- now if not better.
- SO if a company knows for sure that they will grow, they got strong balance
- sheets, then it's usually paying dividends.
+Why some are not paying dividends: faster growing companies usually want
+ to hold onto their money to invest it or simply use the money to build
+ their own business.
+ Companies are, generally speaking, not paying dividends unless they are
+ very confident their future profits are gonna be at least as good as they
+ are now if not better.
+ So if a company knows for sure that it will grow, it has a strong balance
+ sheet, then it's usually paying dividends.
 \end_layout
 
 \begin_layout Itemize
-Good source of dividend tracking: Yahoo Finance → Historical Prices → Dividends
- Only
+Companies that pay a high dividend rate (10% or more): 
 \end_layout
 
-\begin_layout Itemize
-Payable date - date that the dividend is actually paid out to shareholders
+\begin_deeper
+\begin_layout Enumerate
+You never know, perhaps the next year they won't pay dividends at all.
 \end_layout
 
-\begin_layout Itemize
-Record date - date you have to own shares by in order to receive the dividend
-\end_layout
-
-\begin_layout Itemize
-Companies that pay a high dividend rate (10% or more): 1) You never know,
- perhaps the next year they won't pay dividends at all 2) It means, that
- such companies are paying off majority of their earnings meaning those
- earnings are not staying on the balance sheets.
+\begin_layout Enumerate
+It means, that such companies are paying off majority of their earnings
+ meaning those earnings are not staying on the balance sheets.
  Perhaps if it would be needed, they wouldn't have enough cash to save their
  business.
- 3) They are probably not planning to grow very much (if at all) in the
- future.
+ 
+\end_layout
+
+\begin_layout Enumerate
+They are probably not planning to grow very much (if at all) in the future.
  Usually if a company wants to grow, it is spending money on hiring employees
  etc, not paying off earnings in dividends.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Bondholders get paid before stockholders! If a bondholder is not getting
  paid, a company is going under.
@@ -1724,7 +1750,7 @@ Chronologically:
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \emph on
 Declaration date
@@ -1733,8 +1759,12 @@ Declaration date
  Quarterly usually.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
+\emph on
+Ex-dividend date
+\emph default
+ and 
 \emph on
 Record date
 \emph default
@@ -1744,7 +1774,7 @@ Record date
  days prior to record date.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \emph on
 Payment / Payable date
@@ -1752,10 +1782,10 @@ Payment / Payable date
  - date when a company will pay you dividends.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 So for example, if you buy stock on January 26th (before ex-dividend date),
  and sell on Record Date (January 30th for example, or you can sell it also
- exactly on ex-dividend date) you should still get dividend on Payable ldate
+ exactly on ex-dividend date) you should still get dividend on Payable date
  (Feb 15th).
  You are still eligible to receive dividend even if you don't have a given
  stock any more.
@@ -1772,14 +1802,27 @@ Dividend Capturing
 \begin_layout Itemize
 Strategy when you cycle all your money through multiple companies for earning
  dividends.
- It's however not that easy, because companies tend to increase share price
- before ex-dividend date and decrease it after.
+ It's however not that easy, because companies` share prices tend to increase
+ before ex-dividend date and they decrease after.
 \end_layout
 
 \begin_layout Itemize
-But it's possible to be profitable from this strategy, but it would require
+It might be possible to be profitable from this strategy, but it would require
  a lot of micromanagement, lots of trades within a week or so, so it is
- not long-term investing basically.
+ not long-term investing.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Dividend Aristocrats
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Companies that have increased their dividend every year for at least the
+ past 25 years and are part of S&P 500 index.
 \end_layout
 
 \end_deeper
@@ -1791,9 +1834,8 @@ Dividend Champions
 
 \begin_deeper
 \begin_layout Itemize
-Companies that have increased their dividend every year for at least the
- past 25 years.
- 
+Almost like Dividend Aristocrats, but Dividend Champions are not necessarily
+ members of the S&P 500 index.
 \end_layout
 
 \begin_layout Itemize
@@ -1947,7 +1989,7 @@ Others: Boeing, Caterpillar, United Health
 \begin_layout Itemize
 
 \emph on
-Dividend growth investing (DGI)
+Dividend Growth Investing (DGI)
 \end_layout
 
 \begin_deeper
@@ -1989,10 +2031,6 @@ Bonds - good for short term goals.
 \end_layout
 
 \begin_layout Itemize
-Don't invest money in stock market if you need that money in near future.
-\end_layout
-
-\begin_layout Itemize
 Some people don't recommend to have high-yields bonds in the portfolio.
  See always historical evidence!
 \end_layout
@@ -2000,19 +2038,31 @@ Some people don't recommend to have high-yields bonds in the portfolio.
 \begin_layout Itemize
 
 \emph on
-Face value 
+Par Value / Face Value
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The money amount the bond will be worth at its maturity.
+ It's
+\emph on
+ 
 \emph default
-- the money amount the bond will be worth at its maturity.
+the amount returned to the bond investor by the issuer.
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Par value - 
-\emph default
-a bond's par value is the amount returned to the bond investor by the issuer.
+Par value refers to the "face value" of a security and the terms are interchange
+able.
+ 
 \end_layout
 
+\begin_layout Itemize
+Par value and face value are most important with bonds, as they represent
+ how much a bond will be worth at the time of the bond's maturity.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -2193,11 +2243,11 @@ Main Rating companies
 
 \begin_deeper
 \begin_layout Itemize
-Moody’s Investor Service Aaa, Aa, A, Baa, Ba, B, Caa, Ca, C, D 
+Moody’s Investor Service: Aaa, Aa, A, Baa, Ba, B, Caa, Ca, C, D 
 \end_layout
 
 \begin_layout Itemize
-Standard & Poor’s AAA, AA, A, BBB, BB, B, CCC, CC, C, D 
+Standard & Poor’s: AAA, AA, A, BBB, BB, B, CCC, CC, C, D 
 \end_layout
 
 \end_deeper
@@ -2450,23 +2500,6 @@ Institutional investors (Life Insurance Companies, Commercial Banks, Property
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-By issuers, they can be for example: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Corporate bonds - they are issued by companies
-\end_layout
-
-\begin_layout Itemize
-Municipal bonds - issued by states or municipals
-\end_layout
-
-\begin_layout Itemize
-US treasury bonds - federal government's
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 
@@ -2501,7 +2534,6 @@ Treasury Bonds
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2525,7 +2557,9 @@ Security Trading
 \begin_layout Itemize
 
 \emph on
-Pattern Day Trader Rules
+Pattern Day Trader Rules 
+\emph default
+(Margin accounts with US Brokers)
 \end_layout
 
 \begin_deeper
@@ -2567,8 +2601,8 @@ Loss Aversion
 
 \begin_deeper
 \begin_layout Itemize
-This refers to he tendency of individuals to prefer avoiding losses to making
- gains.
+This refers to the tendency of individuals to prefer avoiding losses to
+ making gains.
  
 \end_layout
 
@@ -2650,7 +2684,7 @@ High Frequency Trading
 
 \begin_deeper
 \begin_layout Itemize
-This is is when a trader or institution utilizes powerful computers to automate
+This is when a trader or institution utilizes powerful computers to automate
  trading and execute large orders an very high speeds.
 \end_layout
 
@@ -2743,8 +2777,12 @@ Margin
 \begin_layout Itemize
 Taking out a loan to invest in a stock or bond so it's whenever you want
  to invest money that is not yours.
- You usually pay about 7% of margin interest per year.
- If you have tons of money, then it can be maybe lower.
+ 
+\end_layout
+
+\begin_layout Itemize
+You usually pay about 7% of margin interest per year.
+ But if you have tons of money, then it can be maybe lower.
 \end_layout
 
 \end_deeper
@@ -2758,20 +2796,14 @@ Margin Account
 \begin_layout Itemize
 Stock trading account in which you can invest an extra dollar for every
  dollar you have (for example) - so you can basically create a debt.
- But it can be powerful - and dangerous.
+\end_layout
+
+\begin_layout Itemize
+It can be powerful - but also dangerous.
  You can make so much more money investing on margin if you were picking
  the right stocks and doing the right things.
  On the other hand, you can lose everything because you cannot pay your
  debt.
- Then Margin calls is going 
-\begin_inset Quotes eld
-\end_inset
-
-after you
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
@@ -2794,7 +2826,11 @@ Margin Call
 \begin_layout Itemize
 When you invested on margin and your brokerage requires you deposit more
  money or your shares will be sold off.
- Every brokerage is different, you have to read what to do for your broker.
+ 
+\end_layout
+
+\begin_layout Itemize
+Every brokerage is different, you have to read what to do for your broker.
  But usually, if you won't pay some money they require, they will sold your
  shares.
  
@@ -2842,7 +2878,7 @@ The rate that your cash deposit will be multiplied to give you total buying
 \begin_layout Itemize
 
 \emph on
-Bid (buy)
+Bid (max buy)
 \end_layout
 
 \begin_deeper
@@ -2856,8 +2892,7 @@ The bid is the price you get when you sell the stock.
 \end_layout
 
 \begin_layout Itemize
-The Bid Price is the price traders are currently bidding a stock at.
- Every stock has a bid.
+Every stock has a bid.
  Lets say traders are bidding 10.00.
  Traders can put an order to buy at 10.00, and they will have to wait for
  a seller to come sell them shares.
@@ -2869,7 +2904,7 @@ The Bid Price is the price traders are currently bidding a stock at.
 \begin_layout Itemize
 
 \emph on
-Ask (sell)
+Ask (min sell)
 \emph default
  
 \end_layout
@@ -2884,9 +2919,7 @@ The ask is the price you pay to buy the stock.
 \end_layout
 
 \begin_layout Itemize
-The Ask price is the price traders are currently asking to sell the stock
- at.
- Every stock has an ask.
+Every stock has an ask.
  Lets say traders are asking 10.02.
  Traders can put an order to sell at 10.02, and they will have to wait for
  a buyer to come buy shares from them.
@@ -2922,7 +2955,11 @@ Difference between bid and ask, and is kept by a dealer, who is called a
  stock to satisfy demand when buyers and sellers can't be matched up.
  He's a middleman who purchase inventory at a price lower than they sell
  it.
- The spread is biggest for stocks that are thinly traded because it takes
+ 
+\end_layout
+
+\begin_layout Itemize
+The spread is biggest for stocks that are thinly traded because it takes
  fewer dealers to satisfy demand.
  Fewer dealers means less competition and,thus, bigger spreads.
 \end_layout
@@ -2950,7 +2987,7 @@ Slippage
 \begin_layout Itemize
 This occurs when you put in your market order to buy/sell a stock and your
  order gets filled at a different price than quoted.
- For high volatility stocks, there is usually lower slippage.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -2960,18 +2997,8 @@ Slippage is the difference between the price you thought you would trade
  
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-
-\emph on
-Money Order
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Guaranteed form of a payment where you have previously paid for that document.
- You can get the document from a local grocery store, or places where they
- sell money orders.
+For high volatility stocks, there is usually lower slippage.
 \end_layout
 
 \end_deeper
@@ -3055,7 +3082,7 @@ If you have a trading order and it for some reason didn't go through for
 \begin_layout Itemize
 
 \emph on
-Good-till-cancel (GTC) order
+Good-till-cancel order (GTC)
 \emph default
  (Time in force - good till canceled)
 \end_layout
@@ -3147,20 +3174,20 @@ The Stop Order is a bit different than the Limit Order.
 A Sell Stop is always placed below the market price.
  The idea is to limit your losses by selling if the price goes down too
  much.
- For instance, if you use a Sell Stop Order at 100$, once the price of the
- stock falls to 100$, a Market Order will be placed on the market.
- That means that as soon as it reaches 100$, you will sell at the best available
+ For instance, if you use a Sell Stop Order at $100, once the price of the
+ stock falls to $100, a Market Order will be placed on the market.
+ That means that as soon as it reaches $100, you will sell at the best available
  price.
 \end_layout
 
 \begin_layout Itemize
-A Buy Order, on the other hand, is placed above the market idea.
+A Buy Order, on the other hand, is placed above the market price.
  This is more rarely used.
  The idea is to buy once the price goes up.
  This can be useful if you are shorting the stock and want to protect your
  returns.
  The principle is exactly the same.
- If you use a Buy Order at 50$, as soon as the price increases to 50$, a
+ If you use a Buy Order at $50, as soon as the price increases to $50, a
  Market order will be placed.
  You will then buy at the best available price.
  You need to be aware that if the market is moving very fast, your order
@@ -3246,14 +3273,14 @@ Trailing Stop Order
 This last stock market order is the most complicated to understand but it
  is also the most powerful.
  A Trailing Stop Order can be very useful.
- But there is often little reason to use compared to a Market Order.
+ But there is often little reason to use it, compared to a Market Order.
 \end_layout
 
 \begin_layout Itemize
 Jason Kelly loves Trailing Stop Order and uses 10% trailing stop for example.
  To him, this is one of the least stressful ways to maximize profits.
  But he says that using it is usually a trader's mind-set, and in most cases
- you'll be better server by an investor's mindset.
+ you'll be better served by an investor's mindset.
  If you did thorough research and believe in the company, it should be better
  to buy more shares at the cheaper price, not to dump the first ones.
  Not always, though, and in cases where you want to stop the loss but leave
@@ -3330,7 +3357,7 @@ When you don't want your shares to be bought or sold above or under a certain
 \begin_layout Itemize
 
 \emph on
-Buy to open
+Buy to Open
 \end_layout
 
 \begin_deeper
@@ -3343,7 +3370,7 @@ This is a reference to stock options - when you want to purchase options
 \begin_layout Itemize
 
 \emph on
-Sell to close
+Sell to Close
 \end_layout
 
 \begin_deeper
@@ -3364,12 +3391,15 @@ Long Side Trading
 \begin_deeper
 \begin_layout Itemize
 When traders are “long” a stock, they are buying shares.
- This means they have a “long” position and expect the stock to go up.
+ 
+\end_layout
+
+\begin_layout Itemize
+This means they have a “long” position and expect the stock to go up.
  These traders will profit when the stock moves up, or will lose money when
  the stock moves down.
  They also have a “bullish” position.
- To exit a bullish or long side position, a trader may “scale out,” or sell
- their shares in small portions.
+ 
 \end_layout
 
 \end_deeper
@@ -3399,9 +3429,12 @@ Out
 
 \begin_deeper
 \begin_layout Itemize
-To enter or to exit a position a trader may “scale.” This technique, when
- used to scale in, means buying a partial position at 5.50, and adding (or
- scaling) with a 2nd position at 6.00.
+To enter or to exit a position a trader may “scale.” 
+\end_layout
+
+\begin_layout Itemize
+This technique, when used to scale in, means buying a partial position at
+ 5.50, and adding (or scaling) with a 2nd position at 6.00.
  Due to scaling in with equal sizes, the trader has a cost average of 5.75.
  
 \end_layout
@@ -3438,21 +3471,6 @@ Market trend represents the general direction in a market or a security
 \begin_layout Itemize
 
 \emph on
-Forced Selling
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Selling assets or securities without no economic reasons.
- Maybe the cash is needed elsewhere, maybe diverse, ...
- So market participants are selling when they have to, not because they
- want to.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
 Days to Cover 
 \end_layout
 
@@ -3461,13 +3479,28 @@ Days to Cover
 Brokers will give traders who borrow shares a certain number of days to
  cover.
  This could be 7 days, 14 days, etc.
- By the end of this period if the trader has not covered their position,
+ 
+\end_layout
+
+\begin_layout Itemize
+By the end of this period if the trader has not covered their position,
  the broker can do it manually and will charge the trader a liquidation
  fee.
- Short Squeeze This is when a stock suddenly starts moving up, and traders
- who are holding short positions start buying to cover their position, or
- their broker covers their position for them because they've hit a max loss
- on their account.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Short Squeeze
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is when a stock suddenly starts moving up, and traders who are holding
+ short positions start buying to cover their position, or their broker covers
+ their position for them because they've hit a max loss on their account.
  
 \end_layout
 
@@ -3535,22 +3568,12 @@ Derivative
 Derivatives are securities with prices that are dependent on, or derived
  from, one or more separate underlying assets such as options or future
  contracts.
- Future is a contract to buy a certain commodity or investment at a particular
- price at some point in the future (the delivery date).
- Option is an agreement that gives its holder the right, rather than the
- obligation, to buy or sell an investment at a particular price on a given
- day.
  
 \end_layout
 
 \begin_layout Itemize
-Usually, a futures contract is not arranged directly between the buyer and
- seller, but via the futures exchange, which acts as a middleman.
-\end_layout
-
-\begin_layout Itemize
 Total value of credit default swaps and other derivatives hits 1.144 trillion
- in 2008 - 22times the GDP of the entire world.
+ in 2008 - 22x the GDP of the entire world.
 \end_layout
 
 \begin_layout Itemize
@@ -3592,23 +3615,29 @@ fied price on a specified date in the future.
 Futures contract
 \emph default
 , which similar to a forward contract.
+ Future is a contract to buy a certain commodity or investment at a particular
+ price at some point in the future (the delivery date).
  It is an agreement to exchange an underlying asset for a pre-specified
  price at a specified date in the future.
  The major differences are: a) futures contract have standardized contract
  terms, b) futures contracts are traded over the exchange rather than over
  the counter, c) future contracts involve margins d) futures contracts are
  settled daily.
- 
+ Usually, a futures contract is not arranged directly between the buyer
+ and seller, but via the futures exchange, which acts as a middleman.
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Option contract, 
+Option contract,
 \emph default
-is placing a bet about a certain stock to be above or below a certain threshold
- on a certain date.
+ is an agreement that gives its holder the right, rather than the obligation,
+ to buy or sell an investment at a particular price on a given day.
+ It's placing a bet about a certain stock to be above or below a certain
+ threshold on a certain date.
  They can be resold at any time before they expire.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -3656,21 +3685,16 @@ Options
 \end_layout
 
 \begin_layout Itemize
-Excellent videos from Dominik Kovarik (in Czech language): 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=Cz573gZ-sNM&list=PLNU_Kz1-nZ5FgeqwCCIOfpDVMOLw
-59OBm}
-\end_layout
+Excellent videos from Dominik Kovarik (in Czech language) 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=Cz573gZ-sNM&list=PLNU_Kz1-nZ5FgeqwCCIOfpDVMOLw59OBm"
+literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -3731,14 +3755,21 @@ Strike price
 \begin_deeper
 \begin_layout Itemize
 Stock price in which an option can be exercised.
- Strike price minus current price gives us certain spread.
- In terms of call options, higher strike (so also higher spread) means cheaper
+ 
+\end_layout
+
+\begin_layout Itemize
+Strike price minus current price gives us certain spread.
+\end_layout
+
+\begin_layout Itemize
+In terms of call options, higher strike (so also higher spread) means cheaper
  it will be to buy shares, because there is higher risk - it's less likely
  that the strike price will be hit.
 \end_layout
 
 \begin_layout Itemize
-Also expiration date is important, more time - less risk - more expensive.
+Also expiration date is important, more time → less risk → more expensive.
 \end_layout
 
 \end_deeper
@@ -3747,38 +3778,48 @@ Also expiration date is important, more time - less risk - more expensive.
 \emph on
 Premium
 \emph default
- - is the money paid by the buyer of the options contract to the seller.
- The person that receives the money is the seller.
  
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+It's the money paid by the buyer of the options contract to the seller.
+ 
+\end_layout
+
+\begin_layout Itemize
+The person that receives the money is the seller.
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Six factors affect the value of call options on stocks: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-The current price of the stock
+The current price of the stock.
 \end_layout
 
 \begin_layout Itemize
-The time remaining until the option expires
+The time remaining until the option expires.
 \end_layout
 
 \begin_layout Itemize
-The dividend on the stock
+The dividend on the stock.
 \end_layout
 
 \begin_layout Itemize
-Increases in underlying stock volatility
+Increases in underlying stock volatility.
 \end_layout
 
 \begin_layout Itemize
-The risk-free interest rate
+The risk-free interest rate.
 \end_layout
 
 \begin_layout Itemize
-The exercise price of the option
+The exercise price of the option.
 \end_layout
 
 \end_deeper
@@ -3801,19 +3842,15 @@ If you think the stock will be lower or neutral.
 
 \begin_layout Itemize
 See 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=LQ5hmG7FX1c&list=WL&index=2}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "this video"
+target "https://www.youtube.com/watch?v=LQ5hmG7FX1c&list=WL&index=2"
+literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -3836,19 +3873,15 @@ If you think the stock will be higher or neutral.
 
 \begin_layout Itemize
 See 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=0A3t5pdqqUg&list=WL&index=2}
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "this video"
+target "https://www.youtube.com/watch?v=0A3t5pdqqUg&list=WL&index=2"
+literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -4032,10 +4065,17 @@ Fiscal Expenditure
 \begin_deeper
 \begin_layout Itemize
 "Printing money & Buying government bonds".
- This is more effective than quantitative easing in terms of stimulating
+ 
+\end_layout
+
+\begin_layout Itemize
+This is more effective than quantitative easing in terms of stimulating
  the real economy, because it goes to individuals and businesses that can
  spend and reinvest.
- This also contains cash stimulus packages.
+\end_layout
+
+\begin_layout Itemize
+This also contains cash stimulus packages.
 \end_layout
 
 \end_deeper
@@ -4051,7 +4091,11 @@ Subsidy
 \begin_layout Itemize
 A sum of cash given by someone - usually a government - to support a particular
  business or industry.
- They are often reviled as a form of protectionism.
+ 
+\end_layout
+
+\begin_layout Itemize
+They are often reviled as a form of protectionism.
  
 \end_layout
 
@@ -4085,7 +4129,7 @@ Unicorn
 
 \begin_deeper
 \begin_layout Itemize
-A unicorn refers to a start-up company that has attained a $ 1 billion market
+A unicorn refers to a start-up company that has attained a $1 billion market
  value as valuated by either a private or public investment firm.
 \end_layout
 
@@ -4169,7 +4213,7 @@ The money goes into interest bearing trust account.
 
 \begin_layout Itemize
 Examples: NKLA (Nikola was a private company and it was acquired through
- the SPAC called VTIQ) and SPCE
+ the SPAC called VTIQ) and SPCE.
 \end_layout
 
 \begin_layout Itemize
@@ -4192,8 +4236,6 @@ backdoor
 
 \emph on
 FINRA (Financial Industry Regulatory Authority)
-\emph default
- -
 \end_layout
 
 \begin_deeper
@@ -4224,7 +4266,7 @@ Merger
 \emph default
 (one survivor) - the purchasing company buys the selling company's assets
  so only the purchasing company survives.
- Merger are deals that unite two separate companies into a single new company.
+ Mergers are deals that unite two separate companies into a single new company.
  
 \end_layout
 
@@ -4235,7 +4277,7 @@ Amalgamation
 \emph default
 (no survivors) - in corporate finance, it is a combination of two or more
  companies into a single larger company.
- Non of the pre-existing companies exits any more.
+ None of the pre-existing companies exists any more.
  In accounting, it is a combination of financial statements (sometimes also
  referred to as consolidation).
  
@@ -4310,6 +4352,8 @@ refers to the observation that value stocks tend to return better than growth
 \end_layout
 
 \begin_layout Itemize
+
+\emph on
 A Ponzi scheme
 \end_layout
 
@@ -4325,7 +4369,11 @@ It is a fraudulent investing scam promising high rates of return with little
 With Ponzi schemes, investors give money to a portfolio manager.
  Then, when they want their money back, they are paid out with the incoming
  funds contributed by later investors.
- With a pyramid scheme, the initial schemer recruits other investors who
+ 
+\end_layout
+
+\begin_layout Itemize
+With a pyramid scheme, the initial schemer recruits other investors who
  in turn recruit other investors and so on.
 \end_layout
 
@@ -4376,7 +4424,7 @@ You may have thought that a tenbagger can only happen with some wild penny
 Wall Street professionals - there are many obstacles between them and tenbaggers.
  Under the current system, a stock isn't truly attractive until a number
  of large institutions have recognized its suitability and an equal number
- of respected Wall Street Analysts have put it on the recommended list.
+ of respected Wall Street analysts have put it on the recommended list.
  With so many people waiting for others to make the first move, it's amazing
  that anything gets bought.
  The fund manager most likely is looking for reasons not to buy exciting
@@ -4424,40 +4472,35 @@ Some expressions:
 
 \begin_deeper
 \begin_layout Itemize
-Dog.
- Stock that is perceived to be really bad - it can never do anything right.
+Dog - stock that is perceived to be really bad - it can never do anything
+ right.
 \end_layout
 
 \begin_layout Itemize
-Market is in the red.
- Stock market went down in a given day.
+Market is in the red - stock market went down in a given day.
 \end_layout
 
 \begin_layout Itemize
-Market is in the green.
- Stock market went up in a given day.
+Market is in the green - stock market went up in a given day.
 \end_layout
 
 \begin_layout Itemize
-Comeback.
- Stock was down considerably, but finished the day break even or went higher
- than it was.
+Comeback - stock was down considerably, but finished the day break even
+ or went higher than it was.
 \end_layout
 
 \begin_layout Itemize
-Market sentiment.
- How confident or unconfident people are in regards to the stock market
- at some time.
+Market sentiment - how confident or not confident people are in regards
+ to the stock market at some time.
 \end_layout
 
 \begin_layout Itemize
-Things went south.
- A stock or the stock market was up a good amount, but then went way down.
+Things went south - a stock or the stock market was up a good amount, but
+ then went way down.
 \end_layout
 
 \begin_layout Itemize
-Maxed out.
- When you have everything invested into one or a few stocks.
+Maxed out - when you have everything invested into one or a few stocks.
  No more money to invest.
 \end_layout
 
@@ -4480,26 +4523,75 @@ It's a hold ("that stock gets a hold") - if you are new investor, you don't
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
 Popped / Pop.
-
-\emph default
  Means that stock went up by a substantial amount.
 \end_layout
 
 \begin_layout Itemize
-
+Crashed / crash
 \emph on
-Crashed / crash.
+.
  
 \emph default
 Means that stock or stock market went down by a substantial amount.
 \end_layout
 
 \begin_layout Itemize
-A $1 move in stock price is called a point.
- A block of 100 shares is called a round lot.
+Point - a $1 move in stock price.
+ 
+\end_layout
+
+\begin_layout Itemize
+Round lot - a block of 100 shares.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Random Walk Hypothesis
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Developed by Professor Eugene Fama in early 1960s.
+ 
+\end_layout
+
+\begin_layout Itemize
+It says a stock's past price movements are of absolutely no help in predicting
+ future movements.
+ In other words it's a random process, like tossing a coin.
+ Likewise, the hypothesis says, the fact that a stock's price has risen
+ for the last ten days tells you nothing about what it will do tomorrow.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Momentum Investing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also, another form of relying on past stock price movements.
+ 
+\end_layout
+
+\begin_layout Itemize
+It, too, exists in contravention of the random walk hypothesis.
+\end_layout
+
+\begin_layout Itemize
+As Howard Marks sees it, investors who practice this approach operate under
+ the assumption that they can tell when something that has been rising will
+ continue to rise.
+ Momentum investing might enable you to participate in a bull market that
+ continues upward, but Howard Marks see a lot of drawbacks.
+ 
+\emph on
+"If something cannot go on forever, it will stop."
 \end_layout
 
 \end_deeper
@@ -4582,6 +4674,27 @@ Strong form - the current stock price reflects all the public and private
 
 \end_deeper
 \begin_layout Itemize
+Good test for skepticism - 
+\emph on
+"And who doesn't know that?"
+\end_layout
+
+\begin_layout Itemize
+Seth Klarman's opinion - most of these characteristics are not permanent.
+ Something broadly accepted can become controversial or even taboo.
+ Information can become more or less available.
+ Thus, an asset class deemed close to efficient at one point may become
+ quite inefficient at another.
+\end_layout
+
+\begin_layout Itemize
+Paul Johnson's opinion - Inverting these conditions yields a test of market
+ inefficiency.
+ For instance, if an asset is not widely known and broadly followed, it
+ might be inefficiently priced.
+\end_layout
+
+\begin_layout Itemize
 Howard Marks's opinion - he used to use word efficient, but in the sense
  of "speedy, quick to incorporate information", not "right".
  He agrees that because investors work hard to evaluate every new piece
@@ -4611,33 +4724,10 @@ information about the class and its components is distributed widely and
 \end_layout
 
 \begin_layout Standard
-Seth Klarman's opinion - most of these characteristics are not permanent.
- Something broadly accepted can become controversial or even taboo.
- Information can become more or less available.
- Thus, an asset class deemed close to efficient at one point may become
- quite inefficient at another.
+According to him, an inefficient market is one that is market by at least
+ one of the following characteristics:
 \end_layout
 
-\begin_layout Standard
-Paul Johnson's opinion - Inverting these conditions yields a test of market
- inefficiency.
- For instance, if an asset is not widely known and broadly followed, it
- might be inefficiently priced.
-\end_layout
-
-\begin_layout Standard
-Good test for skepticism - 
-\emph on
-"And who doesn't know that?"
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-According to Howard Marks, an inefficient market is one that is market by
- at least one of the following characteristics:
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 Market prices are often wrong.
  Because access to information and the analysis thereof are highly imperfect,
@@ -4770,53 +4860,11 @@ Efficient market theory grew out of the academic School of Random Walkers.
 
 \end_deeper
 \begin_layout Itemize
-Warren Buffett's opinion: amazingly EMT was embraced not only by academics,
+Warren Buffett's opinion: amazingly, EMT was embraced not only by academics,
  but by many investment professionals and corporate managers as well.
  Observing correctly that the market was frequently efficient, they went
  on to conclude incorrectly that it was always efficient.
  The difference between these propositions is night and day.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Random Walk Hypothesis
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Developed by Professor Eugene Fama in early 1960s.
- 
-\end_layout
-
-\begin_layout Itemize
-It says a stock's past price movements are of absolutely no help in predicting
- future movements.
- In other words it's a random process, like tossing a coin.
- Likewise, the hypothesis says, the fact that a stock's price has risen
- for the last ten days tells you nothing about what it will do tomorrow.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Momentum Investing
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Also, another form of relying on past stock price movements.
- It, too, exists in contravention of the random walk hypothesis.
- As Howard Marks sees it, investors who practice this approach operate under
- the assumption that they can tell when something that has been rising will
- continue to rise.
- Momentum investing might enable you to participate in a bull market that
- continues upward, but Howard Marks see a lot of drawbacks.
- 
-\emph on
-"If something cannot go on forever, it will stop."
 \end_layout
 
 \end_deeper

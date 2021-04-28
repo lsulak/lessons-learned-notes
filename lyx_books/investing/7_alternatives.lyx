@@ -132,7 +132,7 @@ Alternative Investments
 \end_layout
 
 \begin_layout Standard
-Se briefly mentioned alternative investments in Chapter 
+We briefly mentioned alternative investments in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Investing-Strategies"
@@ -146,7 +146,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Subsection
-Buffett on investment alternatives
+Buffett On Investment Alternatives
 \end_layout
 
 \begin_layout Standard
@@ -163,7 +163,7 @@ About financial crisis of 2008 - contemporary financial engineering has
  Proponents believe that these devices are useful to manage risk - and Berkshire
  from time to time takes modest positions in derivatives contracts that
  Buffett judges as mispriced.
- But while proponents also believe that derivatives tend to reduce overall
+ But while proponents also believe that derivatives tend to reduce the overall
  systemic risk, Buffett presciently observed that they may have the opposite
  effect.
  They are hard to value, valuations can change rapidly and they create linkages
@@ -227,8 +227,12 @@ ly.
  A zero-coupon bond, conversely, requires no current interest payments;
  instead, the investor receives his yield by purchasing the security at
  a significant discount from maturity value.
- The effective interest rate is determined by the original issue price,
- the maturity value, and the amount of time between issuance and maturity.
+ 
+\end_layout
+
+\begin_layout Itemize
+The effective interest rate is determined by the original issue price, the
+ maturity value, and the amount of time between issuance and maturity.
  
 \end_layout
 
@@ -242,7 +246,11 @@ Preferred Stock
 Preference shares, more commonly referred to as preferred stock, are shares
  of a company's stock with dividends that are paid out to shareholders before
  common stock dividends are issued.
- If the company enters bankruptcy, preferred stockholders are entitled to
+ 
+\end_layout
+
+\begin_layout Itemize
+If the company enters bankruptcy, preferred stockholders are entitled to
  be paid from company assets before common stockholders.
 \end_layout
 
@@ -270,7 +278,7 @@ The range of derivatives contracts is limited only by the imagination of
 
 \begin_layout Itemize
 But closing down a derivatives business is easier said than done.
- In fact, the reinsurance and derivatives business are similar: like Hell,
+ In fact, the reinsurance and derivatives business are similar: like hell,
  both are easy to enter and almost impossible to exit.
  In either industry, once you write a contract - which may require a large
  payment decades later - you are usually stuck with it.
@@ -346,7 +354,7 @@ s who can't bear certain risk are able to transfer them to stronger hands.
  These people believe that derivatives act to stabilize the economy, facilitate
  trade, and eliminate bumps for individual participants.
  And, on a micro level, what they say is often true.
- Indeed, at Berkshire, Buffett sometimes engage in large-scale derivatives
+ Indeed, at Berkshire, Buffett sometimes engages in large-scale derivatives
  transaction in order to facilitate certain investment strategies.
  
 \end_layout
@@ -451,15 +459,15 @@ Buffett is very concerned about the US trade problems.
  is transferring ownership of its sales or IOUs to the rest of the world.
  Like a very wealthy but self-indulgent family, we peeled off a bit of what
  we owned in order to consume more than we produced.
- "Buffett thinks that Americans will live better 10 or 20 years from now
+ Buffett thinks that Americans will live better 10 or 20 years from now
  than they do today (2006).
  Per-capital wealth will increase.
- But our citizens will also be forced every year to ship a significant portion
- of their current production abroad merely to service the cost of our huge
+ But US citizens will also be forced every year to ship a significant portion
+ of their current production abroad merely to service the cost of US huge
  debtor position.
  It won't be pleasant to work part of each day to pay for the over-consumption
- of your ancestors.
- I believe that at some point in the future U.S.
+ of US ancestors.
+ Buffett believes that at some point in the future U.S.
  workers and voters will find this annual 
 \begin_inset Quotes eld
 \end_inset
@@ -469,7 +477,7 @@ tribute
 \end_inset
 
  so onerous that there will be a severe political backlash.
- How that will play our in markets is impossible to predict - but to expect
+ How that will play out in markets is impossible to predict - but to expect
  a 
 \begin_inset Quotes eld
 \end_inset
@@ -478,7 +486,7 @@ soft landing
 \begin_inset Quotes erd
 \end_inset
 
- seems like wishful thinking."
+ seems like a wishful thinking.
 \end_layout
 
 \end_deeper
@@ -590,19 +598,25 @@ Gold miners can be a tenbagger! or hundredbagger! very volatile, silver
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.ii.co.uk/analysis-commentary/mining-stocks-tips-2020-ii510189}
-\end_layout
+Gold stock analysis example 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=tjvdpzTc0cU&list=WL&index=1"
+literal "false"
 
 \end_inset
 
+ and analysis tips 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.ii.co.uk/analysis-commentary/mining-stocks-tips-2020-ii510189"
+literal "false"
 
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -626,8 +640,8 @@ An example, cost to mine - $1200, gold price $1250, profit = $50.
 
 \begin_deeper
 \begin_layout Standard
-If gold price $2500, profit (before taxes and royalties etc) = $1300, which
- is profit up 26x! Stock up 10-20x!
+If the gold price goes to $2500, profit (before taxes and royalties etc)
+ = $1300, which is profit up 26x! Stock up 10-20x!
 \end_layout
 
 \end_deeper
@@ -635,23 +649,6 @@ If gold price $2500, profit (before taxes and royalties etc) = $1300, which
 Check cash flows, reserves and potential production, leverage/costs, and
  react to special situations.
  
-\end_layout
-
-\begin_layout Itemize
-Gold stock analysis - 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=tjvdpzTc0cU&list=WL&index=1}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -677,17 +674,17 @@ Life of mine - for how long can keep up the current production?
 
 \begin_layout Itemize
 Mining costs and margin - the higher the mining costs the higher will be
- the stock volatility
+ the stock volatility.
 \end_layout
 
 \begin_layout Itemize
 Jurisdiction - mining is a global business and every country has its own
- rules where rules often change
+ rules where rules often change.
 \end_layout
 
 \begin_layout Itemize
 Growth perspectives - with higher gold prices, many projects suddenly become
- valuable
+ valuable.
 \end_layout
 
 \begin_layout Itemize
@@ -738,7 +735,17 @@ Real Estate
 \end_layout
 
 \begin_layout Standard
-I have an entire book on real estate investing in this notes collection.
+I have an entire book on real estate investing in this notes collection
+ check my GitHub 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/lsulak/lessons-learned-notes"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body

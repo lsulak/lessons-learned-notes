@@ -7,6 +7,9 @@ Topics: software and data engineering, math and machine learning, and some
 other things related to IT and beyond, including investing - especially stocks
 and real estate investing.
 
+Here's my profile on Goodreads:
+https://www.goodreads.com/user/show/114351959-ladislav-ul-k.
+
 ## Notes Collection
 
 There are two groups of notes in this repository: LyX notes and sheet cheats.

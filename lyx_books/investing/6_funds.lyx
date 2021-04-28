@@ -149,25 +149,36 @@ They allow you to own a property without physically own it And you collect
 
 \begin_layout Itemize
 They are like mutual funds.
- A few criteria so that a fund is considered to be REIT: * at least 75%
- asset value from real estate * at least 75% gross income coming from real
- estate * at least 90% dividend payout ratio - it's quite interesting it
- does necessarily mean that it is sustainable, it is a different kind of
- investment, it is an exclusion to a rule that you should target much lower
- payout ratios
+ A few criteria so that a fund is considered to be REIT: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+at least 75% asset value from real estate 
 \end_layout
 
 \begin_layout Itemize
-they usually distribute money to shareholders each month; 90% because they
- must redistribute money to shareholders a lot * a few more
+at least 75% gross income coming from real estate 
 \end_layout
 
 \begin_layout Itemize
-Check dividends, buybacks, capital appreciation, and growth
+at least 90% dividend payout ratio - it's quite interesting it does necessarily
+ mean that it is sustainable, it is a different kind of investment, it is
+ an exclusion to a rule that you should target much lower payout ratios
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+They usually distribute money to shareholders each month; 90% because they
+ must redistribute money to shareholders.
 \end_layout
 
 \begin_layout Itemize
-Also, interest rates can influence REITs stock prices, debt and risk, 
+Check dividends, buybacks, capital appreciation, debt, and growth.
+\end_layout
+
+\begin_layout Itemize
+Also, interest rates can influence REITs stock prices.
 \end_layout
 
 \begin_layout Itemize
@@ -213,7 +224,7 @@ ETF is an index fund designed to facilitate trading in its shares, dressed
 \begin_layout Itemize
 A security that simply tracks an index of commodity bonds or a basket of
  funds or assets.
- Kind like an index funds.
+ Kind of like an index funds.
  
 \end_layout
 
@@ -245,7 +256,7 @@ Commodity - designed to track the price of a commodity, such as gold, oil,
 \end_layout
 
 \begin_layout Itemize
-Inverse - designed to profit from a decline in the underlying market of
+Inverse - designed to profit from a decline in the underlying market or
  index.
 \end_layout
 
@@ -453,8 +464,8 @@ How to become a credit investor? Solid financial knowledge and experiences,
 \end_layout
 
 \begin_layout Itemize
-They are more risky than mutual funds (this tries to diversity and split
- the money across market), because they go 
+They are more risky than mutual funds (mutual funds try to diversify and
+ split the money across the market), because they go 
 \begin_inset Quotes eld
 \end_inset
 
@@ -523,13 +534,6 @@ Unlike an index fund, a mutual fund is generally actively managed, with
  
 \end_layout
 
-\begin_layout Itemize
-If you would choose to have mutual fund(s) in your portfolio, then you should
- know that on average, they are likely to last only about 9 years, so you
- would have maybe 30-40 funds (diversification) over your lifetime, each
- carrying that burden of fees and turnover costs.
-\end_layout
-
 \begin_layout Standard
 
 \series bold
@@ -562,7 +566,7 @@ Or, you can invest in a low-fee, minimal-transaction-cost, broad-market
 \end_layout
 
 \begin_layout Itemize
-Reversion to the Mean - in selecting mutual funds - let's have a look at
+Reversion to the mean - in selecting mutual funds - let's have a look at
  Morningstar, the statistical service most broadly used by investors in
  evaluating fund returns.
  They are based on a composite of a fund's record over the previous 3, 5,
