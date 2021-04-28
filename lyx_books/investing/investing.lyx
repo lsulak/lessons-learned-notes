@@ -33,6 +33,7 @@
 \makeatother
 
 \usepackage{listings}
+\usepackage[unicode=true]{hyperref}
 
 \usepackage{color}
 
@@ -819,9 +820,9 @@ literal "true"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Dominik Kovařík - Trading"
+name "Dominik Kovarik - Trading"
 target "https://www.youtube.com/channel/UC_Qqv2Ogs7Awiu-UV2m5x4g/videos"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -843,9 +844,9 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "InvestičnýBlog.sk"
+name "InvesticnyBlog.sk"
 target "https://www.youtube.com/channel/UCIqgsw9DvbxDLwEU2QDIenA/videos"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -867,9 +868,9 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Vojtěch Rohlena Investing"
+name "Vojtech Rohlena Investing"
 target "https://www.youtube.com/channel/UCSZ1vORrlV6v51hysX0Q1Yg/videos"
-literal "true"
+literal "false"
 
 \end_inset
 
