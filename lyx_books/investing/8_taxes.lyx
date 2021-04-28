@@ -133,8 +133,9 @@ Taxes [SK/EN]
 
 \begin_layout Standard
 A few parts of this chapter will be in Slovak language, because I need to
- consider Slovak norms, portals and tools, and I don't have motivation for
- translating it to English.
+ consider Slovak norms, portals and tools; besides, it wouldn't make sense
+ to translate translating it to English since this is mostly for myself
+ anyway.
 \end_layout
 
 \begin_layout Itemize
@@ -163,20 +164,16 @@ You always have to pay taxes to the country where you are a tax resident
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.expertsforexpats.com/expat-tax/the-difference-between-domicile-and
--residence/}
-\end_layout
+See further explanation 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.expertsforexpats.com/expat-tax/the-difference-between-domicile-and-residence/"
+literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -321,20 +318,16 @@ SK
 \end_layout
 
 \begin_layout Standard
-Pretty good summary: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=Z5p3NRcdGBc}
-\end_layout
+Pretty good summary in 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://www.youtube.com/watch?v=Z5p3NRcdGBc"
+literal "false"
 
 \end_inset
 
-.
+ video.
 \end_layout
 
 \begin_layout Standard
@@ -352,11 +345,11 @@ Zisk je realizovaný vždy pri konkrétnej transakcii (predaji), nie pri „vybe
 h na regulovaných trhoch (napr.
  burze) je oslobodený od dane, ak medzi nákupom a predajom ubehol viac ako
  rok.
- INak zaplatíš 19% daň a 14% zdravotné poistenie.
+ Inak zaplatíš 19% daň a 14% zdravotné poistenie.
  Pri dividendách je daň 7%, prípadne pri dividendách zo zahraničia je to
  zrážková daň pri zdroji, minimálne 7%.
  Zároveň, ak si zrealizoval zisk, ktorý by bol zdaniteľný, môžeš si od neho
- odpočítať príípadnú stratu z predaje rovnakého typu investícií (napr.
+ odpočítať prípadnú stratu z predaje rovnakého typu investícií (napr.
  akcií).
 \end_layout
 
@@ -368,8 +361,8 @@ Pre získanie čo najvyššej daňovej refundácie je najlepšie ukončiť praco
 \end_layout
 
 \begin_layout Itemize
-Najprv od všetkých zamestnávateľov, u ktorých pracoval, vyžiadal potvrdenia
- o zdaniteľných príjmoch za celý predchádzajúci kalendárny rok.
+Najprv treba všetkých zamestnávateľov, u ktorých ste pracovali, vyžiadat
+ potvrdenia o zdaniteľných príjmoch za celý predchádzajúci kalendárny rok.
 \end_layout
 
 \begin_layout Itemize
@@ -391,19 +384,16 @@ Z pohľadu daní je najideálnejšie nakupovať bonds prostredníctvom indexový
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=Ngy5AesOm3Y&list=WL&index=1}
-\end_layout
+Platenie daní u živnostníka na SK v 
+\begin_inset CommandInset href
+LatexCommand href
+name "tomto"
+target "https://www.youtube.com/watch?v=Ngy5AesOm3Y&list=WL&index=1"
+literal "false"
 
 \end_inset
 
-
+ videu.
 \end_layout
 
 \begin_layout Itemize
@@ -415,21 +405,17 @@ Zákon o dani z príjmov v § 2 písm.
 
 \begin_layout Itemize
 Prijmy ktore su oslobodene od dane (v 2020 to bolo 500 eur max) nepodliehaju
- ani zdravotnym odvodom a nie je nutne ich uvadzat do danoveho priznania.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=RfKmG6sqkoo&list=WL&index=2}
-\end_layout
+ ani zdravotnym odvodom a nie je nutne ich uvadzat do danoveho priznania
+ (video 
+\begin_inset CommandInset href
+LatexCommand href
+name "tu"
+target "https://www.youtube.com/watch?v=RfKmG6sqkoo&list=WL&index=2"
+literal "false"
 
 \end_inset
 
-
+).
 \end_layout
 
 \begin_deeper
@@ -511,8 +497,8 @@ domestic - 7% and no health insurance.
 \end_layout
 
 \begin_layout Itemize
-foreign - W8BEN - you need to sign it with broker!!! For avoiding taxes
- on dividends.
+foreign - W8BEN - you need to sign it with broker! For avoiding taxes on
+ dividends.
 \end_layout
 
 \begin_layout Standard
@@ -530,20 +516,7 @@ V prípade, že máš u svojho brokera vyplnený americký formulár W-8BEN, bud
 
 \end_deeper
 \begin_layout Itemize
-Crypto - probably as "other income" - 19% 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://cryptowat.ch/}
-\end_layout
-
-\end_inset
-
-
+Crypto - probably as "other income" - 19%.
 \end_layout
 
 \begin_layout Itemize
@@ -615,7 +588,7 @@ url{https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1992/89/}
 
 \end_inset
 
- and 
+ a 
 \begin_inset ERT
 status open
 

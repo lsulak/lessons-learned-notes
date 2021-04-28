@@ -275,10 +275,8 @@ All valuations are biased.
  surprisingly, your conclusions tend to reflect your biases.
  Confine your background research on the company to information sources
  rather than opinion sources; in other words, spend more time looking at
- a company;s financial statements than reading equity research reports about
+ a company's financial statements than reading equity research reports about
  the company.
- If you are looking at a company's financial statements than reading equity
- research reports about the company.
  If you are looking at someone else's valuation of a company, always consider
  the reasons for the valuation and the potential biases that may affect
  the analyst's judgments.
@@ -328,8 +326,8 @@ Don't stop trying.
  there is too much uncertainty.
  While all of these reasons have a kernel of truth to them, there is no
  reason why they should stop you from trying.
- Valuation models can be simplified and you can make do with the information
- you have and-yes-the future will always be uncertain.
+ Valuation models can be simplified and - yes - the future will always be
+ uncertain.
  Will you be wrong sometimes? Of course, but so will everyone else.
  Success in investing comes not from being right but from being wrong less
  often than everyone else.
@@ -387,74 +385,16 @@ Great earnings.
 
 \end_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.oldschoolvalue.com/best-stock-valuation-methods/}
-\end_layout
+Sharpe Ratio TODO, link 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.investopedia.com/terms/s/sharperatio.asp"
+literal "false"
 
 \end_inset
 
- TODO
-\end_layout
 
-\begin_layout Itemize
-Template sheet TODO
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=mt5Ve01n_X0&list=PLl3-0Xe_motRRI5OKbpU2BHLWsig
-lKCj8&index=1}
-\end_layout
-
-\end_inset
-
- - good template inspiration!
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=xYf0gtfDVGs}
-\end_layout
-
-\end_inset
-
- - incorporate into financial spread sheet!
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.investopedia.com/terms/s/sharperatio.asp}
-\end_layout
-
-\end_inset
-
- TODO
 \end_layout
 
 \begin_layout Standard
@@ -495,7 +435,7 @@ Income Statement
 \end_layout
 
 \begin_layout Itemize
-How do Analysts use the Income Statement?
+How do analysts use the Income Statement?
 \end_layout
 
 \begin_deeper
@@ -648,7 +588,17 @@ EBITDA:
 \begin_layout Itemize
 
 \emph on
-Revenues (also known as Turnover or Sales)
+Revenues
+\emph default
+ (also known as 
+\emph on
+Turnover 
+\emph default
+or
+\emph on
+ Sales
+\emph default
+)
 \end_layout
 
 \begin_deeper
@@ -684,16 +634,16 @@ Operating Income
 
 \begin_deeper
 \begin_layout Itemize
-Also known as Operating Earnings or EBIT: earnings before interest and taxes
+Also known as Operating Earnings or EBIT (earnings before interest and taxes)
 \end_layout
 
 \begin_layout Itemize
-Calculated as Revenue - Direct Operating Costs - Indirect operating costs
+Calculated as Revenue - Direct Operating Costs - Indirect Operating Costs
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Expense categorization: 
+Expense categorization
 \end_layout
 
 \begin_deeper
@@ -730,36 +680,72 @@ Capital expenses:
 
 \end_deeper
 \begin_layout Itemize
-Accrual accounting: 
+Accrual accounting
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-The revenue from selling a good or service is recognized in the period in
- which the good is sold or the service is recognized in the period in which
- the good is sold or the service is performed (in whole or substantially).
-\end_layout
-
-\begin_layout Itemize
-A corresponding effort is made on the expense side to match expenses to
- revenues.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Accrued expenses
-\emph default
- - expenses that have been reflected on the income statement but not yet
- paid for.
- They will go to balance sheet as accrued expenses.
+Accrual accounting is an accounting method where revenue or expenses are
+ recorded when a transaction occurs rather than when payment is received
+ or made.
  
 \end_layout
 
 \begin_layout Itemize
-Accrual accounting -
+The method follows the matching principle, which says that revenues and
+ expenses should be recognized in the same period.
+ 
 \end_layout
 
+\begin_layout Itemize
+Accrual accounting is the opposite of cash accounting, which recognizes
+ transactions only when there is an exchange of cash.
+ Accrual accounting is almost always required for companies that carry inventory
+ or make sales on credit.
+\end_layout
+
+\begin_layout Itemize
+For example:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider a consulting company that provides a $5,000 service to a client
+ on Oct.
+ 30.
+ The client receives the bill for services rendered and makes a cash payment
+ on Nov.
+ 25.
+ The entry of this transaction will be recorded differently under the cash
+ and accrual methods.
+ 
+\end_layout
+
+\begin_layout Itemize
+The revenue generated by the consulting services will only be recognized
+ under the cash method when the company receives payment.
+ A company that uses the cash accounting method will record $5,000 revenue
+ on Nov.
+ 25.
+\end_layout
+
+\begin_layout Itemize
+Accrual accounting, however, says that the cash method is not accurate because
+ it is likely, if not certain, that the company will receive the cash at
+ some point in the future because the services have been provided.
+ 
+\end_layout
+
+\begin_layout Itemize
+The accrual method recognizes the revenue when the clients' services are
+ concluded even though the cash payment is not yet in the bank.
+ Revenue will be recognized as earned on Oct.
+ 30.
+ The sale is booked to an account known as accounts receivable, found in
+ the current assets section of the balance sheet.
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 
@@ -781,12 +767,14 @@ Accounts payable
 \end_layout
 
 \begin_layout Itemize
+
+\emph on
 Depreciation
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-It is the annual expense a company takes to account for using up its long-term
+It is an annual expense a company takes to account for using up its long-term
  assets.
  
 \end_layout
@@ -1129,8 +1117,8 @@ Mergers: when a company is acquired, GAAP currently condone two very different
  annual charge that normally persists for decades.
  In contrast, pooling avoids a goodwill account, which is why managements
  love it.
- This accounting convention Pooling is grounded in the poetic notion that
- when two rivers merge their streams become indistinguishable.
+ Pooling is grounded in the poetic notion that when two rivers merge their
+ streams become indistinguishable.
  Under this concept, a company that has been merged into a larger enterprise
  has not been "purchased" (even though it will often have received a large
  "sell-out" premium).
@@ -1149,7 +1137,7 @@ Mergers: when a company is acquired, GAAP currently condone two very different
 \end_layout
 
 \begin_layout Itemize
-Buffet emphasizes that useful financial statements must enable a user to
+Buffett emphasizes that useful financial statements must enable a user to
  answer 3 basic questions about a business:
 \end_layout
 
@@ -1203,7 +1191,7 @@ It is common on Wall Street to value businesses using a calculation of cash
  flows equal to a) operating earnings plus b) depreciation expense and other
  non-cash charges.
  Buffett regards that calculation is incomplete.
- After taing a) operating earnings and adding back b) non-cash charges,
+ After taking a) operating earnings and adding back b) non-cash charges,
  Buffett argues that you must then subtract something else: c) required
  reinvestment in the business.
  Buffett defines c) as "the average amount of capitalized expenditures for
@@ -1259,8 +1247,8 @@ To inflate current earnings.
 
 \begin_deeper
 \begin_layout Itemize
-For example, soon going public, positions threatened, needs a loan, ...
- 
+For example, soon going public, positions threatened, needs a loan, and
+ so on.
 \end_layout
 
 \end_deeper
@@ -1762,16 +1750,16 @@ Equity valuation models - Dividends, Free Cashflow to Equity
 \end_layout
 
 \begin_layout Itemize
-Firm valuation models - Cost of capital approach, APV approach, Excess Return
- models
+Firm valuation models - Cost of Capital approach, Adjusted Present Value
+ (APV) approach, Excess Return models
 \end_layout
 
 \begin_layout Itemize
-Stable, Two-stage, Three-stage or n-stage
+Stable, Two-stage, Three-stage or N-stage
 \end_layout
 
 \begin_layout Itemize
-Current, normalized
+Current or Normalized
 \end_layout
 
 \end_deeper
@@ -1791,7 +1779,7 @@ Sector, Market
 \end_layout
 
 \begin_layout Itemize
-Earnings, Book value, Revenues, Sector specific
+Earnings, Book value, Revenues
 \end_layout
 
 \end_deeper
@@ -1814,15 +1802,15 @@ literal "false"
 
 \begin_deeper
 \begin_layout Itemize
-Option to delay - Patent, Undeveloped reserves
+Option to delay - patent, undeveloped reserves
 \end_layout
 
 \begin_layout Itemize
-Option to expand - Young firms, Undeveloped land
+Option to expand - young firms, undeveloped land
 \end_layout
 
 \begin_layout Itemize
-Option to liquidate - Equity in troubled firm
+Option to liquidate - equity in troubled firm
 \end_layout
 
 \end_deeper
@@ -1991,7 +1979,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename fig/intangible_assets.jpg
-	scale 30
+	scale 27
 
 \end_inset
 
@@ -2038,7 +2026,7 @@ Growth stocks - Earnings, Relative Strength, Sales
 All stocks - Net Profit Margin, Debt, Cash Flow, Price-to-Sales
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 (Warren Buffett) Essential tools for any investor's or manager's valuation
  toolbox
 \end_layout
@@ -2211,17 +2199,17 @@ Standard accounting principles require that common stocks held by our insurance
 
 \begin_layout Enumerate
 More important, Berkshire owns several businesses that possess economic
- Goodwill (which is properly includable in intrinsic business value) far
- larger than the accounting Goodwill that is carried on our balance sheet
+ goodwill (which is properly includable in intrinsic business value) far
+ larger than the accounting goodwill that is carried on our balance sheet
  and reflected in book value.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Business logically are worth far more than net tangible assets when they
+Businesses logically are worth far more than net tangible assets when they
  can be expected to produce earnings on such assets considerably in excess
  of market rates of return.
- The capitalized value of this excess return is economic Goodwill.
+ The capitalized value of this excess return is economic goodwill.
 \end_layout
 
 \begin_layout Itemize
@@ -2243,18 +2231,18 @@ s.
  This phenomenon has been particularly evident in the communications business.
  That business has required little in the way of tangible investment - yet
  its franchises have endured.
- During inflation, Goodwill is the gift that keeps giving.
+ During inflation, goodwill is the gift that keeps giving.
 \end_layout
 
 \begin_layout Itemize
-GAAP requires Goodwill to be amortized - that is, written off - over a period
+GAAP requires goodwill to be amortized - that is, written off - over a period
  no longer than 40 years.
  Therefore, when Berkshire acquired the half of GEICO for $1.6 billion, to
  extinguish this GEICO goodwill, they annually take charges or about $40
  million against their earnings.
- In accounting sense, consequently their GEICO Goodwill will disappear gradually
+ In accounting sense, consequently their GEICO goodwill will disappear gradually
  in even-sized bites.
- But the economic Goodwill they have purchased at GEICO will not decline
+ But the economic goodwill they have purchased at GEICO will not decline
  in the same measured way.
  In fact, Buffett's best guess is that the economic goodwill assignable
  to GEICO will not decline at all, but rather will increase - and probably
@@ -2294,7 +2282,7 @@ extra depreciation attributable to the write-up of fixed assets
 \end_layout
 
 \begin_layout Enumerate
-amortization of Goodwill
+amortization of goodwill
 \end_layout
 
 \begin_layout Enumerate
@@ -2313,7 +2301,7 @@ What does all this mean for owners? Did the shareholders of Company A buy
 \end_layout
 
 \begin_layout Itemize
-Buffet has an answer for these questions - "owner earnings".
+Buffett has an answer for these questions - "owner's earnings".
  It represent:
 \end_layout
 
@@ -2412,8 +2400,8 @@ Questioning GAAP figures may seem impious to some.
 \begin_layout Itemize
 Accounting numbers are of enormous help to anyone evaluating the worth of
  a business and tracking its progress.
- It's a god starting point for evaluating the businesses, but managers and
- owners need to remember that accounting is but an aid to business thinking,
+ It's a good starting point for evaluating the businesses, but managers
+ and owners need to remember that accounting is but an aid to business thinking,
  never a substitute for it.
 \end_layout
 
@@ -2496,6 +2484,7 @@ Some important numbers worth to have a look on
  
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Percent of Sales.
  If you are interested in a company because of a particular product, you
@@ -2503,13 +2492,12 @@ Percent of Sales.
  What % of sales does it represent?
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-[stocks in general] Strong balance sheet (debt-to-equity ratio)
+Strong balance sheet (debt-to-equity ratio).
 \end_layout
 
 \begin_layout Itemize
-[stocks in general] P/E Ratio - as detailed above.
+P/E Ratio - as detailed above.
  So, it's fairly priced if its equal its growth rate of earnings.
  If a company's P/E is less than the growth rate, it may be a bargain.
  On the other hand, if P/E is higher than the growth rate, it is an unattractive
@@ -2520,19 +2508,18 @@ Percent of Sales.
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
 Another formula enables us to compare growth rates to earnings, while also
  taking the dividends into account.
  Find the long-term growth rate and dividend yield.
  Sum them up and divide by the P/E ratio.
  If the result is less than 1, it's poor, 1.5 is all right and 2 or more
  is what you're really looking for.
- (TODO to excell!)
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-[stocks in general] The cash position.
+The cash position.
  Calculate cash net of long-term debt.
  When a company is sitting on billions in cash, it's definitely something
  you want to know about.
@@ -2542,7 +2529,7 @@ Another formula enables us to compare growth rates to earnings, while also
 \end_layout
 
 \begin_layout Itemize
-[stocks in general] The debt factor.
+The debt factor.
  How much does the company owe, and how much does it own? Debt versus (stockhold
 er's) equity.
  A normal corporate balance sheet has 75% equity and 25% debt.
@@ -2613,13 +2600,13 @@ Hidden Assets.
 \end_layout
 
 \begin_layout Itemize
-[stocks in general] The percentage of institutional ownership.
+The percentage of institutional ownership.
  The lower the better.
 \end_layout
 
 \begin_layout Itemize
-[stocks in general] Whether insiders are buying and whether the company
- itself is buying back its own shares.
+Whether insiders are buying and whether the company itself is buying back
+ its own shares.
  Both are positive signs.
  
 \end_layout
@@ -2640,7 +2627,7 @@ Cash Flow.
 
 \end_deeper
 \begin_layout Itemize
-(Jason Kelly) Some Fundamental Stock Measures
+(Jason Kelly) Some fundamental stock measures
 \end_layout
 
 \begin_deeper
@@ -2655,10 +2642,6 @@ Current Ratio - dividing current assets (things that are used up and replenished
  It reveals how easily company can deal with unexpected expenses or opportunitie
 s.
  Ideally look for companies with a current ratio of at least 2-to-1.
-\end_layout
-
-\begin_layout Itemize
-Fiscal years - company-defined years
 \end_layout
 
 \begin_layout Itemize
@@ -2807,20 +2790,17 @@ Example: Monster Beverage: Total equity: $3.53B, shares outstanding: $567.81M,
 \begin_layout Itemize
 Some people say that book value and changes in book value is one of the
  most important thing (compare it with % annual change of share value and
- SAP500 - and from all 3 calculate compounding annual gain) - 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=YmHSk5zOrq8}
-\end_layout
+ SAP500 - and from all 3 calculate compounding annual gain) (
+\begin_inset CommandInset href
+LatexCommand href
+name "source"
+target "https://www.youtube.com/watch?v=YmHSk5zOrq8"
+literal "false"
 
 \end_inset
 
- Svan Carlin's advice - when he stock price is significantly higher than
+).
+ Svan Carlin's advice - when the stock price is significantly higher than
  the book value, then sell.
  When the stock price is extremely low than book value, then buy.
 \end_layout
@@ -2879,8 +2859,8 @@ A measurement of the ability to pay short term and long term obligations.
 
 \begin_layout Itemize
 Assets / liabilities.
- It's interesting metric, you don't want to be too low, nor too high (like
- above 3 or so).
+ It's an interesting metric, you don't want to be too low, nor too high
+ (like above 3 or so).
  Ideally between 1 and 2.
 \end_layout
 
@@ -2892,9 +2872,10 @@ Sven Carlin tips:
 
 \begin_deeper
 \begin_layout Itemize
-Strong finances - assets at least twice current liabilities Long term debt
- should not exceed net current assets (working capital) For public utilities,
- the debt should not exceed twice the stock equity (at book value).
+Strong finances - assets at least twice current liabilities.
+ Long term debt should not exceed net current assets (working capital).
+ For public utilities, the debt should not exceed twice the stock equity
+ (at book value).
 \end_layout
 
 \begin_layout Itemize
@@ -2915,14 +2896,14 @@ Earnings growth - at least one-third increase in earnings over the past
 \end_layout
 
 \begin_layout Itemize
-Moderate Ratio of price to assets - current price should be more than 1.5
+Moderate ratio of price to assets - current price should be more than 1.5
  times the book value.
  Why? The lower the price to book, the less risk as there are assets backing
  the value.
 \end_layout
 
 \begin_layout Itemize
-Some numbers to check: Book value per share, dividend growth, Altman Z-Score,
+Some numbers to check: book value per share, dividend growth, Altman Z-Score,
  profit margins, return on capital employed, and owner's earnings.
 \end_layout
 
@@ -2969,7 +2950,7 @@ The above estimate should be developed preferably from a projection of the
  power.
  However, an averaging of the results of an unusually good period and a
  subnormal period might be acceptable - for example, giving 50% weight to
- the 1936-40 average after taxes and 50% weight ti 1947-48 or 1946-48.
+ the 1936-40 average after taxes and 50% weight to 1947-48 or 1946-48.
 \end_layout
 
 \begin_layout Enumerate
@@ -2982,12 +2963,12 @@ The multiplier should reflect prospective longer-term changes in earnings.
  A multiplier of 12 is suitable for stocks with neutral prospects.
  Increases or decreases from this figure must depend on the judgment and
  preferences of the appraiser.
- in all but the most exceptional cases, however, the maximum multiplier
+ In all but the most exceptional cases, however, the maximum multiplier
  should be 20 and the minimum should be 8.
 \end_layout
 
 \begin_layout Enumerate
-If he tangible-asset value is less than the earning-power value (earning
+If the tangible-asset value is less than the earning-power value (earning
  power * multiplier), the latter may be reduced by some arbitrary factor
  to reflect this deficiency.
  Graham's suggested factor is as follows: deduct 1/4 of the amount by which
@@ -3062,7 +3043,7 @@ Factors affecting the capitalization rate
 
 \begin_deeper
 \begin_layout Itemize
-General Long-term prospects
+General long-term prospects
 \end_layout
 
 \begin_layout Itemize
@@ -3114,9 +3095,9 @@ Size of enterprise.
 
 \begin_layout Itemize
 Stock-equity ratio - market price of the junior stock issues to the total
- face amount of the debt, or the debt plus preferred stock.It is a rough
- measure of the protection afforded by the presence of a junior investment
- which must first bear the brunt of unfavorable developments.
+ face amount of the debt, or the debt plus preferred stock.
+ It is a rough measure of the protection afforded by the presence of a junior
+ investment which must first bear the brunt of unfavorable developments.
  
 \end_layout
 
@@ -3147,7 +3128,7 @@ Rather than value a business based on its cash flows (intrinsic valuation)
 \begin_layout Itemize
 Sum of the parts - useful if a business is made up of individual divisions
  or assets, you may want to value these parts individually for one of two
- groups
+ groups.
 \end_layout
 
 \begin_deeper
@@ -3238,7 +3219,7 @@ point in time in the future we put a closure on those cash flows.
 
 \end_deeper
 \begin_layout Subsubsection
-Warren Buffet On Intrinsic Valuation
+Warren Buffett On Intrinsic Valuation
 \end_layout
 
 \begin_layout Itemize
@@ -3399,7 +3380,7 @@ Actually, one of the first decisions you have to make is whether to value
 Equity valuation
 \emph default
 : Cash flows (Net income - capital expenditures + depreciation - change
- in non=cash working capital - principal repaid + new debt issues - preferred
+ in non-cash working capital - principal repaid + new debt issues - preferred
  dividend ......
  and also dividends + share buybacks) considered are cash flows from assets,
  after debt payment and after making reinvestments needed for future growth.
@@ -3634,7 +3615,7 @@ $2 * 1.02 / (0.08 - 0.02) = $34
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-These cash flows are the essential building blocks for virtual every financial
+These cash flows are the essential building blocks for virtually every financial
  asset.
  Bonds, stocks, or real estate properties can ultimately be broken down
  into sets of cash flows.
@@ -3681,11 +3662,11 @@ Unlike dividends, stock buybacks can spike in some years and may need to
 \begin_layout Itemize
 From net income to potential dividend (or free cash flow to equity): net
  income (earnings to equity investors, after taxes and interest expenses)
- + depreciation (accounting expense - reduced earnings- but not a cash expense)
- - capital expenditures (not an accounting expense, but still a cash outflow)
- - change in non-cash working capital (increases in inventory and accounts
- receivable reduce cash flows, and increases in accounts payable increase
- cash flows.
+ + depreciation (accounting expense - reduced earnings - but not a cash
+ expense) - capital expenditures (not an accounting expense, but still a
+ cash outflow) - change in non-cash working capital (increases in inventory
+ and accounts receivable reduce cash flows, and increases in accounts payable
+ increase cash flows.
  If working capital increases, cash flow decreases) - (principal repaid
  - new debt issues) (principal repayments are cash outflows but new debt
  generates cash inflows.
@@ -3697,10 +3678,10 @@ From net income to potential dividend (or free cash flow to equity): net
 \end_layout
 
 \begin_layout Itemize
-A more conservative version of cash flows to equity, which Warren Buffet
+A more conservative version of cash flows to equity, which Warren Buffett
  calls "owners` earnings", ignores the net cash flow from debt.
- Owner Earnings (Buffet) - A better measure of economic performance than
- cash flow or GAAP earnings, equal to a) operating earnings plus b) depreciation
+ Owners' Earnings is a better measure of economic performance than cash
+ flow or GAAP earnings, equal to a) operating earnings plus b) depreciation
  and other non-cash charges minus c) required reinvestment in a business
  to maintain present competitive position and unit volume.
 \end_layout
@@ -3805,7 +3786,7 @@ Consider how much of those earnings the firm invested to create future growth.
 
 \begin_layout Enumerate
 If looking at cash flows to equity, consider the cash flows from net debt
- issues (debt issued minus debt repaid)
+ issues (debt issued minus debt repaid).
 \end_layout
 
 \end_deeper
@@ -3972,25 +3953,29 @@ This is used almost in every valuation.
  If you want a lower risk premium, you will pay a higher price.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-The most simple case - constant dividend forever and no growth: Value of
- stock = dividend / cost of equity.
- Cost of equity = dividend / value of stock, which is dividend yield.
- ERP = dividend yield - risk-free rate.
- In more realistic scenario, ERP is cost of equity - risk-free rate, where
- cost of equity = dividend yield + expected growth rate.
- If we assume, that a company grows but it earns no excess returns, the
- value of a stock can be calculated purely as a function of its earnings:
- value of stock = earnings / cost of equity, where cost of equity = earnings
- / value of stock, and ERP = earnings yield - risk free rate.
-\end_layout
-
-\begin_layout Standard
 
 \emph on
 Cost of Equity 
-\emph default
-= risk-free rate + beta * ERP
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can be calculated using CAPM (or alternative) model.
+\end_layout
+
+\begin_layout Itemize
+Or with Dividend Capitalization model (
+\begin_inset CommandInset href
+LatexCommand href
+name "ref"
+target "https://learn.g2.com/cost-of-equity#:~:text=Using%20this%20model%2C%20find%20the,adding%20the%20dividend%20growth%20rate."
+literal "false"
+
+\end_inset
+
+).
 \end_layout
 
 \end_deeper
@@ -4004,7 +3989,7 @@ Cost of Debt
 
 \begin_deeper
 \begin_layout Itemize
-Calculated as (risk-free rate + default spread) * (1- marginal tax rate)
+Calculated as (risk-free rate + default spread) * (1 - marginal tax rate)
 \end_layout
 
 \begin_layout Itemize
@@ -4090,13 +4075,22 @@ But you have to think of 2 types of default risks - one is a default risk
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Now when you have cost of equity and cost of debt:
+
+\emph on
+Cost of Capital
+\emph default
+ (Weighted Average Cost of Capital, or WACC)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-You estimate the weights for each, based on market values (rather than book
- value).
+Weighted average of what it costs you to raise equity and what cost you
+ to borrow money.
+\end_layout
+
+\begin_layout Itemize
+Now when you have cost of equity and cost of debt, you need to estimate
+ the weights for each, based on market values (rather than book value).
  For publicly traded firms, multiplying the share price by the number of
  shares outstanding will yield market value of equity.
  Estimating the market value of debt is usually a more difficult exercise,
@@ -4115,8 +4109,22 @@ We'll bring them together to get cost of capital.
 \end_layout
 
 \begin_layout Itemize
-Cost of capital = cost of equity * (equity/(debt+equity)) + cost of borrowing
- * (1-t)(debt/(debt+equity))
+And now you can use the cost of capital as your discount rate if you discounting
+ cash flows for entire business.
+ If you would choose to use cash flows to equity, you can stick to the cost
+ of equity.
+ 
+\end_layout
+
+\begin_layout Itemize
+Calculated as: cost of equity * (market value of equity / (market value
+ of equity + market value of debt)) + after-tax cost of debt * (market value
+ of debt / (market value of equity + market value of debt))
+\end_layout
+
+\begin_layout Itemize
+or, basically the same formula: cost of equity * (equity/(debt+equity))
+ + cost of borrowing * (1-t)(debt/(debt+equity))
 \end_layout
 
 \begin_deeper
@@ -4128,35 +4136,6 @@ where cost of equity is based upon bottom-up beta weights should be market
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-And now you can use the cost of capital as your discount rate if you discounting
- cash flows for entire business.
- If you would choose to use cash flows to equity, you can stick to the cost
- of equity.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Cost of Capital
-\emph default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Weighted average of what it costs you to raise equity and what cost you
- to borrow money.
-\end_layout
-
-\begin_layout Itemize
-Calculated as: cost of equity * (market value of equity / (market value
- of equity + market value of debt)) + after-tax cost of debt * (market value
- of debt / (market value of equity + market value of debt))
-\end_layout
-
 \end_deeper
 \begin_layout Paragraph
 
@@ -4210,7 +4189,7 @@ For estimating growth, you can:
 
 \begin_deeper
 \begin_layout Itemize
-look at the past at the historical growth at EPS is a good starting point
+Look at the past at the historical growth at EPS is a good starting point
  check how it is calculated - arithmetic (tend to be higher) vs geometric
  average, operating income, revenues, ...
  etc check estimation period - starting point for the computation can make
@@ -4222,14 +4201,14 @@ look at the past at the historical growth at EPS is a good starting point
 \end_layout
 
 \begin_layout Itemize
-see what analysts are estimating - they estimate growth in EPS and it is
- useful to know what their estimates are management forecasts can be biased,
+See what analysts are estimating - they estimate growth in EPS and it is
+ useful to know what their estimates are; management forecasts can be biased,
  because they cannot be objective.
  Analysts forecasts are mostly focused on short term.
 \end_layout
 
 \begin_layout Itemize
-estimate it by yourself - look at fundamentals - how much the firm is investing
+Estimate it by yourself - look at fundamentals - how much the firm is investing
  in new projects and what returns these projects are making for the firm.
  Growth has to be earned by a company.
  
@@ -4243,7 +4222,7 @@ Effectively, fundamental/intrinsic growth, it can come from one of two places:
 
 \begin_deeper
 \begin_layout Enumerate
-it can come from adding to its asset base, making a new investments and
+It can come from adding to its asset base, making a new investments and
  earning a return on those new investments.
  The growth in earnings for a firm from new investments is a function of
  two decisions:
@@ -4257,7 +4236,7 @@ how much to reinvest back into business for long term growth:
 \begin_deeper
 \begin_layout Standard
 equity earnings (portion of net income put back into the business, retention
- ratio = 1- dividends/net income)
+ ratio = 1 - dividends/net income)
 \end_layout
 
 \begin_layout Standard
@@ -4306,15 +4285,19 @@ adjust book value of debt for capitalized operating leases
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-final calculation: a) (net income): equity earnings * return on equity,
- or b) (operating income): reinvestment rate * return on capital
+\begin_layout Standard
+
+\series bold
+The final calculation
+\series default
+: a) (net income): equity earnings * return on equity, or b) (operating
+ income): reinvestment rate * return on capital
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-or, it can come from efficiency in managing existing assets, generating
- higher margins and higher returns on existing assets
+Or, it can come from efficiency in managing existing assets, generating
+ higher margins and higher returns on existing assets:
 \end_layout
 
 \begin_deeper
@@ -4322,8 +4305,11 @@ or, it can come from efficiency in managing existing assets, generating
 when the return on equity or capital is changing, there will be a second
  component to growth, positive if the return is increasing and negative
  if the return is decreasing.
- The expected growth rate in operating income will be: ROCt+1 * reinvestment
- rate + (ROCt+1 - ROCt) / ROCt
+ The expected growth rate in operating income will be: 
+\begin_inset Formula $ROC_{t+1}*reinvestment\,rate+(ROC_{t+1}-ROC_{t})/ROC_{t}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -4358,33 +4344,33 @@ Revenue growth and operating margins
 
 \begin_deeper
 \begin_layout Itemize
-all of the fundamental growth equations assume that the firm has a return
- on equity or return on capital it can sustain in the long term
+All of the fundamental growth equations assume that the firm has a return
+ on equity or return on capital it can sustain in the long term.
 \end_layout
 
 \begin_layout Itemize
-if operating income is negative or margins are expected to change over time:
+If operating income is negative or margins are expected to change over time:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-estimate growth rates in revenues over time.
+Estimate growth rates in revenues over time.
  Use historical revenue growth to get estimates of revenue growth in the
  near future; decrease the growth rate as the firm becomes larger; keep
- track of absolute revenues to make sure that the growth is feasible
+ track of absolute revenues to make sure that the growth is feasible.
 \end_layout
 
 \begin_layout Enumerate
-estimate expected operating margins each year.
+Estimate expected operating margins each year.
  Set a target margin that the firm will move towards (you can have a look
  at industry average or company history); adjust the current margin towards
- the target margin
+ the target margin.
 \end_layout
 
 \begin_layout Enumerate
-estimate the capital that needs to be invested to generate revenue growth
+Estimate the capital that needs to be invested to generate revenue growth
  and expected margins; estimate sales to capital ratio that you'll use to
- generate reinvestment needs each year
+ generate reinvestment needs each year.
 \end_layout
 
 \end_deeper
@@ -4421,7 +4407,7 @@ Liquidation value - most useful when assets are separable and marketable.
 \end_layout
 
 \begin_layout Itemize
-Multiple Approach - easiest approach but makes the valuation a relative
+Multiple approach - easiest approach but makes the valuation a relative
  valuation, not intrinsic valuation!
 \end_layout
 
@@ -4440,16 +4426,14 @@ What gets usually a valuation into a trouble is terminal value.
 \begin_deeper
 \begin_layout Itemize
 the stable growth rate cannot exceed the growth rate of the economy.
- One simple proxy for the nominal growth rate of the economy is the risk_free
- rate = expected inflation + expected real interest rate
+ One simple proxy for the nominal growth rate of the economy is the risk
+ free rate = expected inflation + expected real interest rate
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 nominal growth rate in economy = expected inflation + expected real growth
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 when will the firm reach stable growth? About 99% of growth companies have
  growth periods less than 10 years.
@@ -4457,15 +4441,14 @@ when will the firm reach stable growth? About 99% of growth companies have
  The stronger and more sustainable the competitive advantage a company has,
  the longer its growth period can be.
  So do some strategic analysis of a company.
- With return of capital and stable growth, set it to cost of capital (in
- majority of companies.
- if you think that your company really has a powerful comparative advantage,
- you can set return of capital higher than cost of capital, by 2-3%).
+ With return of capital and stable growth, set it to cost of capital.
+ If you think that your company really has a powerful comparative advantage,
+ you can set return of capital higher than cost of capital, by 2-3%.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-The two legitimate ways of estimating terminal value are to
+The two legitimate ways of estimating terminal value are to:
 \end_layout
 
 \begin_deeper
@@ -4518,7 +4501,7 @@ Since the terminal value equation is sensitive to small changes and thus
 
 \begin_deeper
 \begin_layout Enumerate
-no firm can grow forever at a rate higher than the growth rate of the economy
+No firm can grow forever at a rate higher than the growth rate of the economy
  in which it operates.
  In fact, a simple rule of thumb on the stable growth rate is that it should
  not exceed the risk-free rate used in the valuation; the risk-free rate
@@ -4527,7 +4510,7 @@ no firm can grow forever at a rate higher than the growth rate of the economy
 \end_layout
 
 \begin_layout Enumerate
-as firms move from high growth to stable growth, we need to give them the
+As firms move from high growth to stable growth, we need to give them the
  characteristics of stable growth firms; as a general rule, their risk levels
  should move towards the market (beta of one) and debt ratios should increase
  to industry norms.
@@ -4535,7 +4518,7 @@ as firms move from high growth to stable growth, we need to give them the
 \end_layout
 
 \begin_layout Enumerate
-a stable growth firm should reinvest enough to sustain the assumed growth
+A stable growth firm should reinvest enough to sustain the assumed growth
  rate.
  Given the relationship between growth, reinvestment rate, and returns that
  we established in the section on expected growth rates, we can estimate
@@ -4752,21 +4735,21 @@ To make comparisons across companies you got to use a multiple, and every
 
 \begin_deeper
 \begin_layout Itemize
-Usually in nominator - market value of equity / market value of equity +
+Usually in nominator: market value of equity / market value of equity +
  market value of debt / market value of equity + market value of debt -
  cash
 \end_layout
 
 \begin_layout Itemize
-Usually in denominator - revenues / earnings / cash flows / book value
+Usually in denominator: revenues / earnings / cash flows / book value
 \end_layout
 
 \begin_layout Itemize
-Equity multiples - PE, PEG, PBV, PS
+Equity multiples: PE, PEG, PBV, PS
 \end_layout
 
 \begin_layout Itemize
-Firm multiples - Value/FCFF, Value/EBIT
+Firm multiples: Value/FCFF, Value/EBIT
 \end_layout
 
 \end_deeper
@@ -4854,16 +4837,12 @@ clean
 \end_deeper
 \begin_layout Itemize
 There are even sector P/E ratios, or P/E ratios of the whole markets.
- One example: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.gurufocus.com/sector_shiller_pe.php}
-\end_layout
+ One example 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.gurufocus.com/sector_shiller_pe.php"
+literal "false"
 
 \end_inset
 
@@ -5273,20 +5252,16 @@ Acquirer`s Multiple
 
 \begin_deeper
 \begin_layout Itemize
-enterprise value / operating earnings - 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=nsQYjz9XI2c}
-\end_layout
+enterprise value / operating earnings (explanation 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=nsQYjz9XI2c"
+literal "false"
 
 \end_inset
 
- 
+) 
 \end_layout
 
 \begin_layout Itemize
@@ -5613,7 +5588,7 @@ When there is more than 1 variable to adjust for, when comparing across
  In a multiple regression, for instance, we attempt to explain a dependent
  variable (such as PE or EV/EBITDA) by using independent variables (such
  as growth and risk) that we believe influence the dependent variable.
- Regression offer two advantages over the subjective approach.
+ Regression offers two advantages over the subjective approach.
  First, the output from the regression gives us a measure of how strong
  the relationship is between the multiple and the variable(s) being used.
  Second, unlike the modified multiple approach, where we were able to control
@@ -6102,11 +6077,11 @@ Option Pricing Models
 
 \begin_layout Standard
 Not for valuing options, but businesses.
- Real Option advocates believe that you should be paying a premium on DCF
+ Real option advocates a belief that you should be paying a premium on DCF
  value estimates.
  This is not an alternative to DCF, it is its augmentation.
  For every hundred options, maybe two or three will pass the following tests
- you gotta meet to applying these models to valuing an asset
+ you gotta meet to applying these models to valuing an asset:
 \end_layout
 
 \begin_layout Itemize
@@ -6210,7 +6185,7 @@ The Binomial Option Pricing Model
 \end_layout
 
 \begin_layout Itemize
-More general and less restrictive model, but it requires mode data on how
+More general and less restrictive model, but it requires more data on how
  the price of the underlying asset will evolve over time.
  
 \end_layout
@@ -6564,7 +6539,7 @@ Be suspicious of companies that trumpet earnings projections and growth
 
 \begin_deeper
 \begin_layout Standard
-Buffet and Munger don't know today what Berkshire will earn next year -
+Buffett and Munger don't know today what Berkshire will earn next year -
  not even what they will earn next quarter.
  They are suspicious of those CEOs who regularly claim they do know the
  future.
@@ -6583,7 +6558,7 @@ Managers that always promise to "make the numbers" will at some point be
 The supreme irony of business management is that it is far easier for an
  inadequate CEO to keep his job than it is for an inadequate subordinate.
  However, a CEO who doesn't perform is frequently carried in definitely.
- One reason is that performance standards for is job seldom exist.
+ One reason is that performance standards for his job seldom exist.
  When they do, they are often fuzzy or they may be waived or explained away,
  even when the performance shortfalls are major and repeated.
  At too many companies, the boss shoots the arrow of managerial performance
@@ -6660,9 +6635,9 @@ No controlling owner who is not involved in management.
  If they become unhappy with either the competence or integrity of the manager,
  they can go directly to the owner (who may also be on the board) and report
  their dissatisfaction.
- This situation is ideal for an outside director, since he need make his
- case only to a single, presumably interested owner, who can forthwith effect
- change if the argument is persuasive.
+ This situation is ideal for an outside director, since he needs to make
+ his case only to a single, presumably interested owner, who can forthwith
+ effect change if the argument is persuasive.
  Even so, the dissatisfied director has only that single course of action.
  If he remains unsatisfied about a critical matter, he has no choice but
  to resign.
@@ -6727,7 +6702,7 @@ It's almost impossible, for example, in a boardroom populated by well-mannered
  committee-armer, as always, with support from a high-paid consultant-reports
  on a mega-grant of options to the CEO, it would be like belching at the
  dinner table for a director to suggest that the committee reconsider.
- Buffet was, over a span of 40 years, on 19 public-company boards (excluding
+ Buffett was, over a span of 40 years, on 19 public-company boards (excluding
  Berkshire's) and have interacted with perhaps 25 directors.
  The great majority of these directors lacked at least one of the 3 qualities
  he values (business-savvy, interested and shareholder-oriented).
@@ -6834,11 +6809,11 @@ The best managers think like owners in making business decisions.
 \begin_layout Itemize
 The first is the importance of forthrightness and candor in communications
  by managers to shareholders.
- Buffet prepares the content of the Berkshire's annual report using words
+ Buffett prepares the content of the Berkshire's annual report using words
  and numbers people of average intelligence can understand; and all investors
  get the same information at the same time.
- Buffet and Berkshire avoid making predictions, a bad managerial habit that
- too often leads other managers to make up their financial reports.
+ Buffett and Berkshire avoid making predictions, a bad managerial habit
+ that too often leads other managers to make up their financial reports.
  
 \end_layout
 
@@ -6859,7 +6834,7 @@ s Buffett identifies between CEOs and other employees.
 \end_layout
 
 \begin_layout Itemize
-The best solution, Buffet instructs, is to take great care in identifying
+The best solution, Buffett instructs, is to take great care in identifying
  CEOs who will perform capably regardless of weak structural restraints.
  Large institutional shareholders must exercise their power to oust CEOs
  that do not measure up to the demands of corporate stewardship.
@@ -6890,10 +6865,10 @@ Director power is weakest in the case where there is a controlling shareholder
 \begin_layout Itemize
 The most common situation, however, is a corporation without a controlling
  shareholder.
- This is where management problems are most acute, Buffet says.
+ This is where management problems are most acute, Buffett says.
  It would be helpful if directors could supply necessary discipline, but
  board congeniality usually prevents that.
- To maximize board effectiveness in this situation, Buffet believes the
+ To maximize board effectiveness in this situation, Buffett believes the
  board should be small in size and composed mostly of outside directors.
  The strongest weapon a director can wield in these situations remains his
  or her threat to resign.
@@ -6902,7 +6877,7 @@ The most common situation, however, is a corporation without a controlling
 \begin_layout Itemize
 All these situations do share a common characteristic: the terrible manager
  is a lot easier to confront or remove than the mediocre manager.
- A chief problem in all governance structures, Buffet emphasizes, is that
+ A chief problem in all governance structures, Buffett emphasizes, is that
  in corporate America evaluation of chief executive officers is never conducted
  in regular meetings in the absence of that chief executive.
  Holding regular meetings without the chief executive to review his or her
@@ -6940,7 +6915,7 @@ This enables Berkshire CEOs to manage with a long-term horizon ahead of
 \end_layout
 
 \begin_layout Itemize
-Buffet emphasizes that performance should be the basis for executive pay
+Buffett emphasizes that performance should be the basis for executive pay
  decisions.
  Executive performance should be measured by profitability, after profits
  are reduced by a charge for the capital employed in the relevant business
@@ -6999,23 +6974,20 @@ noprefix "false"
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Some Technical Stock Measurements
 \end_layout
 
 \begin_layout Standard
-This was mostly from the book written by Jason Kelly.
-\end_layout
-
-\begin_layout Itemize
-The idea is that we want to buy companies with solid fundamentals per the
+This is mostly from the book written by Jason Kelly.
+ The idea is that we want to buy companies with solid fundamentals per the
  previous section, just as their stock prices show confirming signals per
  the tools in this section.
  It can be a good strategy to combine SMA, MACD, and RSI.
  Timing is, if not impossible, very difficult.
  However, anything offering a chance to avoid years like 2008 is worth exploring.
  Stay put most of the time to compound strong performance, but keep an eye
- on the chart to see if SMA, MACD, and RSI warn of big trouble ahead!! When
+ on the chart to see if SMA, MACD, and RSI warn of big trouble ahead! When
  they do, you'll get out and wait for buy signals to take advantage of recovery
  on sale.
  
@@ -7031,20 +7003,40 @@ Simple Moving Average (SMA)
 \begin_layout Itemize
 Moving average of the stock's price and smooths out the bounciness of the
  raw price so you can better detect its trend.
- The position of the current price in relation to the SMA provides hints
+ 
+\end_layout
+
+\begin_layout Itemize
+The position of the current price in relation to the SMA provides hints
  on where the price is heading next.
- A price line's relationship to its SMA shows you its trend.
+ 
+\end_layout
+
+\begin_layout Itemize
+A price line's relationship to its SMA shows you its trend.
  If the price is staying above the SMA at a rising angle, that's rising
  trend, or uptrend.
  If the price is staying below the SMA at a falling angle, that's a falling
  trend, or downtrend.
- The easiest way to get buy and sell hints from this measure is to watch
+ 
+\end_layout
+
+\begin_layout Itemize
+The easiest way to get buy and sell hints from this measure is to watch
  for when the investment's price line crosses above or below its SMA.
- When the investment is moving up, the SMA acts as a support line, and the
+ 
+\end_layout
+
+\begin_layout Itemize
+When the investment is moving up, the SMA acts as a support line, and the
  price dipping below the line and moving back up signals a buy.
  When the investment is moving down, the SMA acts as a resistance line,
  and the price popping above the line and moving back down signals a sell.
- Many traders use several moving averages together, such as a 20-day, 50-day,
+ 
+\end_layout
+
+\begin_layout Itemize
+Many traders use several moving averages together, such as a 20-day, 50-day,
  and a 200-day and watch for them to cross over each other for hints on
  future price direction.
  
@@ -7133,10 +7125,17 @@ Alerts you to when a stock's price has stretched too far in one direction
  or the other and is due for a snap back toward the middle.
  When it stretches too far up, it's called overbought.
  When it stretches too far down, it's called oversold.
- It fluctuates between 0 and 100.
+\end_layout
+
+\begin_layout Itemize
+It fluctuates between 0 and 100.
  Most commonly, anything higher than 70 is considered overbought and due
  for a pullback, and anything lower than 30 oversold and due for a bounce.
- Like SMA and MACD, RSI needs a time frame.
+ 
+\end_layout
+
+\begin_layout Itemize
+Like SMA and MACD, RSI needs a time frame.
  The default is a 14-period time frame, and the periods can be again hours,
  days, weeks, or anything else, but usually days.
 \end_layout
@@ -7425,7 +7424,8 @@ What are your comparable companies? Even if a young company operates in
 How do you control for survival? Intuitively, we would expect the relative
  value of a young company (the multiple of revenues or earnings that we
  assign it) to increase with its likelihood of survival.
- However, putting this intuitive principle into practice is not easy to.
+ However, putting this intuitive principle into practice is not easy to
+ do.
 \end_layout
 
 \end_deeper
@@ -7463,7 +7463,7 @@ Estimating future cash flows - there are 3 key numbers in forecasting future
  estimation.
  The product of the forecasted revenues and expected operating margins yields
  the expected operating income.
- To estimate taxes use on this income, consider the possibility of carrying
+ To estimate taxes used on this income, consider the possibility of carrying
  forward operating losses from earlier years to offset income in later years.
  
 \end_layout
@@ -7471,7 +7471,7 @@ Estimating future cash flows - there are 3 key numbers in forecasting future
 \begin_layout Itemize
 Estimating discount rates - there are two problems that we face in estimating
  discount rates for young companies.
- The first is that the market history available is to short and volatile
+ The first is that the market history available is too short and volatile
  to yield reliable estimates of beta or cost of debt.
  The second is that the cost of capital can be expected to change over time
  as the young company matures.
@@ -7609,7 +7609,7 @@ Adjust the multiple for the firm's characteristics at the forward period:
 Adjust for time value and survival risk: when forward multiples are used
  to derive value, we need to adjust for the time value of money and the
  likelihood that the firm will not survive to get to the forward value.
- You need to incorporate the expected revenues fir a firm, applying the
+ You need to incorporate the expected revenues for a firm, applying the
  sector average multiple, and adjust for the likelihood of failure.
 \end_layout
 
@@ -8251,7 +8251,7 @@ Valuation solutions
 
 \begin_deeper
 \begin_layout Itemize
-If they key to valuing mature companies is assessing the potential increase
+If the key to valuing mature companies is assessing the potential increase
  in value from changing the way they are run, these changes can be categorized
  broadly into 3 groups: changes in operations, changes in financial structure,
  and changes in non-operating assets.
@@ -8527,7 +8527,7 @@ Is the decline in firm's operations reversible or permanent? If reversible,
  In making these estimates, you have to be realistic in considering what
  health will look like for the declining firm - it may very well require
  firm to shrink and settle for little or no growth in the long term.
- Wen estimating discount rates, you have to assume that debt ratios will,
+ When estimating discount rates, you have to assume that debt ratios will,
  in fact, decrease over time if the firm is over levered, and that the firm
  will derive tax benefits from debt as it turns the corner toward profitability.
  This is consistent with the assumption that the firm will remain a going
@@ -8567,11 +8567,10 @@ Relative Valuation
 There are two ways in which relative valuation can be adapted to distressed
  or declining companies.
  In the first, you compare a distressed company's valuation to the valuations
- of other distressed companies.
- (be careful, you can lump together firms that are distressed to different
- degrees) In the second, you use healthy companies as comparable companies,
- but find a way to adjust for the distress that the firm you are valuing
- is facing.
+ of other distressed companies (be careful, you can lump together firms
+ that are distressed to different degrees).
+ In the second, you use healthy companies as comparable companies, but find
+ a way to adjust for the distress that the firm you are valuing is facing.
 \end_layout
 
 \end_deeper
@@ -8717,6 +8716,13 @@ Banks and insurance companies are required to meet regulatory capital ratios,
 \end_layout
 
 \begin_layout Itemize
+Insurance companies make their income in two ways.
+ One is through the premiums they receive from those who buy insurance protectio
+n from them and the other is income from the investment portfolios that
+ they maintain to service the claims.
+\end_layout
+
+\begin_layout Itemize
 Financial service firms are often constrained in terms of where they can
  invest their funds.
 \end_layout
@@ -8781,9 +8787,8 @@ Defining cash flow for a bank is also difficult, even if it is defined as
  Unlike manufacturing firms that invest in plan, equipment, and other fixed
  assets, financial service firms invest primarily in intangible assets such
  as brand name and human capital.
- Consequently.
- their investments for future growth often are treated as operating expenses
- in accounting statements.
+ Consequently, their investments for future growth often are treated as
+ operating expenses in accounting statements.
  If we define working capital as the difference between current assets and
  current liabilities, a large proportion of a bank's balance sheet would
  fall into one or the other of these categories.
@@ -8829,11 +8834,6 @@ If you accept the propositions that capital at a bank should be narrowly
 
 \begin_deeper
 \begin_layout Itemize
-value of equity = expected dividends next year / (cost of equity - expected
- growth rate)
-\end_layout
-
-\begin_layout Itemize
 cost of equity - for discounting cash flows, with the possibility that the
  cost may vary across time
 \end_layout
@@ -8841,7 +8841,7 @@ cost of equity - for discounting cash flows, with the possibility that the
 \begin_layout Itemize
 the proportion of earnings that we assume will be paid out in dividends
  - this is the dividend payout ratio, and higher payout ratios will translate
- into more dividends fr any given level of earnings
+ into more dividends for any given level of earnings
 \end_layout
 
 \begin_layout Itemize
@@ -9066,11 +9066,6 @@ PB - other things remaining equal, higher growth rates in earnings, higher
  
 \end_layout
 
-\begin_layout Itemize
-P/B ratio seems to be useless - XTB conference.
- TODO?
-\end_layout
-
 \begin_layout Paragraph
 
 \series bold
@@ -9103,7 +9098,7 @@ Operating risk: risk can vary widely across financial service firms within
 
 \begin_layout Itemize
 Transparency: transparency in reporting allows investors to make better
- assessments of value, and the failure to b transparent may be a deliberate
+ assessments of value, and the failure to be transparent may be a deliberate
  attempt to hide risk.
  Search for firms that provide details about their operations and the risks
  that they may be exposed to.
@@ -9144,7 +9139,7 @@ Value driver #1:
 \series default
  Normalized earnings.
  A cyclical firm should be valued based upon earnings in a normal economic
- year, not earnings at the peak or trough of a cycle.
+ year, not earnings at the peak or through of a cycle.
  Looking past the ups and downs of economic cycles, what are the normalized
  earnings for your company?
 \end_layout
@@ -9179,7 +9174,7 @@ Cyclical commodities are drawn from sectors such as housing and automobiles.
 \begin_layout Itemize
 Commodity companies derive their earnings from producing commodities that
  may become inputs to other companies in the economy (oil, iron ore) or
- be desired as investments in their own right (gold, platinum, diamonts)/
+ be desired as investments in their own right (gold, platinum, diamonds).
 \end_layout
 
 \begin_layout Itemize
@@ -9612,7 +9607,7 @@ Research expenses, notwithstanding the uncertainty about future benefits,
  products that emerge from the research.
  It can be, for example for biotechnology company, 10 years, as it is the
  approval process for new drugs.
- Fir simplicity, it can be assumed that the amortization is uniform over
+ For simplicity, it can be assumed that the amortization is uniform over
  time, and in the case of the research asset with a 10-year life, you assume
  that one-tenth of the expense is written off each year to get the cumulated
  amortization expense for the current year (sum of all cumulations).
@@ -9642,7 +9637,7 @@ The reported accounting income is adjusted to reflect the capitalization
  income are added back to the operating income, reflecting their re-categorizati
 on as capital expenses.
  Next, the amortization of the research asset is treated like depreciation
- is and netted out to arrive at the adjusted operating income and adjusted
+ and netted out to arrive at the adjusted operating income and adjusted
  net income:
 \end_layout
 
@@ -9851,7 +9846,7 @@ Dealing with Equity options
 \begin_layout Itemize
 Firms that pay managers and others with equity options are giving away some
  of the stockholders' equity to these people.
- TO deal with the resulting loss in value to common stockholders, there
+ To deal with the resulting loss in value to common stockholders, there
  are three approaches that are employed in intrinsic valuation:
 \end_layout
 
@@ -9874,8 +9869,7 @@ aggregate value of equity / (# of shares outstanding + # of options)
 \begin_layout Enumerate
 Incorporate the exercise proceeds from the options in the numerator and
  then divide by the number of shares that would be outstanding after exercise;
- this is the treasury stock approach.
- 
+ this is the treasury stock approach:
 \end_layout
 
 \begin_deeper
@@ -9959,7 +9953,7 @@ Reasonable prices for "true" earnings: many firms with intangible assets
 \end_layout
 
 \begin_layout Itemize
-Spending to preserve and augment these intangible assets: Intangible assets
+Spending to preserve and augment these intangible assets: intangible assets
  do not always stay valuable, especially if they are ignored.
  Focus on firms that invest in these assets (by spending on R&D, recruiting,
  or advertising) to preserve and grow value.

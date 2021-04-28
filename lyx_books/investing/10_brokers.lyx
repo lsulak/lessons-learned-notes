@@ -136,6 +136,7 @@ Good links:
 \end_layout
 
 \begin_layout Itemize
+(Worldwide/USA) 
 \begin_inset ERT
 status open
 
@@ -182,10 +183,18 @@ USA.
 \end_layout
 
 \begin_layout Standard
-At the risk of oversimplification, the introducing broker provides front-end
- services, such as opening the account and taking your orders.
- The clearing broker provides back-end services, such as executing your
- orders and actually holding on to your investment.
+At the risk of oversimplification, 
+\series bold
+the introducing broker 
+\series default
+provides front-end services, such as opening the account and taking your
+ orders.
+ 
+\series bold
+The clearing broker
+\series default
+ provides back-end services, such as executing your orders and actually
+ holding on to your investment.
  In other words, the clearing broker has custody of your investment, not
  the introducing broker.
  Because SIPC protects the custody of your investment, this clearing arrangement
@@ -242,7 +251,7 @@ SK/CZ
 \end_layout
 
 \begin_layout Itemize
-Interactive Brokers 
+Interactive Brokers (written in 2020)
 \end_layout
 
 \begin_deeper
@@ -363,7 +372,7 @@ Verdict: TODO
 
 \end_deeper
 \begin_layout Itemize
-Lynx
+Lynx (written in 2020)
 \end_layout
 
 \begin_deeper
@@ -411,23 +420,23 @@ Lynx is a broker, which uses for IB for trading, but Lynx has support in
 \end_layout
 
 \begin_layout Itemize
-Deposit and withdrawal are not user-friendly
+Deposit and withdrawal are not user-friendly.
 \end_layout
 
 \begin_layout Itemize
-Not user-friendly desktop platform
+Not user-friendly desktop platform.
 \end_layout
 
 \begin_layout Itemize
-Financial information is not publicly available
+Financial information is not publicly available.
 \end_layout
 
 \begin_layout Itemize
-Not listed on stock exchange
+Not listed on stock exchange.
 \end_layout
 
 \begin_layout Itemize
-Does not hold a banking license
+Does not hold a banking license.
 \end_layout
 
 \begin_layout Itemize
@@ -438,12 +447,12 @@ Verdict: No
 
 \end_deeper
 \begin_layout Itemize
-eToro 
+eToro (written in 2020)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Stocks, bonds, ETFs, crypto, Forex, be careful on CFD's
+Stocks, bonds, ETFs, crypto, Forex, be careful on CFD's.
 \end_layout
 
 \begin_layout Itemize
@@ -464,16 +473,16 @@ url{https://www.trustpilot.com/review/etoro.co.uk}
 \end_layout
 
 \begin_layout Itemize
-More like social trading platform rather than a broker
+More like social trading platform rather than a broker.
 \end_layout
 
 \begin_layout Itemize
-No transaction fees, but probably bigger spread, 10USD/month as inactivity
- fee, and 5 USD for cash withdrawals
+No transaction fees, but probably bigger spread, $10/month as inactivity
+ fee, and $5 for cash withdrawals.
 \end_layout
 
 \begin_layout Itemize
-Account only in USD
+Account only in USD.
 \end_layout
 
 \begin_layout Itemize
@@ -483,17 +492,17 @@ Protection
 \begin_deeper
 \begin_layout Itemize
 eToro UK clients can expect to be compensated by the maximum amount of £85,000
- guaranteed by the
-\end_layout
-
-\begin_layout Itemize
-Financial Services Compensation Scheme (FSCS).
+ guaranteed by the Financial Services Compensation Scheme (FSCS).
 \end_layout
 
 \begin_layout Itemize
 Other investors will have their live trading accounts with eToro (Europe)
  Limited, which is regulated by the Cypriot watchdog, CySEC.
- The amount of investment protection coverage at eToro Europe is a maximum
+ 
+\end_layout
+
+\begin_layout Itemize
+The amount of investment protection coverage at eToro Europe is a maximum
  of €20,000.
  This threshold is set by the Cypriot Investors Compensation Fund.
 \end_layout
@@ -513,21 +522,21 @@ Verdict: No
 
 \end_deeper
 \begin_layout Itemize
-Degiro 
+Degiro (written in 2020)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-probably not available for SK people since 23.10.2018? Only available to people
- for which countries Degiro got a department (CZ for example)
+Probably not available for SK people since 23.10.2018? Only available to people
+ for which countries Degiro got a department (CZ for example).
 \end_layout
 
 \begin_layout Itemize
-from 2013, available in 18 EU countries
+From 2013, available in 18 EU countries.
 \end_layout
 
 \begin_layout Itemize
-One of the biggest EU broker
+One of the biggest EU broker.
 \end_layout
 
 \begin_layout Itemize
@@ -542,15 +551,15 @@ Cash/Margin account, but it's important that your account is associated
 
 \begin_layout Itemize
 Account protection - up to 20k EUR (Holland protection scheme), but all
- account money is fairly separated
+ account money is fairly separated.
 \end_layout
 
 \begin_layout Itemize
-Reporting - basic report each year for taxes, no sophisticated analysis
+Reporting - basic report each year for taxes, no sophisticated analysis.
 \end_layout
 
 \begin_layout Itemize
-Customer support - phone or emails
+Customer support - phone or emails.
 \end_layout
 
 \begin_layout Itemize
@@ -664,7 +673,7 @@ Revolut
 
 \begin_deeper
 \begin_layout Itemize
-Not really developed yet
+Not really that advanced (yet).
 \end_layout
 
 \begin_layout Itemize
@@ -679,30 +688,34 @@ UK
 \end_layout
 
 \begin_layout Itemize
-Vanguard (ETFs are free, but stocks are not - 7 dollars per trade for the
- first 25 trades, then 20 dollars,
+Vanguard (written in 2020)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-20 dollars fee annually, minimum of investing in their funds is quite big
- - 1000 or 3000 dollars)
+ETFs are free, but stocks are not - $7 per trade for the first 25 trades,
+ then $20.
+\end_layout
+
+\begin_layout Itemize
+$20 fee annually, minimum of investing in their funds is quite big - $1k
+ or $3k.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Verdict: Maybe
+Verdict: Maybe if it's less expensive
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Freetrade
+Freetrade (written in 2020)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Quite young and not really developed? (2020)
+Quite young and not really developed?
 \end_layout
 
 \begin_layout Itemize
@@ -717,7 +730,7 @@ Verdict: No
 
 \end_deeper
 \begin_layout Itemize
-Robinhood 
+Robinhood (written in 2020)
 \end_layout
 
 \begin_deeper
@@ -768,6 +781,7 @@ Mostly for inspiration; plus, these brokers can expand to the Europe in
  the future.
  Since some of them seem to be truly excellent, it's good to know about
  these.
+ Written in 2020.
 \end_layout
 
 \begin_layout Itemize
@@ -779,7 +793,7 @@ E-Trade (USA only)
 \end_layout
 
 \begin_layout Itemize
-Fidelity Investments (USA only!)
+Fidelity Investments (USA only)
 \end_layout
 
 \begin_layout Itemize
@@ -790,7 +804,7 @@ FirstTrade
 \begin_layout Itemize
 Long time on the market, from 1985, commission free model, different retirement
  accounts, trust accounts, stocks, mutual funds, options, ETFs, bonds, internati
-onal accounts, DRIP, extended hours; but desktop platform is quite outdated)
+onal accounts, DRIP, extended hours; but desktop platform is quite outdated.
 \end_layout
 
 \end_deeper
@@ -803,7 +817,11 @@ Webull
 Free stock trading, 5k stocks and ETFs in US, short selling, free extended
  hours trading, for intermediate investors, but no options, mutual funds,
  no bonds, no crypto, no retirement accounts, it's not a web-based platform!
- It's more for traders probably than long term investors)
+ 
+\end_layout
+
+\begin_layout Itemize
+It's more for traders probably than long term investors.
 \end_layout
 
 \end_deeper
@@ -846,7 +864,7 @@ is-the-European-market-inhibiting-financial-market-innovation}
 \begin_layout Itemize
 EquityMultiple (Real Estate Platform - bad liquidity, REITs have them better;
  it's crowd-sourcing, minimum 5k dollars) - there is also RealMogul as an
- alternative
+ alternative.
 \end_layout
 
 \begin_layout Itemize

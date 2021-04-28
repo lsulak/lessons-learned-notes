@@ -172,8 +172,7 @@ url{https://www.kiplinger.com/}
 \end_inset
 
  - broader scope than MarketWatch - beyond investing, also personal finance
- such as spending, loans, college tuition, ...
- 
+ such as spending, loans, college tuition, and more.
 \end_layout
 
 \begin_layout Itemize
@@ -202,7 +201,7 @@ url{https://www.theweek.com/}
 
 \end_inset
 
- - best written stories and trends and highlights
+ - best written stories and trends and highlights.
 \end_layout
 
 \begin_layout Section
@@ -252,7 +251,7 @@ url{https://www.ft.com/}
 \end_inset
 
  - it has a nice feature Saturday Weekend FT that summarizes week's key
- events 
+ events.
 \end_layout
 
 \begin_layout Itemize
@@ -458,22 +457,6 @@ url{https://www.tradesmart.cz/opcni-kurz-101/}
 \end_inset
 
  - if interested in trading, in CZ language
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://michaeljay.teachable.com/p/michael-jay-s-investor-membership-group/}
-\end_layout
-
-\end_inset
-
- - buy membership for at least 1 month?
 \end_layout
 
 \begin_layout Section
@@ -1086,8 +1069,7 @@ status open
 
 
 \backslash
-url{https://ibkr.info/node/3587?fbclid=IwAR0aD6Tcczd-bCHJDrpFKRlA9s31bkaBobde3OHl
-kcy7A5xIVQYjs6xAZDM}
+url{https://ibkr.info/node/3587}
 \end_layout
 
 \end_inset
@@ -1360,6 +1342,38 @@ status open
 
 \backslash
 url{https://ycharts.com/}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.tipranks.com/}
+\end_layout
+
+\end_inset
+
+ - !
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{https://www.newcannabisventures.com/cannabis-company-revenue-ranking/}
 \end_layout
 
 \end_inset
@@ -2598,23 +2612,6 @@ url{https://www.lookintobitcoin.com/charts/}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=F9GfXJ-IrSA&list=PLUkh9m2Borqnk6tJUpGzN4RcDUBA
-jovqN&index=4}
-\end_layout
-
-\end_inset
-
- - spreadsheet
 \end_layout
 
 \begin_layout Itemize

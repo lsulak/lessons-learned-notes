@@ -378,6 +378,19 @@ Books
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
+name "The Richest Man In Babylon"
+target "https://www.amazon.com/Richest-Man-Babylon-Magic-Story/dp/1939438632"
+literal "false"
+
+\end_inset
+
+ (George S.
+ Clason)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
 name "The Little Book of Common Sense Investing"
 target "https://www.amazon.co.uk/Little-Book-Common-Sense-Investing/dp/0470102101"
 literal "false"
@@ -471,6 +484,19 @@ literal "false"
 \end_inset
 
  (Howard Marks)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Rich Dad Poor Dad: What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!"
+target "https://www.amazon.com/Rich-Dad-Poor-Teach-Middle/dp/1612680178/ref=sr_1_1?dchild=1&keywords=rich+dad+poor+dad&qid=1618231505&s=books&sr=1-1"
+literal "false"
+
+\end_inset
+
+ (Robert T.
+ Kiyosaki)
 \end_layout
 
 \begin_layout Enumerate
@@ -783,7 +809,7 @@ literal "false"
 LatexCommand href
 name "Rozumný investor"
 target "https://www.youtube.com/channel/UCHZBx-13vmV8CVBH1pgbU_w/videos"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -795,7 +821,7 @@ literal "false"
 LatexCommand href
 name "Dominik Kovařík - Trading"
 target "https://www.youtube.com/channel/UC_Qqv2Ogs7Awiu-UV2m5x4g/videos"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -819,7 +845,7 @@ literal "false"
 LatexCommand href
 name "InvestičnýBlog.sk"
 target "https://www.youtube.com/channel/UCIqgsw9DvbxDLwEU2QDIenA/videos"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -843,7 +869,7 @@ literal "false"
 LatexCommand href
 name "Vojtěch Rohlena Investing"
 target "https://www.youtube.com/channel/UCSZ1vORrlV6v51hysX0Q1Yg/videos"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -877,7 +903,19 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "FelixFinance"
+name "Focused Compounding"
+target "https://www.youtube.com/c/FocusedCompounding/featured"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Felix & Friends"
 target "https://www.youtube.com/c/FelixFinance/videos"
 literal "false"
 
@@ -913,32 +951,8 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Justin Scott"
-target "https://www.youtube.com/channel/UCO0ntDxHRJnlC2DzpkixLiw/videos"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset CommandInset href
-LatexCommand href
 name "Ted Bauman"
 target "https://www.youtube.com/channel/UCN0d-u-otNRZRxeT_yrBzFA/videos"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset CommandInset href
-LatexCommand href
-name "Ryan Scribner"
-target "https://www.youtube.com/channel/UC3mjMoJuFnjYRBLon_6njbQ/videos"
 literal "false"
 
 \end_inset
@@ -1021,18 +1035,6 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Andrei Jikh"
-target "https://www.youtube.com/channel/UCGy7SkBjcIAgTiwkXEtPnYg/videos"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset CommandInset href
-LatexCommand href
 name "Mark Moss"
 target "https://www.youtube.com/channel/UC9ZM3N0ybRtp44-WLqsW3iQ/videos"
 literal "false"
@@ -1045,8 +1047,68 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
+name "Phil Town's Rule #1 Investing"
+target "https://www.youtube.com/channel/UCA8P3Rgfjn0IFZL4bmrKbrg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Let's Talk Money! with Joseph Hogue, CFA"
+target "https://www.youtube.com/channel/UCbKdotYtcY9SxoU8CYAXdvg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
 name "HyperChange"
 target "https://www.youtube.com/channel/UC1LAjODfg7dnSSrrPGGPPMw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Justin Scott"
+target "https://www.youtube.com/channel/UCO0ntDxHRJnlC2DzpkixLiw/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Andrei Jikh"
+target "https://www.youtube.com/channel/UCGy7SkBjcIAgTiwkXEtPnYg/videos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Ryan Scribner"
+target "https://www.youtube.com/channel/UC3mjMoJuFnjYRBLon_6njbQ/videos"
 literal "false"
 
 \end_inset
@@ -1071,18 +1133,6 @@ literal "false"
 LatexCommand href
 name "Cooper Academy"
 target "https://www.youtube.com/channel/UCmHm0w-JJfC2Ll1Of_WObAQ/videos"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset CommandInset href
-LatexCommand href
-name "Investors Archive"
-target "https://www.youtube.com/channel/UCY1o3IDWP-A3k_ausL6EvcA/videos"
 literal "false"
 
 \end_inset
@@ -1129,8 +1179,8 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Phil Town's Rule #1 Investing"
-target "https://www.youtube.com/channel/UCA8P3Rgfjn0IFZL4bmrKbrg/videos"
+name "Millennial Money"
+target "https://www.youtube.com/channel/UCPi6sb9M-Kj-j-PKptcUNJQ/featured"
 literal "false"
 
 \end_inset
@@ -1141,8 +1191,8 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Let's Talk Money! with Joseph Hogue, CFA"
-target "https://www.youtube.com/channel/UCbKdotYtcY9SxoU8CYAXdvg/videos"
+name "Investors Archive"
+target "https://www.youtube.com/channel/UCY1o3IDWP-A3k_ausL6EvcA/videos"
 literal "false"
 
 \end_inset
@@ -1213,7 +1263,7 @@ literal "false"
 \begin_layout Enumerate
 \begin_inset CommandInset href
 LatexCommand href
-name "Jan Fredrik (ex The Warren Buffett Spreadsheet)"
+name "The Warren Buffett Spreadsheet"
 target "https://www.youtube.com/channel/UChmTVhNsp5ZWQ3RwpCpEUKQ/videos"
 literal "false"
 

@@ -211,32 +211,35 @@ Financial markets go through 5 stages from boom to bust (laid out by economist
 
 \begin_deeper
 \begin_layout Enumerate
-Displacement - something happens to change investors' perceptions about
- the markets.
+Displacement.
+ Something happens to change investors' perceptions about the markets.
  
 \end_layout
 
 \begin_layout Enumerate
-Boom - Investors' hopes about the benefits of this displacement seem to
- pay off.
+Boom.
+ Investors' hopes about the benefits of this displacement seem to pay off.
  
 \end_layout
 
 \begin_layout Enumerate
-Euphoria - Excitement takes hold and banks lend ever more money in a bid
- to increase profit.
+Euphoria.
+ Excitement takes hold and banks lend ever more money in a bid to increase
+ profit.
  Everyone - from the steady investor to the taxi driver - dives into the
  market.
 \end_layout
 
 \begin_layout Enumerate
-Profit-taking - Smart investors suddenly realize the good times cannot go
- on forever, so start selling off their investments.
+Profit-taking.
+ Smart investors suddenly realize the good times cannot go on forever, so
+ start selling off their investments.
  As they sell, prices start falling for the first time.
 \end_layout
 
 \begin_layout Enumerate
-Panic - With prices now falling, fear spreads.
+Panic.
+ With prices now falling, fear spreads.
  People rush to sell their investments en masse, and prices plunge sharply.
  Banks stop lending to any but the most creditworthy.
  
@@ -277,12 +280,12 @@ t if it's down by 20%.
 \emph on
 Stock market crash
 \emph default
- - when the market goes down by 25% or more in about 3 months for example.
+ if the market goes down by 25% or more in about 3 months for example.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Bearish on a stock - someone believe that a stock is going down.
+Bearish on a stock - someone believes that a stock is going down.
 \end_layout
 
 \begin_layout Itemize
@@ -582,7 +585,7 @@ It is kind of price to sales to the whole stock market.
 
 \end_deeper
 \begin_layout Standard
-Shipper PE ratio = cape ratio (everything above 15 is expensive, below is
+Shiller PE ratio = Cape Ratio (everything above 15 is expensive, below is
  okay/cheap) this earnings measure includes the full market cycle of earnings;
  the trouble can be that it shows the last 10 years of earnings, but it
  doesn't include recession any more (in 2020, recession in 2008-9).
@@ -680,11 +683,11 @@ Predictions And Market Timing
 \end_layout
 
 \begin_layout Itemize
-Signal - the truth
+Signal - the truth.
 \end_layout
 
 \begin_layout Itemize
-Noise - distraction from the truth
+Noise - distraction from the truth.
 \end_layout
 
 \begin_layout Itemize
@@ -768,7 +771,7 @@ From A.
 The January Effect
 \emph default
  - stocks on average tend to do much better in January than in any other
- month of the year
+ month of the year.
 \end_layout
 
 \begin_layout Itemize
@@ -777,7 +780,7 @@ The January Effect
 The Weekend Effect
 \emph default
  - stocks on average seem to do much worse on Mondays than on any other
- day of the week
+ day of the week.
 \end_layout
 
 \begin_layout Itemize
@@ -786,7 +789,7 @@ The Weekend Effect
 The Mid-day Swoon
 \emph default
  - stocks on average tend to do much worse in the middle of the trading
- day than at the beginning and end of the day
+ day than at the beginning and end of the day.
 \end_layout
 
 \begin_layout Standard
@@ -873,7 +876,7 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-Howard Marks on forecasts
+Howard Marks on Forecasts
 \end_layout
 
 \begin_layout Itemize
@@ -887,7 +890,7 @@ Predictions are most useful when they correctly anticipate change.
 \end_layout
 
 \begin_layout Itemize
-Most of the time, people predict a future that is a lot like the recent
+Most of the time, people predict the future that is a lot like the recent
  past.
 \end_layout
 
@@ -1004,7 +1007,7 @@ A few forecasts of significant deviation turn out to be correct and valuable
 
 \end_deeper
 \begin_layout Subsubsection
-Aswath Damodaran on market timing 
+Aswath Damodaran on Market Timing 
 \end_layout
 
 \begin_layout Itemize
@@ -1039,7 +1042,7 @@ There are 5 ways how to time the market:
 \begin_layout Itemize
 Non-financial indicators, which can range the spectrum from the absurd to
  the reasonable.
- stories, news, etc
+ stories, news, etc.
 \end_layout
 
 \begin_layout Itemize
@@ -1068,23 +1071,18 @@ c variables.
  There is some evidence of mean reversion, but not strong enough to actually
  make a lot of money out of it.
  It's really difficult and not easily predictable to make money from macroeconom
-ic indicators, because there is small correlation between the variable did
- a given year and what the stock prices will do the following year.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{https://www.youtube.com/watch?v=zNrzqkNkaso&list=PLUkh9m2BorqlDJlnBXUaJaMRNE7U
-Dckn6&index=33}
-\end_layout
+ic indicators, because there is small correlation between what the variable
+ did a given year and what the stock prices will do the following year.
+ (Source 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.youtube.com/watch?v=zNrzqkNkaso&list=PLUkh9m2BorqlDJlnBXUaJaMRNE7UDckn6&index=33"
+literal "false"
 
 \end_inset
 
-
+.)
 \end_layout
 
 \begin_layout Itemize
@@ -1231,8 +1229,7 @@ For a bullish phase...to hold sway, the environment has to be characterized
 \end_layout
 
 \begin_layout Itemize
-There a re a few things of which we can be sure, and this is one: Extreme
- market behavior will reverse.
+Extreme market behavior will reverse.
  Those who believe that the pendulum will move in one direction forever
  - or reside at an extreme forever - eventually will lose huge sums.
  Those who understand the pendulum's behavior can benefit enormously.
@@ -1266,8 +1263,8 @@ On one hand, you never know how far the pendulum will swing, when it will
  reverse, and how far it will then go in the opposite direction.
  On the other hand, we can be sure that, once it reaches an extreme position,
  the market eventually will swing back toward the midpoint (or beyond).
- Investors who believed that the pendulum would move in one direction forever-or
-, having reached an extreme, would stay there - are inevitably disappointed.
+ Investors who believed that the pendulum would move in one direction forever
+ - or, having reached an extreme, would stay there - are inevitably disappointed.
  On the third hand, however, because of the variability of the many factors
  that influence markets, no tool - not even contrarianism - can be relied
  on completely.
@@ -1275,8 +1272,8 @@ On one hand, you never know how far the pendulum will swing, when it will
  Much of the time there aren't great market excesses to bet against.
  Even when an excess does develop, it's important to remember that "overpriced"
  is incredibly different from "going down tomorrow".
- Markets can be over- or underpriced and stay that way-or become more so-for
- years.
+ Markets can be over- or underpriced and stay that way - or become more
+ so - for years.
  It can be extremely painful when the trend is going against you.
  Finally, it's not enough to bet against the crowd.
  You must do things not just because they're the opposite of what the crowd
@@ -1393,7 +1390,7 @@ We humans use our ability to recognize and understand patterns to make our
 \end_layout
 
 \begin_layout Itemize
-We can most gainfully spend our time in three general areas:
+We can spend our time in three general areas:
 \end_layout
 
 \begin_deeper
@@ -1442,7 +1439,7 @@ The future should be viewed not as a single fixed outcome that's destined
  Probability distributions reflect one's view of tendencies.
  Investors - or anyone hoping to deal successfully with the future - have
  to form probability distributions, either explicitly or informally.
- It it's done well, those probabilities will be helpful in determining one's
+ If it's done well, those probabilities will be helpful in determining one's
  proper course of action.
  But it's still essential to bear in mind that even if we know the probabilities
 , that doesn't mean we know what's going to happen.
@@ -1493,7 +1490,7 @@ Taken together, does our current position in the cycle imply that we should
 
 \begin_layout Standard
 Attention to these elements gives the superior investor an edge that allows
- him to win ore often than he loses.
+ him to win more often than he loses.
 \end_layout
 
 \end_deeper
@@ -1504,8 +1501,11 @@ Most people think of cycles in terms of a series of events.
  by new upswings.
  But to have a full understanding of cycles, that's not enough.
  The events in the life of a cycle shouldn't be viewed merely as each being
- followed by the next, but - much more importantly - as each *causing* the
- next.
+ followed by the next, but - much more importantly - as each 
+\series bold
+causing
+\series default
+ the next.
  For example: 
 \end_layout
 
@@ -1550,7 +1550,7 @@ In the worlds investors inhabit, cycles rise and fall, and pendulums swing
  may be.
  The continuation of the movement past the midpoint and toward the opposite
  extreme is highly dependable.
- For example, markets rarely go from "underpriced" to "faily priced" and
+ For example, markets rarely go from "underpriced" to "fairly priced" and
  stop there.
  Usually the fundamental improvement and rising optimism that cause markets
  to recover from depressed levels remain in force, causing them to continue
@@ -1559,7 +1559,7 @@ In the worlds investors inhabit, cycles rise and fall, and pendulums swing
 \end_layout
 
 \begin_layout Itemize
-Howard consider the following questions as improper - "what cause f the
+Howard considers the following questions as improper - "what cause for the
  cycle to begin?" or "are we close to the end of the cycle?", because he
  think cycles neither begin nor end.
  Better questions might be: "what caused the current up-leg to begin?" or
@@ -1822,7 +1822,7 @@ s and defensiveness.
 \end_layout
 
 \begin_layout Itemize
-Howard calls attention to the obvious fact that - rather than the everyday
+Howard calls attention to the obvious fact that - rather than the everyday's
  ups and downs of the market - the clear examples provided in this book
  all concern "once in a lifetime" cyclical extremes (which these days seem
  to happen about once a decade).
@@ -1895,7 +1895,7 @@ Defensiveness
 \series default
  - the reduction of risk: investing less capital and holding cash instead;
  emphasizing safer assets; buying things that can do relatively well even
- in the absence of prosperity; and/or shunning leverage and beta
+ in the absence of prosperity; and/or shunning leverage and beta.
 \end_layout
 
 \begin_layout Itemize
@@ -1981,8 +1981,9 @@ There can be significant delays.
  Before a new building can come to market, adding to the supply of space,
  economic feasibility studies and environmental impact studies have to be
  performed; a site has to be found and purchased; the building has to be
- designed; construction must be completed, etc..this process can run for several
- years, and in the case of a major project it can exceed a decade.
+ designed; construction must be completed, etc.
+ This process can run for several years, and in the case of a major project
+ it can exceed a decade.
  But market conditions can change very significantly in the interim.
 \end_layout
 
@@ -2084,10 +2085,10 @@ Summary of economic cycles:
 
 \begin_deeper
 \begin_layout Itemize
-The output of an economy is economy is the product of hours worked and output
- per hour; thus the long-term growth of an economy is determined primarily
- by fundamental factors like birth rate and the rate of gain in productivity
- (but also by other changes in society and environment).
+The output of an economy is the product of hours worked and output per hour;
+ thus the long-term growth of an economy is determined primarily by fundamental
+ factors like birth rate and the rate of gain in productivity (but also
+ by other changes in society and environment).
  These factors usually change relatively little from year to year, and only
  gradually from decade to decade.
  Thus the average rate of growth is rather steady over long periods of time.
@@ -2284,7 +2285,7 @@ Purchases of big-ticket "durable goods" - things like cars and homes for
  in times of economic weakness.
  Also, because they cost a lot, they are hard to afford in bad times and
  easier to afford in good times.
- And businesses generally need more of them when business is god and less
+ And businesses generally need more of them when business is good and less
  when it isn't.
  These things make the demand for durables highly responsible to the economic
  cycle.
@@ -2413,7 +2414,7 @@ Howard Marks On Credit Cycles
 
 \begin_layout Standard
 Howard believes that the credit cycle is the most volatile of the cycles
- and has the greater impact.
+ and has the greatest impact.
  Thus it deserves a great deal of attention.
 \end_layout
 
@@ -2426,7 +2427,7 @@ The ups and downs of economies are usually blamed for fluctuations in corporate
  Why, then, do corporate profits increase and decrease so much more? The
  answer lies in things like financial leverage and operating leverage, which
  magnify the impact on profits of rising and falling revenues.
- And if profits fluctuate this way -why is it that the securities markets
+ And if profits fluctuate this way - why is it that the securities markets
  soar and collapse so dramatically? It's because of fluctuations in psychology
  and, in particular, to the profound influence of psychology on the availability
  of capital.
@@ -2589,7 +2590,7 @@ What is the impact of the credit cycle? The Global Financial Crisis (GFC)
 
 \begin_layout Itemize
 Prosperity brings expanded lending, which leads to unwise lending, which
- produces large losses, which makes lenders stop ending, which ends prosperity,
+ produces large losses, which makes lenders stop lending, which ends prosperity,
  and so on.
  A market is an auction house where the item being offered goes to the person
  who'll pay the most for it.
@@ -2990,7 +2991,7 @@ Neglect a probability
  Some companies that are stable may have a smaller spectrum of possibilities.
  For example FANG may have a much wider range of potential outcomes.
  Sometimes people are underestimating a probability of so called Black svan
- events (TODO).
+ events.
 \end_layout
 
 \begin_deeper
@@ -3012,7 +3013,7 @@ Restraint bias
  - it's very tempting to continue investing more in what we believe are
  our best investment opportunities.
  It can easily get out of hand if you're not conscious of it.
- On one hand, if you see and investment that you've made do really well,
+ On one hand, if you see an investment that you've made do really well,
  you might be tempted to put more money there, hoping that those gains will
  continue to raise further.
  However, there's also a possibility that one of your investment has fallen
@@ -3028,7 +3029,7 @@ Restraint bias
 \series bold
 How to avoid
 \series default
-: Before even buying a stock, you have to have an idea of the maximum mount
+: Before even buying a stock, you have to have an idea of the maximum amount
  of stock you want of that within your portfolio and be very careful not
  to exceed that limit.
  You can have too much of a "good thing".
@@ -3051,16 +3052,15 @@ Bandwagon effect / groupthink
 \series bold
 How to avoid
 \series default
-: Having an independent objective thinking and don't always go with the
- herd.
+: Have an independent objective thinking and don't always go with the herd.
  Group thinking are one of the primary reasons why we see many financial
  speculative bubbles.
- Such as dot-com bubble in 2010 (TODO) or cryptocurrency mania in 2017.
+ Such as The Dot-Com bubble in 2010 or cryptocurrency mania in 2017.
 \end_layout
 
 \begin_layout Standard
 Robert Frost: "Two roads diverged in a wood, and I - I took the one less
- traveled by and that has made all the difference." (TODO image?) 
+ traveled by and that has made all the difference." 
 \end_layout
 
 \end_deeper
@@ -3071,12 +3071,12 @@ Hindsight bias
 \emph default
 - Looking at the past events and consider them more predictable than they
  actually were.
- Such as "oh, I should have buy X" or "I should sell Y".
+ Such as "Oh, I should have buy X" or "I should sell Y".
  You can see a lot of mainstream articles that show these off.
  Hindsight bias hurts investors because it prevents them from learning from
- the past investment mistakes!! In the worst case, it can lead investors
- thinking that every successful investment they made was because of their
- keen judgment even if it wasn't.
+ the past investment mistakes.
+ In the worst case, it can lead investors thinking that every successful
+ investment they made was because of their keen judgment even if it wasn't.
  And it can cause investors to chalk up losses simply because of volatility
  and unpredictable events.
 \end_layout
@@ -3115,8 +3115,8 @@ How to avoid
 \series default
 : Focus on investing within your circle of competence.
  These are companies or industries you know the best.
- Circle of competence - intersection between: what do you like? where do
- you earn money? where do you spend money? 
+ Circle of competence - intersection between: What do you like? Where do
+ you earn money? Where do you spend money? 
 \end_layout
 
 \end_deeper
@@ -3151,7 +3151,7 @@ How to avoid
 \emph on
 Loss aversion/endowment effect 
 \emph default
-- this is for people that prefer avoiding losses over achieving the same
+- this is for people who prefer avoiding losses over achieving the same
  amount of gain.
  This is closely related to endowment effect, which is where someone places
  a higher value on a good that they own, compared to the same good that
@@ -3175,7 +3175,7 @@ How to avoid
  This limit will force you to invest only in what you believe at that time
  because these are your best investment options.
  This will force you to cut your losses with investments that you no longer
- think are a good investment decisions.
+ think are good investment decisions.
 \end_layout
 
 \end_deeper
@@ -3202,8 +3202,8 @@ Information bias
 \series bold
 How to avoid
 \series default
-: Majority of investors would be perfectly fine only looking at their stocks
- once a week or even just once a month.
+: Majority of investors would be perfectly fine only by looking at their
+ stocks once a week or even just once a month.
  Rarely there is an opportunity you would miss by not keeping up to day
  with a market.
  
@@ -3233,7 +3233,7 @@ Confirmation bias -
 \series bold
 How to avoid
 \series default
-: you have to seek out information how you could potentially be wrong on
+: You have to seek out information how you could potentially be wrong on
  an investment decision and not the other way around.
  Often, listening to people of opposing opinions can provide insight into
  some risks and considerations you would not have.
@@ -3433,7 +3433,7 @@ The price paid for each should be reasonable in relation to its average
 Common stock investment, however, as a whole presents a psychological hazard,
  because stock buyers are subject to human weakness and are prone to talk
  like investors and to act like speculators.
- But if an intelligent investor will stick to high0grade stocks bought at
+ But if an intelligent investor will stick to high-grade stocks bought at
  reasonable prices - then he can do better than the bond investor.
 \end_layout
 
@@ -3454,23 +3454,20 @@ Aggressive investor
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-(Or as Graham call him, the enterprising investor) He should start from
+\begin_layout Standard
+(Or as Graham calls him, the enterprising investor) He should start from
  the same base as the defensive investor, namely, a division of his funds
- between UK Savings Bonds and high-grade common stocks bought at reasonable
+ between US Savings Bonds and high-grade common stocks bought at reasonable
  prices.
+ The activities characteristic of the enterprising investor may be classified
+ under 4 heads:
 \end_layout
 
-\begin_layout Itemize
-The activities characteristic of the enterprising investor may be classified
- under 4 heads
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 Buying in low markets and selling in high markets (formula timing)
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 A simple application of this idea would be to sell 10% of your holdings
  when the market advances 10% above a chosen base or central level; then
@@ -3482,10 +3479,12 @@ A simple application of this idea would be to sell 10% of your holdings
  a profit of 37% above the base.
 \end_layout
 
-\begin_layout Itemize
+\end_deeper
+\begin_layout Enumerate
 Buying carefully chosen "growth stocks" 
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 Thus for good results in the growth stock field there is need not only for
  skillful analysis but for ample diversification as well.
@@ -3497,7 +3496,8 @@ Thus for good results in the growth stock field there is need not only for
  than on any clear-cut methods of analysis.
 \end_layout
 
-\begin_layout Itemize
+\end_deeper
+\begin_layout Enumerate
 Buying bargain issues of various types 
 \end_layout
 
@@ -3505,19 +3505,18 @@ Buying bargain issues of various types
 \begin_layout Standard
 Graham defines a bargain issue as one which, on the basis of facts established
  by analysis, appears to be worth considerably more than it is selling for.
- AN issue is not a true "bargain" unless the indicated value is at least
+ An issue is not a true "bargain" unless the indicated value is at least
  50% more than the price.
  There are 2 tests by which a bargain common stock is detected: 
 \end_layout
 
-\begin_layout Standard
-Method of appraisal - TODO chapter X.
- It relies largely on estimating future earnings and then multiplying these
- by a factor appropriate to the particular issue.
+\begin_layout Itemize
+Method of appraisal - it relies largely on estimating future earnings and
+ then multiplying these by a factor appropriate to the particular issue.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Value of the business to a private owner.
  This value also is often determined chiefly by expected future earnings
  - in which case the result may be identical with the first.
@@ -3527,7 +3526,7 @@ Value of the business to a private owner.
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 Buying into "special situations" 
 \end_layout
 
@@ -3543,6 +3542,60 @@ A particular kind of undervalued security in which the profit is expected
 \end_deeper
 \end_deeper
 \end_deeper
+\begin_layout Itemize
+(Graham) Investor vs Speculator
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The most realistic distinction between the investor and the speculator is
+ found in their attitude toward stock-market movements.
+ The speculator's primary interest lies in anticipating and profiting from
+ market fluctuations.
+ The investor's primary interest lies in acquiring and holding suitable
+ securities at suitable prices.
+ Market movements are important to him in a practical sense, because they
+ alternately create low price levels at which he would be wise to buy and
+ high price levels at which he certainly should refrain from buying and
+ probably would be wise to sell.
+\end_layout
+
+\begin_layout Itemize
+It is far from certain that the typical investor should regularly hold off
+ buying until low market levels appear, because this may involve a long
+ wait, the loss of considerable dividend income, and the possible missing
+ of investment opportunities.
+ On the whole it may be better for the investor to do his stock buying whenever
+ he has money to put in stocks, except when the general market level is
+ higher than can be justified by well-established standards of value.
+ If he wants to be shrews he can look for the ever present bargain opportunities
+ in individual securities.
+\end_layout
+
+\begin_layout Itemize
+Intelligent investor should never buy a stock because it has gone up or
+ sell one because it has gone down.
+ He would not be far wrong if this motto read more simply:
+\emph on
+ "Never buy a stock immediately after a substantial rise or sell one immediately
+ after a substantial drop."
+\end_layout
+
+\begin_layout Itemize
+Intelligent investor might take an advantage of the cyclical swings of the
+ general market - buying when a stock is historically low or neutral and
+ beginning to sell as soon as the market passes into historically high levels.
+\end_layout
+
+\begin_layout Itemize
+Price fluctuations have only one significant meaning for the true investor.
+ They provide him with an opportunity to buy wisely when prices fall sharply
+ and sell wisely when they advance a great deal.
+ At other times he will do better if he forgets about the stock market and
+ pays attention to his dividend returns and to the operating results of
+ his companies.
+\end_layout
+
 \end_deeper
 \end_body
 \end_document
