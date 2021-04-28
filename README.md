@@ -8,7 +8,7 @@ other things related to IT and beyond, including investing - especially stocks
 and real estate investing.
 
 Here's my profile on Goodreads:
-https://www.goodreads.com/user/show/114351959-ladislav-ul-k.
+<https://www.goodreads.com/user/show/114351959-ladislav-ul-k>.
 
 ## Notes Collection
 
